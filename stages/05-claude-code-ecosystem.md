@@ -87,7 +87,7 @@
 
 ### 動手練習
 - **練習：MCP client** — 安裝 `modelcontextprotocol/servers/filesystem`，從 Claude Desktop 連上去。看著 Claude 讀你的檔案。
-- **練習：MCP server** — 寫一個 Python MCP server，提供一個 tool（例如「換算溫度」）。從 Claude Code 連過去。
+- **練習：MCP server** — 寫一個 Python MCP server，提供一個 tool（例如「換算溫度」）。從 Claude Code 連過去。**step-by-step 怎麼做** → [`resources/cookbook.md` §2](../resources/cookbook.md#2-寫你的第一個-mcp-server)
 - **練習：MCP in production** — 在同一個 Claude session 裡同時連 2-3 個 MCP server，看它們互相搭配。
 
 ### 精選 Projects
@@ -212,7 +212,7 @@ pip install mcp
 2. **幾份範例 SKILL.md**——從 `anthropics/claude-code` 或社群 marketplace 拿
 
 ### 動手練習
-- **練習：SKILL.md** — 寫一份 200 字的 skill，解決你日常工作中的某一件事
+- **練習：SKILL.md** — 寫一份 200 字的 skill，解決你日常工作中的某一件事。**step-by-step 怎麼做** → [`resources/cookbook.md` §1](../resources/cookbook.md#1-寫你的第一個-skill)
 - **練習：SKILL with references** — 加一份 `references/` markdown 讓 skill 可以引用
 - **練習：SKILL eval** — 加 `evals/evals.json`，放 3-5 個自我測試
 
