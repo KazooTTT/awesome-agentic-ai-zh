@@ -68,8 +68,8 @@ cd awesome-agentic-ai-zh
 - 🎯 **精選 145+ 個 projects** — 每個都附星等推薦、適合誰、教什麼、怎麼跑（含本地 LLM 執行：Ollama、llama.cpp、LocalAI、MLX）
 - 🌏 **中文 / 英文雙語** — 繁中為主、英文版完整對照
 - 🎓 **不只「框架」、還有「Claude Code 生態」** — MCP / Skills / Plugins / SDK 完整堆疊
-- 🔬 **5 條進階分支** — 研究員 / 開發者 / 老師 / 知識工作者 / **日常使用者**
-- ⏱️ **時程說明寫清楚** — 主幹最少 14-19 週、現實 5-6 個月（每週 5-8 hr）
+- 🔬 **5 條依使用者分流的延伸路線** — 研究員 / 開發者 / 老師 / 知識工作者 / **日常使用者**
+- ⏱️ **預估時程寫清楚** — 主幹最少 14-19 週、現實 5-6 個月（每週 5-8 hr）
 
 ---
 
@@ -86,7 +86,7 @@ cd awesome-agentic-ai-zh
 
 ### 共用基礎（Stage 0-2）
 
-| Stage | 主題 | 關鍵內容 | 時程 |
+| Stage | 主題 | 關鍵內容 | 預估時程 |
 |---|---|---|---|
 | **0** | [基礎準備](stages/00-foundations.md) | Python · CLI · git · API · JSON | 1-2 週 |
 | **1** | [LLM 入門](stages/01-llm-basics.md) | token · API · 各家 LLM 比較 · 本地 LLM | 1 週 |
@@ -94,17 +94,17 @@ cd awesome-agentic-ai-zh
 
 ### Track A — CLI Power User（想用 CLI 把事情做完）
 
-| Stage | 主題 | 關鍵內容 | 時程 |
+| Stage | 主題 | 關鍵內容 | 預估時程 |
 |---|---|---|---|
 | **A1** | [CLI Agent 入門 + 選擇](tracks/cli/A1-cli-intro.md) | 6 主流 CLI 比較 · 安裝 · 第一次跑 | 1 週 |
 | **A2** | [CLI Workflow Patterns](tracks/cli/A2-cli-workflow.md) | CLAUDE.md · slash command · 多步驟拆解 | 1-2 週 |
 | **A3** | [Integration & Production](tracks/cli/A3-cli-production.md) | MCP 接 CLI · CI 自動化 · cost / observability | 1-2 週 |
 
-> **Track A 總時程**：3-5 週（含 Stage 0-2 約 6-8 週）。核心參考：[`resources/cli-agents-guide.md`](resources/cli-agents-guide.md)。
+> **Track A 預估總時程**：3-5 週（含 Stage 0-2 約 6-8 週）。核心參考：[`resources/cli-agents-guide.md`](resources/cli-agents-guide.md)。
 
 ### Track B — Agent Builder（從零打造 agent）
 
-| Stage | 主題 | 關鍵內容 | 時程 |
+| Stage | 主題 | 關鍵內容 | 預估時程 |
 |---|---|---|---|
 | **3** ⭐ | [Tool Use & Hello Agent](stages/03-tool-use-and-hello-agent.md) | function calling · ReAct · 5 個 Hello-X | 2-3 週 |
 | **4** | [Agent 框架](stages/04-agent-frameworks.md) | LangGraph · AutoGen · CrewAI · Smolagents | 2-3 週 |
@@ -112,17 +112,17 @@ cd awesome-agentic-ai-zh
 | **6** | [Memory · RAG · 進階](stages/06-memory-rag.md) | vector DB · long-term memory · contextual retrieval | 2 週 |
 | **7** | [進階 Multi-Agent](stages/07-multi-agent-production.md) | multi-agent orchestration · eval · observability · SDK 進階 | 2-4 週 |
 
-> **Track B 總時程**：主幹最少 **14-19 週**、現實 **5-6 個月**（每週 5-8 hr 兼職）
+> **Track B 預估總時程**：主幹最少 **14-19 週**、現實 **5-6 個月**（每週 5-8 hr 兼職）
 
 > 💡 **想看跨 stage 的完整範例？** [7 步打造你的第一個 AI Agent](walkthroughs/build-first-agent-in-7-steps.md) — 同一個 Paper Summary Bot 從 Stage 1 一路寫到 Stage 7，~350 行真實程式碼（**Track B 適用**）
 
-走完主幹後，從 5 條 specialized branch 挑一條繼續。**不確定挑哪條？**
+走完主幹後，依你的身分挑一條延伸路線繼續走。**不確定挑哪條？**
 
 ![Branch 決策樹](resources/diagrams/branch-decision-tree.png)
 
-> 💡 **日常使用者 branch 不必走完主幹就能直接讀**——是給「想用 AI、但不一定要寫 code」的人。
+> 💡 **「日常使用者」這條路線不必走完主幹就能直接讀**——是給「想用 AI、但不一定要寫 code」的人。
 
-| Branch | 適合誰 | 主題 |
+| 路線 | 適合誰 | 主題 |
 |---|---|---|
 | 🔬 [研究人員](branches/for-researcher.md) | 研究生、博後、PI | 文獻整理 · paper 寫作 · multi-agent review |
 | 💻 [開發者](branches/for-developer.md) | 軟體工程師 | Cursor · Aider · CLI delegation · code review |
@@ -149,7 +149,7 @@ cd awesome-agentic-ai-zh
 - **Part 3（Stage 5）：Claude Code 生態系** — MCP / Skills / Plugins，這是整條路線的核心
 - **Part 4（Stage 6-7）：進階整合** — memory / RAG / multi-agent 協作
 
-走完主幹（14-19 週）後，從 5 條 specialized branch 挑一條繼續。
+走完主幹（14-19 週）後，依你的身分（研究員 / 開發者 / 老師 / 知識工作者 / 日常使用者）挑一條延伸路線繼續走。
 
 最重要的一句話：**不要跳過 Hello-X demos**。每個 stage 的 Hello-X 都是「不動手就學不會」的東西，光讀過去後面會卡住。
 
