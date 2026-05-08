@@ -15,19 +15,7 @@
 
 Top to bottom, each layer is built on the one below:
 
-```
-📦 Plugins / Marketplaces       ← 5.4 (packaging)
-        ↑
-🛠 Skills                       ← 5.3 (behavior)
-        ↑
-🔌 MCP                          ← 5.2 (protocol)
-        ↑
-⚡ Tool Use / Function Calling  ← Stage 3
-        ↑
-🔧 Anthropic API + SDK          ← Stage 1, Stage 7
-        ↑
-🤖 LLM (Claude)
-```
+![Claude Code Ecosystem Stack](../resources/diagrams/stage5-stack.en.png)
 
 Each layer adds one capability:
 - **API + SDK**: programmatic access to the LLM

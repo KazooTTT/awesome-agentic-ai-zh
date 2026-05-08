@@ -23,3 +23,6 @@ book/src/
 dist/
 mermaid.min.js
 mermaid-init.js
+
+# SVG artifacts from earlier cairosvg attempts (PIL is the canonical generator now)
+resources/diagrams/stage5-stack*.svg

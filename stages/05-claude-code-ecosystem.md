@@ -14,19 +14,7 @@
 
 由上往下，每一層都建立在底下那一層上：
 
-```
-📦 Plugins / Marketplaces       ← 5.4 (packaging)
-        ↑
-🛠 Skills                       ← 5.3 (behavior)
-        ↑
-🔌 MCP                          ← 5.2 (protocol)
-        ↑
-⚡ Tool Use / Function Calling  ← Stage 3
-        ↑
-🔧 Anthropic API + SDK          ← Stage 1, Stage 7
-        ↑
-🤖 LLM (Claude)
-```
+![Claude Code Ecosystem Stack](../resources/diagrams/stage5-stack.png)
 
 每一層各自加上一種能力：
 - **API + SDK**：用程式存取 LLM

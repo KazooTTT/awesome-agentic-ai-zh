@@ -79,7 +79,7 @@
 ### 阅读材料
 
 #### [The Effortless Academic — Beginner Guides](https://effortlessacademic.com/claude-code-and-cowork-for-academics-beginner-guide-part-1/)
-写给学术工作者導入 Claude Code 的多篇指南，教师也适用。
+写给学术工作者导入 Claude Code 的多篇指南，教师也适用。
 
 ## 可以建的流程
 
@@ -89,20 +89,83 @@
 - **Rubric 建立**：学生作业样本 + 学习目标 → rubric 草稿
 - **个性化反馈**：学生作业 + rubric → 个性化文字反馈（要人工把关）
 
+### 3 个可直接复制的 prompt 范本
+
+**1. 教案大纲生成**（复制到 Claude.ai 即可用）：
+```
+你是一位 [学科] 老师。我要给 [年级] 学生上一堂 [时长] 分钟的课，主题是「[主题]」。
+学生先备知识：[简述]。请产出：
+1. 学习目标（3-4 条，用 Bloom's taxonomy 动词）
+2. 课程大纲（含时间分配）
+3. 1 个课堂活动 / 讨论题
+4. 1 个课后评估题
+不要产生超出我给的主题范围的内容。
+```
+
+**2. Rubric 草稿生成**：
+```
+我有一份 [作业类型] 作业，学生年级 [年级]，主题 [主题]。
+学习目标：[列 2-3 条]。
+请产出一份 4 级 rubric（卓越 / 熟练 / 发展中 / 待改进），
+每级在「内容深度」「组织结构」「论证 / 计算」「表达清晰度」4 个面向各给一段描述。
+描述要具体可观察，不用「质量好」这种模糊词。
+```
+
+**3. 学生反馈整理**：
+```
+以下是 [N] 份学生作业片段：
+[贴上文本]
+
+请：
+1. 摘要这批作业共同的 3 个强项
+2. 摘要 3 个共同弱点
+3. 针对最常见弱点，建议 1-2 个下次上课该加强的环节
+不要做个人化评语——我会自己针对个人写。
+```
+
+## 隐私 + 伦理（重要）
+
+教师端用 LLM 跟一般 user 不同，**牵涉学生数据**——以下是 hard rule：
+
+- **不要把学生个资丢进公开 LLM**（姓名、学号、联系方式、成绩）。需要的话先匿名化（用「学生 A / B / C」）
+- **AI 辅助 ≠ AI 评分**：用 LLM 草拟反馈 / rubric 没问题，但**最终评分一定要人工把关**——LLM 对复杂思考的评估还不可靠
+- **告知学生**：如果课堂材料是 AI 辅助生成，建议向学生揭露（比照论文揭露 AI 工具使用）。教学诚信很重要
+- **检查事实**：LLM 会编造引用、学者名字、研究数据。专业领域内容**必须核对**才能上课
+- **学生作品的著作权**：不要把学生作品用 LLM 大量分析后上传到第三方 service，可能踩 FERPA / GDPR / 个资法
+
+如果你的学校 / 机构有 AI 使用政策，**那份比这份优先**。
+
 ## 给教师的层级建议
 
 大多数教师应该停在 **Tier 0（浏览器聊天）**或 **Tier 1（Claude Desktop）**：
 
 - **Tier 0**：Claude.ai 网页版聊天——复制粘贴 prompt，免安装
-- **Tier 1**：Claude Desktop——可上传文件、保留对话历史
-- 除非你真的需要自动化，不要直接跳到 CLI / SDK
+  - 适合：偶尔备课、单次任务、出题、写信
+  - 例子：复制上面的「教案大纲生成」prompt，填入主题就跑
+- **Tier 1**：Claude Desktop / [NotebookLM](https://notebooklm.google.com/)——可上传文件、保留对话历史
+  - 适合：批改 / 整理一整学期数据、做课程地图、整批导入课本 PDF 后问问题
+  - 例子：上传整门课的 reading list PDF 到 NotebookLM，学期中可以随时 query
+- **Tier 2+ (CLI / SDK)**：只有当你开始**自动化重复流程**才需要
+  - 例子：每周固定收 30 份作业 → 自动生成反馈初稿
+  - 不熟程序的老师可以**找学校的 IT 同事 / 学生 RA 帮忙**设置，自己只用结果
+
+> 升级到 Tier 2+ 就建议走 [Track A — CLI Power User](../tracks/cli/A1-cli-intro.zh-CN.md)。
+
+## 也适用其他分支
+
+很多老师同时是研究员 / 知识工作者，这几个分支重叠：
+
+- **也做研究**（找文献、写 paper、整理 references）→ [研究员分支](./for-researcher.zh-CN.md)
+- **要写报告 / 整理会议记录 / 跨工具集成**（Notion、Excel、Email）→ [知识工作者分支](./for-knowledge-worker.zh-CN.md)
+- **要把 AI 接到 Notion / Obsidian / 飞书** 等日常工具 → [`resources/mcp-skills-catalog.zh-CN.md`](../resources/mcp-skills-catalog.zh-CN.md)
 
 ## 社群备注
 
 这个分支目前是精选内容最少的一块。特别欢迎以下贡献：
 
 - 教案生成 skill
-- 学科专属的 prompt library
-- 教师专属的 MCP server（成绩册集成、LMS 串接）
+- 学科专属的 prompt library（语文老师的 prompts、数学老师的 prompts、英文老师的 prompts ⋯）
+- 教师专属的 MCP server（成绩册集成、LMS 串接如 Canvas / Moodle / Google Classroom）
+- **某学科 + 某年级的完整 case study**（例如「我用 AI 带初中数学一个学期，这是我的 workflow」）
 
 请见 [CONTRIBUTING.md](../CONTRIBUTING.md)。
