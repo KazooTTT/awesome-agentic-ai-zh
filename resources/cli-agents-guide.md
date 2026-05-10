@@ -8,13 +8,13 @@
 > 第一次接觸 CLI agent、想要 step-by-step 上手 → 看 [`tracks/cli/A1-cli-intro.md`](../tracks/cli/A1-cli-intro.md)（Track A 第一站）。
 > 已經在用、想決定 / 比較 / 升級 → 留在這份。
 
-跨 5 個 branch + Track A 共用的參考——**Claude Code / Codex / OpenCode / Gemini CLI / goose / Aider 之間怎麼挑？** Track A（A1-A3）的 CLI workflow 設計、5 條 branch 內的 CLI 引用都連到這份；每個 branch 都會用到 CLI agent，但沒有一個 branch 真的「擁有」這份比較，所以放在 `resources/`。
+跨 5 個 branch + Track A 共用的參考——**Claude Code / Codex / OpenCode / Gemini CLI / goose / Aider / Hermes Agent 之間怎麼挑？** Track A（A1-A3）的 CLI workflow 設計、5 條 branch 內的 CLI 引用都連到這份；每個 branch 都會用到 CLI agent，但沒有一個 branch 真的「擁有」這份比較，所以放在 `resources/`。
 
 ---
 
-## 📋 6 個主流 CLI agent
+## 📋 7 個主流 CLI agent
 
-只列在 terminal 跑的（IDE-based 如 Cursor / Cline / Continue 不在這份；那些放在 [for-developer](../branches/for-developer.md)）。所有數字 `gh api` 驗證於 2026-05-06。
+只列在 terminal 跑的（IDE-based 如 Cursor / Cline / Continue 不在這份；那些放在 [for-developer](../branches/for-developer.md)）。前 6 個數字 `gh api` 驗證於 2026-05-06；Hermes Agent 驗證於 2026-05-10。
 
 | 工具 | 提供者 | License | 主推 LLM | 認證 / 計費 | Stars |
 |---|---|---|---|---|---|
@@ -24,6 +24,7 @@
 | [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Google（官方） | Apache-2.0 | Gemini | 免費額度寬，超出收費 | ★ 103k+ |
 | [goose](https://github.com/block/goose) | Agentic AI Foundation（repo 已遷至 `aaif-goose/goose`） | Apache-2.0 | 15+ provider（含 Ollama） | BYO API key 或既有 Claude / ChatGPT / Gemini 訂閱（ACP） | ★ 43k+ |
 | [Aider](https://github.com/Aider-AI/aider) | Aider-AI（社群） | Apache-2.0 | 任意 | BYO API key | ★ 44k+ |
+| [Hermes Agent](https://github.com/NousResearch/hermes-agent) | Nous Research | MIT | 200+ via OpenRouter / NVIDIA NIM / 智譜 GLM / Kimi / 小米 MiMo / MiniMax / HF / OpenAI | BYO API key（多 provider） | ★ 142k+ |
 
 ---
 
@@ -49,6 +50,13 @@
 
 ### 第一次裝 CLI agent，先試手感
 **首推**：Claude Code。生態廣泛、CLAUDE.md 機制讓 prompt 可以版本控制、出問題時社群資源多。
+
+### 想跑在 cloud VM、用 Telegram / Slack 等多平台跟它聊 + 用中國大陸 LLM
+**首推**：Hermes Agent。差異化在三件事：
+- **不綁 laptop**——agent 跑在 $5 VPS / Modal serverless，你從 Telegram / Discord / Slack / WhatsApp / Signal 任一個介面對話
+- **多 LLM 中性**——支援 GLM / Kimi / 小米 MiMo / MiniMax，剛好對應 §11 中文圈生態
+- **內建 self-improving skill loop + cron 排程**——agent 跟你互動久了會自動生成 skill，跨 session 持續優化
+- ⚠️ skill 自動演化是 frontier feature，目前缺獨立審計；對 production 任務建議先在低風險場景試
 
 ---
 
@@ -127,6 +135,6 @@
 
 ## 維護備註
 
-- 6 個 CLI 的 stars / license / pushed_at 每季用 `bash scripts/refresh-stars.py` 更新一次
+- 7 個 CLI 的 stars / license / pushed_at 每季用 `bash scripts/refresh-stars.py` 更新一次
 - CLI 工具市場變化快——新工具出現要評估是否加入這份比較（門檻：> 30k stars + 維護中 + 真的 CLI 不是 IDE）
 - 比較表格的「強項 / 弱項」欄位刻意沒填——避免產生主觀 bias，讓 use case section 跟讀者自己的判斷做這件事

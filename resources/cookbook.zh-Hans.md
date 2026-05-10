@@ -506,6 +506,6 @@ git clone https://github.com/WenyuChiou/zotero-skills ~/.claude/skills/zotero-sk
 - 看 [Stage 5](../stages/05-claude-code-ecosystem.zh-Hans.md) 完整概念
 - 看 [`mcp-skills-catalog.md`](mcp-skills-catalog.zh-Hans.md) 完整工具清单
 - 看 [`schema-design-cheatsheet.md`](schema-design-cheatsheet.zh-Hans.md) 写 tool schema 的细节
-- 看 [`cli-agents-guide.md`](cli-agents-guide.zh-Hans.md) 6 个主流 CLI agent 比较
+- 看 [`cli-agents-guide.md`](cli-agents-guide.zh-Hans.md) 7 个主流 CLI agent 比较
 
 要新 recipe → 开 issue 或直接 PR 一份。recipe 格式：**为什么 + 步骤 + 范本 prompt + 常见 pitfall + 进一步**。

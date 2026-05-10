@@ -82,7 +82,7 @@ cd awesome-agentic-ai-zh
 
 | Stage | 主题 | 关键内容 | 预估时程 |
 |---|---|---|---|
-| **A1** | [CLI Agent 入门 + 选择](tracks/cli/A1-cli-intro.zh-Hans.md) | 6 个主流 CLI 比较 · 安装 · 第一次跑 | 1 周 |
+| **A1** | [CLI Agent 入门 + 选择](tracks/cli/A1-cli-intro.zh-Hans.md) | 7 个主流 CLI 比较 · 安装 · 第一次跑 | 1 周 |
 | **A2** | [CLI Workflow Patterns](tracks/cli/A2-cli-workflow.zh-Hans.md) | CLAUDE.md · slash command · 多步骤拆解 | 1-2 周 |
 | **A3** | [Integration & Production](tracks/cli/A3-cli-production.zh-Hans.md) | MCP 接 CLI · CI 自动化 · cost / observability | 1-2 周 |
 
