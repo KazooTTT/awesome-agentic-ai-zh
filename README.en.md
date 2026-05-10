@@ -186,6 +186,7 @@ This repo is an AI learning document — if you've also curated great resources,
 
 PR process and style rules: [CONTRIBUTING.md](CONTRIBUTING.md) + [resources/style-guide.en.md](resources/style-guide.en.md).
 
+> 📅 **Want to see what shipped recently?** → [`CHANGELOG.md`](CHANGELOG.md) (last 14 days).
 > Internal phase rollout progress and launch checklist: [`.github/launch-checklist.md`](.github/launch-checklist.md) (maintainer-facing internal doc).
 
 ---
