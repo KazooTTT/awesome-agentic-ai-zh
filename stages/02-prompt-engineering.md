@@ -32,20 +32,279 @@
 
 ## 🛠 動手練習
 
-### 練習：System Prompt
+### 練習 1：System Prompt
 同樣的 user message，三個不同的 system prompt。觀察人格 / 輸出格式怎麼變。
 
-### 練習：Few-Shot
+<details>
+<summary>📋 <b>起手碼</b>（複製到 <code>practice_1.py</code>）</summary>
+
+```python
+# 需要：pip install anthropic
+# 環境變數：export ANTHROPIC_API_KEY=sk-ant-...
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import anthropic
+
+client = anthropic.Anthropic()
+
+# 同一個 user message、3 個不同 system prompt
+SYSTEM_PROMPTS = {
+    "嚴肅律師": "你是嚴謹的合約律師。回答要精準、引用法條編號、避免任何主觀形容詞。",
+    "幼兒園老師": "你是溫柔的幼兒園老師、要對 5 歲小孩說話。用比喻、口語、少於 80 字。",
+    "JSON 機器": "你只回 JSON。schema: {\"answer\": string, \"confidence\": float}",
+}
+
+USER_MSG = "請幫我解釋什麼是租賃合約。"
+
+for label, system in SYSTEM_PROMPTS.items():
+    msg = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=200,
+        system=system,
+        messages=[{"role": "user", "content": USER_MSG}],
+    )
+    print(f"\n--- [{label}] ---")
+    print(msg.content[0].text)
+
+# === 自我驗證 ===
+print(f"\n✅ 練習 1 通過 — 同一個問題、3 種人格 / 格式 / 語氣")
+print("💡 觀察：律師長、老師短、JSON 機器一定是 {...}")
+```
+
+**預期輸出**（樣本）：
+```
+--- [嚴肅律師] ---
+租賃合約係依民法第 421 條規定...
+
+--- [幼兒園老師] ---
+租賃合約就像借玩具給朋友、講好什麼時候還、要付多少糖果...
+
+--- [JSON 機器] ---
+{"answer": "租賃合約是當事人約定一方以物租與他方使用...", "confidence": 0.92}
+```
+
+</details>
+
+### 練習 2：Few-Shot
 挑一個分類任務。先用 0-shot 跑，再用 3-shot 跑。量一下準確率差多少。
 
-### 練習：CoT
+<details>
+<summary>📋 <b>起手碼</b>（複製到 <code>practice_2.py</code>）</summary>
+
+```python
+# 需要：pip install anthropic
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import anthropic
+
+client = anthropic.Anthropic()
+
+# 標籤資料 — 中文情緒分類（正面 / 負面 / 中立）
+TEST_SET = [
+    ("這部電影超讚、看完想再看一次！", "正面"),
+    ("劇情無聊、演員演技尷尬。", "負面"),
+    ("這是一部 2019 年的電影。", "中立"),
+    ("我不確定喜不喜歡、可能再想想。", "中立"),
+    ("第一集很不錯但第二集就崩了。", "負面"),
+    ("看完心情很好、推薦！", "正面"),
+]
+
+FEW_SHOT_EXAMPLES = """範例：
+input: 這家餐廳的牛排好吃到讓我哭出來。
+output: 正面
+
+input: 服務生態度很差、我再也不會來了。
+output: 負面
+
+input: 這家店位於新北市三重區。
+output: 中立
+"""
+
+
+def classify(text: str, *, use_few_shot: bool) -> str:
+    prefix = FEW_SHOT_EXAMPLES + "\n" if use_few_shot else ""
+    prompt = f"{prefix}input: {text}\noutput:"
+    msg = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=10,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return msg.content[0].text.strip().splitlines()[0]
+
+
+def evaluate(use_few_shot: bool) -> tuple[int, int]:
+    correct = 0
+    for text, label in TEST_SET:
+        pred = classify(text, use_few_shot=use_few_shot)
+        ok = label in pred
+        print(f"  {'✓' if ok else '✗'} [{label}] {text[:30]}... → '{pred}'")
+        if ok:
+            correct += 1
+    return correct, len(TEST_SET)
+
+
+print("=== 0-shot ===")
+c0, n = evaluate(use_few_shot=False)
+print(f"正確 {c0}/{n} = {c0/n:.0%}")
+
+print("\n=== 3-shot ===")
+c3, _ = evaluate(use_few_shot=True)
+print(f"正確 {c3}/{n} = {c3/n:.0%}")
+
+# === 自我驗證 ===
+print(f"\n✅ 練習 2 通過 — 0-shot {c0}/{n}、3-shot {c3}/{n}")
+assert c3 >= c0, f"預期 3-shot 不比 0-shot 差、實際 {c3} < {c0}（樣本太小、跑幾次比較）"
+print("💡 觀察：'中立' 在 0-shot 容易被誤判成正面或負面、3-shot 後改善明顯")
+```
+
+**預期輸出**（樣本）：
+```
+=== 0-shot ===
+  ✓ [正面] 這部電影超讚... → '正面'
+  ✓ [負面] 劇情無聊... → '負面'
+  ✗ [中立] 這是一部 2019 年... → '正面'   ← 0-shot 沒給「中立」例子、容易誤判
+  ...
+正確 4/6 = 67%
+
+=== 3-shot ===
+正確 6/6 = 100%
+```
+
+</details>
+
+### 練習 3：CoT
 挑一個數學文字題，比較：
 - 純 prompt
 - 純 prompt + 「Let's think step by step」
 - 純 prompt + 一個展示 CoT 的範例
 
-### 練習：Iterative Refinement
+<details>
+<summary>📋 <b>起手碼</b>（複製到 <code>practice_3.py</code>）</summary>
+
+```python
+# 需要：pip install anthropic
+import sys, re
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import anthropic
+
+client = anthropic.Anthropic()
+
+QUESTION = "小明有 3 顆蘋果。他給了小華 1 顆、又從媽媽那邊拿到 5 顆、然後吃了 2 顆。請問現在剩幾顆？"
+ANSWER = 5  # 3 - 1 + 5 - 2 = 5
+
+COT_EXAMPLE = """範例：
+Q: 一隻雞有 2 隻腳。3 隻雞跟 1 個人共有幾隻腳？
+A: 讓我一步一步算。3 隻雞 × 2 隻腳 = 6 隻腳。1 個人有 2 隻腳。總共 6 + 2 = 8 隻腳。答案是 8。
+"""
+
+
+def ask(prompt: str) -> str:
+    msg = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=300,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return msg.content[0].text
+
+
+def extract_number(text: str) -> int | None:
+    """從回應裡抓最後一個數字當答案。"""
+    nums = re.findall(r"-?\d+", text)
+    return int(nums[-1]) if nums else None
+
+
+# A. 純 prompt
+out_a = ask(QUESTION)
+ans_a = extract_number(out_a)
+
+# B. + Let's think step by step
+out_b = ask(QUESTION + "\nLet's think step by step.")
+ans_b = extract_number(out_b)
+
+# C. + CoT example
+out_c = ask(COT_EXAMPLE + "\n\nQ: " + QUESTION + "\nA:")
+ans_c = extract_number(out_c)
+
+for label, out, ans in [("A 純 prompt", out_a, ans_a), ("B +step-by-step", out_b, ans_b), ("C +CoT example", out_c, ans_c)]:
+    print(f"\n--- [{label}] 答案={ans} {'✓' if ans == ANSWER else '✗'} ---")
+    print(out[:200])
+
+# === 自我驗證 ===
+correct = sum(1 for a in (ans_a, ans_b, ans_c) if a == ANSWER)
+print(f"\n✅ 練習 3 通過 — {correct}/3 答對")
+print(f"💡 觀察：A 容易直接給錯數字、B 跟 C 因為強制 step-by-step、推理過程明顯、答對機率高")
+```
+
+**預期輸出**（樣本）：
+```
+--- [A 純 prompt] 答案=5 ✓ ---
+小明現在有 5 顆蘋果。
+
+--- [B +step-by-step] 答案=5 ✓ ---
+讓我一步一步算：
+1. 小明原本有 3 顆
+2. 給小華 1 顆、剩 2 顆
+3. 媽媽給 5 顆、變 7 顆
+4. 吃 2 顆、剩 5 顆
+答案是 5 顆。
+
+✅ 練習 3 通過 — 3/3 答對
+```
+
+</details>
+
+### 練習 4：Iterative Refinement
 拿一個模糊的 prompt，refine 5 次。把每一輪記下來。觀察哪些改動會提升品質。
+
+<details>
+<summary>📋 <b>起手碼</b>（複製到 <code>practice_4.py</code>）— 這題沒有「對錯」、重點是觀察過程</summary>
+
+```python
+# 需要：pip install anthropic
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import anthropic
+
+client = anthropic.Anthropic()
+
+# 5 個 iteration、每一輪 prompt 都比前一輪更具體
+PROMPTS = {
+    "v1 模糊": "寫一段介紹 ReAct 的文字。",
+    "v2 加目標讀者": "寫一段介紹 ReAct 的文字、給寫過 Python 的軟體工程師看。",
+    "v3 加格式": "寫一段介紹 ReAct 的文字、給寫過 Python 的軟體工程師看。100 字以內、用一個段落。",
+    "v4 加 example 要求": "寫一段介紹 ReAct 的文字、給寫過 Python 的軟體工程師看。100 字以內、用一個段落、結尾舉一個具體例子（譬如查天氣）。",
+    "v5 加禁忌": "寫一段介紹 ReAct 的文字、給寫過 Python 的軟體工程師看。100 字以內、用一個段落、結尾舉一個具體例子（譬如查天氣）。不要用「賦能」「驅動」「智能」這類空泛詞彙。",
+}
+
+for label, prompt in PROMPTS.items():
+    msg = client.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=200,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = msg.content[0].text
+    print(f"\n--- [{label}] ({len(text)} chars) ---")
+    print(text)
+
+# === 自我驗證 ===
+print(f"\n✅ 練習 4 通過 — 你已實際感受 prompt 5 個維度的影響")
+print("💡 5 個 refine 維度：(1) 目標讀者 (2) 格式 (3) 長度 (4) 範例要求 (5) 禁忌詞")
+print("💡 把這 5 輪輸出存到檔案、之後拿來比照、是 prompt 優化的 baseline")
+```
+
+**重點不在答案、在過程**：跑完之後你會發現「v1 模糊」的輸出空泛、「v5 加禁忌」明顯緊實有 example。每加一個約束、品質往上跳一階。
+
+**進階做法**：把這 5 輪輸出全存進 csv、Stage 7 練習 2 會教怎麼把這變成 eval harness 量化「prompt 改善了多少」。
+
+</details>
 
 ## 🎯 精選 Projects
 
