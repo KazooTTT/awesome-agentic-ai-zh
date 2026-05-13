@@ -6,10 +6,38 @@
 
 > 💡 用語密度高（multi-agent / handoff / eval / observability / guardrails⋯）→ 翻 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)。
 
-> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 →〔可選 · 概念地圖〕→ 動手練習 → 精選 Projects → 自我檢查  
-> 🔑 **關鍵名詞**：見 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)（multi-agent / orchestration / handoff / eval / observability）
+> 📋 **本章組成**：〔Multi-Agent · Production 是什麼（先定位）+ Discipline lineage〕→ 學習目標 → 進入條件 → 必修閱讀 → Harness Engineering（8 個核心元件）→ 動手練習 → 常用工具推薦 → 精選 Projects → 自我檢查  
+> 🔑 **關鍵名詞**：見 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)（multi-agent / orchestration / handoff / eval / observability / harness）
 
 最後一個階段。你正從「我會做 agent」走向「我能在 production 跑起來，多個 agent 協作、有 eval、有 observability、會 deploy」。
+
+## 🎯 Multi-Agent · Production 是什麼（先定位）
+
+**Multi-Agent · Production = 多 agent 協作 + 把 agent 從 prototype 推到 production 的工程學科**。本 stage 跟前面 stage 的分工：
+
+- **Stage 4** = 單 agent framework 怎麼挑、ReAct / Plan-Execute 等 pattern
+- **本 stage** = **多 agent 協作** + **harness engineering**（production runtime 工程）+ **deploy / observability / eval**
+
+**Discipline lineage**（你現在在第 3 層 = 最上層）：
+
+| 層 | Discipline | 解決什麼 | 在哪 stage |
+|---|---|---|---|
+| 1 | **Prompt Engineering** | 單次 LLM call 怎麼問才準 | [Stage 2](02-prompt-engineering.md) |
+| 2 | **Context Engineering** | 跨多次 call 怎麼動態組 prompt | [Stage 6](06-memory-rag.md) |
+| **3** | **Harness Engineering**<br>（**本 stage**） | **把多個 LLM call 包成 production runtime** | **本 stage** |
+
+**本 stage 3 個 problem domain**：
+
+1. **Multi-agent 協作** — debate / planner-executor / peer review / handoff / supervisor-worker pattern
+2. **Harness Engineering** — agent loop / tool registry / context manager / safety / retry / telemetry / eval / cost（8 個 component、下面詳述）
+3. **Production** — eval harness / observability / cost & latency 優化 / deploy
+
+**跟 Stage 5 的分工**（避免混淆）：
+
+| 跟誰比 | 那邊講什麼 | 本 stage 講什麼 |
+|---|---|---|
+| **Stage 5.5 Subagents** | Claude Code 原生 subagent 機制（markdown-based、不寫程式）| 通用 multi-agent framework（autogen / crewAI / langgraph、跨 vendor）|
+| **Stage 5.6 Claude Code source** | Claude Code source 解剖（reference harness case study）| Harness engineering 通則（discipline-level、不綁特定 vendor）|
 
 ## 📌 學習目標
 
@@ -96,323 +124,62 @@
 ### 練習 5：Deploy
 把一個 agent 包進 Docker，deploy 到雲端（任何 provider 都行）。學會把 prototype 變成可以給別人跑的東西。
 
-## 🎯 精選 Projects
+## 🎯 常用 Multi-Agent / Production 工具推薦（按用途分類）
 
-本 stage 已按用途分 7 個子分類。**先看這張總覽表挑入口、再下捲看 detail block**：
+不知道從哪挑工具？下面是 2025-2026 業界常用搭配——**挑入口看「場景」、想深入點連結看 repo**：
 
-| 分類 | 代表 projects | 該看什麼 |
+| 場景 | 推薦工具 | 為什麼 |
 |---|---|---|
-| **Multi-Agent Orchestration** | AutoGen / CrewAI / LangGraph | Stage 4 已介紹、production 場景再回頭看 GroupChat / hierarchical / state machine 用法 |
-| **Evaluation Frameworks** | promptfoo ⭐ / lm-evaluation-harness / openai/evals | 寫 eval set、跑 regression、CI 整合 |
-| **Observability** | Langfuse ⭐ / LangSmith / Helicone / W&B Weave | trace + cost + latency、production 必裝 |
-| **Anthropic SDK 進階** | anthropic-sdk-python / **claude-agent-sdk-python** ⭐ / cookbook | prompt caching / batch API / files / **Claude Code 內部運作**（agent SDK = 看內部原始碼）|
-| **Deployment** | BentoML / LangServe / vLLM / LLaMA-Factory | 上 production server / GPU inference / fine-tune |
-| **本地 deploy 中文教材** | datawhalechina/self-llm | 中文圈 self-host LLM 最完整指南 |
-| **Multi-Agent 案例研究** | MetaGPT / ChatDev / SWE-agent | 看「真實 multi-agent 工程怎麼設計」、不是 framework 而是 case study |
+| **第一次寫 multi-agent**（最快上手）| [crewAI](https://github.com/crewAIInc/crewAI) | role-based、幾行 code 跑起來、production pattern 直接 |
+| **想要 group debate / brainstorm pattern** | [AutoGen](https://github.com/microsoft/autogen) | GroupChat 自由辯論、Microsoft 出品 |
+| **production 要 audit trail / checkpoint / human-in-loop** | [LangGraph](https://github.com/langchain-ai/langgraph) | state machine、控制最完整 |
+| **eval 標準化**（CI / regression 必裝）| [promptfoo](https://github.com/promptfoo/promptfoo) ⭐ | YAML config、跨模型比較、★ 20k+ |
+| **eval + observability 同平台** | [langfuse](https://github.com/langfuse/langfuse) ⭐ | OSS、tracing + eval + prompt mgmt、★ 26k+ |
+| **不改程式、快速 instrumentation** | [Helicone](https://github.com/Helicone/helicone) | proxy 中介、不綁 framework |
+| **全 stack 在 LangChain** | [LangSmith](https://www.langchain.com/langsmith)（商業）| LangChain 官方 observability |
+| **打造 Claude agent**（programmatic）| [claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python) ⭐ | Anthropic 官方 agent SDK、跟 Claude Code 同 runtime |
+| **Deploy agent 成 API service** | [BentoML](https://github.com/bentoml/BentoML) | 最完整、Docker + serving |
+| **自架開源 LLM**（取代付費 API）| [vLLM](https://github.com/vllm-project/vllm) | 高吞吐量、★ 79k+ |
+| **Fine-tune 開源 LLM** | [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) | 100+ 模型統一 SFT/DPO/PPO/GRPO、Web UI 零 code、中文社群最廣、★ 70k+ |
+
+**建議入手順序**：
+1. 第一個 multi-agent：**crewAI**（role-based、最簡單）
+2. 加 eval：**promptfoo**（YAML、CI 整合）
+3. 加 observability：**langfuse**（OSS、完整）
+4. Production 升級：換 **LangGraph**（control 強）+ **BentoML**（deploy）
+5. 進階：自架 LLM 接 **vLLM**、fine-tune 用 **LLaMA-Factory**
+
+## 🎯 精選 Projects（範本 / SDK / 工具 collection）
+
+按用途分類、22 個項目一張表搞定。**挑入口看「適合誰」、想深入點連結看 repo**。
+
+| 分類 | Project | ⭐ | 適合誰 | 為什麼推薦 / 備註 |
+|---|---|---|---|---|
+| **Multi-Agent Orchestration** | [microsoft/autogen](https://github.com/microsoft/autogen) | ⭐⭐⭐⭐⭐ | 想要 GroupChat 自由 debate pattern | Stage 4 介紹過、production 場景再回頭看 multi-agent 辯論 / brainstorming 模式 |
+| | [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI) | ⭐⭐⭐⭐⭐ | 想要 role-based 流水線 | 角色式 multi-agent（research → writer → reviewer），最簡單 production pattern |
+| | [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) | ⭐⭐⭐⭐⭐ | 需要 audit trail / checkpoint / human-in-the-loop | state machine 路線、production 控制最強 |
+| **Eval Frameworks** | [promptfoo](https://github.com/promptfoo/promptfoo) ⭐ | ⭐⭐⭐⭐⭐ | 把 eval 流程標準化、CI 整合 | YAML config、跨模型比較。★ 20k+、MIT |
+| | [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) | ⭐⭐⭐⭐ | 學術 benchmark 主張（MMLU / HellaSwag / GSM8K）| 學術等級。★ 12k+、MIT |
+| | [openai/evals](https://github.com/openai/evals) | ⭐⭐⭐⭐ | OpenAI 專屬 eval / 想回饋上游 | ★ 18k+ |
+| **Observability** | [langfuse](https://github.com/langfuse/langfuse) ⭐ | ⭐⭐⭐⭐⭐ | 自架 production observability | OSS LangSmith 替代、traces + sessions + evals + prompt mgmt。★ 26k+、MIT |
+| | [LangSmith](https://www.langchain.com/langsmith)（商業）| ⭐⭐⭐⭐ | 全 stack 在 LangChain / LangGraph 上 | LangChain 官方、只有 hosted 版 |
+| | [Helicone](https://github.com/Helicone/helicone) | ⭐⭐⭐⭐ | 不想改程式、快速上 instrumentation | proxy 中介、順便拿到 logging + caching。★ 5k+、Apache 2.0 |
+| | [weave (W&B)](https://github.com/wandb/weave) | ⭐⭐⭐⭐ | 團隊已在用 W&B 做 ML 實驗追蹤 | W&B tracing + eval、跟 wandb 整合 |
+| **Anthropic SDK 進階** | [anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) | ⭐⭐⭐⭐⭐ | 直接基於 Claude API 做應用 | 官方 Python SDK：streaming / async / tool use / prompt caching / batches / files |
+| | [anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript) | ⭐⭐⭐⭐ | TypeScript / Node / web app | Python SDK 的 TS 版 |
+| | [claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python) ⭐ | ⭐⭐⭐⭐⭐ | 打造 Claude-based agent 而非只 API | 內建 tool use loop / file access / sandbox / subagent 編排；跟 Claude Code 同 runtime、想看內部運作直接讀 source。★ 6k+、MIT |
+| | [claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript) | ⭐⭐⭐⭐ | Node / web app 環境 Claude agent | Claude Agent SDK TS 版。★ 1.4k+ |
+| | [Anthropic Cookbook（進階）](https://github.com/anthropics/anthropic-cookbook) | ⭐⭐⭐⭐ | 想看官方進階 SDK pattern | 特別是 `prompt_caching.ipynb` / `tool_use/` / `multimodal/` 三個 notebook |
+| **Deployment** | [BentoML](https://github.com/bentoml/BentoML) | ⭐⭐⭐⭐ | 把 agent 包成 production API service | Docker + serving framework。★ 8k+、Apache 2.0 |
+| | [LangServe](https://github.com/langchain-ai/langserve) | ⭐⭐⭐⭐ | LangChain agent 快速 deploy | 底層 FastAPI |
+| | [vLLM](https://github.com/vllm-project/vllm) | ⭐⭐⭐⭐ | 自架開源 LLM 取代付費 API | 高吞吐量 LLM serving、Llama / Qwen 等。★ 79k+、Apache 2.0 |
+| **中文 deploy / fine-tune** | [datawhalechina/self-llm](https://github.com/datawhalechina/self-llm) | ⭐⭐⭐⭐ | 中文團隊要自架開源 LLM | training-to-deployment 完整中文指南、Qwen / Llama / GLM / 多模態。★ 30k+、Apache 2.0 |
+| | [hiyouga/LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) | ⭐⭐⭐⭐⭐ | 要 fine-tune 開源 LLM（不只 prompt eng）| 100+ 模型統一 SFT/DPO/PPO/GRPO、Web UI 零 code、中文社群最廣。★ 70k+、Apache 2.0 |
+| **Multi-Agent 案例研究** | [geekan/MetaGPT](https://github.com/geekan/MetaGPT) | ⭐⭐⭐⭐⭐ | 想看角色分工 + artifact 交接 pattern | SOP-based PM / Architect / Engineer multi-agent team、PRD → 設計 → code 一路產出。★ 67k+、MIT |
+| | [OpenBMB/ChatDev](https://github.com/OpenBMB/ChatDev) | ⭐⭐⭐⭐ | 想看 agent debate / peer-review pattern | 對話式軟體開發、agents 在 design / code / test 互相辯論。★ 33k+、Apache 2.0、有 zh README |
+| | [princeton-nlp/SWE-agent](https://github.com/princeton-nlp/SWE-agent) | ⭐⭐⭐⭐ | 理解為什麼 tool 設計 > prompt tuning | Agent-Computer Interface (ACI) 設計思路、Princeton paper-backed、SWE-Bench 領先方法。★ 19k+、MIT |
 
 > 🌳 **Claude 原生 subagent 機制**（不用 framework 也能 multi-agent）見 [Stage 5.5](05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制)。本 stage 重 framework / production；Stage 5.5 重 markdown-based subagent 編排。
-
----
-
-### Multi-Agent Orchestration
-
-#### [microsoft/autogen](https://github.com/microsoft/autogen)
-
-Stage 4 已提過。在 production 場景下，AutoGen 的 GroupChat 協作模式是 multi-agent 辯論 / brainstorming 的好參考。
-
----
-
-#### [crewAIInc/crewAI](https://github.com/crewAIInc/crewAI)
-
-Stage 4 已提過。要做角色式的 multi-agent（例如 research → writer → reviewer 流水線），CrewAI 是最簡單的 production pattern。
-
----
-
-#### [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)
-
-Stage 4 已提過。要 production 加上 audit trail、checkpoint、human-in-the-loop，LangGraph 領先。
-
----
-
-### Evaluation Frameworks
-
-#### [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 20k+ |
-| License | MIT |
-| 推薦度 | ⭐⭐⭐⭐⭐ |
-
-**教什麼**：以 YAML 為基礎的 prompt 跟 agent eval harness。可以跨模型比較、在 CI 跑回歸測試。
-
-**適合誰**：把 eval 流程標準化。取代「我用眼睛看一下就好」。
-
-**怎麼跑**：
-```bash
-npx promptfoo init
-# 編輯 promptfooconfig.yaml
-npx promptfoo eval
-```
-
----
-
-#### [EleutherAI/lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 12k+ |
-| License | MIT |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：學術等級的 eval framework，內建幾百個標準 benchmark（MMLU、HellaSwag、GSM8K）。
-
-**適合誰**：你需要主張「我們在 benchmark Y 上拿到 X%」的時候。比較研究風格。
-
----
-
-#### [openai/evals](https://github.com/openai/evals)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 18k+ |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：OpenAI 的 eval framework。可以針對特定 use case 寫客製 eval。
-
-**適合誰**：你需要 OpenAI 專屬 eval、或想回饋上游時。
-
----
-
-### Observability
-
-#### [langfuse/langfuse](https://github.com/langfuse/langfuse)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 26k+ |
-| License | MIT（開源）+ 付費雲端 |
-| 推薦度 | ⭐⭐⭐⭐⭐ |
-
-**教什麼**：開源的 LLM observability——traces、sessions、evals、prompt management。
-
-**適合誰**：自架的 production observability。LangSmith 的開源替代方案，實力很強。
-
----
-
-#### [LangSmith](https://www.langchain.com/langsmith)（商業）
-
-**教什麼**：LangChain 的 observability 平台。Trace、eval、prompt 迭代。
-
-**適合誰**：整套 stack 都在 LangChain / LangGraph 上面。只有 hosted 版。
-
----
-
-#### [Helicone](https://github.com/Helicone/helicone)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 5k+ |
-| License | Apache 2.0（開源）+ 付費雲端 |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：用 proxy 做 LLM observability——當作 OpenAI/Anthropic client 的替身，順便拿到 logging + caching。
-
-**適合誰**：不想改程式、想快速上 instrumentation 時。
-
----
-
-#### [weave（Weights & Biases 出品）](https://github.com/wandb/weave)
-
-| 欄位 | 內容 |
-|---|---|
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：W&B 出的 tracing + eval framework。跟他們的 ML 平台整合。
-
-**適合誰**：團隊已經在用 W&B 做 ML 實驗追蹤。
-
----
-
-### Anthropic SDK 進階
-
-#### [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python)
-
-| 欄位 | 內容 |
-|---|---|
-| 推薦度 | ⭐⭐⭐⭐⭐ |
-
-**教什麼**：官方 Python SDK（基礎 API 層）。streaming、async、tool use、prompt caching、batches、files API。
-
-**適合誰**：直接基於 Claude API 做應用。
-
----
-
-#### [anthropics/anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript)
-
-**教什麼**：Python SDK 的 TS 版本。
-
-**適合誰**：TypeScript / Node / web app。
-
----
-
-#### [anthropics/claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python) ⭐ agent 專用
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 6k+ |
-| License | MIT |
-| 推薦度 | ⭐⭐⭐⭐⭐ |
-
-**教什麼**：Anthropic 在 2025 年中釋出的 **agent 專用 SDK**，跟基礎 `anthropic-sdk-python` 不同——這個內建 tool use loop、file access、sandbox 執行、subagent 編排，把 Claude Code 用的 agent capabilities 開放給 Python 應用直接用。
-
-**適合誰**：要打造 Claude-based agent 而不是只呼叫 API 的開發者。比起手刻 ReAct loop、自己管 tool execution，這個 SDK 把這些抽象都做好了。
-
-**備註**：跟 Claude Code 共用同一套 agent runtime；想理解 Claude Code 內部怎麼運作的，讀這個 SDK 的原始碼是最快的路徑。**Hands-on subagent 編排教學**（`.claude/agents/` + Task tool）見 [Stage 5.5](05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制)——本 SDK 是 programmatic 入口、Stage 5.5 是 markdown-based 入口、兩條路徑共用同一個 runtime。
-
----
-
-#### [anthropics/claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 1.4k+ |
-| License | NOASSERTION |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：Claude Agent SDK 的 TypeScript 版。
-
-**適合誰**：要在 Node / web app 環境打造 Claude agent 的開發者。
-
----
-
-#### [Anthropic Cookbook — Advanced patterns](https://github.com/anthropics/anthropic-cookbook)
-
-之前已提過。特別是 `prompt_caching.ipynb`、`tool_use/`、`multimodal/` 三個 notebook，教進階 SDK 用法。
-
----
-
-### Deployment
-
-#### [BentoML/BentoML](https://github.com/bentoml/BentoML)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 8k+ |
-| License | Apache 2.0 |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：把任何 ML/LLM model 包成 production API。Docker + serving framework。
-
-**適合誰**：把 agent 包成可 deploy 的 service。
-
----
-
-#### [LangServe](https://github.com/langchain-ai/langserve)
-
-**教什麼**：把 LangChain app deploy 成 REST API。底層用 FastAPI。
-
-**適合誰**：以 LangChain 為基礎的 agent 想快速 deploy。
-
----
-
-#### [datawhalechina/self-llm](https://github.com/datawhalechina/self-llm)
-
-| 欄位 | 內容 |
-|---|---|
-| 語言 | 中文（zh-Hans） |
-| Stars | ★ 30k+ |
-| License | Apache-2.0 |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：開源大模型食用指南——一份完整的中文指南，講怎麼在 Linux 上 fine-tune 跟 deploy 開源 LLM。涵蓋 Qwen / Llama / GLM / 多模態模型，全參數 + LoRA + deployment 都有。
-
-**適合誰**：要自架開源 LLM 的中文團隊。training-to-deployment 整個流程的 production 等級中文教學。
-
----
-
-#### [hiyouga/LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)
-
-| 欄位 | 內容 |
-|---|---|
-| 語言 | Python |
-| Stars | ★ 70k+ |
-| License | Apache-2.0 |
-| 推薦度 | ⭐⭐⭐⭐⭐ |
-
-**教什麼**：中文社群最廣泛使用的 LLM fine-tuning framework——統一 100+ 個開源模型（Llama / Qwen / DeepSeek / Yi / Mistral 等）的 SFT、DPO、PPO、GRPO 訓練流程。Web UI 可以零程式碼跑 fine-tuning。
-
-**適合誰**：要 fine-tune 開源 LLM（不只是 prompt-engineering）的人。比 self-llm 範圍更聚焦在「訓練」本身。
-
-**備註**：搭配前面 Stage 1 的 Ollama / llama.cpp，能完整跑「fine-tune → quantize → 本地 deploy」的閉環。
-
----
-
-### [vLLM](https://github.com/vllm-project/vllm)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 79k+ |
-| License | Apache 2.0 |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：高吞吐量的 LLM serving。可以在 production 跑開源模型。
-
-**適合誰**：自架開源 LLM（Llama、Qwen 等等）取代付費 API 的場景。
-
----
-
-### Multi-Agent 案例研究
-
-#### [geekan/MetaGPT](https://github.com/geekan/MetaGPT)
-
-| 欄位 | 內容 |
-|---|---|
-| Stars | ★ 67k+ |
-| License | MIT |
-| 推薦度 | ⭐⭐⭐⭐⭐ |
-
-**教什麼**：以 SOP（Standard Operating Procedure）為核心的多 agent 軟體開發 team——PM / Architect / Engineer 各自有角色，從 PRD → 設計 → 程式碼一路產出 artifact 交接給下一棒。
-
-**適合誰**：想看「**角色分工 + artifact 交接**」這種 pattern 怎麼實作的人。跟 LangGraph 的 state machine 路線不同，是另一條 multi-agent 設計思路。
-
-**備註**：中文團隊維護，docs site 有 zh 內容。值得拿來跟 AutoGen 的 free-form group chat 對比。
-
----
-
-#### [OpenBMB/ChatDev](https://github.com/OpenBMB/ChatDev)
-
-| 欄位 | 內容 |
-|---|---|
-| 語言 | Python |
-| Stars | ★ 33k+ |
-| License | Apache-2.0 |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：「對話式」軟體開發 pattern——agents 在 design / code / test 各階段互相辯論才推進。這是 **agent debate / peer-review pattern** 最標準的開源案例，背後有論文。
-
-**適合誰**：要打造「兩個 agent 互相挑戰才產出結論」這種 workflow 的人。比 AutoGen 更聚焦在 debate 機制。
-
-**備註**：有 `README-zh.md`，中文讀者友善。
-
----
-
-#### [princeton-nlp/SWE-agent](https://github.com/princeton-nlp/SWE-agent)
-
-| 欄位 | 內容 |
-|---|---|
-| 語言 | Python |
-| Stars | ★ 19k+ |
-| License | MIT |
-| 推薦度 | ⭐⭐⭐⭐ |
-
-**教什麼**：**Agent-Computer Interface (ACI)** 的設計思路——tool 介面的形狀（不是 prompt）決定 agent 在 SWE-Bench 上的成績。Princeton NLP 的論文成果。
-
-**適合誰**：在 Stage 3-4 學完 tool use 之後，想理解「**為什麼 tool 設計比 prompt tuning 重要**」的人。
-
-**備註**：論文 + 實作開源，是學術 multi-agent 研究的好參考。
-
----
 
 ## ✅ Stage 7 之後的自我檢查
 
