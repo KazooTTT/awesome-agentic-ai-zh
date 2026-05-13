@@ -10,21 +10,21 @@
 
 | Sync item | en | zh-Hans | Notes |
 |---|---|---|---|
-| Stage 8 stub mirror | ✅ created (`stages/08-agent-interfaces.en.md`) | ✅ created (`stages/08-agent-interfaces.zh-Hans.md`) | ~50-line placeholders, both link to zh-TW canonical, valid for cross-stage anchor refs |
+| **Stage 8 FULL translation** ⭐ | ✅ 545 lines (Gemini delegation, commit 3f4ea8f) | ✅ 545 lines (same) | Replaced 55-line stubs with full translations, H2 parity 16/16, all acceptance checks passed |
+| **Stage 1 pricing sync** ⭐ | ✅ Claude pricing 4.5 → 4.6/4.7 trio (Codex delegation, commit fe989bd) | ✅ same | Pricing dict + Q1→Q2 comment + expected output + print line + URL all updated |
+| Stage 8 stub mirror | ✅ created → then replaced by full translation | ✅ same | (superseded by Stage 8 full translation above) |
 | README structural | ✅ Stage 8 row + 8-stages + time + Part 5 + dual hub callout | ✅ same | Both keep their existing translated content; only structural sync |
-| Glossary §7 Agent Interfaces | ✅ 6 new entries (Computer Use / Browser Use / Sandbox / microVM / Firecracker / gVisor) | ✅ same | Translated, with backref to Stage 8 mirrors |
+| Glossary §8 Agent Interfaces | ✅ 6 new entries (Computer Use / Browser Use / Sandbox / microVM / Firecracker / gVisor) | ✅ same | Translated, with backref to Stage 8 mirrors. Renumbered from §7→§8 to avoid duplicate H2 anchor |
 
 ---
 
 ## 🚧 Deferred — future session priorities
 
-### 🔴 HIGH — Stage 8 full translation
+### ~~🔴 HIGH — Stage 8 full translation~~ ✅ COMPLETED (commit 3f4ea8f, Gemini delegation)
 
-`stages/08-agent-interfaces.md` is 547 lines of new content (Computer Use / Browser Use / Sandbox + 9-row terminology glossary + Track A/B dual perspective + Safety 案例 + practice + projects). Currently stub-only in mirrors.
-
-**Estimated translation**: ~1100 lines × 2 locales (en + zh-Hans).
-
-**Suggested delegation**: Gemini (per global `CLAUDE.md` § Complex Task Protocol — CJK translation is Gemini's main use case).
+Stage 8 full translation completed via Gemini delegation. Both `stages/08-agent-interfaces.en.md`
+and `stages/08-agent-interfaces.zh-Hans.md` now contain 545 lines of full translation matching
+the 546-line zh-TW canonical. All H2 parity checks pass. ~~Original task moved to Done.~~
 
 ### 🔴 HIGH — Stage 6 catch-up
 
@@ -64,10 +64,10 @@ Mirror still has the OLD structure (22 H4 detail blocks, 7 components, "Producti
 
 ### 🟡 MEDIUM — Stage 1 + Stage 2 small updates
 
-- Stage 1: Claude pricing exercise updated to 4.5/4.6/4.7 trio + 必修閱讀 URL updated
-- Stage 2 / Stage 3: small wording updates for 2026 freshness
+- ~~Stage 1: Claude pricing exercise updated to 4.5/4.6/4.7 trio + 必修閱讀 URL updated~~ ✅ COMPLETED (commit fe989bd, Codex delegation)
+- Stage 2 / Stage 3: small wording updates for 2026 freshness (still deferred — minor)
 
-**Estimated translation**: ~10 lines diff × 2 locales.
+**Remaining estimated translation**: ~5 lines diff × 2 locales (Stage 2/3 only).
 
 ### 🟢 LOW — tracks/cli/A3-cli-production.md anchor fixes
 
