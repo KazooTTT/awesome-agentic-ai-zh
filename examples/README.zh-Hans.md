@@ -58,41 +58,45 @@ if hasattr(sys.stdout, "reconfigure"):
 
 否则 Windows reader 在 PowerShell / cmd 跑会炸 `UnicodeEncodeError: 'cp950' codec can't encode character '✅'`。
 
-## 没 API key 也能练习吗？三条路径
+## 三条路径 — **默认用 Ollama（成本考量）**
 
-每个练习都同时提供：
+> 💰 **为什么默认 Ollama？** 练习场景跑 1000 次跑满 Sonnet ~$4、跑 haiku ~$0.25、跑本机 Ollama $0。**学习阶段不该被 API 成本卡住**。Cloud LLM 留给「想看高品质答案 / production deployment」时用。
 
-### Path A（默认）— Anthropic API
-- 预设 `starter.py` / inline `<details>` 用 Claude（`claude-haiku-4-5`，最便宜）
-- 需 `ANTHROPIC_API_KEY`、跑一轮约 $0.001
-- 想换 Sonnet 改 `MODEL` 环境变数或 starter 内一行
-- 适合：已订 Claude、想用主流 agent stack 走完整个 learning path
+每个练习都同时提供 3 条路径：
 
-### Path B（无 API、Ollama 本机）
-- 对照 `starter_ollama.py`（folder）或第二个 inline `<details>` 区块（短练习）
-- 需 [Ollama](https://ollama.com)、按 stage 不同 pull 不同 model：
-  - **Stage 1 + 2**（纯 chat / prompt eng）：`ollama pull gemma3:4b`（3.3 GB、CPU 也跑得动）
+### Path A（**默认、推荐**）— Ollama 本机
+- 预设 `starter.py` / 第一个 inline `<details>` 用本机 LLM
+- 需 [Ollama](https://ollama.com)、按 stage pull 对应 model：
+  - **Stage 1 + 2**（纯 chat / prompt eng）：`ollama pull gemma3:4b`（3.3 GB、CPU 跑也通）
   - **Stage 3+**（tool use / agent）：`ollama pull qwen2.5:3b`（1.9 GB、tool-use 支持稳定）
 - 全程 $0、offline、隐私敏感资料 OK
-- 适合：没 Anthropic 账号、人在中国大陆、想 offline 练、想试本地 LLM 边界
+- SDK 用 `openai` package（OpenAI 兼容 API）、`base_url="http://localhost:11434/v1"`
+- 适合：所有读者（默认推这条）
+
+### Path B（选择性）— Anthropic API（想看 cloud 高品质时）
+- 对照 `starter_anthropic.py`（folder）或第二个 inline `<details>` 区块
+- 需 `ANTHROPIC_API_KEY`、跑一轮约 $0.001（haiku）/ $0.004（sonnet）
+- 答案品质 / latency 都比本机 Ollama 强
+- 适合：production 要求高品质、需要 long-context、Stage 7 production tier
 
 ### Path C（验逻辑、不打 API）
-- 所有 `test.py` 都用 `unittest.mock`、reader 跑 `python test.py` 看程式逻辑有没有写对
+- 所有 `test.py` 都用 `unittest.mock`、`python test.py` 看程式逻辑有没有写对
 - 跟 Path A / B 互补：先 mock 验逻辑、再 real call 确认
 
 ### 三条路的 Trade-off
 
-| 维度 | A Anthropic | B Ollama | C Mock |
+| 维度 | A Ollama（默认）| B Anthropic | C Mock |
 |---|---|---|---|
-| Cost / call | ~$0.001 | $0 | $0 |
-| 需要 | API key | Ollama installed + GPU 偏好 | 无 |
-| 答案品质 | 高 | 中（4B model） | 预设、看不出真实品质 |
-| 速度 | ~1-3s/call | 5-30s/call（无 GPU） | <0.1s |
-| Offline | ❌ | ✅ | ✅ |
-| Stage 3+ tool use | ✅ | ✅（qwen2.5 / llama3.2）| ✅ |
-| 适合 | 主流学完整 path | 隐私 / 中国大陆 / 无 key | 程式逻辑验证 |
+| Cost / call | $0 | ~$0.001-0.004 | $0 |
+| 需要 | Ollama install | API key | 无 |
+| 答案品质 | 中（3-4B model） | 高 | 预设、看不出真实品质 |
+| 速度 | 5-30s/call（无 GPU） | ~1-3s/call | <0.1s |
+| Offline | ✅ | ❌ | ✅ |
+| 隐私敏感资料 | ✅ | ❌ | ✅ |
+| Stage 3+ tool use | ✅（qwen2.5 / llama3.2） | ✅ | ✅ |
+| 适合 | **默认、无预算压力** | production 升级 | 程式逻辑验证 |
 
-→ **建议搭配**：先 C 验逻辑（不花钱）、再 B 本机跑（看 model 行为）、最后 A 看高品质答案（如预算允许）。
+→ **建议流程**：先 C 验逻辑（不花钱）、再 A 本机跑看实际 model 行为、production 阶段（Stage 7）再升 B 看 cloud 品质。
 
 ## 对应 stage 索引
 

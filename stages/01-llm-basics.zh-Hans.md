@@ -34,53 +34,18 @@
 
 ## “动手”小练习（在本地运行这些代码）
 
+> 🦙 **本 stage 默认用 Ollama**（成本考量、本机 `gemma3:4b` 跑得动、$0/run）。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性、想看 cloud 高品质时用）。完整 3 路 trade-off 见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
+>
+> 💰 **不装 Ollama 也能读** — 每个练习的 Path B 区块就是 Anthropic 版、选一个跑就行。先 [`pip install openai && ollama pull gemma3:4b`](https://ollama.com) 就装好 Path A 环境。
+
 ### 练习 1：LLM API（hello world）
-五行 Python 调用 LLM 并印出回应。**两条路选一**：A 用 Claude API（需 key、$0.001/run）、B 用本机 Ollama（免费、offline）。详见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#没-api-key-也能练习吗三条路径)。
+五行 Python 调用 LLM 并印出回应。**默认用 Ollama 本机跑（免费、offline）**；想看 cloud 答案品质改 Path B Anthropic。详见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
 
-<details>
-<summary>📋 <b>起手码 — Path A（Anthropic API）</b>（复制到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
-
-```python
-# 需要：pip install anthropic
-# 环境变量：export ANTHROPIC_API_KEY=sk-ant-...
-import sys
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-
-import anthropic
-
-client = anthropic.Anthropic()
-msg = client.messages.create(
-    model="claude-haiku-4-5",  # haiku 最便宜；换 sonnet 改这行
-    max_tokens=100,
-    messages=[{"role": "user", "content": "用一句话自我介绍。"}],
-)
-
-# === 自我验证 ===
-text = msg.content[0].text
-print("回应：", text)
-print("usage:", msg.usage)
-
-assert msg.stop_reason in ("end_turn", "max_tokens"), f"非预期 stop_reason: {msg.stop_reason}"
-assert len(text) > 0, "回应不应为空"
-assert msg.usage.input_tokens > 0 and msg.usage.output_tokens > 0, "token 数应 > 0"
-print("✅ 练习 1 通过 — 你已成功打通 Anthropic API")
-```
-
-**预期输出**（样本）：
-```
-回应：我是 Claude，一个由 Anthropic 训练的 AI 助理...
-usage: Usage(input_tokens=18, output_tokens=42, ...)
-✅ 练习 1 通过 — 你已成功打通 Anthropic API
-```
-
-</details>
-
-<details>
-<summary>📋 <b>起手码 — Path B（本机 Ollama gemma3:4b）</b>（复制到 <code>practice_1_ollama.py</code>）</summary>
+<details open>
+<summary>📋 <b>起手码 — Path A（本机 Ollama gemma3:4b、默认）</b>（复制到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
 
 ```python
-# 需要：pip install openai      (用 OpenAI 兼容 SDK)
+# 需要：pip install openai      (用 OpenAI 兼容 SDK 跟 Ollama 沟通)
 # 前置：ollama pull gemma3:4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
@@ -111,6 +76,40 @@ print("✅ 练习 1 通过 — Ollama gemma3:4b 已能本机回应、$0/次")
 ```
 
 **慢吗？** Gemma 4B 在 CPU 上约 5-30s/答案、有 GPU（RTX 3060+）<2s。要更快用 `gemma3:1b`、要更聪明改 `qwen2.5:14b` / `llama3.3:8b`（需 8GB+ VRAM）。
+
+</details>
+
+<details>
+<summary>📋 <b>起手码 — Path B（Anthropic API、选择性、想看 cloud 高品质时）</b>（复制到 <code>practice_1_anthropic.py</code>）</summary>
+
+```python
+# 需要：pip install anthropic
+# 环境变量：export ANTHROPIC_API_KEY=sk-ant-...
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import anthropic
+
+client = anthropic.Anthropic()
+msg = client.messages.create(
+    model="claude-haiku-4-5",  # haiku 最便宜；换 sonnet 改这行
+    max_tokens=100,
+    messages=[{"role": "user", "content": "用一句话自我介绍。"}],
+)
+
+# === 自我验证 ===
+text = msg.content[0].text
+print("回应：", text)
+print("usage:", msg.usage)
+
+assert msg.stop_reason in ("end_turn", "max_tokens"), f"非预期 stop_reason: {msg.stop_reason}"
+assert len(text) > 0, "回应不应为空"
+assert msg.usage.input_tokens > 0 and msg.usage.output_tokens > 0, "token 数应 > 0"
+print("✅ 练习 1 通过 — 你已成功打通 Anthropic API")
+```
+
+**成本**：每次 ~$0.001 (haiku) / $0.004 (sonnet)、跑这个 hello world 比 Ollama 快 5-15 倍。
 
 </details>
 

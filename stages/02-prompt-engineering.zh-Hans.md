@@ -32,6 +32,10 @@
 
 ## 🛠 动手练习
 
+> 🦙 **本 stage 默认用 Ollama gemma3:4b**（成本考量、$0/run）。Prompt engineering 对小 model 更有教学价值——小 model 对 prompt 质量敏感、能让你看清楚 system prompt / few-shot / CoT / refinement 各自带来多少改善。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性）。
+>
+> 完整 3 路 trade-off 见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
+
 ### 练习 1：System Prompt
 同样的 user message，三个不同的 system prompt。观察人格 / 输出格式怎么变。
 

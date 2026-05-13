@@ -35,53 +35,18 @@ If not — go back to Stage 0 first.
 
 ## 🛠 Hands-on Exercises (do them, not just read)
 
+> 🦙 **This stage defaults to Ollama** (cost-driven; `gemma3:4b` runs locally for $0/run). Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional — use it when you want to see cloud-quality answers). Full three-path trade-off in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
+>
+> 💰 **Don't have Ollama yet?** Each exercise also includes a Path B block running on Anthropic — pick one. To enable Path A in one step: [`pip install openai && ollama pull gemma3:4b`](https://ollama.com).
+
 ### Exercise 1: LLM API (hello world)
-Five-line Python script that calls an LLM and prints the response. **Pick a path**: A uses the Claude API (needs key, ~$0.001/run); B uses local Ollama (free, offline). See [`examples/README.en.md`](../examples/README.en.md#practicing-without-an-api-key--three-paths).
+Five-line Python script that calls an LLM and prints the response. **Defaults to local Ollama (free, offline)**; switch to Path B Anthropic when you want cloud-quality answers. Details in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
 
-<details>
-<summary>📋 <b>Starter code — Path A (Anthropic API)</b> (copy to <code>practice_1.py</code> and run <code>python practice_1.py</code>)</summary>
-
-```python
-# Requires: pip install anthropic
-# Env: export ANTHROPIC_API_KEY=sk-ant-...
-import sys
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-
-import anthropic
-
-client = anthropic.Anthropic()
-msg = client.messages.create(
-    model="claude-haiku-4-5",  # haiku = cheapest; switch to sonnet by changing this line
-    max_tokens=100,
-    messages=[{"role": "user", "content": "Introduce yourself in one sentence."}],
-)
-
-# === Self-check ===
-text = msg.content[0].text
-print("Response:", text)
-print("usage:", msg.usage)
-
-assert msg.stop_reason in ("end_turn", "max_tokens"), f"unexpected stop_reason: {msg.stop_reason}"
-assert len(text) > 0, "response should not be empty"
-assert msg.usage.input_tokens > 0 and msg.usage.output_tokens > 0, "token counts should be > 0"
-print("✅ Exercise 1 passed — Anthropic API is reachable from your machine")
-```
-
-**Expected output** (sample):
-```
-Response: I'm Claude, an AI assistant made by Anthropic...
-usage: Usage(input_tokens=14, output_tokens=38, ...)
-✅ Exercise 1 passed — Anthropic API is reachable from your machine
-```
-
-</details>
-
-<details>
-<summary>📋 <b>Starter code — Path B (local Ollama gemma3:4b)</b> (copy to <code>practice_1_ollama.py</code>)</summary>
+<details open>
+<summary>📋 <b>Starter code — Path A (local Ollama gemma3:4b, default)</b> (copy to <code>practice_1.py</code> and run <code>python practice_1.py</code>)</summary>
 
 ```python
-# Requires: pip install openai      (we reuse the OpenAI-compatible SDK)
+# Requires: pip install openai      (OpenAI-compatible SDK talks to Ollama)
 # Pre-req: ollama pull gemma3:4b && ollama serve
 import sys
 if hasattr(sys.stdout, "reconfigure"):
@@ -112,6 +77,40 @@ print("✅ Exercise 1 passed — local Ollama gemma3:4b answered for $0")
 ```
 
 **How slow?** Gemma 4B on CPU: ~5-30 s/answer; on GPU (RTX 3060+): <2 s. For speed use `gemma3:1b`; for quality use `qwen2.5:14b` / `llama3.3:8b` (needs 8 GB+ VRAM).
+
+</details>
+
+<details>
+<summary>📋 <b>Starter code — Path B (Anthropic API, optional, when you want cloud quality)</b> (copy to <code>practice_1_anthropic.py</code>)</summary>
+
+```python
+# Requires: pip install anthropic
+# Env: export ANTHROPIC_API_KEY=sk-ant-...
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import anthropic
+
+client = anthropic.Anthropic()
+msg = client.messages.create(
+    model="claude-haiku-4-5",  # haiku = cheapest; switch to sonnet by changing this line
+    max_tokens=100,
+    messages=[{"role": "user", "content": "Introduce yourself in one sentence."}],
+)
+
+# === Self-check ===
+text = msg.content[0].text
+print("Response:", text)
+print("usage:", msg.usage)
+
+assert msg.stop_reason in ("end_turn", "max_tokens"), f"unexpected stop_reason: {msg.stop_reason}"
+assert len(text) > 0, "response should not be empty"
+assert msg.usage.input_tokens > 0 and msg.usage.output_tokens > 0, "token counts should be > 0"
+print("✅ Exercise 1 passed — Anthropic API is reachable from your machine")
+```
+
+**Cost**: ~$0.001/run (haiku) or ~$0.004/run (sonnet); this hello-world is also 5-15× faster than Ollama.
 
 </details>
 

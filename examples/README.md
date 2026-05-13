@@ -58,41 +58,63 @@ if hasattr(sys.stdout, "reconfigure"):
 
 否則 Windows reader 在 PowerShell / cmd 跑會炸 `UnicodeEncodeError: 'cp950' codec can't encode character '✅'`。
 
-## 沒 API key 也能練習嗎？兩條路徑
+## 三條路徑 — **默認用 Ollama（成本考量）**
 
-每個練習都同時提供：
+> 💰 **為什麼默認 Ollama？** 練習場景跑 1000 次跑滿 Sonnet ~$4、跑 haiku ~$0.25、跑本機 Ollama $0。**學習階段不該被 API 成本卡住**。Cloud LLM 留給「想看高品質答案 / production deployment」時用。
 
-### Path A（默認）— Anthropic API
-- 預設 `starter.py` / inline `<details>` 用 Claude（`claude-haiku-4-5`，最便宜）
-- 需 `ANTHROPIC_API_KEY`、跑一輪約 $0.001
-- 想換 Sonnet 改 `MODEL` 環境變數或 starter 內一行
-- 適合：已訂 Claude、想用主流 agent stack 走完整個 learning path
+每個練習都同時提供 3 條路徑：
 
-### Path B（無 API、Ollama 本機）
-- 對照 `starter_ollama.py`（folder）或第二個 inline `<details>` 區塊（短練習）
-- 需 [Ollama](https://ollama.com)、按 stage 不同 pull 不同 model：
-  - **Stage 1 + 2**（純 chat / prompt eng）：`ollama pull gemma3:4b`（3.3 GB、CPU 也跑得動）
+### Path A（**默認、推薦**）— Ollama 本機
+- 預設 `starter.py` / 第一個 inline `<details>` 用本機 LLM
+- 需 [Ollama](https://ollama.com)、按 stage pull 對應 model：
+  - **Stage 1 + 2**（純 chat / prompt eng）：`ollama pull gemma3:4b`（3.3 GB、CPU 跑也通）
   - **Stage 3+**（tool use / agent）：`ollama pull qwen2.5:3b`（1.9 GB、tool-use 支援穩定）
 - 全程 $0、offline、隱私敏感資料 OK
-- 適合：沒 Anthropic 帳號、人在中國大陸、想 offline 練、想試本地 LLM 邊界
+- SDK 用 `openai` package（OpenAI-compatible API）、`base_url="http://localhost:11434/v1"`
+- 適合：所有讀者（默認推這條）
+
+### Path B（選擇性）— Anthropic API（想看 cloud 高品質時）
+- 對照 `starter_anthropic.py`（folder）或第二個 inline `<details>` 區塊
+- 需 `ANTHROPIC_API_KEY`、跑一輪約 $0.001（haiku）/ $0.004（sonnet）
+- 答案品質 / latency 都比本機 Ollama 強
+- 適合：production 要求高品質、需要 long-context、Stage 7 production tier
 
 ### Path C（驗邏輯、不打 API）
-- 所有 `test.py` 都用 `unittest.mock`、reader 跑 `python test.py` 看程式邏輯有沒有寫對
+- 所有 `test.py` 都用 `unittest.mock`、`python test.py` 看程式邏輯有沒有寫對
 - 跟 Path A / B 互補：先 mock 驗邏輯、再 real call 確認
 
 ### 三條路的 Trade-off
 
-| 維度 | A Anthropic | B Ollama | C Mock |
+| 維度 | A Ollama（默認）| B Anthropic | C Mock |
 |---|---|---|---|
-| Cost / call | ~$0.001 | $0 | $0 |
-| 需要 | API key | Ollama installed + GPU 偏好 | 無 |
-| 答案品質 | 高 | 中（4B model） | 預設、看不出真實品質 |
-| 速度 | ~1-3s/call | 5-30s/call（無 GPU） | <0.1s |
-| Offline | ❌ | ✅ | ✅ |
-| Stage 3+ tool use | ✅ | ✅（qwen2.5 / llama3.2）| ✅ |
-| 適合 | 主流學完整 path | 隱私 / 中國大陸 / 無 key | 程式邏輯驗證 |
+| Cost / call | $0 | ~$0.001-0.004 | $0 |
+| 需要 | Ollama install | API key | 無 |
+| 答案品質 | 中（3-4B model） | 高 | 預設、看不出真實品質 |
+| 速度 | 5-30s/call（無 GPU） | ~1-3s/call | <0.1s |
+| Offline | ✅ | ❌ | ✅ |
+| 隱私敏感資料 | ✅ | ❌ | ✅ |
+| Stage 3+ tool use | ✅（qwen2.5 / llama3.2） | ✅ | ✅ |
+| 適合 | **默認、無預算壓力** | production 升級 | 程式邏輯驗證 |
 
-→ **建議搭配**：先 C 驗邏輯（不花錢）、再 B 本機跑（看 model 行為）、最後 A 看高品質答案（如預算允許）。
+→ **建議流程**：先 C 驗邏輯（不花錢）、再 A 本機跑看實際 model 行為、production 階段（Stage 7）再升 B 看 cloud 品質。
+
+### 怎麼從 Ollama 換到 Anthropic？
+
+每個練習都有 `<details>` Path B 區塊或 `starter_anthropic.py`、改 3 行：
+
+```python
+# 從這個（Path A 默認）：
+from openai import OpenAI
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+r = client.chat.completions.create(model="gemma3:4b", ...)
+
+# 換成這個（Path B、若有 ANTHROPIC_API_KEY）：
+import anthropic
+client = anthropic.Anthropic()
+r = client.messages.create(model="claude-haiku-4-5", ...)
+```
+
+主要差異：messages create 方法名、response shape（`choices[0].message.content` vs `content[0].text`）、tool spec wrap（OpenAI 多一層 `{"type": "function", "function": {...}}`）。詳細對照表見 [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.md)。
 
 ## 對應 stage 索引
 

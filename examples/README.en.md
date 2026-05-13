@@ -58,41 +58,45 @@ if hasattr(sys.stdout, "reconfigure"):
 
 Without it, Windows readers running in PowerShell / cmd hit `UnicodeEncodeError: 'cp950' codec can't encode character '✅'`.
 
-## Practicing without an API key — three paths
+## Three paths — **default is Ollama (cost-driven)**
 
-Every exercise ships in three forms:
+> 💰 **Why default to Ollama?** Running 1000 practice iterations on Sonnet costs ~$4; on haiku ~$0.25; on local Ollama $0. **API cost should not block learning.** Reserve cloud LLMs for "want to see high-quality answers / production deployment".
 
-### Path A (default) — Anthropic API
-- Default `starter.py` / inline `<details>` uses Claude (`claude-haiku-4-5`, the cheapest tier)
-- Requires `ANTHROPIC_API_KEY`; ~$0.001 per run
-- Switch to Sonnet via `MODEL` env var or by editing one line
-- Best for: Claude subscribers who want to follow the mainstream agent stack
+Every exercise ships with all three paths:
 
-### Path B (no API, local Ollama)
-- Companion `starter_ollama.py` (folder) or a second inline `<details>` block (short exercises)
+### Path A (**default, recommended**) — local Ollama
+- Default `starter.py` / first inline `<details>` block uses a local model
 - Requires [Ollama](https://ollama.com); pull a model based on the stage:
   - **Stage 1 + 2** (plain chat / prompt eng): `ollama pull gemma3:4b` (3.3 GB; CPU-friendly)
   - **Stage 3+** (tool use / agent): `ollama pull qwen2.5:3b` (1.9 GB; reliable tool-use support)
 - $0, offline, fine for privacy-sensitive data
-- Best for: no Anthropic account, China mainland users, offline practice, exploring local-LLM limits
+- SDK uses the `openai` package (OpenAI-compatible API) with `base_url="http://localhost:11434/v1"`
+- Best for: all readers (this is the default recommendation)
+
+### Path B (optional) — Anthropic API (when you want cloud quality)
+- Companion `starter_anthropic.py` (folder) or the second inline `<details>` block
+- Requires `ANTHROPIC_API_KEY`; ~$0.001 per run (haiku) / ~$0.004 (sonnet)
+- Higher answer quality and lower latency than local 3-4B Ollama models
+- Best for: production-quality demands, long-context work, the Stage 7 production tier
 
 ### Path C (verify logic, no API call)
-- Every `test.py` uses `unittest.mock`; reader runs `python test.py` to validate logic
+- Every `test.py` uses `unittest.mock`; `python test.py` validates code logic without spending
 - Complements A / B — mock first, then real call
 
 ### Trade-offs
 
-| Dimension | A Anthropic | B Ollama | C Mock |
+| Dimension | A Ollama (default) | B Anthropic | C Mock |
 |---|---|---|---|
-| Cost per call | ~$0.001 | $0 | $0 |
-| Requires | API key | Ollama install + ideally GPU | nothing |
-| Answer quality | High | Medium (4B model) | canned, not representative |
-| Speed | ~1-3 s/call | 5-30 s/call (no GPU) | <0.1 s |
-| Offline | ❌ | ✅ | ✅ |
-| Stage 3+ tool use | ✅ | ✅ (qwen2.5 / llama3.2) | ✅ |
-| Best for | mainstream full path | privacy / China / no key | logic verification |
+| Cost per call | $0 | ~$0.001-0.004 | $0 |
+| Requires | Ollama install | API key | nothing |
+| Answer quality | medium (3-4B model) | high | canned, unrepresentative |
+| Speed | 5-30 s/call (no GPU) | ~1-3 s/call | <0.1 s |
+| Offline | ✅ | ❌ | ✅ |
+| Privacy-sensitive data | ✅ | ❌ | ✅ |
+| Stage 3+ tool use | ✅ (qwen2.5 / llama3.2) | ✅ | ✅ |
+| Best for | **default, no budget pressure** | production upgrade | logic verification |
 
-→ **Recommended combo**: C first (validate logic, no cost), then B (see real model behaviour locally), then A (high-quality answer if budget allows).
+→ **Recommended flow**: C first (validate logic, no cost), then A (see real model behaviour locally), then B at the Stage 7 production stage if cloud quality is needed.
 
 ## Index by stage
 

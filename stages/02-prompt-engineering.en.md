@@ -33,6 +33,10 @@ You should already:
 
 ## 🛠 Hands-on Exercises
 
+> 🦙 **This stage defaults to Ollama gemma3:4b** (cost-driven; $0/run). Prompt engineering is especially instructive on small models — they are sensitive to prompt quality, so you can clearly see how much each technique (system prompts, few-shot, CoT, refinement) improves output. Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional).
+>
+> Full three-path trade-off in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
+
 ### Exercise 1: System Prompt
 Same user message, three different system prompts. Watch the personality / output format change.
 

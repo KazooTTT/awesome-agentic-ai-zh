@@ -34,11 +34,60 @@
 
 ## 🛠 動手練習（必做練習，不是看過就好）
 
+> 🦙 **本 stage 默認用 Ollama**（成本考量、本機 `gemma3:4b` 跑得動、$0/run）。每個練習都有 Path A（Ollama、默認）+ Path B（Anthropic、選擇性、想看 cloud 高品質時用）。完整 3 路 trade-off 見 [`examples/README.md`](../examples/README.md#三條路徑--默認用-ollama成本考量)。
+>
+> 💰 **不裝 Ollama 也能讀** — 每個練習的 Path B 區塊就是 Anthropic 版、選一個跑就行。先 [`pip install openai && ollama pull gemma3:4b`](https://ollama.com) 就裝好 Path A 環境。
+
 ### 練習 1：LLM API（hello world）
-五行 Python 呼叫 LLM 並印出回應。**兩條路選一**：A 用 Claude API（需 key、$0.001/run）、B 用本機 Ollama（免費、offline）。詳見 [`examples/README.md`](../examples/README.md#沒-api-key-也能練習嗎兩條路徑)。
+五行 Python 呼叫 LLM 並印出回應。**默認用 Ollama 本機跑（免費、offline）**；想看 cloud 答案品質改 Path B Anthropic。詳見 [`examples/README.md`](../examples/README.md#三條路徑--默認用-ollama成本考量)。
+
+<details open>
+<summary>📋 <b>起手碼 — Path A（本機 Ollama gemma3:4b、默認）</b>（複製到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
+
+```python
+# 需要：pip install openai      (用 OpenAI-compatible SDK 跟 Ollama 溝通)
+# 前置：ollama pull gemma3:4b && ollama serve
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:11434/v1",
+    api_key="ollama",  # Ollama 不檢查、隨便填
+)
+
+r = client.chat.completions.create(
+    model="gemma3:4b",   # 換成 qwen2.5:3b / llama3.2:3b 也可
+    max_tokens=100,
+    messages=[{"role": "user", "content": "用一句話自我介紹。"}],
+)
+
+# === 自我驗證 ===
+text = r.choices[0].message.content
+print("回應：", text)
+print("usage:", r.usage)
+
+assert r.choices[0].finish_reason in ("stop", "length"), f"非預期 finish_reason: {r.choices[0].finish_reason}"
+assert len(text) > 0, "回應不應為空"
+assert r.usage.completion_tokens > 0, "output token 應 > 0"
+print("✅ 練習 1 通過 — Ollama gemma3:4b 已能本機回應、$0/次")
+```
+
+**預期輸出**（樣本）：
+```
+回應：嗨！我是 Gemma、一個由 Google 訓練的開源語言模型...
+usage: CompletionUsage(completion_tokens=35, prompt_tokens=12, total_tokens=47)
+✅ 練習 1 通過 — Ollama gemma3:4b 已能本機回應、$0/次
+```
+
+**慢嗎？** Gemma 4B 在 CPU 上約 5-30s/答案、有 GPU（RTX 3060+）<2s。要更快用 `gemma3:1b`、要更聰明改 `qwen2.5:14b` / `llama3.3:8b`（需 8GB+ VRAM）。
+
+</details>
 
 <details>
-<summary>📋 <b>起手碼 — Path A（Anthropic API）</b>（複製到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
+<summary>📋 <b>起手碼 — Path B（Anthropic API、選擇性、想看 cloud 高品質時）</b>（複製到 <code>practice_1_anthropic.py</code>）</summary>
 
 ```python
 # 需要：pip install anthropic
@@ -74,50 +123,7 @@ usage: Usage(input_tokens=18, output_tokens=42, ...)
 ✅ 練習 1 通過 — 你已成功打通 Anthropic API
 ```
 
-</details>
-
-<details>
-<summary>📋 <b>起手碼 — Path B（本機 Ollama gemma3:4b）</b>（複製到 <code>practice_1_ollama.py</code>）</summary>
-
-```python
-# 需要：pip install openai      (用 OpenAI-compatible SDK)
-# 前置：ollama pull gemma3:4b && ollama serve
-import sys
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-
-from openai import OpenAI
-
-client = OpenAI(
-    base_url="http://localhost:11434/v1",
-    api_key="ollama",  # Ollama 不檢查、隨便填
-)
-
-r = client.chat.completions.create(
-    model="gemma3:4b",   # 換成 qwen2.5:3b / llama3.2:3b 也可
-    max_tokens=100,
-    messages=[{"role": "user", "content": "用一句話自我介紹。"}],
-)
-
-# === 自我驗證 ===
-text = r.choices[0].message.content
-print("回應：", text)
-print("usage:", r.usage)
-
-assert r.choices[0].finish_reason in ("stop", "length"), f"非預期 finish_reason: {r.choices[0].finish_reason}"
-assert len(text) > 0, "回應不應為空"
-assert r.usage.completion_tokens > 0, "output token 應 > 0"
-print("✅ 練習 1 通過 — Ollama gemma3:4b 已能本機回應、$0/次")
-```
-
-**預期輸出**（樣本、本機 model 答案更隨意）：
-```
-回應：嗨！我是 Gemma、一個由 Google 訓練的開源語言模型...
-usage: CompletionUsage(completion_tokens=35, prompt_tokens=12, total_tokens=47)
-✅ 練習 1 通過 — Ollama gemma3:4b 已能本機回應、$0/次
-```
-
-**慢嗎？** Gemma 4B 在 CPU 上約 5-30s/答案、有 GPU（RTX 3060+）<2s。要更快用 `gemma3:1b`、要更聰明改 `qwen2.5:14b` / `llama3.3:8b`（需 8GB+ VRAM）。
+**成本**：每次 ~$0.001 (haiku) / $0.004 (sonnet)、跑這個 hello world 比 Ollama 快 5-15 倍。
 
 </details>
 
