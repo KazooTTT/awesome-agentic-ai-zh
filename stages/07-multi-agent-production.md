@@ -6,7 +6,7 @@
 
 > 💡 用語密度高（multi-agent / handoff / eval / observability / guardrails⋯）→ 翻 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)。
 
-> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 → 動手練習 → 精選 Projects → 自我檢查  
+> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 →〔可選 · 概念地圖〕→ 動手練習 → 精選 Projects → 自我檢查  
 > 🔑 **關鍵名詞**：見 [`resources/glossary.md` §4 + §6](../resources/glossary.md#4-multi-agent)（multi-agent / orchestration / handoff / eval / observability）
 
 最後一個階段。你正從「我會做 agent」走向「我能在 production 跑起來，多個 agent 協作、有 eval、有 observability、會 deploy」。

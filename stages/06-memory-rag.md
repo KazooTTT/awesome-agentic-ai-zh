@@ -6,7 +6,7 @@
 
 > 💡 這 stage 用語密度高（**RAG / 向量資料庫 / embedding / chunking / hybrid search / reranking⋯**）→ 不熟先翻 [`resources/glossary.md` §3](../resources/glossary.md#3-memory--retrieval--rag)。
 
-> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 → 動手練習 → 精選 Projects → 自我檢查  
+> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 →〔可選 · 概念地圖：單元指引 + Chunking + Memory 設計三種 pattern〕→ 動手練習 → 精選 Projects → 自我檢查  
 > 🔑 **關鍵名詞**：見 [`resources/glossary.md` §3](../resources/glossary.md#3-memory--retrieval--rag)（memory / RAG / embedding / chunking / reranking）
 
 不會記住過去互動的 agent 沒什麼用。RAG（Retrieval-Augmented Generation）是目前的標準做法。這一章兩個都會講到。

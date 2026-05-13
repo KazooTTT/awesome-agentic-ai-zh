@@ -7,7 +7,7 @@
 > 💡 用語密集（agent / tool use / function calling / ReAct / structured output⋯）→ 翻 [`resources/glossary.md` §2](../resources/glossary.md#2-agent--工具使用)。
 > 🗺️ **進 Track A（CLI Power User）還是 Track B（Agent Builder）前**，先看 [`resources/agent-paradigms.md`](../resources/agent-paradigms.md) — 5 種 agent 型態的全景圖，幫你選軌。
 
-> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 → 動手練習（含反思迴圈練習 7）→ 精選 Projects → 自我檢查  
+> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 →〔可選 · 概念地圖〕→ 動手練習（含反思迴圈練習 7）→ 精選 Projects → 自我檢查  
 > 🔑 **關鍵名詞**：見 [`resources/glossary.md` §2](../resources/glossary.md#2-agent--工具使用)
 
 這是整個學習路線最關鍵的一站。**你建過一個 agent 才算真懂 agent**——本 stage 的基礎練習建議至少實際手寫一次、再依需求往 [hello-agents](https://github.com/datawhalechina/hello-agents) 或本 stage 精選 projects 找深度教材。

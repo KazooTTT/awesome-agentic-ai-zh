@@ -8,7 +8,7 @@
 
 > 💡 用語不熟（prompt / few-shot / CoT / system prompt⋯）→ 翻 [`resources/glossary.md`](../resources/glossary.md)。
 
-> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 → 動手練習 → 精選 Projects → 自我檢查  
+> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 →〔可選 · 概念地圖〕→ 動手練習 → 精選 Projects → 自我檢查  
 > 🔑 **關鍵名詞**：見 [`resources/glossary.md`](../resources/glossary.md)（每 stage 用到的術語都收在那裡）
 
 ## 📌 學習目標

@@ -6,7 +6,7 @@
 
 > 💡 用語不熟（framework / supervisor / worker / handoff⋯）→ 翻 [`resources/glossary.md`](../resources/glossary.md)。
 
-> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 → 動手練習 → 精選 Projects → 自我檢查  
+> 📋 **本章組成**：學習目標 → 進入條件 → 必修閱讀 →〔可選 · 概念地圖：multi-agent intro + 進階 tool patterns〕→ 動手練習 → 精選 Projects → 自我檢查  
 > 🔑 **關鍵名詞**：見 [`resources/glossary.md`](../resources/glossary.md)（framework / agent loop / handoff / supervisor 等收在 §2、§4）
 
 你已經從零打造過一個 ReAct agent（Stage 3）。現在來看 framework 到底幫你做了什麼。**挑一個深入學**，其他的瀏覽過去就好，知道什麼時候該換。
@@ -28,7 +28,16 @@
 
 ⚠️ **Memory 預備（需要時偷看一下）**：有些 framework 功能會用到 memory 的概念 — LangGraph 用 checkpointing（狀態持久化），CrewAI 在 agent 之間傳遞任務結果（輕量 memory）。這些東西在 [Stage 6 — Memory & RAG](06-memory-rag.md) 會講清楚。你不必先讀完那篇，只是當某個 framework 功能讓你看不懂的時候，去那邊找答案就對了。
 
+## 📚 必修閱讀
+
+1. [**Anthropic — Building Effective Agents**](https://www.anthropic.com/engineering/building-effective-agents) — 什麼時候用 framework、什麼時候直接用 raw API
+2. [**LangChain — Conceptual Guide: Agents**](https://python.langchain.com/docs/concepts/agents/) — agent 的抽象概念
+3. [**Best Multi-Agent Frameworks 2026 comparison**](https://gurusup.com/blog/best-multi-agent-frameworks-2026) — 當前市場定位
+4. **挑一個 framework 的 Quickstart** — 選 LangGraph 或 CrewAI，把官方教學從頭跑到尾
+
 ## 🤔 什麼是 multi-agent framework？
+
+> **位置說明**：本段是 pre-exercise concept block——必修閱讀載入了「framework 概念」，但動手練習前還缺一層「為什麼需要 framework」+「framework 替你處理掉什麼」的 mental model，這段就是補這個。
 
 **單一 agent**（你 Stage 3 寫過了）= 一個 LLM + 一個 ReAct loop + 若干工具，從頭跑到尾。
 
@@ -61,13 +70,6 @@ Stage 3 教你寫 single tool / multi-tool selection（手寫 `if/elif/else` 路
 - [**LangGraph — Tool Node**](https://langchain-ai.github.io/langgraph/) — composition graph 寫法
 
 > 💡 **Track B 學完本節**：你應該講得出「同一個任務」在 (a) Stage 3 手寫 (b) 本 stage framework 寫 (c) Stage 5.5 Claude subagent 寫 三種路線的差別。這是 Track B 路線「會設計 agent」核心問題。
-
-## 📚 必修閱讀
-
-1. [**Anthropic — Building Effective Agents**](https://www.anthropic.com/engineering/building-effective-agents) — 什麼時候用 framework、什麼時候直接用 raw API
-2. [**LangChain — Conceptual Guide: Agents**](https://python.langchain.com/docs/concepts/agents/) — agent 的抽象概念
-3. [**Best Multi-Agent Frameworks 2026 comparison**](https://gurusup.com/blog/best-multi-agent-frameworks-2026) — 當前市場定位
-4. **挑一個 framework 的 Quickstart** — 選 LangGraph 或 CrewAI，把官方教學從頭跑到尾
 
 ## 🛠 動手練習
 
