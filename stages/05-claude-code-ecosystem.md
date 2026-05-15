@@ -596,6 +596,31 @@ Plugin
 | 4 | **Subagent 沒「我之前說過 X」記憶** | 每次派遣都是**全新 context**、看不到主 session 對話。Prompt 要 self-contained、不能 reference「我們剛討論的 Y」 |
 | 5 | **Subagent 也吃 hook** | PreToolUse / PostToolUse（工具執行前 / 後的攔截腳本）在 subagent 內**也會 fire**。設 hook 時要想到這層 |
 
+#### Subagent 整體優缺點（讀完前面、回頭看這個 summary）
+
+**5 個優點**（為什麼存在）：
+
+| 優點 | 怎麼幫到你 |
+|---|---|
+| **Context 隔離** | 主 session window 不被污染——subagent 跑大檔案 / 長 log 不會擠掉主 session 的工作記憶 |
+| **Tool allowlist** | 限制 subagent 只能用 Read / Grep（不能寫檔 / 不能跑 Bash）= 安全 sandbox |
+| **Model override** | 跑簡單任務用 Haiku、跑難的用 Opus、混搭省成本——主 session 是 Opus 也可以叫 subagent 用 Haiku |
+| **Parallel spawn** | 一個 prompt spawn N 個 subagent 平行跑、wall clock 時間 ÷ N（適合 4 個 file 同時 audit）|
+| **專業化 prompt** | code-reviewer 永遠只 review、description 寫死「Use PROACTIVELY when commit」、不會被閒聊干擾 |
+
+**5 個缺點**（什麼時候不值得）：
+
+| 缺點 | 影響 |
+|---|---|
+| **Spawn 有 overhead** | 任務 < 5 分鐘、自己跑更快——subagent startup 也吃時間跟 token |
+| **無 cross-call memory** | 每次 spawn 都新 context、看不到「我們剛討論的 X」——prompt 必須 self-contained |
+| **只回一個 message** | subagent 是「派出去、跑完回報一次」、不能跟你來回對話、不適合需要逐步 feedback 的任務 |
+| **Token cost N ×** | spawn 4 個 = 用 4 倍 token——parallel 的 ROI 要算（時間省、錢花更多）|
+| **Debug 多一層** | 出錯不知該怪主 session description / subagent system prompt / 還是 prompt 本身——見 [advanced §3 debug 5 切點](../resources/subagent-advanced.md#3-自製-subagent-的-debug-工具)|
+
+> 📌 **1 句話判斷**：任務 **≥ 5 分鐘** + **可以用一個 brief 寫死**（不需來回對話）+ **結果一次回來夠用**（不需逐步 feedback）→ 用 subagent；否則自己跑。
+
+
 > 📋 **準備自己寫 subagent / 組合多個 / debug 跑壞的？** → [`resources/subagent-advanced.md`](../resources/subagent-advanced.md)（description 寫法 4 個 bug 對照、composition 3 種 pattern、debug 5 切點）
 
 

@@ -21,7 +21,7 @@
 
 > 💡 **怎麼實際派遣 subagent**：在你的 Claude Code 終端機對話框裡、**直接輸入（或貼上）prompt 範本**——就這樣。Claude 看到指令、會自動透過 Task tool（內部派遣機制）找到對應 subagent 跑、跑完回主 session 一段摘要。**不需要 slash command、不需要特殊語法**。
 >
-> 📌 **subagent ≠ slash command**：slash command（如 `/help` / `/compact` / `/agents`）執行 Claude Code 內建功能；subagent 是派出一個「子 Claude」跑獨立任務、結果回報主 session。`/agents` 是查當前可用 subagent 的指令、不是用來「呼叫」subagent。
+> 📌 **subagent ≠ slash command**：`/agents` 是查當前可用 subagent 的指令、**不是用來「呼叫」subagent**。派遣 subagent 直接打對話 prompt 文字即可。完整對比表（subagent vs skill / vs slash command / description router）見 [Stage 5.5 §易混淆觀念釐清](../stages/05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制-2025-新功能)。
 
 ---
 
