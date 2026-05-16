@@ -1,5 +1,8 @@
 # Debug Flowchart: "Why won't the LLM call my tool?"
 
+> [繁體中文](./debug-flowchart.md) | [简体中文](./debug-flowchart.zh-Hans.md) | **English**
+
+
 > 4-symptom diagnostic. Pairs with SKILL.md Step 2.
 
 ## Section A — Symptom (a): LLM doesn't trigger tool_calls at all

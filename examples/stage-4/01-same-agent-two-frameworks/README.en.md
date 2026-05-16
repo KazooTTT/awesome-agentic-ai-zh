@@ -1,4 +1,6 @@
-> [繁體中文](./README.md) | [简体中文](./README.zh-Hans.md) | **English**
+<div align="right">
+  <a href="./README.md">繁體中文</a> | <a href="./README.zh-Hans.md">简体中文</a> | <strong>English</strong>
+</div>
 
 # Exercise 1: Same Agent, Two Frameworks (LangGraph + CrewAI)
 

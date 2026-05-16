@@ -1,6 +1,6 @@
 # Stage 8 — Agent Interfaces: Computer Use, Browser Use, & Code Sandbox
 
-> **English** | [繁體中文](08-agent-interfaces.md) | [简体中文](08-agent-interfaces.zh-Hans.md)
+> [繁體中文](./08-agent-interfaces.md) | [简体中文](./08-agent-interfaces.zh-Hans.md) | **English**
 
 ⏱ **Estimated Time**: 2-3 weeks (approx. 12-20 hours)
 

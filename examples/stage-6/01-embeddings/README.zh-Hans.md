@@ -1,4 +1,6 @@
-> [繁體中文](./README.md) | **简体中文** | [English](./README.en.md)
+<div align="right">
+  <a href="./README.md">繁體中文</a> | <strong>简体中文</strong> | <a href="./README.en.md">English</a>
+</div>
 
 # 练习 1：Embeddings + nearest neighbors
 

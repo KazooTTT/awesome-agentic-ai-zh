@@ -1,6 +1,6 @@
 # Stage 8 — Agent 操作介面（Agent Interfaces）：Computer Use · Browser Use · Code Sandbox
 
-> [繁体中文](08-agent-interfaces.md) | **简体中文** | [English](08-agent-interfaces.en.md)
+> [繁體中文](./08-agent-interfaces.md) | **简体中文** | [English](./08-agent-interfaces.en.md)
 
 ⏱ **时间估算**：2-3 周（约 12-20 小时）
 

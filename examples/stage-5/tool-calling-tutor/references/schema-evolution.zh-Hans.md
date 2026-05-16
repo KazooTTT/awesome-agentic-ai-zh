@@ -1,5 +1,8 @@
 # Schema Evolution：坏 schema 改到好（worked example）
 
+> [繁體中文](./schema-evolution.md) | **简体中文** | [English](./schema-evolution.en.md)
+
+
 > 同一个工具（温度转换）、4 个改进步骤。对应 SKILL.md Step 2(d)、补 [`resources/schema-design-cheatsheet.zh-Hans.md`](../../../../resources/schema-design-cheatsheet.zh-Hans.md) 缺的 procedural 走法。
 
 ## Iteration 0：原始坏 schema

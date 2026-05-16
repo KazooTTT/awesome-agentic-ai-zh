@@ -1,5 +1,8 @@
 # SDK Diff：Anthropic vs OpenAI-compat（Ollama / OpenAI / Together / 多数开源）
 
+> [繁體中文](./sdk-diff.md) | **简体中文** | [English](./sdk-diff.en.md)
+
+
 > 同一个 ReAct loop、不同 SDK 的 3 个关键差异。对应 SKILL.md Step 3。
 
 ## TL;DR 对照表

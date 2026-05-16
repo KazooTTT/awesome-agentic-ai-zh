@@ -1,6 +1,6 @@
 # Stage 6 — Context Engineering: RAG and Memory
 
-> [Traditional Chinese](./06-memory-rag.md) | [简体中文](./06-memory-rag.zh-Hans.md) | **English**
+> [繁體中文](./06-memory-rag.md) | [简体中文](./06-memory-rag.zh-Hans.md) | **English**
 
 ⏱ **Estimated Time**: 2 weeks (approx. 10 hours)
 

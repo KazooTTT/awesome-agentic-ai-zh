@@ -1,4 +1,6 @@
-> **繁體中文** | [简体中文](./README.zh-Hans.md) | [English](./README.en.md)
+<div align="right">
+  <strong>繁體中文</strong> | <a href="./README.zh-Hans.md">简体中文</a> | <a href="./README.en.md">English</a>
+</div>
 
 # 練習 6：Function Schema 設計（bad vs good）
 

@@ -1,5 +1,8 @@
 # Debug Flowchart：「为什么 LLM 不调用我的 tool」
 
+> [繁體中文](./debug-flowchart.md) | **简体中文** | [English](./debug-flowchart.en.md)
+
+
 > 4-symptom 诊断流程。对应 SKILL.md Step 2。
 
 ## Section A — Symptom (a)：LLM 完全不触发 tool_calls

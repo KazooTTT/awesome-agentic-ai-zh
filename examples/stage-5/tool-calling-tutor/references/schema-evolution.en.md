@@ -1,5 +1,8 @@
 # Schema Evolution: bad schema improved to good (worked example)
 
+> [繁體中文](./schema-evolution.md) | [简体中文](./schema-evolution.zh-Hans.md) | **English**
+
+
 > Same tool (temperature conversion), 4 improvement steps. Pairs with SKILL.md Step 2(d). Fills the procedural gap that [`resources/schema-design-cheatsheet.en.md`](../../../../resources/schema-design-cheatsheet.en.md) (which is prescriptive) doesn't cover.
 
 ## Iteration 0: original bad schema
