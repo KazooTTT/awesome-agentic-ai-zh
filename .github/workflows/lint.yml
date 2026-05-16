@@ -88,6 +88,14 @@ jobs:
           fi
           echo "✓ No overclaim phrases detected."
 
+      - name: Check zh-Hans mainland localization (blocking)
+        run: |
+          # Blocking gate: zh-Hans mirrors must stay mainland-localized.
+          # Catches future tw2s-only mirror syncs / hand edits that
+          # reintroduce Taiwan vocab (呼叫/程式/品质…) or 「」 quotes.
+          # stdlib-only script; ubuntu-latest ships python3 (no pip deps).
+          python3 scripts/zh-hans-localize.py --check
+
   link-rot:
     name: Link rot check (GitHub URLs)
     runs-on: ubuntu-latest
