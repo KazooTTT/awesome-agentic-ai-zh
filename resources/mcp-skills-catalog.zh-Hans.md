@@ -746,6 +746,30 @@
 
 > 想找微信 / 钉钉集成？目前主流是用 chat bot framework（如 zhayujie/CowAgent）而不是纯 MCP server。等正規 MCP 出现再加进来。
 
+### [MoonshotAI/Kimi-K2](https://github.com/MoonshotAI/Kimi-K2) ⭐⭐⭐
+
+| 栏位 | 内容 |
+|---|---|
+| Stars | ★ 10.7k+ |
+| License | Modified MIT |
+| 推荐度 | ⭐⭐⭐ |
+
+**教什么**：月之暗面 Moonshot 的 Kimi K2 开源大模型系列——开源权重 + OpenAI / Anthropic 兼容 API，主打 agentic / coding / 长程任务，可当 agent stack 的后端模型。
+**适合谁**：想用国产开源模型跑 agent / coding 工作流、或要在自部署环境跑开源权重的中文开发者。
+**备注**：License 是 Modified MIT（标准 MIT + 大规模商用附加条款）——商用前先读原始 LICENSE；weights 另在 Hugging Face。
+
+### [zai-org/GLM-4.5](https://github.com/zai-org/GLM-4.5) ⭐⭐⭐
+
+| 栏位 | 内容 |
+|---|---|
+| Stars | ★ 4.3k+ |
+| License | Apache-2.0 |
+| 推荐度 | ⭐⭐⭐ |
+
+**教什么**：智谱 Zhipu（Z.ai）的 GLM-4.5 开源模型——定位 Agentic / Reasoning / Coding（ARC）基础模型，开源权重 + API，可当 agent / tool use / coding 的后端。
+**适合谁**：想评估国产开源 agentic 模型、或需要 Apache-2.0 宽松许可权重的中文开发者。
+**备注**：zai-org 是智谱开源 org；同系列另有 GLM-4（★ 7k+）可一起参考；weights 在 Hugging Face。
+
 ---
 
 ## 12. 其他常用（Cloudflare / Stripe…）
