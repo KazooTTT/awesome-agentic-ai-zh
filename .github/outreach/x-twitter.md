@@ -37,10 +37,10 @@ before you tweet — X's card scraper caches aggressively:
 ### A — EN-lead, broad AI audience (recommended)
 
 ```
-A trilingual (EN / 繁中 / 简中) learning roadmap for agentic AI — staged
-tracks for CLI power users and agent builders, 5 audience branches
-(researcher / dev / teacher / knowledge worker / everyday user), 23
-hands-on exercises (Ollama-default — no API key needed to start).
+An AI agent learning map — curates 145+ repos across the agentic-AI
+ecosystem (MCP / skills / frameworks / agents), from LLM basics to
+multi-agent. Trilingual (EN / 繁中 / 简中); branches for researcher /
+dev / teacher / knowledge worker.
 
 github.com/WenyuChiou/awesome-agentic-ai-zh
 ```
@@ -48,10 +48,10 @@ github.com/WenyuChiou/awesome-agentic-ai-zh
 ### B — research-first (matches your LinkedIn reframe)
 
 ```
-PhD student working on agent-based flood-adaptation modeling. Open-
-sourced the agentic-AI curriculum I built for my own learning —
-trilingual (EN / 繁中 / 简中), 8 stages + 2 tracks + 5 audience branches
-+ 23 exercises.
+PhD student doing agent-based flood-adaptation modeling. Open-sourced
+the AI agent learning map I built for my own learning — 145+ curated
+repos across the agentic-AI ecosystem, LLM basics → multi-agent.
+Trilingual (EN / 繁中 / 简中).
 
 github.com/WenyuChiou/awesome-agentic-ai-zh
 ```
@@ -59,9 +59,9 @@ github.com/WenyuChiou/awesome-agentic-ai-zh
 ### C — bilingual lead (CJK AI-Twitter circle: 寶玉 / AK / 向阳乔木)
 
 ```
-做了個三語 Agentic AI 學習路線圖（繁中 / 简中 / EN 全維護）:雙軌（CLI 使用者 / Agent 開發者）+ 5 個對象分支 + 23 個動手練習,預設 Ollama 本機跑,免 API key。
+做了個 AI Agent 學習地圖 —— 蒐集 145+ 個 repo(MCP / skills / frameworks / agents),從 LLM 基本概念一路走到 multi-agent 系統,三語維護(繁中 / 简中 / EN)。對 researcher / 開發者 / 老師 / 知識工作者各有分支。
 
-A trilingual agentic-AI roadmap — github.com/WenyuChiou/awesome-agentic-ai-zh
+An AI agent learning map — github.com/WenyuChiou/awesome-agentic-ai-zh
 ```
 
 Recommended: **A** for the first push (EN-lead is where the audience is
