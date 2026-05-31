@@ -6,7 +6,7 @@
 
 ## Why Threads
 
-Per `docs/traffic/snapshots/2026-05-26.json`, Threads (`l.threads.com`) is the **#2 external referrer** for this repo (1,138 views / 608 uniques over the 14-day window — second only to github.com). The zh-TW + zh-Hans developer audience is heavily on Threads, and the recommendation algorithm rewards substantive longer-form posts (vs X's 280-char broadcast model).
+As of 2026-05-26, Threads (`l.threads.com`) was the **#2 external referrer** for this repo (1,138 views / 608 uniques over a 14-day window — second only to github.com; check current standing via GitHub Insights → Traffic). The zh-TW + zh-Hans developer audience is heavily on Threads, and the recommendation algorithm rewards substantive longer-form posts (vs X's 280-char broadcast model).
 
 Audience: Chinese-speaking developers / researchers who already follow Wenyu's posts and would recognize the repo. Recruitment-shaped post fits the platform's "personal-update-from-someone-doing-real-work" tone better than X or LinkedIn.
 
@@ -76,7 +76,7 @@ github.com/WenyuChiou/awesome-agentic-ai-zh
 ✓ 不用我一個人追 catalog 過時 entry
 ✓ 多一層 review 把關品質
 
-工具都做好了（staleness / link rot / star refresh 都 automate）、你做 judgement call 就行。
+工具都做好了（link rot 月跑 CI；star refresh 手動跑 refresh-stars.py）、你做 judgement call 就行。
 
 最缺：📊 for-knowledge-worker、🎓 for-teacher、Stage 6 RAG。
 
@@ -105,8 +105,7 @@ If post A or B generates interest, post this as a reply for those clicking throu
 - 不要求最低 commit 量
 
 機制都做好了：
-- scripts/check-catalog-staleness.py 揪過時 entry
-- scripts/refresh-stars.py 自動更新星數
+- scripts/refresh-stars.py 比對標註星數跟實際（手動跑、找過時 entry）
 - 4 個 CI gate 把關 PR 格式（anchor / mirror sync / lint / stage template）
 
 完整 stage / branch list + 自薦範本：CONTRIBUTORS.md
@@ -126,7 +125,7 @@ If post A or B generates interest, post this as a reply for those clicking throu
 
 - [ ] 確認 banner.zh-Hans.png 或 banner.png 已上傳到 Threads（圖片附加 > 純連結 card）
 - [ ] 重新 verify ★1.7k 數字當下還對（`gh repo view WenyuChiou/awesome-agentic-ai-zh --json stargazerCount`）
-- [ ] 確認 docs/traffic/snapshots/ 最新一檔的 Threads 引用排名還是 #2（萬一變動，調整「Why Threads」rationale）
+- [ ] 用 GitHub Insights → Traffic 確認 Threads 仍是主要 referrer（萬一變動，調整「Why Threads」rationale）
 
 ## Tracking
 

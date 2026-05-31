@@ -6,6 +6,12 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-05-31
+
+- **tooling** · pruned the vanity / ops-metric automation surface (strategic-review action #1, "freeze + prune automation"): removed `scripts/snapshot-traffic.py`, `scripts/refresh-outreach-status.py`, `scripts/check-catalog-staleness.py`, the `docs/traffic/` snapshot dir, the `weekly-catalog-refresh.yml` auto-PR/auto-merge workflow, and `lint.yml`'s `star-drift` job. All reader-facing correctness + trilingual-parity guards kept (anchor / link-rot / mirror-sync / stage-template / banned-words / overclaim / zh-Hans-localize). `refresh-stars.py` kept as the manual contributor stale-entry tool (documented in CONTRIBUTING / ROADMAP). Link-rot coverage preserved by `lint.yml`'s monthly check (it was duplicated in the removed workflow).
+
+---
+
 ## 2026-05-26
 
 - **ci** · `lint.yml` overclaim check expanded (P3-G from audit) — promoted from case-sensitive exact-phrase to case-insensitive (`grep -Fi`), broadened scope to include `tracks/` `examples/` `resources/` (which the previous narrower scope missed — letting 5 uppercase `Production-grade` H2 headers in `examples/` slip through the earlier sweep). Strict-blocking list now includes all style-guide §3 phrases (`首選` / `首选` / `唯一選擇` / `唯一选择` / `業界最佳` / `业界最佳` / `業界最強` / `全世界最好的` / `最緊迫` / `the most canonical`) plus English equivalents (`production-grade` / `world-class` / `best-in-class` / `cutting-edge` / `state-of-the-art` / `industry-leading`). Corpus pre-cleaned across tri-locale before flipping to strict.
