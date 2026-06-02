@@ -182,7 +182,9 @@ cd awesome-agentic-ai-zh
 
 | 你的状况 | 去哪 | 内容 |
 |---|---|---|
+| 不懂某个词（LLM / agent / RAG / token / MCP / Skill / 向量数据库…） | [`resources/glossary.zh-Hans.md`](resources/glossary.zh-Hans.md) | 30+ 词、每个 30-80 字 + 哪 stage 讲细的 |
 | 想搞懂 agent 为什么有的在 terminal、有的在 Telegram、有的在 Jetson | [`resources/agent-paradigms.zh-Hans.md`](resources/agent-paradigms.zh-Hans.md) | 5 种 agent 型态 mental model + Hermes / OpenClaw 例子 |
+| MCP / Skills / Plugins 用语对照 | [`RESOURCES.zh-Hans.md` 三个核心用语](RESOURCES.zh-Hans.md#三个核心用语mcp--skills--plugins) | 1 页速查表 |
 | 想找带证书的线上 AI agent 课（英文 + 中文） | [`resources/courses.zh-Hans.md`](resources/courses.zh-Hans.md) | 10 门 credible、会发证书的课，分 tier；并诚实标注完成证书不是学历 |
 
 ### 🛠 动手实作
