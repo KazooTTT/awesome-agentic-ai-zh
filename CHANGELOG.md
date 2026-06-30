@@ -6,9 +6,10 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
-## 2026-06-28
+## 2026-06-29
 
 - **content** · Stage 1 model table + glossary (frontier + Context-Window entries) + `scripts/freshness-models.yml` whitelist refreshed with late-June-2026 frontier models, all first-party verified: GPT row gains GPT-5.6 (Sol / Terra / Luna, **preview**); Gemini row → 3.5 Flash (3.5 Pro in dev); glossary frontier adds xAI Grok 4.3 (GA) + Mistral Medium 3.5 (open weights, preview), relabeled by half-month (Fable 5 suspension note retained). Preview-vs-GA marked; no fabricated benchmark / context numbers. Tri-locale; anchor / zh-Hans / switcher gates pass.
+- **content** · Stage 6 reasoning-model table consistency follow-up: the "current (Jun 2026) frontier" intro + the GPT-5.5 and Gemini 3.1 Pro rows now flag that newer tiers exist (GPT-5.6 Sol / Terra / Luna **preview**; Gemini 3.5 Flash available, 3.5 Pro in dev). Existing verified rows and benchmarks (e.g. Gemini 3.1 Pro GPQA Diamond 94.3%) kept and correctly attributed; no preview-model benchmarks fabricated. Tri-locale; gates pass.
 
 ## 2026-06-24
 
