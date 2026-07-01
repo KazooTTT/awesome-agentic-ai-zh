@@ -50,6 +50,7 @@ After the main path, you go from "**LLM user**" to "**agent system builder**" �
 - [🤝 Contributing](#-contributing)
 - [🙏 Acknowledgments](#-acknowledgments)
 - [🎓 Citation](#-citation)
+- [☕ Support this project](#-support-this-project)
 - [License](#license)
 
 ---
@@ -299,6 +300,16 @@ If this learning roadmap helps your study or work, please cite:
 ## 📈 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=WenyuChiou/awesome-agentic-ai-zh&type=Date)](https://star-history.com/#WenyuChiou/awesome-agentic-ai-zh&Date)
+
+---
+
+## ☕ Support this project
+
+This learning map is free and open-source (MIT). If it helps you, a ⭐ Star means a lot — and if you'd like to support ongoing updates, you can buy the author a coffee:
+
+<a href="https://www.buymeacoffee.com/wenyuchiou" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="44"></a>
+
+Or use the **❤ Sponsor** button at the top of the repo. (GitHub Sponsors is under review and will be added once approved.)
 
 ---
 

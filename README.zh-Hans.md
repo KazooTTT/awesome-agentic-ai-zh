@@ -337,6 +337,16 @@ PR 流程跟 style 规范请看 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [resource
 
 ---
 
+## ☕ 支持这个项目
+
+这份学习地图是免费、开源（MIT）。如果它对你有帮助，除了给个 ⭐ Star，也欢迎请作者喝杯咖啡、支持它持续更新：
+
+<a href="https://www.buymeacoffee.com/wenyuchiou" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="44"></a>
+
+或直接点 repo 右上角的 **❤ Sponsor** 按钮。（GitHub Sponsors 审核中，通过后会一并加上。）
+
+---
+
 ## License
 
 MIT。Maintained by [@WenyuChiou](https://github.com/WenyuChiou)。

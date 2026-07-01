@@ -55,6 +55,7 @@
 - [🤝 如何貢獻](#-如何貢獻)
 - [🙏 致謝](#-致謝)
 - [🎓 引用](#-引用)
+- [☕ 支持這個專案](#-支持這個專案)
 - [License](#license)
 
 ---
@@ -305,6 +306,16 @@ PR 流程跟 style 規範請看 [CONTRIBUTING.md](CONTRIBUTING.md) 跟 [resource
 ## 📈 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=WenyuChiou/awesome-agentic-ai-zh&type=Date)](https://star-history.com/#WenyuChiou/awesome-agentic-ai-zh&Date)
+
+---
+
+## ☕ 支持這個專案
+
+這份學習地圖是免費、開源（MIT）。如果它對你有幫助，除了給個 ⭐ Star，也歡迎請作者喝杯咖啡、支持它持續更新：
+
+<a href="https://www.buymeacoffee.com/wenyuchiou" target="_blank" rel="noopener noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="44"></a>
+
+或直接點 repo 右上角的 **❤ Sponsor** 按鈕。（GitHub Sponsors 審核中，通過後會一併加上。）
 
 ---
 
