@@ -339,14 +339,6 @@ PR 流程跟 style 规范请看 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [resource
 
 ---
 
-## 📈 Star History
-
-[![GitHub stars](https://img.shields.io/github/stars/WenyuChiou/awesome-agentic-ai-zh?style=social)](https://star-history.com/#WenyuChiou/awesome-agentic-ai-zh&Date)
-
-<sub>（GitHub 于 2026 收紧了“星标时间序列”数据的访问，star-history 的匿名内嵌图已无法稳定显示；改用实时星数徽章，点击可前往 star-history 趋势页。）</sub>
-
----
-
 ## ☕ 支持这个项目
 
 这份学习地图是免费、开源（MIT）。如果它对你有帮助，除了给个 ⭐ Star，也欢迎请作者喝杯咖啡、支持它持续更新：
