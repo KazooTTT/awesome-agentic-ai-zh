@@ -6,6 +6,10 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-07-09
+
+- **content** · Stage 7.5 gains a plain-language **"分工 / Division of labor"** subsection (tri-locale), sourced first-party from Anthropic's *Agentic coding and persistent returns to expertise* (2026-06-16) + the *2026 Agentic Coding Trends Report*: you decide **what** to build, the agent decides **how** (~70% of planning decisions are the human's; ~80% of execution is left to the agent). Ties into the stage's "work boundary" axis, the returns-to-expertise framing, and the human → agent-team extension (Stage 7). Written analogy-first (home-renovation) for non-engineers; every cited number is first-party-verified — the trends-report "delegation gap" figures were NOT first-party-confirmable, so deliberately omitted. Tri-locale; anchor / zh-Hans / switcher gates + code-reviewer pass.
+
 ## 2026-07-01
 
 - **content** · Claude **Sonnet 5** (released 2026-06-30) rolled through the repo, all first-party verified (platform.claude.com model docs + anthropic.com/news/claude-sonnet-5): `claude-sonnet-4-6` → `claude-sonnet-5` and `Sonnet 4.6` → `Sonnet 5` everywhere they name the current default Sonnet — Stage 1 model table + reading list + pricing example, glossary Context-Window / Computer-Use / Frontier-Model entries, Stage 8 Computer-Use row, setup-guide + examples/README model-picker, all walkthrough + stage-3/4 example CLI commands, the `branches/for-developer` Aider example (its two-generations-old `claude-sonnet-4-20250514` snapshot also bumped to `claude-sonnet-5`), the repo CLAUDE.md picker, and the `freshness-models.yml` whitelist (47 content files, 43 model-ID swaps). Verified specs carried, none invented: **1M context** (same as Opus 4.8), **$3/$15** standard ($2/$10 intro through 2026-08-31), "best speed×intelligence" positioning; Sonnet 5 supersedes Sonnet 4.6 (now Legacy). Historical `Sonnet 4.5` references (Stage 6 predecessor list, Stage 7 GAIA leaderboard) deliberately left intact. Tri-locale; anchor / zh-Hans / switcher gates + code-reviewer pass.
