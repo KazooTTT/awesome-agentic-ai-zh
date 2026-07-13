@@ -50,7 +50,7 @@ These 3 are SaaS APIs: you pay per token and cannot self-host them.
 | **GPT** (OpenAI) | GPT-5.6 Sol / Terra / Luna | 1.05M | general-purpose / function calling / broadest ecosystem | broad queries / function-call frameworks / GPTs ecosystem | [platform.openai.com/docs/models](https://platform.openai.com/docs/models) |
 | **Gemini** (Google) | 3.5 Flash / 3.5 Pro (in dev) | 2M | long context / native multimodal / Google integration | PDF / video and audio / large document sets / Google Workspace | [ai.google.dev](https://ai.google.dev/gemini-api/docs/models/gemini) |
 
-> **Note**: `(in dev)` = not released yet. ⚠️ Claude **Fable 5** (originally the top tier, positioned above Opus) launched 2026-06-09 but **was suspended on 2026-06-12 and can't be used right now** → use Opus 4.8 (the best tier you can actually use today). Context is the flagship's ceiling: Gemini Pro series 2M, Flash 1M; Claude 1M (Haiku 4.5 is 200k); all three GPT-5.6 tiers are 1.05M. Also, **Sonnet 5** (launched 2026-06-30) is the current Sonnet: 1M context, fast, and cheaper than Opus ($3/$15 vs Opus $5/$25). **GPT-5.6** (launched 2026-07) comes in three tiers: **Sol** flagship ($5/$30), **Terra** balanced ($2.50/$15), **Luna** fastest and cheapest ($1/$6) — available in ChatGPT, Codex, and the API.
+> **Note**: `(in dev)` = not released yet. Claude **Fable 5** (Mythos-class, above Opus, $10/$50) was suspended on 2026-06-12 by a US export-control directive, but **the controls were lifted 2026-06-30 and Fable 5 was redeployed globally on 2026-07-01** (Claude Platform / Claude Code / Cowork; API rollout in progress) — it is again the highest Claude tier (Opus 4.8 is the Opus-class flagship). Context is the flagship's ceiling: Gemini Pro series 2M, Flash 1M; Claude 1M (Haiku 4.5 is 200k); all three GPT-5.6 tiers are 1.05M. Also, **Sonnet 5** (launched 2026-06-30) is the current Sonnet: 1M context, fast, and cheaper than Opus ($3/$15 vs Opus $5/$25). **GPT-5.6** (launched 2026-07) comes in three tiers: **Sol** flagship ($5/$30), **Terra** balanced ($2.50/$15), **Luna** fastest and cheapest ($1/$6) — available in ChatGPT, Codex, and the API.
 
 ### 🇨🇳 Chinese Commercial + Open-Source Frontier (7 providers)
 
@@ -136,7 +136,7 @@ If not — go back to Stage 0 first.
 
 ## 📚 Required Reading
 
-1. [**Anthropic — Claude Model Overview**](https://docs.claude.com/en/about-claude/models/overview) — official model family overview, including 2026's Claude Fable 5 (`claude-fable-5`, Mythos-class, GA 2026-06-09) plus Opus 4.8 / Sonnet 5 / Haiku 4.5. ⚠️ **Both Fable 5 and its sibling Mythos 5 (`claude-mythos-5`) had access suspended on 2026-06-12 by a US export-control directive ([status](https://status.claude.com/) · [statement](https://www.anthropic.com/news/fable-mythos-access)) and are currently unavailable with no restoration timeline; Opus 4.8 is the current top usable Claude tier.**
+1. [**Anthropic — Claude Model Overview**](https://docs.claude.com/en/about-claude/models/overview) — official model family overview, including 2026's Claude Fable 5 (`claude-fable-5`, Mythos-class, GA 2026-06-09) plus Opus 4.8 / Sonnet 5 / Haiku 4.5. **Fable 5 and its sibling Mythos 5 (`claude-mythos-5`) were suspended on 2026-06-12 by a US export-control directive; the controls were lifted 2026-06-30 and [Fable 5 was redeployed globally on 2026-07-01](https://www.anthropic.com/news/redeploying-fable-5) (with a new safety classifier), while Mythos 5 was restored only for approved US organizations. Fable 5 is again the highest Claude tier; Opus 4.8 is the Opus-class flagship.**
 2. [**anthropics/courses — Anthropic API Fundamentals**](https://github.com/anthropics/courses) ⭐⭐⭐⭐⭐ ★ 21k+ — Anthropic's official 5-course umbrella; **module 1 "Anthropic API Fundamentals" maps to this stage**. Jupyter notebooks, runs on Claude 3 Haiku (cheapest), hands-on walkthrough of API essentials.
 3. [**OpenAI Quickstart**](https://platform.openai.com/docs/quickstart) — first API call walkthrough
 4. [**A Visual Guide to LLM Tokenizers**](https://huggingface.co/learn/llm-course/chapter6/1) — Hugging Face's intro
@@ -359,7 +359,7 @@ PRICING = {
     "claude-haiku-4-5":   {"input": 1.00, "output":  5.00},
     "claude-sonnet-5":    {"input": 3.00, "output": 15.00},
     "claude-opus-4-8":    {"input": 5.00, "output": 25.00},  # Opus 4.8 (May 2026, Dynamic Workflows) — same 5/25 pricing
-    "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5 (Mythos-class, GA 2026-06-09; suspended 2026-06-12, unavailable) ~2x Opus 4.8
+    "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5 (Mythos-class, restored 2026-07-01) ~2x Opus 4.8
 }
 
 client = anthropic.Anthropic()

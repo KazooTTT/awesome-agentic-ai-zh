@@ -6,6 +6,10 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-07-13
+
+- **content** · **Claude Fable 5 is back** — swept the repo's now-false "suspended / unavailable / use Opus 4.8" caveats. First-party verified (anthropic.com/news/redeploying-fable-5, 2026-06-30): the US export controls were lifted 2026-06-30 and Fable 5 was redeployed globally on 2026-07-01 (Claude Platform / Claude Code / Cowork; API rollout in progress; redeployed with a new safety classifier that blocks the flagged jailbreak and reroutes to Opus 4.8). Mythos 5 restored only for approved US organizations. Updated ~44 mentions across Stage 1 / 6 / 7 / 7.5 / 8, the glossary, examples/README, and the repo CLAUDE.md (tri-locale): suspension caveats → "restored 2026-07-01"; and since Fable 5 (Mythos-class, above Opus) is on top again, the now-false "Opus 4.8 is the current top usable Claude tier" claims were corrected to "Opus-class flagship" (kept only as a past-tense note where it records that Opus was the top usable tier *while Fable was suspended*). Also filled in Fable 5's now-known 1M context in the model pickers. Example pricing code AST-parses clean. Tri-locale; anchor / zh-Hans / switcher gates + code-reviewer pass.
+
 ## 2026-07-12
 
 - **content** · Stage 2 Exercise 2 (Few-Shot) now makes a **fair** zero-shot vs few-shot comparison (resolves #62, reported by @WMichstaBe). The zero-shot baseline had no task instruction (just `input: {text}\noutput:`), which conflated "telling the model the task" with "showing examples" — small models often read it as text continuation and scored ~0, overstating the few-shot gain. Both conditions now share the same `TASK` instruction and few-shot only *adds* examples, so the experiment isolates the effect of the examples. The fragile `assert c3 >= c0` (few-shot isn't guaranteed to beat zero-shot) was replaced with a completeness check plus an honest "net gain may be 0 or even negative" printout; the observation prose was reframed to few-shot's real value (pinning output format + judgment on ambiguous cases). Path A + Path B, tri-locale; example code AST-parses clean; gates + code-reviewer pass.

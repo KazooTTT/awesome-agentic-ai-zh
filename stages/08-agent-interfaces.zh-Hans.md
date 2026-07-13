@@ -83,7 +83,7 @@
 ## 📚 必修阅读
 
 1. [**Anthropic — Introducing Computer Use**](https://www.anthropic.com/news/3-5-models-and-computer-use) — Computer Use 的原始发布，必读以了解其工作原理。
-2. [**Anthropic — Claude Opus 4.8 Release Notes**](https://docs.anthropic.com/en/release-notes/overview) — Opus 4.8（2026 年 5 月）引入 Dynamic Workflows + parallel subagent harness，为 Opus 级旗舰、也是目前可用的最高层级。2026 年 6 月 9 日 Anthropic 发布 Claude Fable 5（`claude-fable-5`）与 Claude Mythos 5（`claude-mythos-5`）这个位在 Opus 之上的 Mythos-class 层级。⚠️ **2026-06-12 美国出口管制指令暂停了两者全部访问（[状态页](https://status.claude.com/) · [官方声明](https://www.anthropic.com/news/fable-mythos-access)），目前无法使用且无恢复时间。**
+2. [**Anthropic — Claude Opus 4.8 Release Notes**](https://docs.anthropic.com/en/release-notes/overview) — Opus 4.8（2026 年 5 月）引入 Dynamic Workflows + parallel subagent harness，为 Opus 级旗舰。2026 年 6 月 9 日 Anthropic 发布 Claude Fable 5（`claude-fable-5`）与 Claude Mythos 5（`claude-mythos-5`）这个位在 Opus 之上的 Mythos-class 层级。两者 2026-06-12 曾被美国出口管制暂停，但出口管制 2026-06-30 解除、[Fable 5 于 2026-07-01 全球恢复](https://www.anthropic.com/news/redeploying-fable-5)（Mythos 5 仅对核准的美国组织恢复）——Fable 5 又是最高阶的 Claude 层级。
 3. [**OpenAI — The next evolution of the Agents SDK**](https://openai.com/index/the-next-evolution-of-the-agents-sdk/) ⭐ **2026-04** — 内置沙箱和 harness 抽象，是生产级编码智能体架构的里程碑。
 4. [**OpenAI — Computer-Using Agent (CUA)**](https://openai.com/index/computer-using-agent/) — OpenAI 版本的 Computer Use，包含 WebArena / OSWorld 数据。
 5. [**browser-use docs**](https://docs.browser-use.com/) — 开源 web agent 排名第一（86k+ 星），5 行 Python 即可上手。
@@ -124,7 +124,7 @@
 
 | 厂商 | 产品 | 2026 状态 | OSWorld | 强项 |
 |---|---|---|---|---|
-| **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA，跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 基线，接近人类 72%；Opus 4.7 / 4.8 后续的 Computer Use 专项数据未公布）| 推理 + 代码智能体，Stage 5/7 主场。Opus 4.8 为目前可用的最高层级；Mythos-class 的 Fable 5（2026-06-09）已于 2026-06-12 暂停访问、目前无法使用 |
+| **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA，跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 基线，接近人类 72%；Opus 4.7 / 4.8 后续的 Computer Use 专项数据未公布）| 推理 + 代码智能体，Stage 5/7 主场。Opus 4.8 为 Opus 级旗舰；Mythos-class 的 Fable 5（2026-06-09）2026-06-12 暂停、2026-07-01 已恢复 |
 | **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/)（2026 年 4 月）| GA，**background mode** 不抢占光标，in-app browser，90+ 插件 | CUA 38.1% | 与 ChatGPT + Atlas 合并成 **Desktop Superapp** |
 | **OpenAI** | [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/) | API | 38.1% / WebArena 58.1% | API-first，可整合到自己的技术栈 |
 | **Google** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/)（Gemini 3）| GA + Android | — | **Auto Browse** + **Chrome Skills**，Chrome Enterprise Premium $6/用户/月 |

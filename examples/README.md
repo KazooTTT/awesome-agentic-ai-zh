@@ -122,10 +122,10 @@ if hasattr(sys.stdout, "reconfigure"):
 
 | Model | 每 1M input | 每 1M output | Context | 主用途 |
 |---|---|---|---|---|
-| `claude-fable-5` | $10 | $50 | — | Mythos 級；2026-06-09 GA。⚠️ **2026-06-12 起暫停存取**（美國出口管制指令）；目前無法使用、請改用 Opus 4.8 |
+| `claude-fable-5` | $10 | $50 | 1M | Mythos 級（位階在 Opus 之上）；2026-06-12 暫停、**2026-07-01 恢復**（出口管制解除）——目前最高階的 Claude 層級 |
 | **`claude-haiku-4-5`** ⭐ | $1 | $5 | 200k | 最便宜、Stage 1-7 練習 cloud 對照都 OK |
 | **`claude-sonnet-5`** ⭐ | $3 | $15 | 1M | **production 默認**、Stage 5+ agent 開發 |
-| `claude-opus-4-8` | $5 | $25 | 1M | Opus 級旗艦、複雜推理 / 長 context refactor、目前可用的最高層級 |
+| `claude-opus-4-8` | $5 | $25 | 1M | Opus 級旗艦、複雜推理 / 長 context refactor |
 
 訂閱替代：Claude Pro $20/月含 Sonnet 用量、Claude Max $100/月含 Opus。詳細看 [resources/cli-agents-guide.md](../resources/cli-agents-guide.md)。
 

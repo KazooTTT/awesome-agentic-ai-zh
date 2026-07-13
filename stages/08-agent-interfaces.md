@@ -83,7 +83,7 @@
 ## 📚 必修閱讀
 
 1. [**Anthropic — Introducing Computer Use**](https://www.anthropic.com/news/3-5-models-and-computer-use) — Computer Use 原始 launch、reading 工作原理必看
-2. [**Anthropic — Claude Opus 4.8 Release Notes**](https://docs.anthropic.com/en/release-notes/overview) — Opus 4.8（2026-05）含 Dynamic Workflows + parallel subagent harness、為 Opus 級旗艦、也是目前可用的最高層級。2026-06-09 Anthropic 發布 Claude Fable 5（`claude-fable-5`）與 Claude Mythos 5（`claude-mythos-5`）這個位在 Opus 之上的 Mythos-class 層級。⚠️ **2026-06-12 美國出口管制指令暫停了兩者全部存取（[狀態頁](https://status.claude.com/) · [官方聲明](https://www.anthropic.com/news/fable-mythos-access)），目前無法使用且無恢復時程。**
+2. [**Anthropic — Claude Opus 4.8 Release Notes**](https://docs.anthropic.com/en/release-notes/overview) — Opus 4.8（2026-05）含 Dynamic Workflows + parallel subagent harness、為 Opus 級旗艦。2026-06-09 Anthropic 發布 Claude Fable 5（`claude-fable-5`）與 Claude Mythos 5（`claude-mythos-5`）這個位在 Opus 之上的 Mythos-class 層級。兩者 2026-06-12 曾被美國出口管制暫停，但出口管制 2026-06-30 解除、[Fable 5 於 2026-07-01 全球恢復](https://www.anthropic.com/news/redeploying-fable-5)（Mythos 5 僅對核准的美國組織恢復）——Fable 5 又是最高階的 Claude 層級。
 3. [**OpenAI — The next evolution of the Agents SDK**](https://openai.com/index/the-next-evolution-of-the-agents-sdk/) ⭐ **2026-04** — 內建 sandbox + harness 抽象、production coding agent architecturally sound milestone
 4. [**OpenAI — Computer-Using Agent (CUA)**](https://openai.com/index/computer-using-agent/) — OpenAI 版 Computer Use + WebArena / OSWorld 數字
 5. [**browser-use docs**](https://docs.browser-use.com/) — OSS web agent 第一名（86k+ stars）、5 行 Python 起步
@@ -124,7 +124,7 @@ agent 收到任務
 
 | Vendor | 產品 | 2026 狀態 | OSWorld | 強項 |
 |---|---|---|---|---|
-| **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA、跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 baseline、近 human 72.36%；Opus 4.7 / 4.8 後續的 Computer Use 專項數字未公布）| reasoning + code agent、Stage 5/7 主場。Opus 4.8 為目前可用的最高層級；Mythos-class 的 Fable 5（2026-06-09）已於 2026-06-12 暫停存取、目前無法使用 |
+| **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA、跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 baseline、近 human 72.36%；Opus 4.7 / 4.8 後續的 Computer Use 專項數字未公布）| reasoning + code agent、Stage 5/7 主場。Opus 4.8 為 Opus 級旗艦；Mythos-class 的 Fable 5（2026-06-09）2026-06-12 暫停、2026-07-01 已恢復 |
 | **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/)（April 2026）| GA、**background mode** 不搶 cursor、in-app browser、90+ plugins | CUA 38.1% | 跟 ChatGPT + Atlas 合併成 **Desktop Superapp** |
 | **OpenAI** | [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/) | API | 38.1% / WebArena 58.1% | API-first、可整合自己 stack |
 | **Google** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/)（Gemini 3）| GA + Android | — | **Auto Browse** + **Chrome Skills**、Chrome Enterprise Premium $6/user/月 |

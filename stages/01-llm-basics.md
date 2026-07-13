@@ -52,7 +52,7 @@
 | **GPT**（OpenAI）| GPT-5.6 Sol / Terra / Luna | 1.05M | 通用 / function calling / ecosystem 最廣 | 廣度查詢 / function-call 框架 / GPTs 生態 | [platform.openai.com/docs/models](https://platform.openai.com/docs/models) |
 | **Gemini**（Google）| 3.5 Flash / 3.5 Pro（開發中）| 2M | 長 context / 原生 multimodal / Google 整合 | PDF / 影音 / 大量文件 / Google Workspace | [ai.google.dev](https://ai.google.dev/gemini-api/docs/models/gemini) |
 
-> **註**：`（開發中）`= 還沒推出。⚠️ Claude **Fable 5**（原本定位在 Opus 之上的最高等級）2026-06-09 上線，但 **2026-06-12 起被暫停、目前不能用** → 改用 Opus 4.8（目前能用的最高階）。Context 欄填的是旗艦的上限：Gemini Pro 系列 2M、Flash 1M；Claude 1M（Haiku 4.5 是 200k）；GPT-5.6 三款都是 1.05M。另外 **Sonnet 5**（2026-06-30 上線）是目前的 Sonnet 版本：1M context、速度快、比 Opus 便宜（$3/$15，Opus 是 $5/$25）。**GPT-5.6**（2026-07 上線）分三級：**Sol** 旗艦（$5/$30）、**Terra** 均衡（$2.50/$15）、**Luna** 最快最省（$1/$6），ChatGPT / Codex / API 皆可用。
+> **註**：`（開發中）`= 還沒推出。Claude **Fable 5**（Mythos-class、位階在 Opus 之上、$10/$50）曾於 2026-06-12 被美國出口管制暫停，**出口管制已於 2026-06-30 解除、Fable 5 於 2026-07-01 全球恢復**（Claude Platform / Claude Code / Cowork 可用、API 陸續開放），是目前最高階的 Claude 層級（Opus 4.8 為 Opus 級旗艦）。Context 欄填的是旗艦的上限：Gemini Pro 系列 2M、Flash 1M；Claude 1M（Haiku 4.5 是 200k）；GPT-5.6 三款都是 1.05M。另外 **Sonnet 5**（2026-06-30 上線）是目前的 Sonnet 版本：1M context、速度快、比 Opus 便宜（$3/$15，Opus 是 $5/$25）。**GPT-5.6**（2026-07 上線）分三級：**Sol** 旗艦（$5/$30）、**Terra** 均衡（$2.50/$15）、**Luna** 最快最省（$1/$6），ChatGPT / Codex / API 皆可用。
 
 ### 🇨🇳 中國商業 + 開源 frontier（7 家）
 
@@ -138,7 +138,7 @@
 
 ## 📚 必修閱讀
 
-1. [**Anthropic — Claude 模型總覽**](https://docs.claude.com/en/about-claude/models/overview) — 官方模型 family、含 2026 的 Claude Fable 5（`claude-fable-5`、Mythos-class、2026-06-09 GA）以及 Opus 4.8 / Sonnet 5 / Haiku 4.5。⚠️ **Fable 5 與姊妹版 Mythos 5（`claude-mythos-5`）已於 2026-06-12 被美國出口管制指令暫停存取（[狀態頁](https://status.claude.com/) · [官方聲明](https://www.anthropic.com/news/fable-mythos-access)）、目前無法使用且無恢復時程；Opus 4.8 是目前可用的最高 Claude 層級。**
+1. [**Anthropic — Claude 模型總覽**](https://docs.claude.com/en/about-claude/models/overview) — 官方模型 family、含 2026 的 Claude Fable 5（`claude-fable-5`、Mythos-class、2026-06-09 GA）以及 Opus 4.8 / Sonnet 5 / Haiku 4.5。**Fable 5 與姊妹版 Mythos 5（`claude-mythos-5`）曾於 2026-06-12 被美國出口管制指令暫停，出口管制已於 2026-06-30 解除；[Fable 5 於 2026-07-01 全球恢復](https://www.anthropic.com/news/redeploying-fable-5)（重新部署時加了新的安全 classifier），Mythos 5 僅對核准的美國組織恢復。Fable 5 是目前最高階的 Claude 層級，Opus 4.8 為 Opus 級旗艦。**
 2. [**anthropics/courses — Anthropic API Fundamentals**](https://github.com/anthropics/courses) ⭐⭐⭐⭐⭐ ★ 21k+ — Anthropic 官方 5 course umbrella、**module 1「Anthropic API Fundamentals」對應本 stage**。Jupyter notebook、用 Claude 3 Haiku（最便宜）跑、跟著做就能拿到 API 基本功
 3. [**OpenAI Quickstart**](https://platform.openai.com/docs/quickstart) — 第一次 API call 的步驟
 4. [**A Visual Guide to LLM Tokenizers**](https://huggingface.co/learn/llm-course/chapter6/1) — Hugging Face 的入門
@@ -404,7 +404,7 @@ PRICING = {
     "claude-haiku-4-5":   {"input": 1.00, "output":  5.00},
     "claude-sonnet-5":    {"input": 3.00, "output": 15.00},
     "claude-opus-4-8":    {"input": 5.00, "output": 25.00},  # Opus 4.8 (May 2026, Dynamic Workflows) — 維持 5/25 同價
-    "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5 (Mythos-class, 2026-06-09 GA；2026-06-12 起暫停、無法使用) 約 Opus 4.8 的 2 倍
+    "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5 (Mythos-class、2026-07-01 恢復可用) 約 Opus 4.8 的 2 倍
 }
 
 client = anthropic.Anthropic()
