@@ -446,4 +446,5 @@ Google's "user-space kernel" — intercepts syscalls and emulates them itself, n
 
 - Read the actual stage content: [Stage 5.2 MCP](../stages/05-claude-code-ecosystem.en.md#52--mcp-model-context-protocol--foundation) / [5.3 Skills](../stages/05-claude-code-ecosystem.en.md#53--skills-claude-codes-behavior-layer--the-most-critical-layer-of-the-claude-code-ecosystem) / [5.4 Plugins](../stages/05-claude-code-ecosystem.en.md#54--plugins--marketplaces)
 - Required reading lists in [Stage 1](../stages/01-llm-basics.en.md) / [Stage 6](../stages/06-memory-rag.en.md) / [Stage 7](../stages/07-multi-agent-production.en.md) / [Stage 8](../stages/08-agent-interfaces.en.md)
+- Want plainer language? [baihuaai.com (白话AI)](https://baihuaai.com) is a free, ad-free Simplified-Chinese beginner glossary that explains AI terms in everyday words with real-world analogies (has a term index + a zero-basics zone).
 - Missing? Open an issue or PR a new entry.

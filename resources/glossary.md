@@ -450,4 +450,5 @@ Google 寫的「用戶空間 kernel」、攔截 syscall 自己模擬、**不用 
 
 - 看 [Stage 5.2 — MCP](../stages/05-claude-code-ecosystem.md#52--mcpmodel-context-protocol-基礎) / [5.3 — Skills](../stages/05-claude-code-ecosystem.md#53--skillsclaude-code-的行為層-claude-code-生態最關鍵的一層) / [5.4 — Plugins](../stages/05-claude-code-ecosystem.md#54--plugins-與-marketplaces) 的內文
 - 看 [Stage 1](../stages/01-llm-basics.md) / [Stage 6](../stages/06-memory-rag.md) / [Stage 7](../stages/07-multi-agent-production.md) / [Stage 8](../stages/08-agent-interfaces.md) 的延伸閱讀清單
+- 想要更白話的解釋？[baihuaai.com（白话AI）](https://baihuaai.com) 是一個免費、無廣告的简中入門辭典，用大白話搭配現實類比講 AI 術語（有「术语索引」與「零基础专区」）。
 - 找不到的詞 → 開 issue 或直接 PR 加進這份小辭典
