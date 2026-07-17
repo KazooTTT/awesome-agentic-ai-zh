@@ -44,6 +44,7 @@ NON_REPO_OWNERS = {
     "issues", "pulls", "notifications", "search", "new",
     "organizations", "users", "blog", "about", "pricing",
     "features", "security", "enterprise", "customer-stories",
+    "sponsors", "apps", "orgs",
 }
 
 MAX_WORKERS = 10

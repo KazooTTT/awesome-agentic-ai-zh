@@ -2,7 +2,7 @@
 
 > 這份是給 maintainer / 第一個跑各個 build 的人看的。**誠實地說明哪些 code 真的跑過、哪些只是 syntax check、哪些完全沒測**。
 
-最後更新：2026-05-06
+最後更新：2026-07-17
 
 ---
 
@@ -11,6 +11,7 @@
 | 項目 | 狀態 | 證據 |
 |---|---|---|
 | `scripts/refresh-stars.py` | ✅ Verified | 在 main 上跑過 N 次，0 drift / 0 not-found 都有實際輸出 |
+| `scripts/pr-link-audit.py` | ✅ Verified | unit tests 綠 + offline `--diff-file` smoke；live `gh api` 正確 flag 了 archived LangServe（★/license/pushed 都對證過） |
 | `scripts/check-links.py --fast` | ✅ Verified | 跑過 120 GitHub URLs 全 OK |
 | `gh api` repo 元資料抓取 | ✅ Verified | 152 個 entry 的 stars / license / pushed 都對證過至少一次 |
 | Mermaid syntax | ✅ Verified | GitHub 上 render 看過正確（README hero） |
@@ -25,6 +26,7 @@
 | `scripts/build-pdf.sh` | ⚠️ Bash syntax OK | **沒實際跑過** pandoc + xelatex；沒驗證輸出的 PDF 真的能開、CJK 字型真的可用 |
 | `scripts/build-mdbook.sh` | ⚠️ Bash syntax OK | 跑過一次但 mdbook-mermaid 失敗（已 fix 但沒重跑驗證） |
 | `.github/workflows/lint.yml` | ⚠️ YAML valid | **沒在真 PR 上觸發過**——不知道 Linux runner 上 grep 行為跟本地 git-bash 是否一致 |
+| `.github/workflows/pr-link-audit.yml` | ⚠️ YAML valid · script 已測 | **Action 本體沒在真 PR 上觸發過**——fork-skip gate、sticky comment PATCH/POST、`base...head` SHA diff 解析都還沒在真 runner 上驗證（script 邏輯本身有 unit tests + offline smoke） |
 | `.github/workflows/docs.yml` | ⚠️ YAML valid · 本機 mkdocs build 綠 | 統一 Pages workflow（mkdocs `/` + mdBook `/book/`，取代已刪除的 deploy-book.yml）。mdBook 子路徑 base-url 尚未在 CI 端到端驗證（首次 deploy 後需實測 `/book/` 資產） |
 | `walkthroughs/build-first-agent-in-7-steps.md` 的 Python 範例（~350 行）| ⚠️ 結構合理 | **完全沒實際跑過**——根據對 Anthropic SDK / LangGraph / Chroma / promptfoo 的理解寫出來，但沒從頭到尾 execute 一次。可能有：API 介面變動、套件版本相依、import path 微差 |
 | `book.toml` mdBook 設定 | ⚠️ TOML valid | 沒實際 build 過完整 site |

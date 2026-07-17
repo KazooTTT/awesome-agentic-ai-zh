@@ -154,6 +154,11 @@ jobs:
         # touching scripts/**.
         run: python3 scripts/test_refresh_stars.py
 
+      - name: pr-link-audit.py detection unit tests
+        # Pins the PR link-audit bot's diff-parsing + advisory-flag logic
+        # (scripts/test_pr_link_audit.py). stdlib-only, network-free.
+        run: python3 scripts/test_pr_link_audit.py
+
   link-rot:
     name: Link rot check (GitHub URLs)
     runs-on: ubuntu-latest
