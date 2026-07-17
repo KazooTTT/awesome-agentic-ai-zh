@@ -13,7 +13,7 @@ After Stages 0-2, you want to use existing CLI agents to get real work done — 
 
 ## 📌 Learning Goals
 
-- Know the differences between 7 mainstream CLI agents (Claude Code / Codex / OpenCode / Gemini CLI / goose / Aider / Hermes Agent)
+- Know the differences between 8 mainstream CLI agents (Claude Code / Codex / OpenCode / Gemini CLI / goose / Aider / Hermes Agent / Grok Build)
 - Pick a first CLI tool based on your scenario
 - Complete install + auth + your first real task (not a hello world)
 - Know when to switch / add a second CLI
@@ -28,7 +28,7 @@ You should already:
 ## 📚 Required Reading
 
 1. [**`resources/agent-paradigms.en.md`**](../../resources/agent-paradigms.en.md) ⭐ — the 5-paradigm map of the agent landscape; read this first to see where CLI agents sit (Type 2 + Type 3) in the wider ecosystem
-2. [**`resources/cli-agents-guide.en.md`**](../../resources/cli-agents-guide.en.md) ⭐ — the core reference for this track. 7 mainstream CLI agents side by side, use-case picks, real-world setups
+2. [**`resources/cli-agents-guide.en.md`**](../../resources/cli-agents-guide.en.md) ⭐ — the core reference for this track. 8 mainstream CLI agents side by side, use-case picks, real-world setups
 3. [**Anthropic — Claude Code Quickstart**](https://docs.anthropic.com/en/docs/claude-code/quickstart) — official install
 4. [**OpenAI — Codex Quickstart**](https://github.com/openai/codex/blob/main/README.md) — Codex install + auth
 
@@ -60,7 +60,7 @@ Deliberately break your API key (one wrong character) and see how the CLI errors
 
 ## 🎯 Curated Projects
 
-### 7 Mainstream CLI Agents
+### 8 Mainstream CLI Agents
 
 Detailed comparison (stars, license, strengths, recommended use cases) in [`resources/cli-agents-guide.en.md`](../../resources/cli-agents-guide.en.md). Quick entry points here:
 
@@ -85,6 +85,9 @@ Detailed comparison (stars, license, strengths, recommended use cases) in [`reso
 #### [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) ⭐⭐⭐⭐⭐
 ★ 142k+ — Nous Research's auto-evolving agent. Three differentiators: (1) the agent runs on a cloud VM and you message it from Telegram / Discord / Slack / WhatsApp / Signal; (2) model-neutral — supports GLM / Kimi / Xiaomi MiMo / MiniMax and other Chinese-ecosystem LLMs; (3) built-in cron scheduler + autonomous skill-evolution loop (★ data as of 2026-05; check the official GitHub for current numbers). ⚠️ Auto-evolving skills are experimental, lack third-party independent audits, and should be safety- and maintenance-verified before production use; start in low-risk contexts.
 
+#### [xai-org/grok-build](https://github.com/xai-org/grok-build) ⭐⭐⭐
+★ 10k+ — SpaceXAI's (xAI) official TUI coding agent (Rust; headless mode + ACP editor embedding). ⚠️ Open-sourced 2026-07-14, very new — watch first; not recommended as your first CLI agent.
+
 ---
 
 ### Adjacent tools
@@ -99,7 +102,7 @@ Closed-source desktop app — drag-and-drop UI for local LLMs. Try this first if
 
 Can you:
 
-- [ ] Articulate the core differences between the 7 mainstream CLIs (3-4 without checking the table)
+- [ ] Articulate the core differences between the 8 mainstream CLIs (3-4 without checking the table)
 - [ ] Have a working primary CLI (installed, authed, ran 5+ real tasks)
 - [ ] Written your own `CLAUDE.md` / `AGENTS.md` / `GEMINI.md`
 - [ ] Run a second CLI at least once, know the style differences

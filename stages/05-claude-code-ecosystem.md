@@ -421,12 +421,14 @@ Skill = **一個 markdown 檔**（`.claude/skills/<name>/SKILL.md`），告訴 C
 | **📄 Office docs 處理** | `pdf` / `docx` / `xlsx` / `pptx` | anthropics/skills | 讀寫 PDF / Word / Excel / PowerPoint。**必裝 set**——任何 office workflow 必備 |
 | **🔧 Code review** | `code-reviewer` / `code-review-excellence` | claude-plugins-official | staged diff 安全 / 風格 / 測試 review |
 | **🐛 Debug** | `debugger` / `systematic-debugging` | claude-plugins-official | 系統化 root cause 分析、避免 quick fix |
+| **🔐 安全稽核** | `security-audit` | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | Cloudflare 官方開源：六階段管線（偵察 → 漏洞搜獵 → 對抗式驗證 → 報告 → 結構化輸出 → 獨立複驗）派多個平行 agent 找真正可利用的漏洞，是 Cloudflare 自家漏洞挖掘 harness 的起點。`npx skills add` 安裝（MIT） |
 | **🎓 學術寫作** | `academic-writing-skills` | community | findings-first / mechanism / banned word audit |
 | **🔌 MCP 整合 / 寫 server** | `mcp-builder` / `mcp-integration` | claude-plugins-official | 寫 MCP server 跟整合既有 server 的腳手架 |
 | **💻 frontend / fullstack** | `frontend-developer` / `fullstack-developer` | claude-plugins-official | React 元件 / 全棧架構輔助 |
 | **📊 資料分析** | `data-analyst` / `visualization-expert` | community | SQL / pandas / chart 選型 |
 | **⚙ 權限 / 設定整理** | `update-config` / `fewer-permission-prompts` | claude-plugins-official | hooks / permissions / env var 管理 |
 | **🔁 自我改進** | `self-improving-agent` | community | 捕捉 learning / error / correction、agent 持續改進 |
+| **🚀 從想法到上線 agent** | `launch-your-agent` | [anthropics/launch-your-agent](https://github.com/anthropics/launch-your-agent) | Anthropic 官方教學 skill：訪談你要做什麼 → 界定 v0 → 在你自己的帳號上線一個 Claude Managed Agent → 用你自己的完成標準評分、迭代 → 會重複跑的就排程。⚠️ 自述 reference implementation、不維護也不收 PR（Apache-2.0） |
 | **🌐 通用 / fallback** | `general-purpose` | Claude Code 內建 | 複雜開放任務、未涵蓋情境的 default 入口 |
 
 **建議入手順序**：

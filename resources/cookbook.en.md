@@ -604,7 +604,7 @@ For local LLM work, treat "Claude Code" and "BYO-LLM CLI agents" as separate too
 ### Further Reading
 
 - Stage 1 [Local LLM exercise](../stages/01-llm-basics.en.md#exercise-6-local-llm): Ollama / llama.cpp / vLLM tradeoffs
-- [`cli-agents-guide.md`](cli-agents-guide.en.md): how to choose among 7 CLI agents
+- [`cli-agents-guide.md`](cli-agents-guide.en.md): how to choose among 8 CLI agents
 - Hermes Agent README: multi-platform gateway setup for Telegram / Discord / Slack and providers
 
 ---

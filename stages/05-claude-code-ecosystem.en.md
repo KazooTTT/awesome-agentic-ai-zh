@@ -421,12 +421,14 @@ These layers are often confused. **A one-line comparison**:
 | **📄 Office docs processing** | `pdf` / `docx` / `xlsx` / `pptx` | anthropics/skills | Read and write PDF / Word / Excel / PowerPoint. **A must-have set**—essential for any office workflow. |
 | **🔧 Code review** | `code-reviewer` / `code-review-excellence` | claude-plugins-official | Security / style / test review for staged diffs. |
 | **🐛 Debugging** | `debugger` / `systematic-debugging` | claude-plugins-official | Systematic root cause analysis, avoids quick fixes. |
+| **🔐 Security audit** | `security-audit` | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) | Open-sourced by Cloudflare: a six-phase pipeline (recon → hunt → adversarial validation → report → structured output → independent verification) that orchestrates parallel agents to find genuinely exploitable vulnerabilities; the seed of Cloudflare's own vulnerability-discovery harness. Install via `npx skills add` (MIT). |
 | **🎓 Academic writing** | `academic-writing-skills` | community | findings-first / mechanism / banned word audit. |
 | **🔌 MCP integration / server writing** | `mcp-builder` / `mcp-integration` | claude-plugins-official | Scaffolding for writing MCP servers and integrating existing ones. |
 | **💻 Frontend / fullstack** | `frontend-developer` / `fullstack-developer` | claude-plugins-official | Assistance with React components / full-stack architecture. |
 | **📊 Data analysis** | `data-analyst` / `visualization-expert` | community | SQL / pandas / chart type selection. |
 | **⚙️ Permissions / settings management** | `update-config` / `fewer-permission-prompts` | claude-plugins-official | Management of hooks / permissions / env vars. |
 | **🔁 Self-improvement** | `self-improving-agent` | community | Captures learning / errors / corrections for continuous agent improvement. |
+| **🚀 Idea to live agent** | `launch-your-agent` | [anthropics/launch-your-agent](https://github.com/anthropics/launch-your-agent) | Official Anthropic educational skill: interviews you about what to build → scopes a v0 → launches a Claude Managed Agent in your own account → grades it against your own definition of done and iterates → schedules it if the task recurs. ⚠️ Self-described reference implementation, not maintained, not accepting contributions (Apache-2.0). |
 | **🌐 General / fallback** | `general-purpose` | Built into Claude Code | The default entry point for complex, open-ended tasks and uncovered scenarios. |
 
 **Suggested adoption order**:

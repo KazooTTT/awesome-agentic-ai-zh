@@ -63,7 +63,7 @@
 | **Aider** | https://aider.chat | 任意（git-native） |
 | **Hermes Agent** | https://github.com/NousResearch/hermes-agent | 200+（model-neutral） |
 
-→ 想看 7 个 CLI 完整比较 → [`cli-agents-guide.zh-Hans.md`](cli-agents-guide.zh-Hans.md)
+→ 想看 8 个 CLI 完整比较 → [`cli-agents-guide.zh-Hans.md`](cli-agents-guide.zh-Hans.md)
 → Claude Code 第一次装的详细步骤 → 本指南 D
 
 > 💡 **IDE-based 跟 CLI agent 怎么选？** 边写 code 边要 AI 帮忙 → IDE；下单一 prompt 让 agent 自己跑完一整个任务 → CLI。两个可以并用。

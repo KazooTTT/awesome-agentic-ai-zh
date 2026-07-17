@@ -24,7 +24,7 @@ The table below splits a developer's day into 7 common scenarios. Each has a dif
 
 ## Curated Projects
 
-> **CLI agent comparison**: 7 major CLI agents (Claude Code / Codex / OpenCode / Gemini CLI / goose / Aider / Hermes Agent) compared side-by-side in [`resources/cli-agents-guide.en.md`](../resources/cli-agents-guide.en.md). New to CLI agents and want step-by-step onboarding → [`tracks/cli/A1-cli-intro.en.md`](../tracks/cli/A1-cli-intro.en.md) (Track A first stop).
+> **CLI agent comparison**: 8 major CLI agents (Claude Code / Codex / OpenCode / Gemini CLI / goose / Aider / Hermes Agent / Grok Build) compared side-by-side in [`resources/cli-agents-guide.en.md`](../resources/cli-agents-guide.en.md). New to CLI agents and want step-by-step onboarding → [`tracks/cli/A1-cli-intro.en.md`](../tracks/cli/A1-cli-intro.en.md) (Track A first stop).
 >
 > **MCP catalog**: Looking for integrations to wire CLI into daily tools (GitHub, Linear, Atlassian, Postgres, Playwright, Figma…) → [`resources/mcp-skills-catalog.en.md`](../resources/mcp-skills-catalog.en.md) (65+ entries by category).
 >

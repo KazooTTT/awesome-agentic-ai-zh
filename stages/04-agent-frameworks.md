@@ -182,7 +182,7 @@ Stage 3 教你寫 single tool / multi-tool selection（手寫 `if/elif/else` 路
 
 ## 🎯 精選 Projects
 
-按用途分 5 類、16 個項目一張表搞定。**挑入口看「適合誰」、想深入點連結看 repo / quickstart**。
+按用途分 5 類、17 個項目一張表搞定。**挑入口看「適合誰」、想深入點連結看 repo / quickstart**。
 
 | 分類 | Project | ⭐ | 適合誰 | 為什麼推薦 / 備註 |
 |---|---|---|---|---|
@@ -196,15 +196,16 @@ Stage 3 教你寫 single tool / multi-tool selection（手寫 `if/elif/else` 路
 | | [deepagents (LangChain)](https://github.com/langchain-ai/deepagents) | ⭐⭐⭐⭐ | 想要「開箱即用」的 deep agent 骨架、不想自己拼 | LangGraph 之上的 opinionated harness（有主見的骨架、替你做好設計選擇）：內建規劃（todo）、檔案系統記憶、子 agent、可載入 skills、context offload（把龐大的中間結果挪出 LLM 視窗）。`pip install deepagents`、MIT、v0.6.12（2026-06）|
 | | [OpenAI Swarm](https://github.com/openai/swarm) | ⭐⭐⭐⭐ 教育用<br>⭐⭐⭐ production | 想理解 multi-agent **核心 mental model** 但不想學整套 framework | ~200 LOC、只有 Agent + handoff 兩個觀念、MIT。⚠️ OpenAI 自己標 experimental / educational、不是 production tool。**讀 source 當 chapter-length 教材** |
 | | [Strands Agents (AWS)](https://github.com/strands-agents/sdk-python) | ⭐⭐⭐⭐ | 已 commit AWS 雲、Bedrock-native | model-driven 設計（LLM 自己 plan、無 explicit graph）、Apache 2.0。2025 後段推出、AWS Lambda / Step Functions / Bedrock Agents 整合 |
-| **特殊路線**<br>（CodeAct / typed / memory-first） | [Hugging Face Smolagents](https://github.com/huggingface/smolagents) | ⭐⭐⭐⭐ | 本地 LLM 生態、HF 整合場景 | CodeAct pattern 代表（agent 寫 Python 程式碼當 action、非 JSON tool call），★ 27k+、Apache 2.0、≤1000 LOC |
+| **特殊路線**<br>（CodeAct / typed / memory-first / filesystem-first） | [Hugging Face Smolagents](https://github.com/huggingface/smolagents) | ⭐⭐⭐⭐ | 本地 LLM 生態、HF 整合場景 | CodeAct pattern 代表（agent 寫 Python 程式碼當 action、非 JSON tool call），★ 27k+、Apache 2.0、≤1000 LOC |
 | | [Pydantic AI](https://github.com/pydantic/pydantic-ai) | ⭐⭐⭐ | production 預設要 runtime 型別安全 + structured output | type-safe agent、Pydantic 團隊出品、MIT。較新 |
 | | [Letta (formerly MemGPT)](https://github.com/letta-ai/letta) | ⭐⭐⭐⭐ | **長 session / 跨 day / persona-stable** agent（long-term assistant、therapist、tutor）| memory-first multi-agent、OS-paging 概念（working memory + archival store），★ 22k+、Apache 2.0。Stage 6 練習 5 也會提 |
+| | [vercel/eve](https://github.com/vercel/eve) | ⭐⭐⭐ | 想在 TS/JS 生態建長駐、可維運的 agent；喜歡「檔案即介面」的專案結構 | Vercel 出品的 filesystem-first framework：agent 的組成都是慣例位置的檔案——`instructions.md`（系統提示）、`tools/`、`skills/`、`channels/`（HTTP / Slack / Discord）、`schedules/`（排程），好檢視、好擴充。`npx eve@latest init` 起手、Apache-2.0、TypeScript，★ 3.7k+。⚠️ 2026-06 才發布、很新 |
 | **特化** | [LlamaIndex Agents](https://github.com/run-llama/llama_index) | ⭐⭐⭐ | 文件密集型 agent（研究助理、知識工作者類） | 跟 RAG 緊整合，★ 49k+、MIT。retrieval 強、orchestration 弱——純 orchestration 別選 |
 | | [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) | ⭐⭐⭐ | 想要視覺化 debug 多 agent 流程的研究者 | 多 agent 平台、視覺化 debug 工具強，★ 26k+、Apache 2.0。西方社群採用低、技術紮實 |
 | | [LangChain](https://github.com/langchain-ai/langchain) | ⭐⭐⭐ | 需要黏合很多零件（retrieval + chain）的快速雛形 | 萬用工具袋 framework，★ 135k+、MIT。**agent orchestration 改用 LangGraph**、LangChain 適合 retrieval + chaining 黏合 |
 | **基礎設施**<br>（不是 framework、跨 stage 用） | [BerriAI/litellm](https://github.com/BerriAI/litellm) | ⭐⭐⭐⭐ | 要切換 Claude / GPT / Gemini / 開源模型但不想改 code | provider-agnostic SDK + AI gateway、用 OpenAI 形狀 call 100+ LLM、附 cost tracking / fallback / guardrail，★ 49k+、MIT（`enterprise/` 子目錄另授權）|
 
-> 💡 **建議閱讀路徑**：挑 **1 個 production 等級**（LangGraph）+ **1 個快速雛形**（CrewAI）深入學 → 跑練習 1-3 → 其他 framework README 瀏覽過去、知道存在即可。**特殊路線那 3 個**（CodeAct / typed / memory-first）在特定場景才有對手、平常不必碰。
+> 💡 **建議閱讀路徑**：挑 **1 個 production 等級**（LangGraph）+ **1 個快速雛形**（CrewAI）深入學 → 跑練習 1-3 → 其他 framework README 瀏覽過去、知道存在即可。**特殊路線那 4 個**（CodeAct / typed / memory-first / filesystem-first）在特定場景才有對手、平常不必碰。
 
 ## ✅ 進 Stage 5 前的自我檢查
 
