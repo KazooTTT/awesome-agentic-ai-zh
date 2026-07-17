@@ -21,7 +21,7 @@
 | Interface | 操作对象 | 工作原理 | 代表工具 |
 |---|---|---|---|
 | **🖱 Computer Use**（screen-level）| 任何桌面应用（Excel / SAP / Photoshop / 无 API 的软件）| 截图 → 视觉模型分析 → 计算坐标 → 模拟键鼠 | Anthropic Claude Computer Use / OpenAI Codex desktop / Gemini in Chrome |
-| **🌐 Browser Use**（web-level）| 任何网页 | DOM 感知导航 + 必要时视觉回退 | Atlas / Comet / browser-use（开源，86k 星）|
+| **🌐 Browser Use**（web-level）| 任何网页 | DOM 感知导航 + 必要时视觉回退 | Comet / browser-use（开源，86k 星）/ ChatGPT Agent Mode |
 | **📦 Code Sandbox**（isolated exec）| 智能体生成的代码在隔离环境中运行 | microVM / 容器 / 用户空间内核 | E2B / Daytona / Modal / Vercel Sandbox / OpenAI Agents SDK（2026 年 4 月内置）|
 
 ### 与之前阶段的区别（避免概念混淆）
@@ -125,10 +125,10 @@
 | 厂商 | 产品 | 2026 状态 | OSWorld | 强项 |
 |---|---|---|---|---|
 | **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA，跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 基线，接近人类 72%；Opus 4.7 / 4.8 后续的 Computer Use 专项数据未公布）| 推理 + 代码智能体，Stage 5/7 主场。Opus 4.8 为 Opus 级旗舰；Mythos-class 的 Fable 5（2026-06-09）2026-06-12 暂停、2026-07-01 已恢复 |
-| **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/)（2026 年 4 月）| GA，**background mode** 不抢占光标，in-app browser，90+ 插件 | CUA 38.1% | 与 ChatGPT + Atlas 合并成 **Desktop Superapp** |
+| **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/)（2026 年 4 月）| GA，**background mode** 不抢占光标，in-app browser，90+ 插件 | CUA 38.1% | 独立桌面 coding agent、跨 app workflow；agentic 浏览已并入 ChatGPT 桌面 app（Atlas 2026-08 停运后并入）|
 | **OpenAI** | [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/) | API | 38.1% / WebArena 58.1% | API-first，可整合到自己的技术栈 |
 | **Google** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/)（Gemini 3）| GA + Android | — | **Auto Browse** + **Chrome Skills**，Chrome Enterprise Premium $6/用户/月 |
-| **OpenAI Operator** | （**2025-08 停运**）| ❌ 不可用 | — | CAPTCHA / JS / session 处理不稳定，被 Atlas 取代 |
+| **OpenAI Operator** | （**2025-08 停运**）| ❌ 不可用 | — | CAPTCHA / JS / session 处理不稳定，被 Atlas 取代（Atlas 亦于 2026-08 停运）|
 
 → 详细现状见 [Agentic Browser Landscape 2026](https://nohacks.co/blog/agentic-browser-landscape-2026)、[OSWorld leaderboard](https://os-world.github.io/)
 
@@ -157,9 +157,9 @@
 
 | OS | Anthropic | OpenAI | Google |
 |---|---|---|---|
-| **macOS** | ✅ GA | ✅ Atlas + Codex desktop GA | Chrome 内 |
+| **macOS** | ✅ GA | ✅ Codex desktop GA（Atlas 已停运）| Chrome 内 |
 | **Linux** | ✅ Docker | ⚠ 较受限 | Chrome 内 |
-| **Windows** | ✅ Docker | 🔜 native preview / Atlas Win 即将推出 | Chrome 内 |
+| **Windows** | ✅ Docker | 🔜 native preview（Atlas 未出 Windows 版）| Chrome 内 |
 | **Mobile** | — | — | ✅ Gemini in Chrome on Android |
 
 ## 🌐 Browser Use — web 级智能体
@@ -197,7 +197,7 @@
 
 | 浏览器 | 来源 | 平台 | Agent Mode | 风险 / 注意事项 |
 |---|---|---|---|---|
-| **Atlas** | OpenAI（2025-10）| macOS GA，Win 🔜 | ✅（Plus / Pro / Business）| — |
+| **Atlas** ⚠️ | OpenAI（2025-10，**停运 2026-08**）| 仅 macOS（未出 Windows）| 功能并入 ChatGPT app | — |
 | **Comet** | Perplexity | iOS / Android / Win / Mac | ✅ research 最强 | ⚠ 2026 年 Brave 发现可被恶意网页注入；2026-03 联邦禁令禁止访问 Amazon。 |
 | **Dia** | The Browser Company（被 Atlassian 以 6.1 亿美元收购）| macOS | ❌（**不走 agent mode**，聚焦性能）| — |
 | **Gemini in Chrome** | Google（Gemini 3）| Chrome 全平台 + Android | ✅ **Auto Browse** + **Chrome Skills** | Enterprise Premium $6/用户/月 |
@@ -305,12 +305,12 @@
 - 适合：“分析 Q3 财报，整理成幻灯片，发到 Slack”这种**长时间且无需盯着看**的任务。
 - 与 Claude Code 互补：用 Claude Code 做代码任务，用 Codex desktop 做跨应用工作流。
 
-### 3. 使用 Atlas / Comet / Gemini in Chrome 运行 web 任务
+### 3. 使用 Comet / Gemini in Chrome / ChatGPT Agent Mode 运行 web 任务
 
 | 场景 | 推荐 | 理由 |
 |---|---|---|
 | 研究 / 跨页面综合 | **Comet** | 针对研究优化，有引用支持。 |
-| ChatGPT 用户 / Agent Mode | **Atlas** | Plus/Pro/Business 内置。 |
+| ChatGPT 用户 / Agent Mode | **ChatGPT 桌面 app**（Agent Mode）| Plus/Pro/Business 内置（Atlas 2026-08 停运后并入）。 |
 | Chrome / Google 生态系统 | **Gemini in Chrome** | Auto Browse + Skills，企业级 DLP。 |
 | **避免**：Comet 运行电子商务 / 银行任务 | — | ⚠ 2026-03 联邦禁令（详见[安全](#-2026-安全性--风险重点)）。|
 
@@ -444,7 +444,7 @@ agent = Agent(
 | **桌面后台工作流** | [OpenAI Codex desktop](https://openai.com/index/codex-for-almost-everything/)（2026 年 4 月）| 不抢占光标，可并行 |
 | **第一个 web 智能体**（开源） | [browser-use](https://github.com/browser-use/browser-use) ⭐ | 86k+ 星，5 行 Python，LLM 厂商无关 |
 | **GUI 解析研究**（开源）| [Microsoft OmniParser v2](https://github.com/microsoft/OmniParser) | 基于视觉，延迟改善 60% |
-| **主力 AI 浏览器**（消费 / 研究）| [Comet](https://comet.perplexity.ai/)（研究）/ [Atlas](https://openai.com/index/introducing-chatgpt-atlas/)（ChatGPT 用户）| 各家智能体模式强项不同 |
+| **主力 AI 浏览器**（消费 / 研究）| [Comet](https://comet.perplexity.ai/)（研究）/ ChatGPT Agent Mode（ChatGPT 用户；Atlas 2026-08 停运）| 各家智能体模式强项不同 |
 | **企业 / Chrome 生态系统** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/) | Auto Browse + Skills + DLP |
 | **第一个沙箱**（智能体 Python）| [E2B](https://github.com/e2b-dev/E2B) | Firecracker microVM，对 Python REPL 友好 |
 | **延迟敏感的沙箱** | [Daytona](https://www.daytona.io/) | < 90ms 冷启动 |
@@ -472,7 +472,7 @@ agent = Agent(
 | | [microsoft/OmniParser](https://github.com/microsoft/OmniParser) | ⭐⭐⭐⭐ | 基于视觉的 GUI 解析 | v2 延迟改善 60%，Apache 2.0，含 OmniTool（Windows VM 控制）|
 | **Computer Use Agent Stack** | [bytedance/UI-TARS-desktop](https://github.com/bytedance/UI-TARS-desktop) | ⭐⭐⭐⭐ | 在桌面跑开源 computer-use agent | ByteDance 开源的"computer use"agent、会看屏幕、操作你的桌面，36k+ 星，Apache-2.0 |
 | | [trycua/cua](https://github.com/trycua/cua) | ⭐⭐⭐⭐ | 打造 / sandbox computer-use agent | 打造"computer use"agent 的开源工具箱：安全 sandbox、SDK、测试，跨 macOS / Linux / Windows，18k+ 星，MIT |
-| **AI 浏览器**（闭源 / 消费）| [Atlas](https://openai.com/index/introducing-chatgpt-atlas/) | ⭐⭐⭐⭐ | ChatGPT 用户 + Agent Mode | OpenAI 出品，macOS GA |
+| **AI 浏览器**（闭源 / 消费）| [Atlas](https://openai.com/index/introducing-chatgpt-atlas/)（⚠️ 停运 2026-08）| ⭐⭐⭐ | ChatGPT 用户 + Agent Mode | OpenAI 出品，功能已并入 ChatGPT 桌面 app |
 | | [Comet](https://comet.perplexity.ai/) | ⭐⭐⭐⭐ | 面向研究的智能体浏览器 | Perplexity 出品，全平台，有引用支持。⚠ Brave 注入 + Amazon 禁令 |
 | | [Dia](https://www.diabrowser.com/) | ⭐⭐⭐ | 想要 AI 浏览器但**不要** agent mode | Browser Company 出品（被 Atlassian 以 6.1 亿美元收购），聚焦性能 |
 | **Sandbox**（microVM）| [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | ⭐⭐⭐⭐⭐ | 智能体运行 Python 循环 | Firecracker microVM，模板最多，Apache 2.0 |

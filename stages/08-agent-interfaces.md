@@ -21,7 +21,7 @@
 | Interface | 操作對象 | 工作原理 | 代表工具 |
 |---|---|---|---|
 | **🖱 Computer Use**（screen-level）| 任何桌面 app（Excel / SAP / Photoshop / 沒 API 的軟體）| screenshot → vision → 算座標 → 模擬鍵鼠 | Anthropic Claude Computer Use / OpenAI Codex desktop / Gemini in Chrome |
-| **🌐 Browser Use**（web-level）| 任何網頁 | DOM-aware navigation + 必要時 vision fallback | Atlas / Comet / browser-use（OSS 86k stars）|
+| **🌐 Browser Use**（web-level）| 任何網頁 | DOM-aware navigation + 必要時 vision fallback | Comet / browser-use（OSS 86k stars）/ ChatGPT Agent Mode |
 | **📦 Code Sandbox**（isolated exec）| agent 生成的 code 在隔離環境跑 | microVM / Container / user-space kernel（userland） | E2B / Daytona / Modal / Vercel Sandbox / OpenAI Agents SDK（April 2026 內建）|
 
 ### 跟前面 stage 的差別（避免概念混淆）
@@ -125,10 +125,10 @@ agent 收到任務
 | Vendor | 產品 | 2026 狀態 | OSWorld | 強項 |
 |---|---|---|---|---|
 | **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA、跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 baseline、近 human 72.36%；Opus 4.7 / 4.8 後續的 Computer Use 專項數字未公布）| reasoning + code agent、Stage 5/7 主場。Opus 4.8 為 Opus 級旗艦；Mythos-class 的 Fable 5（2026-06-09）2026-06-12 暫停、2026-07-01 已恢復 |
-| **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/)（April 2026）| GA、**background mode** 不搶 cursor、in-app browser、90+ plugins | CUA 38.1% | 跟 ChatGPT + Atlas 合併成 **Desktop Superapp** |
+| **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/)（April 2026）| GA、**background mode** 不搶 cursor、in-app browser、90+ plugins | CUA 38.1% | 獨立桌面 coding agent、跨 app workflow；agentic 瀏覽已併入 ChatGPT 桌面 app（Atlas 2026-08 停運後併入）|
 | **OpenAI** | [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/) | API | 38.1% / WebArena 58.1% | API-first、可整合自己 stack |
 | **Google** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/)（Gemini 3）| GA + Android | — | **Auto Browse** + **Chrome Skills**、Chrome Enterprise Premium $6/user/月 |
-| **OpenAI Operator** | （**停運 2025-08**）| ❌ 不可用 | — | CAPTCHA / JS / session 處理不穩、被 Atlas 取代 |
+| **OpenAI Operator** | （**停運 2025-08**）| ❌ 不可用 | — | CAPTCHA / JS / session 處理不穩、被 Atlas 取代（Atlas 亦於 2026-08 停運）|
 
 → 詳細現況見 [Agentic Browser Landscape 2026](https://nohacks.co/blog/agentic-browser-landscape-2026)、[OSWorld leaderboard](https://os-world.github.io/)
 
@@ -157,9 +157,9 @@ agent 收到任務
 
 | OS | Anthropic | OpenAI | Google |
 |---|---|---|---|
-| **macOS** | ✅ GA | ✅ Atlas + Codex desktop GA | Chrome 內 |
+| **macOS** | ✅ GA | ✅ Codex desktop GA（Atlas 已停運）| Chrome 內 |
 | **Linux** | ✅ Docker | ⚠ 較緊 | Chrome 內 |
-| **Windows** | ✅ Docker | 🔜 native preview / Atlas Win coming | Chrome 內 |
+| **Windows** | ✅ Docker | 🔜 native preview（Atlas 未出 Windows 版）| Chrome 內 |
 | **Mobile** | — | — | ✅ Gemini in Chrome on Android |
 
 ## 🌐 Browser Use — web 級 agent
@@ -197,7 +197,7 @@ agent 收到任務
 
 | Browser | 來源 | 平台 | Agent Mode | 風險 / 注意 |
 |---|---|---|---|---|
-| **Atlas** | OpenAI（2025-10）| macOS GA、Win 🔜 | ✅（Plus / Pro / Business）| — |
+| **Atlas** ⚠️ | OpenAI（2025-10，**停運 2026-08**）| 僅 macOS（未出 Windows）| 功能併入 ChatGPT app | — |
 | **Comet** | Perplexity | iOS / Android / Win / Mac | ✅ research 最強 | ⚠ 2026 Brave 發現可被惡意網頁注入；2026-03 federal injunction 禁存取 Amazon |
 | **Dia** | [Browser Company（被 Atlassian $610M 收購）](https://efficient.app/compare/dia-vs-comet) | macOS | ❌（**不走 agent mode**、聚焦效能）| — |
 | **Gemini in Chrome** | Google（Gemini 3）| Chrome 全平台 + Android | ✅ **Auto Browse** + **Chrome Skills** | Enterprise Premium $6/user/月 |
@@ -305,12 +305,12 @@ agent 收到任務
 - 適合：「分析 Q3 財報、整理成 slide、發 Slack」這種**長時間 + 不需要盯著看**的任務
 - 跟 Claude Code 互補：Claude Code 做 code 任務、Codex desktop 做跨 app workflow
 
-### 3. 用 Atlas / Comet / Gemini in Chrome 跑 web 任務
+### 3. 用 Comet / Gemini in Chrome / ChatGPT Agent Mode 跑 web 任務
 
 | 場景 | 推薦 | 理由 |
 |---|---|---|
 | 研究 / 跨頁面 synthesis | **Comet** | research-tuned、citation-backed |
-| ChatGPT user / Agent Mode | **Atlas** | Plus/Pro/Business 內建 |
+| ChatGPT user / Agent Mode | **ChatGPT 桌面 app**（Agent Mode）| Plus/Pro/Business 內建（Atlas 2026-08 停運後併入）|
 | Chrome / Google ecosystem | **Gemini in Chrome** | Auto Browse + Skills、enterprise DLP |
 | **避開**：Comet 跑 e-commerce / banking | — | ⚠ 2026-03 federal injunction（詳見[Safety](#-2026-safety--security-重點)）|
 
@@ -444,7 +444,7 @@ agent = Agent(
 | **桌面 background workflow** | [OpenAI Codex desktop](https://openai.com/index/codex-for-almost-everything/)（April 2026）| 不搶 cursor、可平行 |
 | **第一個 web agent**（OSS） | [browser-use](https://github.com/browser-use/browser-use) ⭐ | 86k stars、5 行 Python、LLM-vendor agnostic |
 | **GUI parsing 研究**（OSS）| [Microsoft OmniParser v2](https://github.com/microsoft/OmniParser) | vision-based、60% latency 改善 |
-| **AI Browser 主力**（消費 / research）| [Comet](https://comet.perplexity.ai/)（research）/ [Atlas](https://openai.com/index/introducing-chatgpt-atlas/)（ChatGPT user）| 各家 agent mode 強項不同 |
+| **AI Browser 主力**（消費 / research）| [Comet](https://comet.perplexity.ai/)（research）/ ChatGPT Agent Mode（ChatGPT user；Atlas 2026-08 停運）| 各家 agent mode 強項不同 |
 | **企業 / Chrome ecosystem** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/) | Auto Browse + Skills + DLP |
 | **第一個 sandbox**（agent Python）| [E2B](https://github.com/e2b-dev/E2B) | Firecracker microVM、Python REPL 友善 |
 | **Latency-critical sandbox** | [Daytona](https://www.daytona.io/) | < 90ms cold start |
@@ -472,7 +472,7 @@ agent = Agent(
 | | [microsoft/OmniParser](https://github.com/microsoft/OmniParser) | ⭐⭐⭐⭐ | vision-based GUI parsing | v2 60% latency 改善、Apache 2.0、含 OmniTool（Windows VM control）|
 | **Computer Use Agent Stack** | [bytedance/UI-TARS-desktop](https://github.com/bytedance/UI-TARS-desktop) | ⭐⭐⭐⭐ | 在桌面跑開源 computer-use agent | ByteDance 開源的「computer use」agent、會看螢幕、操作你的桌面，36k+ stars、Apache-2.0 |
 | | [trycua/cua](https://github.com/trycua/cua) | ⭐⭐⭐⭐ | 打造 / sandbox computer-use agent | 打造「computer use」agent 的開源工具箱：安全 sandbox、SDK、測試，跨 macOS / Linux / Windows，18k+ stars、MIT |
-| **AI Browser**（閉源 / 消費）| [Atlas](https://openai.com/index/introducing-chatgpt-atlas/) | ⭐⭐⭐⭐ | ChatGPT user + Agent Mode | OpenAI 出品、macOS GA |
+| **AI Browser**（閉源 / 消費）| [Atlas](https://openai.com/index/introducing-chatgpt-atlas/)（⚠️ 停運 2026-08）| ⭐⭐⭐ | ChatGPT user + Agent Mode | OpenAI 出品、功能已併入 ChatGPT 桌面 app |
 | | [Comet](https://comet.perplexity.ai/) | ⭐⭐⭐⭐ | research 用 agent browser | Perplexity 出品、全平台、citation-backed。⚠ Brave 注入 + Amazon injunction |
 | | [Dia](https://www.diabrowser.com/) | ⭐⭐⭐ | 想要 AI browser 但**不要** agent mode | Browser Company 出品（被 Atlassian $610M 收購）、聚焦效能 |
 | **Sandbox**（microVM）| [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | ⭐⭐⭐⭐⭐ | agent 跑 Python loop | Firecracker microVM、最多 template、Apache 2.0 |

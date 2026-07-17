@@ -90,7 +90,7 @@ These are the main choices for running on your own hardware, avoiding API fees, 
 | **Mistral** (Mistral AI) | 7B / Mixtral 8x7B / Codestral | Apache 2.0 (OSS parts) | strongest open-source 7B class | commercial self-host / EU sovereignty | [mistral.ai](https://mistral.ai/) · [HF Mistral](https://huggingface.co/mistralai) |
 | **Phi** (Microsoft) | Phi-4 14B + multimodal | MIT | **small but strong** / reasoning / edge-friendly | 4 GB+ RAM / mobile / reasoning intro | [HF microsoft](https://huggingface.co/microsoft) |
 
-> **Note**: Llama 4 hadn't shipped as of 2026-05 (the table shows 3.3); Gemma 4 was released 2026-04, ranked #3 on LMArena's open-weights board; Phi-4 also has a multimodal version.
+> **Note**: Llama 4 (Scout / Maverick) shipped 2025-04, but they're large MoE models, so 3.3 70B remains the practical single-GPU self-host base (the table shows 3.3); Behemoth never shipped. Gemma 4 was released 2026-04, ranked #3 on LMArena's open-weights board; Phi-4 also has a multimodal version.
 
 ### 🎯 Which One Should I Pick? (by scenario)
 

@@ -21,7 +21,7 @@
 | Interface | Target of Operation | How it Works | Representative Tools |
 |---|---|---|---|
 | **🖱 Computer Use** (screen-level)| Any desktop app (Excel, SAP, Photoshop, software without APIs) | Screenshot → Vision model analyzes → Calculate coordinates → Simulate keyboard/mouse | Anthropic Claude Computer Use / OpenAI Codex desktop / Gemini in Chrome |
-| **🌐 Browser Use** (web-level) | Any webpage | DOM-aware navigation + Vision fallback when necessary | Atlas / Comet / browser-use (OSS, 86k stars) |
+| **🌐 Browser Use** (web-level) | Any webpage | DOM-aware navigation + Vision fallback when necessary | Comet / browser-use (OSS, 86k stars) / ChatGPT Agent Mode |
 | **📦 Code Sandbox** (isolated exec)| Agent-generated code running in an isolated environment | microVM / Container / Userspace kernel | E2B / Daytona / Modal / Vercel Sandbox / OpenAI Agents SDK (built-in as of April 2026) |
 
 ### How This Stage Differs from Previous Ones (Avoiding Conceptual Confusion)
@@ -125,10 +125,10 @@ Agent receives a task
 | Vendor | Product | 2026 Status | OSWorld | Strengths |
 |---|---|---|---|---|
 | **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA, cross-platform on macOS/Linux/Windows (Docker) | **72.7%** (Opus 4.6 baseline, near human-level 72.36%; Computer Use numbers for Opus 4.7 / 4.8 not yet public) | Reasoning + code agent, home turf for Stages 5/7. Opus 4.8 is the Opus-class flagship; the Mythos-class Fable 5 (2026-06-09) was suspended 2026-06-12 and restored 2026-07-01 |
-| **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/) (April 2026)| GA, **background mode** doesn't hog the cursor, in-app browser, 90+ plugins | CUA 38.1% | Merged with ChatGPT + Atlas to become a **Desktop Superapp** |
+| **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/) (April 2026)| GA, **background mode** doesn't hog the cursor, in-app browser, 90+ plugins | CUA 38.1% | Standalone desktop coding agent + cross-app workflow; agentic browsing now lives in the ChatGPT desktop app (Atlas folded in, discontinued Aug 2026) |
 | **OpenAI** | [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/) | API | 38.1% / WebArena 58.1% | API-first, can be integrated into your own stack |
 | **Google** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/) (Gemini 3) | GA + Android | — | **Auto Browse** + **Chrome Skills**, Chrome Enterprise Premium $6/user/month |
-| **OpenAI Operator**| (Discontinued Aug 2025) | ❌ Unavailable | — | Unstable handling of CAPTCHA, JS, and sessions; replaced by Atlas |
+| **OpenAI Operator**| (Discontinued Aug 2025) | ❌ Unavailable | — | Unstable handling of CAPTCHA, JS, and sessions; replaced by Atlas (itself discontinued Aug 2026) |
 
 → For the latest details, see [Agentic Browser Landscape 2026](https://nohacks.co/blog/agentic-browser-landscape-2026) and the [OSWorld leaderboard](https://os-world.github.io/).
 
@@ -157,9 +157,9 @@ Agent receives a task
 
 | OS | Anthropic | OpenAI | Google |
 |---|---|---|---|
-| **macOS** | ✅ GA | ✅ Atlas + Codex desktop GA | Inside Chrome |
+| **macOS** | ✅ GA | ✅ Codex desktop GA (Atlas discontinued) | Inside Chrome |
 | **Linux** | ✅ Docker | ⚠ More restricted | Inside Chrome |
-| **Windows** | ✅ Docker | 🔜 Native preview / Atlas for Win coming | Inside Chrome |
+| **Windows** | ✅ Docker | 🔜 Native preview (Atlas never shipped for Windows) | Inside Chrome |
 | **Mobile** | — | — | ✅ Gemini in Chrome on Android |
 
 ## 🌐 Browser Use — The Web-Level Agent
@@ -197,7 +197,7 @@ Agent receives a task
 
 | Browser | Source | Platform | Agent Mode | Risks / Notes |
 |---|---|---|---|---|
-| **Atlas** | OpenAI (Oct 2025) | macOS GA, Win 🔜 | ✅ (Plus / Pro / Business) | — |
+| **Atlas** ⚠️ | OpenAI (Oct 2025, **discontinued Aug 2026**) | macOS only (never Windows) | folded into ChatGPT app | — |
 | **Comet** | Perplexity | iOS / Android / Win / Mac | ✅ Strongest for research | ⚠ Brave discovered in 2026 it could be injected by malicious webpages; a federal injunction in Mar 2026 blocked its access to Amazon. |
 | **Dia** | The Browser Company (acquired by Atlassian for $610M)| macOS | ❌ (**No agent mode**, focuses on performance) | — |
 | **Gemini in Chrome**| Google (Gemini 3) | All Chrome platforms + Android | ✅ **Auto Browse** + **Chrome Skills** | Enterprise Premium $6/user/month |
@@ -305,12 +305,12 @@ A common sticking point for new readers, explained here:
 - Best for tasks that are **long-running and don't need constant supervision**, like "Analyze the Q3 financial report, turn it into a slide deck, and post it to Slack."
 - Complements Claude Code: Use Claude Code for coding tasks, and Codex desktop for cross-app workflows.
 
-### 3. Use Atlas / Comet / Gemini in Chrome for Web Tasks
+### 3. Use Comet / Gemini in Chrome / ChatGPT Agent Mode for Web Tasks
 
 | Scenario | Recommendation | Reason |
 |---|---|---|
 | Research / cross-page synthesis | **Comet** | Tuned for research, citation-backed. |
-| ChatGPT user / Agent Mode | **Atlas** | Built into Plus/Pro/Business. |
+| ChatGPT user / Agent Mode | **ChatGPT desktop app** (Agent Mode) | Built into Plus/Pro/Business (Atlas folded in after its Aug 2026 discontinuation). |
 | Chrome / Google ecosystem | **Gemini in Chrome** | Auto Browse + Skills, enterprise DLP. |
 | **Avoid**: Using Comet for e-commerce/banking| — | ⚠ Federal injunction in Mar 2026 (see [Safety](#-2026-safety--security-highlights)). |
 
@@ -444,7 +444,7 @@ Use the OpenAI Agents SDK (April 2026 version) to integrate a sandbox for runnin
 | **Desktop background workflows** | [OpenAI Codex desktop](https://openai.com/index/codex-for-almost-everything/) (April 2026)| Doesn't hog the cursor, allows parallel tasks. |
 | **First web agent** (OSS) | [browser-use](https://github.com/browser-use/browser-use) ⭐ | 86k+ stars, 5 lines of Python, LLM-vendor agnostic. |
 | **GUI parsing research** (OSS) | [Microsoft OmniParser v2](https://github.com/microsoft/OmniParser) | Vision-based, 60% latency improvement. |
-| **Main AI Browser** (consumer/research)| [Comet](https://comet.perplexity.ai/) (research) / [Atlas](https://openai.com/index/introducing-chatgpt-atlas/) (ChatGPT user)| Different browsers excel at different agent modes. |
+| **Main AI Browser** (consumer/research)| [Comet](https://comet.perplexity.ai/) (research) / ChatGPT Agent Mode (ChatGPT user; Atlas discontinued Aug 2026)| Different browsers excel at different agent modes. |
 | **Enterprise / Chrome ecosystem** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/) | Auto Browse + Skills + DLP. |
 | **First sandbox** (agent Python) | [E2B](https://github.com/e2b-dev/E2B) | Firecracker microVM, Python REPL-friendly. |
 | **Latency-critical sandbox** | [Daytona](https://www.daytona.io/) | < 90ms cold start. |
@@ -472,7 +472,7 @@ A table of 17 projects, categorized by use case.
 | | [microsoft/OmniParser](https://github.com/microsoft/OmniParser) | ⭐⭐⭐⭐ | Vision-based GUI parsing | v2 has 60% latency improvement, Apache 2.0, includes OmniTool (Windows VM control). |
 | **Computer Use Agent Stack** | [bytedance/UI-TARS-desktop](https://github.com/bytedance/UI-TARS-desktop) | ⭐⭐⭐⭐ | Running an open computer-use agent on the desktop | ByteDance's open "computer use" agent that sees the screen and controls your desktop. 36k+ stars, Apache-2.0. |
 | | [trycua/cua](https://github.com/trycua/cua) | ⭐⭐⭐⭐ | Building / sandboxing computer-use agents | Open toolkit for building "computer use" agents — safe sandboxes, SDKs, and tests on macOS / Linux / Windows. 18k+ stars, MIT. |
-| **AI Browser** (closed-source/consumer)| [Atlas](https://openai.com/index/introducing-chatgpt-atlas/) | ⭐⭐⭐⭐ | ChatGPT users + Agent Mode | From OpenAI, GA on macOS. |
+| **AI Browser** (closed-source/consumer)| [Atlas](https://openai.com/index/introducing-chatgpt-atlas/) (⚠️ discontinued Aug 2026) | ⭐⭐⭐ | ChatGPT users + Agent Mode | From OpenAI; features folded into the ChatGPT desktop app. |
 | | [Comet](https://comet.perplexity.ai/) | ⭐⭐⭐⭐ | Research-focused agent browser | From Perplexity, all platforms, citation-backed. ⚠ Brave injection + Amazon injunction. |
 | | [Dia](https://www.diabrowser.com/) | ⭐⭐⭐ | For those who want an AI browser **without** agent mode| From The Browser Company (acquired by Atlassian for $610M), focuses on performance. |
 | **Sandbox** (microVM)| [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | ⭐⭐⭐⭐⭐ | For agents running a Python loop | Firecracker microVM, most templates, Apache 2.0. |

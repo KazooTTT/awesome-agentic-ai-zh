@@ -89,7 +89,7 @@
 | **Mistral**（Mistral AI）| 7B / Mixtral 8x7B / Codestral | Apache 2.0（OSS 部分）| 开源 7B 级最强 | 商用 self-host / EU 主权 | [mistral.ai](https://mistral.ai/) · [HF Mistral](https://huggingface.co/mistralai) |
 | **Phi**（Microsoft）| Phi-4 14B + multimodal | MIT | **小但强** / reasoning / 适合 edge | 4GB+ RAM / mobile / reasoning 入门 | [HF microsoft](https://huggingface.co/microsoft) |
 
-> **注**：Llama 4 截至 2026-05 还没发布（表中为 3.3）；Gemma 4 为 2026-04 发布、LMArena 开源组第 3；Phi-4 另有 multimodal 版。
+> **注**：Llama 4（Scout / Maverick）于 2025-04 发布，但属大型 MoE，单机自架的实用基准仍是 3.3 70B（表中为 3.3）、Behemoth 未发布；Gemma 4 为 2026-04 发布、LMArena 开源组第 3；Phi-4 另有 multimodal 版。
 
 ### 🎯 我该选哪家？（按场景反查）
 

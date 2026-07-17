@@ -89,12 +89,12 @@
 
 ### 跨 CLI vendor mini-comparison（2026-05 snapshot）
 
-只有 Claude Code 有**完整 7-layer stack**；其他 CLI 大多停在 single-agent + 簡化版：
+Claude Code 的 **7-layer stack 最完整**；Codex CLI / Gemini CLI 在 2026 已補上 subagents + hooks，其餘各層仍以 Claude Code 最齊：
 
 | Layer | Claude Code | OpenAI Codex | Gemini CLI |
 |---|---|---|---|
-| L5 Coordination（multi-agent）| ✅ Subagents | ❌ single-agent | ❌ |
-| L3 Control Plane（hooks）| ✅ Hooks | ❌ | ❌ |
+| L5 Coordination（multi-agent）| ✅ Subagents | ✅ Subagents | ✅ Subagents |
+| L3 Control Plane（hooks）| ✅ Hooks | ✅ Hooks | ✅ Hooks |
 | L2.5 Tool Provider（MCP）| ✅ | ✅（已支援 MCP）| ✅（需手動裝 MCP server）|
 | L6 Workflow（Skills）| ✅ SKILL.md | AGENTS.md（context only）| GEMINI.md（context only）|
 
@@ -558,13 +558,13 @@ Plugin
 
 ### 各家 CLI / SDK 的 multi-agent 機制現況（2025 後段）
 
-很多人以為 multi-agent CLI 是 Anthropic / OpenAI / Google 三家標配——但實際上目前只有 **Claude Code 有完整 native multi-agent stack**。Codex CLI / Gemini CLI / Cursor 都還是 single-agent，要 multi-agent 得自己用 SDK 或 framework 寫。
+multi-agent CLI 一度是 Claude Code 獨有——2026 年 Codex CLI 與 Gemini CLI 都已加入**原生 subagents + hooks**（Cursor 仍是單一 agent）。Claude Code 仍是最成熟、最完整的 native multi-agent stack。
 
 | 平台 | Subagent | Agent team | Background agent | 機制 |
 |---|:---:|:---:|:---:|---|
 | **Claude Code**（CLI） | ✅ | ✅ | ✅ | `.claude/agents/<name>.md` + Task tool（subagent）+ [agent teams](https://docs.claude.com/en/docs/claude-code/agent-teams) + [agent view / background](https://docs.claude.com/en/docs/claude-code/agent-view) |
-| **OpenAI Codex CLI** | ❌ | ❌ | ❌ | `AGENTS.md` 只是 **single-agent context file**（類似 CLAUDE.md），**不是 subagent 系統** |
-| **Google Gemini CLI** | ❌ | ❌ | ❌ | `GEMINI.md` 只是 context；無 subagent / multi-agent feature |
+| **OpenAI Codex CLI** | ✅ | ⚠️ | ✅ | [Subagents](https://developers.openai.com/codex/subagents) GA（≤6 平行）+ [hooks](https://developers.openai.com/codex/hooks)（2026）；cloud / background mode。`AGENTS.md` 仍是 context file |
+| **Google Gemini CLI** | ✅ | ⚠️ | ⚠️ | [Subagents](https://geminicli.com/docs/core/subagents/)（2026-04）+ [hooks](https://geminicli.com/docs/hooks/)；`@name` 顯式派遣、可平行。`GEMINI.md` 仍是 context |
 | **Cursor**（IDE-coupled） | ❌ | ❌ | ❌ | 單一 Cursor Agent；queued messages 是 sequential、非 parallel |
 | **OpenAI Agents SDK**<br>（programmatic、非 CLI） | ⚠️ Handoffs + agents-as-tools | ❌ | ❌ | 純 Python SDK、不是 CLI；handoff pattern 接近 Claude subagent 但要寫 code |
 | **Framework path**<br>（Stage 4） | LangGraph / CrewAI / AutoGen | ✅ 自己 wire | 部分 | 跨 LLM provider、Python orchestration、見 [Stage 4](04-agent-frameworks.md) |
@@ -576,7 +576,7 @@ Plugin
 - 想 **OpenAI 生態 + 多 agent** → 用 OpenAI Agents SDK 寫 handoff pattern（programmatic、非 CLI）
 - 想 **完全自己控** → 走 [Stage 5.7 Harness Internals](#57--claude-code-source-解剖reference-harness-implementation-track-b-必看)（讀 SDK source、自己 wire 多 agent）
 
-→ 本節剩下內容都聚焦在 **Claude Code subagent**。其他平台的進展請追蹤各家 changelog（Codex / Gemini / Cursor 都還在 single-agent + MCP 階段、可能 2026 後段才會跟進）。
+→ 本節剩下內容都聚焦在 **Claude Code subagent**。Codex / Gemini CLI 已在 2026 加入原生 subagents（見上表）、Cursor 仍是單一 agent；其餘進展追各家 changelog。
 
 ### 怎麼派遣 Claude Code 的 3 種 multi-agent 機制（具體 syntax）
 
