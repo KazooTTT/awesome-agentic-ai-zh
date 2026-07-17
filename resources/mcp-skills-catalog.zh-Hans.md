@@ -943,13 +943,13 @@
 **适合谁**：要在 Claude Code 内把实现工作自动 delegate 给 Codex 的开发者。
 **备注**：搭配 `gemini-delegate-skill` 用（一个跑 code-heavy、一个跑 long-form / CJK）。Stage 7 multi-agent 概念实战版。
 
-### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐⭐
+### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐（⚠️ 已封存 2026-07）
 
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 34 |
 | License | MIT |
-| 推荐度 | ⭐⭐⭐⭐ |
+| 推荐度 | ⭐⭐⭐（⚠️ 已封存） |
 
 **教什么**：Claude Code skill 把 Gemini CLI 当作 large-context synthesis、英文 / zh-TW / CJK long-form drafting、second-opinion review 的执行者。
 **适合谁**：写长文、跨语言 draft、需要第二意见 review 的人——研究者写 paper / 中文报告场景特别合适。

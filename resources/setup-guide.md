@@ -43,7 +43,7 @@
 | **Windsurf** | https://codeium.com/windsurf | 獨立 IDE（Codeium 出） |
 | **Cline** | https://cline.bot | VS Code extension（agentic 風格） |
 | **Continue** | https://continue.dev | VS Code / JetBrains extension（開源） |
-| **Roo Code** | https://github.com/RooCodeInc/Roo-Code | VS Code extension（Cline fork，社群活躍） |
+| **Roo Code** | https://github.com/RooCodeInc/Roo-Code | VS Code extension（Cline fork）；⚠️ **repo 已封存 2026-05（read-only）** |
 | **Zed** | https://zed.dev | 獨立 editor，內建 AI assistant |
 | **GitHub Copilot** | https://github.com/features/copilot | VS Code / JetBrains 等多 IDE extension |
 

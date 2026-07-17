@@ -43,7 +43,7 @@ Lives inside a code editor — you write code normally, AI suggests / edits / an
 | **Windsurf** | https://codeium.com/windsurf | Standalone IDE (by Codeium) |
 | **Cline** | https://cline.bot | VS Code extension (agentic style) |
 | **Continue** | https://continue.dev | VS Code / JetBrains extension (open-source) |
-| **Roo Code** | https://github.com/RooCodeInc/Roo-Code | VS Code extension (Cline fork, active community) |
+| **Roo Code** | https://github.com/RooCodeInc/Roo-Code | VS Code extension (Cline fork); ⚠️ **repo archived 2026-05 (read-only)** |
 | **Zed** | https://zed.dev | Standalone editor with built-in AI assistant |
 | **GitHub Copilot** | https://github.com/features/copilot | Multi-IDE extension (VS Code / JetBrains / etc.) |
 

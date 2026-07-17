@@ -135,7 +135,7 @@
 | **[zotero-skills](https://github.com/WenyuChiou/zotero-skills)** ⭐⭐⭐⭐ | 文献管理 | Zotero CLI skill（搜 / 加 / 分类 / 标记）——跟 zotero-gpt 互补（后者在 Zotero 里 chat，这份从外部操作） |
 | **[academic-writing-skills](https://github.com/WenyuChiou/academic-writing-skills)** ⭐⭐⭐ | 投稿前 | banned-word audit、figure-text coupling、submission checklist；per-paper 可定制 journal_format / style_overrides |
 | **[codex-delegate](https://github.com/WenyuChiou/codex-delegate)** ⭐⭐⭐⭐⭐ | 写代码 | Claude planner + Codex executor 的标准 skill——batch refactor / boilerplate / migration |
-| **[gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill)** ⭐⭐⭐⭐ | 长稿 / synthesis | Claude planner + Gemini 写 1M context 长文 / CJK / second-opinion |
+| **[gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill)** ⭐⭐⭐（⚠️ 已封存） | 长稿 / synthesis | Claude planner + Gemini 写 1M context 长文 / CJK / second-opinion。**⚠️ repo 已封存 2026-07**——workflow 仍可直接用 Gemini CLI 做 |
 
 ---
 

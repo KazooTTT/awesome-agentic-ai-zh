@@ -949,13 +949,13 @@ Claude is bad at token-heavy mechanical work (cost, context blowout); Codex is b
 **Don't use for**: architecture decisions, bug diagnosis, security review, tasks needing conversation memory — Claude does these better directly.
 **Notes**: pairs with `gemini-delegate-skill`. Practical implementation of the Stage 7 multi-agent concept.
 
-### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐⭐
+### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐ (⚠️ archived 2026-07)
 
 | Field | Value |
 |---|---|
 | Stars | ★ 34 |
 | License | MIT |
-| Rating | ⭐⭐⭐⭐ |
+| Rating | ⭐⭐⭐ (⚠️ archived) |
 
 **What it does**: Claude Code skill that uses Gemini CLI as the long-form / large-context / CJK executor — 1M-token context window, Chinese long-form drafting, second-opinion review. Claude provides the outline and critique; Gemini writes the long form.
 **Audience**: researchers writing papers, knowledge workers writing Chinese reports / Threads posts, people who want a second LLM's perspective for cross-checking.
