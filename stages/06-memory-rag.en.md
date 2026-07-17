@@ -637,7 +637,7 @@ OpenAI's **o1** (Sep 2024), followed by open-source efforts like DeepSeek's **R1
 | Your Situation | Recommendation |
 |---|---|
 | Using a general chat model base and want to add reasoning | Path 1 (Prompt-based) — ToT / Self-Consistency / CoVe |
-| Budget/latency allows for strongest reasoning | Path 2 — Choose among **GPT-5.5 / Opus 4.8 / Gemini 3.5 Flash / Grok 4.3 / V4-Pro** (Claude Fable 5 restored 2026-07-01, a premium top tier) |
+| Budget/latency allows for strongest reasoning | Path 2 — Choose among **GPT-5.5 / Opus 4.8 / Gemini 3.5 Flash / Grok 4.5 / V4-Pro** (Claude Fable 5 restored 2026-07-01, a premium top tier) |
 | Want to fine-tune your own reasoning model | Path 2 — Study the R1 paper (method baseline), start from R1-Distill / V4 open-source weights |
 | On-device / Extremely tight budget | **QwQ-32B** (Apache 2.0) or R series distilled versions |
 | Multi-agent debate / critic scenarios | Path 1 (CRITIC / debate) + [Stage 7 Multi-agent](07-multi-agent-production.md) |

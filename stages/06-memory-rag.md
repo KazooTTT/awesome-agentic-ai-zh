@@ -641,7 +641,7 @@ OpenAI **o1**（2024-09）開啟、DeepSeek **R1**（2025-01）開源化、**Dee
 | 你的情況 | 建議 |
 |---|---|
 | 用一般 chat model base、想加 reasoning | Path 1（prompt-based）—— ToT / Self-Consistency / CoVe |
-| 預算 / latency 允許、要最強 reasoning | Path 2 —— **GPT-5.5 / Opus 4.8 / Gemini 3.5 Flash / Grok 4.3 / V4-Pro** 任挑一個（Claude Fable 5 已於 2026-07-01 恢復，屬 premium 高階層級）|
+| 預算 / latency 允許、要最強 reasoning | Path 2 —— **GPT-5.5 / Opus 4.8 / Gemini 3.5 Flash / Grok 4.5 / V4-Pro** 任挑一個（Claude Fable 5 已於 2026-07-01 恢復，屬 premium 高階層級）|
 | 想自己 fine-tune reasoning model | Path 2 —— 讀 R1 paper（方法 baseline）、從 R1-Distill / V4 開源權重起步 |
 | 想 on-device / 預算極緊 | **QwQ-32B**（Apache 2.0）或 R 系列 distill |
 | Multi-agent debate / critic 場景 | Path 1（CRITIC / debate）+ [Stage 7 multi-agent](07-multi-agent-production.md) |

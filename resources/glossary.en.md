@@ -64,7 +64,7 @@ LLMs see **tokens** (sub-word units), not characters. Roughly 1 English word ≈
 
 ### Context Window
 
-The maximum tokens an LLM can "see" in one call. **2026 frontier**: Claude Sonnet 5 / Opus 4.8 1M, GPT-5.6 1.05M, Gemini 3.5 Flash 1M (Pro series up to 2M), xAI Grok 4.3 1M, Mistral Medium 3.5 256k. **Bigger isn't always better** — beyond a length the LLM gets "Lost in the Middle".
+The maximum tokens an LLM can "see" in one call. **2026 frontier**: Claude Sonnet 5 / Opus 4.8 1M, GPT-5.6 1.05M, Gemini 3.5 Flash 1M (Pro series up to 2M), xAI Grok 4.5 500K, Mistral Medium 3.5 256k. **Bigger isn't always better** — beyond a length the LLM gets "Lost in the Middle".
 
 ### Prompt
 
@@ -379,7 +379,7 @@ The LLM "confidently asserts something false" — invents APIs, fabricates numbe
 
 ### Frontier Model
 
-The current top tier (**2026-07**: OpenAI **GPT-5.6** (Sol / Terra / Luna — three tiers, 1.05M context, available in ChatGPT, Codex, and the API); **2026-06 (late)**: Claude Sonnet 5 (best speed-intelligence balance, close to Opus 4.8 but cheaper), Google Gemini 3.5 Flash, xAI Grok 4.3, Mistral Medium 3.5 (open weights, preview); **2026-06 (early)**: Claude Fable 5 (Mythos-class, above Opus) shipped, was suspended 2026-06-12 by a US export-control directive, but **the controls were lifted 2026-06-30 and [Fable 5 was redeployed globally 2026-07-01](https://www.anthropic.com/news/redeploying-fable-5)** (Mythos 5 restored only for approved US orgs); **2026-05**: GPT-5.5, Claude Opus 4.8 (Opus-class flagship), Gemini 3.1 Pro, DeepSeek-V4-Pro, etc.). Use frontier for hard reasoning; use cheap small models for simple classification / translation to save cost.
+The current top tier (**2026-07**: OpenAI **GPT-5.6** (Sol / Terra / Luna — three tiers, 1.05M context, available in ChatGPT, Codex, and the API); **2026-06 (late)**: Claude Sonnet 5 (best speed-intelligence balance, close to Opus 4.8 but cheaper), Google Gemini 3.5 Flash, xAI Grok 4.5 (500K context), Mistral Medium 3.5; **2026-06 (early)**: Claude Fable 5 (Mythos-class, above Opus) shipped, was suspended 2026-06-12 by a US export-control directive, but **the controls were lifted 2026-06-30 and [Fable 5 was redeployed globally 2026-07-01](https://www.anthropic.com/news/redeploying-fable-5)** (Mythos 5 restored only for approved US orgs); **2026-05**: GPT-5.5, Claude Opus 4.8 (Opus-class flagship), Gemini 3.1 Pro, DeepSeek-V4-Pro, etc.). Use frontier for hard reasoning; use cheap small models for simple classification / translation to save cost.
 
 ### Context Engineering
 

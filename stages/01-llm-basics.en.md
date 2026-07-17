@@ -63,7 +63,7 @@ These are the main choices for Chinese-language work, in two groups: **API-only*
 | **DeepSeek** | V4-Flash (`deepseek-v4-flash`) / V4-Pro (`deepseek-v4-pro`) | 1M | reasoning / coding / **lowest cost** | high-token workloads / code generation / math | [api-docs.deepseek.com](https://api-docs.deepseek.com/zh-cn/) |
 | **Kimi** (Moonshot) | K3 (2.8T params, native multimodal) | **1M** | long context / Chinese long-form writing | whole-book reading / literature triage | [platform.moonshot.cn](https://platform.moonshot.cn/) |
 | **Hunyuan** (Tencent) | T1 (deep-thinking) + TurboS | 128k | **DeepSeek R1-comparable reasoning**, Chinese | Chinese reasoning / Tencent ecosystem | [hunyuan.tencent.com](https://hunyuan.tencent.com/) |
-| **MiniMax** | abab6.5 + M2.7 | 200k | multimodal / Chinese long prose | Chinese writing / video and audio multimodal | [platform.minimax.io](https://platform.minimax.io/) |
+| **MiniMax** | M3 | 1M | multimodal / Chinese long prose / coding | Chinese writing / video and audio multimodal | [platform.minimax.io](https://platform.minimax.io/) |
 
 > **Note**: This group is mostly cloud-API and proprietary. DeepSeek also has some open weights (on HF), but the cloud API is still the main way to use it (the legacy names `deepseek-chat`/`deepseek-reasoner` retire 2026-07-24 and now alias to v4-flash).
 
@@ -71,11 +71,11 @@ These are the main choices for Chinese-language work, in two groups: **API-only*
 
 | Model family | Flagship (2026-05) | Context | Strengths | Best for | Official |
 |---|---|---|---|---|---|
-| **Qwen** (Alibaba) | Qwen3 | 128k+ | **strongest Chinese OSS** / multimodal / agent | Chinese long-form writing / agent / self-host | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
-| **GLM** (Zhipu) | GLM-5 / GLM-5.1 | 128k | Chinese / tool use / agent | Chinese agents / multi-turn chat | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
-| **Yi** (01.AI / Kai-Fu Lee) | Yi-Lightning / Yi-34B-Chat | 200k | **Chinese OSS** alternative to Llama | Chinese self-host / Chinese API | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
+| **Qwen** (Alibaba) | Qwen 3.7 / 3.6 (open) | 128k+ | **strongest Chinese OSS** / multimodal / agent | Chinese long-form writing / agent / self-host | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
+| **GLM** (Zhipu) | GLM-5.2 | 1M | Chinese / tool use / agent | Chinese agents / multi-turn chat | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
+| **Yi** (01.AI / Kai-Fu Lee) | Yi-Lightning / Yi-34B-Chat | 200k | **Chinese OSS** (⚠️ 01.AI stopped foundation training in 2025; Yi is frozen) | Chinese self-host / Chinese API | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
 
-> **Note**: All three offer both an **Apache 2.0 open version and a paid cloud API** (GLM's open version is 5.1). The open versions run on your own machine via [Ollama](https://ollama.com/).
+> **Note**: All three offer both an **open version (Apache 2.0 or MIT) and a paid cloud API** (GLM's open version is now 5.2, MIT). The open versions run on your own machine via [Ollama](https://ollama.com/).
 
 > ⚠️ **Xiaomi MiMo** is listed in [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.md) for Hermes Agent routing, but as of 2026-05 there is no authoritative official source to verify it, so it is not included in this table. To try it, connect through [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing.
 
@@ -87,7 +87,7 @@ These are the main choices for running on your own hardware, avoiding API fees, 
 |---|---|---|---|---|---|
 | **Llama** (Meta) | 3.3 70B | Llama Community License | general-purpose / broadest ecosystem / Ollama default | self-hosting intro / fine-tune base | [llama.com](https://www.llama.com/) · [HF Meta](https://huggingface.co/meta-llama) |
 | **Gemma** (Google) | Gemma 4 26B MoE + 31B dense | Apache 2.0 | **small and efficient** / strong Apple MLX integration / multimodal | edge / mobile / 4-8 GB RAM machines | [ai.google.dev/gemma](https://ai.google.dev/gemma) |
-| **Mistral** (Mistral AI) | 7B / Mixtral 8x7B / Codestral | Apache 2.0 (OSS parts) | strongest open-source 7B class | commercial self-host / EU sovereignty | [mistral.ai](https://mistral.ai/) · [HF Mistral](https://huggingface.co/mistralai) |
+| **Mistral** (Mistral AI) | Small 4 / Ministral 3 / Large 3 | open weights (license varies; Large 3 is Apache 2.0) | Small 4 unifies reasoning / vision / coding; EU sovereignty | commercial self-host / EU sovereignty | [mistral.ai](https://mistral.ai/) · [HF Mistral](https://huggingface.co/mistralai) |
 | **Phi** (Microsoft) | Phi-4 14B + multimodal | MIT | **small but strong** / reasoning / edge-friendly | 4 GB+ RAM / mobile / reasoning intro | [HF microsoft](https://huggingface.co/microsoft) |
 
 > **Note**: Llama 4 (Scout / Maverick) shipped 2025-04, but they're large MoE models, so 3.3 70B remains the practical single-GPU self-host base (the table shows 3.3); Behemoth never shipped. Gemma 4 was released 2026-04, ranked #3 on LMArena's open-weights board; Phi-4 also has a multimodal version.
@@ -101,7 +101,7 @@ These are the main choices for running on your own hardware, avoiding API fees, 
 | Multimodal (PDF / video and audio / images) | **Gemini** or **Kimi** — native multimodal |
 | Broad queries + function calling frameworks | **GPT** — broadest ecosystem and deepest SDK integration |
 | **Chinese scenarios + commercial API** | **Kimi** (strong long context; can fit whole books), **DeepSeek** (lowest cost), or **GLM** (agent-friendly) |
-| **Chinese scenarios + open-source self-host** | **Qwen 3** (Apache 2.0; currently the strongest Chinese OSS) |
+| **Chinese scenarios + open-source self-host** | **Qwen 3.7 / GLM-5.2** (Apache 2.0 / MIT; among the strongest Chinese OSS) |
 | Reasoning / math (reasoning model) | **DeepSeek V4-Pro** / **Hunyuan T1** / **OpenAI o-series** |
 | Privacy / offline / no API fees | **Llama 3.3** / **Gemma 4** / **Qwen 3 OSS** via [Ollama](https://ollama.com/) |
 | Edge / 4 GB RAM machine | **Gemma 4** / **Phi-4** / **Qwen 3 (`qwen3-3B` or smaller variants)** |

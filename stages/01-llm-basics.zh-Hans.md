@@ -62,7 +62,7 @@
 | **DeepSeek**（深度求索）| V4-Flash（`deepseek-v4-flash`）/ V4-Pro（`deepseek-v4-pro`）| 1M | 推理 / coding / **cost 最低** | 大量 token / code 生成 / math | [api-docs.deepseek.com](https://api-docs.deepseek.com/zh-cn/) |
 | **Kimi**（Moonshot）| K3（2.8T 参数、原生多模态）| **1M** | 长 context / 中文长文 | 整本书读 / 文献分流 | [platform.moonshot.cn](https://platform.moonshot.cn/) |
 | **Hunyuan**（腾讯）| T1（深度思考）+ TurboS | 128k | **可比 DeepSeek R1 推理**、中文 | 中文推理 / 腾讯生态 | [hunyuan.tencent.com](https://hunyuan.tencent.com/) |
-| **MiniMax** | abab6.5 + M2.7 | 200k | 多模态 / 中文长 prose | 中文写作 / 影音 multimodal | [platform.minimax.io](https://platform.minimax.io/) |
+| **MiniMax** | M3 | 1M | 多模态 / 中文长 prose / coding | 中文写作 / 影音 multimodal | [platform.minimax.io](https://platform.minimax.io/) |
 
 > **注**：这组以云端 API 为主、多为 proprietary。DeepSeek 另有部分开源权重（在 HF），主要用法仍是云端 API（旧名 `deepseek-chat`/`deepseek-reasoner` 于 2026-07-24 停用、已改指向 v4-flash）。
 
@@ -70,11 +70,11 @@
 
 | Model 家族 | 旗舰（2026-05）| Context | 强项 | 适合任务 | 官方 |
 |---|---|---|---|---|---|
-| **Qwen**（阿里）| Qwen3 | 128k+ | **中文最强 OSS** / 多模态 / agent | 中文长文 / agent / self-host | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
-| **GLM**（智谱 Zhipu）| GLM-5 / GLM-5.1 | 128k | 中文 / tool use / agent | 中文 agent / 多轮对话 | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
-| **Yi**（01.AI / 李开复）| Yi-Lightning / Yi-34B-Chat | 200k | **中文 OSS** 替代 Llama | 中文 self-host / 中文 API | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
+| **Qwen**（阿里）| Qwen 3.7 / 3.6（开源）| 128k+ | **中文最强 OSS** / 多模态 / agent | 中文长文 / agent / self-host | [qwen.ai](https://qwen.ai/) · [DashScope](https://help.aliyun.com/zh/dashscope/) |
+| **GLM**（智谱 Zhipu）| GLM-5.2 | 1M | 中文 / tool use / agent | 中文 agent / 多轮对话 | [open.bigmodel.cn](https://open.bigmodel.cn/) · [chatglm.cn](https://chatglm.cn/) |
+| **Yi**（01.AI / 李开复）| Yi-Lightning / Yi-34B-Chat | 200k | **中文 OSS**（⚠️ 01.AI 2025 起停 foundation 训练、Yi 已冻结）| 中文 self-host / 中文 API | [01.ai](https://01.ai/) · [GitHub](https://github.com/01-ai/Yi) |
 
-> **注**：这三家都走 **Apache 2.0 开源版 + 付费云端 API** 两条路（GLM 开源版是 5.1）。开源版可用 [Ollama](https://ollama.com/) 在自己机器跑。
+> **注**：这三家都走 **开源版（Apache 2.0 或 MIT）+ 付费云端 API** 两条路（GLM 开源版现为 5.2、MIT）。开源版可用 [Ollama](https://ollama.com/) 在自己机器跑。
 
 > ⚠️ **小米 MiMo** 虽在 [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.md) 列入 Hermes Agent routing，但 2026-05 无权威官方 source 可验证，暂不收进此表。要试 → 通过 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing 接入。
 
@@ -86,7 +86,7 @@
 |---|---|---|---|---|---|
 | **Llama**（Meta）| 3.3 70B | Llama Community License | 通用 / 生态最广 / Ollama 默认 | self-host 入门 / fine-tune base | [llama.com](https://www.llama.com/) · [HF Meta](https://huggingface.co/meta-llama) |
 | **Gemma**（Google）| Gemma 4 26B MoE + 31B dense | Apache 2.0 | **小巧高效** / Apple MLX 整合好 / multimodal | Edge / mobile / 4-8GB RAM 机器 | [ai.google.dev/gemma](https://ai.google.dev/gemma) |
-| **Mistral**（Mistral AI）| 7B / Mixtral 8x7B / Codestral | Apache 2.0（OSS 部分）| 开源 7B 级最强 | 商用 self-host / EU 主权 | [mistral.ai](https://mistral.ai/) · [HF Mistral](https://huggingface.co/mistralai) |
+| **Mistral**（Mistral AI）| Small 4 / Ministral 3 / Large 3 | 开源权重（license 依版本、Large 3 为 Apache 2.0）| Small 4 统一 reasoning / vision / coding、EU 主权 | 商用 self-host / EU 主权 | [mistral.ai](https://mistral.ai/) · [HF Mistral](https://huggingface.co/mistralai) |
 | **Phi**（Microsoft）| Phi-4 14B + multimodal | MIT | **小但强** / reasoning / 适合 edge | 4GB+ RAM / mobile / reasoning 入门 | [HF microsoft](https://huggingface.co/microsoft) |
 
 > **注**：Llama 4（Scout / Maverick）于 2025-04 发布，但属大型 MoE，单机自架的实用基准仍是 3.3 70B（表中为 3.3）、Behemoth 未发布；Gemma 4 为 2026-04 发布、LMArena 开源组第 3；Phi-4 另有 multimodal 版。
@@ -100,7 +100,7 @@
 | 多模态（PDF / 影音 / 图）| **Gemini** 或 **Kimi** — 原生 multimodal |
 | 广度查询 + function calling 框架 | **GPT** — ecosystem 最广、SDK 整合最深 |
 | **中文场景 + 商业 API** | **Kimi**（长 context 强、能塞整本书）或 **DeepSeek**（cost 最低）或 **GLM**（agent 友好）|
-| **中文场景 + 开源 self-host** | **Qwen 3**（Apache 2.0、目前中文最强 OSS）|
+| **中文场景 + 开源 self-host** | **Qwen 3.7 / GLM-5.2**（Apache 2.0 / MIT、中文最强 OSS 之一）|
 | 推理 / math（reasoning model）| **DeepSeek V4-Pro** / **Hunyuan T1** / **OpenAI o-series** |
 | 隐私 / offline / 不付 API | **Llama 3.3** / **Gemma 4** / **Qwen 3 OSS** via [Ollama](https://ollama.com/) |
 | Edge / 4GB RAM 机器 | **Gemma 4** / **Phi-4** / **Qwen 3（`qwen3-3B` 或以下版本）** |
