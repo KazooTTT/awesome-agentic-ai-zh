@@ -442,7 +442,7 @@ text = msg.content[0].text
 | **官方 cookbook** | [Anthropic Cookbook — Prompt patterns](https://github.com/anthropics/claude-cookbooks) | ⭐⭐⭐⭐⭐ | Claude 進階 prompting（含 prompt caching / multimodal）| Stage 1 已介紹、本 stage 重點看 `misc/prompt_caching.ipynb` 跟 `multimodal/` |
 | | [GoogleCloudPlatform/generative-ai](https://github.com/GoogleCloudPlatform/generative-ai) | ⭐⭐⭐ | 用 Google 技術棧（PaLM / Gemini）| Google Cloud 的 prompting cookbook、跨廠商觀點 |
 | **靈感 collection**<br>（找模式、不要照抄）| [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐ | 卡關時找靈感 | 上百個「Act as a [角色]...」prompt，★ 162k+、CC0。**把模式拿出來改寫、不要照抄** |
-| **Production 管理**<br>（規模化）| [microsoft/prompt-engine](https://github.com/microsoft/prompt-engine) | ⭐⭐⭐ | production 要管很多 prompt 時 | TypeScript library、管理樣板 + 對話歷史 |
+| **Production 管理**<br>（規模化）| [microsoft/prompt-engine](https://github.com/microsoft/prompt-engine) | ⭐⭐（⚠️ 已封存）| production 要管很多 prompt 時 | TypeScript library；⚠️ **2023 起無更新、repo 已封存**——找維護中的替代 |
 | | [microsoft/promptflow](https://github.com/microsoft/promptflow) | ⭐⭐⭐ | 團隊型應用、需要 eval | 視覺化 prompt 設計 + 評估工具，★ 11k+ |
 | | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) ⭐ **Stage 2 → 3 橋** | ⭐⭐⭐⭐⭐ | 跑完 dair-ai 想規模化 prompt | 把 prompt 當 code 寫，用 compiler 自動最佳化，★ 34k+、MIT |
 

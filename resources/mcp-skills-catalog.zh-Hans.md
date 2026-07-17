@@ -154,13 +154,13 @@
 **适合谁**：日常处理 Excel 报表、要 LLM 自动填表 / 整理数据的人。
 **备注**：Python 写的，依赖 openpyxl。
 
-### [GongRzhe/Office-PowerPoint-MCP-Server](https://github.com/GongRzhe/Office-PowerPoint-MCP-Server) ⭐⭐⭐⭐
+### [GongRzhe/Office-PowerPoint-MCP-Server](https://github.com/GongRzhe/Office-PowerPoint-MCP-Server) ⭐⭐⭐（⚠️ 已封存 2025-12、可改用 anthropics/skills pptx）
 
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 1.7k+ |
 | License | MIT |
-| 推荐度 | ⭐⭐⭐⭐ |
+| 推荐度 | ⭐⭐⭐（⚠️ 已封存） |
 
 **教什么**：用 python-pptx 操作 PPT——建简报、改 slide、插图、改 layout。
 **适合谁**：要 LLM 从大纲 / Markdown 自动生 PPT 的人（顾问、讲师、学生）。

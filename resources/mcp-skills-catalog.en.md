@@ -154,13 +154,13 @@
 **Audience**: people working with Excel reports daily who want LLM-driven data filling and cleanup.
 **Notes**: Python-based, depends on openpyxl.
 
-### [GongRzhe/Office-PowerPoint-MCP-Server](https://github.com/GongRzhe/Office-PowerPoint-MCP-Server) ⭐⭐⭐⭐
+### [GongRzhe/Office-PowerPoint-MCP-Server](https://github.com/GongRzhe/Office-PowerPoint-MCP-Server) ⭐⭐⭐ (⚠️ archived 2025-12; use anthropics/skills pptx)
 
 | Field | Value |
 |---|---|
 | Stars | ★ 1.7k+ |
 | License | MIT |
-| Rating | ⭐⭐⭐⭐ |
+| Rating | ⭐⭐⭐ (⚠️ archived) |
 
 **What it does**: PPT manipulation via python-pptx — create decks, edit slides, insert images, change layouts.
 **Audience**: people who want LLMs to auto-generate decks from outlines / Markdown (consultants, lecturers, students).
