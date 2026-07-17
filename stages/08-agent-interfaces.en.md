@@ -43,7 +43,7 @@
 - **Before Oct 2024**: Agents could only interact with the API-driven world (calling OpenAI/GitHub/Slack APIs, returning text).
 - **Oct 2024**: Anthropic's Computer Use beta is released → **Agents can operate a real screen for the first time.**
 - **2025-2026**: OpenAI (Atlas + Codex desktop) and Google (Gemini in Chrome) enter the field → Mainstream adoption.
-- **May 2026**: The OSWorld benchmark reaches **76.26%** (superhuman, vs. a 72.36% human baseline) → It transitions from a research curiosity to a production reality.
+- **May 2026**: OSWorld **v1** reaches **76.26%** (superhuman, vs. a 72.36% human baseline) → It transitions from a research curiosity to a production reality. (Note: v1 then approached saturation; the long-horizon **OSWorld 2.0** in June 2026 reset SOTA to ~20% — see the benchmark-discipline section below.)
 
 **The curriculum gap without this stage**: After completing Stage 7, you might think you're done. In reality, your agent can only talk to APIs. **It can't operate software without APIs, interact with real webpages, or run code.** You also wouldn't have been warned about safety issues like the Comet injection or the Amazon injunction (see [Safety](#-2026-safety--security-highlights)).
 
@@ -63,7 +63,7 @@ After completing this stage, you will be able to:
 - Distinguish between the 3 layers of agent interfaces (Computer Use, Browser Use, Sandbox) and their relationship to Tools, MCP, and Harnesses.
 - Explain the mental models for Computer Use and Browser Use (screenshot → vision → coords vs. DOM-aware).
 - Define isolation technology terms like microVM, Container, Firecracker, gVisor, and Cold Start.
-- Recall the May 2026 SOTA numbers for OSWorld/WebArena and interpret the warnings about reward-hacking.
+- Know how to read the OSWorld/WebArena SOTA numbers (including the v1→2.0 saturation gap) and interpret the warnings about reward-hacking.
 - **For Track A**: Integrate Computer Use, browser MCPs, and Codex background mode into your daily CLI workflow.
 - **For Track B**: Use `browser-use` and E2B to embed environmental interactions and sandbox isolation into your own agents.
 - Design with 4 safety patterns (approval gate, sandbox, human-in-the-loop, output filter) to prevent injection attacks.
@@ -140,9 +140,11 @@ Agent receives a task
 |---|---|---|
 | Human baseline | **72.36%** | — |
 | Claude Opus 4.6 (Anthropic)| **72.7%** | On par |
-| May 2026 SOTA (Strongest Model)| **76.26%** | **Superhuman** |
+| OSWorld v1 May 2026 SOTA | **76.26%** | **Superhuman** (v1; see below)|
 | OpenAI CUA | 38.1% | -34% |
 | Most other models | 30-50% | -22% to -42% |
+
+> **⚠️ June 2026 update (OSWorld 2.0)**: The table above is OSWorld **v1**. v1 has since been driven near saturation by frontier models, and "superhuman" only holds for v1's short tasks (mostly 1-2 apps). [OSWorld 2.0](https://osworld-v2.xlang.ai/) (2026-06, arXiv 2606.29537) switched to 108 long-horizon workflows (~318 tool calls each, vs. ~30 in v1); the strongest model, Claude Opus 4.8 (max thinking), reaches only **20.6%** (at a 500-step budget), GPT-5.5 ~14%, and no model clears 10% on tasks over 137 minutes. SOTA falling from "76% superhuman" to "20% on realistic long tasks" is exactly the gap this benchmark-discipline section warns you about.
 
 **Why it's harder than SWE-bench**:
 - **More open-ended tasks**: SWE-bench has clear tests to determine pass/fail; OSWorld tasks have vague specs (e.g., "help me turn this csv into a chart").
@@ -478,7 +480,7 @@ A table of 17 projects, categorized by use case.
 | **Sandbox** (microVM)| [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | ⭐⭐⭐⭐⭐ | For agents running a Python loop | Firecracker microVM, most templates, Apache 2.0. |
 | **Sandbox** (fast container)| [Daytona](https://www.daytona.io/) | ⭐⭐⭐⭐ | Latency-critical tasks | < 90ms cold start, Docker ecosystem. |
 | **Sandbox** (GPU)| [Modal](https://modal.com/) | ⭐⭐⭐⭐ | For running inference/fine-tuning in a sandbox | The only sandbox with GPU support, serverless. |
-| **Benchmark Dataset**| [xlang-ai/OSWorld](https://github.com/xlang-ai/OSWorld) | ⭐⭐⭐⭐⭐ | For training/evaluating Computer Use agents| NeurIPS 2024, 369 cross-OS tasks, SOTA 76.26%. |
+| **Benchmark Dataset**| [xlang-ai/OSWorld](https://github.com/xlang-ai/OSWorld) | ⭐⭐⭐⭐⭐ | For training/evaluating Computer Use agents| NeurIPS 2024, 369 cross-OS tasks; successor [OSWorld 2.0](https://osworld-v2.xlang.ai/) (2026-06, 108 long-horizon workflows) SOTA only ~20%. |
 | | [web-arena-x/webarena](https://github.com/web-arena-x/webarena) | ⭐⭐⭐⭐ | For evaluating web agents | Self-hosted real websites, OpenAI CUA 58.1%. |
 | | [OSU-NLP-Group/Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) | ⭐⭐⭐⭐ | Real-world web tasks dataset | 137 websites / 2350 tasks. |
 | **Visual Web Agent**| [illuin-tech/colpali](https://github.com/illuin-tech/colpali) | ⭐⭐⭐⭐ | Vision RAG for PDF/documents | Directly embeds page images, bypasses OCR, NeurIPS 2024. |
@@ -495,7 +497,7 @@ Can you:
 - [ ] Write a web agent in 5 lines of Python with `browser-use` (Exercise 2)?
 - [ ] Use E2B to run agent-generated code and feel the difference from running on the host (Exercise 3)?
 - [ ] Explain why prompt injection through web content is a new attack surface and what the 4 defensive patterns each block?
-- [ ] Explain the discipline behind the OSWorld 76.26% SOTA number (why you can't blindly trust it)?
+- [ ] Explain the discipline behind the OSWorld v1 76.26% → 2.0 ~20% gap (why you can't blindly trust a SOTA number)?
 
 If you can do all of this → you've completed the main curriculum. Pick a [specialized branch](../README.en.md#-learning-map-two-tracks), or see below for the next frontier.
 

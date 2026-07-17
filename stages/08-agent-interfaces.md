@@ -43,7 +43,7 @@
 - **2024-10 之前**：agent 只能跟有 API 的世界互動（呼叫 OpenAI / GitHub / Slack API、回文字）
 - **2024-10**：Anthropic Computer Use beta → **agent 第一次能操作真實螢幕**
 - **2025-2026**：OpenAI（Atlas + Codex desktop）/ Google（Gemini in Chrome）全進場 → 主流化
-- **2026-05**：OSWorld benchmark 達 **76.26%**（superhuman vs 72.36% human baseline）→ 從研究 curiosity 變 production reality
+- **2026-05**：OSWorld **v1** benchmark 達 **76.26%**（superhuman vs 72.36% human baseline）→ 從研究 curiosity 變 production reality（注意：v1 隨後接近飽和，2026-06 的 **OSWorld 2.0** long-horizon 版把 SOTA 重設到約 20%，見下方 benchmark 紀律段）
 
 **沒這個 stage 的 curriculum gap**：學完 Stage 7 你以為 done、實際上 agent 只能跟 API 對話、**不能操作沒 API 的軟體 / 真實網頁 / 跑 code**——遇 safety issue（Comet 注入 / Amazon injunction、見[Safety](#-2026-safety--security-重點)）也沒警告過。
 
@@ -63,7 +63,7 @@
 - 區分 3 層 agent interface（Computer Use / Browser Use / Sandbox）+ 跟 Tool / MCP / Harness 的關係
 - 講出 Computer Use / Browser Use **mental model**（screenshot → vision → coords vs DOM-aware）
 - 講出 microVM / Container / Firecracker / gVisor / Cold start 等隔離技術術語
-- 知道 2026-05 OSWorld / WebArena SOTA 數字 + 解讀 reward-hacking（agent 鑽 reward function 漏洞、拿高分但不是真的完成任務）警告
+- 知道怎麼讀 OSWorld / WebArena SOTA 數字（含 v1→2.0 飽和落差）+ 解讀 reward-hacking（agent 鑽 reward function 漏洞、拿高分但不是真的完成任務）警告
 - **Track A**：在 daily CLI 工作流接 Computer Use + browser MCP + Codex background mode
 - **Track B**：用 browser-use / E2B 在自己 agent 內 embed 環境互動 + sandbox 隔離
 - 設計 4 個 safety pattern（approval gate / sandbox / human-in-loop / output filter）防注入攻擊
@@ -140,9 +140,11 @@ agent 收到任務
 |---|---|---|
 | Human baseline | **72.36%** | — |
 | Claude Opus 4.6（Anthropic）| **72.7%** | 持平 |
-| 2026-05 SOTA（最強模型）| **76.26%** | **superhuman** |
+| OSWorld v1 2026-05 SOTA | **76.26%** | **superhuman**（v1，見下方）|
 | OpenAI CUA | 38.1% | -34% |
 | 多數一般 model | 30-50% | -22% ~ -42% |
+
+> **⚠️ 2026-06 更新（OSWorld 2.0）**：上表是 OSWorld **v1** 的數字。v1 隨後被前沿模型逼近飽和，「superhuman」只在 v1 的短任務（多半 1-2 個 app）成立。[OSWorld 2.0](https://osworld-v2.xlang.ai/)（2026-06、arXiv 2606.29537）改用 108 個 long-horizon workflow（每個約 318 次 tool call，v1 只約 30），最強的 Claude Opus 4.8（max thinking）也只到 **20.6%**（500 步預算）、GPT-5.5 約 14%、137 分鐘以上的任務沒有任何模型破 10%。SOTA 從「76% superhuman」掉到「20% 真實長任務」，正是本段 benchmark 紀律要你警惕的落差。
 
 **Why 比 SWE-bench 難**：
 - **更開放任務**：SWE-bench 有清楚 test 判 pass / fail；OSWorld 任務 spec 模糊（"幫我把 csv 變成圖"）
@@ -478,7 +480,7 @@ agent = Agent(
 | **Sandbox**（microVM）| [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | ⭐⭐⭐⭐⭐ | agent 跑 Python loop | Firecracker microVM、最多 template、Apache 2.0 |
 | **Sandbox**（container 快）| [Daytona](https://www.daytona.io/) | ⭐⭐⭐⭐ | latency-critical | < 90ms cold start、Docker 生態 |
 | **Sandbox**（GPU）| [Modal](https://modal.com/) | ⭐⭐⭐⭐ | sandbox 內跑 inference / fine-tune | 唯一 GPU sandbox、serverless |
-| **Benchmark dataset** | [xlang-ai/OSWorld](https://github.com/xlang-ai/OSWorld) | ⭐⭐⭐⭐⭐ | 想訓 / 評估 Computer Use agent | NeurIPS 2024、369 個跨 OS 任務、SOTA 76.26% |
+| **Benchmark dataset** | [xlang-ai/OSWorld](https://github.com/xlang-ai/OSWorld) | ⭐⭐⭐⭐⭐ | 想訓 / 評估 Computer Use agent | NeurIPS 2024、369 個跨 OS 任務；後繼 [OSWorld 2.0](https://osworld-v2.xlang.ai/)（2026-06、108 個 long-horizon workflow）SOTA 僅約 20% |
 | | [web-arena-x/webarena](https://github.com/web-arena-x/webarena) | ⭐⭐⭐⭐ | 評估 web agent | self-hosted 真實網站、OpenAI CUA 58.1% |
 | | [OSU-NLP-Group/Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) | ⭐⭐⭐⭐ | real-world web tasks dataset | 137 個網站 / 2350 個任務 |
 | **Visual web agent** | [illuin-tech/colpali](https://github.com/illuin-tech/colpali) | ⭐⭐⭐⭐ | vision RAG for PDF / 文件 | 直接 embed page image、繞 OCR、2024 NeurIPS |
@@ -495,7 +497,7 @@ agent = Agent(
 - [ ] 用 browser-use 5 行 Python 寫個 web agent（練習 2）
 - [ ] 用 E2B 跑 agent-generated code、體會跟 host 直接跑的差別（練習 3）
 - [ ] 講出 prompt injection through web content 為什麼是新攻擊面、4 個防護 pattern 各擋什麼
-- [ ] 講出 OSWorld 76.26% SOTA 數字背後的 reward-hacking 紀律（為什麼不能 blindly 信）
+- [ ] 講出 OSWorld v1 76.26% → 2.0 約 20% 的落差背後的 reward-hacking / 飽和紀律（為什麼不能 blindly 信 SOTA 數字）
 
 如果都可以 → 你已經跑完 curriculum 主幹。挑一個[特化分支](../README.md#️-學習地圖兩條學習路徑)、或往下看 下一個 frontier。
 

@@ -43,7 +43,7 @@
 - **2024-10 之前**：智能体只能与有 API 的世界互动（调用 OpenAI / GitHub / Slack API，返回文本）
 - **2024-10**：Anthropic Computer Use beta → **智能体第一次能操作真实屏幕**
 - **2025-2026**：OpenAI（Atlas + Codex desktop）/ Google（Gemini in Chrome）全线入场 → 主流化
-- **2026-05**：OSWorld benchmark 达到 **76.26%**（超越人类基线 72.36%）→ 从研究好奇心变为生产现实
+- **2026-05**：OSWorld **v1** benchmark 达到 **76.26%**（超越人类基线 72.36%）→ 从研究好奇心变为生产现实（注意：v1 随后接近饱和，2026-06 的 **OSWorld 2.0** long-horizon 版把 SOTA 重设到约 20%，见下方 benchmark 规范段）
 
 **没有本阶段的课程缺陷**：学完 Stage 7 你以为就结束了，实际上智能体只能与 API 对话，**不能操作没有 API 的软件 / 真实网页 / 运行代码**——遇到安全问题（如 Comet 注入 / 亚马逊禁令，见[安全](#-2026-安全性--风险重点)）也得不到预警。
 
@@ -63,7 +63,7 @@
 - 区分 3 层 agent interface（Computer Use / Browser Use / Sandbox）及其与 Tool / MCP / Harness 的关系。
 - 阐述 Computer Use / Browser Use 的**心智模型**（截图 → 视觉 → 坐标 vs DOM 感知）。
 - 解释 microVM / 容器 / Firecracker / gVisor / 冷启动等隔离技术术语。
-- 了解 2026-05 OSWorld / WebArena SOTA 数据，并能解读 reward-hacking 警告。
+- 知道怎么读 OSWorld / WebArena SOTA 数据（含 v1→2.0 饱和落差），并能解读 reward-hacking 警告。
 - **Track A**：在日常 CLI 工作流中接入 Computer Use + browser MCP + Codex background mode。
 - **Track B**：在自己的智能体中使用 browser-use / E2B 嵌入环境互动和沙箱隔离。
 - 设计 4 个安全模式（审批门 / 沙箱 / 人工介入 / 输出过滤器）以防注入攻击。
@@ -140,9 +140,11 @@
 |---|---|---|
 | Human baseline | **72.36%** | — |
 | Claude Opus 4.6（Anthropic）| **72.7%** | 持平 |
-| 2026-05 SOTA（最强模型）| **76.26%** | **超越人类** |
+| OSWorld v1 2026-05 SOTA | **76.26%** | **超越人类**（v1，见下方）|
 | OpenAI CUA | 38.1% | -34% |
 | 大多数其他模型 | 30-50% | -22% ~ -42% |
+
+> **⚠️ 2026-06 更新（OSWorld 2.0）**：上表是 OSWorld **v1** 的数字。v1 随后被前沿模型逼近饱和，“superhuman” 只在 v1 的短任务（多为 1-2 个 app）成立。[OSWorld 2.0](https://osworld-v2.xlang.ai/)（2026-06、arXiv 2606.29537）改用 108 个 long-horizon workflow（每个约 318 次 tool call，v1 只约 30），最强的 Claude Opus 4.8（max thinking）也只到 **20.6%**（500 步预算）、GPT-5.5 约 14%、137 分钟以上的任务没有任何模型破 10%。SOTA 从“76% superhuman”掉到“20% 真实长任务”，正是本段 benchmark 规范要你警惕的落差。
 
 **为什么比 SWE-bench 难**：
 - **更开放的任务**：SWE-bench 有明确的测试来判断通过/失败；OSWorld 任务规范模糊（例如“帮我把 csv 变成图”）。
@@ -478,7 +480,7 @@ agent = Agent(
 | **Sandbox**（microVM）| [e2b-dev/E2B](https://github.com/e2b-dev/E2B) | ⭐⭐⭐⭐⭐ | 智能体运行 Python 循环 | Firecracker microVM，模板最多，Apache 2.0 |
 | **Sandbox**（容器，快）| [Daytona](https://www.daytona.io/) | ⭐⭐⭐⭐ | 延迟敏感 | < 90ms 冷启动，Docker 生态 |
 | **Sandbox**（GPU）| [Modal](https://modal.com/) | ⭐⭐⭐⭐ | 在沙箱内运行推理 / 微调 | 唯一支持 GPU 的沙箱，serverless |
-| **Benchmark dataset** | [xlang-ai/OSWorld](https://github.com/xlang-ai/OSWorld) | ⭐⭐⭐⭐⭐ | 想训练 / 评估 Computer Use 智能体 | NeurIPS 2024，369 个跨 OS 任务，SOTA 76.26% |
+| **Benchmark dataset** | [xlang-ai/OSWorld](https://github.com/xlang-ai/OSWorld) | ⭐⭐⭐⭐⭐ | 想训练 / 评估 Computer Use 智能体 | NeurIPS 2024，369 个跨 OS 任务；后继 [OSWorld 2.0](https://osworld-v2.xlang.ai/)（2026-06、108 个 long-horizon workflow）SOTA 仅约 20% |
 | | [web-arena-x/webarena](https://github.com/web-arena-x/webarena) | ⭐⭐⭐⭐ | 评估 web 智能体 | 自托管的真实网站，OpenAI CUA 58.1% |
 | | [OSU-NLP-Group/Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) | ⭐⭐⭐⭐ | 真实世界 web 任务数据集 | 137 个网站 / 2350 个任务 |
 | **Visual web agent** | [illuin-tech/colpali](https://github.com/illuin-tech/colpali) | ⭐⭐⭐⭐ | 针对 PDF / 文档的视觉 RAG | 直接嵌入页面图像，绕过 OCR，NeurIPS 2024 |
@@ -495,7 +497,7 @@ agent = Agent(
 - [ ] 使用 browser-use 在 5 行 Python 内编写一个 web 智能体（练习 2）
 - [ ] 使用 E2B 运行智能体生成的代码，并体会与主机直接运行的差别（练习 3）
 - [ ] 解释为何通过 web 内容的 prompt injection 是新的攻击面，以及 4 个防护模式各防御什么
-- [ ] 解释 OSWorld 76.26% SOTA 数据背后的 reward-hacking 规范（为何不能盲目相信）
+- [ ] 解释 OSWorld v1 76.26% → 2.0 约 20% 落差背后的 reward-hacking / 饱和规范（为何不能盲目相信 SOTA 数据）
 
 如果都可以 → 你已完成课程主干。选择一个[特化分支](../README.zh-Hans.md#-学习地图两条学习路径)，或继续看下一节 下一个前沿。
 

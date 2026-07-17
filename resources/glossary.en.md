@@ -410,7 +410,7 @@ The fourth discipline after prompt → context → harness engineering: designin
 
 ### Computer Use (screen-level agent)
 
-An agent operates real desktop apps via **screenshot → vision → coordinates → simulated mouse/keyboard** — no API needed, the agent uses the screen like a human. Representative: Anthropic Claude Computer Use (Opus 4.8 / Sonnet 5), OpenAI Codex desktop, Google Gemini in Chrome. **Anthropic public beta opened Oct 2024; OSWorld benchmark reached 76.26% (superhuman) by May 2026**.
+An agent operates real desktop apps via **screenshot → vision → coordinates → simulated mouse/keyboard** — no API needed, the agent uses the screen like a human. Representative: Anthropic Claude Computer Use (Opus 4.8 / Sonnet 5), OpenAI Codex desktop, Google Gemini in Chrome. **Anthropic public beta opened Oct 2024; OSWorld v1 hit 76.26% by May 2026 but then approached saturation — OSWorld 2.0 (2026-06, long-horizon) reset SOTA to ~20% (Opus 4.8)**.
 
 📍 Full coverage + 4-vendor comparison: [Stage 8 Computer Use](../stages/08-agent-interfaces.en.md)
 

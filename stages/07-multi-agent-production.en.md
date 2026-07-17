@@ -215,7 +215,7 @@ Before choosing a model or building an agent, you'll want to look at benchmark n
 | [**Terminal-Bench**](https://github.com/laude-institute/terminal-bench) | terminal tasks | Leading | Claude Opus 4.8 |
 | **GAIA** | general assistant | **74.6%** | Claude Sonnet 4.5 (Princeton HAL) |
 | [**WebArena**](https://github.com/web-arena-x/webarena) | web navigation | **68.7%** | (leading model not disclosed) |
-| [**OSWorld**](https://github.com/xlang-ai/OSWorld) | OS-level desktop control | **76.26%** (SOTA, superhuman vs 72.36% human baseline) | OpenAI CUA 38%, most frontier models still under 50% |
+| [**OSWorld**](https://github.com/xlang-ai/OSWorld) | OS-level desktop control | v1 **76.26%** (near-saturated) | OpenAI CUA 38%; [OSWorld 2.0](https://osworld-v2.xlang.ai/) (2026-06, long-horizon) superseded v1 — realistic long-task SOTA only ~20% (Opus 4.8 20.6%), see Stage 8 |
 | [**τ-bench**](https://github.com/sierra-research/tau-bench) | multi-turn dialogue with tool use | (Harder to hack) | Anthropic / OpenAI leading |
 | **RE-bench** | research engineering | (Harder to hack, close to human baseline) | Frontier models |
 
