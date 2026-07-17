@@ -148,6 +148,12 @@ jobs:
           # stdlib-only script; ubuntu-latest ships python3 (no pip deps).
           python3 scripts/zh-hans-localize.py --check
 
+      - name: refresh-stars.py detection unit tests
+        # Pins the 2026-07 star-line write-back + neighbour-leak fix
+        # (scripts/test_refresh_stars.py). stdlib-only; runs on any PR
+        # touching scripts/**.
+        run: python3 scripts/test_refresh_stars.py
+
   link-rot:
     name: Link rot check (GitHub URLs)
     runs-on: ubuntu-latest

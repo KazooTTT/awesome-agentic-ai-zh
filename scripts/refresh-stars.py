@@ -112,6 +112,46 @@ def fmt_stars(n: int) -> str:
     return str(n)
 
 
+def detect_stars(lines: list[str], i: int) -> tuple[int | None, str | None, int]:
+    """Given a GitHub URL on ``lines[i]``, find its declared ``★ Xk+`` count.
+
+    Returns ``(declared_stars, declared_text, star_line_idx)`` where
+    ``star_line_idx`` is the 0-based line the ★ actually sits on — this MUST be
+    the write-back target, not the URL line (the two differ for entry-block
+    formats, and using the URL line silently no-ops every entry-block rewrite).
+
+    - Step 1: same line as the URL (markdown table cells, inline bullets).
+    - Step 2: entry-block formats where the ★ is on a later line
+      (``#### [repo](url)`` heading + ``★ 12k+`` next line; ``### [repo](url)``
+      + a ``| Stars | ★ 34 |`` metadata row). Scans the next ≤12 lines up to a
+      heading / rule boundary OR the next GitHub URL (a second repo's entry —
+      its ★ is not ours).
+      **Step 2 is also skipped for table-row URLs** (line starts with ``|``):
+      each table row is a self-contained entry. Both boundaries exist because,
+      combined with a correct star-line write-back, a cross-entry ★ leak would
+      overwrite the wrong repo's count (langchain-ai.md / stages 03,05,06,07
+      had 15 such live leaks pre-fix).
+
+    When no ★ is found, ``star_line_idx`` falls back to the URL line ``i`` so
+    the "missing stars" report still points somewhere sensible.
+    """
+    line = lines[i]
+    m_stars = STARS_RE.search(line)
+    if m_stars:  # Step 1: same-line
+        return parse_stars_text(m_stars.group(0)), m_stars.group(0), i
+    if not line.lstrip().startswith("|"):  # Step 2: entry-block only, never table rows
+        for j in range(i + 1, min(i + 12, len(lines))):
+            stripped = lines[j].lstrip()
+            if stripped.startswith(("### ", "#### ", "## ", "---", "# ")):
+                break  # next entry boundary (heading / horizontal rule)
+            if GITHUB_RE.search(lines[j]):
+                break  # another repo's entry started here — its ★ is not ours
+            m_stars = STARS_RE.search(lines[j])
+            if m_stars:
+                return parse_stars_text(m_stars.group(0)), m_stars.group(0), j
+    return None, None, i
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--threshold", type=int, default=10,
@@ -130,13 +170,9 @@ def main():
 
     for fp in find_md_files(REPO_ROOT):
         text = fp.read_text(encoding="utf-8")
-        # State machine: find `[...](https://github.com/X/Y)`, then locate `★ Xk+`.
-        # Search order:
-        #   1. SAME line as the URL (table format like `| repo | ... | ★ 80k+ |`
-        #      and inline bullets like `[repo](url) ★ 6k+ — desc`).
-        #   2. Fallback: next 12 lines (entry-block format with stars on separate
-        #      line, e.g. `#### [repo](url)\n\n| Stars | ★ 12k+ |`).
-        #   3. Stop at heading / horizontal-rule boundary to avoid cross-entry leakage.
+        # For each GitHub URL, detect_stars() finds its declared `★ Xk+`
+        # (same-line, or entry-block on a later line) and returns the ★'s own
+        # line for the write-back target — see that function's docstring.
         lines = text.splitlines()
         for i, line in enumerate(lines):
             m_repo = GITHUB_RE.search(line)
@@ -145,25 +181,13 @@ def main():
             repo = normalize_repo(m_repo.group(1), m_repo.group(2))
             if repo is None:
                 continue
-            declared = None
-            declared_text = None
-            # Step 1: same-line stars first (table / bullet formats)
-            m_stars = STARS_RE.search(line)
-            if m_stars:
-                declared = parse_stars_text(m_stars.group(0))
-                declared_text = m_stars.group(0)
-            else:
-                # Step 2: fallback to next 12 lines
-                for j in range(i + 1, min(i + 12, len(lines))):
-                    stripped = lines[j].lstrip()
-                    if stripped.startswith(("### ", "#### ", "## ", "---", "# ")):
-                        break  # 撞到下一個 entry 邊界
-                    m_stars = STARS_RE.search(lines[j])
-                    if m_stars:
-                        declared = parse_stars_text(m_stars.group(0))
-                        declared_text = m_stars.group(0)
-                        break
-            entries.setdefault(repo, []).append((fp, declared, i + 1, declared_text or "(no stars line)"))
+            declared, declared_text, star_idx = detect_stars(lines, i)
+            # Record the ★'s own line (star_idx), NOT the URL line — the
+            # --apply write-back keys on this, so entry-block formats
+            # (★ on a separate line) now actually get rewritten.
+            entries.setdefault(repo, []).append(
+                (fp, declared, star_idx + 1, declared_text or "(no stars line)")
+            )
 
     # 去重 repo（每個 repo 只查一次）
     unique_repos = list(entries.keys())
