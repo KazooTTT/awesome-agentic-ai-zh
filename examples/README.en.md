@@ -135,8 +135,8 @@ Subscription alternative: Claude Pro $20/month (includes Sonnet usage); Claude M
 
 | Provider | Main model | $/1M input | $/1M output | OpenAI-compat? | Key selling point |
 |---|---|---|---|---|---|
-| **DeepSeek** ⭐ | `deepseek-chat` (V3) | $0.27 | $1.10 | ✅ | Cheapest cloud (4× cheaper than haiku $1/$5); strong CN & EN; free web at `chat.deepseek.com` |
-| DeepSeek R1 | `deepseek-reasoner` | $0.55 | $2.19 | ✅ | Reasoning model (o1-class), still 1/30 the price of OpenAI o1 |
+| **DeepSeek** ⭐ | `deepseek-v4-flash` | $0.14 | $0.28 | ✅ | Cheapest cloud (~7× cheaper than haiku $1/$5); strong CN & EN; free web at `chat.deepseek.com` |
+| DeepSeek V4-Pro | `deepseek-v4-pro` | $0.44 | $0.87 | ✅ | Stronger reasoning; still far below same-tier pricing |
 | **Moonshot Kimi** | `kimi-k2-turbo-preview` | $5-10 | $15-30 | ✅ | **1M-token context** (key selling point); good for large files / long conversations. Free web at `kimi.com` |
 | **Qwen (Alibaba)** | `qwen-max` / `qwen-turbo` | $0.50-1.50 | $1.50-6 | ✅ (DashScope) | Native Chinese; **same models also run locally via Ollama** (cloud + local both work) |
 | **GLM (ZhipuAI)** | `glm-4.5` / `glm-4-plus` | $0.30-2 | $1.50-9 | ✅ | China-native, has free tier. Free web `chatglm.cn` |
@@ -147,7 +147,7 @@ Subscription alternative: Claude Pro $20/month (includes Sonnet usage); Claude M
 ```python
 # DeepSeek
 client = OpenAI(api_key=os.environ["DEEPSEEK_API_KEY"], base_url="https://api.deepseek.com/v1")
-r = client.chat.completions.create(model="deepseek-chat", messages=[...])
+r = client.chat.completions.create(model="deepseek-v4-flash", messages=[...])
 
 # Moonshot Kimi (China endpoint; international uses .ai)
 client = OpenAI(api_key=os.environ["MOONSHOT_API_KEY"], base_url="https://api.moonshot.cn/v1")
@@ -172,7 +172,7 @@ r = client.chat.completions.create(model="meta/llama-3.3-70b-instruct", messages
 | Scenario | Pick | Why |
 |---|---|---|
 | Mainland China, no cloud access | Ollama local / DeepSeek API | Local is free; DeepSeek has an in-China endpoint |
-| Tight budget (< $1/month) | DeepSeek API | 4× cheaper than haiku; quality close |
+| Tight budget (< $1/month) | DeepSeek API | ~7× cheaper than haiku; quality close |
 | Large files / long-doc RAG | Moonshot Kimi | 1M-token context |
 | Chinese-native task (classical Chinese, CN search) | Qwen / GLM | Higher Chinese training corpus ratio |
 | Want to try 10+ open models without GPU | NVIDIA NIM | One key, play with Llama / Mixtral / Qwen / DeepSeek |

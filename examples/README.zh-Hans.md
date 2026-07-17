@@ -135,8 +135,8 @@ if hasattr(sys.stdout, "reconfigure"):
 
 | Provider | 主 model | 每 1M input | 每 1M output | OpenAI-compat? | 主卖点 |
 |---|---|---|---|---|---|
-| **DeepSeek** ⭐ | `deepseek-chat` (V3) | $0.27 | $1.10 | ✅ | 最便宜 cloud（比 haiku $1/$5 还便宜 4 倍）、中英文俱佳、含免费 web `chat.deepseek.com` |
-| DeepSeek R1 | `deepseek-reasoner` | $0.55 | $2.19 | ✅ | 推理模型（o1 级）、价格仍只是 OpenAI o1 的 1/30 |
+| **DeepSeek** ⭐ | `deepseek-v4-flash` | $0.14 | $0.28 | ✅ | 最便宜 cloud（比 haiku $1/$5 便宜约 7 倍）、中英文俱佳、含免费 web `chat.deepseek.com` |
+| DeepSeek V4-Pro | `deepseek-v4-pro` | $0.44 | $0.87 | ✅ | 更强推理、价格仍远低于同级 |
 | **Moonshot Kimi** | `kimi-k2-turbo-preview` | $5-10 | $15-30 | ✅ | **1M token context**（卖点）、适合大文件 / 长对话。web 版 `kimi.com` 免费 |
 | **通义千问 Qwen** | `qwen-max` / `qwen-turbo` | $0.50-1.50 | $1.50-6 | ✅（DashScope）| 中文 native、**同 model 也能 Ollama 本机跑**（cloud + local 两条路径都通） |
 | **智谱 GLM** | `glm-4.5` / `glm-4-plus` | $0.30-2 | $1.50-9 | ✅ | 中国 native、有 free tier。web `chatglm.cn` 免费 |
@@ -147,7 +147,7 @@ if hasattr(sys.stdout, "reconfigure"):
 ```python
 # DeepSeek
 client = OpenAI(api_key=os.environ["DEEPSEEK_API_KEY"], base_url="https://api.deepseek.com/v1")
-r = client.chat.completions.create(model="deepseek-chat", messages=[...])
+r = client.chat.completions.create(model="deepseek-v4-flash", messages=[...])
 
 # Moonshot Kimi（中国 endpoint；海外用 .ai 结尾）
 client = OpenAI(api_key=os.environ["MOONSHOT_API_KEY"], base_url="https://api.moonshot.cn/v1")
@@ -172,7 +172,7 @@ r = client.chat.completions.create(model="meta/llama-3.3-70b-instruct", messages
 | 情境 | 选 | 理由 |
 |---|---|---|
 | 中国大陆、无 cloud 访问 | Ollama 本机 / DeepSeek API | 本机免费；DeepSeek 在中国有 endpoint |
-| 预算极敏感（< $1/月） | DeepSeek API | 比 haiku 便宜 4 倍、质量接近 |
+| 预算极敏感（< $1/月） | DeepSeek API | 比 haiku 便宜约 7 倍、质量接近 |
 | 大文件 / 长文档 RAG | Moonshot Kimi | 1M token context 卖点 |
 | 中文 native task（古文、中文搜索）| Qwen / GLM | 训练语料中文占比高 |
 | 想试 10+ open model 没 GPU | NVIDIA NIM | 一个 key 玩 Llama / Mixtral / Qwen / DeepSeek |

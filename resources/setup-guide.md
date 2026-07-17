@@ -107,8 +107,8 @@
 > 中國大陸使用者連 Anthropic / OpenAI 有困難、或想試中文 native 模型，從這邊開始。**這些 API 都 OpenAI-compatible**、改 `base_url` 跟 model name 就能跑同一份練習。
 
 - **DeepSeek**：https://platform.deepseek.com/
-  web 版 https://chat.deepseek.com 完全免費（含 R1 推理模型）。API 價格極便宜（**$0.27 input / $1.10 output per 1M token**、比 haiku 便宜 4 倍）。Code / 推理都很強。
-  `base_url=https://api.deepseek.com/v1`、`model=deepseek-chat` 或 `deepseek-reasoner`。
+  web 版 https://chat.deepseek.com 完全免費（含深度思考模式）。API 價格極便宜（**$0.14 input / $0.28 output per 1M token**、比 haiku 便宜約 7 倍）。Code / 推理都很強。
+  `base_url=https://api.deepseek.com/v1`、`model=deepseek-v4-flash` 或 `deepseek-v4-pro`。
 - **Moonshot Kimi**：https://platform.moonshot.cn/ (中國)、https://platform.moonshot.ai/ (海外)
   web 版 https://kimi.com 免費、**1M token context** 是賣點（很大檔案 / 長對話）。API 約 $5-15/1M input、按 context size 階梯計費。
   `base_url=https://api.moonshot.cn/v1` (中國) / `https://api.moonshot.ai/v1` (海外)、`model=kimi-k2-turbo-preview` 等。

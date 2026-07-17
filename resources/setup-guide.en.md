@@ -107,8 +107,8 @@ Want to script with Python, run batch jobs, integrate LLMs into your own app/aut
 > If you're in mainland China and Anthropic / OpenAI are inaccessible, or you want to test Chinese-native models, start here. **All these APIs are OpenAI-compatible** — just change `base_url` and model name to run the same exercises.
 
 - **DeepSeek**: https://platform.deepseek.com/
-  Free web at https://chat.deepseek.com (includes the R1 reasoning model). API is extremely cheap (**$0.27 input / $1.10 output per 1M tokens — about 4× cheaper than haiku**). Strong code and reasoning.
-  `base_url=https://api.deepseek.com/v1`, `model=deepseek-chat` or `deepseek-reasoner`.
+  Free web at https://chat.deepseek.com (with a deep-thinking mode). API is extremely cheap (**$0.14 input / $0.28 output per 1M tokens — about 7× cheaper than haiku**). Strong code and reasoning.
+  `base_url=https://api.deepseek.com/v1`, `model=deepseek-v4-flash` or `deepseek-v4-pro`.
 - **Moonshot Kimi**: https://platform.moonshot.cn/ (China) / https://platform.moonshot.ai/ (international)
   Free web at https://kimi.com. Selling point: **1M-token context window** (great for large files / long conversations). API ~$5-15 per 1M input, tiered by context size.
   `base_url=https://api.moonshot.cn/v1` (CN) / `https://api.moonshot.ai/v1` (intl), e.g. `model=kimi-k2-turbo-preview`.

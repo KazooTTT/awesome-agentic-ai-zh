@@ -62,7 +62,7 @@ You open Claude Code in a terminal and type "refactor the entire auth module, sw
 **Examples**: [Aider](https://aider.chat) / [OpenCode](https://github.com/sst/opencode) / [goose](https://block.github.io/goose) / [Hermes Agent](https://github.com/NousResearch/hermes-agent)*
 
 **Hero example**:
-You want to use DeepSeek-R1 to write code (10× cheaper than Claude Opus). Aider with `--model deepseek/deepseek-reasoner` + an `OPENROUTER_API_KEY` does it — git-aware, automatic commit messages, the same workflow as Type 2.
+You want to use DeepSeek-V4-Pro (the former R1 reasoning lineage now merged into the main line) to write code (~10× cheaper than Claude Opus). Aider with `--model deepseek/deepseek-v4-pro` + an `OPENROUTER_API_KEY` does it — git-aware, automatic commit messages, the same workflow as Type 2.
 
 **Difference from Type 2**: Type 2 locks you into one LLM family. Type 3 takes any OpenAI-compatible endpoint with your own API key.
 
