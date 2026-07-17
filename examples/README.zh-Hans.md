@@ -137,7 +137,7 @@ if hasattr(sys.stdout, "reconfigure"):
 |---|---|---|---|---|---|
 | **DeepSeek** ⭐ | `deepseek-v4-flash` | $0.14 | $0.28 | ✅ | 最便宜 cloud（比 haiku $1/$5 便宜约 7 倍）、中英文俱佳、含免费 web `chat.deepseek.com` |
 | DeepSeek V4-Pro | `deepseek-v4-pro` | $0.44 | $0.87 | ✅ | 更强推理、价格仍远低于同级 |
-| **Moonshot Kimi** | `kimi-k2-turbo-preview` | $5-10 | $15-30 | ✅ | **1M token context**（卖点）、适合大文件 / 长对话。web 版 `kimi.com` 免费 |
+| **Moonshot Kimi** | `kimi-k3` | 依阶梯 | 依阶梯 | ✅ | **1M token context**（卖点）、适合大文件 / 长对话；价格依 context 阶梯、见 platform。web 版 `kimi.com` 免费 |
 | **通义千问 Qwen** | `qwen-max` / `qwen-turbo` | $0.50-1.50 | $1.50-6 | ✅（DashScope）| 中文 native、**同 model 也能 Ollama 本机跑**（cloud + local 两条路径都通） |
 | **智谱 GLM** | `glm-4.5` / `glm-4-plus` | $0.30-2 | $1.50-9 | ✅ | 中国 native、有 free tier。web `chatglm.cn` 免费 |
 | **NVIDIA NIM** | Llama / Mistral / DeepSeek / Qwen 等 hosted | free tier 1000 credits | (同) | ✅ | **托管 10+ open model**、新账号送 credits、不必本机 GPU。`build.nvidia.com` |
@@ -151,7 +151,7 @@ r = client.chat.completions.create(model="deepseek-v4-flash", messages=[...])
 
 # Moonshot Kimi（中国 endpoint；海外用 .ai 结尾）
 client = OpenAI(api_key=os.environ["MOONSHOT_API_KEY"], base_url="https://api.moonshot.cn/v1")
-r = client.chat.completions.create(model="kimi-k2-turbo-preview", messages=[...])
+r = client.chat.completions.create(model="kimi-k3", messages=[...])
 
 # 通义千问 Qwen（Alibaba DashScope）
 client = OpenAI(api_key=os.environ["DASHSCOPE_API_KEY"],

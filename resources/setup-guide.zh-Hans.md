@@ -111,7 +111,7 @@
   `base_url=https://api.deepseek.com/v1`、`model=deepseek-v4-flash` 或 `deepseek-v4-pro`。
 - **Moonshot Kimi**：https://platform.moonshot.cn/ (中国)、https://platform.moonshot.ai/ (海外)
   web 版 https://kimi.com 免费、**1M token context** 是卖点（很大文件 / 长对话）。API 约 $5-15/1M input、按 context size 阶梯计费。
-  `base_url=https://api.moonshot.cn/v1` (中国) / `https://api.moonshot.ai/v1` (海外)、`model=kimi-k2-turbo-preview` 等。
+  `base_url=https://api.moonshot.cn/v1` (中国) / `https://api.moonshot.ai/v1` (海外)、`model=kimi-k3` 等。
 - **通义千问 Qwen（Alibaba）**：https://dashscope.console.aliyun.com/
   web 版 https://chat.qwen.ai 免费。API 走 Alibaba Cloud DashScope、有 **OpenAI-compatible endpoint**（[文档](https://help.aliyun.com/zh/dashscope/developer-reference/compatibility-of-openai-with-dashscope/)）。**同样的 Qwen 模型也能用 Ollama 在本机跑**（`ollama pull qwen2.5:3b`）——cloud 跟 local 两条路径都通。
 - **智谱 GLM（ZhipuAI）**：https://open.bigmodel.cn/ (中国) / https://z.ai/ (海外)

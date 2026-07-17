@@ -111,7 +111,7 @@ Want to script with Python, run batch jobs, integrate LLMs into your own app/aut
   `base_url=https://api.deepseek.com/v1`, `model=deepseek-v4-flash` or `deepseek-v4-pro`.
 - **Moonshot Kimi**: https://platform.moonshot.cn/ (China) / https://platform.moonshot.ai/ (international)
   Free web at https://kimi.com. Selling point: **1M-token context window** (great for large files / long conversations). API ~$5-15 per 1M input, tiered by context size.
-  `base_url=https://api.moonshot.cn/v1` (CN) / `https://api.moonshot.ai/v1` (intl), e.g. `model=kimi-k2-turbo-preview`.
+  `base_url=https://api.moonshot.cn/v1` (CN) / `https://api.moonshot.ai/v1` (intl), e.g. `model=kimi-k3`.
 - **Qwen (Alibaba)**: https://dashscope.console.aliyun.com/
   Free web at https://chat.qwen.ai. API via Alibaba Cloud DashScope with an **OpenAI-compatible endpoint** ([docs](https://help.aliyun.com/zh/dashscope/developer-reference/compatibility-of-openai-with-dashscope/)). **The same Qwen models also run locally via Ollama** (`ollama pull qwen2.5:3b`) — cloud and local paths both work.
 - **GLM (ZhipuAI)**: https://open.bigmodel.cn/ (China) / https://z.ai/ (intl)

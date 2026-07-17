@@ -137,7 +137,7 @@ Subscription alternative: Claude Pro $20/month (includes Sonnet usage); Claude M
 |---|---|---|---|---|---|
 | **DeepSeek** ⭐ | `deepseek-v4-flash` | $0.14 | $0.28 | ✅ | Cheapest cloud (~7× cheaper than haiku $1/$5); strong CN & EN; free web at `chat.deepseek.com` |
 | DeepSeek V4-Pro | `deepseek-v4-pro` | $0.44 | $0.87 | ✅ | Stronger reasoning; still far below same-tier pricing |
-| **Moonshot Kimi** | `kimi-k2-turbo-preview` | $5-10 | $15-30 | ✅ | **1M-token context** (key selling point); good for large files / long conversations. Free web at `kimi.com` |
+| **Moonshot Kimi** | `kimi-k3` | tiered | tiered | ✅ | **1M-token context** (key selling point); good for large files / long conversations; price is context-tiered — see platform. Free web at `kimi.com` |
 | **Qwen (Alibaba)** | `qwen-max` / `qwen-turbo` | $0.50-1.50 | $1.50-6 | ✅ (DashScope) | Native Chinese; **same models also run locally via Ollama** (cloud + local both work) |
 | **GLM (ZhipuAI)** | `glm-4.5` / `glm-4-plus` | $0.30-2 | $1.50-9 | ✅ | China-native, has free tier. Free web `chatglm.cn` |
 | **NVIDIA NIM** | Llama / Mistral / DeepSeek / Qwen etc. hosted | free tier 1000 credits | (same) | ✅ | **Hosts 10+ open models**; new accounts get credits; no local GPU needed. `build.nvidia.com` |
@@ -151,7 +151,7 @@ r = client.chat.completions.create(model="deepseek-v4-flash", messages=[...])
 
 # Moonshot Kimi (China endpoint; international uses .ai)
 client = OpenAI(api_key=os.environ["MOONSHOT_API_KEY"], base_url="https://api.moonshot.cn/v1")
-r = client.chat.completions.create(model="kimi-k2-turbo-preview", messages=[...])
+r = client.chat.completions.create(model="kimi-k3", messages=[...])
 
 # Qwen (Alibaba DashScope)
 client = OpenAI(api_key=os.environ["DASHSCOPE_API_KEY"],

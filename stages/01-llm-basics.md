@@ -63,7 +63,7 @@
 | Model 家族 | 旗艦（2026-05）| Context | 強項 | 適合任務 | 官方 |
 |---|---|---|---|---|---|
 | **DeepSeek**（深度求索）| V4-Flash（`deepseek-v4-flash`）/ V4-Pro（`deepseek-v4-pro`）| 1M | 推理 / coding / **cost 最低** | 大量 token / code 生成 / math | [api-docs.deepseek.com](https://api-docs.deepseek.com/zh-cn/) |
-| **Kimi**（Moonshot）| K2.6 multimodal + Agent | **超長 1M+** | 長 context / 中文長文 | 整本書讀 / 文獻分流 | [platform.moonshot.cn](https://platform.moonshot.cn/) |
+| **Kimi**（Moonshot）| K3（2.8T 參數、原生多模態）| **1M** | 長 context / 中文長文 | 整本書讀 / 文獻分流 | [platform.moonshot.cn](https://platform.moonshot.cn/) |
 | **Hunyuan**（騰訊）| T1（深度思考）+ TurboS | 128k | **可比 DeepSeek R1 推理**、中文 | 中文推理 / 騰訊生態 | [hunyuan.tencent.com](https://hunyuan.tencent.com/) |
 | **MiniMax** | abab6.5 + M2.7 | 200k | 多模態 / 中文長 prose | 中文寫作 / 影音 multimodal | [platform.minimax.io](https://platform.minimax.io/) |
 
@@ -107,7 +107,7 @@
 | 推理 / math（reasoning model）| **DeepSeek V4-Pro** / **Hunyuan T1** / **OpenAI o-series** |
 | 隱私 / offline / 不付 API | **Llama 3.3** / **Gemma 4** / **Qwen 3 OSS** via [Ollama](https://ollama.com/) |
 | Edge / 4GB RAM 機器 | **Gemma 4** / **Phi-4** / **Qwen 3（3B 以下版本）** |
-| 100k+ token 大文件 | **Gemini 3.1**（2M context）或 **Kimi K2.6**（1M+）|
+| 100k+ token 大文件 | **Gemini 3.1**（2M context）或 **Kimi K3**（1M）|
 | **想 cost 最低**（API 帳單敏感）| **DeepSeek V4-Flash** — 同級英文 model 中 token 單價最低 |
 
 ### 📊 中立 benchmark 資源（自己 verify、不靠單一 source）
