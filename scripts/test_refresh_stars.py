@@ -28,6 +28,16 @@ def _detect(md: str):
     return out
 
 
+def test_github_dir_excluded_from_scan():
+    # .github/outreach drafts carry historical ("week 1 ★525") + cross-repo
+    # (Langchain-Chatchat ★37k) star mentions that must NOT be auto-refreshed.
+    # 2026-07 incident: the bot rewrote 7 of them to this repo's current count.
+    assert ".github" in rs.EXCLUDE_DIRS
+    scanned = rs.find_md_files(rs.REPO_ROOT)
+    leaked = [fp for fp in scanned if ".github" in fp.parts]
+    assert not leaked, f"refresh-stars must not scan .github/: {leaked[:3]}"
+
+
 def test_same_line_table():
     res = _detect("| [repo](https://github.com/a/b) | desc | ★ 80k+ |")
     declared, text, star_idx = res[0]

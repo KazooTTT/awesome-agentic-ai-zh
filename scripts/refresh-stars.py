@@ -22,7 +22,12 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MD_GLOB = "**/*.md"
-EXCLUDE_DIRS = {".git", ".ai", "node_modules", "_build", ".venv"}
+# .github holds outreach drafts + policy docs whose ★ counts are HISTORICAL
+# (launch "week 1 ★525" stats) or belong to OTHER repos mentioned in prose
+# (e.g. Langchain-Chatchat ★37k). Auto-refreshing them corrupts the record —
+# the bot mis-associates this repo's URL with a nearby prose ★ and overwrites it
+# with this repo's current count (2026-07 incident). Never scan .github.
+EXCLUDE_DIRS = {".git", ".github", ".ai", "node_modules", "_build", ".venv"}
 
 # 抓 GitHub repo URL：https://github.com/owner/repo
 GITHUB_RE = re.compile(r"https://github\.com/([\w.-]+)/([\w.-]+?)(?:[#?/)\s]|$)")
