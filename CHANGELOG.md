@@ -6,6 +6,14 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-07-20
+
+- **tooling** · **`refresh-stars.py` now excludes `.github/`** + clean weekly star refresh applied. The weekly star bot was scanning `.github/` outreach drafts and corrupting them: it mis-associated this repo's own URL with nearby *prose* star counts and overwrote historical launch stats + other repos' numbers with this repo's current count (the week's auto-PR #71 had 7 such false edits, e.g. `Langchain-Chatchat ★37k` → `★4.6k+`). Added `.github` to the scan exclude list + a regression test; re-ran the fixed bot to apply **218 legitimate catalog ★-count updates** (tri-locale ★ parity verified, 0 `.github` touched). #71 closed as superseded (5e3887e).
+
+## 2026-07-18
+
+- **tooling** · **Freshness gate now scans mirror locales** (salvaged from a background chip): `check-2026-freshness.py` scans `.en.md`/`.zh-Hans.md` (not just the zh-TW canonical), the DeepSeek regex catches the space-form `DeepSeek R1`, CJK `基線/基线` qualifiers are recognized, plus 12 unit tests and a `freshness-tests` CI job. En route, corrected a fabricated model fact in two places (a rule note + a live `setup-guide.md` line): DeepSeek-R1 was described as "superseded by R2 in 2026-03" — **R2 never shipped** (verified first-party); the reasoning capability shipped in DeepSeek V4 (2026-04) (58cfb99).
+
 ## 2026-07-17
 
 - **docs** · **Homepage note for the PR link-audit bot** (README `🤝 如何貢獻 / Contributing` section, tri-locale). A `🤖` callout tells contributors that a new `github.com/owner/repo` link on a PR gets an automated stars/license/archived/last-push comment checked against `§策展標準` — advisory, never blocks, maintainer decides. Honestly discloses the v1 fork-PR limitation (runs on maintainer-branch PRs only) rather than over-promising coverage; placed in Contributing, not the learner hero. Also fixed a pre-existing tri-locale parity slip the reviewer caught in the same section — `README.zh-Hans.md`'s maintainer bullet linked `CONTRIBUTING.md` + style-guide instead of `CONTRIBUTORS.md` like the TW/EN siblings (5f92d04).
