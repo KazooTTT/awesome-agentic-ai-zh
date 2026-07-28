@@ -16,8 +16,8 @@ abstract: >-
   ecosystem, memory/RAG, and multi-agent production, organized as
   staged tracks and audience-specific branches.
 license: MIT
-version: "2026.07.20"
-date-released: "2026-07-20"
+version: "2026.07.27"
+date-released: "2026-07-27"
 keywords:
   - agentic-ai
   - ai-agents
