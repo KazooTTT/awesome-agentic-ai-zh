@@ -337,7 +337,7 @@ def ask(prompt: str) -> str:
 
 </details>
 
-> 🧠 **When NOT to hand-write CoT**: for **reasoning-native models** (Claude Opus 4.x, the o-series, Gemini thinking, and other models with built-in thinking), using their extended thinking is usually better than hand-writing "Let's think step by step"; forcing your own steps can interfere with their native reasoning. Hand-written CoT still applies to plain chat models without built-in reasoning.
+> 🧠 **When NOT to hand-write CoT**: for **reasoning-native models** (Claude Opus 4.x / 5, the o-series, Gemini thinking, and other models with built-in thinking), using their extended thinking is usually better than hand-writing "Let's think step by step"; forcing your own steps can interfere with their native reasoning. Hand-written CoT still applies to plain chat models without built-in reasoning.
 
 ### Exercise 4: Iterative Refinement
 Take a vague prompt, refine it 5 times. Track the iterations. Notice what changes improve quality.

@@ -219,7 +219,9 @@ Production agent 跑久了，**cost / latency 两条线会吃掉你大半预算�
 | [**τ-bench**](https://github.com/sierra-research/tau-bench) | tool use 多轮对话 | （较难 hack）| Anthropic / OpenAI 领先 |
 | **RE-bench** | research engineering | （较难 hack、接近人类 baseline）| Frontier model |
 
-> **Mythos-class 层级（Claude Fable 5 — 2026-06-09 发布；2026-06-12 暂停、2026-07-01 恢复）**：[**Claude Fable 5**](https://www.anthropic.com/news/claude-fable-5-mythos-5)（`claude-fable-5`，Mythos-class、定位在 Opus 之上）是对外开放的最高能力 Claude 层级，与姊妹版 Claude Mythos 5（`claude-mythos-5`，部分安全措施放宽、限定核准客户）同日发布。2026-06-12 曾被美国出口管制指令暂停，但出口管制 2026-06-30 解除、[Fable 5 于 2026-07-01 全球恢复](https://www.anthropic.com/news/redeploying-fable-5)（重新部署时加了新安全 classifier；Mythos 5 仅对核准的美国组织恢复）。上表数字维持原本归属的 model；Fable 5 官方 benchmark 数字始终未公布，故未列入。**Fable 5 又是最高阶的 Claude 层级；Opus 4.8 为 Opus-class 旗舰。**
+> **⚠ 上表是 Opus 4.8 世代的数字**：这些都是当时实测并归属到该 model 的结果，故原样保留。Claude Opus 5（`claude-opus-5`）已于 2026-07-24 发布、Anthropic 官方宣称有所提升，但那些宣称目前还没有第三方独立复现，因此本表刻意不拿它们来更新。
+
+> **Mythos-class 层级（Claude Fable 5 — 2026-06-09 发布）**：[**Claude Fable 5**](https://www.anthropic.com/news/claude-fable-5-mythos-5)（`claude-fable-5`，Mythos-class、定位在 Opus 之上）是对外开放的最高能力 Claude 层级，与姊妹版 Claude Mythos 5（`claude-mythos-5`，部分安全措施放宽、限定核准客户）同日发布。曾于 2026-06-12 因美国出口管制指令暂停，[2026-07-01 全球恢复](https://www.anthropic.com/news/redeploying-fable-5)（Mythos 5 仅对核准的美国组织恢复）。上表数字维持原本归属的 model；Fable 5 官方 benchmark 数字始终未公布，故未列入。**Fable 5 是最高阶的 Claude 层级；Opus-class 旗舰现为 Claude Opus 5（Opus 4.8 仍可使用，官方文档已归入 legacy）。**
 
 → 详细排行 + 即时更新：[Agent Benchmark Leaderboard 2026](https://benchmarkingagents.com/agent-benchmarks/)、[Rapid Claw AI Agent Framework Scorecard 2026](https://rapidclaw.dev/blog/ai-agent-benchmarks-2026)
 

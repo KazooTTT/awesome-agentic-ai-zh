@@ -64,7 +64,7 @@ LLM 看到的不是“字”，是 **token**（次字单位）。中文 1 个字
 
 ### Context Window（上下文视窗）
 
-LLM 一次能“看”多少 token。**2026 frontier**：Claude Sonnet 5 / Opus 4.8 1M、GPT-5.6 1.05M、Gemini 3.5 Flash 1M（Pro 系列上看 2M）、xAI Grok 4.5 500K、Mistral Medium 3.5 256k。**不是越大越好**——超过某个长度后 LLM 会“在中间遗漏”（Lost in the Middle）。
+LLM 一次能“看”多少 token。**2026 frontier**：Claude Sonnet 5 / Opus 5 1M、GPT-5.6 1.05M、Gemini 3.5 Flash 1M（Pro 系列上看 2M）、xAI Grok 4.5 500K、Mistral Medium 3.5 256k。**不是越大越好**——超过某个长度后 LLM 会“在中间遗漏”（Lost in the Middle）。
 
 ### Prompt（提示词）
 
@@ -371,7 +371,7 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 
 ### Frontier Model
 
-当下最顶的模型（**2026-07**：OpenAI **GPT-5.6**（Sol / Terra / Luna 三级、1.05M context、ChatGPT / Codex / API 都能用）；**2026-06 后半**：Claude Sonnet 5（速度×智慧的最佳平衡、接近 Opus 4.8 但更便宜）、Google Gemini 3.5 Flash、xAI Grok 4.5（500K context）、Mistral Medium 3.5；**2026-06 前半**：Claude Fable 5（Mythos-class，定位在 Opus 之上）发布，2026-06-12 曾被美国出口管制暂停，但 **出口管制 2026-06-30 解除、[Fable 5 于 2026-07-01 全球恢复](https://www.anthropic.com/news/redeploying-fable-5)**（Mythos 5 仅对核准美国组织恢复）；**2026-05**：GPT-5.5、Claude Opus 4.8（Opus-class 旗舰）、Gemini 3.1 Pro、DeepSeek-V4-Pro 等）。一般智慧任务用 frontier；简单分类 / 翻译用便宜的小模型省钱。
+当下最顶的模型（**2026-07**：Claude **Opus 5**（2026-07-24、`claude-opus-5`、1M、$5/$25，官方 docs 建议的默认起点）、OpenAI **GPT-5.6**（Sol / Terra / Luna 三级、1.05M context、ChatGPT / Codex / API 都能用）；**2026-06 后半**：Claude Sonnet 5（速度×智慧的最佳平衡、接近 Opus 级但更便宜）、Google Gemini 3.5 Flash、xAI Grok 4.5（500K context）、Mistral Medium 3.5；**2026-06 前半**：Claude Fable 5（Mythos-class，定位在 Opus 之上）发布，2026-06-12 曾被美国出口管制暂停，但 **出口管制 2026-06-30 解除、[Fable 5 于 2026-07-01 全球恢复](https://www.anthropic.com/news/redeploying-fable-5)**（Mythos 5 仅对核准美国组织恢复）；**2026-05**：GPT-5.5、Claude Opus 4.8（当时的 Opus-class 旗舰，2026-07 由 Opus 5 接替、仍可用）、Gemini 3.1 Pro、DeepSeek-V4-Pro 等）。一般智慧任务用 frontier；简单分类 / 翻译用便宜的小模型省钱。
 
 ### Context Engineering
 
@@ -396,13 +396,22 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 
 prompt engineering → context engineering → harness engineering 之后的第四层：设计 / 调校 agent 的“迭代循环”本身——目标、工具、context 管理、终止条件、错误处理，让长时间（数百步、跨 session）运行仍可靠、可控、不跑偏。相关：harness、Dynamic Workflows、ReAct。
 
+### Graph Engineering（图工程）
+
+把 agent 的执行流程设计成**显式的图**：node = 一个步骤（2026 起一个 node 里可以放一整个 agent run，不再只是一个 function），edge = 转移条件，node 之间传递一个有 schema、可 checkpoint、可 replay 的 state。**读到这个词要知道两件事**：
+
+- **这里的“图”是执行流程图（control / execution graph），不是 GraphRAG 那种知识图谱检索**——后者见 [Stage 6](../stages/06-memory-rag.zh-Hans.md)。两者常被混为一谈。
+- **这是 2026-07 才流行的新名字，不是新技术**。LangGraph 从 2023 就是这样运作，LangChain 官方也直言这不是新想法；Anthropic 称同类机制为 *dynamic workflows*、Google ADK 与 Microsoft Agent Framework 用 *graph-based workflow(s)*，三家官方文档都没有采用“graph engineering”这个说法。
+
+真正要学的东西在 [Stage 4 的 multi-agent pattern](../stages/04-agent-frameworks.zh-Hans.md) 和可以直接跑的 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.zh-Hans.md)（`StateGraph` / conditional edge / checkpointer）。相关：harness、Loop Engineering、orchestration。
+
 ---
 
 ## 8. Agent Interfaces
 
 ### Computer Use（屏幕级 agent）
 
-Agent 通过 **screenshot → vision → 算坐标 → 模拟键鼠** 操作真实桌面 app——不靠 API、直接像人类用屏幕。代表：Anthropic Claude Computer Use（Opus 4.8 / Sonnet 5）/ OpenAI Codex desktop / Google Gemini in Chrome。**2024-10 Anthropic 公开 beta 开启；OSWorld v1 2026-05 达 76.26% 后接近饱和，OSWorld 2.0（2026-06、long-horizon）把 SOTA 重设到 ~20%（Opus 4.8）**。
+Agent 通过 **screenshot → vision → 算坐标 → 模拟键鼠** 操作真实桌面 app——不靠 API、直接像人类用屏幕。代表：Anthropic Claude Computer Use（Opus 5 / Sonnet 5）/ OpenAI Codex desktop / Google Gemini in Chrome。**2024-10 Anthropic 公开 beta 开启；OSWorld v1 2026-05 达 76.26% 后接近饱和，OSWorld 2.0（2026-06、long-horizon）把 SOTA 重设到 ~20%（Opus 4.8）**。
 
 📍 完整解说 + 4 强对比：[Stage 8 Computer Use](../stages/08-agent-interfaces.zh-Hans.md)
 

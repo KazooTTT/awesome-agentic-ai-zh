@@ -83,7 +83,7 @@ If you don't meet these, go back and catch up.
 ## 📚 Required Reading
 
 1. [**Anthropic — Introducing Computer Use**](https://www.anthropic.com/news/3-5-models-and-computer-use) — The original launch announcement for Computer Use. A must-read to understand how it works.
-2. [**Anthropic — Claude Opus 4.8 Release Notes**](https://docs.anthropic.com/en/release-notes/overview) — Opus 4.8 (May 2026) introduces Dynamic Workflows + parallel subagent harness and is the Opus-class flagship. On 2026-06-09 Anthropic released Claude Fable 5 (`claude-fable-5`) and Claude Mythos 5 (`claude-mythos-5`), the Mythos-class tier above the Opus class. They were suspended 2026-06-12 by a US export-control directive, but the controls were lifted 2026-06-30 and [Fable 5 was redeployed globally 2026-07-01](https://www.anthropic.com/news/redeploying-fable-5) (Mythos 5 restored only for approved US organizations) — Fable 5 is again the highest Claude tier.
+2. [**Anthropic — Claude Release Notes (model overview)**](https://docs.anthropic.com/en/release-notes/overview) — Claude Opus 5 (`claude-opus-5`, 2026-07-24) is the current recommended default; Anthropic's docs say to "start with Claude Opus 5 for complex agentic coding and enterprise work". Above it sits the Mythos-class Claude Fable 5 (`claude-fable-5`), Anthropic's most capable widely released model, reserved for workloads that need the highest available capability; Mythos 5 (`claude-mythos-5`) has the same specs but is invitation-only. Opus 4.8 (May 2026, which shipped Dynamic Workflows + the parallel subagent harness) is still available, but the docs have moved it into the Legacy models section.
 3. [**OpenAI — The next evolution of the Agents SDK**](https://openai.com/index/the-next-evolution-of-the-agents-sdk/) ⭐ **April 2026** — A milestone for architecturally sound production coding agents, with a built-in sandbox and harness abstractions.
 4. [**OpenAI — Computer-Using Agent (CUA)**](https://openai.com/index/computer-using-agent/) — OpenAI's version of Computer Use, with WebArena/OSWorld numbers.
 5. [**browser-use docs**](https://docs.browser-use.com/) — The #1 open-source web agent (86k+ stars), get started with 5 lines of Python.
@@ -124,7 +124,7 @@ Agent receives a task
 
 | Vendor | Product | 2026 Status | OSWorld | Strengths |
 |---|---|---|---|---|
-| **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA, cross-platform on macOS/Linux/Windows (Docker) | **72.7%** (Opus 4.6 baseline, near human-level 72.36%; Computer Use numbers for Opus 4.7 / 4.8 not yet public) | Reasoning + code agent, home turf for Stages 5/7. Opus 4.8 is the Opus-class flagship; the Mythos-class Fable 5 (2026-06-09) was suspended 2026-06-12 and restored 2026-07-01 |
+| **Anthropic** | [Opus 5 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA, cross-platform on macOS/Linux/Windows (Docker) | **72.7%** (Opus 4.6 baseline, near human-level 72.36%; Computer Use numbers for Opus 4.7 / 4.8 / 5 all not yet public) | Reasoning + code agent, home turf for Stages 5/7. Opus 5 (2026-07-24) is the Opus-class flagship; the Mythos-class Fable 5 (2026-06-09) was suspended 2026-06-12 and restored 2026-07-01 |
 | **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/) (April 2026)| GA, **background mode** doesn't hog the cursor, in-app browser, 90+ plugins | CUA 38.1% | Standalone desktop coding agent + cross-app workflow; agentic browsing now lives in the ChatGPT desktop app (Atlas folded in, discontinued Aug 2026) |
 | **OpenAI** | [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/) | API | 38.1% / WebArena 58.1% | API-first, can be integrated into your own stack |
 | **Google** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/) (Gemini 3) | GA + Android | — | **Auto Browse** + **Chrome Skills**, Chrome Enterprise Premium $6/user/month |
@@ -144,7 +144,7 @@ Agent receives a task
 | OpenAI CUA | 38.1% | -34% |
 | Most other models | 30-50% | -22% to -42% |
 
-> **⚠️ June 2026 update (OSWorld 2.0)**: The table above is OSWorld **v1**. v1 has since been driven near saturation by frontier models, and "superhuman" only holds for v1's short tasks (mostly 1-2 apps). [OSWorld 2.0](https://osworld-v2.xlang.ai/) (2026-06, arXiv 2606.29537) switched to 108 long-horizon workflows (~318 tool calls each, vs. ~30 in v1); the strongest model, Claude Opus 4.8 (max thinking), reaches only **20.6%** (at a 500-step budget), GPT-5.5 ~14%, and no model clears 10% on tasks over 137 minutes. SOTA falling from "76% superhuman" to "20% on realistic long tasks" is exactly the gap this benchmark-discipline section warns you about.
+> **⚠️ June 2026 update (OSWorld 2.0)**: The table above is OSWorld **v1**. v1 has since been driven near saturation by frontier models, and "superhuman" only holds for v1's short tasks (mostly 1-2 apps). [OSWorld 2.0](https://osworld-v2.xlang.ai/) (2026-06, arXiv 2606.29537) switched to 108 long-horizon workflows (~318 tool calls each, vs. ~30 in v1); the strongest model at the time, Claude Opus 4.8 (max thinking), reached only **20.6%** (at a 500-step budget), GPT-5.5 ~14%, and no model clears 10% on tasks over 137 minutes. SOTA falling from "76% superhuman" to "20% on realistic long tasks" is exactly the gap this benchmark-discipline section warns you about.
 
 **Why it's harder than SWE-bench**:
 - **More open-ended tasks**: SWE-bench has clear tests to determine pass/fail; OSWorld tasks have vague specs (e.g., "help me turn this csv into a chart").
@@ -212,7 +212,7 @@ Agent receives a task
 | Framework | Status | Strengths |
 |---|---|---|
 | [**browser-use**](https://github.com/browser-use/browser-use) ⭐ | **86k+ stars, MIT** | Hottest OSS in 2026, Python, 5-line setup, supports OpenAI/Claude/Gemini/Ollama. |
-| [**Microsoft OmniParser v2**](https://github.com/microsoft/OmniParser) | Updated 2026, Apache 2.0 | Vision-based GUI parsing, 60% latency improvement, 39.6% accuracy with ScreenSpot Pro. The same repo includes **OmniTool** (Windows 11 VM control, can be used with GPT-5.5 / Claude Opus 4.8 / DeepSeek-V4-Pro / Qwen 2.5VL / Claude Computer Use). |
+| [**Microsoft OmniParser v2**](https://github.com/microsoft/OmniParser) | Updated 2026, Apache 2.0 | Vision-based GUI parsing, 60% latency improvement, 39.6% accuracy with ScreenSpot Pro. The same repo includes **OmniTool** (Windows 11 VM control, can be used with GPT-5.5 / Claude Opus 5 / DeepSeek-V4-Pro / Qwen 2.5VL / Claude Computer Use). |
 | **Playwright + LLM** (DIY)| — | Not a dedicated framework, but Playwright is the standard for web automation. Just add an LLM wrapper to use it. |
 
 **Why is `browser-use` so popular (86k stars)?**:
@@ -341,7 +341,7 @@ from langchain_openai import ChatOpenAI
 
 agent = Agent(
     task="Search Hacker News for top AI agent posts this week and summarize",
-    llm=ChatOpenAI(model="gpt-5.5"), # Can also swap for Claude Opus 4.8 / Gemini 3.5 Flash / DeepSeek-V4-Pro
+    llm=ChatOpenAI(model="gpt-5.5"), # Can also swap for Claude Opus 5 / Gemini 3.5 Flash / DeepSeek-V4-Pro
 )
 result = await agent.run()
 ```

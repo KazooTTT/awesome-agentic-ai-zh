@@ -347,7 +347,7 @@ def ask(prompt: str) -> str:
 
 </details>
 
-> 🧠 **什么时候别自己写 CoT**：对 **reasoning-native 模型**（Claude Opus 4.x、o 系列、Gemini thinking 等内置思考的模型），用它们的 extended thinking 通常比你手写“Let's think step by step”更好；硬塞步骤反而可能干扰它本来的推理。手写 CoT 仍适用于不具内置推理的一般 chat model。
+> 🧠 **什么时候别自己写 CoT**：对 **reasoning-native 模型**（Claude Opus 4.x / 5、o 系列、Gemini thinking 等内置思考的模型），用它们的 extended thinking 通常比你手写“Let's think step by step”更好；硬塞步骤反而可能干扰它本来的推理。手写 CoT 仍适用于不具内置推理的一般 chat model。
 
 ### 练习 4：Iterative Refinement
 拿一个模糊的 prompt，refine 5 次。把每一轮记下来。观察哪些改动会提升质量。

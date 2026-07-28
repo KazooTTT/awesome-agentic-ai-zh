@@ -625,13 +625,13 @@ Reflexion 是一种**基于 Prompt 的 reflection**——LLM 在推理时自行�
 
 > 📺 **视觉学习**: [李宏毅 2025 第七讲 — DeepSeek-R1 这类大型语言模型是如何进行“深度思考”(Reasoning) 的？](https://www.youtube.com/watch?v=bJFtcwLSNxI)（NTU 生成式AI时代下的机器学习 2025）
 
-OpenAI 的 **o1**（2024-09）开启了这一趋势，随后是开源的 DeepSeek **R1**（2025-01）、**DeepSeek-V4-Pro**（2026-04 预览版，面向 Agent 的开源 reasoning）、Claude Fable 5（2026-06、Mythos-class、位阶在 Opus class 之上；2026-06-12 曾暂停、2026-07-01 已恢复）、Claude Opus 4.8（2026-05、Opus class 旗舰、Dynamic Workflows + parallel subagent）、GPT-5.5（2026-04）和 Gemini 3.1 Pro（2026-02）等当前前沿模型（2026-06 后半 Gemini 3.5 Flash 登场；GPT-5.6 Sol / Terra / Luna 已于 2026-07 正式推出）——它们将“step-by-step thinking + 自我纠错”**训练进了模型权重**，在推理时自动展开长 reasoning chain（thinking tokens）。**这是 2024-2026 年 LLM 的最大范式转移**，所有前沿模型都在遵循这条路径。下表仅列出**当前（2026-06）前沿模型**——历史上的前身（o1 / R1 / Sonnet 4.5 / Gemini 2.5）已省略，想了解 lineage 可查看各家发布日期。
+OpenAI 的 **o1**（2024-09）开启了这一趋势，随后是开源的 DeepSeek **R1**（2025-01）、**DeepSeek-V4-Pro**（2026-04 预览版，面向 Agent 的开源 reasoning）、Claude Fable 5（2026-06、Mythos-class、位阶在 Opus class 之上）、Claude Opus 5（2026-07、Opus class 旗舰、Anthropic 官方建议的默认起点；前身 Opus 4.8 带来 Dynamic Workflows + parallel subagent）、GPT-5.5（2026-04）和 Gemini 3.1 Pro（2026-02）等当前前沿模型（2026-06 后半 Gemini 3.5 Flash 登场；GPT-5.6 Sol / Terra / Luna 已于 2026-07 正式推出）——它们将“step-by-step thinking + 自我纠错”**训练进了模型权重**，在推理时自动展开长 reasoning chain（thinking tokens）。**这是 2024-2026 年 LLM 的最大范式转移**，所有前沿模型都在遵循这条路径。下表仅列出**当前（2026-07）前沿模型**——历史上的前身（o1 / R1 / Sonnet 4.5 / Gemini 2.5）已省略，想了解 lineage 可查看各家发布日期。
 
 | 模型 | 来源 / 发布 | 特色 | 链接 |
 |---|---|---|---|
 | **GPT-5.5** | OpenAI 2026-04（前身：o1 2024-09 → o3 → GPT-5 2025-08 → 5.4 2026-03）| 闭源，reasoning + chat 合并，提供 Thinking budget API，Agent 能力增强。**较新层级：GPT-5.6（Sol / Terra / Luna）、2026-07 正式推出、1.05M context** | [OpenAI](https://openai.com/) |
 | **Claude Fable 5** | Anthropic 2026-06（Mythos-class、位阶在 Opus class 之上；同步发布 Claude Mythos 5 为解除部分 safeguard 的限量版本）| 闭源、Mythos-class（位阶在 Opus class 之上）。曾于 2026-06-12 被美国出口管制暂停，**出口管制 2026-06-30 解除、[Fable 5 于 2026-07-01 全球恢复](https://www.anthropic.com/news/redeploying-fable-5)**（重新部署时加了新安全 classifier；Mythos 5 仅对核准的美国组织恢复）。官方 benchmark 数字始终未公布 | [Claude Fable 5 / Mythos 5](https://www.anthropic.com/news/claude-fable-5-mythos-5) |
-| **Claude Opus 4.8** | Anthropic 2026-05（前身：Sonnet 4.5 / Opus 4.5 / Opus 4.7，Dynamic Workflows 研究预览）| 闭源、Opus class 旗舰（Fable 5 暂停期间曾是最高可用层级；Fable 5 已于 2026-07-01 恢复）、可控 thinking budget（API 参数），在 SWE-bench / Terminal-bench 方面领先 | [Anthropic extended thinking](https://docs.claude.com/en/docs/build-with-claude/extended-thinking) |
+| **Claude Opus 5** | Anthropic 2026-07-24（前身：Opus 4.5 / Opus 4.7 / Opus 4.8；Dynamic Workflows 研究预览随 Opus 4.8 推出。Opus 4.8 仍可用、官方文档已移入 Legacy models）| 闭源、Opus class 旗舰（位阶在 Fable 5 之下）、1M context、adaptive thinking、官方建议“复杂 agentic coding 与企业工作从 Opus 5 开始”；在 SWE-bench / Terminal-bench 方面领先是前身 Opus 4.8 的测量结果，Opus 5 目前没有第三方复现数字 | [Anthropic extended thinking](https://docs.claude.com/en/docs/build-with-claude/extended-thinking) |
 | **Gemini 3.1 Pro** | Google 2026-02（前身：Gemini 2.5 Thinking 2025、Gemini 3 2025-11）| 闭源，可查看 thinking trace，GPQA Diamond 94.3%，价格 / 速度 / multimodal 方面领先。**较新层级：Gemini 3.5 Flash、2026-06 已开放（3.5 Pro 开发中）** | [Gemini API](https://ai.google.dev/gemini-api/docs/thinking) |
 | **DeepSeek-V4 / V4-Pro / V4-Flash** | DeepSeek 2026-04 预览版（前身：R1 2025-01 → V3.1）| 开源 **MIT license**，面向 Agent 的训练，整合推理 + 工具使用 + 知识处理，R 系列 reasoning 已并入主线 | [HF DeepSeek-V4-Pro](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro)、[R1 论文（方法基线）](https://arxiv.org/abs/2501.12948)、[CNBC 报道](https://www.cnbc.com/2026/04/24/deepseek-v4-llm-preview-open-source-ai-competition-china.html) |
 | **QwQ-32B / QvQ-72B** | Alibaba Qwen 2024-11 ~ 2026 | 开源 **Apache 2.0**，32B 在小尺寸 reasoning 仍是不错的选择，QvQ 为视觉版本 | [QwQ blog](https://qwenlm.github.io/blog/qwq-32b-preview/) |
@@ -641,7 +641,7 @@ OpenAI 的 **o1**（2024-09）开启了这一趋势，随后是开源的 DeepSee
 | 你的情况 | 建议 |
 |---|---|
 | 使用普通 chat model 作为基础，想加入 reasoning | Path 1（基于 Prompt 的方式）—— ToT / Self-Consistency / CoVe |
-| 预算 / 延迟允许，需要最强的 reasoning 能力 | Path 2 —— 选择 **GPT-5.5 / Opus 4.8 / Gemini 3.5 Flash / Grok 4.5 / V4-Pro** 中的一个（Claude Fable 5 已于 2026-07-01 恢复，属 premium 高阶层级）|
+| 预算 / 延迟允许，需要最强的 reasoning 能力 | Path 2 —— 选择 **GPT-5.5 / Opus 5 / Gemini 3.5 Flash / Grok 4.5 / V4-Pro** 中的一个（Claude Fable 5 属 premium 高阶层级，位阶在 Opus class 之上）|
 | 想自己 fine-tune reasoning model | Path 2 —— 阅读 R1 论文（方法基线），从 R1-Distill / V4 开源权重开始 |
 | 需要 on-device / 预算极度紧张 | **QwQ-32B**（Apache 2.0）或 R 系列 distill 版本 |
 | Multi-agent debate / critic 场景 | Path 1（CRITIC / debate）+ [Stage 7 Multi-agent](07-multi-agent-production.md) |
@@ -649,7 +649,7 @@ OpenAI 的 **o1**（2024-09）开启了这一趋势，随后是开源的 DeepSee
 > 💡 **2025-2026 年趋势**:
 > - Reasoning 模型已将 Reflexion 的能力内化到权重中——但**基于 Prompt 的 reflection 并未被取代**：Agent Loop（控制反思时机/内容）+ Multi-agent debate 仍然是必需的。
 > - **开源模型正在快速追赶闭源模型**——DeepSeek-V4-Pro（2026-04 预览版，MIT 许可）已将 R1 reasoning 集成到主线，并采用 Agent-first 训练，与 GPT-5.5 / Gemini 3.5 Flash 的差距在缩小。
-> - **Agent 能力正成为主要卖点**——V4 / Opus 4.8 都将 Agent-as-product（SWE-bench / Terminal-bench / tool use）作为核心 benchmark，单纯的 reasoning 已不足以吸引用户。
+> - **Agent 能力正成为主要卖点**——V4 / Opus 5 都将 Agent-as-product（SWE-bench / Terminal-bench / tool use）作为核心 benchmark，单纯的 reasoning 已不足以吸引用户。
 > - 两条路径将长期共存，Production Agent 很可能两者都会使用。
 
 ## 📏 RAG / Memory Eval — 跑得起来 ≠ 跑得准

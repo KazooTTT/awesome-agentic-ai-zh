@@ -83,7 +83,7 @@
 ## 📚 必修閱讀
 
 1. [**Anthropic — Introducing Computer Use**](https://www.anthropic.com/news/3-5-models-and-computer-use) — Computer Use 原始 launch、reading 工作原理必看
-2. [**Anthropic — Claude Opus 4.8 Release Notes**](https://docs.anthropic.com/en/release-notes/overview) — Opus 4.8（2026-05）含 Dynamic Workflows + parallel subagent harness、為 Opus 級旗艦。2026-06-09 Anthropic 發布 Claude Fable 5（`claude-fable-5`）與 Claude Mythos 5（`claude-mythos-5`）這個位在 Opus 之上的 Mythos-class 層級。兩者 2026-06-12 曾被美國出口管制暫停，但出口管制 2026-06-30 解除、[Fable 5 於 2026-07-01 全球恢復](https://www.anthropic.com/news/redeploying-fable-5)（Mythos 5 僅對核准的美國組織恢復）——Fable 5 又是最高階的 Claude 層級。
+2. [**Anthropic — Claude Release Notes（模型總覽）**](https://docs.anthropic.com/en/release-notes/overview) — Claude Opus 5（`claude-opus-5`，2026-07-24）是目前建議的預設模型，官方文件說複雜 agentic coding 與企業工作「從 Claude Opus 5 開始」。其上還有 Mythos-class 的 Claude Fable 5（`claude-fable-5`）——Anthropic 目前公開發布中能力最強的模型，留給需要最高能力的工作；Mythos 5（`claude-mythos-5`）規格相同但僅限邀請。Opus 4.8（2026-05，Dynamic Workflows + parallel subagent harness 隨它推出）仍可用，但官方文件已把它移到 Legacy models 區。
 3. [**OpenAI — The next evolution of the Agents SDK**](https://openai.com/index/the-next-evolution-of-the-agents-sdk/) ⭐ **2026-04** — 內建 sandbox + harness 抽象、production coding agent architecturally sound milestone
 4. [**OpenAI — Computer-Using Agent (CUA)**](https://openai.com/index/computer-using-agent/) — OpenAI 版 Computer Use + WebArena / OSWorld 數字
 5. [**browser-use docs**](https://docs.browser-use.com/) — OSS web agent 第一名（86k+ stars）、5 行 Python 起步
@@ -124,7 +124,7 @@ agent 收到任務
 
 | Vendor | 產品 | 2026 狀態 | OSWorld | 強項 |
 |---|---|---|---|---|
-| **Anthropic** | [Opus 4.8 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA、跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 baseline、近 human 72.36%；Opus 4.7 / 4.8 後續的 Computer Use 專項數字未公布）| reasoning + code agent、Stage 5/7 主場。Opus 4.8 為 Opus 級旗艦；Mythos-class 的 Fable 5（2026-06-09）2026-06-12 暫停、2026-07-01 已恢復 |
+| **Anthropic** | [Opus 5 / Sonnet 5 Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) | GA、跨 macOS / Linux / Windows（Docker）| **72.7%**（Opus 4.6 baseline、近 human 72.36%；Opus 4.7 / 4.8 / 5 後續的 Computer Use 專項數字均未公布）| reasoning + code agent、Stage 5/7 主場。Opus 5（2026-07-24）為 Opus 級旗艦；Mythos-class 的 Fable 5（2026-06-09）2026-06-12 暫停、2026-07-01 已恢復 |
 | **OpenAI** | [Codex desktop](https://openai.com/index/codex-for-almost-everything/)（April 2026）| GA、**background mode** 不搶 cursor、in-app browser、90+ plugins | CUA 38.1% | 獨立桌面 coding agent、跨 app workflow；agentic 瀏覽已併入 ChatGPT 桌面 app（Atlas 2026-08 停運後併入）|
 | **OpenAI** | [Computer-Using Agent (CUA)](https://openai.com/index/computer-using-agent/) | API | 38.1% / WebArena 58.1% | API-first、可整合自己 stack |
 | **Google** | [Gemini in Chrome](https://gemini.google/overview/gemini-in-chrome/)（Gemini 3）| GA + Android | — | **Auto Browse** + **Chrome Skills**、Chrome Enterprise Premium $6/user/月 |
@@ -144,7 +144,7 @@ agent 收到任務
 | OpenAI CUA | 38.1% | -34% |
 | 多數一般 model | 30-50% | -22% ~ -42% |
 
-> **⚠️ 2026-06 更新（OSWorld 2.0）**：上表是 OSWorld **v1** 的數字。v1 隨後被前沿模型逼近飽和，「superhuman」只在 v1 的短任務（多半 1-2 個 app）成立。[OSWorld 2.0](https://osworld-v2.xlang.ai/)（2026-06、arXiv 2606.29537）改用 108 個 long-horizon workflow（每個約 318 次 tool call，v1 只約 30），最強的 Claude Opus 4.8（max thinking）也只到 **20.6%**（500 步預算）、GPT-5.5 約 14%、137 分鐘以上的任務沒有任何模型破 10%。SOTA 從「76% superhuman」掉到「20% 真實長任務」，正是本段 benchmark 紀律要你警惕的落差。
+> **⚠️ 2026-06 更新（OSWorld 2.0）**：上表是 OSWorld **v1** 的數字。v1 隨後被前沿模型逼近飽和，「superhuman」只在 v1 的短任務（多半 1-2 個 app）成立。[OSWorld 2.0](https://osworld-v2.xlang.ai/)（2026-06、arXiv 2606.29537）改用 108 個 long-horizon workflow（每個約 318 次 tool call，v1 只約 30），當時最強的 Claude Opus 4.8（max thinking）也只到 **20.6%**（500 步預算）、GPT-5.5 約 14%、137 分鐘以上的任務沒有任何模型破 10%。SOTA 從「76% superhuman」掉到「20% 真實長任務」，正是本段 benchmark 紀律要你警惕的落差。
 
 **Why 比 SWE-bench 難**：
 - **更開放任務**：SWE-bench 有清楚 test 判 pass / fail；OSWorld 任務 spec 模糊（"幫我把 csv 變成圖"）
@@ -212,7 +212,7 @@ agent 收到任務
 | 框架 | 狀態 | 強項 |
 |---|---|---|
 | [**browser-use**](https://github.com/browser-use/browser-use) ⭐ | **86k+ stars、MIT** | 2026 最火 OSS、Python、5 行起步、支援 OpenAI / Claude / Gemini / Ollama |
-| [**Microsoft OmniParser v2**](https://github.com/microsoft/OmniParser) | 2026 更新、Apache 2.0 | vision-based GUI parsing、60% latency 改善、ScreenSpot Pro 39.6% accuracy。同 repo 內含 **OmniTool**（Windows 11 VM 控制、可搭 GPT-5.5 / Claude Opus 4.8 / DeepSeek-V4-Pro / Qwen 2.5VL / Claude Computer Use）|
+| [**Microsoft OmniParser v2**](https://github.com/microsoft/OmniParser) | 2026 更新、Apache 2.0 | vision-based GUI parsing、60% latency 改善、ScreenSpot Pro 39.6% accuracy。同 repo 內含 **OmniTool**（Windows 11 VM 控制、可搭 GPT-5.5 / Claude Opus 5 / DeepSeek-V4-Pro / Qwen 2.5VL / Claude Computer Use）|
 | **Playwright + LLM**（DIY）| — | 不是專門 framework、但 Playwright 是 web automation 標準、加 LLM wrapper 就能用 |
 
 **Why browser-use 86k stars 這麼火**：
@@ -341,7 +341,7 @@ from langchain_openai import ChatOpenAI
 
 agent = Agent(
     task="Search Hacker News for top AI agent posts this week and summarize",
-    llm=ChatOpenAI(model="gpt-5.5"), # 也可換 Claude Opus 4.8 / Gemini 3.5 Flash / DeepSeek-V4-Pro
+    llm=ChatOpenAI(model="gpt-5.5"), # 也可換 Claude Opus 5 / Gemini 3.5 Flash / DeepSeek-V4-Pro
 )
 result = await agent.run()
 ```

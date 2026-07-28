@@ -64,7 +64,7 @@ LLMs see **tokens** (sub-word units), not characters. Roughly 1 English word ≈
 
 ### Context Window
 
-The maximum tokens an LLM can "see" in one call. **2026 frontier**: Claude Sonnet 5 / Opus 4.8 1M, GPT-5.6 1.05M, Gemini 3.5 Flash 1M (Pro series up to 2M), xAI Grok 4.5 500K, Mistral Medium 3.5 256k. **Bigger isn't always better** — beyond a length the LLM gets "Lost in the Middle".
+The maximum tokens an LLM can "see" in one call. **2026 frontier**: Claude Sonnet 5 / Opus 5 1M, GPT-5.6 1.05M, Gemini 3.5 Flash 1M (Pro series up to 2M), xAI Grok 4.5 500K, Mistral Medium 3.5 256k. **Bigger isn't always better** — beyond a length the LLM gets "Lost in the Middle".
 
 ### Prompt
 
@@ -379,7 +379,7 @@ The LLM "confidently asserts something false" — invents APIs, fabricates numbe
 
 ### Frontier Model
 
-The current top tier (**2026-07**: OpenAI **GPT-5.6** (Sol / Terra / Luna — three tiers, 1.05M context, available in ChatGPT, Codex, and the API); **2026-06 (late)**: Claude Sonnet 5 (best speed-intelligence balance, close to Opus 4.8 but cheaper), Google Gemini 3.5 Flash, xAI Grok 4.5 (500K context), Mistral Medium 3.5; **2026-06 (early)**: Claude Fable 5 (Mythos-class, above Opus) shipped, was suspended 2026-06-12 by a US export-control directive, but **the controls were lifted 2026-06-30 and [Fable 5 was redeployed globally 2026-07-01](https://www.anthropic.com/news/redeploying-fable-5)** (Mythos 5 restored only for approved US orgs); **2026-05**: GPT-5.5, Claude Opus 4.8 (Opus-class flagship), Gemini 3.1 Pro, DeepSeek-V4-Pro, etc.). Use frontier for hard reasoning; use cheap small models for simple classification / translation to save cost.
+The current top tier (**2026-07**: Claude **Opus 5** (2026-07-24, `claude-opus-5`, 1M, $5/$25 — the default starting point the official docs recommend), OpenAI **GPT-5.6** (Sol / Terra / Luna — three tiers, 1.05M context, available in ChatGPT, Codex, and the API); **2026-06 (late)**: Claude Sonnet 5 (best speed-intelligence balance, close to Opus-class but cheaper), Google Gemini 3.5 Flash, xAI Grok 4.5 (500K context), Mistral Medium 3.5; **2026-06 (early)**: Claude Fable 5 (Mythos-class, above Opus) shipped, was suspended 2026-06-12 by a US export-control directive, but **the controls were lifted 2026-06-30 and [Fable 5 was redeployed globally 2026-07-01](https://www.anthropic.com/news/redeploying-fable-5)** (Mythos 5 restored only for approved US orgs); **2026-05**: GPT-5.5, Claude Opus 4.8 (the Opus-class flagship at the time; superseded by Opus 5 in 2026-07 but still available), Gemini 3.1 Pro, DeepSeek-V4-Pro, etc.). Use frontier for hard reasoning; use cheap small models for simple classification / translation to save cost.
 
 ### Context Engineering
 
@@ -404,13 +404,22 @@ Contrast:
 
 The fourth discipline after prompt → context → harness engineering: designing and tuning an agent's iteration loop itself (goal, tools, context management, termination logic, error handling) so long-running, multi-step, cross-session execution stays reliable and on-target. Related: harness, Dynamic Workflows, ReAct.
 
+### Graph Engineering
+
+Designing an agent's execution flow as an **explicit graph**: nodes are steps (as of 2026 a node can hold an entire agent run, not just a single function), edges are transition conditions, and nodes pass around a schema'd state that can be checkpointed and replayed. **Two things to know when you meet this term**:
+
+- **The "graph" here is a control / execution graph, not the knowledge-graph retrieval of GraphRAG** — for that, see [Stage 6](../stages/06-memory-rag.en.md). The two are frequently conflated.
+- **It is a name that became popular in July 2026, not a new technique.** LangGraph has worked this way since 2023, and LangChain itself says the idea is not new; Anthropic calls the equivalent mechanism *dynamic workflows*, while Google ADK and Microsoft Agent Framework say *graph-based workflow(s)* — none of the three vendors' docs use the phrase "graph engineering".
+
+What is actually worth learning lives in [Stage 4's multi-agent patterns](../stages/04-agent-frameworks.en.md) and the runnable [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.en.md) (`StateGraph` / conditional edges / checkpointer). Related: harness, Loop Engineering, orchestration.
+
 ---
 
 ## 8. Agent Interfaces
 
 ### Computer Use (screen-level agent)
 
-An agent operates real desktop apps via **screenshot → vision → coordinates → simulated mouse/keyboard** — no API needed, the agent uses the screen like a human. Representative: Anthropic Claude Computer Use (Opus 4.8 / Sonnet 5), OpenAI Codex desktop, Google Gemini in Chrome. **Anthropic public beta opened Oct 2024; OSWorld v1 hit 76.26% by May 2026 but then approached saturation — OSWorld 2.0 (2026-06, long-horizon) reset SOTA to ~20% (Opus 4.8)**.
+An agent operates real desktop apps via **screenshot → vision → coordinates → simulated mouse/keyboard** — no API needed, the agent uses the screen like a human. Representative: Anthropic Claude Computer Use (Opus 5 / Sonnet 5), OpenAI Codex desktop, Google Gemini in Chrome. **Anthropic public beta opened Oct 2024; OSWorld v1 hit 76.26% by May 2026 but then approached saturation — OSWorld 2.0 (2026-06, long-horizon) reset SOTA to ~20% (Opus 4.8)**.
 
 📍 Full coverage + 4-vendor comparison: [Stage 8 Computer Use](../stages/08-agent-interfaces.en.md)
 

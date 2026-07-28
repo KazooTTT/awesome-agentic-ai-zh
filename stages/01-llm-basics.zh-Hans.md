@@ -45,11 +45,11 @@
 
 | Model 家族 | 旗舰（2026-07）| Context | 强项 | 适合任务 | 官方 docs |
 |---|---|---|---|---|---|
-| **Claude**（Anthropic）| Opus 4.8 / Sonnet 5 / Haiku 4.5 | 1M | long-form / coding / agent / safety alignment | 写 paper / code review / agent runtime | [platform.claude.com/docs](https://platform.claude.com/docs/en/about-claude/models/overview) |
+| **Claude**（Anthropic）| Opus 5 / Sonnet 5 / Haiku 4.5 | 1M | long-form / coding / agent / safety alignment | 写 paper / code review / agent runtime | [platform.claude.com/docs](https://platform.claude.com/docs/en/about-claude/models/overview) |
 | **GPT**（OpenAI）| GPT-5.6 Sol / Terra / Luna | 1.05M | 通用 / function calling / ecosystem 最广 | 广度查询 / function-call 框架 / GPTs 生态 | [platform.openai.com/docs/models](https://platform.openai.com/docs/models) |
 | **Gemini**（Google）| 3.5 Flash / 3.5 Pro（开发中）| 2M | 长 context / 原生 multimodal / Google 整合 | PDF / 影音 / 大量文件 / Google Workspace | [ai.google.dev](https://ai.google.dev/gemini-api/docs/models/gemini) |
 
-> **注**：`（开发中）`= 还没推出。Claude **Fable 5**（Mythos-class、位阶在 Opus 之上、$10/$50）曾于 2026-06-12 被美国出口管制暂停，**出口管制已于 2026-06-30 解除、Fable 5 于 2026-07-01 全球恢复**（Claude Platform / Claude Code / Cowork 可用、API 陆续开放），是目前最高阶的 Claude 层级（Opus 4.8 为 Opus 级旗舰）。Context 栏填的是旗舰的上限：Gemini Pro 系列 2M、Flash 1M；Claude 1M（Haiku 4.5 是 200k）；GPT-5.6 三款都是 1.05M。另外 **Sonnet 5**（2026-06-30 上线）是目前的 Sonnet 版本：1M context、速度快、比 Opus 便宜（$3/$15，Opus 是 $5/$25）。**GPT-5.6**（2026-07 上线）分三级：**Sol** 旗舰（$5/$30）、**Terra** 均衡（$2.50/$15）、**Luna** 最快最省（$1/$6），ChatGPT / Codex / API 都能用。
+> **注**：`（开发中）`= 还没推出。Claude **Fable 5**（Mythos-class、位阶在 Opus 之上、$10/$50）是目前最强的 Claude 层级；**Opus 5**（2026-07-24 推出、`claude-opus-5`、1M、$5/$25，跟前一代 Opus 4.8 同价）是官方 docs 建议的默认起点，Anthropic 宣称它“接近 Fable 5 的能力、一半的价格”。**Opus 4.8 仍可用**（官方 docs 已移入 Legacy 区、未 deprecated）。Context 栏填的是旗舰的上限：Gemini Pro 系列 2M、Flash 1M；Claude 1M（Haiku 4.5 是 200k）；GPT-5.6 三款都是 1.05M。另外 **Sonnet 5**（2026-06-30 上线）是目前的 Sonnet 版本：1M context、速度快、比 Opus 便宜（$3/$15，Opus 是 $5/$25）。**GPT-5.6**（2026-07 上线）分三级：**Sol** 旗舰（$5/$30）、**Terra** 均衡（$2.50/$15）、**Luna** 最快最省（$1/$6），ChatGPT / Codex / API 都能用。
 
 ### 🇨🇳 中国商业 + 开源 frontier（7 家）
 
@@ -135,7 +135,7 @@
 
 ## 📚 必修阅读
 
-1. [**Anthropic - Claude 模型概览**](https://docs.claude.com/en/about-claude/models/overview) - 官方模型总览，包含 2026 的 Claude Fable 5（`claude-fable-5`、Mythos-class、2026-06-09 GA）以及 Opus 4.8 / Sonnet 5 / Haiku 4.5。**Fable 5 与姊妹版 Mythos 5（`claude-mythos-5`）曾于 2026-06-12 被美国出口管制指令暂停，出口管制已于 2026-06-30 解除；[Fable 5 于 2026-07-01 全球恢复](https://www.anthropic.com/news/redeploying-fable-5)（重新部署时加了新的安全 classifier），Mythos 5 仅对核准的美国组织恢复。Fable 5 是目前最高阶的 Claude 层级，Opus 4.8 为 Opus 级旗舰。**
+1. [**Anthropic - Claude 模型概览**](https://docs.claude.com/en/about-claude/models/overview) - 官方模型总览，包含 2026 的 Claude Fable 5（`claude-fable-5`、Mythos-class、2026-06-09 GA）以及 Opus 5 / Sonnet 5 / Haiku 4.5。**Fable 5 是目前最高阶的 Claude 层级；Opus 5（2026-07-24 推出、`claude-opus-5`）是现行的 Opus 级旗舰，Opus 4.8 仍可用（官方 docs 已移入 Legacy 区、未 deprecated）。**
 2. [**anthropics/courses — Anthropic API Fundamentals**](https://github.com/anthropics/courses) ⭐⭐⭐⭐⭐ ★ 21k+ — Anthropic 官方 5 course umbrella、**module 1“Anthropic API Fundamentals”对应本 stage**。Jupyter notebook、用 Claude 3 Haiku（最便宜）跑、跟着做就能拿到 API 基本功。
 3. [**OpenAI Quickstart**](https://platform.openai.com/docs/quickstart) - 学习发送你的第一个 API call。
 4. [**A Visual Guide to LLM Tokenizers**](https://huggingface.co/learn/llm-course/chapter6/1) - Hugging Face 的图文并茂指南。
@@ -357,8 +357,8 @@ import anthropic
 PRICING = {
     "claude-haiku-4-5":   {"input": 1.00, "output":  5.00},
     "claude-sonnet-5":    {"input": 3.00, "output": 15.00},
-    "claude-opus-4-8":    {"input": 5.00, "output": 25.00},  # Opus 4.8（2026 年 5 月、Dynamic Workflows）—— 维持 5/25 同价
-    "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5（Mythos-class、2026-07-01 恢复可用）约 Opus 4.8 的 2 倍
+    "claude-opus-5":      {"input": 5.00, "output": 25.00},  # Opus 5（2026-07-24、接替 Opus 4.8）—— 维持 5/25 同价
+    "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5（Mythos-class、最高层级）约 Opus 的 2 倍
 }
 
 client = anthropic.Anthropic()
@@ -377,7 +377,7 @@ for name, r in PRICING.items():
     print(f"  {name:<22} ${c:.4f}")
 
 assert cost_one > 0, "Cloud LLM 一定有成本"
-print(f"\n✅ 练习 3 通过（Anthropic）— 1000 次 haiku ≈ $0.25、sonnet 5 ≈ $0.76、opus 4.8 ≈ $1.27")
+print(f"\n✅ 练习 3 通过（Anthropic）— 1000 次 haiku ≈ $0.25、sonnet 5 ≈ $0.76、opus 5 ≈ $1.27")
 ```
 
 **预期输出**：
@@ -387,7 +387,8 @@ single: input=14 output=48 → $0.000254
 1000 calls cost across model tiers:
   claude-haiku-4-5       $0.2540
   claude-sonnet-5        $0.7620
-  claude-opus-4-8        $1.2700
+  claude-opus-5          $1.2700
+  claude-fable-5         $2.5400
 ```
 
 **Trade-off 对照**：本机 Ollama 跑 1000 次免费但要 ~2 hr；Anthropic haiku ~10 min $0.25；sonnet ~10 min $0.76。**production 场景才考虑 cloud；学习 / 实验 / debug 全用本机**。

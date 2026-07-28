@@ -10,9 +10,11 @@
 #   - 這些字眼出現代表上下文已經承認這是 historical reference、不算 stale
 
 current_frontier_models:
-  # 2026-05 frontier list (review quarterly)
+  # 2026-07 frontier list (review quarterly)
   anthropic:
-    - "Opus 4.8"
+    - "Fable 5"      # Mythos-class, most capable widely released model
+    - "Opus 5"       # 2026-07-24, recommended Opus-class default
+    - "Opus 4.8"     # still available (docs list it under "Legacy models"), NOT deprecated
     - "Sonnet 5"
     - "Haiku 4.5"
   openai:
@@ -73,7 +75,7 @@ stale_patterns:
 
   - pattern: 'Opus 4\.7'
     qualifier_terms: ['前身', '歷史', 'lineage', '舊版', '原始', 'baseline', '基線', '基线', 'predecessor', 'history']
-    note: 'Opus 4.8 (May 2026) supersedes 4.7'
+    note: 'Opus 4.8 (May 2026) supersedes 4.7. Opus 5 (2026-07-24) is now the recommended Opus-class default, but Opus 4.8 stays ACTIVE (not deprecated) and is deliberately NOT listed as a stale pattern'
 
 # Stale date-bound framing — 時間性過時用詞
 # 注意：用 \s* 而不是字面 space、因為中文常寫 "2025年" 沒空格
