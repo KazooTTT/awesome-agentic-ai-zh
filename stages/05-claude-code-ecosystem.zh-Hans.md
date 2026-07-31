@@ -287,7 +287,7 @@ MCP / Skills 是“给 agent 更多能力”；**Hooks 则是反过来：在 age
 
 ### 必修阅读
 1. [**Anthropic — Introducing MCP**](https://www.anthropic.com/news/model-context-protocol) — 最初发表，概念总览
-2. [**MCP Specification**](https://modelcontextprotocol.io/specification) — 实际的协议规格
+2. [**MCP Specification**](https://modelcontextprotocol.io/specification) — 实际的协议规格。MCP 规格用日期版号（`YYYY-MM-DD`）发布修订版、目前是 **2026-07-28**，所以读任何 MCP 文档前先确认自己看的是哪一版
 3. [**Complete Guide to MCP in 2026**](https://dev.to/x4nent/complete-guide-to-mcp-model-context-protocol-in-2026-architecture-implementation-and-4a11) — 实践导读
 4. [**Microsoft — MCP for Beginners**](https://github.com/microsoft/mcp-for-beginners) — 官方循序渐进 MCP 学习课纲（概念、安装、动手 lab；免费、GitHub 上）。★ 16k+
 
@@ -303,8 +303,8 @@ MCP / Skills 是“给 agent 更多能力”；**Hooks 则是反过来：在 age
 
 | Project | ⭐ | 适合谁 | 为什么推荐 / 备注 |
 |---|---|---|---|
-| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐ 官方 | ⭐⭐⭐⭐⭐ | 练习 1 接 server、之后当参考 | 20+ 官方 MCP server（filesystem / git / github / sqlite / time / fetch / memory / sequential-thinking），★ 85k+、MIT、TS+Python。**读 `everything` 跟 `filesystem` source 理解协议运作**。安装：`npx -y @modelcontextprotocol/server-filesystem /path` 或 `pip install mcp-server-fetch` |
-| [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk) | ⭐⭐⭐⭐⭐ | 练习 2 写自己 MCP server | 官方 Python SDK、`pip install mcp` 即装、MIT。跟着官方 quickstart 跑 |
+| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐ 官方 | ⭐⭐⭐⭐⭐ | 练习 1 接 server、之后当参考 | 7 个官方 reference MCP server（everything / fetch / filesystem / git / memory / sequentialthinking / time；github 跟 sqlite 已移到 `servers-archived`），★ 85k+、MIT、TS+Python。官方 README 讲明这些是 **reference implementation、不是 production-ready**——要实际部署的 server 去官方 Registry 找（目前仍是 preview）。**读 `everything` 跟 `filesystem` source 理解协议运作**。安装：`npx -y @modelcontextprotocol/server-filesystem /path` 或 `pip install mcp-server-fetch` |
+| [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk) | ⭐⭐⭐⭐⭐ | 练习 2 写自己 MCP server | 官方 Python SDK、`pip install "mcp>=2,<3"`（**一定要锁版本**：v2.0.0 于 2026-07-28 是破坏性改版）、MIT。跟着官方 quickstart 跑 |
 | [modelcontextprotocol/typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) | ⭐⭐⭐⭐ | 喜欢 TS 的人 | Python SDK 的 TypeScript 版、MIT |
 | [wong2/awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers) ⭐ 目录 | ⭐⭐⭐⭐⭐ | 自己写前先找有没有现成的 | 150+ 社区 MCP server 目录，按 search / code / cloud / communication / finance 分类。投稿走 mcpservers.org |
 | [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | ⭐⭐⭐⭐ | 跟 wong2 交叉比对 | 另一份 MCP server 目录、组织方式不同、通常更新更实时 |
@@ -312,7 +312,7 @@ MCP / Skills 是“给 agent 更多能力”；**Hooks 则是反过来：在 age
 | [21st-dev/magic-mcp](https://github.com/21st-dev/magic-mcp) | ⭐⭐⭐ | 做完练习 2 找灵感 | 会生成 UI 组件的非平凡 MCP server、★ 5.3k+、NOASSERTION。**看 MCP 不只能做数据抓取** |
 | [yamadashy/repomix](https://github.com/yamadashy/repomix) | ⭐⭐⭐⭐⭐ | 喂整个 codebase 给 LLM | ★ 26k+、MIT。把 repo 打包成单个 AI-friendly 文件，带 MCP server mode + tree-sitter 压缩（约 70% token 节省）+ secretlint 过滤敏感信息。**Claude Code / Codex 的 daily-driver 工具。** |
 
-> 🔭 **MCP 在 2026：从“知道是什么”到“会用生态”**：(1) **官方 Registry**（registry.modelcontextprotocol.io）——发现 / 发布 MCP server 的中央目录；(2) **FastMCP**（[jlowin/fastmcp](https://github.com/jlowin/fastmcp)、★25k）——用 `@mcp.tool` 几行写出 server，比 low-level SDK 省事；(3) ⚠️ **MCP 安全**：tool 返回的内容是**不可信输入**（tool poisoning、confused-deputy），别把没检查过的第三方 server 接上有权限的 agent。
+> 🔭 **MCP 在 2026：从“知道是什么”到“会用生态”**：(1) **官方 Registry**（registry.modelcontextprotocol.io、**仍在 preview**）——发现 / 发布 MCP server 的中央目录；(2) **FastMCP**（[PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp)、★27k、Apache-2.0）——用 `@mcp.tool` 几行写出 server，比 low-level SDK 省事（注意：这是**独立的第三方包**，跟官方 SDK 内部那个在 v2 改名为 `MCPServer` 的 class 不是同一个东西）；(3) ⚠️ **MCP 安全**：tool 返回的内容是**不可信输入**（tool poisoning、confused-deputy），别把没检查过的第三方 server 接上有权限的 agent。
 
 ---
 

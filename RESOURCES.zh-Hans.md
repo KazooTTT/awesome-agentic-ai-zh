@@ -72,7 +72,7 @@
 
 ### MCP 相关
 
-- [**modelcontextprotocol/servers**](https://github.com/modelcontextprotocol/servers) — 官方 MCP reference servers（filesystem、github、sqlite、git、fetch、memory 等）
+- [**modelcontextprotocol/servers**](https://github.com/modelcontextprotocol/servers) — 官方 MCP reference servers（现有 7 个：everything、fetch、filesystem、git、memory、sequentialthinking、time；github、sqlite 已移到 `servers-archived`）
 - [**wong2/awesome-mcp-servers**](https://github.com/wong2/awesome-mcp-servers) — 社群 MCP server 清单，按分类整理（150+ 个）
 - [**punkpeye/awesome-mcp-servers**](https://github.com/punkpeye/awesome-mcp-servers) — 另一份 MCP server 清单
 

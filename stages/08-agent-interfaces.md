@@ -298,7 +298,7 @@ agent 收到任務
 **Why MCP 路線**：你已熟 Claude Code（[Stage 5](05-claude-code-ecosystem.md)），新功能能透過 MCP 接、不用換工具。
 
 - **Computer-use MCP**（社群實作多版本）：在 `.mcp.json` 加 server 後、Claude Code 內就能叫「截圖 → 看 → 操作」
-- **Browser MCP**：[Playwright MCP](https://github.com/modelcontextprotocol/servers) 等、Claude Code 可開瀏覽器跑 web 任務
+- **Browser MCP**：[microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) 等、Claude Code 可開瀏覽器跑 web 任務
 
 ### 2. 用 Codex desktop 在 background 跑
 

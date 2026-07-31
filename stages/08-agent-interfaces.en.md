@@ -298,7 +298,7 @@ A common sticking point for new readers, explained here:
 **Why the MCP route**: You're already familiar with Claude Code ([Stage 5](05-claude-code-ecosystem.md)). New features can be connected via MCP without switching tools.
 
 - **Computer-use MCP** (many community implementations): After adding the server to your `.mcp.json`, you can call "screenshot → analyze → operate" from within Claude Code.
-- **Browser MCP**: Tools like the [Playwright MCP](https://github.com/modelcontextprotocol/servers) allow Claude Code to open a browser and run web tasks.
+- **Browser MCP**: Tools like [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) allow Claude Code to open a browser and run web tasks.
 
 ### 2. Run Tasks in the Background with Codex Desktop
 

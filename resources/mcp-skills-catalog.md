@@ -1042,7 +1042,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 - [`wong2/awesome-mcp-servers`](https://github.com/wong2/awesome-mcp-servers) — 社群最完整 MCP server 清單，150+ 個按分類整理
 - [`punkpeye/awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers) — 另一份 MCP server 清單，跟上面互補
-- [`modelcontextprotocol/servers`](https://github.com/modelcontextprotocol/servers) — Anthropic 官方 reference servers（filesystem、git、time、memory、fetch、sequential-thinking 等）
+- [`modelcontextprotocol/servers`](https://github.com/modelcontextprotocol/servers) — 官方 reference servers（現有 7 個：everything、fetch、filesystem、git、memory、sequentialthinking、time；github、sqlite 已移到 `servers-archived`）
 - [`travisvn/awesome-claude-skills`](https://github.com/travisvn/awesome-claude-skills) — Claude Skills 清單
 
 ### 要加新的？

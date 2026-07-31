@@ -72,7 +72,7 @@ This repo **doesn't replace** flat awesome lists. When you already know which to
 
 ### MCP-related
 
-- [**modelcontextprotocol/servers**](https://github.com/modelcontextprotocol/servers) — official reference servers (filesystem, github, sqlite, git, fetch, memory, …)
+- [**modelcontextprotocol/servers**](https://github.com/modelcontextprotocol/servers) — official reference servers (7 today: everything, fetch, filesystem, git, memory, sequentialthinking, time; github and sqlite have moved to `servers-archived`)
 - [**wong2/awesome-mcp-servers**](https://github.com/wong2/awesome-mcp-servers) — community MCP server catalog, by category (150+)
 - [**punkpeye/awesome-mcp-servers**](https://github.com/punkpeye/awesome-mcp-servers) — another MCP server catalog
 

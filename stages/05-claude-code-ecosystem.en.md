@@ -287,7 +287,7 @@ MCP / Skills give the agent *more* abilities; **Hooks are the reverse: you attac
 
 ### Required Reading
 1. [**Anthropic — Introducing MCP**](https://www.anthropic.com/news/model-context-protocol) — The original announcement, a conceptual overview
-2. [**MCP Specification**](https://modelcontextprotocol.io/specification) — The actual protocol specification
+2. [**MCP Specification**](https://modelcontextprotocol.io/specification) — The actual protocol specification. MCP ships its spec as dated revisions (`YYYY-MM-DD`), currently **2026-07-28**, so check which revision you are on before reading any MCP doc
 3. [**Complete Guide to MCP in 2026**](https://dev.to/x4nent/complete-guide-to-mcp-model-context-protocol-in-2026-architecture-implementation-and-4a11) — An implementation guide
 4. [**Microsoft — MCP for Beginners**](https://github.com/microsoft/mcp-for-beginners) — Official step-by-step MCP curriculum (concepts, setup, hands-on labs; free, GitHub-based). ★ 16k+
 
@@ -303,8 +303,8 @@ MCP / Skills give the agent *more* abilities; **Hooks are the reverse: you attac
 
 | Project | ⭐ | Best for | Why it's recommended / Notes |
 |---|---|---|---|
-| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐ Official | ⭐⭐⭐⭐⭐ | Exercise 1 server, and as a reference thereafter | 20+ official MCP servers (filesystem / git / github / sqlite / time / fetch / memory / sequential-thinking), ★ 85k+, MIT, TS+Python. **Read the `everything` and `filesystem` source to understand how the protocol works**. Install with: `npx -y @modelcontextprotocol/server-filesystem /path` or `pip install mcp-server-fetch` |
-| [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk) | ⭐⭐⭐⭐⭐ | Exercise 2, writing your own MCP server | Official Python SDK, install with `pip install mcp`, MIT. Follow the official quickstart. |
+| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐ Official | ⭐⭐⭐⭐⭐ | Exercise 1 server, and as a reference thereafter | 7 official reference MCP servers (everything / fetch / filesystem / git / memory / sequentialthinking / time; github and sqlite have moved to `servers-archived`), ★ 85k+, MIT, TS+Python. The official README calls these **reference implementations, not production-ready**—for servers you would actually deploy, use the official Registry (still in preview). **Read the `everything` and `filesystem` source to understand how the protocol works**. Install with: `npx -y @modelcontextprotocol/server-filesystem /path` or `pip install mcp-server-fetch` |
+| [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk) | ⭐⭐⭐⭐⭐ | Exercise 2, writing your own MCP server | Official Python SDK, install with `pip install "mcp>=2,<3"` (**pin the version** — v2.0.0 on 2026-07-28 was a breaking change), MIT. Follow the official quickstart. |
 | [modelcontextprotocol/typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) | ⭐⭐⭐⭐ | Those who prefer TS | The TypeScript version of the Python SDK, MIT. |
 | [wong2/awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers) ⭐ Catalog | ⭐⭐⭐⭐⭐ | Finding an existing server before writing your own | A catalog of 150+ community MCP servers, categorized by search / code / cloud / communication / finance. Submissions go through mcpservers.org. |
 | [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | ⭐⭐⭐⭐ | Cross-referencing with wong2's list | Another MCP server catalog, organized differently and often updated more frequently. |
@@ -312,7 +312,7 @@ MCP / Skills give the agent *more* abilities; **Hooks are the reverse: you attac
 | [21st-dev/magic-mcp](https://github.com/21st-dev/magic-mcp) | ⭐⭐⭐ | Finding inspiration after Exercise 2 | A non-trivial MCP server that generates UI components, ★ 5.3k+, NOASSERTION. **Shows that MCP can do more than just data fetching.** |
 | [yamadashy/repomix](https://github.com/yamadashy/repomix) | ⭐⭐⭐⭐⭐ | Feeding an entire codebase to an LLM | ★ 26k+, MIT. Packs a repo into a single AI-friendly file, with MCP server mode + tree-sitter compression (~70% token savings) + secretlint to filter secrets. **Daily-driver tool to pair with Claude Code / Codex.** |
 
-> 🔭 **MCP in 2026: from "knowing what it is" to "using the ecosystem"**: (1) the **official Registry** (registry.modelcontextprotocol.io), a central place to discover/publish MCP servers; (2) **FastMCP** ([jlowin/fastmcp](https://github.com/jlowin/fastmcp), ★25k), which writes a server in a few `@mcp.tool` lines instead of the low-level SDK; (3) ⚠️ **MCP security**: a tool's results are **untrusted input** (tool poisoning, confused-deputy), so do not attach an unvetted third-party server to a permissioned agent.
+> 🔭 **MCP in 2026: from "knowing what it is" to "using the ecosystem"**: (1) the **official Registry** (registry.modelcontextprotocol.io, **still in preview**), a central place to discover/publish MCP servers; (2) **FastMCP** ([PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp), ★27k, Apache-2.0), which writes a server in a few `@mcp.tool` lines instead of the low-level SDK (note: this is a **separate third-party package**, not the official SDK class that was renamed to `MCPServer` in v2); (3) ⚠️ **MCP security**: a tool's results are **untrusted input** (tool poisoning, confused-deputy), so do not attach an unvetted third-party server to a permissioned agent.
 
 ---
 

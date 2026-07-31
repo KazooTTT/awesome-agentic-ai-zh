@@ -244,14 +244,14 @@ Google 发起、现由 Linux Foundation 治理的 agent 之间沟通协定，类
 
 ### MCP（Model Context Protocol）
 
-Anthropic 在 2024 推出的开放协定，让任何 LLM host（Claude Code、Cursor、自写 agent）都能用同一套接口连接外部 tool server。把它想成“**LLM 的 USB 接口**”。
+Anthropic 在 2024 推出的开放协定，让任何 LLM host（Claude Code、Cursor、自写 agent）都能用同一套接口连接外部 tool server，2025-12 已捐给 Linux Foundation 旗下的 Agentic AI Foundation。把它想成“**LLM 的 USB 接口**”。
 
 **技术上标准化了 3 种 primitives**：
 - **Tools**：LLM 可调用的 function（read DB / search web / send email…）
 - **Resources**：LLM 可读取的数据（文件内容、API response、DB rows…）
 - **Prompts**：可复用的 prompt 模板（给用户在 host 内用 `/` 触发）
 
-**架构**：server / client 模式——tool server 跑在本地或远端，LLM host 当 client 连接。Server 通过 stdio / SSE / HTTP 三种 transport 之一暴露这些 primitives。
+**架构**：server / client 模式——tool server 跑在本地或远端，LLM host 当 client 连接。Server 通过两种 transport 之一暴露这些 primitives：**stdio**（本地 subprocess）与 **Streamable HTTP**（远端）；旧的 HTTP+SSE transport 已在 2025-03-26 spec revision 标为 deprecated。
 
 📍 详细：[Stage 5.2](../stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础)
 

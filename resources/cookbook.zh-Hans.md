@@ -159,8 +159,11 @@ from mypackage import foo",
 #### Step 1：安装官方 SDK
 
 ```bash
-pip install mcp
+pip install "mcp>=2,<3"
 ```
+
+> ⚠️ **一定要锁版本**。官方 Python SDK 于 **2026-07-28 发布 v2.0.0**，是破坏性改版（`FastMCP` 改名 `MCPServer`、低阶 `Server` 的 handler 从 decorator 改成构造函数参数）。裸写 `pip install mcp` 会装到 2.x，**网上 2025 年写的 v1 教程会在 import 那行就失败**。
+> 手上有 v1 旧 code 还不想改？锁 `pip install "mcp>=1,<2"`（v1.x 仍在维护模式、只收安全性修补）。迁移对照表：[官方 migration guide](https://py.sdk.modelcontextprotocol.io/migration/)。
 
 #### Step 2：写 `server.py`
 
@@ -168,45 +171,20 @@ pip install mcp
 
 ```python
 # server.py
-from mcp.server import Server
-from mcp.server.stdio import stdio_server
-from mcp.types import Tool, TextContent
+from mcp.server.mcpserver import MCPServer
 
-app = Server("hello-mcp")
+app = MCPServer("hello-mcp")
 
-@app.list_tools()
-async def list_tools() -> list[Tool]:
-    return [
-        Tool(
-            name="echo",
-            description="Echo the input text back to the user.",
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "text": {
-                        "type": "string",
-                        "description": "Text to echo back",
-                    }
-                },
-                "required": ["text"],
-            },
-        )
-    ]
-
-@app.call_tool()
-async def call_tool(name: str, arguments: dict) -> list[TextContent]:
-    if name == "echo":
-        return [TextContent(type="text", text=f"Echo: {arguments['text']}")]
-    raise ValueError(f"Unknown tool: {name}")
-
-async def main():
-    async with stdio_server() as (read, write):
-        await app.run(read, write, app.create_initialization_options())
+@app.tool()
+async def echo(text: str) -> str:
+    """Echo the input text back to the user."""
+    return f"Echo: {text}"
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
+    app.run(transport="stdio")
 ```
+
+> 💡 **为什么这么短**：v2 从 **type hints 自动生成 inputSchema**（`text: str` → 必填的 string 参数）、用 **docstring 当 tool description**、返回值也自动包成 MCP content——这三件事在 v1 都要手写。所以 schema 设计的功夫现在花在“参数命名 + type hint + docstring 写清楚”上。
 
 #### Step 3：在 Claude Desktop / Code 设置
 
@@ -241,14 +219,16 @@ Claude 回（会显示 tool call icon）：Echo: hello world
 | 症状 | 原因 | 解法 |
 |---|---|---|
 | Claude Desktop 没看到 tool | server.py 启动失败 | 终端直接 `python server.py` 跑、看 stderr 哪里爆 |
-| tool 列出但 call 失败 | inputSchema 格式错（required 漏写、type 写错） | 看 [`schema-design-cheatsheet.md`](schema-design-cheatsheet.zh-Hans.md) |
-| Claude 不主动叫 tool | description 太笼统 | description 改成“When the user asks X, use this tool”式的具体 trigger |
-| stdio 跟 SSE 哪个用？ | local desktop integration 用 stdio；remote / web 用 SSE | 第一个 server 一律用 stdio |
+| tool 列出但 call 失败 | 参数 type hint 没写（v2 靠它产 schema）、或类型对不上 | 每个参数都补 type hint；看 [`schema-design-cheatsheet.md`](schema-design-cheatsheet.zh-Hans.md) |
+| Claude 不主动叫 tool | docstring（= tool description）太笼统 | docstring 改成“When the user asks X, use this tool”式的具体 trigger |
+| `ImportError` / `AttributeError` 在 import 那行 | 混到 v1 写法（`from mcp.server import Server`、`@app.list_tools()`）跑在 v2 上 | 用上面的 v2 写法，或锁 `mcp>=1,<2` 留在 v1 |
+| stdio 跟 HTTP 哪个用？ | 本地桌面集成用 **stdio**；远程用 **Streamable HTTP**（旧的 HTTP+SSE transport 已于 2025-03-26 deprecated、别再用） | 第一个 server 一律用 stdio |
+| stdio server 要不要做 OAuth？ | 不用。spec 明写 authorization 整体是 optional，HTTP transport 才 SHOULD 遵循，**stdio SHOULD NOT 用 authorization** | 凭证从**环境变量**取（例如 `os.environ["API_KEY"]`），不要在 server 里实现登录流程 |
 
 ### 进一步
 
 - 看 [Stage 5.2](../stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础) 的 MCP 完整介绍
-- 看 [`modelcontextprotocol/servers`](https://github.com/modelcontextprotocol/servers) 官方示例（filesystem、github、sqlite、time 等）
+- 看 [`modelcontextprotocol/servers`](https://github.com/modelcontextprotocol/servers) 官方 reference server（现有 7 个：everything / fetch / filesystem / git / memory / sequentialthinking / time；github、sqlite 已移到 `servers-archived`）。官方 README 自述这些是 reference implementation、**不是 production-ready**，要找实际能用的 server 走 [官方 Registry](https://registry.modelcontextprotocol.io)（仍在 preview）
 - 写 production server 看 [Stage 5.2“练习：MCP in production”](../stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础) 跟 [`anthropics/claude-code`](https://github.com/anthropics/claude-code) 的 `~/.claude/skills/`
 
 ---
