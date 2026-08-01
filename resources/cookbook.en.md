@@ -2,7 +2,7 @@
 
 > [繁體中文](./cookbook.md) | [简体中文](./cookbook.zh-Hans.md) | **English**
 
-> Stage 5 (Claude Code Ecosystem) talks about "Concepts" and "Available Tools" with [`mcp-skills-catalog.md`](mcp-skills-catalog.md). This cookbook fills in the gap in between: "**How to build it**". Each recipe is a step-by-step guide + sample code + common pitfalls, designed to be completed in about 30-50 minutes.
+> Stage 5 (Claude Code Ecosystem) talks about "Concepts" and "Available Tools" with [`mcp-skills-catalog.md`](mcp-skills-catalog.en.md). This cookbook fills in the gap in between: "**How to build it**". Each recipe is a step-by-step guide + sample code + common pitfalls, designed to be completed in about 30-50 minutes.
 >
 > This is not a reference or a tutorial—it's a recipe. Pick the one you need and start cooking.
 
@@ -591,7 +591,7 @@ For local LLM work, treat "Claude Code" and "BYO-LLM CLI agents" as separate too
 
 ## Can't Find the Recipe You Need?
 
-- See [Stage 5](../stages/05-claude-code-ecosystem.md) for the full concept.
+- See [Stage 5](../stages/05-claude-code-ecosystem.en.md) for the full concept.
 - See [`mcp-skills-catalog.en.md`](mcp-skills-catalog.en.md) for a comprehensive list of tools.
 - See [`schema-design-cheatsheet.en.md`](schema-design-cheatsheet.en.md) for details on writing tool schemas.
 - See [`cli-agents-guide.en.md`](cli-agents-guide.en.md) for a comparison of 7 popular CLI agents.

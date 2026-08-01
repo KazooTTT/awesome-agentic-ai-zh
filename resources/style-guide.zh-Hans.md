@@ -314,7 +314,7 @@ Branch 的 entry 格式可以比 stage 简洁（不一定要完整 schema 表格
 
 ### 内部链接
 - Stage 之间：相对路径 `[Stage 4](./04-agent-frameworks.zh-Hans.md)`
-- Branch ↔ README：`[← 回主路线](../README.md)`
+- Branch ↔ README：`[← 回主路线](../README.zh-Hans.md)`
 - 跨 stage 引用同一 repo：用全名 + 链接，不要只写“之前提过”
 
 ### 外部链接

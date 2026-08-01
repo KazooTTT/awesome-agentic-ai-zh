@@ -12,8 +12,8 @@ hide:
 <p class="aaz-tagline">From "what is an LLM and how are tokens counted" all the way to building your own multi-agent systems.</p>
 
 <div class="aaz-cta" markdown>
-[:material-rocket-launch: Start learning](stages/00-foundations.md){ .md-button .md-button--primary }
-[:material-map-outline: Full roadmap](ROADMAP.md){ .md-button }
+[:material-rocket-launch: Start learning](stages/00-foundations.en.md){ .md-button .md-button--primary }
+[:material-map-outline: Full roadmap](ROADMAP.en.md){ .md-button }
 </div>
 
 <div class="aaz-langs"><a href="/awesome-agentic-ai-zh/">繁體中文</a><a href="/awesome-agentic-ai-zh/zh-Hans/">简体中文</a><a href="/awesome-agentic-ai-zh/en/">English</a></div>
@@ -36,7 +36,7 @@ hide:
 
     Push CLI agents like Claude Code to their limit: workflows, productionization.
 
-    [:octicons-arrow-right-24: Start at A1](tracks/cli/A1-cli-intro.md)
+    [:octicons-arrow-right-24: Start at A1](tracks/cli/A1-cli-intro.en.md)
 
 -   :material-robot:{ .lg .middle } __Track B — Agent builder__
 
@@ -44,7 +44,7 @@ hide:
 
     From tool calls all the way to multi-agent systems and your own MCP server.
 
-    [:octicons-arrow-right-24: Start at Stage 3](stages/03-tool-use-and-hello-agent.md)
+    [:octicons-arrow-right-24: Start at Stage 3](stages/03-tool-use-and-hello-agent.en.md)
 
 </div>
 
@@ -58,7 +58,7 @@ hide:
 
     Tokens, context, choosing a model.
 
-    [:octicons-arrow-right-24: Open](stages/01-llm-basics.md)
+    [:octicons-arrow-right-24: Open](stages/01-llm-basics.en.md)
 
 -   :material-pencil:{ .lg .middle } __Stage 2 — Prompt engineering__
 
@@ -66,7 +66,7 @@ hide:
 
     Say what you want so the model delivers reliably.
 
-    [:octicons-arrow-right-24: Open](stages/02-prompt-engineering.md)
+    [:octicons-arrow-right-24: Open](stages/02-prompt-engineering.en.md)
 
 -   :material-tools:{ .lg .middle } __Stage 3 — Tool use__
 
@@ -74,7 +74,7 @@ hide:
 
     Give the LLM tools; write your first agent.
 
-    [:octicons-arrow-right-24: Open](stages/03-tool-use-and-hello-agent.md)
+    [:octicons-arrow-right-24: Open](stages/03-tool-use-and-hello-agent.en.md)
 
 -   :material-view-grid:{ .lg .middle } __Stage 4 — Agent frameworks__
 
@@ -82,7 +82,7 @@ hide:
 
     LangGraph, AutoGen, Agents SDK — which to pick.
 
-    [:octicons-arrow-right-24: Open](stages/04-agent-frameworks.md)
+    [:octicons-arrow-right-24: Open](stages/04-agent-frameworks.en.md)
 
 -   :material-console:{ .lg .middle } __Stage 5 — Claude Code ecosystem__
 
@@ -90,7 +90,7 @@ hide:
 
     CLI agents, MCP, Skills, subagents.
 
-    [:octicons-arrow-right-24: Open](stages/05-claude-code-ecosystem.md)
+    [:octicons-arrow-right-24: Open](stages/05-claude-code-ecosystem.en.md)
 
 -   :material-database:{ .lg .middle } __Stage 6 — Memory & RAG__
 
@@ -98,7 +98,7 @@ hide:
 
     Let an agent remember and retrieve.
 
-    [:octicons-arrow-right-24: Open](stages/06-memory-rag.md)
+    [:octicons-arrow-right-24: Open](stages/06-memory-rag.en.md)
 
 -   :material-account-group:{ .lg .middle } __Stage 7 — Multi-agent__
 
@@ -106,7 +106,7 @@ hide:
 
     Harness, multi-agent collaboration, production.
 
-    [:octicons-arrow-right-24: Open](stages/07-multi-agent-production.md)
+    [:octicons-arrow-right-24: Open](stages/07-multi-agent-production.en.md)
 
 -   :material-power-plug:{ .lg .middle } __Stage 8 — Agent interfaces__
 
@@ -114,10 +114,10 @@ hide:
 
     Computer Use, Browser Use, Sandbox.
 
-    [:octicons-arrow-right-24: Open](stages/08-agent-interfaces.md)
+    [:octicons-arrow-right-24: Open](stages/08-agent-interfaces.en.md)
 
 </div>
 
 ---
 
-Trilingual, with hands-on exercises in every stage. For the full intro and table of contents → [project overview](README.md).
+Trilingual, with hands-on exercises in every stage. For the full intro and table of contents → [project overview](README.en.md).

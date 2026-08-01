@@ -1050,7 +1050,7 @@ If your integration isn't above, check these catalogs first:
 2. Or PR directly: add an entry under the relevant category in this format (Stars / License / Rating + What it does / Audience / Notes).
 3. **Stars < 100 + non-official** typically gets rejected unless you can argue a strong niche use case.
 
-Read [`resources/style-guide.en.md`](style-guide.en.md) and [`CONTRIBUTING.md`](../CONTRIBUTING.md) before submitting.
+Read [`resources/style-guide.en.md`](style-guide.en.md) and [`CONTRIBUTING.md`](../CONTRIBUTING.en.md) before submitting.
 
 ---
 

@@ -4,11 +4,11 @@
 
 ⏱ **Estimated Time**: 2 weeks (approx. 10 hours)
 
-> 💡 This stage is dense with terminology (**RAG / vector databases / embedding / chunking / hybrid search / reranking...**) — if unfamiliar, first consult [`resources/glossary.md` 3](../resources/glossary.md#3-memory--retrieval--rag).
+> 💡 This stage is dense with terminology (**RAG / vector databases / embedding / chunking / hybrid search / reranking...**) — if unfamiliar, first consult [`resources/glossary.md` 3](../resources/glossary.en.md#3-memory--retrieval--rag).
 >
 > 📋 **Chapter Structure**: Positioning → Entry Point → **RAG Core** (Basics + Advanced + DSPy + Eval) → **Bridge** → **Memory Core** (3 patterns + trio + advanced) → Chunking → Reflexion / Reasoning → Practice → Projects
 >
-> 🔑 **Key Terms**: See [`resources/glossary.md` 3](../resources/glossary.md#3-memory--retrieval--rag) (memory / RAG / embedding / chunking / reranking)
+> 🔑 **Key Terms**: See [`resources/glossary.md` 3](../resources/glossary.en.md#3-memory--retrieval--rag) (memory / RAG / embedding / chunking / reranking)
 
 This stage is not about memorizing more terminology. It is about understanding how agents manage context.
 
@@ -94,11 +94,11 @@ LLMs can use your private / domain data in three main ways. **This stage teaches
 
 You should have already:
 - Completed Stage 3 (ability to write tool use, call LLM APIs, understand ReAct loop) — **hard technical prerequisite**
-- Walked through Stage 4 (agent frameworks) + Stage 5 (Claude Code ecosystem) — the curriculum main line is **3 → 4 → 5 → 6** (see the [README learning map](../README.en.md#-learning-map-two-tracks)); not a hard technical prerequisite, but RAG / memory often pairs with frameworks + Claude Code memory mechanisms so following the sequence gives a more complete understanding, and [Stage 7](07-multi-agent-production.md) expects you to have completed 4 + 5 + 6
+- Walked through Stage 4 (agent frameworks) + Stage 5 (Claude Code ecosystem) — the curriculum main line is **3 → 4 → 5 → 6** (see the [README learning map](../README.en.md#-learning-map-two-tracks)); not a hard technical prerequisite, but RAG / memory often pairs with frameworks + Claude Code memory mechanisms so following the sequence gives a more complete understanding, and [Stage 7](07-multi-agent-production.en.md) expects you to have completed 4 + 5 + 6
 - Be able to run Python `pip install` to install SDKs (will use `chromadb`, `sentence-transformers`, etc. later)
 - Be comfortable with basic Python structures like lists, dicts, and generators.
 
-If not, refer back to [Stage 3](03-tool-use-and-hello-agent.md) or [Stage 0 Setup Guide](00-foundations.en.md#when-to-skip-this-stage).
+If not, refer back to [Stage 3](03-tool-use-and-hello-agent.en.md) or [Stage 0 Setup Guide](00-foundations.en.md#when-to-skip-this-stage).
 
 ## 📚 Required Reading
 
@@ -640,7 +640,7 @@ OpenAI's **o1** (Sep 2024), followed by open-source efforts like DeepSeek's **R1
 | Budget/latency allows for strongest reasoning | Path 2 — Choose among **GPT-5.5 / Opus 5 / Gemini 3.5 Flash / Grok 4.5 / V4-Pro** (Claude Fable 5 is the premium top tier, above the Opus class) |
 | Want to fine-tune your own reasoning model | Path 2 — Study the R1 paper (method baseline), start from R1-Distill / V4 open-source weights |
 | On-device / Extremely tight budget | **QwQ-32B** (Apache 2.0) or R series distilled versions |
-| Multi-agent debate / critic scenarios | Path 1 (CRITIC / debate) + [Stage 7 Multi-agent](07-multi-agent-production.md) |
+| Multi-agent debate / critic scenarios | Path 1 (CRITIC / debate) + [Stage 7 Multi-agent](07-multi-agent-production.en.md) |
 
 > 💡 **2025-2026 Trends**:
 > - Reasoning models are integrating Reflexion's capabilities into their weights—however, **prompt-based reflection is not obsolete**. Agent loops (controlling reflection timing/content) and multi-agent debates remain essential.
@@ -747,4 +747,4 @@ Can you:
 - [ ] Differentiate between "giving an agent memory" and "using RAG"?
 - [ ] Explain where RAG and Memory complement each other (refer to the table in From RAG to Memory)?
 
-If yes → Proceed to [Stage 7 — Multi-Agent · Productionization](07-multi-agent-production.md).
+If yes → Proceed to [Stage 7 — Multi-Agent · Productionization](07-multi-agent-production.en.md).

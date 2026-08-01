@@ -148,6 +148,23 @@ jobs:
           # stdlib-only script; ubuntu-latest ships python3 (no pip deps).
           python3 scripts/zh-hans-localize.py --check
 
+      - name: Check mirror pages link to their own locale (blocking)
+        run: |
+          # Blocking gate: an .en.md / .zh-Hans.md page must not link to the
+          # zh-TW canonical when a same-locale sibling exists — that silently
+          # drops non-Traditional readers onto a page they may not read.
+          # 2026-08 sweep fixed 111 such links across 37 files; nothing else in
+          # CI catches this (check-anchors only proves targets resolve, and
+          # sync-language-switchers only manages the switcher row).
+          # Fix with: python scripts/check-locale-links.py --apply
+          python3 scripts/check-locale-links.py
+
+      - name: check-locale-links.py detection unit tests
+        # Pins the conservative exemptions (missing sibling / switcher row /
+        # fenced code / external URL) so a future tweak can't start rewriting
+        # links into dead ends. stdlib-only.
+        run: python3 scripts/test_locale_links.py
+
       - name: refresh-stars.py detection unit tests
         # Pins the 2026-07 star-line write-back + neighbour-leak fix
         # (scripts/test_refresh_stars.py). stdlib-only; runs on any PR

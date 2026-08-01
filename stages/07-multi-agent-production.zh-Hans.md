@@ -30,8 +30,8 @@
 
 | 层级 | 概念 | 核心问题 | 关注单位 | 对应 stage |
 |---|---|---|---|---|
-| 1 | **Prompt Engineering** | 这一次要怎么问？ | **单次 LLM call** | [Stage 2](02-prompt-engineering.md) |
-| 2 | **Context Engineering** | 这次该给模型哪些信息？ | **多次互动中的上下文** | [Stage 6](06-memory-rag.md) |
+| 1 | **Prompt Engineering** | 这一次要怎么问？ | **单次 LLM call** | [Stage 2](02-prompt-engineering.zh-Hans.md) |
+| 2 | **Context Engineering** | 这次该给模型哪些信息？ | **多次互动中的上下文** | [Stage 6](06-memory-rag.zh-Hans.md) |
 | **3** | **Harness Engineering**<br>（**本 stage**） | 整个流程怎么跑起来？ | **可执行的 LLM workflow / system** | **本 stage** |
 
 > 🔁 **下一层：Loop Engineering（循环工程）**：prompt → context → harness 之后，2026 浮现的第四层是“**设计 agent 的迭代循环本身**”——目标、可用工具、context 管理、**终止条件**、错误处理，让 agent 跑数百步、跨 session 仍可靠。Claude Code 的 `/goal`（给一个可验证的完成条件、agent 自己 loop 到达成）就是这个方向；[Stage 5.6 Dynamic Workflows](05-claude-code-ecosystem.zh-Hans.md) 则是 agent 自己写出 loop 脚本。谱系：ReAct（2022）→ AutoGPT（2023）→ /goal（2026）。
@@ -100,8 +100,8 @@
 
 | 层级 | 工程的对象 | 在哪学 |
 |---|---|---|
-| **1. Prompt Engineering** | 送进 LLM 的**字符串**（system prompt / few-shot / 格式） | [Stage 2](02-prompt-engineering.md) |
-| **2. Context Engineering** | 窗口里装的**信息**（RAG / memory / tool defs / history 组装） | [Stage 6](06-memory-rag.md) |
+| **1. Prompt Engineering** | 送进 LLM 的**字符串**（system prompt / few-shot / 格式） | [Stage 2](02-prompt-engineering.zh-Hans.md) |
+| **2. Context Engineering** | 窗口里装的**信息**（RAG / memory / tool defs / history 组装） | [Stage 6](06-memory-rag.zh-Hans.md) |
 | **3. Harness Engineering**<br>（**本节**） | 模型**外围的执行与控制层**（loop / retry / sandbox / observability / 部署） | 本 stage |
 
 **怎么分辨自己在做哪一层？问**：
@@ -130,7 +130,7 @@
 | **Cost / Latency optimization** ⭐ 2024-2026 必修 | prompt caching、model routing、thinking budget、batching、semantic cache | **练习 6 Cost optimization**（新加）|
 
 **Framework vs Harness 关键差别**：
-- **Framework**（[Stage 4](04-agent-frameworks.md)）规范 **API** — 你调用的接口长什么样
+- **Framework**（[Stage 4](04-agent-frameworks.zh-Hans.md)）规范 **API** — 你调用的接口长什么样
 - **Harness**（本节）规范 **runtime** — 怎么跑、怎么 recovery、怎么观测
 
 ### 反馈循环：agent 进步靠的是反馈，不是更完美的提示
@@ -154,7 +154,7 @@
 
 想看实际在 production 跑的 harness 长什么样？两个 reference：
 
-- **Claude Code 整个 runtime** — 是 reference harness 实现。**读 source 练习见 [Stage 5.7](05-claude-code-ecosystem.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看)**（clone `claude-agent-sdk-python` 解剖 main loop + 上表前 6 个 runtime 元件位置；第 7 个 Eval harness 是外挂、第 8 个 Cost / Latency 是 cross-cutting、见下方深入段）
+- **Claude Code 整个 runtime** — 是 reference harness 实现。**读 source 练习见 [Stage 5.7](05-claude-code-ecosystem.zh-Hans.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看)**（clone `claude-agent-sdk-python` 解剖 main loop + 上表前 6 个 runtime 元件位置；第 7 个 Eval harness 是外挂、第 8 个 Cost / Latency 是 cross-cutting、见下方深入段）
 - **`anthropics/claude-agent-sdk-python`** source — 上面练习用的具体 repo
 
 → 本 stage 剩下的 6 个练习（multi-agent / eval / observability / SDK / deploy / cost）每个都是 harness 的一个面向。学完整 stage = 拼出完整的 harness engineering mental model。
@@ -325,7 +325,7 @@ Production agent 跑久了，**cost / latency 两条线会吃掉你大半预算�
 - [ ] 在真实 workload 上量测 prompt caching 前后的成本差异
 - [ ] 把 agent deploy 到云端（任何 provider）
 
-如果都可以 → 先进 [**Stage 7.5 — 进阶 Agentic 概念地图**](07.5-advanced-agentic-concepts.md)（1 周、不写 code、建立 frontier 概念地图、定位业界还在讨论哪些进阶概念），再进 [**Stage 8 — Agent Interfaces**](08-agent-interfaces.md)（**两 track 共用 hub**）学 agent 怎么跟非 API 世界互动（Computer Use / Browser Use / Sandbox）。或挑一个[特化分支](../README.zh-Hans.md#-学习地图两条学习路径)、或回头来贡献这份 repo。
+如果都可以 → 先进 [**Stage 7.5 — 进阶 Agentic 概念地图**](07.5-advanced-agentic-concepts.zh-Hans.md)（1 周、不写 code、建立 frontier 概念地图、定位业界还在讨论哪些进阶概念），再进 [**Stage 8 — Agent Interfaces**](08-agent-interfaces.zh-Hans.md)（**两 track 共用 hub**）学 agent 怎么跟非 API 世界互动（Computer Use / Browser Use / Sandbox）。或挑一个[特化分支](../README.zh-Hans.md#-学习地图两条学习路径)、或回头来贡献这份 repo。
 
 ## 💡 接下来
 

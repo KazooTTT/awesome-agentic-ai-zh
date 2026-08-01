@@ -163,4 +163,4 @@ jobs:
 - CI / pre-commit hook 集成 case study
 - **跨多人团队用 AI dev 的 governance pattern**——多 dev 共用 Skills、permission 设计、cost tracking
 
-请见 [CONTRIBUTING.md](../CONTRIBUTING.md)。
+请见 [CONTRIBUTING.md](../CONTRIBUTING.zh-Hans.md)。

@@ -276,7 +276,7 @@ README 跟各 stage 会频繁提到这三个 Claude Code 生态的关键词，�
 - 🌏 **翻译** — 补英文 companion 没翻到的段落，或翻成其他语言
 - 🌱 **担任 Stage / Branch maintainer** — 长期 review 特定领域，详见 [CONTRIBUTORS.md](CONTRIBUTORS.md)。
 
-PR 流程跟 style 规范请看 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [resources/style-guide.zh-Hans.md](resources/style-guide.zh-Hans.md)。
+PR 流程跟 style 规范请看 [CONTRIBUTING.md](CONTRIBUTING.zh-Hans.md) 和 [resources/style-guide.zh-Hans.md](resources/style-guide.zh-Hans.md)。
 
 > 🤖 **新增 project 的链接会自动过审核** — PR 一加新的 `github.com/owner/repo` 链接，一个 GitHub Action 会留言贴出它的 star 数、license、是否封存、最后更新，并对照策展标准标出已封存 / 停更（>6 个月）/ 无 license 的项目。纯信息、不挡 PR，收不收仍由 maintainer 决定（目前只在 maintainer 开的 branch 上跑，fork PR 因 token 限制暂略）。
 

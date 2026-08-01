@@ -56,7 +56,7 @@
 
 ### 🤝 我想送 PR / 翻译 / 加新 entry
 
-→ [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) + [`../CONTRIBUTING.md`](../CONTRIBUTING.md)
+→ [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) + [`../CONTRIBUTING.md`](../CONTRIBUTING.zh-Hans.md)
 
 ---
 

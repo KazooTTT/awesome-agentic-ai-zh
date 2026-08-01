@@ -4,11 +4,11 @@
 
 ⏱ **时间估算**：2 周（约 10 小时）
 
-> 💡 这个 stage 用语密度高（**RAG / 向量数据库 / embedding / chunking / hybrid search / reranking...**）→ 不熟先翻 [`resources/glossary.md` 3](../resources/glossary.md#3-memory--retrieval--rag)。
+> 💡 这个 stage 用语密度高（**RAG / 向量数据库 / embedding / chunking / hybrid search / reranking...**）→ 不熟先翻 [`resources/glossary.md` 3](../resources/glossary.zh-Hans.md#3-memory--retrieval--rag)。
 >
 > 📋 **本章组成**：定位 → 入口 → **RAG 主轴**（基础 + 进阶 + DSPy + Eval）→ **Bridge** → **Memory 主轴**（3 pattern + trio + 进阶）→ Chunking → Reflexion / Reasoning → 练习 → Projects
 >
-> 🔑 **关键术语**：见 [`resources/glossary.md` 3](../resources/glossary.md#3-memory--retrieval--rag)（memory / RAG / embedding / chunking / reranking）
+> 🔑 **关键术语**：见 [`resources/glossary.md` 3](../resources/glossary.zh-Hans.md#3-memory--retrieval--rag)（memory / RAG / embedding / chunking / reranking）
 
 本 stage 的核心不是“多背一点术语”，而是理解 agent 如何管理 context。
 
@@ -94,11 +94,11 @@
 
 你应该已经：
 - 完成 Stage 3（会写 tool use、会调用 LLM API、能看懂 ReAct loop）—— **硬性技术前置**
-- 走过 Stage 4（agent frameworks）+ Stage 5（Claude Code 生态）—— curriculum 主线是 **3 → 4 → 5 → 6**（见 [README 学习地图](../README.zh-Hans.md#-学习地图两条学习路径)）；非硬性技术前置，但 RAG / memory 常跟 framework + Claude Code memory 机制搭配、照顺序走过理解更完整，且 [Stage 7](07-multi-agent-production.md) 预期你已完成 4 + 5 + 6
+- 走过 Stage 4（agent frameworks）+ Stage 5（Claude Code 生态）—— curriculum 主线是 **3 → 4 → 5 → 6**（见 [README 学习地图](../README.zh-Hans.md#-学习地图两条学习路径)）；非硬性技术前置，但 RAG / memory 常跟 framework + Claude Code memory 机制搭配、照顺序走过理解更完整，且 [Stage 7](07-multi-agent-production.zh-Hans.md) 预期你已完成 4 + 5 + 6
 - 能够运行 Python `pip install` 来安装 SDK（后续练习会用到 `chromadb`、`sentence-transformers` 等）
 - 熟悉 list / dict / generator 等基础 Python 结构
 
-如果没有达到，请回看 [Stage 3](03-tool-use-and-hello-agent.md) 或 [Stage 0 环境设置](00-foundations.zh-Hans.md#何时可以跳过这个阶段)。
+如果没有达到，请回看 [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 或 [Stage 0 环境设置](00-foundations.zh-Hans.md#何时可以跳过这个阶段)。
 
 ## 📚 必读材料
 
@@ -603,7 +603,7 @@ print(chunks[0])
 > 💡 **与 Stage 3 反思 的分工**:
 > - 想理解“反思循环如何工作、单次如何运行” → Stage 3 反思。
 > - 想理解“反思如何跨 session 累积，agent 如何从过往学习经验” → 本节。
-> - 想看 production agent 内部如何使用反思（例如 Cursor / Claude Code）→ [Stage 5 5.7 Harness Internals](05-claude-code-ecosystem.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看)。
+> - 想看 production agent 内部如何使用反思（例如 Cursor / Claude Code）→ [Stage 5 5.7 Harness Internals](05-claude-code-ecosystem.zh-Hans.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看)。
 
 ## 🤔 进阶 Reasoning / Reflection — 2024-2026 年思潮 ⭐ 覆盖两种路径
 
@@ -644,7 +644,7 @@ OpenAI 的 **o1**（2024-09）开启了这一趋势，随后是开源的 DeepSee
 | 预算 / 延迟允许，需要最强的 reasoning 能力 | Path 2 —— 选择 **GPT-5.5 / Opus 5 / Gemini 3.5 Flash / Grok 4.5 / V4-Pro** 中的一个（Claude Fable 5 属 premium 高阶层级，位阶在 Opus class 之上）|
 | 想自己 fine-tune reasoning model | Path 2 —— 阅读 R1 论文（方法基线），从 R1-Distill / V4 开源权重开始 |
 | 需要 on-device / 预算极度紧张 | **QwQ-32B**（Apache 2.0）或 R 系列 distill 版本 |
-| Multi-agent debate / critic 场景 | Path 1（CRITIC / debate）+ [Stage 7 Multi-agent](07-multi-agent-production.md) |
+| Multi-agent debate / critic 场景 | Path 1（CRITIC / debate）+ [Stage 7 Multi-agent](07-multi-agent-production.zh-Hans.md) |
 
 > 💡 **2025-2026 年趋势**:
 > - Reasoning 模型已将 Reflexion 的能力内化到权重中——但**基于 Prompt 的 reflection 并未被取代**：Agent Loop（控制反思时机/内容）+ Multi-agent debate 仍然是必需的。
@@ -757,4 +757,4 @@ OpenAI 的 **o1**（2024-09）开启了这一趋势，随后是开源的 DeepSee
 - [ ] 区分“给 agent memory”和“使用 RAG”这两件事？
 - [ ] 解释 RAG 和 Memory 如何互补（参考 从 RAG 到 Memory 表格）？
 
-如果以上都能够做到 → 前往 [Stage 7 — Multi-Agent · Production 化](07-multi-agent-production.md)。
+如果以上都能够做到 → 前往 [Stage 7 — Multi-Agent · Production 化](07-multi-agent-production.zh-Hans.md)。

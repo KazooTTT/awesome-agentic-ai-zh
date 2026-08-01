@@ -4,10 +4,10 @@
 
 ⏱ **Estimated Time**: 2-4 weeks (approx. 15-30 hours)
 
-> 💡 High density of terminology (multi-agent / handoff / eval / observability / guardrails...) → Refer to [`resources/glossary.md` 4 + 6](../resources/glossary.md#4-multi-agent).
+> 💡 High density of terminology (multi-agent / handoff / eval / observability / guardrails...) → Refer to [`resources/glossary.md` 4 + 6](../resources/glossary.en.md#4-multi-agent).
 
 > 📋 **Chapter Composition**: [What is Multi-Agent · Productionization (Positioning) + Three-layer engineering split + When to use multi-agent] → Learning Objectives → Entry Conditions → Required Reading → Harness Engineering (**8 core components including Cost/Latency**) → Hands-on Exercises (including Exercise 6 Cost Optimization) → **Agent Benchmark Landscape: how to read it, not just the leaderboard** → Recommended Tools → Featured Projects → Self-Check
-> 🔑 **Key Terms**: See [`resources/glossary.md` 4 + 6](../resources/glossary.md#4-multi-agent) (multi-agent / orchestration / handoff / eval / observability / harness (the execution and control layer around the model))
+> 🔑 **Key Terms**: See [`resources/glossary.md` 4 + 6](../resources/glossary.en.md#4-multi-agent) (multi-agent / orchestration / handoff / eval / observability / harness (the execution and control layer around the model))
 
 This is the final stage. You are moving from "I can build an agent" to "I can make an agent **truly stable for people to use**"—with multiple agents collaborating, with eval, with observability, and deployable to a usable environment. **"Productionization" ≠ enterprise scale**—as long as an agent can produce stable output and be used by others, it falls within the scope of this stage.
 
@@ -30,8 +30,8 @@ Engineering work can be split into three layers, corresponding to different posi
 
 | Layer | Concept | Core question | Unit of concern | Corresponding stage |
 |---|---|---|---|---|
-| 1 | **Prompt Engineering** | How should I ask this time? | **single LLM call** | [Stage 2](02-prompt-engineering.md) |
-| 2 | **Context Engineering** | What information should the model receive this time? | **context across multiple interactions** | [Stage 6](06-memory-rag.md) |
+| 1 | **Prompt Engineering** | How should I ask this time? | **single LLM call** | [Stage 2](02-prompt-engineering.en.md) |
+| 2 | **Context Engineering** | What information should the model receive this time? | **context across multiple interactions** | [Stage 6](06-memory-rag.en.md) |
 | **3** | **Harness Engineering**<br>(**This stage**) | How does the whole workflow run? | **executable LLM workflow / system** | **This stage** |
 
 > 🔁 **The next layer: Loop Engineering**. After prompt → context → harness, the fourth discipline emerging in 2026 is **engineering the agent's iteration loop itself**: the goal, available tools, context management, **termination logic**, and error handling that keep an agent reliable across hundreds of steps and multiple sessions. Claude Code's `/goal` (give a verifiable completion condition and the agent loops until it is met) is exactly this; [Stage 5.6 Dynamic Workflows](05-claude-code-ecosystem.en.md) is the agent writing its own loop script. Lineage: ReAct (2022) → AutoGPT (2023) → /goal (2026).
@@ -100,8 +100,8 @@ To turn an LLM into a usable agent, you usually run into three layers of enginee
 
 | Layer | What you are engineering | Where to learn it |
 |---|---|---|
-| **1. Prompt Engineering** | The **string** sent into the LLM (system prompt / few-shot / format) | [Stage 2](02-prompt-engineering.md) |
-| **2. Context Engineering** | The **information** placed inside the window (RAG / memory / tool defs / history assembly) | [Stage 6](06-memory-rag.md) |
+| **1. Prompt Engineering** | The **string** sent into the LLM (system prompt / few-shot / format) | [Stage 2](02-prompt-engineering.en.md) |
+| **2. Context Engineering** | The **information** placed inside the window (RAG / memory / tool defs / history assembly) | [Stage 6](06-memory-rag.en.md) |
 | **3. Harness Engineering**<br>(**This section**) | The **execution and control layer around the model** (loop / retry / sandbox / observability / deployment) | This stage |
 
 **How do you tell which layer you are working on? Ask**:
@@ -130,7 +130,7 @@ To turn an LLM into a usable agent, you usually run into three layers of enginee
 | **Cost / Latency optimization** ⭐ Required for 2024-2026 | Prompt caching, model routing, thinking budget, batching, semantic cache | **Exercise 6 Cost optimization** (New) |
 
 **Framework vs. Harness: key difference**:
-- **Framework** ([Stage 4](04-agent-frameworks.md)) defines the **API** — what the interface you call looks like
+- **Framework** ([Stage 4](04-agent-frameworks.en.md)) defines the **API** — what the interface you call looks like
 - **Harness** (this section) defines the **runtime** — how it runs, how it recovers, and how it is observed
 
 ### Feedback loops: agents improve from feedback, not a more perfect prompt
@@ -325,7 +325,7 @@ Can you:
 - [ ] Measure the cost difference before and after implementing prompt caching on a real workload?
 - [ ] Deploy an agent to the cloud (any provider)?
 
-If you can do all of these → first go to [**Stage 7.5 — Advanced Agentic Concepts Map**](07.5-advanced-agentic-concepts.md) (1 week, no coding — build a frontier concept map and locate which advanced concepts the industry is still debating), then proceed to [**Stage 8 — Agent Interfaces**](08-agent-interfaces.md) (**a shared hub for both tracks**) to learn how agents interact with the non-API world (Computer Use / Browser Use / Sandbox). Or, pick a [specialized branch](../README.en.md#-learning-map-two-tracks), or come back and contribute to this repo.
+If you can do all of these → first go to [**Stage 7.5 — Advanced Agentic Concepts Map**](07.5-advanced-agentic-concepts.en.md) (1 week, no coding — build a frontier concept map and locate which advanced concepts the industry is still debating), then proceed to [**Stage 8 — Agent Interfaces**](08-agent-interfaces.en.md) (**a shared hub for both tracks**) to learn how agents interact with the non-API world (Computer Use / Browser Use / Sandbox). Or, pick a [specialized branch](../README.en.md#-learning-map-two-tracks), or come back and contribute to this repo.
 
 ## 💡 What's Next
 

@@ -163,4 +163,4 @@ Contributions especially welcome:
 - CI / pre-commit hook integration case studies
 - **Multi-developer team governance** — sharing Skills across devs, permission design, cost tracking
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md).
+See [CONTRIBUTING.md](../CONTRIBUTING.en.md).

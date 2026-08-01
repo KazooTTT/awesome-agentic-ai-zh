@@ -75,7 +75,7 @@ In other words: **time spent writing good schemas saves you the cost of upgradin
 
 ## Further reading
 
-More schema design rules in [`resources/schema-design-cheatsheet.md`](../../../resources/schema-design-cheatsheet.md): clear usage, correct types, required fields, enum constraints, structured error returns.
+More schema design rules in [`resources/schema-design-cheatsheet.md`](../../../resources/schema-design-cheatsheet.en.md): clear usage, correct types, required fields, enum constraints, structured error returns.
 
 ## Extensions
 

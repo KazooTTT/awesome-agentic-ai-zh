@@ -244,7 +244,7 @@ This repo is an AI learning document — if you've also curated great resources,
 - 🌏 **Translations** — improve the English edition or translate to other languages
 - 🌱 **Become a Stage / Branch maintainer** — long-term review of a specific area, see [CONTRIBUTORS.md](CONTRIBUTORS.md)
 
-PR process and style rules: [CONTRIBUTING.md](CONTRIBUTING.md) + [resources/style-guide.en.md](resources/style-guide.en.md).
+PR process and style rules: [CONTRIBUTING.md](CONTRIBUTING.en.md) + [resources/style-guide.en.md](resources/style-guide.en.md).
 
 > 🤖 **New project links are auto-audited** — when a PR adds a new `github.com/owner/repo` link, a GitHub Action comments with its stars, license, archived status, and last-push, flagging archived / stale (>6 months) / unlicensed entries against the curation bar. Advisory only, never blocks — the maintainer decides what gets in (v1 runs on maintainer-branch PRs; fork PRs are skipped for now due to token scope).
 

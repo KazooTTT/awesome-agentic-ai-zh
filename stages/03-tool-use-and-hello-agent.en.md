@@ -5,7 +5,7 @@
 ⏱️ **Estimated Time**: 2-3 weeks (approx. 10-20 hours)
 
 > 💡 Terminology-heavy (agent / tool use / function calling / ReAct / structured output) → See [`resources/glossary.md` 2](../resources/glossary.en.md#2-agents--tool-use).
-> 🗺️ **Before choosing Track A (CLI Power User) or Track B (Agent Builder)**, read [`resources/agent-paradigms.md`](../resources/agent-paradigms.md) — a panoramic view of 5 agent archetypes to help you choose your path.
+> 🗺️ **Before choosing Track A (CLI Power User) or Track B (Agent Builder)**, read [`resources/agent-paradigms.md`](../resources/agent-paradigms.en.md) — a panoramic view of 5 agent archetypes to help you choose your path.
 
 > 📋 **Chapter Structure**: [Opening Framing: The relationship between AI/LLM/Agent] → Learning Objectives → Prerequisites → Required Reading → [Optional · Concept Map] → Hands-on Exercises → Reflection (Concepts + Routing) → Curated Projects → Self-Check
 > 🔑 **Key Terms**: See [`resources/glossary.md` 2](../resources/glossary.en.md#2-agents--tool-use)
@@ -412,7 +412,7 @@ messages.append({"role": "tool", "tool_call_id": tc.id,
 - Use enums to constrain ambiguous boundaries (e.g., `unit: "celsius" | "fahrenheit"` instead of `unit: string`).
 - Wrap the error return in `{"error": "...", "retry_hint": "..."}` so the LLM can recover.
 
-> 💡 For a detailed cheatsheet, see [`resources/schema-design-cheatsheet.md`](../resources/schema-design-cheatsheet.md)—5 golden rules + 5 common anti-patterns.
+> 💡 For a detailed cheatsheet, see [`resources/schema-design-cheatsheet.md`](../resources/schema-design-cheatsheet.en.md)—5 golden rules + 5 common anti-patterns.
 
 <details>
 <summary>📋 <b>Simplified Core Concept — bad vs good schema comparison</b></summary>
@@ -509,6 +509,6 @@ Can you:
 - [ ] Compare the CodeAct (code as action) and JSON-tool routes?
 - [ ] See which problems don't actually need an agent?
 
-If yes → Proceed to [Stage 4 — Agent Frameworks](04-agent-frameworks.md).
+If yes → Proceed to [Stage 4 — Agent Frameworks](04-agent-frameworks.en.md).
 
 If no → Run through Exercise 3 again, don't skip it. If you don't understand what the frameworks are abstracting away for you, the stuff in Stage 4 will look like black magic.

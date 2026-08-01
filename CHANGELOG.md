@@ -6,6 +6,12 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-08-01
+
+- **content** · **英文版 / 簡中版不再把讀者丟回繁中頁**(111 個連結、37 個檔案)。`.en.md` / `.zh-Hans.md` 裡有大量連結直接指向繁中 canonical(例如 `README.en.md` 的 `[CONTRIBUTING.md](CONTRIBUTING.md)`、`index.en.md` 首頁 13 條),即使同語系的檔案就在旁邊 —— 英文讀者點下去會落到讀不懂的頁面。改成指向自己語系的檔案。**刻意保守**:同語系檔案不存在時不動(繁中連結才是對的)、語言切換列不動(它本來就該跨語系)、fenced code 內不動。**mkdocs 建置警告數改動前後皆為 182、零新增警告類型**,確認網站不受影響。
+- **tooling** · **新增 `scripts/check-locale-links.py` + CI blocking gate**,防止上面那類連結再累積。既有的 gate 都抓不到它:`check-anchors` 只驗目標解析得到、`sync-language-switchers` 只管切換列。附 12 個 stdlib 單元測試(含一個直接把 repo 現況當測項)。**第一次跑時我把它寫錯了**:它連帶重寫了帶 anchor 的連結,而標題是翻譯過的 —— 繁中 anchor 在 `.en.md` 裡不存在,於是產生 **5 個死連結**(被 `check-anchors` 當場擋下)。修法是加第 5 條規則:帶 anchor 的連結必須先確認該 anchor 在目標語系檔裡真的存在,否則維持 canonical;並補一個 regression test 把這個教訓釘住。
+- **docs** · 順手把 12 個連結的**顯示文字**對齊讀者語系(`[foo.md](foo.en.md)` → `[foo.en.md](foo.en.md)`)。註:先前口頭估的「119 處」是誤算 —— 那個 grep 沒排除反引號寫法,把 107 個本來就正確的連結也算進去了。
+
 ## 2026-07-31
 
 - **content** · **Stage 5.2 補上 MCP 採用規模數據**(tri-locale,一句話)。Anthropic 在[官方公告](https://claude.com/blog/bringing-mcp-2026-07-28-to-claude)給出可引用的數字:MCP 的 SDK **月下載量超過 4 億**(今年約成長 4 倍)、Claude connectors 目錄收錄 **950+ 個 MCP server**。放在「MCP 是什麼」段落之後,用來回答讀者的「這值得學嗎」。**同一篇公告裡刻意沒採用的部分**:無狀態核心、Apps / Tasks extension 框架、企業託管 auth、observability dashboard、MCP tunnels —— 那些是協定層與 connector 平台的事,初學者無感;而且 Anthropic 對 Claude 產品端的支援時程只寫「soon」、沒有日期,也沒說既有 server 的相容性或遷移,寫進教材只會是一句空話。Apps / Tasks 是否算正式官方 extension 暫不寫入教材(此判斷來自另行查閱 spec repo 時觀察到的命名不一致,非本則公告內容,故未引用)。

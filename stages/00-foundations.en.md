@@ -16,7 +16,7 @@ If you can:
 - Use the command line on your OS (cd, ls, mkdir, run a script)
 - Read a YAML / JSON file without confusion
 
-→ **Skip directly to [Stage 1](01-llm-basics.md)**.
+→ **Skip directly to [Stage 1](01-llm-basics.en.md)**.
 
 If you can't, work through this stage. Don't skip — every later stage assumes these.
 

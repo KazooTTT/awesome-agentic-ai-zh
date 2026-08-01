@@ -77,7 +77,7 @@ These are the main choices for Chinese-language work, in two groups: **API-only*
 
 > **Note**: All three offer both an **open version (Apache 2.0 or MIT) and a paid cloud API** (GLM's open version is now 5.2, MIT). The open versions run on your own machine via [Ollama](https://ollama.com/).
 
-> ⚠️ **Xiaomi MiMo** is listed in [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.md) for Hermes Agent routing, but as of 2026-05 there is no authoritative official source to verify it, so it is not included in this table. To try it, connect through [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing.
+> ⚠️ **Xiaomi MiMo** is listed in [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.en.md) for Hermes Agent routing, but as of 2026-05 there is no authoritative official source to verify it, so it is not included in this table. To try it, connect through [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing.
 
 ### 🌍 Western Open-Source (4 providers, self-host defaults)
 

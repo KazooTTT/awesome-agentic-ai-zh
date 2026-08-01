@@ -4,11 +4,11 @@
 
 ⏱ **时间估算**：2-3 周（约 10-20 小时）
 
-> 💡 用语密集（agent / tool use / function calling / ReAct / structured output⋯）→ 翻 [`resources/glossary.md` 2](../resources/glossary.md#2-agent--工具使用)。
-> 🗺️ **进 Track A（CLI Power User）还是 Track B（Agent Builder）前**，先看 [`resources/agent-paradigms.md`](../resources/agent-paradigms.md) — 5 种 agent 型态的全景图，帮你选轨。
+> 💡 用语密集（agent / tool use / function calling / ReAct / structured output⋯）→ 翻 [`resources/glossary.md` 2](../resources/glossary.zh-Hans.md#2-agent--工具使用)。
+> 🗺️ **进 Track A（CLI Power User）还是 Track B（Agent Builder）前**，先看 [`resources/agent-paradigms.md`](../resources/agent-paradigms.zh-Hans.md) — 5 种 agent 型态的全景图，帮你选轨。
 
 > 📋 **本章组成**：〔开场框景：AI/LLM/Agent 三者关系〕→ 学习目标 → 进入条件 → 必修阅读 →〔可选 · 概念地图〕→ 动手练习 → 反思（概念 + 路由）→ 精选 Projects → 自我检查
-> 🔑 **关键名词**：见 [`resources/glossary.md` 2](../resources/glossary.md#2-agent--工具使用)
+> 🔑 **关键名词**：见 [`resources/glossary.md` 2](../resources/glossary.zh-Hans.md#2-agent--工具使用)
 
 ## 🤖 开始前：AI / LLM / Agent — 三者怎么分？
 
@@ -412,7 +412,7 @@ messages.append({"role": "tool", "tool_call_id": tc.id,
 - 模糊边界用 enum 强制收敛（例如 `unit: "celsius" | "fahrenheit"` 而不是 `unit: string`）
 - error 回传要包 `{"error": "...", "retry_hint": "..."}` 让 LLM 能恢复
 
-> 💡 详细 cheatsheet 看 [`resources/schema-design-cheatsheet.md`](../resources/schema-design-cheatsheet.md)——5 条黄金规则 + 5 个常见 anti-pattern。
+> 💡 详细 cheatsheet 看 [`resources/schema-design-cheatsheet.md`](../resources/schema-design-cheatsheet.zh-Hans.md)——5 条黄金规则 + 5 个常见 anti-pattern。
 
 <details>
 <summary>📋 <b>简化版核心观念 — bad vs good schema 对照</b></summary>
@@ -476,7 +476,7 @@ messages.append({"role": "tool", "tool_call_id": tc.id,
 - [**LangChain — Reflection Agents（blog）**](https://blog.langchain.dev/reflection-agents/) — framework 实现参考 + 完整 working notebook
 - [**datawhalechina/hello-agents**](https://github.com/datawhalechina/hello-agents) — 对应章节（自我反思 / Self-Refine 段落、中文完整教学）
 
-> 💡 **想看反思怎么长进 production agent**：[Stage 5 5.7 Harness Internals](05-claude-code-ecosystem.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看) 解剖 Claude Code source 时可以看到——agent 跑完 tool call 后自我评估 patch、有问题回头改、修正后再 commit。**这是现代 production agent 的核心 building block 之一**。
+> 💡 **想看反思怎么长进 production agent**：[Stage 5 5.7 Harness Internals](05-claude-code-ecosystem.zh-Hans.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看) 解剖 Claude Code source 时可以看到——agent 跑完 tool call 后自我评估 patch、有问题回头改、修正后再 commit。**这是现代 production agent 的核心 building block 之一**。
 
 ## 🎯 精选 Projects
 
@@ -510,6 +510,6 @@ messages.append({"role": "tool", "tool_call_id": tc.id,
 - [ ] 比较 CodeAct（代码即 action）跟 JSON-tool 两种路线
 - [ ] 看出哪些问题其实不需要 agent
 
-如果可以 → 进 [Stage 4 — Agent Frameworks](04-agent-frameworks.md)。
+如果可以 → 进 [Stage 4 — Agent Frameworks](04-agent-frameworks.zh-Hans.md)。
 
 如果不行 → 把 练习 3 再跑一次，不要跳过。如果你不懂 framework 在帮你抽象什么，Stage 4 的那些东西看起来会像黑魔法。

@@ -76,7 +76,7 @@
 
 > **注**：这三家都走 **开源版（Apache 2.0 或 MIT）+ 付费云端 API** 两条路（GLM 开源版现为 5.2、MIT）。开源版可用 [Ollama](https://ollama.com/) 在自己机器跑。
 
-> ⚠️ **小米 MiMo** 虽在 [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.md) 列入 Hermes Agent routing，但 2026-05 无权威官方 source 可验证，暂不收进此表。要试 → 通过 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing 接入。
+> ⚠️ **小米 MiMo** 虽在 [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.zh-Hans.md) 列入 Hermes Agent routing，但 2026-05 无权威官方 source 可验证，暂不收进此表。要试 → 通过 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing 接入。
 
 ### 🌍 西方开源（4 家、self-host 主力）
 
