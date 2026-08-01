@@ -362,5 +362,5 @@ Subagents are not free. Every dispatch **spends tokens and adds latency**. In th
 
 - **Understand the full theory** (how subagents differ from skills / MCP, and the 3 multi-agent mechanisms) → [Stage 5.5](../stages/05-claude-code-ecosystem.en.md#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature)
 - **CLI daily-use playbook** → [`tracks/cli/A3-cli-production.md` Playbook 4](../tracks/cli/A3-cli-production.en.md#-playbook-4-dispatching-subagents-for-independent-tasks)
-- **See where subagents fit in the agent paradigm map** → [`resources/agent-paradigms.md`](./agent-paradigms.en.md#subagent--spawning-an-agent-inside-an-agent-runtime)
+- **See where subagents fit in the agent paradigm map** → [`resources/agent-paradigms.en.md`](./agent-paradigms.en.md#subagent--spawning-an-agent-inside-an-agent-runtime)
 - **Glossary lookup** → [`resources/glossary.md` § 5. Claude Code Ecosystem — Subagent](./glossary.en.md#subagent)

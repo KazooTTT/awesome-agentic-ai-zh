@@ -2,7 +2,7 @@
 
 > [繁體中文](./cookbook.md) | **简体中文** | [English](./cookbook.en.md)
 
-> Stage 5（Claude Code 生态）跟 [`mcp-skills-catalog.md`](mcp-skills-catalog.zh-Hans.md) 讲“概念”跟“有哪些工具”。这份 cookbook 补中间缺的：“**怎么动手做出来**”。每个 recipe 是一份 step-by-step + sample code + 常见 pitfall，~30-50 分钟做完一个。
+> Stage 5（Claude Code 生态）跟 [`mcp-skills-catalog.zh-Hans.md`](mcp-skills-catalog.zh-Hans.md) 讲“概念”跟“有哪些工具”。这份 cookbook 补中间缺的：“**怎么动手做出来**”。每个 recipe 是一份 step-by-step + sample code + 常见 pitfall，~30-50 分钟做完一个。
 >
 > 不是 reference 也不是 tutorial——是 recipe，挑你需要的那道煮就好。
 
@@ -587,7 +587,7 @@ Claude Code 目前需要 Anthropic OAuth / API key，没有官方设置可以把
 ### 进一步
 
 - Stage 1 [Local LLM 练习](../stages/01-llm-basics.zh-Hans.md#练习-6local-llm)：Ollama / llama.cpp / vLLM 的差异
-- [`cli-agents-guide.md`](cli-agents-guide.zh-Hans.md)：8 个 CLI agent 怎么选
+- [`cli-agents-guide.zh-Hans.md`](cli-agents-guide.zh-Hans.md)：8 个 CLI agent 怎么选
 - Hermes Agent README：多平台 gateway（Telegram / Discord / Slack）与 provider 设置
 
 ---
@@ -595,8 +595,8 @@ Claude Code 目前需要 Anthropic OAuth / API key，没有官方设置可以把
 ## 找不到你要的 recipe？
 
 - 看 [Stage 5](../stages/05-claude-code-ecosystem.zh-Hans.md) 完整概念
-- 看 [`mcp-skills-catalog.md`](mcp-skills-catalog.zh-Hans.md) 完整工具清单
+- 看 [`mcp-skills-catalog.zh-Hans.md`](mcp-skills-catalog.zh-Hans.md) 完整工具清单
 - 看 [`schema-design-cheatsheet.zh-Hans.md`](schema-design-cheatsheet.zh-Hans.md) 写 tool schema 的细节
-- 看 [`cli-agents-guide.md`](cli-agents-guide.zh-Hans.md) 8 个主流 CLI agent 比较
+- 看 [`cli-agents-guide.zh-Hans.md`](cli-agents-guide.zh-Hans.md) 8 个主流 CLI agent 比较
 
 要新 recipe → 开 issue 或直接 PR 一份。recipe 格式：**为什么 + 步骤 + 范本 prompt + 常见 pitfall + 进一步**。
