@@ -6,6 +6,10 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-07-31
+
+- **content** · **Stage 5.2 補上 MCP 採用規模數據**(tri-locale,一句話)。Anthropic 在[官方公告](https://claude.com/blog/bringing-mcp-2026-07-28-to-claude)給出可引用的數字:MCP 的 SDK **月下載量超過 4 億**(今年約成長 4 倍)、Claude connectors 目錄收錄 **950+ 個 MCP server**。放在「MCP 是什麼」段落之後,用來回答讀者的「這值得學嗎」。**同一篇公告裡刻意沒採用的部分**:無狀態核心、Apps / Tasks extension 框架、企業託管 auth、observability dashboard、MCP tunnels —— 那些是協定層與 connector 平台的事,初學者無感;而且 Anthropic 對 Claude 產品端的支援時程只寫「soon」、沒有日期,也沒說既有 server 的相容性或遷移,寫進教材只會是一句空話。Apps / Tasks 是否算正式官方 extension 暫不寫入教材(此判斷來自另行查閱 spec repo 時觀察到的命名不一致,非本則公告內容,故未引用)。
+
 ## 2026-07-30
 
 - **content** · **MCP 教材修復:SDK v2 破壞性改版讓唯一的 MCP 練習跑不動了**(tri-locale,第一手查證 PyPI + 官方 migration guide)。官方 Python SDK 於 **2026-07-28 發布 v2.0.0**:`FastMCP` 改名 `MCPServer`、低階 `Server` 的 handler 從 decorator 改成建構子參數。cookbook 的 `pip install mcp` **沒鎖版本**,讀者現在會裝到 2.x,然後在 `from mcp.server import Server` / `@app.list_tools()` 那行直接 `AttributeError` —— 跟 2026-07-17 那次 Kimi K2 停用 model ID 是同一類失效。修法:程式碼改寫成官方 v2 形狀(`from mcp.server.mcpserver import MCPServer` + `@app.tool()` + `app.run(transport="stdio")`,從約 40 行縮到約 10 行)、安裝行鎖 `"mcp>=2,<3"` 並附 v1 逃生門 `"mcp>=1,<2"`(v1.x 仍在維護模式)、加一則說明 v2 為何變短(type hints 自動產 inputSchema、docstring 當 description、回傳值自動包裝)。Stage 5.2 內另一處未鎖版的 `pip install mcp` 一併補上。三語程式碼區塊 byte-identical 且 `ast.parse` 通過。
