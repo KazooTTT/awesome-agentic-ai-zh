@@ -18,6 +18,15 @@
 - 把多步骤任务拆成 CLI 能跑完的小步骤
 - 设计 prompt 让任务在不同 CLI 上 portable
 
+## 🚪 进入条件
+
+你应该已经：
+- 完成 [A1](A1-cli-intro.zh-Hans.md)：选定主用 CLI、装好、认证好、跑过至少 5 个非 hello-world 任务
+- 写过 1 份 `CLAUDE.md` / `AGENTS.md` / `GEMINI.md`（即使只是试水温）
+- 对 Stage 2 prompt engineering 基础上手
+
+没到的话 → 先回 [A1](A1-cli-intro.zh-Hans.md) 把 CLI-1/2 练熟。
+
 ## 📚 必修阅读
 
 1. [**Anthropic — CLAUDE.md best practices**](https://docs.anthropic.com/en/docs/claude-code/memory) ⭐
@@ -108,6 +117,8 @@ official — Claude Code memory / CLAUDE.md 编写的官方说明，含 best pra
 
 #### [`resources/cli-agents-guide.zh-Hans.md`](../../resources/cli-agents-guide.zh-Hans.md) “3 个常见搭配”
 看 Setup A / B / C，挑一个合的试。
+
+> 💡 **建议入手路径**：先抄 Anthropic 官方 CLAUDE.md 结构 → 加自己的 repo context → 看 obra/superpowers 看“完整 `.claude/` 长什么样” → 然后写 1-2 个 slash command（从 hesreallyhim awesome 列表捞灵感）。
 
 ### 推荐工具
 

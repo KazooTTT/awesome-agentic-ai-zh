@@ -25,15 +25,30 @@ LangGraph / CrewAI hide this loop from you. **Writing it once yourself** is what
 
 All of that is covered in 70 lines of Python.
 
-## How to run
+## How to run — two paths
+
+### Path A (default, free, local)
+
+```bash
+pip install -r requirements.txt
+ollama pull qwen2.5:3b
+ollama serve
+python starter.py
+```
+
+Budget: **$0**. A 4-6 round ReAct loop on local qwen2.5:3b takes ~30-120s (CPU slower, GPU faster).
+
+### Path B (Anthropic, cloud-quality comparison)
 
 ```bash
 pip install -r requirements.txt
 export ANTHROPIC_API_KEY=sk-ant-...
-python starter.py
+python starter_anthropic.py
 ```
 
-Expected:
+Budget: ~**$0.001** per run (claude-haiku-4-5). 5-15x faster than local, with steadier answer quality.
+
+Expected output (Path A, local):
 
 ```
 ❓ Question: Divide 'Taipei population' by 'NYC population', 4 decimal places.
@@ -54,8 +69,11 @@ Expected:
 ## Validate the logic without spending API credits
 
 ```bash
-python test.py
+python test.py            # validates Path A (Ollama) starter.py logic
+python test_anthropic.py  # validates Path B (Anthropic) starter_anthropic.py logic
 ```
+
+Both test suites use `unittest.mock`, no real API call, $0/run. Path A uses the OpenAI-compat response shape; Path B uses Anthropic content blocks.
 
 `test.py` uses `unittest.mock.MagicMock` to replace the Anthropic client and feed canned responses, validating your loop logic. Expected:
 

@@ -25,15 +25,30 @@ LangGraph / CrewAI 把这个 loop 藏起来了。你**自己写过一次**才知
 
 70 行 Python 全交代清楚。
 
-## 怎么跑
+## 怎么跑 — 两条路径
+
+### Path A（默认、本机免费）
+
+```bash
+pip install -r requirements.txt
+ollama pull qwen2.5:3b
+ollama serve
+python starter.py
+```
+
+预算：**$0**。本机 qwen2.5:3b 跑 ReAct loop 4-6 轮 ≈ 30-120 秒（CPU 慢、GPU 快）。
+
+### Path B（Anthropic、想看 cloud 高质量）
 
 ```bash
 pip install -r requirements.txt
 export ANTHROPIC_API_KEY=sk-ant-...
-python starter.py
+python starter_anthropic.py
 ```
 
-预期看到：
+预算：每次 ≈ **$0.001**（claude-haiku-4-5）。比本机快 5-15 倍、答案质量更稳。
+
+预期看到（Path A、本机）：
 
 ```
 ❓ 问题：'台北人口' 除以 '纽约人口'、答案保留 4 位小数。
@@ -54,8 +69,11 @@ python starter.py
 ## 不花钱验证程序逻辑
 
 ```bash
-python test.py
+python test.py            # 验 Path A (Ollama) starter.py 逻辑
+python test_anthropic.py  # 验 Path B (Anthropic) starter_anthropic.py 逻辑
 ```
+
+两条 test 都用 `unittest.mock`、不打真 API、$0/run。Path A 用 OpenAI-compat response shape、Path B 用 Anthropic content blocks。
 
 `test.py` 用 `unittest.mock.MagicMock` 取代 Anthropic client、塞固定 response、验证你的 loop 逻辑。预期：
 

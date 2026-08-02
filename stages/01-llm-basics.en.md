@@ -142,6 +142,11 @@ If not — go back to Stage 0 first.
 4. [**A Visual Guide to LLM Tokenizers**](https://huggingface.co/learn/llm-course/chapter6/1) — Hugging Face's intro
 5. [**Anthropic API Pricing**](https://www.anthropic.com/pricing#anthropic-api) — read the pricing table, calculate cost for 1k input + 1k output
 
+**🎥 Video supplements (highly recommended)**:
+- [**Hung-yi Lee — Introduction to Generative AI (NTU, Spring 2024)**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) ⭐⭐⭐ — episodes 1-5 cover what an LLM is, how it works, and how token / context window / temperature shape the output. a university-level Mandarin-language course taught at National Taiwan University; the course page carries slides plus YouTube. Latest consolidated edition: [**GenAI-ML, Fall 2025**](https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php)
+- [**3Blue1Brown — Transformers, visually explained**](https://www.youtube.com/watch?v=wjZofJX0v4M) (Mandarin dub: [3Blue1Brown 中文](https://www.youtube.com/@3Blue1BrownCN)) — a visual intro to what happens inside an LLM
+- [**Andrej Karpathy — Intro to LLMs**](https://www.youtube.com/watch?v=zjkBMFhNj_g) — English, 1 hr, the most widely recommended LLM primer in English
+
 ## 🛠 Hands-on Exercises (foundational, illustrative)
 
 > 🦙 **This stage defaults to Ollama** (cost-driven; `gemma4:e4b` runs locally for $0/run). Every exercise has Path A (Ollama, default) + Path B (Anthropic, optional — use it when you want to see cloud-quality answers). Full three-path trade-off in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
@@ -187,6 +192,13 @@ assert r.usage.completion_tokens > 0, "output token count should be > 0"
 print("✅ Exercise 1 passed — local Ollama gemma4:e4b answered for $0")
 ```
 
+**Expected output** (sample):
+```
+Response: Hi! I'm Gemma, an open-source language model trained by Google...
+usage: CompletionUsage(completion_tokens=35, prompt_tokens=12, total_tokens=47)
+✅ Exercise 1 passed — local Ollama gemma4:e4b answered for $0
+```
+
 **How slow?** Gemma 4B on CPU: ~5-30 s/answer; on GPU (RTX 3060+): <2 s. For speed use `gemma3:1b`; for quality use `qwen2.5:14b` / `llama3.3:8b` (needs 8 GB+ VRAM).
 
 </details>
@@ -219,6 +231,13 @@ assert msg.stop_reason in ("end_turn", "max_tokens"), f"unexpected stop_reason: 
 assert len(text) > 0, "response should not be empty"
 assert msg.usage.input_tokens > 0 and msg.usage.output_tokens > 0, "token counts should be > 0"
 print("✅ Exercise 1 passed — Anthropic API is reachable from your machine")
+```
+
+**Expected output** (sample):
+```
+Response: I'm Claude, an AI assistant made by Anthropic...
+usage: Usage(input_tokens=18, output_tokens=42, ...)
+✅ Exercise 1 passed — Anthropic API is reachable from your machine
 ```
 
 **Cost**: ~$0.001/run (haiku) or ~$0.004/run (sonnet); this hello-world is also 5-15× faster than Ollama.
@@ -268,6 +287,15 @@ for label, prompt in PROMPTS.items():
 assert max(output_tokens) > min(output_tokens), "with temperature=1.0, output length should vary"
 print("\n✅ Exercise 2 passed — observed temperature → token variance, $0/run")
 print("💡 Chinese prompts typically use MORE input tokens (one Chinese character ≈ 2 tokens)")
+```
+
+**Expected output** (sample):
+```
+[Chinese] prompt: 用一句話描述一隻貓在做什麼。
+  input tokens: 32
+  output tokens — min=18 max=58 mean=35.2 stdev=11.4
+
+✅ Exercise 2 passed — observed temperature → token variance, $0/run
 ```
 
 </details>
@@ -339,6 +367,18 @@ assert avg_latency > 0, "latency should be > 0"
 assert out_tok_avg > 0, "output token count should be > 0"
 print(f"\n✅ Exercise 3 passed — local model is $0 but takes ~{avg_latency * 1000 / 60:.0f} min for 1000 runs")
 print("💡 Compare Path B Anthropic: 1000 runs is ~10-20 min at $0.25 (haiku)")
+```
+
+**Expected output** (sample):
+```
+model: gemma4:e4b (local)
+5 latencies (sec): min=4.21 max=8.93 mean=6.54
+avg output: 48 tokens, ~7.3 tokens/sec
+
+1000-run cost: $0 (local); projected duration: 109.0 minutes
+
+✅ Exercise 3 passed — local model is $0 but takes ~109 min for 1000 runs
+💡 Compare Path B Anthropic: 1000 runs is ~10-20 min at $0.25 (haiku)
 ```
 
 </details>
@@ -451,7 +491,16 @@ print(f"✅ Exercise 6 passed — local Ollama reachable through the OpenAI-comp
 print(f"💡 This run cost you $0 (except for electricity)")
 ```
 
+**Expected output** (sample; the actual wording varies by model):
+```
+Response: ReAct is a method that lets an AI combine "reasoning" and "acting"...
+✅ Exercise 6 passed — local Ollama reachable through the OpenAI-compatible API
+💡 This run cost you $0 (except for electricity)
+```
+
 **Why do this**: once you can run local LLMs, Stage 3-6 experiments aren't bottlenecked on API costs; privacy-sensitive work also stays offline.
+
+**Want to run it without installing Ollama**: point `base_url` at [LM Studio](https://lmstudio.ai) (`http://localhost:1234/v1`) or a [vLLM](https://github.com/vllm-project/vllm) endpoint instead — the API surface is the same.
 
 </details>
 

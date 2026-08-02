@@ -18,6 +18,15 @@ After installing a CLI and running first tasks, the next question: **how do I ma
 - Decompose multi-step tasks into ones the CLI can execute end-to-end
 - Design prompts portable across CLIs
 
+## 🚪 Entry Conditions
+
+You should already:
+- Have completed [A1](A1-cli-intro.en.md): picked a primary CLI, installed it, authenticated, and run at least 5 non-hello-world tasks
+- Have written one `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (even just a rough first pass)
+- Be comfortable with the Stage 2 prompt engineering basics
+
+Not there yet? → go back to [A1](A1-cli-intro.en.md) and get comfortable with CLI-1/2 first.
+
 ## 📚 Required Reading
 
 1. [**Anthropic — CLAUDE.md best practices**](https://docs.anthropic.com/en/docs/claude-code/memory) ⭐
@@ -108,6 +117,8 @@ Community-curated Claude Code resources. Browse the slash command examples.
 
 #### [`resources/cli-agents-guide.en.md`](../../resources/cli-agents-guide.en.md) "Three common combinations"
 Look at Setup A / B / C and try one that fits.
+
+> 💡 **Suggested order to pick these up**: copy Anthropic's official CLAUDE.md structure first → add your own repo context → look at obra/superpowers to see what a complete `.claude/` actually looks like → then write 1-2 slash commands (mine the hesreallyhim awesome list for ideas).
 
 ### Recommended Tools
 

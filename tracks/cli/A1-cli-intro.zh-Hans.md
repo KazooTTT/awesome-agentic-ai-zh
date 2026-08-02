@@ -105,7 +105,7 @@
 你能不能：
 
 - [ ] 讲得出 8 个主流 CLI 的核心差别（不查表就答得出 3-4 个）
-- [ ] 你已经選定一个主用 CLI，并有 working setup（装好、认证好、跑过至少 5 个非 hello-world 任务）
+- [ ] 你已经选定一个主用 CLI，并有 working setup（装好、认证好、跑过至少 5 个非 hello-world 任务）
 - [ ] 写过你自己的 `CLAUDE.md` / `AGENTS.md` / `GEMINI.md`
 - [ ] 至少跑过第二个 CLI 一次，知道两个的风格差异
 
