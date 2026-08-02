@@ -301,7 +301,7 @@ MCP / Skills 是「給 agent 更多能力」；**Hooks 則是反過來：在 age
 ### 精選 Projects（spec / SDK / 範本參考）
 
 > 💡 **找日常工具的 MCP（Notion / Obsidian / Excel / Postgres / Playwright / Figma 等）？**
-> 看 [`resources/mcp-skills-catalog.md`](../resources/mcp-skills-catalog.md)——按 16 個分類整理 65+ 個常用 MCP server / Skill，每個都附 stars / license / 適合誰。下表保留的是「**寫自己 MCP server 時的 reference**」性質的官方 server / SDK。
+> 看 [`resources/mcp-skills-catalog.md`](../resources/mcp-skills-catalog.md)——按 16 個分類整理 76+ 個常用 MCP server / Skill，每個都附 stars / license / 適合誰。下表保留的是「**寫自己 MCP server 時的 reference**」性質的官方 server / SDK。
 
 | Project | ⭐ | 適合誰 | 為什麼推薦 / 備註 |
 |---|---|---|---|
@@ -448,7 +448,7 @@ Skill = **一個 markdown 檔**（`.claude/skills/<name>/SKILL.md`），告訴 C
 |---|---|---|---|
 | [anthropics/skills](https://github.com/anthropics/skills) ⭐ 官方 spec | ⭐⭐⭐⭐⭐ | 寫自己 SKILL.md 前先讀 | Anthropic 官方 Skills repo：`spec/`（frontmatter 標準）+ `template/` 起手範本 + `skills/` 含 pdf / docx / xlsx / pptx / skill-creator / skill-vetter 等 reference 實作。★ 158k+。**SKILL.md 結構範本參考**。Agent Skills 更廣義標準另見 [agentskills.io](https://agentskills.io) |
 | [anthropics/claude-code](https://github.com/anthropics/claude-code) | ⭐⭐⭐⭐ | 追蹤新功能、看 release notes | Claude Code 主 repo、含 issues / releases / inline skill 範例。本 stage 學 Skill 重點看上一個 repo、這個排第二 |
-| [mattpocock/skills](https://github.com/mattpocock/skills) | ⭐⭐⭐⭐ | 想看「真實工程師日常 SKILL.md」 | Matt Pocock（TypeScript 社群知名教學者）公開自己工作真實在用的 `.claude/` 目錄。每個 SKILL.md **10-50 行極短**、不過度工程化。**對照 over-engineered 200 行 skill 特別有參考價值**（★ 178k+、MIT）|
+| [mattpocock/skills](https://github.com/mattpocock/skills) | ⭐⭐⭐⭐ | 想看「真實工程師日常 SKILL.md」 | Matt Pocock（TypeScript 社群知名教學者）公開自己工作真實在用的 `.claude/` 目錄。每個 SKILL.md **10-50 行極短**、不過度工程化。**對照 over-engineered 200 行 skill 特別有參考價值**（★ 198k+、MIT）|
 | [obra/superpowers](https://github.com/obra/superpowers) | ⭐⭐⭐⭐ | power user setup、學進階寫法 | 20+ 實戰 skill（TDD、debugging、合作模式）+ `/brainstorm` / `/write-plan` / `/execute-plan` 命令 + skills-search tool |
 | [wshobson/agents](https://github.com/wshobson/agents) | ⭐⭐⭐⭐ | 中階：學 skill + subagent 組合 | 把 skills + subagents 組合做 multi-agent 編排。**從單一 SKILL.md 進化到 agent-as-skill 組合 pattern** 的範例（★ 35k+、MIT） |
 | [travisvn/awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) | ⭐⭐⭐⭐ | 自己寫前先找有沒有現成的 | 社群 Claude Skills 精選目錄 |

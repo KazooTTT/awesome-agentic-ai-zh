@@ -460,7 +460,7 @@ print(f"💡 跑这次完全没花钱（除了你的电力）")
 
 | 分类 | Project | ⭐ | 适合谁 | 为什么推荐 / 备注 |
 |---|---|---|---|---|
-| **官方 cookbook / 入门** | [Anthropic Cookbook](https://github.com/anthropics/claude-cookbooks) | ⭐⭐⭐⭐⭐ | 开始用 Claude API、当参考书查 | Claude API 全功能 notebook（tool use / batch / prompt cache），★ 46k+、MIT |
+| **官方 cookbook / 入门** | [Anthropic Cookbook](https://github.com/anthropics/claude-cookbooks) | ⭐⭐⭐⭐⭐ | 开始用 Claude API、当参考书查 | Claude API 全功能 notebook（tool use / batch / prompt cache），★ 50k+、MIT |
 | | [Anthropic Courses](https://github.com/anthropics/courses) | ⭐⭐⭐⭐⭐ | 系统性从零学一遍 Claude | Anthropic 自家完整 5 门课（API 基础 / prompt eval / real-world prompting / tool use），★ 21k+。先跑 `anthropic_api_fundamentals` |
 | | [OpenAI Cookbook](https://github.com/openai/openai-cookbook) | ⭐⭐⭐⭐⭐ | 用 OpenAI API + structured output / function calling | 跟 Anthropic Cookbook 对照、★ 73k+、MIT。比 Anthropic 大很多、用搜索 |
 | | [Anthropic Claude API Quickstart](https://docs.anthropic.com/en/docs/get-started) | ⭐⭐⭐⭐ | 5 分钟上手 | 官方文件、加 bookmark 用 |
@@ -475,7 +475,7 @@ print(f"💡 跑这次完全没花钱（除了你的电力）")
 | | [mudler/LocalAI](https://github.com/mudler/LocalAI) | ⭐⭐⭐⭐ | 团队合规、要 self-host 全套 OpenAI 替代 | drop-in OpenAI API 替代品（chat / embedding / image / TTS / STT），★ 46k+ |
 | | [ml-explore/mlx](https://github.com/ml-explore/mlx) | ⭐⭐⭐⭐ | Mac 开发、想榨干 Apple Silicon | Apple 为 M1+ 量身打造的 ML framework，★ 27k+。搭 `mlx-lm` 用最方便 |
 | **从零打造**<br>（理解原理）| [karpathy — Let's build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY) | ⭐⭐⭐⭐⭐ | 想搞懂 LLM 内部、不只会调用 | 2hr 高密度视频、用 PyTorch 从零打造 GPT。**暂停跟着写 code 不要被动看** |
-| | [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) | ⭐⭐⭐⭐⭐ | 想用整本书速度慢慢读完 | Karpathy 视频的书本版：tokenizer → attention → pretraining → finetuning，★ 91k+、Apache-2.0 |
+| | [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) | ⭐⭐⭐⭐⭐ | 想用整本书速度慢慢读完 | Karpathy 视频的书本版：tokenizer → attention → pretraining → finetuning，★ 100k+、Apache-2.0 |
 | | [karpathy/LLM101n](https://github.com/karpathy/LLM101n) | ⭐⭐ | 历史纪录 | ⚠️ 已封存（2024-08）、只有大纲、课程没做完。**直接看上面的“Build GPT from scratch”视频即可** |
 
 > 💡 **建议阅读路径**：API 入手就 Anthropic / OpenAI Cookbook → 中文系统路线就 happy-llm + llm-universe → 想深入内部就 Karpathy 视频 + rasbt 书搭 code → 想跑本地就 Ollama 起步、进阶再读 llama.cpp。

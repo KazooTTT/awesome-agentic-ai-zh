@@ -2,7 +2,7 @@
 
 > [繁體中文](./mcp-skills-catalog.md) | **简体中文** | [English](./mcp-skills-catalog.en.md)
 
-> 把 Claude Code（或其他 CLI agent）接到你已经正在用的工具，不用反复切换视窗。本页是 65+ 个分类整理过的 MCP server / Claude Skill / 集成范例（含研究工作流 + multi-LLM delegation 两个专属区）。
+> 把 Claude Code（或其他 CLI agent）接到你已经正在用的工具，不用反复切换视窗。本页是 76+ 个分类整理过的 MCP server / Claude Skill / 集成范例（含研究工作流 + multi-LLM delegation 两个专属区）。
 
 ---
 
@@ -28,10 +28,10 @@
 5. [开发协作（GitHub / Atlassian / Slack…）](#5-开发协作github--atlassian--slack)（9）
 6. [数据库](#6-数据库)（8）
 7. [浏览器自动化 / 网页抓取](#7-浏览器自动化--网页抓取)（4）
-8. [设计（Figma / Excalidraw）](#8-设计figma--excalidraw)（3）
+8. [设计（Figma / Excalidraw）](#8-设计figma--excalidraw)（4）
 9. [监控 / Observability](#9-监控--observability)（3）
 10. [媒体 / 串流（YouTube / Spotify）](#10-媒体--串流youtube--spotify)（3）
-11. [中文圈专属](#11-中文圈专属)（9）
+11. [中文圈专属](#11-中文圈专属)（11）
 12. [其他常用（Cloudflare / Stripe…）](#12-其他常用cloudflare--stripe)（4）
 13. [研究工作流 Skills（学术 / paper / 文献）](#13-研究工作流-skills学术--paper--文献)（4）
 14. [Multi-LLM Delegation Skills](#14-multi-llm-delegation-skills)（3）
@@ -326,7 +326,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 1.6k+ |
+| Stars | ★ 1.8k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐（无 admin 权限也能用） |
 
@@ -388,7 +388,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 33k+ |
+| Stars | ★ 36k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐（code intelligence） |
 
@@ -476,7 +476,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 504 |
+| Stars | ★ 555 |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐（**Redis 官方**） |
 
@@ -594,7 +594,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 48k+ |
+| Stars | ★ 53k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐ |
 
@@ -610,7 +610,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 3k+ |
+| Stars | ★ 3.3k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐（**Grafana 官方**） |
 
@@ -855,7 +855,7 @@
 | 形式 | hosted MCP server |
 | 推荐度 | ⭐⭐⭐（金融分析工具；了解 hosted vs self-hosted MCP 实现差异的实例） |
 
-**教什么**：YIELD INTELLIGENCE hosted remote MCP server——即时美国国债收益率 + 股息 ETF / REIT / 优先股分析 + 被动收入投资组合优化。2 个工具：`analyze_yield_opportunities`（扫描被动收入机会）+ `optimize_income_portfolio`（面向目标月收入建立投资组合）。已收录于 Anthropic 官方 MCP Registry（`io.github.thebrierfox/intuitek-ace`，since 2026-05-10）。
+**教什么**：YIELD INTELLIGENCE hosted remote MCP server——即时美国国债收益率 + 股息 ETF / REIT / 优先股分析 + 被动收入投资组合优化。2 个工具：`analyze_yield_opportunities`（扫描被动收入机会）+ `optimize_income_portfolio`（面向目标月收入建立投资组合）。已收录于官方 MCP Registry（`io.github.thebrierfox/intuitek-ace`，since 2026-05-10）。
 **适合谁**：用 Claude Code / Claude Desktop 做个人理财分析、想让 AI 找出被动收入机会的人。hosted remote MCP server 范例——直接 plug URL、0 安装、适合 Stage 5 学完 MCP 概念后用来体验 hosted vs self-hosted 差异。
 **备注**：Live endpoint `https://api.intuitek.ai/yield/mcp`（no auth、no API key）。x402 micropayment $1 USDC/call on Base（agent-to-agent 场景）；一般用户免费。纯分析工具，不涉及交易。GitHub：[thebrierfox/intuitek-ace](https://github.com/thebrierfox/intuitek-ace)（MIT License）。
 
@@ -881,7 +881,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 165 |
+| Stars | ★ 182 |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐（研究流程一整套） |
 

@@ -148,6 +148,24 @@ jobs:
           # stdlib-only script; ubuntu-latest ships python3 (no pip deps).
           python3 scripts/zh-hans-localize.py --check
 
+      - name: Check MCP catalog counts are consistent (blocking)
+        run: |
+          # Blocking gate: the catalog's Index per-section counts and the
+          # "NN+ MCP servers" headline repeated across README / RESOURCES /
+          # branches / stages / tracks must all match the file's real entry
+          # count. In 2026-08 the Index summed to 73 while the file held 76,
+          # and 39 places still advertised a long-stale number — and two
+          # separate hand-counts got it wrong in different ways, which is why
+          # the number is now computed from the file instead of tallied by hand.
+          python3 scripts/check-catalog-counts.py
+
+      - name: check-catalog-counts.py detection unit tests
+        # Pins BOTH incident classes: the entry-counting rule (an entry whose
+        # heading has no bracket link must still count) and the claim coverage
+        # (the first version of the checker validated only 17 of 36 real claims
+        # because its regex demanded a fixed keyword right after the number).
+        run: python3 scripts/test_catalog_counts.py
+
       - name: Check mirror pages link to their own locale (blocking)
         run: |
           # Blocking gate: an .en.md / .zh-Hans.md page must not link to the

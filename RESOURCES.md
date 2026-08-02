@@ -38,7 +38,7 @@
 ### 辦公文件（Word / Excel / PowerPoint / PDF）
 
 - [**anthropics/skills**](https://github.com/anthropics/skills) ★ 158k+ — Anthropic **官方** Skills 集合，docx / xlsx / pptx / pdf 處理直接內建
-- [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 725 — 補強版 Office skills（PPTX/DOCX/XLSX/PDF），含自動化 workflow
+- [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 800 — 補強版 Office skills（PPTX/DOCX/XLSX/PDF），含自動化 workflow
 
 ### Google Workspace（Gmail / Docs / Drive / Calendar）
 
@@ -53,7 +53,7 @@
 
 ### 研究工作流（本 repo 維護者出品）
 
-- [**WenyuChiou/ai-research-skills**](https://github.com/WenyuChiou/ai-research-skills) ★ 165 — 14 個研究流程 skill，5-plugin marketplace
+- [**WenyuChiou/ai-research-skills**](https://github.com/WenyuChiou/ai-research-skills) ★ 182 — 14 個研究流程 skill，5-plugin marketplace
 - [**WenyuChiou/research-hub**](https://github.com/WenyuChiou/research-hub) ★ 38 — Zotero + Obsidian + NotebookLM 整合 workspace
 - [**WenyuChiou/zotero-skills**](https://github.com/WenyuChiou/zotero-skills) ★ 45 — Zotero CLI skill
 - [**WenyuChiou/codex-delegate**](https://github.com/WenyuChiou/codex-delegate) ★ 57 + [**gemini-delegate-skill**](https://github.com/WenyuChiou/gemini-delegate-skill) ★ 34（⚠️ 已封存）— Multi-LLM delegation 對（Gemini lane 建議改用 Gemini CLI 直接做）
@@ -62,7 +62,7 @@
 
 - [**leemysw/feishu-docx**](https://github.com/leemysw/feishu-docx) ★ 235 — 飛書（Lark）docs / sheet / bitable ↔ Markdown，含 Claude Skills 支援
 
-> 上面只是 highlight。**完整 65+ 個整合的分類目錄**（含資料庫、瀏覽器自動化、Figma、Excalidraw、Cloudflare、Stripe、學術寫作 / Multi-LLM delegation 等）在 [`resources/mcp-skills-catalog.md`](resources/mcp-skills-catalog.md)。
+> 上面只是 highlight。**完整 76+ 個整合的分類目錄**（含資料庫、瀏覽器自動化、Figma、Excalidraw、Cloudflare、Stripe、學術寫作 / Multi-LLM delegation 等）在 [`resources/mcp-skills-catalog.md`](resources/mcp-skills-catalog.md)。
 
 > 想找更多 MCP server catalog？看 [`wong2/awesome-mcp-servers`](https://github.com/wong2/awesome-mcp-servers) / [`punkpeye/awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers)（依分類整理）。**Canva** 現有官方 MCP（[canva.dev/docs/mcp](https://www.canva.dev/docs/mcp/)、endpoint `mcp.canva.com`、~32 工具、任何方案可用、支援 Claude / ChatGPT / Cursor / VS Code）。
 

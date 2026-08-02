@@ -202,7 +202,7 @@ if __name__ == "__main__":
 **Claude Code**: Use the `claude mcp add` command:
 
 ```bash
-claude mcp add hello-mcp python /absolute/path/to/server.py
+claude mcp add hello-mcp --scope project -- python /absolute/path/to/server.py
 ```
 
 #### Step 4: Restart Claude Desktop / Code and Test

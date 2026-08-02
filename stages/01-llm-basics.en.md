@@ -461,7 +461,7 @@ print(f"💡 This run cost you $0 (except for electricity)")
 
 | Category | Project | ⭐ | Best for | Why / Notes |
 |---|---|---|---|---|
-| **Official cookbook / starting point** | [Anthropic Cookbook](https://github.com/anthropics/claude-cookbooks) | ⭐⭐⭐⭐⭐ | Starting with Claude API; reference lookup | Full-feature Claude API notebooks (tool use / batch / prompt cache), ★ 46k+, MIT |
+| **Official cookbook / starting point** | [Anthropic Cookbook](https://github.com/anthropics/claude-cookbooks) | ⭐⭐⭐⭐⭐ | Starting with Claude API; reference lookup | Full-feature Claude API notebooks (tool use / batch / prompt cache), ★ 50k+, MIT |
 | | [Anthropic Courses](https://github.com/anthropics/courses) | ⭐⭐⭐⭐⭐ | Systematic Claude learning from zero | Anthropic's own 5-course set (API fundamentals / prompt eval / real-world prompting / tool use), ★ 21k+. Start with `anthropic_api_fundamentals` |
 | | [OpenAI Cookbook](https://github.com/openai/openai-cookbook) | ⭐⭐⭐⭐⭐ | OpenAI API + structured output / function calling | Pair with Anthropic Cookbook, ★ 73k+, MIT. Much bigger than Anthropic's — use search |
 | | [Anthropic Claude API Quickstart](https://docs.anthropic.com/en/docs/get-started) | ⭐⭐⭐⭐ | 5-minute start | Official docs, bookmark it |
@@ -476,7 +476,7 @@ print(f"💡 This run cost you $0 (except for electricity)")
 | | [mudler/LocalAI](https://github.com/mudler/LocalAI) | ⭐⭐⭐⭐ | Team compliance, self-host full OpenAI replacement | Drop-in OpenAI API replacement (chat / embedding / image / TTS / STT), ★ 46k+ |
 | | [ml-explore/mlx](https://github.com/ml-explore/mlx) | ⭐⭐⭐⭐ | Mac dev, squeeze Apple Silicon | Apple's ML framework for M1+, ★ 27k+. Pair with `mlx-lm` for ease |
 | **Build from scratch**<br>(understand internals)| [karpathy — Let's build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY) | ⭐⭐⭐⭐⭐ | Understand LLM internals, not just API calls | 2hr high-density video, build GPT in PyTorch from scratch. **Pause and code along, don't passive-watch** |
-| | [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) | ⭐⭐⭐⭐⭐ | Book-pace read of the same material | Book version of Karpathy's video: tokenizer → attention → pretraining → finetuning, ★ 91k+, Apache-2.0 |
+| | [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) | ⭐⭐⭐⭐⭐ | Book-pace read of the same material | Book version of Karpathy's video: tokenizer → attention → pretraining → finetuning, ★ 100k+, Apache-2.0 |
 | | [karpathy/LLM101n](https://github.com/karpathy/LLM101n) | ⭐⭐ | Historical reference | ⚠️ Archived (2024-08), outline only, course never finished. **Watch "Build GPT from scratch" above instead** |
 
 > 💡 **Suggested reading order**: API-first → Anthropic / OpenAI Cookbook · Chinese systematic path → happy-llm + llm-universe · deep internals → Karpathy video + rasbt book with code · local-only → start with Ollama, then llama.cpp.

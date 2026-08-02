@@ -175,7 +175,7 @@ Track A users are **already using** [Stage 7.5 advanced concepts](../../stages/0
 
 ### MCP server collection (CLI-friendly)
 
-> 💡 **Looking for MCPs that connect to daily tools** (Notion / Obsidian / Excel / Postgres / Playwright / Slack / Linear / Figma…): see [`resources/mcp-skills-catalog.en.md`](../../resources/mcp-skills-catalog.en.md) — 65+ entries grouped by category, each with stars / license / audience. The list below is for "writing your own MCP server / finding reference implementations".
+> 💡 **Looking for MCPs that connect to daily tools** (Notion / Obsidian / Excel / Postgres / Playwright / Slack / Linear / Figma…): see [`resources/mcp-skills-catalog.en.md`](../../resources/mcp-skills-catalog.en.md) — 76+ entries grouped by category, each with stars / license / audience. The list below is for "writing your own MCP server / finding reference implementations".
 
 #### [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐⭐⭐⭐⭐
 ★ 85k+ — Official reference servers (7 today: everything, fetch, filesystem, git, memory, sequentialthinking, time; github and sqlite have moved to `servers-archived`).

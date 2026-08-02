@@ -2,7 +2,7 @@
 
 > [繁體中文](./mcp-skills-catalog.md) | [简体中文](./mcp-skills-catalog.zh-Hans.md) | **English**
 
-> Connect Claude Code (or any other CLI agent) to the apps you already use, without window-hopping. This page is a curated index of 65+ MCP servers / Claude Skills / integrations grouped by use case (incl. research-workflow + multi-LLM-delegation dedicated sections).
+> Connect Claude Code (or any other CLI agent) to the apps you already use, without window-hopping. This page is a curated index of 76+ MCP servers / Claude Skills / integrations grouped by use case (incl. research-workflow + multi-LLM-delegation dedicated sections).
 
 ---
 
@@ -28,10 +28,10 @@
 5. [Dev Collaboration (GitHub / Atlassian / Slack…)](#5-dev-collaboration-github--atlassian--slack) (9)
 6. [Databases](#6-databases) (8)
 7. [Browser Automation / Web Scraping](#7-browser-automation--web-scraping) (4)
-8. [Design (Figma / Excalidraw)](#8-design-figma--excalidraw) (3)
+8. [Design (Figma / Excalidraw)](#8-design-figma--excalidraw) (4)
 9. [Monitoring / Observability](#9-monitoring--observability) (3)
 10. [Media / Streaming (YouTube / Spotify)](#10-media--streaming-youtube--spotify) (3)
-11. [Chinese-language Ecosystem](#11-chinese-language-ecosystem) (9)
+11. [Chinese-language Ecosystem](#11-chinese-language-ecosystem) (11)
 12. [Other Common (Cloudflare / Stripe…)](#12-other-common-cloudflare--stripe) (4)
 13. [Research Workflow Skills](#13-research-workflow-skills-academic--paper--lit) (4)
 14. [Multi-LLM Delegation Skills](#14-multi-llm-delegation-skills) (3)
@@ -326,7 +326,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 1.6k+ |
+| Stars | ★ 1.8k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐ (no admin permissions needed) |
 
@@ -386,7 +386,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 33k+ |
+| Stars | ★ 36k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐⭐ (code intelligence) |
 
@@ -474,7 +474,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 504 |
+| Stars | ★ 555 |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐ (**Redis official**) |
 
@@ -590,7 +590,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 48k+ |
+| Stars | ★ 53k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐⭐ |
 
@@ -606,7 +606,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 3k+ |
+| Stars | ★ 3.3k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐⭐ (**Grafana official**) |
 
@@ -851,7 +851,7 @@
 | Type | hosted MCP server |
 | Rating | ⭐⭐⭐ (finance analysis tool; practical example of hosted vs self-hosted MCP architecture) |
 
-**What it does**: YIELD INTELLIGENCE hosted remote MCP server — live US Treasury yield rates, dividend ETF / REIT / preferred stock analysis, and passive income portfolio optimization. Two tools: `analyze_yield_opportunities` (scans passive income options) + `optimize_income_portfolio` (builds a portfolio toward a target monthly income). Listed in the Anthropic official MCP Registry (`io.github.thebrierfox/intuitek-ace`, since 2026-05-10).
+**What it does**: YIELD INTELLIGENCE hosted remote MCP server — live US Treasury yield rates, dividend ETF / REIT / preferred stock analysis, and passive income portfolio optimization. Two tools: `analyze_yield_opportunities` (scans passive income options) + `optimize_income_portfolio` (builds a portfolio toward a target monthly income). Listed in the official MCP Registry (`io.github.thebrierfox/intuitek-ace`, since 2026-05-10).
 **Audience**: people doing personal finance analysis in Claude Code / Claude Desktop who want AI to surface passive income opportunities. Good hands-on example of a hosted remote MCP server — plug the URL in, zero install, useful for Stage 5 learners exploring the hosted vs self-hosted difference.
 **Notes**: Live endpoint `https://api.intuitek.ai/yield/mcp` (no auth, no API key required). x402 micropayment $1 USDC/call on Base (agent-to-agent scenarios); free for regular users. Analysis-only, no trading. GitHub: [thebrierfox/intuitek-ace](https://github.com/thebrierfox/intuitek-ace) (MIT License).
 
@@ -877,7 +877,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 165 |
+| Stars | ★ 182 |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐⭐ (full research workflow) |
 
@@ -927,6 +927,7 @@
 
 > ⚠️ **Maintainer's own projects** (same as 13): delegation skills the maintainer extracted from daily workflow. Star floor is relaxed; criterion is "the Claude-planner + Codex/Gemini-executor combo runs reliably". Multi-LLM space evolves quickly — evaluate alongside the multi-agent frameworks listed in Stage 7 before adopting.
 
+<!-- not-an-entry -->
 ### How the three skills compose
 
 The 3 skills below are **designed to be used together**, not as standalone tools:

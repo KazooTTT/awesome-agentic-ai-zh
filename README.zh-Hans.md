@@ -33,7 +33,7 @@
 | 核心 | 做什么 | 规模 |
 |---|---|---|
 | **学习路线图** | 把网上散落的高质量项目、教材、必修阅读，按**从零开始、循序渐进**整理成 **8 个阶段**（含 Stage 5 + Stage 8 两个共用 hub）+ 2 条学习路线 + 5 条延伸路径 | 8 stages、2 tracks |
-| **资源 curation** | 每阶段精选 **240+** 个 project（含星等、适合谁、教什么、怎么跑），加上中文 AI 生态(DeepSeek / Zhipu / Kimi 等)MCP / Skill 完整 catalog | 240+ projects、65 MCP/Skill |
+| **资源 curation** | 每阶段精选 **240+** 个 project（含星等、适合谁、教什么、怎么跑），加上中文 AI 生态(DeepSeek / Zhipu / Kimi 等)MCP / Skill 完整 catalog | 240+ projects、76 MCP/Skill |
 | **简单 illustrative 案例** | 每阶段附 1-5 个**基础练习**（70-150 行 starter + dual-path Ollama/Anthropic SDK 对照 + mock-based test） | 23 个练习 folder |
 
 走完这条路线，你会从“**LLM 用户**”进阶到“**agent 系统构建者**”——能看懂 framework 在做什么、能设计多 agent 协作、能写自己的 MCP server。
@@ -220,7 +220,7 @@ README 跟各 stage 会频繁提到这三个 Claude Code 生态的关键词，�
 **办公文件（Word / Excel / PowerPoint / PDF）**
 
 - [**anthropics/skills**](https://github.com/anthropics/skills) ★ 158k+ — Anthropic **官方** Skills 集合，docx / xlsx / pptx / pdf 处理直接内置
-- [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 725 — 增强版 Office skills（PPTX/DOCX/XLSX/PDF），含自动化 workflow
+- [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 800 — 增强版 Office skills（PPTX/DOCX/XLSX/PDF），含自动化 workflow
 
 **Google Workspace（Gmail / Docs / Drive / Calendar）**
 
@@ -237,7 +237,7 @@ README 跟各 stage 会频繁提到这三个 Claude Code 生态的关键词，�
 
 - [**leemysw/feishu-docx**](https://github.com/leemysw/feishu-docx) ★ 235 — 飞书（Lark）docs / sheet / bitable ↔ Markdown，含 Claude Skills 支持
 
-> 上面只是 highlight。**完整 65+ 个集成**（含数据库、浏览器自动化、Figma、Excalidraw、Cloudflare、Stripe…）：[`resources/mcp-skills-catalog.zh-Hans.md`](resources/mcp-skills-catalog.zh-Hans.md)。
+> 上面只是 highlight。**完整 76+ 个集成**（含数据库、浏览器自动化、Figma、Excalidraw、Cloudflare、Stripe…）：[`resources/mcp-skills-catalog.zh-Hans.md`](resources/mcp-skills-catalog.zh-Hans.md)。
 
 > 想找更多 MCP server catalog？看 [`wong2/awesome-mcp-servers`](https://github.com/wong2/awesome-mcp-servers) / [`punkpeye/awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers)（按分类整理）。**Canva** 现有官方 MCP（[canva.dev/docs/mcp](https://www.canva.dev/docs/mcp/)、endpoint `mcp.canva.com`、~32 工具、任何方案可用、支持 Claude / ChatGPT / Cursor / VS Code）。
 

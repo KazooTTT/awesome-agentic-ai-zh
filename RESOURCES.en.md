@@ -36,7 +36,7 @@ Connect Claude Code (or any other CLI agent) to the apps you already use, withou
 ### Office Documents (Word / Excel / PowerPoint / PDF)
 
 - [**anthropics/skills**](https://github.com/anthropics/skills) ★ 158k+ — Anthropic **official** Skills with built-in docx / xlsx / pptx / pdf processing
-- [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 725 — Office skills with automation workflows on top of the official ones
+- [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 800 — Office skills with automation workflows on top of the official ones
 
 ### Google Workspace (Gmail / Docs / Drive / Calendar)
 
@@ -51,7 +51,7 @@ Connect Claude Code (or any other CLI agent) to the apps you already use, withou
 
 ### Research Workflow (by the repo maintainer)
 
-- [**WenyuChiou/ai-research-skills**](https://github.com/WenyuChiou/ai-research-skills) ★ 165 — 14 research-workflow skills as a 5-plugin marketplace
+- [**WenyuChiou/ai-research-skills**](https://github.com/WenyuChiou/ai-research-skills) ★ 182 — 14 research-workflow skills as a 5-plugin marketplace
 - [**WenyuChiou/research-hub**](https://github.com/WenyuChiou/research-hub) ★ 38 — Zotero + Obsidian + NotebookLM integration workspace
 - [**WenyuChiou/zotero-skills**](https://github.com/WenyuChiou/zotero-skills) ★ 45 — Zotero CLI skill
 - [**WenyuChiou/codex-delegate**](https://github.com/WenyuChiou/codex-delegate) ★ 57 + [**gemini-delegate-skill**](https://github.com/WenyuChiou/gemini-delegate-skill) ★ 34 (⚠️ archived) — multi-LLM delegation pair (for the Gemini lane, use Gemini CLI directly)
@@ -60,7 +60,7 @@ Connect Claude Code (or any other CLI agent) to the apps you already use, withou
 
 - [**leemysw/feishu-docx**](https://github.com/leemysw/feishu-docx) ★ 235 — Feishu (Lark) docs / sheet / bitable ↔ Markdown with Claude Skills support
 
-> The above is just the highlights. **Full 65+ entry catalog by category** (incl. databases, browser automation, Figma, Excalidraw, Cloudflare, Stripe, academic-writing / multi-LLM delegation, etc.) lives in [`resources/mcp-skills-catalog.en.md`](resources/mcp-skills-catalog.en.md).
+> The above is just the highlights. **Full 76+ entry catalog by category** (incl. databases, browser automation, Figma, Excalidraw, Cloudflare, Stripe, academic-writing / multi-LLM delegation, etc.) lives in [`resources/mcp-skills-catalog.en.md`](resources/mcp-skills-catalog.en.md).
 
 > Looking for more MCP server catalogs? See [`wong2/awesome-mcp-servers`](https://github.com/wong2/awesome-mcp-servers) / [`punkpeye/awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers) (categorized). **Canva** now ships an official MCP ([canva.dev/docs/mcp](https://www.canva.dev/docs/mcp/), endpoint `mcp.canva.com`, ~32 tools, works on any plan, supports Claude / ChatGPT / Cursor / VS Code).
 

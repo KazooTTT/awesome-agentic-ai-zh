@@ -204,7 +204,7 @@ if __name__ == "__main__":
 **Claude Code**：用 `claude mcp add` 指令：
 
 ```bash
-claude mcp add hello-mcp python /绝对路径/到/server.py
+claude mcp add hello-mcp --scope project -- python /绝对路径/到/server.py
 ```
 
 #### Step 4：重启 Claude Desktop / Code、测试

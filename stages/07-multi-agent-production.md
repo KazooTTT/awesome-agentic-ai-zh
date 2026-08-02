@@ -296,7 +296,7 @@ Production agent 跑久了、**cost / latency 兩條線會吃掉你大半預算�
 | | [Helicone](https://github.com/Helicone/helicone) | ⭐⭐⭐⭐ | 不想改程式、快速上 instrumentation | proxy 中介、順便拿到 logging + caching。★ 5.7k+、Apache 2.0 |
 | | [weave (W&B)](https://github.com/wandb/weave) | ⭐⭐⭐⭐ | 團隊已在用 W&B 做 ML 實驗追蹤 | W&B tracing + eval、跟 wandb 整合 |
 | | [comet-ml/opik](https://github.com/comet-ml/opik) | ⭐⭐⭐⭐ | eval + observability 同一個開源平台 | 追蹤 LLM / agent 做了什麼、追蹤實驗、跑品質檢查（eval）。★ 20k+、Apache 2.0 |
-| | [pydantic/logfire](https://github.com/pydantic/logfire) | ⭐⭐⭐⭐ | 用 OpenTelemetry 標準追蹤 agent / LLM 呼叫 | 看清楚並 debug 你的 agent / LLM 呼叫做了什麼；Pydantic 團隊出品、建在 OpenTelemetry 標準上。★ 4k+、MIT |
+| | [pydantic/logfire](https://github.com/pydantic/logfire) | ⭐⭐⭐⭐ | 用 OpenTelemetry 標準追蹤 agent / LLM 呼叫 | 看清楚並 debug 你的 agent / LLM 呼叫做了什麼；Pydantic 團隊出品、建在 OpenTelemetry 標準上。★ 4.4k+、MIT |
 | **Safety / Guardrails** | [NVIDIA-NeMo/Guardrails](https://github.com/NVIDIA-NeMo/Guardrails) | ⭐⭐⭐⭐ | 想在 agent 的輸入 / 輸出加上安全規則 | 包在 LLM app 外的安全規則——讓它不離題、擋 jailbreak、過濾不當輸出。★ 6.6k+、Apache 2.0 |
 | **Anthropic SDK 進階** | [anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) | ⭐⭐⭐⭐⭐ | 直接基於 Claude API 做應用 | 官方 Python SDK：streaming / async / tool use / prompt caching / batches / files |
 | | [anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript) | ⭐⭐⭐⭐ | TypeScript / Node / web app | Python SDK 的 TS 版 |
