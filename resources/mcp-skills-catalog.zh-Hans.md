@@ -12,12 +12,12 @@
 - **想看 MCP / Skills / Plugins 是什么**：先看 [README 三个核心用语](../README.zh-Hans.md#三个核心用语mcp--skills--plugins)，再看 [Stage 5 — Claude Code 生态系](../stages/05-claude-code-ecosystem.zh-Hans.md)
 - **想看 动手练习 怎么装、怎么测**：看 [Stage 5.2 (MCP)](../stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础) 跟 [Stage 5.3 (Skills)](../stages/05-claude-code-ecosystem.zh-Hans.md#53--skillsclaude-code-的行为层-claude-code-生态最关键的一层)
 
-### 收录原则
+### 收录方向（不是死规则）
 
-- **官方优先**：Anthropic、厂商自己出的 MCP / Skill 排在前
-- **★ 100+ 起跳**：除非是官方，社群 repo 至少 100 stars 才收录
-- **可验证**：所有 stars / license 用 `gh api` 抓即时数据；过时的会在每季 review 时更新
-- **不收**：已 archived、超过 1 年没 commit、license 不明且非官方
+- **官方优先**：Anthropic、厂商自己出的 MCP / Skill 通常排前面
+- **stars 看一下就好**：社群 repo 大致 100+ 比较有人在维护，但“小众但好用”也欢迎送 PR 解释为什么要收
+- **尽量有 metadata**：stars / license 用 `gh api` 抓、有空就更新一轮
+- **避免（不是禁止）**：archived、长期没 commit、license 不明的 repo——niche 工具可以例外
 
 ### 目录
 
@@ -358,8 +358,6 @@
 **适合谁**：用 Discord 跑社群 / 开源项目的 maintainer。
 **备注**：要 Discord bot token；要小心 rate limit。
 
----
-
 ### [safishamsi/graphify](https://github.com/safishamsi/graphify) ⭐⭐⭐⭐⭐
 
 | 栏位 | 内容 |
@@ -588,8 +586,6 @@
 **适合谁**：需要 real-time canvas sync 跟编程化操作的人。
 **备注**：跟官方版互补，社群维护。
 
----
-
 ### [pbakaus/impeccable](https://github.com/pbakaus/impeccable) ⭐⭐⭐⭐⭐
 
 | 栏位 | 内容 |
@@ -794,7 +790,7 @@
 **适合谁**：用 Claude Code / Codex / OpenClaw 做投研或量化分析的中文开发者；不想自己刻数据抓取逻辑的人。
 **备注**：一条 `curl` + `pip install` 即可启用；中国 A 股数据类 Skill 中星星数最高的社群实现。兼容 Claude Code、Codex、OpenClaw。
 
-> 想找微信 / 钉钉集成？目前主流是用 chat bot framework（如 zhayujie/CowAgent）而不是纯 MCP server。等正規 MCP 出现再加进来。
+> 想找微信 / 钉钉集成？目前主流是用 chat bot framework（如 zhayujie/CowAgent）而不是纯 MCP server。等正规 MCP 出现再加进来。
 
 ### [MoonshotAI/Kimi-K2](https://github.com/MoonshotAI/Kimi-K2) ⭐⭐⭐
 
@@ -931,6 +927,15 @@
 
 > ⚠️ **maintainer 自家项目区**：跟 13 一样，以下是维护者把自己 daily workflow 抽出来公开的 delegation skills。star 门槛放宽，选收标准是“真的能让 Claude planner + Codex/Gemini 执行者组合稳定跑下去”。Multi-LLM 领域变化快，建议跟其他 multi-agent framework（Stage 7 列的）一起评估后选择。
 
+<!-- not-an-entry -->
+### 三个 skill 的组合（composition）
+
+下面 3 个 skill 是**设计成一起用**的，不是独立工具：
+
+![Claude + 3 个 delegate skill 分工](../resources/diagrams/multi-llm-delegation-composition.png)
+
+Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）；Codex 不擅长对话协作；Gemini 有 1M context 但中型推理稍弱。**分工 = Claude 负责 design / review、Codex 负责 implement、Gemini 负责 long-form draft / synthesis**。
+
 ### [WenyuChiou/codex-delegate](https://github.com/WenyuChiou/codex-delegate) ⭐⭐⭐⭐⭐
 
 | 栏位 | 内容 |
@@ -939,9 +944,11 @@
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐ |
 
-**教什么**：Claude Code skill 把 Codex CLI 当作 execution specialist——适合大量文件 refactor、boilerplate 生成、实现密集任务。Claude 规划 + review，Codex 执行。
-**适合谁**：要在 Claude Code 内把实现工作自动 delegate 给 Codex 的开发者。
-**备注**：搭配 `gemini-delegate-skill` 用（一个跑 code-heavy、一个跑 long-form / CJK）。Stage 7 multi-agent 概念实战版。
+**教什么**：Claude Code skill 把 Codex CLI 当作 execution specialist——大量文件 refactor、batch edits、boilerplate 生成、wrapper-based 实现密集任务。Claude 写 plan + review，Codex 执行。
+**适合谁**：要省 token / 提速大规模机械式编辑的开发者；想验证“multi-agent 不只是 buzzword”的学习者。
+**何时用**：refactor 30+ files、生成 test scaffold、把同一个 pattern port 到 N 个文件、写 migration script。
+**何时不用**：架构决策、bug 诊断、security review、需要 conversation memory 的任务——这些 Claude 直接做更好。
+**备注**：跟 `gemini-delegate-skill` 互补。Stage 7 multi-agent 的实战版。
 
 ### [WenyuChiou/gemini-delegate-skill](https://github.com/WenyuChiou/gemini-delegate-skill) ⭐⭐⭐（⚠️ 已封存 2026-07）
 
@@ -951,9 +958,11 @@
 | License | MIT |
 | 推荐度 | ⭐⭐⭐（⚠️ 已封存） |
 
-**教什么**：Claude Code skill 把 Gemini CLI 当作 large-context synthesis、英文 / zh-TW / CJK long-form drafting、second-opinion review 的执行者。
-**适合谁**：写长文、跨语言 draft、需要第二意见 review 的人——研究者写 paper / 中文报告场景特别合适。
-**备注**：跟 codex-delegate 互补——“Codex 写 code、Gemini 写 prose”分工。
+**教什么**：Claude Code skill 把 Gemini CLI 当作 long-form / large-context / CJK 执行者——百万 token context window、中文长文 draft、second-opinion review。Claude 出大纲跟 critique，Gemini 写长文。
+**适合谁**：研究者写 paper、知识工作者写中文报告 / Threads post、需要第二个 LLM 意见对照的人。
+**何时用**：长文 draft（>3000 字）、跨多份长文档 synthesis（要塞进 1M token 的 context）、中文 / CJK 内容、要 LLM-vs-LLM 对比视角。
+**何时不用**：短查询、code generation（用 codex）、production-critical 决策（最终人类 review）。
+**备注**：跟 `codex-delegate` 是“Codex 写 code、Gemini 写 prose”的分工。
 
 ### [WenyuChiou/agent-collab-skills](https://github.com/WenyuChiou/agent-collab-skills) ⭐⭐
 
@@ -1019,7 +1028,7 @@
 |---|---|
 | Stars | ★ 2.1k+ |
 | License | MIT |
-| 推荐度 | ⭐⭐⭐⭐ |
+| 推荐度 | ⭐⭐⭐⭐（新手第一选择） |
 
 **教什么**：把 Tavily search API 包成 MCP——为 LLM / RAG 打造的网页搜索，回传答案 + 出处来源。
 **适合谁**：新手只想让 agent 会上网搜东西的第一选择——免费额度好上手。
@@ -1038,17 +1047,20 @@
 
 ### 要加新的？
 
-1. 开 issue，附 repo 链接 + 为什么 JIA + 属于哪个分类
+1. 开 issue，附 repo 链接 + 为什么要加 + 属于哪个分类
 2. 或直接送 PR：在对应分类下加一个 entry，按上面的格式写（Stars/License/推荐度 + 教什么/适合谁/备注）
 3. **stars < 100 且非官方**通常会被退；除非你能说明 niche use case 强到可以例外
 
-PR 送出前看一下 [`resources/style-guide.md`](style-guide.zh-Hans.md) 跟 [`CONTRIBUTING.md`](../CONTRIBUTING.zh-Hans.md)。
+PR 送出前看一下 [`resources/style-guide.zh-Hans.md`](style-guide.zh-Hans.md) 跟 [`CONTRIBUTING.md`](../CONTRIBUTING.zh-Hans.md)。
 
 ---
 
-## 维护备注（给未来的 maintainer）
+## 维护备注（给未来想帮忙的人）
 
-- Stars / license 用 `gh api repos/<owner>/<repo>` 抓，每季 review 一次
-- 链接 broken / repo archived 的直接拿掉
-- 出现新分类（如 AR/VR、IoT 等）就加新一节，但 stars < 1k 且 < 3 个 entry 的分类先别开
-- “中文圈专属”分类维持宽松（中文社群 repo 起 stars 较难）
+不是 SLA，是“能做就做”的方向：
+
+- Stars / license 用 `gh api repos/<owner>/<repo>` 抓，**有空 review 一轮就好**——不用排定期程
+- 链接坏了、repo archived → 看到再修
+- 新分类（AR/VR、IoT 等）有 1-2 个值得收的就可以先开
+- “中文圈专属”分类维持宽松，中文社群 repo star 数累积较慢
+- 用词、格式不一致 → 不要苛求，PR 进来能读懂优先

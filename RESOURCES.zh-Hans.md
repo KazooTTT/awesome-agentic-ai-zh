@@ -4,9 +4,9 @@
 
 > [← 返回主路线 README](README.zh-Hans.md)
 
-这份文件集中放：用語说明、常用 MCP / Skill 集成 highlight、同主题 awesome list、中文社群资源。从主 README 抽出避免主页过长。
+这份文件集中放：用语说明、常用 MCP / Skill 集成 highlight、同主题 awesome list、中文社群资源。从主 README 抽出避免主页过长。
 
-> 💡 **不懂某个词**（LLM、agent、RAG、token、向量数据库⋯）→ [`resources/glossary.zh-Hans.md`](resources/glossary.zh-Hans.md)（用語小词典，30 多个词每个 30-80 字解释）
+> 💡 **不懂某个词**（LLM、agent、RAG、token、向量数据库⋯）→ [`resources/glossary.zh-Hans.md`](resources/glossary.zh-Hans.md)（用语小词典，30 多个词每个 30-80 字解释）
 
 ---
 
