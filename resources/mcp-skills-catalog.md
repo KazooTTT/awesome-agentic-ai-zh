@@ -146,7 +146,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 3.8k+ |
+| Stars | ★ 4.1k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐⭐（社群最熱門 Excel MCP） |
 
@@ -158,7 +158,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 1.7k+ |
+| Stars | ★ 1.8k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐（⚠️ 已封存） |
 
@@ -182,7 +182,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 831 |
+| Stars | ★ 880 |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐（PDF 高效解析） |
 
@@ -206,7 +206,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 8.2k+ |
+| Stars | ★ 8.8k+ |
 | License | NOASSERTION |
 | 推薦度 | ⭐⭐⭐⭐ |
 
@@ -290,7 +290,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 29.5k+ |
+| Stars | ★ 31k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐⭐（**官方**） |
 
@@ -314,7 +314,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 878 |
+| Stars | ★ 927 |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐（**官方**） |
 
@@ -374,7 +374,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 57k |
+| Stars | ★ 60k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐⭐（寫 code 必裝） |
 
@@ -402,7 +402,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 15k+ |
+| Stars | ★ 16k+ |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐⭐（**Google 官方**，多 DB） |
 
@@ -426,7 +426,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 2.7k+ |
+| Stars | ★ 2.9k+ |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐⭐（**Supabase 官方社群**） |
 
@@ -438,7 +438,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 1.7k+ |
+| Stars | ★ 1.8k+ |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐（Postgres 寫程式輔助） |
 
@@ -462,7 +462,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 1k+ |
+| Stars | ★ 1.1k+ |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐（**MongoDB 官方**） |
 
@@ -502,7 +502,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 34k+ |
+| Stars | ★ 35k+ |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐⭐（**Microsoft 官方**） |
 
@@ -554,7 +554,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 14.6k+ |
+| Stars | ★ 15k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐⭐（最熱門 Figma MCP） |
 
@@ -658,7 +658,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 534 |
+| Stars | ★ 581 |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐（YouTube 字幕） |
 
@@ -670,7 +670,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 510 |
+| Stars | ★ 557 |
 | License | NOASSERTION |
 | 推薦度 | ⭐⭐⭐⭐（YouTube 完整 API） |
 
@@ -722,7 +722,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 20k+ |
+| Stars | ★ 21k+ |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐⭐ |
 
@@ -770,7 +770,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 917 |
+| Stars | ★ 967 |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐ |
 
@@ -824,7 +824,7 @@
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 3.7k+ |
+| Stars | ★ 4k+ |
 | License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐⭐（**Cloudflare 官方**） |
 
@@ -941,7 +941,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 57 |
+| Stars | ★ 62 |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐⭐ |
 
@@ -955,7 +955,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 34 |
+| Stars | ★ 37 |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐（⚠️ 已封存） |
 
@@ -999,7 +999,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 59k+ |
+| Stars | ★ 62k+ |
 | License | NO-LICENSE |
 | 推薦度 | ⭐⭐⭐ |
 
@@ -1015,7 +1015,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 4.5k+ |
+| Stars | ★ 4.8k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐（**Exa 官方**） |
 
@@ -1027,7 +1027,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | ★ 2.1k+ |
+| Stars | ★ 2.3k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐（新手第一選擇） |
 

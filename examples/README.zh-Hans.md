@@ -190,6 +190,24 @@ r = client.chat.completions.create(model="meta/llama-3.3-70b-instruct", messages
 
 > 🎯 **新手默认**：先全本机跑、预算上限 $5。**Stage 7 production tier 才考虑 sonnet 升级**。
 
+### 怎么从 Ollama 换到 Anthropic？
+
+每个练习都有 `<details>` Path B 区块或 `starter_anthropic.py`，改 3 行：
+
+```python
+# 从这个（Path A 默认）：
+from openai import OpenAI
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+r = client.chat.completions.create(model="gemma4:e4b", ...)
+
+# 换成这个（Path B、若有 ANTHROPIC_API_KEY）：
+import anthropic
+client = anthropic.Anthropic()
+r = client.messages.create(model="claude-haiku-4-5", ...)
+```
+
+主要差异：messages create 方法名、response shape（`choices[0].message.content` vs `content[0].text`）、tool spec wrap（OpenAI 多一层 `{"type": "function", "function": {...}}`）。详细对照表见 [`resources/cli-agents-guide.zh-Hans.md`](../resources/cli-agents-guide.zh-Hans.md)。
+
 ## 对应 stage 索引
 
 | Stage | 练习 | 范例位置 |

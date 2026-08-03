@@ -6,6 +6,16 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-08-03（第二批）
+
+- **fix** · **英文版 / 簡中版把繁中的「比較表格」攤平成一堆標題,現在全部改回表格**(7 個檔案組、153 個表格列)。`tracks/cli/A1`、`A2`、`A3` 的「精選 Projects」跟 `stages/00-foundations` 的先修資源,繁中都是**一張多欄比較表**(分類 | Project | ⭐ | 適合誰 | 為什麼推薦),兩個 mirror 卻拆成 `### 分類` + `#### [專案](url)` + 一段散文。資訊沒少,但**可掃讀性差很多**——而且 canonical 自己的 lead-in 就寫著「**一張表搞定**」,表格本身就是設計意圖。另外 `examples/stage-6/05-long-term-memory` 少了第二張對照表、`README` 少兩張、`resources/style-guide.en` 少兩張,一併補回。修完 7 組的表格結構(欄位、欄序、列數、列序)三語完全一致。
+- **fix** · **這是我判斷錯誤造成的,值得寫清楚**。`check-mirror-parity.py`(前一批新增的 gate)**本來就有報這 153 列**。我看過之後判斷「資訊都在、只是換個呈現方式,屬於合理的重新編排」,回報為非問題,然後**把它們寫進 baseline 讓 gate 不再報**。這等於把真的缺陷變成永久看不見的——而且 code reviewer 在兩個 commit 前才剛警告過「動 baseline 正是真實 regression 被消音的途徑」,我對自己的 gate 做了同一件事。**baseline 是用來記錄「擁有者接受的差異」,不是「我說服自己沒問題的差異」。** 現在 baseline 裡的 `table_rows` 豁免從 **153 歸零**,總落差 185 → **17**。
+- **fix** · **星數全面對回真實數字(339 處、57 個檔案)**。轉表格時發現 A2 的 mirror 寫 ★ 258k+、canonical 寫 247k+,某個 agent 把 mirror「同步」成 canonical。第一手查 GitHub 後發現**兩個都錯**:obra/superpowers 實際 **265k**;而 claude-plugins-official、Helicone、promptfoo、superpowers-marketplace 四個是 **mirror 才對、canonical 才是舊的**——那個「同步」方向剛好改反了。第一次跑 `refresh-stars.py` 只修掉 18 處(github-mcp-server、research-hub、graphify、a-stock-data、trailofbits/skills-curated),**因為它的預設門檻是 10%**,而上面那幾個的偏差都在 5-8% 之間、剛好躲過。改用 `--threshold 5` 重跑後修了 **339 處、57 個檔案**——代表這個 repo 累積了大量「差一點點但沒到 10%」的陳舊星數。另有 **2 處是手動修的**:`A3` 兩個 mirror 把星數寫在**備註欄的句子中間**(`★ 258k+。看別人怎麼…`)而不是獨立的 Stars 欄位,`refresh-stars.py` 的 pattern 看不到那種寫法——這是該腳本一個已知的覆蓋邊界。修完後 obra/superpowers 在三語 × A2/A3/Stage 5 共 6 處全部一致。
+- **fix** · **`refresh-stars.py` 是第 4 個會走進 `.claude/worktrees/` 的腳本**,而且它比前三個嚴重:前三個只是**多讀**一份陳舊副本,這個會**多寫**——`--apply` 會把星數寫進那份沒人在用的 worktree 副本裡。已加進排除清單,修完實測 worktree 命中數 0。
+- **content** · **區塊序列比對又抓出 3 處表格以外的落差**。把比對從「表格數量」擴大到**整份文件的區塊序列**(標題階層 / 表格 / 清單 / 程式碼 / `<details>` / 引言塊的出現順序)之後:`stages/02-prompt-engineering` 的兩個 mirror 少了**標準章節開頭的兩個引言塊**(`📋 本章組成`、`🔑 關鍵名詞`——A2/A3 都有,只有 Stage 2 沒有),英文版還另外少了練習 1 的**預期輸出區塊**跟結尾的「進階做法」提示;`examples/README` 兩個 mirror 少了**整節「怎麼從 Ollama 換到 Anthropic?」**連同程式碼區塊。全部補齊後,**14 組區塊序列不一致降到 1 組**。
+- **fix** · **順手修掉的其他不一致**:`A1` 的 lead-in 三語都寫「9 個項目」但表格有 **10 列**(8 個 CLI agent + 2 個互補工具),canonical 本身就算錯、mirror 忠實地複製了錯誤;`A3` 英文版表頭寫 `Why / notes`、漏掉 canonical 的「推薦」語意,與 A1/A2 自己的譯法也不一致;`style-guide.en` 第 3 節的引言寫「下面前兩張表是中文側的規則」,但第二張是 **overclaim 表、對英文同樣適用**,已改寫成正確描述。
+- **audit** · **兩處確認**不是**落差、刻意不動**:① `README.en` 少一個引言塊,但那塊是「📖 關於中英文混用」——解釋為什麼中文行文裡保留英文術語。**對英文讀者沒有意義**,正確的做法就是不要有。② `style-guide` 的簡中版第二張表有 22 列、繁中只有 19 列,因為兩邊是**互為鏡像**的:繁中版列的是「簡中詞 → 繁中詞」(代碼→程式碼、視頻→影片),簡中版列的是「繁中詞 → 簡中詞」(使用者→用户、軟體→软件)。**各自禁用對方的用詞才是對的**,硬要列數一致反而錯。這兩個提醒了一件事:「所有語系都要跟繁中一樣」是**格式**的原則,不是把只對某語系有意義的內容硬塞進其他語系。
+
 ## 2026-08-03
 
 - **content** · **最後幾處內容落差補完,三語 URL 也對齊了**。上一批用「結構比對」找落差,這批改用**內容比對**(canonical 有哪些連結、mirror 是不是也有)重掃一次——這個換法很重要,因為結構數字**會有假陽性**:`stages/00-foundations` 的表格在兩個 mirror 都「不見」,但那 18 筆資源**全都在、只是改用條列呈現**,`A2` / `A3` 的 Projects 表也是同一回事(改用 `####` 標題)。真正缺的只有這些,已補:`stages/02-prompt-engineering` 的**李宏毅課程影片區塊**(en + 簡中,跟上一批補的 stage-01 影片區塊同一類、措辭刻意對齊)、`resources/README` 的「跟 Hello-Agents 的關係」說明、`resources/cookbook.en.md` 的 hello-agents Extra08(寫 Skill)。

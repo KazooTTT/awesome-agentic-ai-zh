@@ -38,6 +38,8 @@
 
 走完这条路线，你会从“**LLM 用户**”进阶到“**agent 系统构建者**”——能看懂 framework 在做什么、能设计多 agent 协作、能写自己的 MCP server。
 
+> 📖 **关于中英文混用**：本项目保留 AI Agent 领域常见英文术语（Prompt Engineering / Context Engineering / Harness / MCP / Skills / RAG 等），因为官方文档、paper、GitHub repo 与 API 文档多以英文为主。每个重要概念会提供 **中文理解名 + 英文正式术语 + 一句白话定位**，让读者能先理解概念，再对接英文生态。完整对照见 [`resources/glossary.zh-Hans.md`](resources/glossary.zh-Hans.md)。
+
 ---
 
 ## 📚 快速开始
@@ -118,6 +120,8 @@ cd awesome-agentic-ai-zh
 > **两个共用 hub（Track A + Track B 都会用到）**：
 > - **Stage 5** = Claude Code 生态（MCP / Skills / Plugins / Subagents）—— Track A 学 MCP 接 CLI、Track B 学 agent runtime 结构
 > - **Stage 8** = Agent Interfaces（Computer Use / Browser / Sandbox、2024-2026 frontier）—— Track A 学“**怎么用**”委派任务、Track B 学“**怎么 build**”embed 进 agent
+>
+> 两个 hub 出现在两条 track 内、视角不同、学的深度也不同（内文有 Track A / Track B 分视角段）。
 
 > 💡 **想看跨 stage 的完整示例？** [7 步构建你的第一个 AI Agent](walkthroughs/build-first-agent-in-7-steps.zh-Hans.md) — 同一个 Paper Summary Bot 从 Stage 1 一路写到 Stage 7，~350 行真实代码（**Track B 适用**）
 
@@ -169,7 +173,9 @@ cd awesome-agentic-ai-zh
 
 ## 📚 相关资源
 
-常用入口、依**情境**分组：
+完整的相关资源（用语说明 + 常用 MCP / Skill highlight + awesome lists + 中文社群）抽到 **[RESOURCES.zh-Hans.md](RESOURCES.zh-Hans.md)** 避免主页过长。
+
+直接看常用入口、依**情境**分组：
 
 ### 🚀 入门 / 环境设定
 
@@ -177,6 +183,7 @@ cd awesome-agentic-ai-zh
 |---|---|---|
 | 完全没写过 code、第一次接触 AI agent | [`resources/setup-guide.zh-Hans.md`](resources/setup-guide.zh-Hans.md) | 30-45 分钟从零装好（API key、Python、第一个 hello-world） |
 | 不知道挑哪个 LLM provider | [`resources/setup-guide.zh-Hans.md` A](resources/setup-guide.zh-Hans.md#a--申请第一个-api-key约-10-分钟) | Anthropic / OpenAI / DeepSeek / Kimi / NVIDIA NIM 对照 |
+| 同主题 awesome list / 中文社群 | [`RESOURCES.zh-Hans.md` 同主题清单](RESOURCES.zh-Hans.md#同主题的清单型-awesome-lists) | 5-10 分钟逛一轮 |
 
 ### 📖 概念 / 用语
 
@@ -193,75 +200,24 @@ cd awesome-agentic-ai-zh
 |---|---|---|
 | 想动手写 Skill / MCP server / 接 Word / Zotero / 本机 LLM | [`resources/cookbook.zh-Hans.md`](resources/cookbook.zh-Hans.md) | 6 个 step-by-step recipe、每个 30-50 分钟 |
 | 想用 subagent 但不知道该派谁、怎么派、派什么工作 | [`resources/subagent-cookbook.zh-Hans.md`](resources/subagent-cookbook.zh-Hans.md) | 15 个复制粘贴即用的 dispatch recipe |
+| 自己写 subagent / 组合多个 / debug 跑坏的（进阶）| [`resources/subagent-advanced.zh-Hans.md`](resources/subagent-advanced.zh-Hans.md) | description 写法 4 个 bug + composition 3 pattern + debug 5 切点 |
 | 卡在 tool calling（LLM 不调用 / schema 写不好 / ReAct loop 跑不停） | [`examples/stage-5/tool-calling-tutor/`](examples/stage-5/tool-calling-tutor/) | 可装进 Claude Code 的 skill、4-symptom diagnostic |
 | 动手练习怎么正确使用（主动 vs 被动模式） | [`docs/HOW_TO_USE.md`](docs/HOW_TO_USE.md) | 5-10 分钟读完、配合每个 stage 用 |
 
-### 三个核心用语：MCP / Skills / Plugins
+### 🔌 接日常工具 / 找 MCP server
 
-README 跟各 stage 会频繁提到这三个 Claude Code 生态的关键词，先快速说明：
+| 你的状况 | 去哪 | 规模 |
+|---|---|---|
+| 接 Notion / Obsidian / Excel / GitHub 等工具 | [`RESOURCES.zh-Hans.md` 接日常工具](RESOURCES.zh-Hans.md#接日常工具常用-mcp-server--skill) | 7-8 个 highlight |
+| 完整 MCP server / Skill 目录（含星等、分类） | [`resources/mcp-skills-catalog.zh-Hans.md`](resources/mcp-skills-catalog.zh-Hans.md) | 76+ 条、16 大分类 |
 
-- **MCP（Model Context Protocol）** — Anthropic 推的开放协议，让任何 LLM host（Claude Code、其他 IDE、自写 agent）都能用同一套接口去调用外部 tool server（文件、DB、API、自家服务）。把它想成“LLM 的 USB 接口”。详见 [Stage 5.2](stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础)。
-- **Skills** — Claude Code 的“行为包”。一个 Skill 就是一份 `SKILL.md`，描述“在什么情境要做什么、可以调用哪些 MCP tool”。写好之后 Claude Code 会自动 discover。详见 [Stage 5.3](stages/05-claude-code-ecosystem.zh-Hans.md#53--skillsclaude-code-的行为层-claude-code-生态最关键的一层)。
-- **Plugins / Marketplaces** — 把 Skills、slash commands、hooks、MCP 设置打包成一个发布单位给 team 或社群安装。Marketplace 就是 plugin 的 catalog。详见 [Stage 5.4](stages/05-claude-code-ecosystem.zh-Hans.md#54--plugins-与-marketplaces)。
+### 🔬 研究 / production 级
 
-对应的动手练习都在 [Stage 5](stages/05-claude-code-ecosystem.zh-Hans.md)，Track A 的 [A3](tracks/cli/A3-cli-production.zh-Hans.md) 也会用到。
-
-### 接日常工具：常用 MCP server / Skill
-
-把 Claude Code（或其他 CLI agent）接到你已经在用的 app，省掉手动切换的成本。下面几个是社群 / 官方比较成熟的：
-
-**笔记 / 知识库**
-
-- [**MarkusPfundstein/mcp-obsidian**](https://github.com/MarkusPfundstein/mcp-obsidian) ★ 3.9k+ — 通过 Obsidian REST API plugin 让 LLM 读写你的 Obsidian vault
-- [**makenotion/notion-mcp-server**](https://github.com/makenotion/notion-mcp-server) ★ 4.4k+ — Notion **官方** MCP server，可查询／创建 page、database
-- [**PleasePrompto/notebooklm-skill**](https://github.com/PleasePrompto/notebooklm-skill) ★ 7.3k+ — NotebookLM Skill（浏览器自动化），用 Claude Code 直接查你 NotebookLM 里的文件，回答带 citation
-- [**teng-lin/notebooklm-py**](https://github.com/teng-lin/notebooklm-py) ★ 17k+ — 非官方 NotebookLM Python API + CLI，支持 Claude Code / Codex 等 agent 集成
-
-**办公文件（Word / Excel / PowerPoint / PDF）**
-
-- [**anthropics/skills**](https://github.com/anthropics/skills) ★ 158k+ — Anthropic **官方** Skills 集合，docx / xlsx / pptx / pdf 处理直接内置
-- [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 800 — 增强版 Office skills（PPTX/DOCX/XLSX/PDF），含自动化 workflow
-
-**Google Workspace（Gmail / Docs / Drive / Calendar）**
-
-- [**taylorwilsdon/google_workspace_mcp**](https://github.com/taylorwilsdon/google_workspace_mcp) ★ 2.9k+ — 一个 server 包整套 Google Workspace（Gmail、Calendar、Docs、Sheets、Slides、Drive）
-
-**开发协作**
-
-- [**github/github-mcp-server**](https://github.com/github/github-mcp-server) ★ 31k+ — GitHub **官方** MCP，issue / PR / repo 操作
-- [**atlassian/atlassian-mcp-server**](https://github.com/atlassian/atlassian-mcp-server) ★ 908 — Atlassian **官方** Remote MCP（Jira、Confluence）
-- [**jerhadf/linear-mcp-server**](https://github.com/jerhadf/linear-mcp-server) ★ 340+ — Linear MCP server
-- [**korotovsky/slack-mcp-server**](https://github.com/korotovsky/slack-mcp-server) ★ 1.7k+ — Slack MCP，无 admin 权限也能用
-
-**中文圈常用**
-
-- [**leemysw/feishu-docx**](https://github.com/leemysw/feishu-docx) ★ 235 — 飞书（Lark）docs / sheet / bitable ↔ Markdown，含 Claude Skills 支持
-
-> 上面只是 highlight。**完整 76+ 个集成**（含数据库、浏览器自动化、Figma、Excalidraw、Cloudflare、Stripe…）：[`resources/mcp-skills-catalog.zh-Hans.md`](resources/mcp-skills-catalog.zh-Hans.md)。
-
-> 想找更多 MCP server catalog？看 [`wong2/awesome-mcp-servers`](https://github.com/wong2/awesome-mcp-servers) / [`punkpeye/awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers)（按分类整理）。**Canva** 现有官方 MCP（[canva.dev/docs/mcp](https://www.canva.dev/docs/mcp/)、endpoint `mcp.canva.com`、~32 工具、任何方案可用、支持 Claude / ChatGPT / Cursor / VS Code）。
-
-### 同主题的清单型 awesome lists
-
-这个 repo **不取代**清单型 awesome list — 你已经知道在找什么工具时，下面这些查起来更直接：
-
-**MCP 相关**
-
-- [**modelcontextprotocol/servers**](https://github.com/modelcontextprotocol/servers) — 官方 MCP reference servers（现有 7 个：everything、fetch、filesystem、git、memory、sequentialthinking、time；github、sqlite 已移到 `servers-archived`）
-- [**wong2/awesome-mcp-servers**](https://github.com/wong2/awesome-mcp-servers) — 社群 MCP server 清单，按分类整理（150+ 个）
-- [**punkpeye/awesome-mcp-servers**](https://github.com/punkpeye/awesome-mcp-servers) — 另一份 MCP server 清单
-
-**Claude Code / Skills / Plugins 相关**
-
-- [**hesreallyhim/awesome-claude-code**](https://github.com/hesreallyhim/awesome-claude-code) — Claude Code 相关工具与 plugin 清单（整理中）
-- [**travisvn/awesome-claude-skills**](https://github.com/travisvn/awesome-claude-skills) — Claude Skills 清单
-- [**anthropics/claude-plugins-official**](https://github.com/anthropics/claude-plugins-official) — Anthropic 官方 plugin 模板，要打包自己的 plugin 从这份开始
-
-**中文圈常用**
-
-- [**datawhalechina/hello-agents**](https://github.com/datawhalechina/hello-agents) — Datawhale 系统性 agent 教学（zh-Hans）
-- [**WangRongsheng/awesome-LLM-resources**](https://github.com/WangRongsheng/awesome-LLM-resources) — 完整的中文 LLM 资源整理（8k+ stars）
-- [**AiHubCN/Awesome-Chinese-LLM**](https://github.com/AiHubCN/Awesome-Chinese-LLM) — 中文开源大模型整理
+| 你的状况 | 去哪 | 内容 |
+|---|---|---|
+| 研究 workflow + multi-LLM delegation skill | [`RESOURCES.zh-Hans.md` 研究工作流](RESOURCES.zh-Hans.md#研究工作流本-repo-维护者出品) | 本 repo 维护者出品的 Claude Code 研究 skill 对 |
+| CLI agent 8 家对照 + production 搭配 | [`resources/cli-agents-guide.zh-Hans.md`](resources/cli-agents-guide.zh-Hans.md) | Track A 的核心参考、148 行 |
+| Schema 设计规则（tool calling 必看） | [`resources/schema-design-cheatsheet.zh-Hans.md`](resources/schema-design-cheatsheet.zh-Hans.md) | 5 条黄金规则 + 5 个 anti-pattern |
 
 ---
 

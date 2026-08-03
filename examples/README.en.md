@@ -190,6 +190,24 @@ r = client.chat.completions.create(model="meta/llama-3.3-70b-instruct", messages
 
 > 🎯 **Beginner default**: run everything locally first; cap budget at $5. **Only consider upgrading to sonnet at the Stage 7 production tier.**
 
+### How do I switch from Ollama to Anthropic?
+
+Every exercise ships either a `<details>` Path B block or a `starter_anthropic.py`. Three lines change:
+
+```python
+# From this (Path A default):
+from openai import OpenAI
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+r = client.chat.completions.create(model="gemma4:e4b", ...)
+
+# To this (Path B, if you have ANTHROPIC_API_KEY):
+import anthropic
+client = anthropic.Anthropic()
+r = client.messages.create(model="claude-haiku-4-5", ...)
+```
+
+Main differences: the message-creation method name, the response shape (`choices[0].message.content` vs `content[0].text`), and how the tool spec is wrapped (OpenAI adds an extra `{"type": "function", "function": {...}}` layer). Full side-by-side table in [`resources/cli-agents-guide.en.md`](../resources/cli-agents-guide.en.md).
+
 ## Index by stage
 
 | Stage | Exercises | Example location |

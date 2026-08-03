@@ -93,6 +93,14 @@ def chat(user_msg, memory):
 4. **Negative feedback**：“don't suggest X”要存
 5. **LLM-extracted**：每轮结束、用 LLM 自己抓 facts（mem0 / Letta / MemGPT 都这么做）
 
+## 两个 path 观察重点
+
+| 观察项 | Anthropic Claude haiku | Ollama qwen2.5:3b |
+|---|---|---|
+| 把 memory 融进回答 | 自然（cite memory） | 偶尔 ignore memory、用通用答案 |
+| “无相关 memory”时不强用 | 守规则 | 较松 |
+| 多 memory 整合 | 好 | 中 |
+
 ## 常见坑
 
 - **每轮都 add to memory**：vector store 会爆。要有“fact extraction”过滤、只存值得记的

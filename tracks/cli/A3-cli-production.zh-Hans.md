@@ -183,52 +183,21 @@ Track A 的人**已经在用** [Stage 7.5 的进阶概念](../../stages/07.5-adv
 
 ## 🎯 精选 Projects
 
-### MCP server collection（接 CLI 用）
+按用途分 4 类、9 个项目一张表搞定。**挑入口看“适合谁”，想深入细节点链接看 repo**。
 
-> 💡 **要找接日常工具的 MCP**（Notion / Obsidian / Excel / Postgres / Playwright / Slack / Linear / Figma 等）：[`resources/mcp-skills-catalog.zh-Hans.md`](../../resources/mcp-skills-catalog.zh-Hans.md)——76+ 个分类整理，每个都有 stars / license / 适合谁。下面只列“写自己 MCP server / 找 reference”用的核心 catalog。
+> 💡 **要找接日常工具的 MCP**（Notion / Obsidian / Excel / Postgres / Playwright / Slack / Linear / Figma 等）：[`resources/mcp-skills-catalog.zh-Hans.md`](../../resources/mcp-skills-catalog.zh-Hans.md)——76+ 个分类整理，每个都有 stars / license / 适合谁。下表只列“写自己 MCP server / 找 reference”用的核心 catalog。
 
-#### [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐⭐⭐⭐⭐
-★ 85k+ — 官方 reference servers（现有 7 个：everything、fetch、filesystem、git、memory、sequentialthinking、time；github、sqlite 已移到 `servers-archived`）。
-> 详见 [Stage 5.2](../../stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础)。
-
-#### [wong2/awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)
-社群 MCP server catalog。150+ 个依分类整理。
-
----
-
-### CI 集成 patterns
-
-#### [anthropics/claude-code-action](https://github.com/anthropics/claude-code-action)
-官方 GitHub Action 范本。PR review、issue triage、自动 fix。
-
-#### [continuedev/continue](https://github.com/continuedev/continue) ⭐⭐⭐⭐
-★ 33k+ — 把 AI checks 接到 CI，可在 PR pipeline 强制执行。
-> 完整介绍见 [`branches/for-developer.zh-Hans.md`](../../branches/for-developer.zh-Hans.md)。
-
----
-
-### Observability + Cost
-
-#### [langfuse/langfuse](https://github.com/langfuse/langfuse) ⭐⭐⭐⭐⭐
-★ 31k+ — open source LLM observability。把 trace、cost、session 都接起来。
-> 详见 [Stage 7 Observability](../../stages/07-multi-agent-production.zh-Hans.md#练习-3observability)。
-
-#### [Helicone](https://github.com/Helicone/helicone) ⭐⭐⭐⭐
-★ 6k+ — proxy-based 监控。改 base_url 就有 logging + caching。
-
-#### [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) ⭐⭐⭐⭐⭐
-★ 23k+ — eval framework。CLI workflow 升级到 production 前用这个跑回归测试。
-> 详见 [Stage 7 Eval](../../stages/07-multi-agent-production.zh-Hans.md#练习-2eval)。
-
----
-
-### Production CLI workflow 范本
-
-#### [obra/superpowers](https://github.com/obra/superpowers) ⭐⭐⭐⭐
-★ 258k+ — 整套 production-ready skill collection。看别人怎么把 CLI workflow 做完整。
-
-#### [obra/superpowers-marketplace](https://github.com/obra/superpowers-marketplace)
-★ 1.2k+ — 最简 marketplace template。要把你 team 的 CLI workflow 打包共用时参考。
+| 分类 | Project | ⭐ | 适合谁 | 为什么推荐 / 备注 |
+|---|---|---|---|---|
+| **MCP server collection**<br>（接 CLI 用） | [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) | ⭐⭐⭐⭐⭐ | 第一个 MCP 从 reference 学起 | 官方 reference servers（现有 7 个：everything、fetch、filesystem、git、memory、sequentialthinking、time；github、sqlite 已移到 `servers-archived`），★ 85k+。详见 [Stage 5.2](../../stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础) |
+| | [wong2/awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers) | ⭐⭐⭐⭐ | 想找特定领域的社群 MCP | 社群 MCP server catalog、150+ 个依分类整理 |
+| **CI 集成 patterns** | [anthropics/claude-code-action](https://github.com/anthropics/claude-code-action) | ⭐⭐⭐⭐⭐ | 第一个 CI workflow 从官方范本起步 | 官方 GitHub Action 范本、PR review / issue triage / 自动 fix |
+| | [continuedev/continue](https://github.com/continuedev/continue) | ⭐⭐⭐⭐ | 想把 AI checks 接到 PR pipeline 强制执行 | ★ 35k+。完整介绍见 [`branches/for-developer.zh-Hans.md`](../../branches/for-developer.zh-Hans.md) |
+| **Observability + Cost** | [langfuse/langfuse](https://github.com/langfuse/langfuse) | ⭐⭐⭐⭐⭐ | 想把 trace、cost、session 都接起来 | open source LLM observability，★ 31k+。详见 [Stage 7 Observability](../../stages/07-multi-agent-production.zh-Hans.md#练习-3observability) |
+| | [Helicone](https://github.com/Helicone/helicone) | ⭐⭐⭐⭐ | 想要最快的 logging（改 base_url 就好） | proxy-based 监控、改 base_url 就有 logging + caching，★ 6k+ |
+| | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) | ⭐⭐⭐⭐⭐ | CLI workflow 升级到 production 前跑回归测试 | eval framework，★ 23k+。详见 [Stage 7 Eval](../../stages/07-multi-agent-production.zh-Hans.md#练习-2eval) |
+| **Production CLI workflow 范本** | [obra/superpowers](https://github.com/obra/superpowers) | ⭐⭐⭐⭐ | 看完整实际在用的 workflow 长什么样 | 整套 production-ready skill collection、★ 265k+。看别人怎么把 CLI workflow 做完整 |
+| | [obra/superpowers-marketplace](https://github.com/obra/superpowers-marketplace) | ⭐⭐⭐ | 要把 team 的 CLI workflow 打包共用 | 最简 marketplace template、★ 1.2k+ |
 
 > 💡 **建议入手路径**：先从 `modelcontextprotocol/servers` 挑一个 reference MCP 接到 CLI → 用 `claude-code-action` 跑第一个 CI workflow → 加 langfuse 看 trace + cost → production 规模化时把 workflow 打包成 marketplace plugin。
 

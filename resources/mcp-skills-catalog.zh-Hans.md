@@ -9,7 +9,7 @@
 ## 怎么用这份目录
 
 - **想找特定工具的 MCP**：直接看下面分类目录
-- **想看 MCP / Skills / Plugins 是什么**：先看 [README 三个核心用语](../README.zh-Hans.md#三个核心用语mcp--skills--plugins)，再看 [Stage 5 — Claude Code 生态系](../stages/05-claude-code-ecosystem.zh-Hans.md)
+- **想看 MCP / Skills / Plugins 是什么**：先看 [RESOURCES.zh-Hans.md 三个核心用语](../RESOURCES.zh-Hans.md#三个核心用语mcp--skills--plugins)，再看 [Stage 5 — Claude Code 生态系](../stages/05-claude-code-ecosystem.zh-Hans.md)
 - **想看 动手练习 怎么装、怎么测**：看 [Stage 5.2 (MCP)](../stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础) 跟 [Stage 5.3 (Skills)](../stages/05-claude-code-ecosystem.zh-Hans.md#53--skillsclaude-code-的行为层-claude-code-生态最关键的一层)
 
 ### 收录方向（不是死规则）
@@ -146,7 +146,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 3.8k+ |
+| Stars | ★ 4.1k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐（社群最热门 Excel MCP） |
 
@@ -158,7 +158,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 1.7k+ |
+| Stars | ★ 1.8k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐（⚠️ 已封存） |
 
@@ -182,7 +182,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 831 |
+| Stars | ★ 880 |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐（PDF 高效解析） |
 
@@ -206,7 +206,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 8.2k+ |
+| Stars | ★ 8.8k+ |
 | License | NOASSERTION |
 | 推荐度 | ⭐⭐⭐⭐ |
 
@@ -290,7 +290,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 29.5k+ |
+| Stars | ★ 31k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐（**官方**） |
 
@@ -314,7 +314,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 878 |
+| Stars | ★ 927 |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐（**官方**） |
 
@@ -374,7 +374,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 57k |
+| Stars | ★ 60k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐（写代码必装） |
 
@@ -402,7 +402,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 15k+ |
+| Stars | ★ 16k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐（**Google 官方**，多 DB） |
 
@@ -426,7 +426,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 2.7k+ |
+| Stars | ★ 2.9k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐（**Supabase 官方社群**） |
 
@@ -438,7 +438,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 1.7k+ |
+| Stars | ★ 1.8k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐（Postgres 写代码辅助） |
 
@@ -462,7 +462,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 1k+ |
+| Stars | ★ 1.1k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐（**MongoDB 官方**） |
 
@@ -502,7 +502,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 34k+ |
+| Stars | ★ 35k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐（**Microsoft 官方**） |
 
@@ -554,7 +554,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 14.6k+ |
+| Stars | ★ 15k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐（最热门 Figma MCP） |
 
@@ -658,7 +658,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 534 |
+| Stars | ★ 581 |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐（YouTube 字幕） |
 
@@ -670,7 +670,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 510 |
+| Stars | ★ 557 |
 | License | NOASSERTION |
 | 推荐度 | ⭐⭐⭐⭐（YouTube 完整 API） |
 
@@ -722,7 +722,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 20k+ |
+| Stars | ★ 21k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐ |
 
@@ -770,7 +770,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 917 |
+| Stars | ★ 967 |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐ |
 
@@ -824,7 +824,7 @@
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 3.7k+ |
+| Stars | ★ 4k+ |
 | License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐（**Cloudflare 官方**） |
 
@@ -940,7 +940,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 57 |
+| Stars | ★ 62 |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐ |
 
@@ -954,7 +954,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 34 |
+| Stars | ★ 37 |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐（⚠️ 已封存） |
 
@@ -998,7 +998,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 59k+ |
+| Stars | ★ 62k+ |
 | License | NO-LICENSE |
 | 推荐度 | ⭐⭐⭐ |
 
@@ -1014,7 +1014,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 4.5k+ |
+| Stars | ★ 4.8k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐（**Exa 官方**） |
 
@@ -1026,7 +1026,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | ★ 2.1k+ |
+| Stars | ★ 2.3k+ |
 | License | MIT |
 | 推荐度 | ⭐⭐⭐⭐（新手第一选择） |
 

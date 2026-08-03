@@ -146,7 +146,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 3.8k+ |
+| Stars | ★ 4.1k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐⭐ (most popular community Excel MCP) |
 
@@ -158,7 +158,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 1.7k+ |
+| Stars | ★ 1.8k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐ (⚠️ archived) |
 
@@ -182,7 +182,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 831 |
+| Stars | ★ 880 |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐ (high-throughput PDF) |
 
@@ -206,7 +206,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 8.2k+ |
+| Stars | ★ 8.8k+ |
 | License | NOASSERTION |
 | Rating | ⭐⭐⭐⭐ |
 
@@ -290,7 +290,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 29.5k+ |
+| Stars | ★ 31k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐⭐ (**official**) |
 
@@ -314,7 +314,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 878 |
+| Stars | ★ 927 |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐ (**official**) |
 
@@ -374,7 +374,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 57k |
+| Stars | ★ 60k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐⭐ (must-have for coding) |
 
@@ -402,7 +402,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 15k+ |
+| Stars | ★ 16k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐⭐ (**Google official**, multi-DB) |
 
@@ -426,7 +426,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 2.7k+ |
+| Stars | ★ 2.9k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐⭐ (**Supabase official-community**) |
 
@@ -438,7 +438,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 1.7k+ |
+| Stars | ★ 1.8k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐ (Postgres coding aid) |
 
@@ -462,7 +462,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 1k+ |
+| Stars | ★ 1.1k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐ (**MongoDB official**) |
 
@@ -502,7 +502,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 34k+ |
+| Stars | ★ 35k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐⭐ (**Microsoft official**) |
 
@@ -554,7 +554,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 14.6k+ |
+| Stars | ★ 15k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐⭐ (most popular Figma MCP) |
 
@@ -658,7 +658,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 534 |
+| Stars | ★ 581 |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐ (YouTube transcripts) |
 
@@ -670,7 +670,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 510 |
+| Stars | ★ 557 |
 | License | NOASSERTION |
 | Rating | ⭐⭐⭐⭐ (full YouTube API) |
 
@@ -722,7 +722,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 20k+ |
+| Stars | ★ 21k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐⭐ |
 
@@ -770,7 +770,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 917 |
+| Stars | ★ 967 |
 | License | MIT |
 | Rating | ⭐⭐⭐ |
 
@@ -824,7 +824,7 @@
 
 | Field | Value |
 |---|---|
-| Stars | ★ 3.7k+ |
+| Stars | ★ 4k+ |
 | License | Apache-2.0 |
 | Rating | ⭐⭐⭐⭐⭐ (**Cloudflare official**) |
 
@@ -940,7 +940,7 @@ Claude is bad at token-heavy mechanical work (cost, context blowout); Codex is b
 
 | Field | Value |
 |---|---|
-| Stars | ★ 57 |
+| Stars | ★ 62 |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐⭐ |
 
@@ -954,7 +954,7 @@ Claude is bad at token-heavy mechanical work (cost, context blowout); Codex is b
 
 | Field | Value |
 |---|---|
-| Stars | ★ 34 |
+| Stars | ★ 37 |
 | License | MIT |
 | Rating | ⭐⭐⭐ (⚠️ archived) |
 
@@ -998,7 +998,7 @@ Claude is bad at token-heavy mechanical work (cost, context blowout); Codex is b
 
 | Field | Value |
 |---|---|
-| Stars | ★ 59k+ |
+| Stars | ★ 62k+ |
 | License | NO-LICENSE |
 | Rating | ⭐⭐⭐ |
 
@@ -1014,7 +1014,7 @@ Claude is bad at token-heavy mechanical work (cost, context blowout); Codex is b
 
 | Field | Value |
 |---|---|
-| Stars | ★ 4.5k+ |
+| Stars | ★ 4.8k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐ (**Exa official**) |
 
@@ -1026,7 +1026,7 @@ Claude is bad at token-heavy mechanical work (cost, context blowout); Codex is b
 
 | Field | Value |
 |---|---|
-| Stars | ★ 2.1k+ |
+| Stars | ★ 2.3k+ |
 | License | MIT |
 | Rating | ⭐⭐⭐⭐ (beginner-friendly web search) |
 

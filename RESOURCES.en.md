@@ -28,14 +28,14 @@ Connect Claude Code (or any other CLI agent) to the apps you already use, withou
 
 ### Notes / Knowledge Base
 
-- [**MarkusPfundstein/mcp-obsidian**](https://github.com/MarkusPfundstein/mcp-obsidian) ★ 3.9k+ — Obsidian REST API plugin lets the LLM read/write your vault
+- [**MarkusPfundstein/mcp-obsidian**](https://github.com/MarkusPfundstein/mcp-obsidian) ★ 4.2k+ — Obsidian REST API plugin lets the LLM read/write your vault
 - [**makenotion/notion-mcp-server**](https://github.com/makenotion/notion-mcp-server) ★ 4.4k+ — Notion **official** MCP, query/create pages, manipulate databases
 - [**PleasePrompto/notebooklm-skill**](https://github.com/PleasePrompto/notebooklm-skill) ★ 7.3k+ — NotebookLM Skill, citation-backed answers from your uploaded docs
-- [**teng-lin/notebooklm-py**](https://github.com/teng-lin/notebooklm-py) ★ 17k+ — unofficial NotebookLM Python API + CLI, plays well with Claude Code / Codex
+- [**teng-lin/notebooklm-py**](https://github.com/teng-lin/notebooklm-py) ★ 18k+ — unofficial NotebookLM Python API + CLI, plays well with Claude Code / Codex
 
 ### Office Documents (Word / Excel / PowerPoint / PDF)
 
-- [**anthropics/skills**](https://github.com/anthropics/skills) ★ 158k+ — Anthropic **official** Skills with built-in docx / xlsx / pptx / pdf processing
+- [**anthropics/skills**](https://github.com/anthropics/skills) ★ 165k+ — Anthropic **official** Skills with built-in docx / xlsx / pptx / pdf processing
 - [**tfriedel/claude-office-skills**](https://github.com/tfriedel/claude-office-skills) ★ 800 — Office skills with automation workflows on top of the official ones
 
 ### Google Workspace (Gmail / Docs / Drive / Calendar)
@@ -54,7 +54,7 @@ Connect Claude Code (or any other CLI agent) to the apps you already use, withou
 - [**WenyuChiou/ai-research-skills**](https://github.com/WenyuChiou/ai-research-skills) ★ 182 — 14 research-workflow skills as a 5-plugin marketplace
 - [**WenyuChiou/research-hub**](https://github.com/WenyuChiou/research-hub) ★ 42 — Zotero + Obsidian + NotebookLM integration workspace
 - [**WenyuChiou/zotero-skills**](https://github.com/WenyuChiou/zotero-skills) ★ 45 — Zotero CLI skill
-- [**WenyuChiou/codex-delegate**](https://github.com/WenyuChiou/codex-delegate) ★ 57 + [**gemini-delegate-skill**](https://github.com/WenyuChiou/gemini-delegate-skill) ★ 34 (⚠️ archived) — multi-LLM delegation pair (for the Gemini lane, use Gemini CLI directly)
+- [**WenyuChiou/codex-delegate**](https://github.com/WenyuChiou/codex-delegate) ★ 62 [**gemini-delegate-skill**](https://github.com/WenyuChiou/gemini-delegate-skill) ★ 34 (⚠️ archived) — multi-LLM delegation pair (for the Gemini lane, use Gemini CLI directly)
 
 ### Chinese-language Ecosystem
 

@@ -9,6 +9,9 @@
 
 > 💡 Term-unfamiliar? (prompt / few-shot / CoT / system prompt / …) → see [`resources/glossary.en.md`](../resources/glossary.en.md).
 
+> 📋 **Chapter structure**: Learning goals → Entry conditions → Required reading → [optional · concept map] → Hands-on exercises → Curated Projects → Self-check
+> 🔑 **Key terms**: see [`resources/glossary.en.md`](../resources/glossary.en.md) (every term used in each stage is collected there)
+
 ## 📌 Learning Goals
 
 After this stage you will be able to:
@@ -26,8 +29,8 @@ You should already:
 
 ## 📚 Required Reading
 
-1. [**anthropics/prompt-eng-interactive-tutorial**](https://github.com/anthropics/prompt-eng-interactive-tutorial) ⭐⭐⭐⭐⭐ ★ 35k+ — **Anthropic's official interactive tutorial**, 9 chapters of Jupyter notebooks (basic / intermediate / advanced + appendix), with playground and answer key. Runs on Claude 3 Haiku (cheapest). **The canonical hands-on resource for Stage 2.** Also packaged as module 2 of the [**anthropics/courses**](https://github.com/anthropics/courses) 5-course umbrella — for broader coverage (API Fundamentals / Real World Prompting / Eval / Tool Use) go straight to the umbrella
-2. [**anthropics/courses — Real World Prompting**](https://github.com/anthropics/courses) ⭐⭐⭐⭐ ★ 21k+ — Module 3 of the same umbrella, **"how to actually use prompting in real situations"**: chatbot / legal / financial / coding case walkthroughs. Read #1 first, then this.
+1. [**anthropics/prompt-eng-interactive-tutorial**](https://github.com/anthropics/prompt-eng-interactive-tutorial) ⭐⭐⭐⭐⭐ ★ 37k+ — **Anthropic's official interactive tutorial**, 9 chapters of Jupyter notebooks (basic / intermediate / advanced + appendix), with playground and answer key. Runs on Claude 3 Haiku (cheapest). **The canonical hands-on resource for Stage 2.** Also packaged as module 2 of the [**anthropics/courses**](https://github.com/anthropics/courses) 5-course umbrella — for broader coverage (API Fundamentals / Real World Prompting / Eval / Tool Use) go straight to the umbrella
+2. [**anthropics/courses — Real World Prompting**](https://github.com/anthropics/courses) ⭐⭐⭐⭐ ★ 22k+ — Module 3 of the same umbrella, **"how to actually use prompting in real situations"**: chatbot / legal / financial / coding case walkthroughs. Read #1 first, then this.
 3. [**Anthropic Prompt Engineering Guide**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — official docs, pairs with #1
 3. [**OpenAI Prompt Engineering**](https://platform.openai.com/docs/guides/prompt-engineering) — OpenAI's perspective
 4. [**dair-ai Prompt Engineering Guide**](https://www.promptingguide.ai/) — academic-flavored, in-depth
@@ -96,6 +99,18 @@ except json.JSONDecodeError:
     pass  # some models add prose around the JSON; tolerate that
 
 print(f"\n✅ Exercise 1 passed — same question, three different personas / formats / tones")
+```
+
+**Expected output** (sample; gemma4:e4b follows the system prompt reasonably well, though less strictly than Claude):
+```
+--- [Strict lawyer] ---
+Per Article 421 of the Civil Code...
+
+--- [Kindergarten teacher] ---
+A lease is like lending a toy to a friend — you agree when it comes back and how many sweets it costs...
+
+--- [JSON machine] ---
+{"answer": "A lease is an agreement in which one party lets another use a thing...", "confidence": 0.85}
 ```
 
 </details>
@@ -416,6 +431,8 @@ for label, prompt in PROMPTS.items():
 
 </details>
 
+**Going further**: dump all 5 rounds of output to a CSV. Stage 7 Exercise 2 shows how to turn that into an eval harness so you can quantify *how much* a prompt actually improved.
+
 ## 🎯 Curated Projects
 
 4 categories, 9 projects in one table. **Pick by "Best for"; click through for depth on the repo / site.**
@@ -430,7 +447,7 @@ for label, prompt in PROMPTS.items():
 | **Inspiration collection**<br>(steal patterns, don't copy)| [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐ | When you're stuck for ideas | Hundreds of "Act as a [role]..." prompts, ★ 162k+, CC0. **Take the pattern, rewrite — don't copy verbatim** |
 | **Production management**<br>(scale up)| [microsoft/prompt-engine](https://github.com/microsoft/prompt-engine) | ⭐⭐ (⚠️ archived) | Managing many prompts in production | TypeScript library; ⚠️ **no updates since 2023, repo archived** — find a maintained alternative |
 | | [microsoft/promptflow](https://github.com/microsoft/promptflow) | ⭐⭐⭐ | Team apps needing eval | Visual prompt design + eval tooling, ★ 11k+ |
-| | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) ⭐ **Stage 2 → 3 bridge** | ⭐⭐⭐⭐⭐ | After dair-ai, want to scale prompts | Treat prompts as code, compiler auto-optimizes, ★ 34k+, MIT |
+| | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) ⭐ **Stage 2 → 3 bridge** | ⭐⭐⭐⭐⭐ | After dair-ai, want to scale prompts | Treat prompts as code, compiler auto-optimizes, ★ 36k+, MIT |
 
 > **Note**: dspy is a framework, not a tutorial — higher entry barrier; pair it with the [dspy.ai](https://dspy.ai/) official tutorial. NirDiamant uses NOASSERTION custom terms (research / non-commercial leaning).
 
@@ -462,7 +479,7 @@ Engineering practice for LLM-powered systems can be divided into **three stack l
 
 Further reading (optional, for when you want to dig deeper):
 
-- [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering) (★ 3k+) — comprehensive survey from prompt engineering to production agents
+- [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering) (★ 3.3k+) — comprehensive survey from prompt engineering to production agents
 - [`Windy3f3f3f3f/how-claude-code-works`](https://github.com/Windy3f3f3f3f/how-claude-code-works) (★ 3.3k+) — Claude Code internals, includes a context-engineering chapter
 
 ## ✅ Self-Check Before Stage 3

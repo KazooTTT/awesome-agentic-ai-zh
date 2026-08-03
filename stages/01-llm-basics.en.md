@@ -137,7 +137,7 @@ If not — go back to Stage 0 first.
 ## 📚 Required Reading
 
 1. [**Anthropic — Claude Model Overview**](https://docs.claude.com/en/about-claude/models/overview) — official model family overview, including 2026's Claude Fable 5 (`claude-fable-5`, Mythos-class, GA 2026-06-09) plus Opus 5 / Sonnet 5 / Haiku 4.5. **Fable 5 is the highest Claude tier; Opus 5 (launched 2026-07-24, `claude-opus-5`) is the current Opus-class flagship, and Opus 4.8 is still available as legacy (moved to the docs' Legacy section, not deprecated).**
-2. [**anthropics/courses — Anthropic API Fundamentals**](https://github.com/anthropics/courses) ⭐⭐⭐⭐⭐ ★ 21k+ — Anthropic's official 5-course umbrella; **module 1 "Anthropic API Fundamentals" maps to this stage**. Jupyter notebooks, runs on Claude 3 Haiku (cheapest), hands-on walkthrough of API essentials.
+2. [**anthropics/courses — Anthropic API Fundamentals**](https://github.com/anthropics/courses) ⭐⭐⭐⭐⭐ ★ 22k+ — Anthropic's official 5-course umbrella; **module 1 "Anthropic API Fundamentals" maps to this stage**. Jupyter notebooks, runs on Claude 3 Haiku (cheapest), hands-on walkthrough of API essentials.
 3. [**OpenAI Quickstart**](https://platform.openai.com/docs/quickstart) — first API call walkthrough
 4. [**A Visual Guide to LLM Tokenizers**](https://huggingface.co/learn/llm-course/chapter6/1) — Hugging Face's intro
 5. [**Anthropic API Pricing**](https://www.anthropic.com/pricing#anthropic-api) — read the pricing table, calculate cost for 1k input + 1k output
@@ -511,7 +511,7 @@ Response: ReAct is a method that lets an AI combine "reasoning" and "acting"...
 | Category | Project | ⭐ | Best for | Why / Notes |
 |---|---|---|---|---|
 | **Official cookbook / starting point** | [Anthropic Cookbook](https://github.com/anthropics/claude-cookbooks) | ⭐⭐⭐⭐⭐ | Starting with Claude API; reference lookup | Full-feature Claude API notebooks (tool use / batch / prompt cache), ★ 50k+, MIT |
-| | [Anthropic Courses](https://github.com/anthropics/courses) | ⭐⭐⭐⭐⭐ | Systematic Claude learning from zero | Anthropic's own 5-course set (API fundamentals / prompt eval / real-world prompting / tool use), ★ 21k+. Start with `anthropic_api_fundamentals` |
+| | [Anthropic Courses](https://github.com/anthropics/courses) | ⭐⭐⭐⭐⭐ | Systematic Claude learning from zero | Anthropic's own 5-course set (API fundamentals / prompt eval / real-world prompting / tool use), ★ 22k+. Start with `anthropic_api_fundamentals` |
 | | [OpenAI Cookbook](https://github.com/openai/openai-cookbook) | ⭐⭐⭐⭐⭐ | OpenAI API + structured output / function calling | Pair with Anthropic Cookbook, ★ 73k+, MIT. Much bigger than Anthropic's — use search |
 | | [Anthropic Claude API Quickstart](https://docs.anthropic.com/en/docs/get-started) | ⭐⭐⭐⭐ | 5-minute start | Official docs, bookmark it |
 | **Chinese textbook**<br>(chapter-style) | [datawhalechina/happy-llm](https://github.com/datawhalechina/happy-llm) | ⭐⭐⭐⭐⭐ | Chinese readers wanting LLM internals | Karpathy "Zero to Hero" Chinese counterpart, ★ 32k+. Equivalent to HF LLM Course in Chinese |

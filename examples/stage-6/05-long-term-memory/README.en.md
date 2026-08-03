@@ -93,6 +93,14 @@ This demo uses a heuristic: user says "I + verb..." → store. Production is mor
 4. **Negative feedback**: "don't suggest X" must persist
 5. **LLM-extracted**: each turn, use an LLM to extract facts (mem0 / Letta / MemGPT all do this)
 
+## What to watch on each path
+
+| Observation | Anthropic Claude haiku | Ollama qwen2.5:3b |
+|---|---|---|
+| Weaving memory into the answer | Natural (cites the memory) | Sometimes ignores memory, falls back on a generic answer |
+| Not forcing it when no memory is relevant | Follows the rule | Looser |
+| Integrating multiple memories | Good | Medium |
+
 ## Common pitfalls
 
 - **Add to memory every turn**: vector store explodes. Filter with fact extraction

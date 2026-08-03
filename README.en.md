@@ -213,6 +213,7 @@ Common quick links, grouped by **scenario**:
 |---|---|---|
 | Want to build Skill / MCP server / Word / Zotero / local LLM integration | [`resources/cookbook.en.md`](resources/cookbook.en.md) | 6 step-by-step recipes, 30-50 min each |
 | Want to use subagents but do not know who to dispatch, how to dispatch, or what work to dispatch | [`resources/subagent-cookbook.en.md`](resources/subagent-cookbook.en.md) | 15 copy-paste dispatch recipes |
+| Write your own subagent / compose several / debug a broken one (advanced) | [`resources/subagent-advanced.en.md`](resources/subagent-advanced.en.md) | 4 description-writing bugs + 3 composition patterns + 5 debug entry points |
 | Stuck on tool calling (LLM won't call / schema broken / ReAct won't stop) | [`examples/stage-5/tool-calling-tutor/`](examples/stage-5/tool-calling-tutor/) | Claude Code installable skill, 4-symptom diagnostic |
 | How to use the hands-on exercises correctly (active vs passive mode) | [`docs/HOW_TO_USE.md`](docs/HOW_TO_USE.md) | 5-10 min read, applies to every stage |
 

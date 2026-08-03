@@ -28,8 +28,8 @@
 
 ## 📚 必修閱讀
 
-1. [**anthropics/prompt-eng-interactive-tutorial**](https://github.com/anthropics/prompt-eng-interactive-tutorial) ⭐⭐⭐⭐⭐ ★ 35k+ — **Anthropic 官方互動教學**、9 章 Jupyter notebook（basic / intermediate / advanced + appendix），含 playground 跟 answer key。用 Claude 3 Haiku（最便宜）跑得起來、**Stage 2 的 canonical 動手教材**。也是 [**anthropics/courses**](https://github.com/anthropics/courses) 5 course umbrella 的 module 2，想看更廣（含 API Fundamentals / Real World Prompting / Eval / Tool Use）直接看 umbrella
-2. [**anthropics/courses — Real World Prompting**](https://github.com/anthropics/courses) ⭐⭐⭐⭐ ★ 21k+ — 同 umbrella 的 module 3，**「真實情境下怎麼用 prompting」**：chatbot / legal / financial / coding 案例 walk-through。看完 #1 再來看 #2
+1. [**anthropics/prompt-eng-interactive-tutorial**](https://github.com/anthropics/prompt-eng-interactive-tutorial) ⭐⭐⭐⭐⭐ ★ 37k+ — **Anthropic 官方互動教學**、9 章 Jupyter notebook（basic / intermediate / advanced + appendix），含 playground 跟 answer key。用 Claude 3 Haiku（最便宜）跑得起來、**Stage 2 的 canonical 動手教材**。也是 [**anthropics/courses**](https://github.com/anthropics/courses) 5 course umbrella 的 module 2，想看更廣（含 API Fundamentals / Real World Prompting / Eval / Tool Use）直接看 umbrella
+2. [**anthropics/courses — Real World Prompting**](https://github.com/anthropics/courses) ⭐⭐⭐⭐ ★ 22k+ — 同 umbrella 的 module 3，**「真實情境下怎麼用 prompting」**：chatbot / legal / financial / coding 案例 walk-through。看完 #1 再來看 #2
 3. [**Anthropic Prompt Engineering Guide**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — 官方 docs、配合上面 #1 一起讀
 3. [**OpenAI Prompt Engineering**](https://platform.openai.com/docs/guides/prompt-engineering) — OpenAI 觀點
 4. [**dair-ai Prompt Engineering Guide**](https://www.promptingguide.ai/) — 學術風，深入
@@ -444,7 +444,7 @@ text = msg.content[0].text
 | **靈感 collection**<br>（找模式、不要照抄）| [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐ | 卡關時找靈感 | 上百個「Act as a [角色]...」prompt，★ 162k+、CC0。**把模式拿出來改寫、不要照抄** |
 | **Production 管理**<br>（規模化）| [microsoft/prompt-engine](https://github.com/microsoft/prompt-engine) | ⭐⭐（⚠️ 已封存）| production 要管很多 prompt 時 | TypeScript library；⚠️ **2023 起無更新、repo 已封存**——找維護中的替代 |
 | | [microsoft/promptflow](https://github.com/microsoft/promptflow) | ⭐⭐⭐ | 團隊型應用、需要 eval | 視覺化 prompt 設計 + 評估工具，★ 11k+ |
-| | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) ⭐ **Stage 2 → 3 橋** | ⭐⭐⭐⭐⭐ | 跑完 dair-ai 想規模化 prompt | 把 prompt 當 code 寫，用 compiler 自動最佳化，★ 34k+、MIT |
+| | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) ⭐ **Stage 2 → 3 橋** | ⭐⭐⭐⭐⭐ | 跑完 dair-ai 想規模化 prompt | 把 prompt 當 code 寫，用 compiler 自動最佳化，★ 36k+、MIT |
 
 > **註**：dspy 是 framework 不是 tutorial、門檻較高，建議搭配 [dspy.ai](https://dspy.ai/) 官方 tutorial 讀；NirDiamant 用 NOASSERTION 自訂條款（偏研究 / 非商用）。
 
@@ -476,7 +476,7 @@ LLM-powered system 的工程實踐分成 **3 層 stack**（不是 1 次 call vs 
 
 延伸閱讀（不必修、未來想深挖時看）：
 
-- [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering)（★ 3k+）——從 prompt engineering 一路推到 production agent 的 survey
+- [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering)（★ 3.3k+）——從 prompt engineering 一路推到 production agent 的 survey
 - [`Windy3f3f3f3f/how-claude-code-works`](https://github.com/Windy3f3f3f3f/how-claude-code-works)（★ 3.3k+）——Claude Code 內部解析，含 context engineering 章節
 
 ## ✅ 進 Stage 3 前的自我檢查
