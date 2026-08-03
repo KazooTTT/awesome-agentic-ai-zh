@@ -5,6 +5,13 @@
 # Exercise 3: ReAct from Scratch (no framework)
 
 Corresponds to [Stage 3 — Tool Use & Agent Intro](../../../stages/03-tool-use-and-hello-agent.en.md) Exercise 3.
+> 🎓 **How to use this**: `starter.py` is the **complete solution**, not a TODO skeleton. The active approach works better — `mv starter.py starter_reference.py`, read the signatures but not the bodies, write your own `starter.py` from scratch, then run `python test.py` to check it; if you are stuck for 20 minutes, go back and compare against the reference. Full methodology in [`docs/HOW_TO_USE.md`](../../../docs/HOW_TO_USE.md).
+
+> 📚 **Want the chapter-length version?** The starter in this folder is a 70-150 line illustrative build focused on `the core pattern + two SDK paths` — it is not in-depth teaching material. Recommended for depth:
+> - [`datawhalechina/hello-agents`](https://github.com/datawhalechina/hello-agents) ⭐ the most complete Chinese-language course out there — chapter-based, covering 16 production capabilities. **this exercise maps to hello-agents' ReAct chapter (paired with the [`learn_version` branch](https://github.com/jjyaoao/HelloAgents/tree/learn_version))**
+> - [The original ReAct paper](https://arxiv.org/abs/2210.03629) (Yao et al. 2022, Section 3) + [pguso/ai-agents-from-scratch](https://github.com/pguso/ai-agents-from-scratch) (from-scratch implementation on a local LLM)
+> - Full references in [Stage 3 Curated Projects](../../../stages/03-tool-use-and-hello-agent.en.md#-curated-projects)
+
 
 ## Why write it from scratch
 
