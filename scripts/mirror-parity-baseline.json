@@ -40,19 +40,9 @@
         "table_rows": 5
       }
     },
-    "resources/cookbook.md": {
-      "en": {
-        "blockquote": 1
-      }
-    },
     "resources/glossary.md": {
       "zh-Hans": {
         "h3": 2
-      }
-    },
-    "resources/schema-design-cheatsheet.md": {
-      "zh-Hans": {
-        "h2": 1
       }
     },
     "resources/style-guide.md": {
@@ -123,6 +113,6 @@
       }
     }
   },
-  "total_deficit": 187,
-  "trios": 66
+  "total_deficit": 185,
+  "trios": 67
 }

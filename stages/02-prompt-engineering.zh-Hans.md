@@ -32,6 +32,10 @@
 4. [**dair-ai Prompt Engineering Guide**](https://www.promptingguide.ai/) — 学术风，深入
 5. [**Anthropic — Prompting Best Practices**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct) — 直接清楚
 
+**🎥 中文视频补充（强烈推荐）**：
+- [**李宏毅 — 生成式 AI 导论（2024 春台大课程）**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) ⭐⭐⭐ — 中后段集数讲 prompt engineering（few-shot、CoT、in-context learning）+ 对应 lab。中文圈最完整的 prompting 学术级教学。最新整合版见 [**GenAI-ML 2025 秋**](https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php)
+- [**李宏毅 — 机器学习 2025 春（含 prompt + LLM 章节）**](https://speech.ee.ntu.edu.tw/~hylee/ml/2025-spring.php) — 适合想看 ML 完整背景的人
+
 ## 🛠 动手练习
 
 > 🦙 **本 stage 默认用 Ollama gemma4:e4b**（成本考量、$0/run）。Prompt engineering 对小 model 更有教学价值——小 model 对 prompt 质量敏感、能让你看清楚 system prompt / few-shot / CoT / refinement 各自带来多少改善。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性）。

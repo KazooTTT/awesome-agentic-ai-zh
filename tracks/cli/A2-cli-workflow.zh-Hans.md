@@ -29,7 +29,7 @@
 
 ## 📚 必修阅读
 
-1. [**Anthropic — CLAUDE.md best practices**](https://docs.anthropic.com/en/docs/claude-code/memory) ⭐
+1. [**Anthropic — CLAUDE.md best practices**](https://code.claude.com/docs/en/memory) ⭐
 2. [**Stage 2 — Prompt 设计**](../../stages/02-prompt-engineering.zh-Hans.md) — workflow design 跟 prompt design 是同一件事的两面
 3. [**Stage 5.1 — Claude Code 基础**](../../stages/05-claude-code-ecosystem.zh-Hans.md#51--claude-code-基础) — slash commands 细节
 4. [**`resources/cli-agents-guide.zh-Hans.md`** “跨 CLI 都通用的 prompt 写法”](../../resources/cli-agents-guide.zh-Hans.md) — portable prompt 原则
@@ -82,8 +82,8 @@ description: Review staged changes for security + style
 
 ### CLAUDE.md 范例库
 
-#### [Anthropic 官方文档](https://docs.anthropic.com/en/docs/claude-code/memory)
-official — Claude Code memory / CLAUDE.md 编写的官方说明，含 best practices。
+#### [Anthropic 官方 CLAUDE.md 指南](https://code.claude.com/docs/en/memory) ⭐⭐⭐⭐⭐
+official — Claude Code memory / CLAUDE.md 编写的官方说明，含 best practices。第一份 CLAUDE.md 从这抄结构：就是 Claude Code repo 自己的 CLAUDE.md、官方写法。
 
 #### [obra/superpowers](https://github.com/obra/superpowers) ⭐⭐⭐⭐
 ★ 258k+ — 不只是 skill collection，也是 production CLAUDE.md 范本。看 `.claude/` whole directory structure。

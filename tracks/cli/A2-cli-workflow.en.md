@@ -29,7 +29,7 @@ Not there yet? → go back to [A1](A1-cli-intro.en.md) and get comfortable with 
 
 ## 📚 Required Reading
 
-1. [**Anthropic — CLAUDE.md best practices**](https://docs.anthropic.com/en/docs/claude-code/memory) ⭐
+1. [**Anthropic — CLAUDE.md best practices**](https://code.claude.com/docs/en/memory) ⭐
 2. [**Stage 2 — Prompt Engineering**](../../stages/02-prompt-engineering.en.md) — workflow design and prompt design are two sides of the same coin
 3. [**Stage 5.1 — Claude Code Basics**](../../stages/05-claude-code-ecosystem.en.md#51--claude-code-basics) — slash command details
 4. [**`resources/cli-agents-guide.en.md`** "Cross-CLI portable prompt patterns"](../../resources/cli-agents-guide.en.md) — portable prompt principles
@@ -82,8 +82,8 @@ Compile these into your own cheat sheet.
 
 ### CLAUDE.md Examples
 
-#### [Anthropic official docs](https://docs.anthropic.com/en/docs/claude-code/memory)
-official — Claude Code memory / CLAUDE.md authoring docs, including best practices.
+#### [Anthropic official CLAUDE.md guide](https://code.claude.com/docs/en/memory) ⭐⭐⭐⭐⭐
+Official — Claude Code memory / CLAUDE.md authoring docs, including best practices. Copy the structure for your first CLAUDE.md straight from here: it is the Claude Code repo's own CLAUDE.md, written the official way.
 
 #### [obra/superpowers](https://github.com/obra/superpowers) ⭐⭐⭐⭐
 ★ 258k+ — Not just a skill collection but also a production CLAUDE.md template. Read the full `.claude/` structure.
