@@ -4,16 +4,17 @@
 
 ⏱ **Estimated time**: 2-3 weeks (approx. 10-15 hours)
 
-> 💡 Unfamiliar with terms like `framework`, `supervisor`, `worker`, `handoff`? → Check [`resources/glossary.md`](../resources/glossary.en.md).
+> 💡 Unfamiliar with terms like `framework`, `supervisor`, `worker`, `handoff`? → Check [`resources/glossary.en.md`](../resources/glossary.en.md).
 
 > 📋 **Chapter structure**: Learning Objectives → Entry Conditions → Required Reading → [Optional · Concept Map: multi-agent intro + advanced tool patterns] → Hands-on Exercises → Curated Projects → Self-Check
-> 🔑 **Key Terms**: See [`resources/glossary.md`](../resources/glossary.en.md) (2 & 4 cover terms like `framework`, `agent loop`, `handoff`, `supervisor`).
+> 🔑 **Key Terms**: See [`resources/glossary.en.md`](../resources/glossary.en.md) (2 & 4 cover terms like `framework`, `agent loop`, `handoff`, `supervisor`).
 
 You've built a ReAct agent from scratch (Stage 3). Now, let's see what a framework actually does for you. **Pick one to learn deeply**, and just skim the others to know when to switch.
 
 ## 📌 Learning Objectives
 
 After completing this stage, you will be able to:
+
 - Compare 5 major agent frameworks (LangGraph, AutoGen, CrewAI, Smolagents, OpenAI Agents SDK)
 - Select the right framework for a given task
 - Build the same agent using two different frameworks to experience the differences firsthand
@@ -22,6 +23,7 @@ After completing this stage, you will be able to:
 ## 🚪 Entry Conditions
 
 You should have already:
+
 - Completed all 5 hello-X projects from Stage 3
 - Written a ReAct agent from scratch (Exercise 3)
 - Become comfortable with async Python (frameworks rely heavily on it)
@@ -105,6 +107,7 @@ The fundamental difference from the framework path (in one line): the **framewor
 > 📌 **The full dimension-by-dimension comparison table (startup / runtime / context isolation / provider lock-in / learning curve) lives canonically at [Stage 5.5](05-claude-code-ecosystem.en.md#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature)** — this stage only needs you to know "there's a second, Claude-Code-native path"; see 5.5 for the per-item implementation differences.
 
 **When to choose subagents over a framework**:
+
 - You're already using Claude Code for your daily work.
 - The task context is large and would consume the entire main session window (e.g., reading a whole codebase).
 - You want to run multiple subagents in parallel (research / write / critic) to save wall-clock time.
@@ -119,6 +122,7 @@ Frameworks abstract away the orchestration boilerplate for the 5 patterns above 
 ### 📚 Want a more systematic, in-depth look?
 
 **🇺🇸 Academic Papers (Influenced all subsequent framework designs)**:
+
 1. [**Anthropic — "Building Effective Agents"**](https://www.anthropic.com/engineering/building-effective-agents) ⭐⭐⭐ — When to use a workflow vs. an agent, 5 classic orchestration patterns. **Essential reading for multi-agent design in the English-speaking world.**
 2. [**AutoGen paper (Wu et al. 2023)**](https://arxiv.org/abs/2308.08155) — The original paper for Microsoft's multi-agent conversation framework.
 3. [**CAMEL paper (Li et al. 2023)**](https://arxiv.org/abs/2303.17760) — The seminal work on multi-agent role-playing.
@@ -126,10 +130,12 @@ Frameworks abstract away the orchestration boilerplate for the 5 patterns above 
 5. [**Generative Agents paper (Park et al. 2023)**](https://arxiv.org/abs/2304.03442) — 25 agents interacting in a Sims-like environment, a classic in social simulation.
 
 **🀄 Chinese Systematic Resources**:
+
 1. [**hello-agents Ch6 "Framework Development Practice" + Ch7 "Build Your Agent Framework"**](https://github.com/datawhalechina/hello-agents) ⭐ — A comprehensive Chinese resource on framework development and building one from scratch. **Note: Ch4 "Classic Agent Paradigm Construction" covers single-agent paradigms (ReAct / Plan-and-Solve / Reflection), not multi-agent.**
 2. [**Hung-yi Lee — Introduction to Generative AI**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) — Later episodes cover AI agents / multi-agent systems.
 
 **Framework Official Multi-Agent Docs**:
+
 - [**LangGraph — Multi-Agent Systems**](https://langchain-ai.github.io/langgraph/concepts/multi_agent/) — Official tutorials for supervisor, swarm, and hierarchical architectures.
 - [**Anthropic Cookbook — `customer_service_agent.ipynb`**](https://github.com/anthropics/claude-cookbooks/tree/main/tool_use) — A canonical example of multi-agent orchestration (routing + handoff).
 - [**Microsoft AutoGen — Examples**](https://microsoft.github.io/autogen/) — Complete examples for group-chat, debate, and peer review patterns.
@@ -154,6 +160,7 @@ Stage 3 taught you to write single-tool / multi-tool selection (by hand-writing 
 | **Tool-augmented retrieval**| The tool itself is a RAG search → returns results → the agent reasons on the results. | A combination of the Stage 6 Exercise 4 RAG pipeline and Stage 3 Exercise 2 multi-tool selection (LangGraph wraps the retriever as a tool node). |
 
 **📚 In-depth Resources**:
+
 - [**Anthropic — Tool Use best practices**](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/overview) — The official tool design guide.
 - [**LlamaIndex — Tool Router pattern**](https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/) — The canonical reference for dynamic selection.
 - [**LangGraph — Tool Node**](https://langchain-ai.github.io/langgraph/) — How to write a composition graph.
@@ -164,6 +171,7 @@ Stage 3 taught you to write single-tool / multi-tool selection (by hand-writing 
 
 ### Exercise 1: Same agent, two frameworks
 Build the same simple agent (search + summarize) using these two frameworks:
+
 - LangGraph
 - CrewAI
 Compare the lines of code, the debugging experience, and where each framework hides its complexity.

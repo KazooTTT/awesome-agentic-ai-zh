@@ -14,6 +14,7 @@
 ## 📌 學習目標
 
 完成這個 stage 後你會：
+
 - 比較 5 個主流 agent framework（LangGraph、AutoGen、CrewAI、Smolagents、OpenAI Agents SDK）
 - 替任務挑出對的 framework
 - 用兩個 framework 各做一次同樣的 agent，親身感受差異
@@ -22,6 +23,7 @@
 ## 🚪 進入條件
 
 你應該已經：
+
 - 跑完 Stage 3 的全部 5 個 hello-X projects
 - 從零寫過 ReAct（練習 3）
 - 對 async Python 上手（framework 大量依賴 async）
@@ -105,6 +107,7 @@
 > 📌 **完整逐維度對照表（啟動方式 / runtime / context 隔離 / provider lock-in / 學習曲線）的 canonical 在 [Stage 5.5 開頭](05-claude-code-ecosystem.md#55--subagentsclaude-code-原生-multi-agent-機制-2025-新功能)**——本 stage 只需知道「multi-agent 還有 Claude Code 原生這第二條路」、逐項實作差異到 5.5 再看。
 
 **何時選 subagent 而非 framework**：
+
 - 你已經在用 Claude Code 跑日常工作
 - 任務 context 大、會吃光主 session window（讀整個 codebase 之類）
 - 多 subagent 平行（research / write / critic）省 wall-clock 時間
@@ -119,6 +122,7 @@ Framework 把上面這 5 個 pattern 的 orchestration boilerplate（roles、han
 ### 📚 想系統化深入？
 
 **🇺🇸 學術 paper（影響後續所有 framework 設計）**：
+
 1. [**Anthropic — "Building Effective Agents"**](https://www.anthropic.com/engineering/building-effective-agents) ⭐⭐⭐ — 何時用 workflow 何時用 agent、5 個經典 orchestration pattern。**英文圈 multi-agent 設計入門必讀**
 2. [**AutoGen paper (Wu et al. 2023)**](https://arxiv.org/abs/2308.08155) — Microsoft 多 agent 對話框架原 paper
 3. [**CAMEL paper (Li et al. 2023)**](https://arxiv.org/abs/2303.17760) — multi-agent role-play 開山之作
@@ -126,10 +130,12 @@ Framework 把上面這 5 個 pattern 的 orchestration boilerplate（roles、han
 5. [**Generative Agents paper (Park et al. 2023)**](https://arxiv.org/abs/2304.03442) — 25 個 agent 在 The Sims 互動、社會 simulation
 
 **🀄 中文系統教材**：
+
 1. [**hello-agents Ch6「框架開發實踐」+ Ch7「構建你的 Agent 框架」**](https://github.com/datawhalechina/hello-agents) ⭐ — 中文圈完整講 framework 開發 + 從零構建。**注意：Ch4「智能體經典範式構建」是 single-agent paradigm（ReAct / Plan-and-Solve / Reflection），不是 multi-agent**
 2. [**李宏毅 — 生成式 AI 導論**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) — 中後段有 AI agent / multi-agent 相關集數
 
 **Framework 官方 multi-agent docs**：
+
 - [**LangGraph — Multi-Agent Systems**](https://langchain-ai.github.io/langgraph/concepts/multi_agent/) — supervisor / swarm / hierarchical 三種架構官方教學
 - [**Anthropic Cookbook — `customer_service_agent.ipynb`**](https://github.com/anthropics/claude-cookbooks/tree/main/tool_use) — multi-agent orchestration canonical 範例（routing + handoff）
 - [**Microsoft AutoGen — Examples**](https://microsoft.github.io/autogen/) — group-chat / debate / peer review pattern 完整範例
@@ -154,6 +160,7 @@ Stage 3 教你寫 single tool / multi-tool selection（手寫 `if/elif/else` 路
 | **Tool-augmented retrieval** | tool 本身是 RAG search → 回結果再 reason | Stage 6 練習 4 RAG pipeline + Stage 3 練習 2 multi-tool 結合（LangGraph 直接把 retriever 包成 tool node） |
 
 **📚 深度資源**：
+
 - [**Anthropic — Tool Use best practices**](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/overview) — 官方 tool design guide
 - [**LlamaIndex — Tool Router pattern**](https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/) — Dynamic selection canonical reference
 - [**LangGraph — Tool Node**](https://langchain-ai.github.io/langgraph/) — composition graph 寫法
@@ -164,6 +171,7 @@ Stage 3 教你寫 single tool / multi-tool selection（手寫 `if/elif/else` 路
 
 ### 練習 1：同一個 agent、兩個 framework
 用以下兩個 framework 各做一次同樣的簡單 agent（搜尋 + 摘要）：
+
 - LangGraph
 - CrewAI
 比較程式碼行數、debug 體驗、以及它們各自把哪些複雜度藏在哪裡。

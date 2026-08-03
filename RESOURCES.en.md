@@ -7,6 +7,8 @@
 This file collects: term definitions, daily-tool MCP/Skill highlights, topic-based awesome lists, Chinese-community resources. Pulled out of the main README to keep that page focused.
 
 > 💡 **Don't know a term?** (LLM, agent, RAG, token, vector DB, …) → [`resources/glossary.en.md`](resources/glossary.en.md) — 30+ common terms with 30–80-word definitions
+>
+> 🍳 **Want to build something but don't know where to start?** (writing a Skill / an MCP server / wiring up Word / NotebookLM / Zotero / a local LLM) → [`resources/cookbook.en.md`](resources/cookbook.en.md) — 6 step-by-step recipes, 30-50 minutes each
 
 ---
 

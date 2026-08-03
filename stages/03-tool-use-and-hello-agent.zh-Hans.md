@@ -4,11 +4,11 @@
 
 ⏱ **时间估算**：2-3 周（约 10-20 小时）
 
-> 💡 用语密集（agent / tool use / function calling / ReAct / structured output⋯）→ 翻 [`resources/glossary.md` 2](../resources/glossary.zh-Hans.md#2-agent--工具使用)。
-> 🗺️ **进 Track A（CLI Power User）还是 Track B（Agent Builder）前**，先看 [`resources/agent-paradigms.md`](../resources/agent-paradigms.zh-Hans.md) — 5 种 agent 型态的全景图，帮你选轨。
+> 💡 用语密集（agent / tool use / function calling / ReAct / structured output⋯）→ 翻 [`resources/glossary.zh-Hans.md` 2](../resources/glossary.zh-Hans.md#2-agent--工具使用)。
+> 🗺️ **进 Track A（CLI Power User）还是 Track B（Agent Builder）前**，先看 [`resources/agent-paradigms.zh-Hans.md`](../resources/agent-paradigms.zh-Hans.md) — 5 种 agent 型态的全景图，帮你选轨。
 
 > 📋 **本章组成**：〔开场框景：AI/LLM/Agent 三者关系〕→ 学习目标 → 进入条件 → 必修阅读 →〔可选 · 概念地图〕→ 动手练习 → 反思（概念 + 路由）→ 精选 Projects → 自我检查
-> 🔑 **关键名词**：见 [`resources/glossary.md` 2](../resources/glossary.zh-Hans.md#2-agent--工具使用)
+> 🔑 **关键名词**：见 [`resources/glossary.zh-Hans.md` 2](../resources/glossary.zh-Hans.md#2-agent--工具使用)
 
 ## 🤖 开始前：AI / LLM / Agent — 三者怎么分？
 
@@ -63,12 +63,14 @@
 ### 📚 深度入门资源（中英文 / 影片优先）
 
 **🀄 中文**：
+
 1. [**李宏毅 — 生成式 AI 导论（2024 春台大课程）**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) ⭐⭐⭐ — 中文圈最高质量的 AI / LLM / agent 学术级导论。每集 30-60 分钟、台大授课、官方页含投影片 + YouTube 链接。LLM / agent 概念都涵盖。最新整合版见 [**GenAI-ML 2025 秋**](https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php)、YouTube 主频道 [**@HungyiLeeNTU**](https://www.youtube.com/@HungyiLeeNTU)
 2. [**datawhalechina/hello-agents** Ch1“初识智能体”](https://github.com/datawhalechina/hello-agents) ⭐ — 文字版最完整中文 agent 导论
 3. [**datawhalechina/hello-agents** Ch2“智能体发展史”](https://github.com/datawhalechina/hello-agents) — BabyAGI → AutoGPT → Claude Code 演化脉络
 4. [**3Blue1Brown 中文配音版**](https://www.youtube.com/@3Blue1BrownCN) — LLM / Transformer 视觉化解说（中文配音）
 
 **🇺🇸 English**：
+
 1. [**Andrej Karpathy — "Intro to Large Language Models"**](https://www.youtube.com/watch?v=zjkBMFhNj_g) ⭐⭐⭐（1hr）— LLM 从零开始 visual intro（ex-OpenAI / ex-Tesla AI Director、英文圈最重视的 LLM 入门影片）
 2. [**Andrej Karpathy — "Let's build GPT from scratch"**](https://www.youtube.com/watch?v=kCc8FmEb1nY) ⭐⭐（2hr）— 想看 LLM 内部到代码级的人
 3. [**3Blue1Brown — "But what is a Transformer?"**](https://www.youtube.com/watch?v=wjZofJX0v4M) ⭐⭐⭐ — visual 解释 LLM，英文圈最被推荐的视觉化教材
@@ -77,6 +79,7 @@
 6. [**Chip Huyen — "Agents"**](https://huyenchip.com/2025/01/07/agents.html) — practitioner 视角，full chapter 级深度
 
 **选读 / 进阶补充**：
+
 - [**Simon Willison — "I think 'agent' may finally have a widely enough agreed upon definition"**](https://simonwillison.net/2025/Sep/18/agents/) — working definition：“agent runs tools in a loop to achieve a goal”、含对照 OpenAI 等不同定义的争议（**给已有基础的人**）
 - [**DeepLearning.AI Short Courses**](https://www.deeplearning.ai/short-courses/)：“AI Agents in LangGraph”/“Multi AI Agent Systems with crewAI”/“Functions, Tools and Agents with LangChain”（**API 多数是 2023-2024 旧版**、看概念为主、写 code 对照官方最新 docs）
 - [**microsoft/ai-agents-for-beginners**](https://github.com/microsoft/ai-agents-for-beginners) — 微软官方 12 课 build-agent 入门（MIT、★ 70k+）。结构化、英文、含 code；适合想要一条**平行入门课对照**的人，不是本 stage 动手练习的替代
@@ -93,6 +96,7 @@
 ## 📌 学习目标
 
 完成这个 stage 后你会：
+
 - 讲得出为什么 LLM 需要 tools（它不是万能的，而且文字以外的事它都做不了）
 - 定义一个 tool schema，并让 LLM 调用它
 - 从零（不靠任何 framework）写出一个单步 ReAct agent
@@ -102,6 +106,7 @@
 ## 🚪 进入条件
 
 你应该已经：
+
 - 有可以跑的 Claude / OpenAI / Gemini API 权限（Stage 1）
 - 对 prompt engineering 基础已经上手（Stage 2）
 - 能写一个吃 JSON 进、吐 JSON 出的 Python 函数
@@ -118,7 +123,7 @@
 
 > 🦙 **本 stage 默认用 Ollama qwen2.5:3b**（成本考量、tool-use 支持稳定）。Stage 3 进到 tool calling / ReAct loop、`gemma4:e4b` 不够、改用 `qwen2.5:3b`（1.9 GB、`ollama pull qwen2.5:3b` 即装）。每个练习都有 Path A（Ollama、默认）+ Path B（Anthropic、选择性、想看 cloud 高质量 tool-use 时用）。
 >
-> 💰 **Stage 3 预算估算**（全 6 练习、tool use 较重）：**全本机 = $0**、**全 haiku ≈ $0.50**、**全 sonnet ≈ $1.50**。ReAct loop 练习单次 4-6 tool calls × 5 练习 × 5 reps ≈ $0.80 haiku。完整预算见 [`examples/README.md#推荐-llm-清单`](../examples/README.zh-Hans.md#推荐-llm-清单)。
+> 💰 **Stage 3 预算估算**（全 6 练习、tool use 较重）：**全本机 = $0**、**全 haiku ≈ $0.50**、**全 sonnet ≈ $1.50**。ReAct loop 练习单次 4-6 tool calls × 5 练习 × 5 reps ≈ $0.80 haiku。完整预算见 [`examples/README.zh-Hans.md#推荐-llm-清单`](../examples/README.zh-Hans.md#推荐-llm-清单)。
 >
 > 完整 3 路 trade-off 见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
 >
@@ -141,7 +146,7 @@
 ### 练习 1：Function Calling（一个工具、一次调用）
 给 Claude 一个工具（假的天气 API）跟一个问题（“台北现在有下雨吗？”）。看 Claude 怎么调用工具、拿到结果、再回答你。
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama qwen2.5:3b、默认）</b>（复制到 <code>practice_1.py</code>）</summary>
 
 ```python
@@ -204,7 +209,7 @@ tool_calls: [ChatCompletionMessageToolCall(id='call_xxx', function=Function(name
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、选择性）</b>（复制到 <code>practice_1_anthropic.py</code>）</summary>
 
 ```python
@@ -243,6 +248,7 @@ print(f"✅ 练习 1 通过（Anthropic）— Claude 选了 get_weather、city='
 ```
 
 **3 个关键 SDK 差异**：
+
 - **Schema wrap**：Anthropic 直接 `tools=[{name, description, input_schema}]`；OpenAI/Ollama 要包 `[{"type":"function", "function":{...}}]`
 - **Response 路径**：Anthropic 从 `resp.content[i].type=="tool_use"` 抓；OpenAI/Ollama 从 `resp.choices[0].message.tool_calls[i]`
 - **Args 格式**：Anthropic `.input` 是 dict（自动 parse）；OpenAI/Ollama `.function.arguments` 是 JSON string，要 `json.loads(...)`
@@ -254,7 +260,7 @@ print(f"✅ 练习 1 通过（Anthropic）— Claude 选了 get_weather、city='
 ### 练习 2：多工具选择
 给 Claude 三个工具（搜索、计算器、日历）跟一个任务。看 Claude 怎么挑工具，顺便注意它什么时候会挑错。
 
-<details>
+<details markdown="1">
 <summary>📋 <b>简化版核心观念 — Path A (Ollama)</b></summary>
 
 **NEW vs 练习 1**：tools 从 1 个变 3 个。LLM 看 `description` 边界决定挑哪个——`description` 写得越像“给人读的 docstring”、越容易挑错。
@@ -298,6 +304,7 @@ print(f"LLM 挑了: {tc.function.name}, args: {json.loads(tc.function.arguments)
 function calling 是“**让模型决定要不要动手**”；**结构化输出是“强制模型返回一个固定形状的 JSON”**——两者常搞混，但用途不同：前者让 agent 采取行动，后者让你拿到可程序解析的数据（填表、分类、抽取、eval 评分）。
 
 **三种做法（由弱到强）**：
+
 1. **prompt 要求 JSON**——最简单、但模型有时会多嘴或格式跑掉。
 2. **JSON mode / `response_format`**——API 保证返回合法 JSON（但不保证符合你的 schema）。
 3. **JSON-schema 强制 / constrained decoding**——连 schema 都锁死，返回的一定符合（最可靠）。
@@ -309,7 +316,7 @@ function calling 是“**让模型决定要不要动手**”；**结构化输出
 ### 练习 3：从零实现 ReAct（不用 framework）
 用 50-80 行 Python 把 Thought → Action → Observation 循环写出来。不要 LangChain、不要 LangGraph，就是纯 `while not done: thought; action; observation; ...`。
 
-<details>
+<details markdown="1">
 <summary>📋 <b>简化版核心观念 — Path A (Ollama)、ReAct loop 的全部就在这 13 行</b></summary>
 
 **NEW vs 练习 2**：把单次 call 包进循环、`messages` 一直长、看 `tool_calls` 在不在来决定收尾。
@@ -333,6 +340,7 @@ for step in range(5): # max_iter safety net
 ```
 
 **3 个容易踩坑**：
+
 1. **忘记把 assistant response 加回 messages**——下轮 LLM 看不到自己上轮讲什么、会 loop forever
 2. **`tool` message 没带 `tool_call_id`**——LLM 无法配对哪个 result 对应哪个 call
 3. **没 `max_iter`**——tool 结果写不好时、LLM 会无限调用，safety net 必须设
@@ -346,7 +354,7 @@ for step in range(5): # max_iter safety net
 ### 练习 4：多步骤推理任务
 一个需要连续调用 3-5 次 tool 的任务。例如：“找出台北人口，除以纽约人口，再把比例换成百分比。”每一步用不同的工具。
 
-<details>
+<details markdown="1">
 <summary>📋 <b>简化版核心观念 — 跟练习 3 同一个 loop、跑久一点而已</b></summary>
 
 **NEW vs 练习 3**：**完全同一个 loop**——只是 `TOOLS` 换成 4 个（`lookup_population` / `divide` / `to_percentage` / `round_int`）、题目自然走完 4 轮 tool call 才收尾。
@@ -371,7 +379,7 @@ TOOL_IMPL = {
 ### 练习 5：错误处理
 让某个工具失败（网络错误、输入无效）。看看 agent 会怎么处理错误、能不能恢复，再加上 retry 机制。
 
-<details>
+<details markdown="1">
 <summary>📋 <b>简化版核心观念 — tool error 是 data、不是 exception</b></summary>
 
 **NEW vs 练习 4**：tool error 回传**结构化 dict**、不要 `raise`。loop 把 dict 接回 LLM、模型自己决定 retry / 改 query / 放弃。
@@ -407,14 +415,15 @@ messages.append({"role": "tool", "tool_call_id": tc.id,
 
 ### 练习 6：Function schema 设计（坏 schema 修到好）
 **先给 LLM 一份故意写烂的 schema**——`description` 模糊（“处理数据”）、参数全用 `type: string`、没分 required / optional、enum 该用没用。观察 LLM 怎么选错 tool、传错参数。然后逐项修：
+
 - description 写到 LLM 一眼就懂这个 tool 适用情境（不是写给人读的 docstring）
 - parameters 用对 type（number / boolean / enum / array），required 列清楚
 - 模糊边界用 enum 强制收敛（例如 `unit: "celsius" | "fahrenheit"` 而不是 `unit: string`）
 - error 回传要包 `{"error": "...", "retry_hint": "..."}` 让 LLM 能恢复
 
-> 💡 详细 cheatsheet 看 [`resources/schema-design-cheatsheet.md`](../resources/schema-design-cheatsheet.zh-Hans.md)——5 条黄金规则 + 5 个常见 anti-pattern。
+> 💡 详细 cheatsheet 看 [`resources/schema-design-cheatsheet.zh-Hans.md`](../resources/schema-design-cheatsheet.zh-Hans.md)——5 条黄金规则 + 5 个常见 anti-pattern。
 
-<details>
+<details markdown="1">
 <summary>📋 <b>简化版核心观念 — bad vs good schema 对照</b></summary>
 
 **NEW vs 练习 5**：同一个工具（温度转换）、两种 schema 写法。看 4 个差别。
@@ -468,10 +477,12 @@ messages.append({"role": "tool", "tool_call_id": tc.id,
 ### 📚 想动手 / 想深入？直接读这些
 
 **Paper**：
+
 - [**Reflexion (Shinn et al. 2023)**](https://arxiv.org/abs/2303.11366) ⭐ — 原 paper，定义“verbal reinforcement learning”
 - [**Self-Refine (Madaan et al. 2023)**](https://arxiv.org/abs/2303.17651) — single-agent self-critique，是“基本反思”的学术定义
 
 **Reference 实现**：
+
 - [**arunpshankar/react-from-scratch**](https://github.com/arunpshankar/react-from-scratch) — 已在本 stage 精选 Projects 列出，含 Reflection 实现可直接读
 - [**LangChain — Reflection Agents（blog）**](https://blog.langchain.dev/reflection-agents/) — framework 实现参考 + 完整 working notebook
 - [**datawhalechina/hello-agents**](https://github.com/datawhalechina/hello-agents) — 对应章节（自我反思 / Self-Refine 段落、中文完整教学）

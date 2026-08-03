@@ -23,6 +23,7 @@
 ## 🚪 进入条件
 
 你应该已经：
+
 - 跑过 Stage 0 的 练习：CLI（会用命令行）
 - 有 Claude / OpenAI / Google 任一个 账号（不一定是付费）
 - 对 prompt 写法基本上手（Stage 2）
@@ -95,6 +96,7 @@
 ## 💡 给 Track A 学习者的提醒
 
 CLI agent 跟 web 版（Claude.ai / ChatGPT）的差别不是“一样的东西换界面”——CLI 能读写你电脑上的文件、执行 shell 指令、改 git。这个能力差异**先了解再用**：
+
 - 第一周：每个任务都加 `--dry-run` 或先 review 计划再执行
 - 不要直接让 CLI 对 production codebase 做 commit
 - 重要数据（key、合约、病历）放在 `.cursorignore` / `.claudeignore` 排除

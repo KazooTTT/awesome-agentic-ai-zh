@@ -25,6 +25,7 @@ while not done:
 ```
 
 LangGraph / CrewAI hide this loop from you. **Writing it once yourself** is what teaches you:
+
 - Why the `messages` array keeps growing
 - How `tool_use_id` pairs with `tool_result`
 - Why `stop_reason` is `tool_use` vs `end_turn`

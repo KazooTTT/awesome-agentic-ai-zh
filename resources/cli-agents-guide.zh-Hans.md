@@ -53,6 +53,7 @@
 
 ### 想跑在 cloud VM、用 Telegram / Slack 等多平台跟它聊 + 用中国大陆 LLM
 **首推**：Hermes Agent。差异化在三件事：
+
 - **不绑 laptop**——agent 跑在 $5 VPS / Modal serverless，你从 Telegram / Discord / Slack / WhatsApp / Signal 任一个介面对话
 - **多 LLM 中性**——支持 GLM / Kimi / 小米 MiMo / MiniMax，刚好对应 11 中文圈生态
 - **内建 self-improving skill loop + cron 排程**——agent 跟你互动久了会自动生成 skill，跨 session 持续优化
@@ -124,7 +125,7 @@
 - **LLM endpoint** 用 Ollama（`http://localhost:11434/v1`），也可以改接 z.ai GLM / Kimi 等 provider
 - **聊天入口** 用 Telegram / Slack / Discord；Hermes 负责把平台消息转进 agent workflow
 - **完全不想接 Anthropic / OpenAI** 时，这条路线适合做离线、隐私资料、低成本重复实验
-- Step-by-step 做法看 [`resources/cookbook.md` Recipe 6](cookbook.zh-Hans.md#6-本地-llm--cli-agent-快速-walkthrough)
+- Step-by-step 做法看 [`resources/cookbook.zh-Hans.md` Recipe 6](cookbook.zh-Hans.md#6-本地-llm--cli-agent-快速-walkthrough)
 
 ---
 

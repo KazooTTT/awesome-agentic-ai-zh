@@ -21,6 +21,7 @@ After Stages 0-2, you want to use existing CLI agents to get real work done — 
 ## 🚪 Entry Conditions
 
 You should already:
+
 - Have completed Stage 0's Exercise: CLI (basic command-line literacy)
 - Have a Claude / OpenAI / Google account (paid not required)
 - Be comfortable with prompt design (Stage 2)
@@ -93,6 +94,7 @@ If no → don't skip. Sloppy CLI usage isn't productive CLI usage; do Exercises 
 ## 💡 Reminder for Track A learners
 
 A CLI agent is not "the same thing with a different UI" as Claude.ai / ChatGPT web — it can read/write files on your machine, run shell commands, modify git. This capability difference deserves caution **before use**:
+
 - Week 1: review the plan before letting it execute (or use `--dry-run`)
 - Don't let CLI commit directly to production codebases yet
 - Put sensitive data (keys, contracts, medical records) in `.cursorignore` / `.claudeignore` to exclude

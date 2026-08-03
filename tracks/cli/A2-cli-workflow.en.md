@@ -21,6 +21,7 @@ After installing a CLI and running first tasks, the next question: **how do I ma
 ## 🚪 Entry Conditions
 
 You should already:
+
 - Have completed [A1](A1-cli-intro.en.md): picked a primary CLI, installed it, authenticated, and run at least 5 non-hello-world tasks
 - Have written one `CLAUDE.md` / `AGENTS.md` / `GEMINI.md` (even just a rough first pass)
 - Be comfortable with the Stage 2 prompt engineering basics
@@ -38,6 +39,7 @@ Not there yet? → go back to [A1](A1-cli-intro.en.md) and get comfortable with 
 
 ### Exercise CLI-5: Write production CLAUDE.md
 Your CLAUDE.md should at minimum contain:
+
 - **Persona**: "You're a senior Python engineer / academic writing assistant / etc."
 - **Repo context**: what project, what stack, what conventions
 - **Don't do**: don't touch main, don't move secrets, don't auto-commit
@@ -64,6 +66,7 @@ After this, every `/review` runs the same flow.
 
 ### Exercise CLI-7: Multi-step task decomposition
 Give the CLI a complex task ("translate these 50 markdown files to English + add frontmatter + move to en/ subdirectory").
+
 - First time: throw the whole task at it → observe how it does it, where it errs
 - Second time: pre-decompose into 5 sub-tasks, give them one by one → observe the difference
 - Lesson: the CLI is like you — too-big tasks need decomposition; too-small tasks lead to over-orchestration
@@ -72,6 +75,7 @@ Give the CLI a complex task ("translate these 50 markdown files to English + add
 
 ### Exercise CLI-8: Portable prompt
 Write a prompt that works in Claude Code. **Run the same prompt in Codex / OpenCode / Gemini CLI** — what needs to change? Common discoveries:
+
 - file path conventions differ (cwd vs absolute)
 - shell execution permission defaults differ
 - "plan-first" prompting needs explicit instructions in some, default in others
@@ -89,7 +93,7 @@ Four categories, seven projects, one table covers it. **Pick your entry point fr
 | | [mattpocock/skills](https://github.com/mattpocock/skills) | ⭐⭐⭐⭐ | Anyone who wants a practitioner's daily skill library | The `.claude/` structure is a great reference. **More skill examples in [Stage 5.3 — Skills](../../stages/05-claude-code-ecosystem.en.md#53--skills-claude-codes-behavior-layer--the-most-critical-layer-of-the-claude-code-ecosystem)** |
 | **Slash Commands / Custom Prompts** | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) | ⭐⭐⭐⭐⭐ | Finding the official plugin template | Official plugin marketplace; each plugin's commands / skills serve as slash command examples (★ 32k+) |
 | | [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | ⭐⭐⭐ | Browsing community slash command examples | Community-curated list of Claude Code resources |
-| **Prompt Design References** | [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐⭐ | Finding CLI-agnostic prompt patterns when you are stuck | Started for ChatGPT but ~90% of the patterns work in CLIs too (★ 161k+, CC0). Full prompt engineering deep dive: [Stage 2 — Curated Projects](../../stages/02-prompt-engineering.en.md#-curated-projects) (DSPy, Prompt-Engineering-Guide, etc.) |
+| **Prompt Design References** | [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐⭐ | Finding CLI-agnostic prompt patterns when you are stuck | Started for ChatGPT but ~90% of the patterns work in CLIs too (★ 166k+, CC0). Full prompt engineering deep dive: [Stage 2 — Curated Projects](../../stages/02-prompt-engineering.en.md#-curated-projects) (DSPy, Prompt-Engineering-Guide, etc.) |
 | **Multi-CLI Patterns** | [`resources/cli-agents-guide.en.md`](../../resources/cli-agents-guide.en.md) "Three common combinations" | ⭐⭐⭐⭐ | Trying a multi-CLI pairing strategy | In-repo resource — look at Setup A / B / C and try one that fits |
 
 > 💡 **Suggested order to pick these up**: copy Anthropic's official CLAUDE.md structure first → add your own repo context → look at obra/superpowers to see what a complete `.claude/` actually looks like → then write 1-2 slash commands (mine the hesreallyhim awesome list for ideas).

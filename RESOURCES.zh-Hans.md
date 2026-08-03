@@ -7,6 +7,8 @@
 这份文件集中放：用语说明、常用 MCP / Skill 集成 highlight、同主题 awesome list、中文社群资源。从主 README 抽出避免主页过长。
 
 > 💡 **不懂某个词**（LLM、agent、RAG、token、向量数据库⋯）→ [`resources/glossary.zh-Hans.md`](resources/glossary.zh-Hans.md)（用语小词典，30 多个词每个 30-80 字解释）
+>
+> 🍳 **想动手做但不知怎么开始**（写 Skill / 写 MCP server / 接 Word / 接 NotebookLM / 接 Zotero / 接本机 LLM）→ [`resources/cookbook.zh-Hans.md`](resources/cookbook.zh-Hans.md)（6 个 step-by-step recipe，每个 30-50 分钟做完）
 
 ---
 
@@ -15,7 +17,7 @@
 主 README 跟各 stage 会频繁提到这三个 Claude Code 生态的关键词，先快速说明：
 
 - **MCP（Model Context Protocol）** — Anthropic 推的开放协定，让任何 LLM host（Claude Code、其他 IDE、自写 agent）都能用同一套接口去调用外部 tool server（文件、DB、API、自家系统）。把它想成“LLM 的 USB 接口”。详见 [Stage 5.2](stages/05-claude-code-ecosystem.zh-Hans.md#52--mcpmodel-context-protocol-基础)。
-- **Skills** — Claude Code 的“行为包”。一个 Skill 就是一份 `SKILL.zh-Hans.md`，描述“在什么场景要做什么、可以调用哪些 MCP tool”。写好之后 Claude Code 会自动 discover。详见 [Stage 5.3](stages/05-claude-code-ecosystem.zh-Hans.md#53--skillsclaude-code-的行为层-claude-code-生态最关键的一层)。
+- **Skills** — Claude Code 的“行为包”。一个 Skill 就是一份 `SKILL.md`，描述“在什么场景要做什么、可以调用哪些 MCP tool”。写好之后 Claude Code 会自动 discover。详见 [Stage 5.3](stages/05-claude-code-ecosystem.zh-Hans.md#53--skillsclaude-code-的行为层-claude-code-生态最关键的一层)。
 - **Plugins / Marketplaces** — 把 Skills、slash commands、hooks、MCP 设置打包成一个发布单位给 team 或社群安装。Marketplace 就是 plugin 的 catalog。详见 [Stage 5.4](stages/05-claude-code-ecosystem.zh-Hans.md#54--plugins-与-marketplaces)。
 
 对应的 **动手练习都在 [Stage 5](stages/05-claude-code-ecosystem.zh-Hans.md)，Track A 的 [A3](tracks/cli/A3-cli-production.zh-Hans.md) 也会用到。

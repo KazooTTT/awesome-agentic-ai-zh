@@ -21,6 +21,7 @@
 ## 🚪 进入条件
 
 你应该已经：
+
 - 完成 [A1](A1-cli-intro.zh-Hans.md)：选定主用 CLI、装好、认证好、跑过至少 5 个非 hello-world 任务
 - 写过 1 份 `CLAUDE.md` / `AGENTS.md` / `GEMINI.md`（即使只是试水温）
 - 对 Stage 2 prompt engineering 基础上手
@@ -38,6 +39,7 @@
 
 ### 动手练习 CLI-5：写 production CLAUDE.md
 你 CLAUDE.md 应该至少包含：
+
 - **角色**：“你是一个 senior Python engineer / 学术写作为助手 / 等”
 - **这个 repo 的 context**：是什么项目、用什么套件、有什么 convention
 - **不能做的事**：别乱改 main、别动 secrets、别 commit
@@ -64,6 +66,7 @@ description: Review staged changes for security + style
 
 ### 动手练习 CLI-7：多步骤任务拆解
 给 CLI 一个复杂任务（譬如“把这 50 个 markdown 翻译成英文 + 加 frontmatter + 移到 en/ 子目录”）。
+
 - 第一次：直接丢整个任务 → 观察 CLI 怎么做、什么地方会错
 - 第二次：你先拆成 5 个 sub-task，逐一给 CLI → 观察结果差别
 - 学到：CLI 跟你一样，太大的任务要拆；给太小的任务又会 over-orchestrate
@@ -72,6 +75,7 @@ description: Review staged changes for security + style
 
 ### 动手练习 CLI-8：Portable prompt
 写一个 prompt 给 Claude Code 跑成功了。**换到 Codex / OpenCode / Gemini CLI 跑同一个 prompt**——什么地方需要改？通常会发现：
+
 - file path convention 不同（cwd vs absolute）
 - 对“执行 shell”的权限默认不同
 - “先 plan 再做”的 prompt 在某些 CLI 要明确说，在某些是默认行为
@@ -89,7 +93,7 @@ description: Review staged changes for security + style
 | | [mattpocock/skills](https://github.com/mattpocock/skills) | ⭐⭐⭐⭐ | 想看工程师日常用的 skill 库 | `.claude/` structure 是好参考。**更多 skill 范例见 [Stage 5.3 — Skills](../../stages/05-claude-code-ecosystem.zh-Hans.md#53--skillsclaude-code-的行为层-claude-code-生态最关键的一层)** |
 | **Slash Commands / Custom Prompts** | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) | ⭐⭐⭐⭐⭐ | 找官方 plugin 范本 | 官方 plugin marketplace；每个 plugin 内的 commands / skills 是 slash command 范例（★ 32k+） |
 | | [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | ⭐⭐⭐ | 想逛社群 slash command 范例 | 社群整理的 Claude Code 资源清单 |
-| **Prompt 设计参考** | [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐⭐ | 卡关时找 CLI 通用的 prompt 模式 | 虽然是 ChatGPT 起家，prompt 写法 90% 在 CLI 上也通（★ 161k+、CC0）。完整 prompt engineering 进阶见 [Stage 2 精选 Projects](../../stages/02-prompt-engineering.zh-Hans.md#-精选-projects)（DSPy、Prompt-Engineering-Guide 等） |
+| **Prompt 设计参考** | [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐⭐ | 卡关时找 CLI 通用的 prompt 模式 | 虽然是 ChatGPT 起家，prompt 写法 90% 在 CLI 上也通（★ 166k+、CC0）。完整 prompt engineering 进阶见 [Stage 2 精选 Projects](../../stages/02-prompt-engineering.zh-Hans.md#-精选-projects)（DSPy、Prompt-Engineering-Guide 等） |
 | **多 CLI 并用 pattern** | [`resources/cli-agents-guide.zh-Hans.md`](../../resources/cli-agents-guide.zh-Hans.md) “3 个常见搭配” | ⭐⭐⭐⭐ | 想试多 CLI 配对策略 | 本 repo 内部资源；看 Setup A / B / C，挑一个合的试 |
 
 > 💡 **建议入手路径**：先抄 Anthropic 官方 CLAUDE.md 结构 → 加自己的 repo context → 看 obra/superpowers 看“完整 `.claude/` 长什么样” → 然后写 1-2 个 slash command（从 hesreallyhim awesome 列表捞灵感）。

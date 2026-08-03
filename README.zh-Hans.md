@@ -13,8 +13,8 @@
 <p><em><b>学习路线图 + 240+ 资源 curation + 简单 illustrative 案例</b><br/>结构化 8 阶段、从“LLM 是什么、token 怎么算”走到 multi-agent 编排、Computer Use / Browser Use / Sandbox</em></p>
 
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat)](LICENSE)
-[![繁中](https://img.shields.io/badge/語言-繁體中文-red?style=flat)](README.md)
-[![简中](https://img.shields.io/badge/語言-简体中文-orange?style=flat)](README.zh-Hans.md)
+[![繁中](https://img.shields.io/badge/语言-繁體中文-red?style=flat)](README.md)
+[![简中](https://img.shields.io/badge/语言-简体中文-orange?style=flat)](README.zh-Hans.md)
 [![EN](https://img.shields.io/badge/lang-English-blue?style=flat)](README.en.md)
 ![GitHub stars](https://img.shields.io/github/stars/WenyuChiou/awesome-agentic-ai-zh?style=flat&logo=github)
 ![GitHub forks](https://img.shields.io/github/forks/WenyuChiou/awesome-agentic-ai-zh?style=flat&logo=github)
@@ -39,6 +39,24 @@
 走完这条路线，你会从“**LLM 用户**”进阶到“**agent 系统构建者**”——能看懂 framework 在做什么、能设计多 agent 协作、能写自己的 MCP server。
 
 > 📖 **关于中英文混用**：本项目保留 AI Agent 领域常见英文术语（Prompt Engineering / Context Engineering / Harness / MCP / Skills / RAG 等），因为官方文档、paper、GitHub repo 与 API 文档多以英文为主。每个重要概念会提供 **中文理解名 + 英文正式术语 + 一句白话定位**，让读者能先理解概念，再对接英文生态。完整对照见 [`resources/glossary.zh-Hans.md`](resources/glossary.zh-Hans.md)。
+
+---
+
+## 📋 目录
+
+- [🎯 项目介绍](#-项目介绍)
+- [📚 快速开始](#-快速开始)
+  - [在线阅读](#在线阅读)
+  - [本地下载](#本地下载)
+  - [✨ 你会收获什么？](#-你会收获什么)
+- [🗺️ 学习地图（两条学习路径）](#️-学习地图两条学习路径)
+- [💡 如何学习](#-如何学习)
+- [📚 相关资源](#-相关资源)
+- [🤝 如何贡献](#-如何贡献)
+- [🙏 致谢](#-致谢)
+- [🎓 引用](#-引用)
+- [☕ 支持这个项目](#-支持这个项目)
+- [License](#license)
 
 ---
 
@@ -125,7 +143,7 @@ cd awesome-agentic-ai-zh
 
 > 💡 **想看跨 stage 的完整示例？** [7 步构建你的第一个 AI Agent](walkthroughs/build-first-agent-in-7-steps.zh-Hans.md) — 同一个 Paper Summary Bot 从 Stage 1 一路写到 Stage 7，~350 行真实代码（**Track B 适用**）
 
-走完主干（Track B 16-22 周 / Track A 8-10 周）后，依你的身份挑一条延伸路线继续走。**不确定挑哪条？**
+走完主干后，依你的身份挑一条延伸路线继续走。**不确定挑哪条？**
 
 ![Branch 决策树](resources/diagrams/branch-decision-tree.zh-Hans.png)
 
@@ -232,7 +250,7 @@ cd awesome-agentic-ai-zh
 - 🌏 **翻译** — 补英文 companion 没翻到的段落，或翻成其他语言
 - 🌱 **担任 Stage / Branch maintainer** — 长期 review 特定领域，详见 [CONTRIBUTORS.md](CONTRIBUTORS.md)。
 
-PR 流程跟 style 规范请看 [CONTRIBUTING.md](CONTRIBUTING.zh-Hans.md) 和 [resources/style-guide.zh-Hans.md](resources/style-guide.zh-Hans.md)。
+PR 流程跟 style 规范请看 [CONTRIBUTING.zh-Hans.md](CONTRIBUTING.zh-Hans.md) 和 [resources/style-guide.zh-Hans.md](resources/style-guide.zh-Hans.md)。
 
 > 🤖 **新增 project 的链接会自动过审核** — PR 一加新的 `github.com/owner/repo` 链接，一个 GitHub Action 会留言贴出它的 star 数、license、是否封存、最后更新，并对照策展标准标出已封存 / 停更（>6 个月）/ 无 license 的项目。纯信息、不挡 PR，收不收仍由 maintainer 决定（目前只在 maintainer 开的 branch 上跑，fork PR 因 token 限制暂略）。
 

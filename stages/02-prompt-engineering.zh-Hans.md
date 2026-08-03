@@ -14,6 +14,7 @@
 ## 📌 学习目标
 
 走完这个阶段后你会：
+
 - 写出结构化 prompt（角色 + 任务 + 格式 + 示例）
 - 应用 few-shot prompting，并知道什么时候有用
 - 在推理任务上使用 chain-of-thought（CoT）
@@ -23,6 +24,7 @@
 ## 🚪 进入条件
 
 你应该已经：
+
 - 会调用 LLM API（Stage 1）
 - 会解析 / 遍历 API 响应
 
@@ -36,6 +38,7 @@
 5. [**Anthropic — Prompting Best Practices**](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct) — 直接清楚
 
 **🎥 中文视频补充（强烈推荐）**：
+
 - [**李宏毅 — 生成式 AI 导论（2024 春台大课程）**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) ⭐⭐⭐ — 中后段集数讲 prompt engineering（few-shot、CoT、in-context learning）+ 对应 lab。中文圈最完整的 prompting 学术级教学。最新整合版见 [**GenAI-ML 2025 秋**](https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php)
 - [**李宏毅 — 机器学习 2025 春（含 prompt + LLM 章节）**](https://speech.ee.ntu.edu.tw/~hylee/ml/2025-spring.php) — 适合想看 ML 完整背景的人
 
@@ -50,7 +53,7 @@
 ### 练习 1：System Prompt
 同样的 user message，三个不同的 system prompt。观察人格 / 输出格式怎么变。
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_1.py</code>）</summary>
 
 ```python
@@ -114,7 +117,7 @@ print("💡 观察：律师长、老师短、JSON 机器一定是 {...}")
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、选择性）</b>（复制到 <code>practice_1_anthropic.py</code>）</summary>
 
 ```python
@@ -148,6 +151,7 @@ print(f"\n✅ 练习 1 通过（Anthropic）")
 ```
 
 **主要差异**：
+
 - Anthropic: `system=...` 参数
 - Ollama / OpenAI-compatible: `messages=[{"role": "system", ...}, ...]`
 
@@ -158,13 +162,14 @@ print(f"\n✅ 练习 1 通过（Anthropic）")
 ### 练习 2：Few-Shot
 
 **先搞懂这三个词**——差别只在你给 LLM 看“几个范例”：
+
 - **Zero-shot（0-shot）**：不给范例、直接问。
 - **One-shot（1-shot）**：先给 **1 个**“输入 → 答案”范例再问。
 - **Few-shot（下面用的 3-shot 就是）**：给几个（通常 2-5 个）范例再问——LLM 照着范例的格式跟判断标准做，准确率通常明显变高。
 
 挑一个分类任务。先用 0-shot 跑，再用 3-shot 跑。量一下准确率差多少。
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_2.py</code>）</summary>
 
 ```python
@@ -244,7 +249,7 @@ print("💡 小 model（gemma4:e4b）对格式更敏感，所以 few-shot 的帮
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、选择性）</b>（复制到 <code>practice_2_anthropic.py</code>）</summary>
 
 ```python
@@ -270,11 +275,12 @@ def classify(text: str, *, use_few_shot: bool) -> str:
 
 ### 练习 3：CoT
 挑一个数学文字题，比较：
+
 - 纯 prompt
 - 纯 prompt + “Let's think step by step”
 - 纯 prompt + 一个展示 CoT 的范例
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_3.py</code>）</summary>
 
 ```python
@@ -335,7 +341,7 @@ print(f"💡 观察小 model：A 纯 prompt 通常答错、B/C 加 CoT 后明显
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、选择性）</b>（复制到 <code>practice_3_anthropic.py</code>）</summary>
 
 把 Path A 的 client + ask() 改成：
@@ -359,7 +365,7 @@ def ask(prompt: str) -> str:
 ### 练习 4：Iterative Refinement
 拿一个模糊的 prompt，refine 5 次。把每一轮记下来。观察哪些改动会提升质量。
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_4.py</code>）— 这题没有“对错”、重点是观察过程</summary>
 
 ```python
@@ -407,7 +413,7 @@ print("💡 用 gemma4:e4b 跑这题特别有感——小 model 对 prompt 质�
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、选择性）</b>（复制到 <code>practice_4_anthropic.py</code>）</summary>
 
 把 Path A 的 client + 循环内 `client.chat.completions.create(...)` 改成：
@@ -441,7 +447,7 @@ text = msg.content[0].text
 | | [NirDiamant/Prompt_Engineering](https://github.com/NirDiamant/Prompt_Engineering) | ⭐⭐⭐⭐ | 偏好“边跑边学” | 22 种技巧、独立 notebook，比 dair-ai 更动手，★ 7.7k+|
 | **官方 cookbook** | [Anthropic Cookbook — Prompt patterns](https://github.com/anthropics/claude-cookbooks) | ⭐⭐⭐⭐⭐ | Claude 进阶 prompting（含 prompt caching / multimodal）| Stage 1 已介绍、本 stage 重点看 `misc/prompt_caching.ipynb` 跟 `multimodal/` |
 | | [GoogleCloudPlatform/generative-ai](https://github.com/GoogleCloudPlatform/generative-ai) | ⭐⭐⭐ | 用 Google 技术栈（PaLM / Gemini）| Google Cloud 的 prompting cookbook、跨厂商观点 |
-| **灵感 collection**<br>（找模式、不要照抄）| [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐ | 卡关时找灵感 | 上百个“Act as a [角色]...”prompt，★ 162k+、CC0。**把模式拿出来改写、不要照抄** |
+| **灵感 collection**<br>（找模式、不要照抄）| [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | ⭐⭐⭐ | 卡关时找灵感 | 上百个“Act as a [角色]...”prompt，★ 166k+、CC0。**把模式拿出来改写、不要照抄** |
 | **Production 管理**<br>（规模化）| [microsoft/prompt-engine](https://github.com/microsoft/prompt-engine) | ⭐⭐（⚠️ 已封存）| production 要管很多 prompt 时 | TypeScript library；⚠️ **2023 起无更新、repo 已封存**——找维护中的替代 |
 | | [microsoft/promptflow](https://github.com/microsoft/promptflow) | ⭐⭐⭐ | 团队型应用、需要 eval | 视觉化 prompt 设计 + 评估工具，★ 11k+ |
 | | [stanfordnlp/dspy](https://github.com/stanfordnlp/dspy) ⭐ **Stage 2 → 3 桥** | ⭐⭐⭐⭐⭐ | 跑完 dair-ai 想规模化 prompt | 把 prompt 当 code 写，用 compiler 自动最佳化，★ 36k+、MIT |

@@ -80,6 +80,7 @@
 ### 3 個具體 workflow recipe
 
 **1. AI 結對程式設計（每日節奏）**
+
 1. 開新 feature → `git checkout -b feature/xxx`
 2. 把任務丟給 Claude Code / Cursor，**先讓它寫 plan**（不直接寫 code）
 3. Review plan、修正方向 → 才 approve 寫 code

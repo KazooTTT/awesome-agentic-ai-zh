@@ -4,10 +4,10 @@
 
 ⏱ **Estimated Time**: 2-4 weeks (approx. 15-30 hours)
 
-> 💡 High density of terminology (multi-agent / handoff / eval / observability / guardrails...) → Refer to [`resources/glossary.md` 4 + 6](../resources/glossary.en.md#4-multi-agent).
+> 💡 High density of terminology (multi-agent / handoff / eval / observability / guardrails...) → Refer to [`resources/glossary.en.md` 4 + 6](../resources/glossary.en.md#4-multi-agent).
 
 > 📋 **Chapter Composition**: [What is Multi-Agent · Productionization (Positioning) + Three-layer engineering split + When to use multi-agent] → Learning Objectives → Entry Conditions → Required Reading → Harness Engineering (**8 core components including Cost/Latency**) → Hands-on Exercises (including Exercise 6 Cost Optimization) → **Agent Benchmark Landscape: how to read it, not just the leaderboard** → Recommended Tools → Featured Projects → Self-Check
-> 🔑 **Key Terms**: See [`resources/glossary.md` 4 + 6](../resources/glossary.en.md#4-multi-agent) (multi-agent / orchestration / handoff / eval / observability / harness (the execution and control layer around the model))
+> 🔑 **Key Terms**: See [`resources/glossary.en.md` 4 + 6](../resources/glossary.en.md#4-multi-agent) (multi-agent / orchestration / handoff / eval / observability / harness (the execution and control layer around the model))
 
 This is the final stage. You are moving from "I can build an agent" to "I can make an agent **truly stable for people to use**"—with multiple agents collaborating, with eval, with observability, and deployable to a usable environment. **"Productionization" ≠ enterprise scale**—as long as an agent can produce stable output and be used by others, it falls within the scope of this stage.
 
@@ -37,6 +37,7 @@ Engineering work can be split into three layers, corresponding to different posi
 > 🔁 **The next layer: Loop Engineering**. After prompt → context → harness, the fourth discipline emerging in 2026 is **engineering the agent's iteration loop itself**: the goal, available tools, context management, **termination logic**, and error handling that keep an agent reliable across hundreds of steps and multiple sessions. Claude Code's `/goal` (give a verifiable completion condition and the agent loops until it is met) is exactly this; [Stage 5.6 Dynamic Workflows](05-claude-code-ecosystem.en.md) is the agent writing its own loop script. Lineage: ReAct (2022) → AutoGPT (2023) → /goal (2026).
 
 **Plain-language difference**:
+
 - **Prompt** = design a good way of asking so the model answers correctly this time
 - **Context** = dynamically decide which background, memory, documents, and tool results to include so the model understands the current situation
 - **Harness** = connect prompt, context, tools, state, flow control, and error handling into a system that can actually run
@@ -71,6 +72,7 @@ Engineering work can be split into three layers, corresponding to different posi
 ## 🚪 Entry Conditions
 
 You should already have:
+
 - Completed Stage 4 (used at least one agent framework to run a multi-agent demo)
 - Completed Stage 5 (understand the roles of MCP / Skills / Plugins / Subagents, and have dissected a harness internally in 5.7)
 - Completed Stage 6 (know basic RAG, can explain the differences between memory patterns)
@@ -130,6 +132,7 @@ To turn an LLM into a usable agent, you usually run into three layers of enginee
 | **Cost / Latency optimization** ⭐ Required for 2024-2026 | Prompt caching, model routing, thinking budget, batching, semantic cache | **Exercise 6 Cost optimization** (New) |
 
 **Framework vs. Harness: key difference**:
+
 - **Framework** ([Stage 4](04-agent-frameworks.en.md)) defines the **API** — what the interface you call looks like
 - **Harness** (this section) defines the **runtime** — how it runs, how it recovers, and how it is observed
 
@@ -173,11 +176,13 @@ When a production agent runs long enough, **cost and latency will eat up most of
 | **Semantic caching** | Sharing answers for similar queries (not just exact matches) | Built into [GPTCache](https://github.com/zilliztech/GPTCache) / Helicone |
 
 **How Track A can use this** (for those using CLI agents):
+
 - Set up prompt caching in Claude Code / Cursor to save 50-90% on daily session costs
 - Use [RouteLLM](https://github.com/lm-sys/RouteLLM) / [OpenRouter](https://openrouter.ai/) to dynamically switch models (simple questions use Haiku / Flash, difficult ones use Opus / Pro)
 - Use the `thinking_budget` parameter in the Claude API to control the token limit for reasoning models
 
 **How Track B can build this** (for those writing their own agents):
+
 - Build a custom cascade router that maps query embeddings → classifier → model
 - Monitor token cost within the agent loop and automatically downgrade if the budget is exceeded
 - Integrate a semantic cache layer in the deployed environment
@@ -242,6 +247,7 @@ This means that for numbers on the leaderboard like "Claude 87.6% / GPT 85.0%", 
 | Look at multiple benchmarks + your own use case | ✅ Don't rely on a single metric |
 
 **Which benchmarks are harder to hack (as of 2026-05)**:
+
 - **τ-bench** — Multi-turn dialogue + tool use, denser reward function
 - **RE-bench** — Real-world research engineering tasks
 - **Your own production eval set** ⭐ Always the most reliable
@@ -273,6 +279,7 @@ Don't know where to start choosing tools? Below are the common pairings in the i
 | **Fine-tuning an open-source LLM** | [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) | Unified SFT/DPO/PPO/GRPO for 100+ models, no-code Web UI, widest Chinese community, ★ 73k+ |
 
 **Suggested adoption sequence**:
+
 1. First multi-agent: **crewAI** (role-based, simplest)
 2. Add eval: **promptfoo** (YAML, CI integration)
 3. Add observability: **langfuse** (OSS, complete)
@@ -330,6 +337,7 @@ If you can do all of these → first go to [**Stage 7.5 — Advanced Agentic Con
 ## 💡 What's Next
 
 You now have the foundational skills. For the next 6-12 months, you should focus on:
+
 1. **Picking one production system** and taking it from prototype to production.
 2. **Contributing upstream** (LangGraph, AutoGen, MCP servers, Anthropic cookbook).
 3. **Reading papers**—agent research is moving fast.

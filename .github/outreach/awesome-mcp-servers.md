@@ -91,10 +91,13 @@ if it doesn't fit.
 - **Targeting punkpeye, not wong2** — punkpeye has a `## Tutorials` section
   (★86k repo, very large reach); wong2 is server-only-policy by design (★4k,
   no tutorials section, off-policy for our pitch)
+
 - Confirm the line number / position of `## Tutorials` in punkpeye's README
   before opening PR — alphabetical sort within the section is the convention
+
 - punkpeye is responsive — PRs typically reviewed within ~7 days
 - If they accept, mirror cross-cite by ensuring our README still references
   them (already done as of 2026-05-09)
+
 - If they redirect to a different section, follow their guidance — don't
   push back

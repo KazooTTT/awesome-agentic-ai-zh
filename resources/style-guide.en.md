@@ -50,6 +50,7 @@ Every project entry uses this structure:
 
 ### Required fields (GitHub repo entry)
 For entries that are real GitHub repos:
+
 - `Stars` (`★ Xk+` format, no thousands separator)
 - `License` (SPDX ID or annotated exception, see 5)
 - `Recommendation` (⭐ × N, see 2)
@@ -57,6 +58,7 @@ For entries that are real GitHub repos:
 
 ### Required fields (non-repo entry: article / course / video / protocol / documentation)
 Some entries are blogs, videos, official docs, or catalog hubs — not GitHub repos. For these:
+
 - `Recommendation` (required)
 - `What it teaches`, `Best for` (required)
 - `Format` (required, e.g. `Article` / `Video` / `Course` / `Curated list` / `Specification`)
@@ -87,6 +89,7 @@ Example: an `Anthropic — Building Effective Agents` blog entry uses `Format = 
 | ⭐ | Niche / advanced / for completeness | Most readers can skip |
 
 **Rules:**
+
 - A repo cited in different stages / branches **should have the same rating** (unless audience-specific reason, then note it explicitly)
 - Don't inflate stars to "look encouraging." Honesty > politeness
 - Commercial products (Cursor, LangSmith, etc.) follow the same scale

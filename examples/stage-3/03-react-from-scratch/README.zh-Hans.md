@@ -25,6 +25,7 @@ while not done:
 ```
 
 LangGraph / CrewAI 把这个 loop 藏起来了。你**自己写过一次**才知道：
+
 - 为什么 messages array 一直长
 - tool_use_id 跟 tool_result 怎么配对
 - stop_reason 为什么是 `tool_use` 或 `end_turn`

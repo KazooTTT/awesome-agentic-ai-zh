@@ -10,6 +10,7 @@ Corresponds to [Stage 1 — LLM Basics](../../../stages/01-llm-basics.en.md) Exe
 ## Why compare
 
 Give the same "explain AGI vs narrow AI" prompt to three LLMs and the three answers come back different:
+
 - **Claude**: usually leads with structure (definition → example), neutral tone
 - **GPT**: tends to give the short answer first, then expand (type-A style)
 - **Gemini**: tends toward lists / bullets, with lots of examples

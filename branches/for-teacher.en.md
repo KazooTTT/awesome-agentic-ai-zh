@@ -223,4 +223,4 @@ This branch is the smallest curated section currently. Contributions especially 
 - Teacher-specific MCP servers (gradebook integrations, LMS connections like Canvas / Moodle / Google Classroom)
 - **Subject + grade-level case studies** (e.g., "I used AI to teach middle-school math for a semester — here's my workflow")
 
-See [CONTRIBUTING.md](../CONTRIBUTING.en.md).
+See [CONTRIBUTING.en.md](../CONTRIBUTING.en.md).

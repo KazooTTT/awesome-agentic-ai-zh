@@ -94,6 +94,7 @@
 3. **預期會被 ≥ 3 個 stage 或 branch cross-ref**——只服務一個 stage 的內容，放那個 stage 就好
 
 近期考慮過、但**沒加**的（可選 future work）：
+
 - `cost-calculator-guide.md`（cross-provider 計價）—— 現在 [Stage 1](../stages/01-llm-basics.md) 有提到，等需求明顯再開
 - `troubleshooting-guide.md`（常見錯誤 runbook）—— 現有資料夠應付，等社群回報多了再開
 - `prompt-patterns-guide.md`（CoT / few-shot 範本庫）—— 現在 [Stage 2](../stages/02-prompt-engineering.md) 有，深度版等社群 PR

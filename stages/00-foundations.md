@@ -13,6 +13,7 @@
 ## 何時可以跳過這個階段
 
 如果你能：
+
 - 寫一個會呼叫公開 API 並解析 JSON 回應的 Python 函式
 - 用 git 做 clone、commit、push，並處理基本的 merge 衝突
 - 在自己的作業系統上使用命令列（cd、ls、mkdir、執行 script）

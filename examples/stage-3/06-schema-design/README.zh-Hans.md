@@ -82,7 +82,7 @@ python test_anthropic.py  # 验 Path B (Anthropic) starter_*_anthropic
 
 ## 延伸阅读
 
-更多 schema 设计规则对照 [`resources/schema-design-cheatsheet.md`](../../../resources/schema-design-cheatsheet.zh-Hans.md)：清楚用途、正确类型、必填字段、enum 收敛、结构化错误回传。
+更多 schema 设计规则对照 [`resources/schema-design-cheatsheet.zh-Hans.md`](../../../resources/schema-design-cheatsheet.zh-Hans.md)：清楚用途、正确类型、必填字段、enum 收敛、结构化错误回传。
 
 ## 延伸
 

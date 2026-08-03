@@ -8,9 +8,13 @@
 > 💡 **Don't recognize a term?** Check [`resources/glossary.en.md`](../resources/glossary.en.md) for a 30-second definition. Stage 0 doesn't lean on much jargon, but the next stages do.
 > 🗺️ **Want the big picture of the agent landscape first** (why some agents live in a terminal, some in Telegram, some on a Jetson board)? → [`resources/agent-paradigms.en.md`](../resources/agent-paradigms.en.md) (5 agent paradigms, ~10 min read)
 
+> 📋 **Structure of this chapter**: skip-check → environment setup steps → on to Stage 1 (a foundation stage, so it has no "learning goals / prerequisites" frame)  
+> 🔑 **Key terms**: see [`resources/glossary.en.md`](../resources/glossary.en.md) (every term each stage uses is collected there)
+
 ## When to skip this stage
 
 If you can:
+
 - Write a Python function that calls a public API and parses JSON response
 - Use git to clone, commit, push, and resolve a basic merge
 - Use the command line on your OS (cd, ls, mkdir, run a script)

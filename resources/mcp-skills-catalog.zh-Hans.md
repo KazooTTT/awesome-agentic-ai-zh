@@ -47,7 +47,7 @@
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 4.5k+ |
-| License | NOASSERTION |
+| License | MIT |
 | 推荐度 | ⭐⭐⭐⭐⭐（**官方**） |
 
 **教什么**：Notion 官方 MCP server，可查询 page、创建 page、操作 database。
@@ -71,7 +71,7 @@
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 7.4k+ |
-| License | NOASSERTION |
+| License | MIT |
 | 推荐度 | ⭐⭐⭐⭐ |
 
 **教什么**：Claude Code Skill，用浏览器自动化操作 NotebookLM、查询上传文件，回复带 citation。
@@ -83,7 +83,7 @@
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 18k+ |
-| License | NOASSERTION |
+| License | MIT |
 | 推荐度 | ⭐⭐⭐⭐ |
 
 **教什么**：非官方 NotebookLM Python API + CLI + agentic skill；功能比上面 skill 多，包含一些 web UI 没开放的能力。
@@ -135,7 +135,7 @@
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 162k+ |
-| License | NOASSERTION |
+| License | 无 license 文件（上游未提供；使用前请先确认授权） |
 | 推荐度 | ⭐⭐⭐⭐⭐（**官方**，必装） |
 
 **教什么**：Anthropic 官方 Agent Skills repo，含 docx / xlsx / pptx / pdf 处理 skill。
@@ -334,13 +334,13 @@
 **适合谁**：个人用户（不是 Slack admin）也想接 Slack 的人。
 **备注**：不需要 admin 级别 token；走用户层 OAuth。
 
-### [jerhadf/linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) ⭐⭐⭐⭐
+### [jerhadf/linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) ⭐⭐⭐（⚠️ 最后 commit 2025-05、已逾一年未更新）
 
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 344 |
-| License | NOASSERTION |
-| 推荐度 | ⭐⭐⭐⭐ |
+| License | MIT |
+| 推荐度 | ⭐⭐⭐（⚠️ 已逾一年未更新） |
 
 **教什么**：Linear（issue tracker）MCP——查 issue、建 issue、改 status。
 **适合谁**：用 Linear 管 sprint / backlog 的开发者。
@@ -363,7 +363,7 @@
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 101k+ |
-| License | MIT |
+| License | Apache-2.0 |
 | 推荐度 | ⭐⭐⭐⭐⭐ |
 
 **教什么**：把 codebase / SQL schemas / R scripts / shell scripts / docs / papers / images / videos 变成 queryable knowledge graph 的 AI coding skill。Claude Code、Codex、OpenCode、Cursor、Gemini CLI 都能接。
@@ -534,13 +534,13 @@
 **适合谁**：要抓大量网页当训练数据 / 做 RAG / 做研究的人。
 **备注**：需要 Firecrawl API key（有 free tier）。
 
-### [browserbase/mcp-server-browserbase](https://github.com/browserbase/mcp-server-browserbase) ⭐⭐⭐⭐
+### [browserbase/mcp-server-browserbase](https://github.com/browserbase/mcp-server-browserbase) ⭐⭐⭐⭐（⚠️ 已封存）
 
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 3.3k+ |
 | License | Apache-2.0 |
-| 推荐度 | ⭐⭐⭐⭐（**Browserbase 官方**） |
+| 推荐度 | ⭐⭐⭐⭐（**Browserbase 官方**、⚠️ 已封存） |
 
 **教什么**：Browserbase 官方 MCP，配 Stagehand 跑 cloud-based 浏览器。
 **适合谁**：本地跑浏览器太重 / 要在 cloud 并行跑多个 session 的人。
@@ -671,7 +671,7 @@
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 557 |
-| License | NOASSERTION |
+| License | MIT |
 | 推荐度 | ⭐⭐⭐⭐（YouTube 完整 API） |
 
 **教什么**：完整 YouTube API MCP——除了 transcript，还能管 video、Shorts、analytics。
@@ -902,7 +902,7 @@
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 45 |
-| License | NOASSERTION |
+| License | MIT |
 | 推荐度 | ⭐⭐⭐⭐ |
 
 **教什么**：Zotero CLI skill——程序化搜索 / 添加 / 分类 / 标记文献。
@@ -968,7 +968,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 
 | 栏位 | 内容 |
 |---|---|
-| Stars | 刚公开、stars 还没积累 |
+| Stars | ★ 22 |
 | License | MIT |
 | 推荐度 | ⭐⭐（experimental，当作 reference 看就好） |
 
@@ -980,7 +980,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 
 ## 15. 金融 / 交易 Agents
 
-> ⚠️ **应用领域区**：agent 在量化交易 / hedge fund 模拟 / 自动下单的应用。这类 repo 授权状态混杂（部分 NO-LICENSE、部分 Apache-2.0 等开源授权），使用前自行查清楚。**警示**：trading agent 跑真实资金有显著风险，本目录列入是为了学习 agent 设计模式、不是投资建议。
+> ⚠️ **应用领域区**：agent 在量化交易 / hedge fund 模拟 / 自动下单的应用。本节两个 entry 分别是 Apache-2.0 与 MIT，但这类 repo 授权状态普遍混杂，使用前仍请自行查清楚。**警示**：trading agent 跑真实资金有显著风险，本目录列入是为了学习 agent 设计模式、不是投资建议。
 
 ### [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) ⭐⭐⭐
 
@@ -999,12 +999,12 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 | 栏位 | 内容 |
 |---|---|
 | Stars | ★ 62k+ |
-| License | NO-LICENSE |
+| License | MIT |
 | 推荐度 | ⭐⭐⭐ |
 
 **教什么**：多角色 AI hedge fund 模拟，bull / bear / 基本面 / 技术面 / 风控 agent 协作产生 trade recommendation。
 **适合谁**：看过 Stage 7 multi-agent 想要一个完整应用案例的学习者；对 agent + 金融交叉领域有兴趣的人。
-**备注**：NO-LICENSE → 同上；**模拟性质、非投资建议**。
+**备注**：MIT 授权；**模拟性质、非投资建议**。
 
 ---
 
@@ -1051,7 +1051,7 @@ Claude 不擅长 token-heavy 机械式工作（成本高、context 容易爆）�
 2. 或直接送 PR：在对应分类下加一个 entry，按上面的格式写（Stars/License/推荐度 + 教什么/适合谁/备注）
 3. **stars < 100 且非官方**通常会被退；除非你能说明 niche use case 强到可以例外
 
-PR 送出前看一下 [`resources/style-guide.zh-Hans.md`](style-guide.zh-Hans.md) 跟 [`CONTRIBUTING.md`](../CONTRIBUTING.zh-Hans.md)。
+PR 送出前看一下 [`resources/style-guide.zh-Hans.md`](style-guide.zh-Hans.md) 跟 [`CONTRIBUTING.zh-Hans.md`](../CONTRIBUTING.zh-Hans.md)。
 
 ---
 

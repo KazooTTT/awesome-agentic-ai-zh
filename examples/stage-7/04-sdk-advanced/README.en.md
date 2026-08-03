@@ -92,11 +92,13 @@ First call: `cache_creation_input_tokens=2000` (25% write premium)
 Subsequent calls within 5 min: `cache_read_input_tokens=2000` (10% cost = 90% off)
 
 **When to use**:
+
 - Long system prompts called repeatedly (chatbots)
 - Tool schemas reused across calls (multi-tool agents)
 - Same document queried multiple times (RAG on a fixed doc)
 
 **When not**:
+
 - Every prompt is unique
 - Fewer than 1 call per 5 min (cache expires)
 

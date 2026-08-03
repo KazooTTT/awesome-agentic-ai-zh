@@ -4,10 +4,10 @@
 
 ⏱ **时间估算**：2-4 周（约 15-30 小时）
 
-> 💡 用语密度高（multi-agent / handoff / eval / observability / guardrails⋯）→ 翻 [`resources/glossary.md` 4 + 6](../resources/glossary.md#4-multi-agent)。
+> 💡 用语密度高（multi-agent / handoff / eval / observability / guardrails⋯）→ 翻 [`resources/glossary.zh-Hans.md` 4 + 6](../resources/glossary.zh-Hans.md#4-multi-agent)。
 
 > 📋 **本章组成**：〔Multi-Agent · Production 化 是什么（先定位）+ 三层工程分工 + 何时用 multi-agent〕→ 学习目标 → 进入条件 → 必修阅读 → Harness Engineering（**8 个核心元件含 Cost/Latency**）→ 动手练习（含练习 6 Cost Optimization）→ **Agent Benchmark Landscape：怎么看，不要只看排行榜** → 常用工具推荐 → 精选 Projects → 自我检查
-> 🔑 **关键名词**：见 [`resources/glossary.md` 4 + 6](../resources/glossary.md#4-multi-agent)（multi-agent / orchestration / handoff / eval / observability / harness（模型外围的执行与控制层））
+> 🔑 **关键名词**：见 [`resources/glossary.zh-Hans.md` 4 + 6](../resources/glossary.zh-Hans.md#4-multi-agent)（multi-agent / orchestration / handoff / eval / observability / harness（模型外围的执行与控制层））
 
 最后一个阶段。你正从“我会做 agent”走向“我能让 agent **真的给人稳定用**——多个 agent 协作、有 eval、有 observability、能部署到可用环境”。**“Production 化” ≠ enterprise scale**——只要 agent 能稳定产出 + 能让别人使用，就算进入这 stage 范围。
 
@@ -37,6 +37,7 @@
 > 🔁 **下一层：Loop Engineering（循环工程）**：prompt → context → harness 之后，2026 浮现的第四层是“**设计 agent 的迭代循环本身**”——目标、可用工具、context 管理、**终止条件**、错误处理，让 agent 跑数百步、跨 session 仍可靠。Claude Code 的 `/goal`（给一个可验证的完成条件、agent 自己 loop 到达成）就是这个方向；[Stage 5.6 Dynamic Workflows](05-claude-code-ecosystem.zh-Hans.md) 则是 agent 自己写出 loop 脚本。谱系：ReAct（2022）→ AutoGPT（2023）→ /goal（2026）。
 
 **白话差异**：
+
 - **Prompt** = 设计一个好的问法，让模型这次回答准
 - **Context** = 动态决定要放入哪些背景、记忆、文件、工具结果，让模型知道当前情境
 - **Harness** = 把 prompt、context、tools、state、流程控制、错误处理串成一套真的能跑的系统
@@ -71,6 +72,7 @@
 ## 🚪 进入条件
 
 你应该已经：
+
 - 完成 Stage 4（用过至少一个 agent framework 跑 multi-agent demo）
 - 完成 Stage 5（懂 MCP / Skills / Plugins / Subagents 各自角色，并用 5.7 解剖过 harness 内部）
 - 完成 Stage 6（会基本 RAG，能讲出 memory pattern 差异）
@@ -130,6 +132,7 @@
 | **Cost / Latency optimization** ⭐ 2024-2026 必修 | prompt caching、model routing、thinking budget、batching、semantic cache | **练习 6 Cost optimization**（新加）|
 
 **Framework vs Harness 关键差别**：
+
 - **Framework**（[Stage 4](04-agent-frameworks.zh-Hans.md)）规范 **API** — 你调用的接口长什么样
 - **Harness**（本节）规范 **runtime** — 怎么跑、怎么 recovery、怎么观测
 
@@ -173,11 +176,13 @@ Production agent 跑久了，**cost / latency 两条线会吃掉你大半预算�
 | **Semantic caching** | 相似 query 共享回答（不只 exact match）| [GPTCache](https://github.com/zilliztech/GPTCache) / Helicone 内建 |
 
 **Track A 怎么用**（用 CLI agent 的人）：
+
 - 在 Claude Code / Cursor 设置 prompt caching，daily session 省 50-90% cost
 - 用 [RouteLLM](https://github.com/lm-sys/RouteLLM) / [OpenRouter](https://openrouter.ai/) 动态切换 model（简单问题用 Haiku / Flash，困难问题用 Opus / Pro）
 - Claude API 用 `thinking_budget` 参数控 reasoning model 的 token 上限
 
 **Track B 怎么 build**（自己写 agent 的人）：
+
 - 自架 cascade router，把 query embedding → classifier → model 对应起来
 - 在 agent loop 内监控 token cost，超 budget 自动降级
 - 在部署到可用环境时整合 semantic cache 层
@@ -242,6 +247,7 @@ Production agent 跑久了，**cost / latency 两条线会吃掉你大半预算�
 | 看多个 benchmark + 自己 use case | ✅ 不依赖单一指标 |
 
 **哪些 benchmark 较难 hack（2026-05）**：
+
 - **τ-bench** — 多轮对话 + tool use、reward function 较密集
 - **RE-bench** — research engineering 真实任务
 - **你自己的 production eval set** ⭐ 永远是最可靠的
@@ -273,6 +279,7 @@ Production agent 跑久了，**cost / latency 两条线会吃掉你大半预算�
 | **Fine-tune 开源 LLM** | [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) | 100+ 模型统一 SFT/DPO/PPO/GRPO、Web UI 零 code、中文社群最广、★ 73k+ |
 
 **建议入手顺序**：
+
 1. 第一个 multi-agent：**crewAI**（role-based、最简单）
 2. 加 eval：**promptfoo**（YAML、CI 整合）
 3. 加 observability：**langfuse**（OSS、完整）
@@ -330,6 +337,7 @@ Production agent 跑久了，**cost / latency 两条线会吃掉你大半预算�
 ## 💡 接下来
 
 你已经有基础能力了。接下来 6-12 个月应该专注在：
+
 1. **挑一个 production 系统** 从 prototype 推到 production
 2. **回馈上游**（LangGraph、AutoGen、MCP servers、Anthropic cookbook）
 3. **读论文**——agent 研究进展很快

@@ -92,11 +92,13 @@ resp = client.messages.create(
 之后 5 分钟内：`cache_read_input_tokens=2000`（10% cost = 90% off）
 
 **何时用**：
+
 - Long system prompt 重复 call（聊天机器人）
 - Tool schema 重复（multi-tool agent）
 - Document context 重复问（RAG with same doc）
 
 **不用的时候**：
+
 - 每次 prompt 都不同
 - 5 分钟内 call 次数 < 1（cache 过期）
 

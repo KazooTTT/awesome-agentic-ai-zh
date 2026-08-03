@@ -71,7 +71,13 @@ def chunk_headings(text):
 
 - **fixed-length**：可能切到“...EasyCard is the universal payment. A single ride...”（MRT cost 跟前后 chunk 切开了）
 - **paragraph**：抓到完整 Transit 段、含 NT$20-65
-- **heading-aware**：抓到完整 ## Transit section、含 heading“Transit”
+- **heading-aware**：抓到完整 ## Transit section、含 heading“Transit”（embedding 对“MRT cost”的相似度更高）
+
+对 query“What food can I try?”：
+
+- **fixed-length**：抓到含 Food section 的 chunk、但可能 boundary 不对
+- **paragraph**：抓到 Food 内某个段落
+- **heading-aware**：抓到 `## Food` 整段、含 Shilin / dan bing / coffee 信息一次到位
 
 **punchline**：**chunking 策略决定 RAG 上限**——retrieval 抓不到的内容、再强的 LLM 也答不出。
 

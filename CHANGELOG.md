@@ -6,6 +6,18 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-08-03（第三批）
+
+- **fix** · **網站上有 9 頁的內容根本沒被 render 出來**。GitHub 的 markdown 跟文件站用的 python-markdown 不一樣:`<details>` 摺疊區塊裡的內容,python-markdown 預設**當成純 HTML、不再解析裡面的 markdown**,所以表格、清單、粗體全部變成原始文字漏在頁面上;另外「一段文字下面直接接清單、中間沒空行」在 GitHub 會正常變清單,在文件站則會整段黏成一行。兩個問題一起修:93 個 `<details>` 補上 `markdown="1"`、501 處補空行,共 110 個檔案。修完外漏頁面 9 → 0,mkdocs 警告維持 176(沒有新增)。
+- **fix** · **9 個 License 欄位寫錯,其中 8 個是「把有授權的專案寫成授權不明」**。目錄自己的收錄政策叫讀者看這一欄判斷能不能用,寫錯的方向剛好會嚇跑人。逐一用 `gh api` 查回來改:`notion-mcp-server` / `notebooklm-skill` / `notebooklm-py` / `linear-mcp-server` / `youtube-mcp-server` / `zotero-skills` / `ai-hedge-fund` 都是 MIT、`graphify` 是 Apache-2.0。`anthropics/skills` 是反過來的情況——原本標「非標準授權」,但 API 回的是**根本沒有 license 檔**,對一個標「必裝」的專案來說這兩件事差很多,所以改成明講「上游未提供、使用前請先確認授權」。
+- **fix** · **`browserbase/mcp-server-browserbase` 已經封存了**(`gh api` 的 `archived: true`),標題跟推薦度欄都補上封存標記。原本想寫「已封存 2026-07」,但 GitHub 的 `archived_at` 是 null、查不到確切日期,只有最後 push 是 2026-07-20——**推不出封存月份就不要寫**,所以只留「已封存」。`jerhadf/linear-mcp-server` 也是類似情況:標題已經降成 ⭐⭐⭐ 並註明逾一年沒更新,但下面的推薦度欄還停在 ⭐⭐⭐⭐,兩個數字互相打架,已對齊。
+- **content** · **Sonnet 5 現在是優惠價,但表格寫的是優惠結束後的價**。官方定價頁列了兩組數字:2026-08-31 前 $2 / $10、9 月 1 日起回到 $3 / $15。表格保留 $3 / $15 是對的(四週後才是常態價),但讀者今天實際付的比較少,所以三語的定價表跟 `stages/01` 的 `PRICING` dict 都加上有日期的註記,並附官方定價頁連結。
+- **content** · **有幾處 mirror 寫的意思跟繁中版相反**。最嚴重的是 `resources/README` 的「重複 / 重疊?」那節:繁中寫「**刻意避免重複**」,英文版跟簡中版卻寫成「重複是刻意保留的」——完全反過來,而且英文版還多出一條繁中沒有的 `setup-guide` 項目(沒有出處,已刪)。其他補回來的:`README.zh-Hans` 的目錄少了 13 個項目、`glossary.zh-Hans` 少了 `Streaming` 跟 `Batch API` 兩個詞條、`RESOURCES` 兩個 mirror 少了 cookbook 指路、`stage-6/03-chunking` 簡中少了整個實作範例、`stages/01` 簡中的時間估算被截斷。
+- **content** · **`stages/00`、`01`、`05` 少了章節開頭的導覽區塊**。「📋 本章組成 / 🔑 關鍵名詞」這兩行是每一章的入口說明,`stages/00` 兩個 mirror 都沒有、`stages/01` 英文版沒有、`stages/05` 兩個 mirror 都少了指向 `subagent-advanced` 的那一則。這類落差 `check-mirror-parity.py` **抓不到**——它數的是區塊「數量」,少一個引言塊、別處多一個就抵銷掉了。gate 自己的 docstring 就寫著「它只會數,不會比對內容是否相同」,這批正好是那句話的實例。
+- **fix** · **兩條連結是真的 404**。`docs.claude.com/en/docs/build-with-claude/models` 會 301 到 `platform.claude.com/...`,而那個位址本身回 404;`.../claude-code/overview` 表面回 200,但實際被導到文件站首頁、不是權限說明頁。兩條都出現在**這批本來就在改連結的檔案裡**,等於改了一輪還是漏掉。改成 curl 實測 200 且不轉址的 `code.claude.com/docs/en/permissions` 跟 `platform.claude.com/docs/en/about-claude/models/overview`,後者的連結文字原本寫「Anthropic model fallback」、但那頁其實是模型選擇總覽,一併改成名實相符。
+- **fix** · **這批我自己弄壞了一次,值得記下來**。上面那個定價註記,我插在 `claude-sonnet-5` 跟 `claude-opus-5` 兩列中間——中間的空行把表格提前結束掉,`claude-opus-5` 整列就被吸進那個引言塊裡,三語都一樣。結果是**最貴的那一階從價目表消失、變成一行原始的直線符號出現在「優惠價」說明裡**,看起來像在說 $5 / $25 也是優惠價。review 時實際 render 前後比對 `<tr>` 數量才抓到(59 → 58),已把註記移到整張表後面,現在回到 59。教訓跟上一批的 baseline 事件同一類:**gate 全綠不等於內容正確**,這 8 個 gate 跟 115 個測試全數通過,但這個 bug 一個都沒攔到。
+- **fix** · **其他跟著修掉的小地方**:英文版 README 目錄少了 Quick Start 底下的 3 個子項(章節本身存在、只是沒進目錄,同一批已經幫簡中版補了卻漏掉英文版);英文版徽章少了 `?style=flat`、而且語言徽章的標籤是中文的「語言」;簡中版徽章標籤也還是繁體的「語言」;`RESOURCES.zh-Hans` 把 `SKILL.md` 誤寫成 `SKILL.zh-Hans.md`(那個檔名本來就沒有語言後綴);批次取代誤改到 `CHANGELOG` 跟 `TESTING_PLAN` 裡的**歷史紀錄**——那兩行在描述當時做了什麼,不該被現在的規則覆寫,已還原。
+
 ## 2026-08-03（第二批）
 
 - **fix** · **英文版 / 簡中版把繁中的「比較表格」攤平成一堆標題,現在全部改回表格**(7 個檔案組、153 個表格列)。`tracks/cli/A1`、`A2`、`A3` 的「精選 Projects」跟 `stages/00-foundations` 的先修資源,繁中都是**一張多欄比較表**(分類 | Project | ⭐ | 適合誰 | 為什麼推薦),兩個 mirror 卻拆成 `### 分類` + `#### [專案](url)` + 一段散文。資訊沒少,但**可掃讀性差很多**——而且 canonical 自己的 lead-in 就寫著「**一張表搞定**」,表格本身就是設計意圖。另外 `examples/stage-6/05-long-term-memory` 少了第二張對照表、`README` 少兩張、`resources/style-guide.en` 少兩張,一併補回。修完 7 組的表格結構(欄位、欄序、列數、列序)三語完全一致。

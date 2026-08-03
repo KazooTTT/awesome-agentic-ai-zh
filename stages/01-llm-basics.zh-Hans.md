@@ -2,11 +2,14 @@
 
 > [繁體中文](./01-llm-basics.md) | **简体中文** | [English](./01-llm-basics.en.md)
 
-> **预计学习时间**： 5-8 小时
+⏱ **时间估算**：1 周（约 5-8 小时）
 
 > 👋 **从 [Stage 0](00-foundations.zh-Hans.md) 来的**：好，环境已经够用——这 5-8 小时：第一次成功调用 Claude / GPT / Gemini API、搞懂 token / context window / temperature 怎么影响输出、用 per-token 计算实际成本。**直接从这里开始的**：先确认你能跑 Python script、有任一家供应商的 API key——做不到请先回 [Stage 0](00-foundations.zh-Hans.md)。
 
-> 掌握 **核心概念**：LLM / token / context window / temperature / RAG / agent，请先阅读 [`resources/glossary.zh-Hans.md`](../resources/glossary.zh-Hans.md)（约 30 分钟）。
+> 💡 **看不懂某个词**（LLM / token / context window / temperature / RAG / agent⋯）→ 先翻 [`resources/glossary.zh-Hans.md`](../resources/glossary.zh-Hans.md) 查 30 秒再回来。
+
+> 📋 **本章组成**：学习目标 → 进入条件 → 必修阅读 →〔可选 · 概念地图〕→ 动手练习 → 精选 Projects → 自我检查  
+> 🔑 **关键名词**：见 [`resources/glossary.zh-Hans.md`](../resources/glossary.zh-Hans.md)（每个 stage 用到的术语都收在那里）
 
 ### 3 个核心词（先记住，后面 stage 都会用到）
 
@@ -23,6 +26,7 @@
 ## 📌 学习目标
 
 完成本阶段后，你将能够：
+
 - 解释 LLM、token、context window 等核心概念。
 - 使用 Python 调用 Claude / GPT / Gemini API。
 - 比较不同 LLM 提供商（Claude / GPT / Gemini / Llama）的优劣。
@@ -76,7 +80,7 @@
 
 > **注**：这三家都走 **开源版（Apache 2.0 或 MIT）+ 付费云端 API** 两条路（GLM 开源版现为 5.2、MIT）。开源版可用 [Ollama](https://ollama.com/) 在自己机器跑。
 
-> ⚠️ **小米 MiMo** 虽在 [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.zh-Hans.md) 列入 Hermes Agent routing，但 2026-05 无权威官方 source 可验证，暂不收进此表。要试 → 通过 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing 接入。
+> ⚠️ **小米 MiMo** 虽在 [`resources/cli-agents-guide.zh-Hans.md`](../resources/cli-agents-guide.zh-Hans.md) 列入 Hermes Agent routing，但 2026-05 无权威官方 source 可验证，暂不收进此表。要试 → 通过 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing 接入。
 
 ### 🌍 西方开源（4 家、self-host 主力）
 
@@ -127,6 +131,7 @@
 ## 🚪 进入条件
 
 你需要具备以下基础：
+
 - 编写 Python 脚本。
 - 理解基本的 HTTP / REST 概念。
 - 获取并使用 API key（Anthropic / OpenAI / Google）。
@@ -142,6 +147,7 @@
 5. [**Anthropic API Pricing**](https://www.anthropic.com/pricing#anthropic-api) - 了解并比较模型成本（例如，1k input + 1k output 的价格）。
 
 **🎥 中文视频补充（强烈推荐）**：
+
 - [**李宏毅 — 生成式 AI 导论（2024 春台大课程）**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) ⭐⭐⭐ — 第 1-5 集讲 LLM 是什么、怎么运作、token / context window / temperature 怎么影响输出。中文圈最高质量的 LLM 学术级导论、台大授课、官方页含幻灯片 + YouTube。最新整合版见 [**GenAI-ML 2025 秋**](https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php)
 - [**3Blue1Brown — Transformer 可视化**](https://www.youtube.com/watch?v=wjZofJX0v4M)（中文配音版：[3Blue1Brown 中文](https://www.youtube.com/@3Blue1BrownCN)）— LLM 内部运作的可视化入门
 - [**Andrej Karpathy — Intro to LLMs**](https://www.youtube.com/watch?v=zjkBMFhNj_g) — 英文视频、1 小时、英文圈最被推荐的 LLM 入门视频
@@ -157,7 +163,7 @@
 ### 练习 1：LLM API（hello world）
 五行 Python 调用 LLM 并打印响应。**默认用 Ollama 本机跑（免费、offline）**；想看 cloud 答案质量改 Path B Anthropic。详见 [`examples/README.zh-Hans.md`](../examples/README.zh-Hans.md#三条路径--默认用-ollama成本考量)。
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_1.py</code>、<code>python practice_1.py</code> 就跑）</summary>
 
 ```python
@@ -202,7 +208,7 @@ usage: CompletionUsage(completion_tokens=35, prompt_tokens=12, total_tokens=47)
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、选择性、想看 cloud 高质量时）</b>（复制到 <code>practice_1_anthropic.py</code>）</summary>
 
 ```python
@@ -245,10 +251,11 @@ usage: Usage(input_tokens=18, output_tokens=42, ...)
 
 ### 练习 2：Tokens
 同一个 prompt 跑 100 次，观察 token 数的变化。
+
 - 注意：`temperature ≠ 0` 会产生变动
 - 注意：同一句话的英文 vs 中文 token 数差异
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、默认）</b>（复制到 <code>practice_2.py</code>）</summary>
 
 ```python
@@ -299,7 +306,7 @@ print("💡 中文 prompt 通常 input tokens 比 English 多（中文 token 化
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、选择性）</b>（复制到 <code>practice_2_anthropic.py</code>）</summary>
 
 ```python
@@ -328,7 +335,7 @@ for label, prompt in PROMPTS.items():
 ### 练习 3：Pricing / Latency
 **成本敏感的工作必修**：算出你的 hello-world prompt 在不同 model 上跑 1000 次的成本。Ollama 本机是 $0 但有 latency 成本；Cloud LLM 有 $ 成本但快。**会算这两个 trade-off 才能挑对 model**。
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>起手码 — Path A（本机 Ollama gemma4:e4b、量 latency）</b>（复制到 <code>practice_3.py</code>）</summary>
 
 ```python
@@ -382,7 +389,7 @@ avg output: 48 tokens、约 7.3 tokens/sec
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码 — Path B（Anthropic API、算 $ 成本）</b>（复制到 <code>practice_3_anthropic.py</code>）</summary>
 
 ```python
@@ -396,7 +403,7 @@ import anthropic
 # Anthropic 2026 Q2 公开计价（每 1M token、USD）— 运行前对照 https://www.anthropic.com/pricing
 PRICING = {
     "claude-haiku-4-5":   {"input": 1.00, "output":  5.00},
-    "claude-sonnet-5":    {"input": 3.00, "output": 15.00},
+    "claude-sonnet-5":    {"input": 3.00, "output": 15.00},  # 标准价；2026-08-31 前为优惠价 2.00 / 10.00
     "claude-opus-5":      {"input": 5.00, "output": 25.00},  # Opus 5（2026-07-24、接替 Opus 4.8）—— 维持 5/25 同价
     "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5（Mythos-class、最高层级）约 Opus 的 2 倍
 }
@@ -442,6 +449,7 @@ single: input=14 output=48 → $0.000254
 
 ### 练习 5：Error Handling
 故意触发错误情境并写 retry：
+
 - API key 错误 → 看怎么 raise
 - prompt 超长 → context window 满了会发生什么
 - 网络断掉 → 写一个有 exponential backoff 的 retry wrapper
@@ -459,7 +467,7 @@ ollama pull qwen2.5:3b
 ollama serve  # 预设 port 11434
 ```
 
-<details>
+<details markdown="1">
 <summary>📋 <b>起手码</b>（复制到 <code>practice_6.py</code>）</summary>
 
 ```python

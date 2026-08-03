@@ -2,7 +2,7 @@
 
 > [繁體中文](./cookbook.md) | [简体中文](./cookbook.zh-Hans.md) | **English**
 
-> Stage 5 (Claude Code Ecosystem) talks about "Concepts" and "Available Tools" with [`mcp-skills-catalog.md`](mcp-skills-catalog.en.md). This cookbook fills in the gap in between: "**How to build it**". Each recipe is a step-by-step guide + sample code + common pitfalls, designed to be completed in about 30-50 minutes.
+> Stage 5 (Claude Code Ecosystem) talks about "Concepts" and "Available Tools" with [`mcp-skills-catalog.en.md`](mcp-skills-catalog.en.md). This cookbook fills in the gap in between: "**How to build it**". Each recipe is a step-by-step guide + sample code + common pitfalls, designed to be completed in about 30-50 minutes.
 >
 > This is not a reference or a tutorial—it's a recipe. Pick the one you need and start cooking.
 
@@ -28,6 +28,7 @@
 ### Why
 
 The difference between writing a Skill and adding a few instructions within a prompt lies in:
+
 - Skills are **per-domain**, meaning they don't pollute all conversations.
 - They can be packaged and shared across projects or teams.
 - Claude decides when to load them (based on whether the description matches the context).
@@ -240,6 +241,7 @@ Claude replies (with a tool call icon): Echo: hello world
 ### Why
 
 Common scenarios include:
+
 - Generating a Word / PPT document from Markdown / an outline.
 - Summarizing / extracting data from multiple PDFs / Excel files.
 - Editing received `.docx` files (e.g., adding track changes, reformatting).
@@ -322,6 +324,7 @@ and write each into separate markdown sections in ./notes/research-summary.md.
 ### Why
 
 NotebookLM's strengths:
+
 - Automatically indexes up to 50 uploaded PDFs.
 - Provides Q&A with citations (each answer links to the source document and page number).
 - Generates summaries, mind maps, or podcast-style audio overviews.
@@ -329,6 +332,7 @@ NotebookLM's strengths:
 Its weakness: It's used via the NotebookLM web interface, disconnecting it from your other workflows (Claude Code, Obsidian, Zotero).
 
 Two solutions bridge this gap:
+
 1. **PleasePrompto/notebooklm-skill** (Skill, browser automation)
 2. **teng-lin/notebooklm-py** (Python API + CLI)
 
@@ -407,6 +411,7 @@ print(answer.citations)
 ### Why
 
 Classic pain points in the research workflow:
+
 - "Where is that paper?" — Zotero has it, but requires switching windows.
 - "Give me summaries of all papers discussing transformers." — Requires manual selection, export, then feeding to an LLM.
 - "What tags should I add to this paper?" — Manual process.
@@ -427,6 +432,7 @@ They are complementary and not mutually exclusive; you can install both.
 #### Step 1: Enable Zotero Local API
 
 Zotero's desktop app doesn't enable the API by default. Enable it:
+
 - **Edit → Preferences → Advanced → Config Editor**
 - Find `extensions.zotero.httpServer.enabled` and set it to `true`.
 - Find `extensions.zotero.httpServer.port`; the default is `23119`.

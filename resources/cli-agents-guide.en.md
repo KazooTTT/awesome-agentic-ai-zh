@@ -55,6 +55,7 @@ Only terminal-based CLI agents are included. IDE-based agents (Cursor / Cline / 
 
 ### Want it running on a cloud VM, talking to it via Telegram / Slack / Discord, with mainland China LLMs as primary
 **Top pick**: Hermes Agent. Three differentiators:
+
 - **Decoupled from your laptop** — agent runs on a $5 VPS / Modal serverless / Vercel Sandbox; you message it from Telegram / Discord / Slack / WhatsApp / Signal
 - **Model-neutral** — supports GLM / Kimi / Xiaomi MiMo / MiniMax, matching the 11 Chinese-ecosystem catalog entries
 - **Built-in self-improving skill loop + cron scheduler** — agent autonomously generates skills from interaction, refines them across sessions, runs scheduled jobs unattended
@@ -126,7 +127,7 @@ Three common combinations; pick one that fits:
 - **LLM endpoint** can be Ollama (`http://localhost:11434/v1`), or swapped to providers such as z.ai GLM / Kimi
 - **Chat entrypoint** can be Telegram / Slack / Discord; Hermes routes platform messages into the agent workflow
 - **When you want zero Anthropic / OpenAI dependency**, this setup fits offline, privacy-sensitive, and low-cost repeat experiments
-- Step-by-step walkthrough: [`resources/cookbook.md` Recipe 6](cookbook.en.md#6-local-llm--cli-agent-quick-walkthrough)
+- Step-by-step walkthrough: [`resources/cookbook.en.md` Recipe 6](cookbook.en.md#6-local-llm--cli-agent-quick-walkthrough)
 
 ---
 

@@ -7,9 +7,13 @@
 > 💡 **看不懂某个词**？翻 [`resources/glossary.zh-Hans.md`](../resources/glossary.zh-Hans.md) 查 30 秒再回来。Stage 0 还不会碰太多 jargon，但接下来几 stage 会。
 > 🗺️ **想先看 agent 的全景地图**（为什么有的 agent 在 terminal、有的在 Telegram、有的在 Jetson 板子）？→ [`resources/agent-paradigms.zh-Hans.md`](../resources/agent-paradigms.zh-Hans.md)（5 种 agent 型态，10 min 读完）
 
+> 📋 **本章组成**：跳过条件检查 → 环境设置步骤 → 进入 Stage 1（foundation stage，无“学习目标 / 进入条件”框架）  
+> 🔑 **关键名词**：见 [`resources/glossary.zh-Hans.md`](../resources/glossary.zh-Hans.md)（每个 stage 用到的术语都收在那里）
+
 ## 何时可以跳过这个阶段
 
 如果你能：
+
 - 写一个会调用公开 API 并解析 JSON 响应的 Python 函数
 - 用 git 做 clone、commit、push，并处理基本的 merge 冲突
 - 在自己的操作系统上使用命令行（cd、ls、mkdir、执行 script）

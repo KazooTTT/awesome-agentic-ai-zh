@@ -80,6 +80,7 @@
 ### 3 个具体 workflow recipe
 
 **1. AI 结对编程（每日节奏）**
+
 1. 开新 feature → `git checkout -b feature/xxx`
 2. 把任务丢给 Claude Code / Cursor，**先让它写 plan**（不直接写 code）
 3. Review plan、修正方向 → 才 approve 写 code
@@ -163,4 +164,4 @@ jobs:
 - CI / pre-commit hook 集成 case study
 - **跨多人团队用 AI dev 的 governance pattern**——多 dev 共用 Skills、permission 设计、cost tracking
 
-请见 [CONTRIBUTING.md](../CONTRIBUTING.zh-Hans.md)。
+请见 [CONTRIBUTING.zh-Hans.md](../CONTRIBUTING.zh-Hans.md)。

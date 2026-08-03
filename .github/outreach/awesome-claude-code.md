@@ -93,8 +93,10 @@ Learning Resources section makes sense, just opened a PR
 - **Repo status as of 2026-05-09**: README is a placeholder ("Update in
   progress"; TOC marked "I. TODO"). Maintainer @hesreallyhim is rebuilding
   the organizational system. **OPEN AN ISSUE, NOT A PR.**
+
 - The issue is a parking proposal — re-engage when the new TOC ships
 - @hesreallyhim historically responsive (~3 days); during reorg, expect slower
 - If they reply "the new TOC won't have a learning resources section" — thank
   them, drop it, move on. Don't push.
+
 - After they reply (positive or negative), update `.github/channel-partners.md`

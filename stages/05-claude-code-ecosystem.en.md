@@ -35,6 +35,7 @@ From top to bottom, each layer builds on the one below it:
 ![Claude Code Ecosystem Stack](../resources/diagrams/stage5-stack.en.png)
 
 Each layer adds a capability:
+
 - **API + SDK**: Programmatic access to the LLM.
 - **Tool Use**: Allows the LLM to call functions you define.
 - **MCP**: A standardized protocol that lets any LLM host use any tool server.
@@ -122,6 +123,7 @@ Before moving on to 5.2-5.7, you will learn about **4 core structures of Claude 
 ### Learning Goals
 
 After completing this section, you will be able to:
+
 - Explain the respective roles of Claude Code, claude.ai, the API, and the SDK (**"why use the CLI instead of the web"**)
 - Install Claude Code, configure authentication, and run your first session with file access
 - Use 8-10 common slash commands to control Claude Code's behavior
@@ -129,10 +131,10 @@ After completing this section, you will be able to:
 - Recognize the `~/.claude/` directory structure (where skills / agents / plugins / settings.json are located)
 
 ### Required Reading
-1. [**Anthropic — Claude Code Quickstart**](https://docs.claude.com/en/docs/claude-code/quickstart) — Official installation guide
-2. [**Anthropic — CLAUDE.md best practices**](https://docs.claude.com/en/docs/claude-code/memory) — How to write project memory
-3. [**Anthropic — Slash Commands**](https://docs.claude.com/en/docs/claude-code/slash-commands) — Official full list of slash commands
-4. [**Anthropic — Settings**](https://docs.claude.com/en/docs/claude-code/settings) — Full `settings.json` schema + env vars
+1. [**Anthropic — Claude Code Quickstart**](https://code.claude.com/docs/en/quickstart) — Official installation guide
+2. [**Anthropic — CLAUDE.md best practices**](https://code.claude.com/docs/en/memory) — How to write project memory
+3. [**Anthropic — Slash Commands**](https://code.claude.com/docs/en/slash-commands) — Official full list of slash commands
+4. [**Anthropic — Settings**](https://code.claude.com/docs/en/settings) — Full `settings.json` schema + env vars
 5. [**KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh**](https://github.com/KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh) — A beginner's guide in Simplified Chinese
 
 > 🛠️ **Writing a good CLAUDE.md?** First read [Stage 7.5 Core Harness Engineering Principles (multi-source synthesis)](07.5-advanced-agentic-concepts.en.md#-cross-concept-harness-engineering-principles-multi-source-synthesis) to build the mental model, then use the 2 prompts below.
@@ -189,7 +191,7 @@ Output:
 | `/resume` | Resume the previous session | To continue yesterday's work |
 | `/bg` | Background the current session (moves to agent view) | When you want to run multiple tasks simultaneously, see 5.5 |
 
-For a complete list, see the official [Slash Commands documentation](https://docs.claude.com/en/docs/claude-code/slash-commands) linked above.
+For a complete list, see the official [Slash Commands documentation](https://code.claude.com/docs/en/slash-commands) linked above.
 
 ### `~/.claude/` Directory Structure (Get a mental map first)
 
@@ -227,7 +229,7 @@ For a complete list, see the official [Slash Commands documentation](https://doc
 | Project | ⭐ | Best for | Why it's recommended / Notes |
 |---|---|---|---|
 | [anthropics/claude-code](https://github.com/anthropics/claude-code) ⭐ Official | ⭐⭐⭐⭐⭐ | Tracking new versions / reading release notes / reporting bugs | The official Claude Code repo, with issues, releases, and inline examples. |
-| [Anthropic — Claude Code Official Docs](https://docs.claude.com/en/docs/claude-code/overview) | ⭐⭐⭐⭐⭐ | Any reference query | **The true canonical reference**—the 5 required readings above all come from here. |
+| [Anthropic — Claude Code Official Docs](https://code.claude.com/docs/en/overview) | ⭐⭐⭐⭐⭐ | Any reference query | **The true canonical reference**—the 5 required readings above all come from here. |
 | [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | ⭐⭐⭐⭐ | Seeing what the community has to offer (slash command / skill / hook examples) | A broader list of resources (currently being reorganized). |
 | [KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh](https://github.com/KimYx0207/Claude-Code-x-OpenClaw-Guide-Zh) | ⭐⭐⭐⭐ | Chinese readers who want a step-by-step tutorial | A beginner's guide in Simplified Chinese. |
 
@@ -307,7 +309,7 @@ MCP / Skills give the agent *more* abilities; **Hooks are the reverse: you attac
 
 | Project | ⭐ | Best for | Why it's recommended / Notes |
 |---|---|---|---|
-| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐ Official | ⭐⭐⭐⭐⭐ | Exercise 1 server, and as a reference thereafter | 7 official reference MCP servers (everything / fetch / filesystem / git / memory / sequentialthinking / time; github and sqlite have moved to `servers-archived`), ★ 85k+, MIT, TS+Python. The official README calls these **reference implementations, not production-ready**—for servers you would actually deploy, use the official Registry (still in preview). **Read the `everything` and `filesystem` source to understand how the protocol works**. Install with: `npx -y @modelcontextprotocol/server-filesystem /path` or `pip install mcp-server-fetch` |
+| [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) ⭐ Official | ⭐⭐⭐⭐⭐ | Exercise 1 server, and as a reference thereafter | 7 official reference MCP servers (everything / fetch / filesystem / git / memory / sequentialthinking / time; github and sqlite have moved to `servers-archived`), ★ 89k+, licence in transition (new code Apache-2.0, docs CC-BY-4.0, un-relicensed prior contributions remain MIT), TS+Python. The official README calls these **reference implementations, not production-ready**—for servers you would actually deploy, use the official Registry (still in preview). **Read the `everything` and `filesystem` source to understand how the protocol works**. Install with: `npx -y @modelcontextprotocol/server-filesystem /path` or `pip install mcp-server-fetch` |
 | [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk) | ⭐⭐⭐⭐⭐ | Exercise 2, writing your own MCP server | Official Python SDK, install with `pip install "mcp>=2,<3"` (**pin the version** — v2.0.0 on 2026-07-28 was a breaking change), MIT. Follow the official quickstart. |
 | [modelcontextprotocol/typescript-sdk](https://github.com/modelcontextprotocol/typescript-sdk) | ⭐⭐⭐⭐ | Those who prefer TS | The TypeScript version of the Python SDK, MIT. |
 | [wong2/awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers) ⭐ Catalog | ⭐⭐⭐⭐⭐ | Finding an existing server before writing your own | A catalog of 150+ community MCP servers, categorized by search / code / cloud / communication / finance. Submissions go through mcpservers.org. |
@@ -400,7 +402,7 @@ These layers are often confused. **A one-line comparison**:
 - The purpose of the `references/`, `scripts/`, and `evals/` subdirectories
 
 ### Required Reading
-1. [**Anthropic — Claude Skills Documentation**](https://docs.claude.com/en/docs/claude-code/skills)
+1. [**Anthropic — Claude Skills Documentation**](https://code.claude.com/docs/en/skills)
 2. **A few example SKILL.md files**—from `anthropics/claude-code` or community marketplaces
 3. [**Hello-Agents — Extra08 How to Write Good Skills**](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra08-如何写出好的Skill.md) — The most complete guide to Skill best practices in Chinese
 4. [**Hello-Agents — Extra05 A Comparative Interpretation of Agent Skills and MCP**](https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra05-AgentSkills解读.md) — A conceptual comparison of Skills vs MCP
@@ -436,6 +438,7 @@ These layers are often confused. **A one-line comparison**:
 | **🌐 General / fallback** | `general-purpose` | Built into Claude Code | The default entry point for complex, open-ended tasks and uncovered scenarios. |
 
 **Suggested adoption order**:
+
 1. **First must-install**: `skill-vetter` (use it to check other skills before installing them).
 2. **Second batch of must-installs**: `skill-creator` + `find-skills` (for writing / finding skills).
 3. **By work domain**: Add `pdf`/`docx`/`xlsx` for Office workflows, `code-reviewer`/`debugger` for development, `academic-writing-skills` for academic writing.
@@ -487,7 +490,7 @@ Plugin
 - Publish your own marketplace
 
 ### Required Reading
-1. [**Anthropic — Plugins Documentation**](https://docs.claude.com/en/docs/claude-code/plugins)
+1. [**Anthropic — Plugins Documentation**](https://code.claude.com/docs/en/plugins)
 2. **Read the `plugin.json` and `marketplace.json` of 2-3 of the marketplaces below.**
 
 ### Hands-on Exercises
@@ -518,6 +521,7 @@ Plugin
 | **Community Breadth** | (pick skills that interest you) | [rohitg00/awesome-claude-code-toolkit](https://github.com/rohitg00/awesome-claude-code-toolkit) | The largest community catalog of agents / skills / hooks / templates. |
 
 **Suggested adoption order**:
+
 1. Must-haves for developers (5): `code-review` + `pr-review-toolkit` + `commit-commands` + `feature-dev` + an `*-lsp` for your language.
 2. Add a bundle based on your work domain: `engineering` for engineering teams, `finance` for finance, and so on.
 3. If you want to write your own skills / plugins → install `skill-creator` + `plugin-dev`.
@@ -537,7 +541,7 @@ Plugin
 | [anthropics/life-sciences](https://github.com/anthropics/life-sciences) | ⭐⭐⭐ | Those creating a domain-specific marketplace (medical, financial, legal, educational, etc.) | Anthropic's own **domain-specific marketplace** example (for biology / health sciences), demonstrating how to tailor `marketplace.json` for a single vertical. **The payload is bio-sci MCP servers, but the structure of marketplace.json is the main lesson** (★ 562). |
 | [anthropics/claude-for-legal](https://github.com/anthropics/claude-for-legal) | ⭐⭐⭐⭐ | Want to see a full vertical plugin suite (skills + agents + MCP + scheduled agents) | **Anthropic's official legal vertical reference** (★ 8.7k+, Apache-2.0) — 10 legal plugins (commercial / corporate / litigation / privacy / employment / IP / law-student) + 100+ skills + 20+ MCP connectors + scheduled agents + subagent delegation. **You don't need to know law** — this is the best teaching material for "**how to design a vertical plugin suite**": system prompt patterns, accountability surfaces, and the `orchestrate.py` event loop. |
 
-> 💡 **A walkthrough on "how to publish your own marketplace"**: Currently, the most reliable resource is the [official Anthropic plugin documentation](https://docs.claude.com/en/docs/claude-code/plugins). If you know of a good blog post / repo, feel free to open a PR to add it.
+> 💡 **A walkthrough on "how to publish your own marketplace"**: Currently, the most reliable resource is the [official Anthropic plugin documentation](https://code.claude.com/docs/en/plugins). If you know of a good blog post / repo, feel free to open a PR to add it.
 
 ---
 
@@ -566,7 +570,7 @@ Multi-agent CLIs were once unique to Claude Code—in 2026 both Codex CLI and Ge
 
 | Platform | Subagent | Agent team | Background agent | Mechanism |
 |---|:---:|:---:|:---:|---|
-| **Claude Code** (CLI) | ✅ | ✅ | ✅ | `.claude/agents/<name>.md` + Task tool (subagent) + [agent teams](https://docs.claude.com/en/docs/claude-code/agent-teams) + [agent view / background](https://docs.claude.com/en/docs/claude-code/agent-view) |
+| **Claude Code** (CLI) | ✅ | ✅ | ✅ | `.claude/agents/<name>.md` + Task tool (subagent) + [agent teams](https://code.claude.com/docs/en/agent-teams) + [agent view / background](https://code.claude.com/docs/en/agent-view) |
 | **OpenAI Codex CLI** | ✅ | ⚠️ | ✅ | [Subagents](https://developers.openai.com/codex/subagents) GA (≤6 parallel) + [hooks](https://developers.openai.com/codex/hooks) (2026); cloud / background mode. `AGENTS.md` is still a context file |
 | **Google Gemini CLI** | ✅ | ⚠️ | ⚠️ | [Subagents](https://geminicli.com/docs/core/subagents/) (2026-04) + [hooks](https://geminicli.com/docs/hooks/); explicit `@name` dispatch, can run in parallel. `GEMINI.md` is still context |
 | **Cursor** (IDE-coupled) | ❌ | ❌ | ❌ | A single Cursor Agent; queued messages are sequential, not parallel |
@@ -714,7 +718,10 @@ How does the main session know which subagent to dispatch? It reads the **`descr
 > 📌 **1-line judgement**: Use a subagent when the task is **≥ 5 minutes** + **can be fully specified in one brief** (no back-and-forth needed) + **one final result is enough** (no step-by-step feedback needed); otherwise run it yourself.
 
 
-<details>
+
+> 📋 **Ready to write your own subagent / compose several / debug a broken one?** → [`resources/subagent-advanced.en.md`](../resources/subagent-advanced.en.md) (4 worked bugs in how you write a description, 3 composition patterns, 5 places to cut in when debugging)
+
+<details markdown="1">
 <summary>👉 Concrete subagent file example (the easiest to start with)</summary>
 
 `.claude/agents/code-reviewer.md`:
@@ -741,9 +748,9 @@ Later, in the main session, if you type "review my changes," Claude will see the
 </details>
 
 > 📚 **Official Complete Documentation**:
-> - [Subagent spec](https://docs.claude.com/en/docs/claude-code/sub-agents) (frontmatter fields, project vs user scope, Task tool interface)
-> - [Complete guide to Agent teams](https://docs.claude.com/en/docs/claude-code/agent-teams) (display modes, task list, advanced subagent-as-teammate)
-> - [Agent view / background](https://docs.claude.com/en/docs/claude-code/agent-view) (v2.1.139+, quick start + dispatch workflow)
+> - [Subagent spec](https://code.claude.com/docs/en/sub-agents) (frontmatter fields, project vs user scope, Task tool interface)
+> - [Complete guide to Agent teams](https://code.claude.com/docs/en/agent-teams) (display modes, task list, advanced subagent-as-teammate)
+> - [Agent view / background](https://code.claude.com/docs/en/agent-view) (v2.1.139+, quick start + dispatch workflow)
 
 ### Learning Goals
 
@@ -754,7 +761,7 @@ Later, in the main session, if you type "review my changes," Claude will see the
 
 ### Required Reading
 
-1. [**Anthropic — Claude Code Subagents Official Documentation**](https://docs.claude.com/en/docs/claude-code/sub-agents) ⭐ — `.claude/agents/` structure, Task tool interface, best practices
+1. [**Anthropic — Claude Code Subagents Official Documentation**](https://code.claude.com/docs/en/sub-agents) ⭐ — `.claude/agents/` structure, Task tool interface, best practices
 2. [**Anthropic — Building Effective Agents orchestrator-workers**](https://www.anthropic.com/engineering/building-effective-agents) — Anthropic's own view on the orchestrator pattern (theory + examples)
 3. [**Anthropic Cookbook — `customer_service_agent`**](https://github.com/anthropics/claude-cookbooks/tree/main/tool_use) — The canonical multi-agent orchestration example (a chapter-length deep dive; notebook is at `tool_use/customer_service_agent.ipynb`)
 
@@ -780,8 +787,8 @@ A single table to cover 4 projects. **Pick an entry point by looking at "Best fo
 > 💡 **Subagents are powerful, but don't use them blindly**: Every subagent invocation is a new Claude inference call, with token cost + latency. **Simple queries can be handled by a skill (a behavioral prompt), no need to spawn a subagent**. The sweet spot for subagents is when: (1) the task context is large and would consume the main session's window (e.g., reading an entire codebase), (2) the task is logically independent of the main session, and isolating the context helps the main flow, (3) multiple subagents running in parallel (research / write / critic) can save wall-clock time.
 
 > 🔗 **Related advanced mechanisms** (official Claude Code, not covered in depth in this stage):
-> - **[Agent teams](https://docs.claude.com/en/docs/claude-code/agent-teams)** — Multiple sessions communicating with each other (e.g., a reviewer agent ↔ implementer agent back-and-forth)
-> - **[Background agents / agent view](https://docs.claude.com/en/docs/claude-code/agent-view)** — Multiple sessions running in the background, monitored from a single interface (e.g., spawning N PR reviews to run simultaneously)
+> - **[Agent teams](https://code.claude.com/docs/en/agent-teams)** — Multiple sessions communicating with each other (e.g., a reviewer agent ↔ implementer agent back-and-forth)
+> - **[Background agents / agent view](https://code.claude.com/docs/en/agent-view)** — Multiple sessions running in the background, monitored from a single interface (e.g., spawning N PR reviews to run simultaneously)
 >
 > Subagents are the entry point to these two. After you've finished this section, you can explore the official documentation to expand further.
 
@@ -822,6 +829,7 @@ A single table to cover 4 projects. **Pick an entry point by looking at "Best fo
 ### Learning Goals
 
 After completing this section, you will be able to:
+
 - Understand the main loop of the `claude-agent-sdk-python` source (not line-by-line, but grasping the main structure)
 - Pinpoint in the source the file:line for the first 6 runtime-internal harness components from the [8 components listed in Stage 7](07-multi-agent-production.en.md#-harness-engineering--engineering-design-for-a-production-agent-runtime--core-concept-of-this-stage) (agent loop / tool registry / context manager / safety layer / retry / telemetry). The 7th, Eval, is a plugin, and the 8th, Cost / Latency, is cross-cutting; they are not in the main source loop and are outside the scope of this exercise.
 - Explain the difference between Claude Code's agent loop and the from-scratch ReAct from Stage 3, Exercise 3—what extra components a deployed agent needs that a from-scratch one doesn't.
@@ -840,6 +848,7 @@ After completing this section, you will be able to:
 This section is **a reading exercise, not a coding one**—a production harness can't be learned by copying a 200-line example; it's what you still don't understand after copying it that matters. So this exercise requires you to open the source and trace it yourself.
 
 **Steps**:
+
 1. **Clone**: `git clone https://github.com/anthropics/claude-agent-sdk-python`
 2. **Locate the agent loop**: Find the core loop in `_internal/client.py` that actually makes the LLM call, receives the tool_use response, and dispatches to the tool runner. Hint: look for the keywords `async def` and `tool_use_id`.
 3. **Pinpoint the first 6 runtime-internal harness components** in the source (file name + line number)—corresponding to the first 6 of the [8 components listed in Stage 7](07-multi-agent-production.en.md#-harness-engineering--engineering-design-for-a-production-agent-runtime--core-concept-of-this-stage) (the 7th, Eval, is a plugin / the 8th, Cost-Latency, is cross-cutting and not in the main source loop):
@@ -891,6 +900,7 @@ A single table to cover 4 projects. **Pick an entry point by looking at "Best fo
 ### When do you actually need rung 3?
 
 Concrete scenarios (not abstract):
+
 - **Embedded in your existing web app / backend** — users don't open a terminal, so CLI is unavailable.
 - **Triggered by cron / scheduler** — no human pressing enter; CLI's interactive mode doesn't fit.
 - **Wrapped as a company-internal layer** — adding auth, audit logs, rate limits, custom prompt templates — exposing CLI's power through controlled channels.

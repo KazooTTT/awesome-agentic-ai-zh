@@ -10,6 +10,7 @@
 ## 为什么要比较
 
 同样是“解释 AGI vs narrow AI”这个 prompt、三家 LLM 回得不一样：
+
 - **Claude**：通常倾向先给结构（定义 → 例子）、语气中性
 - **GPT**：倾向先给简短答案、再展开（type-A 风格）
 - **Gemini**：倾向 list / bullet 排列、example 多

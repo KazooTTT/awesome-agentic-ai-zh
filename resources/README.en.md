@@ -62,12 +62,11 @@ You do not need any reference first. **Start with the main [README](../README.en
 
 ## Duplication?
 
-Duplication is intentional only where it helps navigation. The roles stay separate:
+Duplication is deliberately avoided. Here is how each reference relates to the main path and to the other references:
 
-- **glossary** is a 30-second lookup, stage text is a 3-5 minute read, and cookbook is a 30-50 minute build.
-- **schema-design-cheatsheet** overlaps with cookbook 2, but the cheatsheet explains schema rules while the cookbook gets a server running.
-- **cli-agents-guide** is a comparison reference; **mcp-skills-catalog** is a tool integration catalog.
-- **setup-guide** is for people starting from zero; Stage 0 assumes you are ready to follow a learning path.
+- **glossary** is a 30-second lookup, stage text is a 3-5 minute read, and cookbook is a 30-50 minute build — three depths, no overlap.
+- **schema-design-cheatsheet** overlaps with cookbook 2 (building an MCP server), but the cheatsheet explains **the rules for writing a schema** while the cookbook explains **how to get a server running**. Which one you want depends on where you are stuck.
+- **cli-agents-guide** is a reference table; the catalog is plug-in tools — two different levels.
 - **Relationship to [Hello-Agents](https://github.com/datawhalechina/hello-agents)**: Hello-Agents is the most complete Chinese-language agent course available, and it goes deep. This repo works from a different angle, **roadmap + curated catalog + hands-on recipes**, and does not replace it. Stage 5.3 and cookbook 1 both cross-reference Hello-Agents Extra08, "How to Write a Good Skill", as deeper follow-up reading.
 
 ---
@@ -96,6 +95,8 @@ A new reference file should not be added casually. It must:
 
 Possible future references:
 
-- `cost-calculator-guide.md`: cross-provider pricing. Stage 1 covers enough for now.
+- `cost-calculator-guide.md`: cross-provider pricing. [Stage 1](../stages/01-llm-basics.en.md) covers enough for now.
 - `troubleshooting-guide.md`: common error runbook. Existing material is enough until more community reports arrive.
-- `prompt-patterns-guide.md`: CoT / few-shot template library. Stage 2 already covers the basics; a deeper version can wait for community PRs.
+- `prompt-patterns-guide.md`: CoT / few-shot template library. [Stage 2](../stages/02-prompt-engineering.en.md) already covers the basics; a deeper version can wait for community PRs.
+
+If the community wants one of these added, open an issue to discuss it.

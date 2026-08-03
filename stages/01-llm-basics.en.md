@@ -9,6 +9,9 @@
 
 > 💡 **Don't recognize a term?** (LLM / token / context window / temperature / RAG / agent / …) → check [`resources/glossary.en.md`](../resources/glossary.en.md) for 30-second definitions.
 
+> 📋 **Structure of this chapter**: learning goals → prerequisites → required reading → 〔optional · concept map〕→ hands-on exercises → curated projects → self-check  
+> 🔑 **Key terms**: see [`resources/glossary.en.md`](../resources/glossary.en.md) (every term each stage uses is collected there)
+
 ### 3 Core Terms (memorize these—all later stages use them)
 
 | Term | Chinese | One-liner |
@@ -24,6 +27,7 @@
 ## 📌 Learning Goals
 
 After this stage you will be able to:
+
 - Explain what an LLM is, what tokens are, and what context window means
 - Make your first API call to Claude / GPT / Gemini and parse the response
 - Compare the four major LLM families (Claude / GPT / Gemini / Llama) on strengths
@@ -77,7 +81,7 @@ These are the main choices for Chinese-language work, in two groups: **API-only*
 
 > **Note**: All three offer both an **open version (Apache 2.0 or MIT) and a paid cloud API** (GLM's open version is now 5.2, MIT). The open versions run on your own machine via [Ollama](https://ollama.com/).
 
-> ⚠️ **Xiaomi MiMo** is listed in [`resources/cli-agents-guide.md`](../resources/cli-agents-guide.en.md) for Hermes Agent routing, but as of 2026-05 there is no authoritative official source to verify it, so it is not included in this table. To try it, connect through [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing.
+> ⚠️ **Xiaomi MiMo** is listed in [`resources/cli-agents-guide.en.md`](../resources/cli-agents-guide.en.md) for Hermes Agent routing, but as of 2026-05 there is no authoritative official source to verify it, so it is not included in this table. To try it, connect through [Hermes Agent](https://github.com/NousResearch/hermes-agent) 200+ provider routing.
 
 ### 🌍 Western Open-Source (4 providers, self-host defaults)
 
@@ -128,6 +132,7 @@ These are the main choices for running on your own hardware, avoiding API fees, 
 ## 🚪 Entry Conditions
 
 You should already:
+
 - Be able to run a Python script
 - Know what HTTP / REST is conceptually
 - Have an API key from at least one provider (Anthropic / OpenAI / Google)
@@ -143,6 +148,7 @@ If not — go back to Stage 0 first.
 5. [**Anthropic API Pricing**](https://www.anthropic.com/pricing#anthropic-api) — read the pricing table, calculate cost for 1k input + 1k output
 
 **🎥 Video supplements (highly recommended)**:
+
 - [**Hung-yi Lee — Introduction to Generative AI (NTU, Spring 2024)**](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php) ⭐⭐⭐ — episodes 1-5 cover what an LLM is, how it works, and how token / context window / temperature shape the output. a university-level Mandarin-language course taught at National Taiwan University; the course page carries slides plus YouTube. Latest consolidated edition: [**GenAI-ML, Fall 2025**](https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php)
 - [**3Blue1Brown — Transformers, visually explained**](https://www.youtube.com/watch?v=wjZofJX0v4M) (Mandarin dub: [3Blue1Brown 中文](https://www.youtube.com/@3Blue1BrownCN)) — a visual intro to what happens inside an LLM
 - [**Andrej Karpathy — Intro to LLMs**](https://www.youtube.com/watch?v=zjkBMFhNj_g) — English, 1 hr, the most widely recommended LLM primer in English
@@ -158,7 +164,7 @@ If not — go back to Stage 0 first.
 ### Exercise 1: LLM API (hello world)
 Five-line Python script that calls an LLM and prints the response. **Defaults to local Ollama (free, offline)**; switch to Path B Anthropic when you want cloud-quality answers. Details in [`examples/README.en.md`](../examples/README.en.md#three-paths--default-is-ollama-cost-driven).
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_1.py</code> and run <code>python practice_1.py</code>)</summary>
 
 ```python
@@ -203,7 +209,7 @@ usage: CompletionUsage(completion_tokens=35, prompt_tokens=12, total_tokens=47)
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>Starter code — Path B (Anthropic API, optional, when you want cloud quality)</b> (copy to <code>practice_1_anthropic.py</code>)</summary>
 
 ```python
@@ -246,10 +252,11 @@ usage: Usage(input_tokens=18, output_tokens=42, ...)
 
 ### Exercise 2: Tokens
 Run the same prompt 100 times and watch token counts vary.
+
 - Notice: `temperature ≠ 0` produces variation
 - Notice: token count for the SAME English vs Chinese sentence
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, default)</b> (copy to <code>practice_2.py</code>)</summary>
 
 ```python
@@ -300,7 +307,7 @@ print("💡 Chinese prompts typically use MORE input tokens (one Chinese charact
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>Starter code — Path B (Anthropic API, optional)</b> (copy to <code>practice_2_anthropic.py</code>)</summary>
 
 ```python
@@ -329,7 +336,7 @@ for label, prompt in PROMPTS.items():
 ### Exercise 3: Pricing / Latency
 **Cost-sensitive work required**: compute how long and how much it takes to run 1000 hello-world inferences. Local Ollama is $0 but has latency cost; cloud LLMs cost money but are faster. **Knowing this trade-off is how you pick the right model**.
 
-<details open>
+<details markdown="1" open>
 <summary>📋 <b>Starter code — Path A (local Ollama gemma4:e4b, measure latency)</b> (copy to <code>practice_3.py</code>)</summary>
 
 ```python
@@ -383,7 +390,7 @@ avg output: 48 tokens, ~7.3 tokens/sec
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>📋 <b>Starter code — Path B (Anthropic API, compute $ cost)</b> (copy to <code>practice_3_anthropic.py</code>)</summary>
 
 ```python
@@ -397,7 +404,7 @@ import anthropic
 # Anthropic public pricing 2026 Q2 (per 1M tokens, USD) — verify at https://www.anthropic.com/pricing
 PRICING = {
     "claude-haiku-4-5":   {"input": 1.00, "output":  5.00},
-    "claude-sonnet-5":    {"input": 3.00, "output": 15.00},
+    "claude-sonnet-5":    {"input": 3.00, "output": 15.00},  # standard rate; introductory 2.00 / 10.00 through 2026-08-31
     "claude-opus-5":      {"input": 5.00, "output": 25.00},  # Opus 5 (2026-07-24, succeeds Opus 4.8) — same 5/25 pricing
     "claude-fable-5":     {"input": 10.00, "output": 50.00},  # Fable 5 (Mythos-class, highest tier) ~2x Opus
 }
@@ -443,6 +450,7 @@ Send the same prompt to Claude, GPT, and Gemini simultaneously, compare their re
 
 ### Exercise 5: Error Handling
 Trigger error conditions deliberately and write retry logic:
+
 - Wrong API key → see how it raises
 - Over-long prompt → what happens when the context window is full
 - Network drop → write a retry wrapper with exponential backoff
@@ -460,7 +468,7 @@ ollama pull qwen2.5:3b
 ollama serve  # default port 11434
 ```
 
-<details>
+<details markdown="1">
 <summary>📋 <b>Starter code</b> (copy to <code>practice_6.py</code>)</summary>
 
 ```python

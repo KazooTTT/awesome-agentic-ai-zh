@@ -19,6 +19,7 @@ Write 5 eval cases for a production agent, run a baseline, track regression. **W
 The 5 cases cover:
 1-2. **Math** (deterministic answers)
 3-4. **Geography** (factual recall)
+
 5. **Grounding test** (fake word "flrgglemerk" — agent should say "don't know", not hallucinate)
 
 Two evaluators:
@@ -83,6 +84,7 @@ def run_eval(cases, agent_fn, eval_fn):
 ```
 
 **Three keys**:
+
 1. **`id` required** — pinpoint which case regressed
 2. **`expected_substring` not full match** — LLM answers have variability
 3. **Eval function decoupled from agent** — swap evaluators against the same cases

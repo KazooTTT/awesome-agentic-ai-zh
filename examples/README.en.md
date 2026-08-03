@@ -23,7 +23,7 @@ examples/
 └── ...
 ```
 
-Short exercises (≤30 LOC) stay inline as `<details>` blocks in the stage doc — no folder. Longer ones (>30 LOC) get their own folder so stage docs don't get bloated by code blocks.
+Short exercises (≤30 LOC) stay inline as `<details markdown="1">` blocks in the stage doc — no folder. Longer ones (>30 LOC) get their own folder so stage docs don't get bloated by code blocks.
 
 ## How to run any example
 
@@ -67,7 +67,7 @@ Without it, Windows readers running in PowerShell / cmd hit `UnicodeEncodeError:
 Every exercise ships with all three paths:
 
 ### Path A (**default, recommended**) — local Ollama
-- Default `starter.py` / first inline `<details>` block uses a local model
+- Default `starter.py` / first inline `<details markdown="1">` block uses a local model
 - Requires [Ollama](https://ollama.com); pull a model based on the stage:
   - **Stage 1 + 2** (plain chat / prompt eng): `ollama pull gemma4:e4b` (~7.5 GB; multimodal (text + image + audio); CPU-friendly)
   - **Stage 3+** (tool use / agent): `ollama pull qwen2.5:3b` (1.9 GB; reliable tool-use support)
@@ -76,7 +76,7 @@ Every exercise ships with all three paths:
 - Best for: all readers (this is the default recommendation)
 
 ### Path B (optional) — Anthropic API (when you want cloud quality)
-- Companion `starter_anthropic.py` (folder) or the second inline `<details>` block
+- Companion `starter_anthropic.py` (folder) or the second inline `<details markdown="1">` block
 - Requires `ANTHROPIC_API_KEY`; ~$0.001 per run (haiku) / ~$0.004 (sonnet)
 - Higher answer quality and lower latency than local 3-4B Ollama models
 - Best for: production-quality demands, long-context work, the Stage 7 production tier
@@ -126,6 +126,8 @@ Install: `ollama pull <model>` + `ollama serve`. Hardware tuning details: [resou
 | **`claude-haiku-4-5`** ⭐ | $1 | $5 | 200k | Cheapest; fine for Stage 1-7 cloud-quality comparisons |
 | **`claude-sonnet-5`** ⭐ | $3 | $15 | 1M | **Production default**; Stage 5+ agent development |
 | `claude-opus-5` | $5 | $25 | 1M | Opus-class flagship (launched 2026-07-24, succeeds Opus 4.8 at the same price); complex reasoning / long-context refactors |
+
+> 💰 **Sonnet 5 is on introductory pricing right now**: the [official pricing page](https://platform.claude.com/docs/en/about-claude/pricing) lists **$2 / $10 through 2026-08-31**, reverting to the $3 / $15 shown above on 2026-09-01. The budget estimates below use the post-revert standard rate, so a run today costs roughly a third less than estimated.
 
 Subscription alternative: Claude Pro $20/month (includes Sonnet usage); Claude Max $100/month (includes Opus). Details: [resources/cli-agents-guide.en.md](../resources/cli-agents-guide.en.md).
 
@@ -192,7 +194,7 @@ r = client.chat.completions.create(model="meta/llama-3.3-70b-instruct", messages
 
 ### How do I switch from Ollama to Anthropic?
 
-Every exercise ships either a `<details>` Path B block or a `starter_anthropic.py`. Three lines change:
+Every exercise ships either a `<details markdown="1">` Path B block or a `starter_anthropic.py`. Three lines change:
 
 ```python
 # From this (Path A default):
@@ -226,6 +228,7 @@ Main differences: the message-creation method name, the response shape (`choices
 ## Contributing / reporting issues
 
 If something doesn't run, output doesn't match expectations, or you want to add a new example:
+
 - File an issue tagged `examples`
 - Or open a PR following the "Design rules" table above
 

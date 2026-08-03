@@ -88,6 +88,7 @@ Answer:"""
 ```
 
 **Three key instructions**:
+
 1. `based ONLY on context` — prevents hallucination
 2. `if missing → say so` — gives the LLM an out, no forced answers
 3. Context then Question — models prefer this layout

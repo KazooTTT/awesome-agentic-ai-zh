@@ -173,4 +173,4 @@ Contributions especially welcome:
 - Chinese-friendly chat tools (Chinese LLMs, localized wrappers)
 - Privacy / safety best practices (what data is OK to send / what isn't)
 
-See [CONTRIBUTING.md](../CONTRIBUTING.en.md).
+See [CONTRIBUTING.en.md](../CONTRIBUTING.en.md).

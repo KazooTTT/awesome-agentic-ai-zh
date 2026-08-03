@@ -55,6 +55,7 @@
 
 ### 想跑在 cloud VM、用 Telegram / Slack 等多平台跟它聊 + 用中國大陸 LLM
 **首推**：Hermes Agent。差異化在三件事：
+
 - **不綁 laptop**——agent 跑在 $5 VPS / Modal serverless，你從 Telegram / Discord / Slack / WhatsApp / Signal 任一個介面對話
 - **多 LLM 中性**——支援 GLM / Kimi / 小米 MiMo / MiniMax，剛好對應 11 中文圈生態
 - **內建 self-improving skill loop + cron 排程**——agent 跟你互動久了會自動生成 skill，跨 session 持續優化

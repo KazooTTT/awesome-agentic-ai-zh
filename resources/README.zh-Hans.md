@@ -56,18 +56,17 @@
 
 ### 🤝 我想送 PR / 翻译 / 加新 entry
 
-→ [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) + [`../CONTRIBUTING.md`](../CONTRIBUTING.zh-Hans.md)
+→ [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) + [`../CONTRIBUTING.zh-Hans.md`](../CONTRIBUTING.zh-Hans.md)
 
 ---
 
 ## 重复 / 重叠？
 
-只在有助于导航时保留少量重叠，各文件角色仍然分开：
+刻意避免重复。每份 reference 跟主路线 / 其他 reference 的关系：
 
-- **glossary** 是“30 秒查”，stage 内容是“3-5 分钟读”，cookbook 是“30-50 分钟做”。
-- **schema-design-cheatsheet** 跟 cookbook 2 有交集，但 cheatsheet 讲 schema 规则，cookbook 讲怎么把 server 跑起来。
-- **cli-agents-guide** 是比较 reference；**mcp-skills-catalog** 是工具集成目录。
-- **setup-guide** 给从零开始的人；Stage 0 默认你已经准备好进入学习路线。
+- **glossary** 是“30 秒查”，stage 内容是“3-5 分钟读”，cookbook 是“30-50 分钟做”——三层深度，不重叠。
+- **schema-design-cheatsheet** 跟 cookbook 2（写 MCP server）有交集——cheatsheet 讲“**写 schema 的规则**”，cookbook 讲“**怎么把 server 跑起来**”。看哪个取决于你卡在哪。
+- **cli-agents-guide** 是 reference table；catalog 是 plug-in tools——两个层级不同。
 - **跟 [Hello-Agents](https://github.com/datawhalechina/hello-agents) 的关系**：Hello-Agents 是中文圈最完整的 agent 教材，深度高。我们走的是“**roadmap + curated catalog + 动手 recipe**”的角度，不取代它。Stage 5.3 / cookbook 1 都明确 cross-ref Hello-Agents Extra08“如何写出好的 Skill”当深度补充。
 
 ---
@@ -96,6 +95,8 @@
 
 近期考虑过但没加的：
 
-- `cost-calculator-guide.md`：cross-provider 计价。现在 Stage 1 有提到，等需求明显再开。
+- `cost-calculator-guide.md`：cross-provider 计价。现在 [Stage 1](../stages/01-llm-basics.zh-Hans.md) 有提到，等需求明显再开。
 - `troubleshooting-guide.md`：常见错误 runbook。现有资料够应付，等社群反馈多了再开。
-- `prompt-patterns-guide.md`：CoT / few-shot 模板库。现在 Stage 2 有基础内容，深度版等社群 PR。
+- `prompt-patterns-guide.md`：CoT / few-shot 模板库。现在 [Stage 2](../stages/02-prompt-engineering.zh-Hans.md) 有基础内容，深度版等社群 PR。
+
+社群想加可以开 issue 讨论。

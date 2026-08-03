@@ -47,7 +47,7 @@
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 4.5k+ |
-| License | NOASSERTION |
+| License | MIT |
 | 推薦度 | ⭐⭐⭐⭐⭐（**官方**） |
 
 **教什麼**：Notion 官方 MCP server，可查詢 page、建立 page、操作 database。
@@ -71,7 +71,7 @@
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 7.4k+ |
-| License | NOASSERTION |
+| License | MIT |
 | 推薦度 | ⭐⭐⭐⭐ |
 
 **教什麼**：Claude Code Skill，用瀏覽器自動化操作 NotebookLM、查詢上傳文件，回覆帶 citation。
@@ -83,7 +83,7 @@
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 18k+ |
-| License | NOASSERTION |
+| License | MIT |
 | 推薦度 | ⭐⭐⭐⭐ |
 
 **教什麼**：非官方 NotebookLM Python API + CLI + agentic skill；功能比上面 skill 多，包含一些 web UI 沒開放的能力。
@@ -135,7 +135,7 @@
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 162k+ |
-| License | NOASSERTION |
+| License | 無 license 檔（上游未提供；使用前請先確認授權） |
 | 推薦度 | ⭐⭐⭐⭐⭐（**官方**，必裝） |
 
 **教什麼**：Anthropic 官方 Agent Skills repo，含 docx / xlsx / pptx / pdf 處理 skill。
@@ -334,13 +334,13 @@
 **適合誰**：個人使用者（不是 Slack admin）也想接 Slack 的人。
 **備註**：不需要 admin 級別 token；走使用者層 OAuth。
 
-### [jerhadf/linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) ⭐⭐⭐⭐
+### [jerhadf/linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) ⭐⭐⭐（⚠️ 最後 commit 2025-05、已逾一年未更新）
 
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 344 |
-| License | NOASSERTION |
-| 推薦度 | ⭐⭐⭐⭐ |
+| License | MIT |
+| 推薦度 | ⭐⭐⭐（⚠️ 已逾一年未更新） |
 
 **教什麼**：Linear（issue tracker）MCP——查 issue、建 issue、改 status。
 **適合誰**：用 Linear 管 sprint / backlog 的開發者。
@@ -363,7 +363,7 @@
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 101k+ |
-| License | MIT |
+| License | Apache-2.0 |
 | 推薦度 | ⭐⭐⭐⭐⭐ |
 
 **教什麼**：把 codebase / SQL schemas / R scripts / shell scripts / docs / papers / images / videos 變成 queryable knowledge graph 的 AI coding skill。Claude Code、Codex、OpenCode、Cursor、Gemini CLI 都能接。
@@ -534,13 +534,13 @@
 **適合誰**：要抓大量網頁當訓練資料 / 做 RAG / 做研究的人。
 **備註**：需要 Firecrawl API key（有 free tier）。
 
-### [browserbase/mcp-server-browserbase](https://github.com/browserbase/mcp-server-browserbase) ⭐⭐⭐⭐
+### [browserbase/mcp-server-browserbase](https://github.com/browserbase/mcp-server-browserbase) ⭐⭐⭐⭐（⚠️ 已封存）
 
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 3.3k+ |
 | License | Apache-2.0 |
-| 推薦度 | ⭐⭐⭐⭐（**Browserbase 官方**） |
+| 推薦度 | ⭐⭐⭐⭐（**Browserbase 官方**、⚠️ 已封存） |
 
 **教什麼**：Browserbase 官方 MCP，配 Stagehand 跑 cloud-based 瀏覽器。
 **適合誰**：本地跑瀏覽器太重 / 要在 cloud 平行跑多個 session 的人。
@@ -671,7 +671,7 @@
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 557 |
-| License | NOASSERTION |
+| License | MIT |
 | 推薦度 | ⭐⭐⭐⭐（YouTube 完整 API） |
 
 **教什麼**：完整 YouTube API MCP——除了 transcript，還能管 video、Shorts、analytics。
@@ -903,7 +903,7 @@
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 45 |
-| License | NOASSERTION |
+| License | MIT |
 | 推薦度 | ⭐⭐⭐⭐ |
 
 **教什麼**：Zotero CLI skill——程式化搜尋 / 加 / 分類 / 標記文獻。
@@ -969,7 +969,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 | 欄位 | 內容 |
 |---|---|
-| Stars | 剛公開、stars 還沒累積 |
+| Stars | ★ 22 |
 | License | MIT |
 | 推薦度 | ⭐⭐（experimental，當 reference 看就好） |
 
@@ -981,7 +981,7 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 
 ## 15. 金融 / 交易 Agents
 
-> ⚠️ **應用領域區**：agent 在量化交易 / hedge fund 模擬 / 自動下單的應用。這類 repo 授權狀態混雜（部分 NO-LICENSE、部分 Apache-2.0 等開源授權），使用前自行查清楚。**警示**：trading agent 跑真實資金有顯著風險，本目錄列入是為了學習 agent 設計模式、不是投資建議。
+> ⚠️ **應用領域區**：agent 在量化交易 / hedge fund 模擬 / 自動下單的應用。本節兩個 entry 分別是 Apache-2.0 與 MIT，但這類 repo 授權狀態普遍混雜，使用前仍請自行查清楚。**警示**：trading agent 跑真實資金有顯著風險，本目錄列入是為了學習 agent 設計模式、不是投資建議。
 
 ### [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) ⭐⭐⭐
 
@@ -1000,12 +1000,12 @@ Claude 不擅長 token-heavy 機械式工作（成本高、context 容易爆）�
 | 欄位 | 內容 |
 |---|---|
 | Stars | ★ 62k+ |
-| License | NO-LICENSE |
+| License | MIT |
 | 推薦度 | ⭐⭐⭐ |
 
 **教什麼**：多角色 AI hedge fund 模擬，bull / bear / 基本面 / 技術面 / 風控 agent 協作產生 trade recommendation。
 **適合誰**：看過 Stage 7 multi-agent 想要一個完整應用案例的學習者；對 agent + 金融交叉領域有興趣的人。
-**備註**：NO-LICENSE → 同上；**模擬性質、非投資建議**。
+**備註**：MIT 授權；**模擬性質、非投資建議**。
 
 ---
 

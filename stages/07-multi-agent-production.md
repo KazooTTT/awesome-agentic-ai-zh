@@ -37,6 +37,7 @@
 > 🔁 **下一層：Loop Engineering（迴圈工程）**：prompt → context → harness 之後，2026 浮現的第四層是「**設計 agent 的迭代迴圈本身**」——目標、可用工具、context 管理、**終止條件**、錯誤處理，讓 agent 跑數百步、跨 session 仍可靠。Claude Code 的 `/goal`（給一個可驗證的完成條件、agent 自己 loop 到達成）就是這個方向；[Stage 5.6 Dynamic Workflows](05-claude-code-ecosystem.md) 則是 agent 自己寫出 loop 腳本。譜系：ReAct（2022）→ AutoGPT（2023）→ /goal（2026）。
 
 **白話差異**：
+
 - **Prompt** = 設計一個好的問法，讓模型這次回答準
 - **Context** = 動態決定要放入哪些背景、記憶、文件、工具結果，讓模型知道現在情境
 - **Harness** = 把 prompt、context、工具、狀態、流程控制、錯誤處理串成一套可以運作的系統
@@ -71,6 +72,7 @@
 ## 🚪 進入條件
 
 你應該已經：
+
 - 完成 Stage 4（用過至少一個 agent framework 跑 multi-agent demo）
 - 完成 Stage 5（懂 MCP / Skills / Plugins / Subagents 各自角色，並用 5.7 解剖過 harness 內部）
 - 完成 Stage 6（會基本 RAG，能講出 memory pattern 差異）
@@ -130,6 +132,7 @@
 | **Cost / Latency optimization** ⭐ 2024-2026 必修 | prompt caching、model routing、thinking budget、batching、semantic cache | **練習 6 Cost optimization**（新加）|
 
 **Framework vs Harness 關鍵差別**：
+
 - **Framework**（[Stage 4](04-agent-frameworks.md)）規範 **API** — 你呼叫的介面長什麼樣
 - **Harness**（本節）規範 **runtime** — 怎麼跑、怎麼 recovery、怎麼觀測
 
@@ -173,11 +176,13 @@ Production agent 跑久了、**cost / latency 兩條線會吃掉你大半預算�
 | **Semantic caching** | 相似 query 共用回答（不只 exact match）| [GPTCache](https://github.com/zilliztech/GPTCache) / Helicone 內建 |
 
 **Track A 怎麼用**（用 CLI agent 的人）：
+
 - 在 Claude Code / Cursor 設定 prompt caching、daily session 省 50-90% cost
 - 用 [RouteLLM](https://github.com/lm-sys/RouteLLM) / [OpenRouter](https://openrouter.ai/) 動態切換 model（簡單問用 Haiku / Flash、難問用 Opus / Pro）
 - Claude API 用 `thinking_budget` 參數控 reasoning model 的 token 上限
 
 **Track B 怎麼 build**（自己寫 agent 的人）：
+
 - 自架 cascade router、把 query embedding → classifier → model 對應
 - 在 agent loop 內監控 token cost、超 budget 自動降級
 - 部署到可用環境時整合 semantic cache 層
@@ -242,6 +247,7 @@ Production agent 跑久了、**cost / latency 兩條線會吃掉你大半預算�
 | 看多個 benchmark + 自己 use case | ✅ 不依賴單一指標 |
 
 **哪些 benchmark 較難 hack（2026-05）**：
+
 - **τ-bench** — 多輪對話 + tool use、reward function 較密集
 - **RE-bench** — research engineering 真實任務
 - **你自己的 production eval set** ⭐ 永遠是最可靠的
@@ -273,6 +279,7 @@ Production agent 跑久了、**cost / latency 兩條線會吃掉你大半預算�
 | **Fine-tune 開源 LLM** | [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) | 100+ 模型統一 SFT/DPO/PPO/GRPO、Web UI 零程式碼、中文社群最廣、★ 73k+ |
 
 **建議入手順序**：
+
 1. 第一個 multi-agent：**crewAI**（role-based、最簡單）
 2. 加 eval：**promptfoo**（YAML、CI 整合）
 3. 加 observability：**langfuse**（OSS、完整）
@@ -330,6 +337,7 @@ Production agent 跑久了、**cost / latency 兩條線會吃掉你大半預算�
 ## 💡 接下來
 
 你已經有基礎能力了。接下來 6-12 個月應該專注在：
+
 1. **挑一個 production 系統** 從 prototype 推到 production
 2. **回饋上游**（LangGraph、AutoGen、MCP servers、Anthropic cookbook）
 3. **讀論文**——agent 研究進展很快

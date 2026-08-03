@@ -80,6 +80,7 @@ Editor-integrated AI pair-programming tool. Widely adopted in AI editor tools an
 ### 3 Concrete Workflow Recipes
 
 **1. AI Pair Programming (daily cadence)**
+
 1. Start a feature → `git checkout -b feature/xxx`
 2. Hand the task to Claude Code / Cursor — **make it write a plan first** (don't dive into code)
 3. Review the plan, course-correct → only then approve coding
@@ -163,4 +164,4 @@ Contributions especially welcome:
 - CI / pre-commit hook integration case studies
 - **Multi-developer team governance** — sharing Skills across devs, permission design, cost tracking
 
-See [CONTRIBUTING.md](../CONTRIBUTING.en.md).
+See [CONTRIBUTING.en.md](../CONTRIBUTING.en.md).
