@@ -2,7 +2,7 @@
 
 > 這份是給 maintainer / 第一個跑各個 build 的人看的。**誠實地說明哪些 code 真的跑過、哪些只是 syntax check、哪些完全沒測**。
 
-最後更新：2026-07-17
+最後更新：2026-08-04
 
 ---
 
@@ -16,7 +16,8 @@
 | `scripts/check-links.py --fast` | ✅ Verified | 跑過 120 GitHub URLs 全 OK |
 | `gh api` repo 元資料抓取 | ✅ Verified | 152 個 entry 的 stars / license / pushed 都對證過至少一次 |
 | Mermaid syntax | ✅ Verified | GitHub 上 render 看過正確（README hero） |
-| CI banned-words / overclaim grep | ✅ Verified | 用相同 grep 邏輯本地跑過，0 violations |
+| CI banned-words / overclaim grep | ✅ Verified | 用相同 grep 邏輯本地跑過，0 violations；並已在真 CI 上驗證——run 30870625764 抓到一個真實違規、修掉後 30871055350 轉綠 |
+| `.github/workflows/lint.yml` | ✅ Verified | ubuntu runner 上實跑：`pull_request` 15 次、`workflow_dispatch` 5 次、`schedule` 3 次、`push` 1 次。run 30870625764 實際攔下一個 overclaim 違規（真陽性），30871055350 / 30875518687 / 30892735021 / 30892855033 全綠。**至今未觀察到與本地 git-bash 的 grep 行為差異**（同一 corpus 兩邊都綠，該次 overclaim 兩邊都抓到）——是觀察到一致，不是已證明等價。2026-08-04 起無 paths 過濾，每個 PR 與每次 push 到 main 都會跑 |
 
 ---
 
@@ -26,7 +27,6 @@
 |---|---|---|
 | `scripts/build-pdf.sh` | ⚠️ Bash syntax OK | **沒實際跑過** pandoc + xelatex；沒驗證輸出的 PDF 真的能開、CJK 字型真的可用 |
 | `scripts/build-mdbook.sh` | ⚠️ Bash syntax OK | 跑過一次但 mdbook-mermaid 失敗（已 fix 但沒重跑驗證） |
-| `.github/workflows/lint.yml` | ⚠️ YAML valid | **沒在真 PR 上觸發過**——不知道 Linux runner 上 grep 行為跟本地 git-bash 是否一致 |
 | `.github/workflows/docs.yml` | ⚠️ YAML valid · 本機 mkdocs build 綠 | 統一 Pages workflow（mkdocs `/` + mdBook `/book/`，取代已刪除的 deploy-book.yml）。mdBook 子路徑 base-url 尚未在 CI 端到端驗證（首次 deploy 後需實測 `/book/` 資產） |
 | `walkthroughs/build-first-agent-in-7-steps.md` 的 Python 範例（~350 行）| ⚠️ 結構合理 | **完全沒實際跑過**——根據對 Anthropic SDK / LangGraph / Chroma / promptfoo 的理解寫出來，但沒從頭到尾 execute 一次。可能有：API 介面變動、套件版本相依、import path 微差 |
 | `book.toml` mdBook 設定 | ⚠️ TOML valid | 沒實際 build 過完整 site |
@@ -62,7 +62,7 @@
 
 - **Build 工具鏈成本**：pandoc + xelatex + Noto Sans CJK 一套裝下來要 1-2 GB + 1-2 小時。不在 launch-blocking 路徑上時不值得本地裝
 - **AI walkthrough 的 LangGraph / Chroma 等套件**：版本日新月異；今天測完明天可能就過期。所以選擇用「**對著官方 API 文件寫，註明可能要對現在版本調整**」的策略
-- **CI workflow**：在真 PR 上才會觸發；沒第一個外部 PR 之前是 false-positive 還是 fully working 都看不出來
+- **CI workflow**：~~在真 PR 上才會觸發；沒第一個外部 PR 之前看不出來~~——**部分已不成立**（2026-08-04）。三個 gate 都已在真實 PR 上跑過（`lint.yml` 另有 push / schedule / workflow_dispatch 實跑），且 2026-08-04 起移除 paths 過濾，**每個 PR** 都會觸發。**但 push 到 main 只有 `lint.yml` 會跑**——`anchor-validator` 與 `stage-template-check` 沒有 push trigger（至今 0 次 push run），所以直接推 main 的變更（過去 60 天 108 個裡有 94 個）仍然不經過那兩個 gate
 
 這份 repo 是 **「ship-able skeleton」**——所有結構都對、所有 metadata 都驗證過、所有 prose 都過 review，但**第一次實際跑 build / deploy / walkthrough 還是會發現坑**。
 

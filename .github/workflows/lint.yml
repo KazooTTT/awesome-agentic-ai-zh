@@ -1,28 +1,27 @@
 name: Lint (link rot + banned words + schema)
 
 on:
+  # 刻意「不」加 paths 過濾。這是 blocking gate，將來可能被設成 required status check；
+  # 而 GitHub 對「required 但從未回報」的 check 是無限期等待，PR 會永遠卡在
+  # 「Expected — Waiting for status to be reported」。paths 過濾會讓整個 workflow 不觸發、
+  # 連 check 物件都不產生，正是那個死鎖。
+  # （job 層的 `if:` 不一樣——被 skip 的 job 仍然會回報一個 skipped 的 check，GitHub 視為
+  # 通過，所以本檔的 link-rot / star-drift 那種 guard 是安全的，不必動。）
+  # 這個 filter 原本讓 130 / 473 個 tracked 檔案觸發不了任何一次執行（examples/ 114、
+  # .github/ 9、root 6、docs/ 1）。它也會跳過只動 CITATION.cff 的 chore(release) commit
+  # ——全部 12 個 release commit 裡有 9 個是這種；另外 3 個只是因為同時改了 CHANGELOG.md
+  # 才僥倖觸發，不是設計。
+  # 整份 workflow 只要數十秒，省下的 CI 時間遠不值得這個風險。
   pull_request:
-    paths:
-      - '**.md'
-      - 'scripts/**'
-      - 'resources/**'
-      # 含自己：改動這個 gate 的 PR 應該跑它自己（push 側同）
-      - '.github/workflows/lint.yml'
   # 也在 push 到 main 時跑。這個 repo 的小改動常常直接進 main（維護者自己推），
   # 那條路徑以前完全不經過這個 workflow，所以 blocking gate 等於沒跑。
   # 2026-08-03 的實例：一個 overclaim 片語在 main 上紅了約 15 小時沒人發現
   #（47c9682 07:06 EDT 引入 → c0f2bbe 22:07 EDT 修掉），而且不是我們自己抓到的，
   # 是靠一個外部 PR 照出來的——因為 GitHub 的 PR 檢查跑的是「合併後」的結果，不是分支本身。
-  # paths 過濾跟 pull_request 一致；link-rot / star-drift 兩個 job 本來就有
-  # `if: schedule || workflow_dispatch` 的 guard，不會被 push 觸發。
+  # link-rot / star-drift 兩個 job 有 `if: schedule || workflow_dispatch` 的 guard，
+  # 不會被 push 觸發，所以 push 只跑 banned-words + freshness-tests（實測 17s + 9s）。
   push:
     branches: [main]
-    paths:
-      - '**.md'
-      - 'scripts/**'
-      - 'resources/**'
-      # 含自己，否則在 main 上改這個檔案不會觸發它所設定的 gate（docs.yml 同作法）
-      - '.github/workflows/lint.yml'
   schedule:
     # 每月 1 號 UTC 03:00 跑完整檢查（catch link rot + star drift）
     - cron: '0 3 1 * *'
@@ -283,8 +282,7 @@ jobs:
 
       - name: refresh-stars.py detection unit tests
         # Pins the 2026-07 star-line write-back + neighbour-leak fix
-        # (scripts/test_refresh_stars.py). stdlib-only; runs on any PR
-        # touching scripts/**.
+        # (scripts/test_refresh_stars.py). stdlib-only; runs on every PR.
         run: python3 scripts/test_refresh_stars.py
 
       - name: pr-link-audit.py detection unit tests
@@ -340,9 +338,9 @@ jobs:
   freshness-tests:
     name: Freshness gate unit tests
     runs-on: ubuntu-latest
-    # Runs on every PR *and* every push to main that touches **.md / scripts/** /
-    # resources/** (no schedule-only guard), so the freshness-gate coverage
-    # can't silently regress the way it did in 2026-07.
+    # Runs on every PR and every push to main (no paths filter, no schedule-only
+    # guard), so the freshness-gate coverage can't silently regress the way it
+    # did in 2026-07.
     steps:
       - uses: actions/checkout@v6
 

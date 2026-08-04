@@ -6,6 +6,13 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-08-04
+
+- **ci** · **`main` 加上 branch protection,但只防災難**。禁止 force-push、禁止刪除 `main`,`enforce_admins: true`(對自己也生效)。**不要求 PR、不設 required status checks**——因為過去 60 天的 108 個 commit 裡,**只有 14 個的 sha 對得上已 merge PR 的 merge commit**(0 個 merge commit),其餘 **94 個都是直接推 main**,而 CLAUDE.md 本來就寫「小改動偏好直接進 main」。擋的是 history 被覆蓋、分支被刪這種**救不回來**的事;內容錯誤仍然只會事後報紅、不會攔下。要真正攔阻得強制所有變更走 PR,那是另一個決定。
+- **ci** · **三個 gate workflow 拿掉 `paths` 過濾,解掉 required-check 死鎖**。GitHub 對「被設成 required 但從未回報」的 check 是**無限期等待**,PR 會永遠卡在「Expected — Waiting for status to be reported」。`paths` 過濾會讓整個 workflow 不觸發、連 check 物件都不產生,正是那個死鎖。實測死鎖面(473 個 tracked 檔案中觸發不了任何執行的):`lint.yml` **130**、`anchor-validator.yml` **239**、`stage-template-check.yml` **442**(93% 的 repo,三者最嚴重)。全部改成 0。`lint.yml` 的 `push` 側也一併拿掉——舊 filter 會跳過只動 `CITATION.cff` 的 `chore(release)` commit,**全部 12 個 release commit 裡有 9 個是這種**(另外 3 個只是剛好同時改了 CHANGELOG.md 才觸發)。代價比想像中小:實測過去 60 天 108 個 commit,舊 filter 真正讓 `lint` 一次都沒跑的只有 **10 個(9%)**、`anchor-validator` **13 個(12%)**、`stage-template-check` **48 個(44%)**;三個同時落空(也就是多花約 45 秒 job time 的情況)只有 **10 個(9%)**。九成以上的變更本來就會跑 lint,公開 repo 又不計費。
+- **ci** · **`mirror-sync-reminder.yml` 跟 `pr-link-audit.yml` 刻意不動**。這兩個會在 PR 上留言、是提醒性質不是 gate,本來就不該被設成 required,所以 `paths` 過濾對它們無害。**job 層的 `if:` 也不用動**——被 conditional skip 的 job 仍然會產生一個 `skipped` 的 check 物件,GitHub 視為通過(實測 check-runs API:`Star drift detection` / `Link rot check` / `Audit new repo links` 三個都有具名 check、狀態 skipped)。死鎖只來自 workflow 層的 `paths`。
+- **fix** · **`.github/TESTING-STATUS.md` 對 `lint.yml` 的描述已經過時**。原本寫「沒在真 PR 上觸發過」,但實際的執行次數是 `pull_request` 15 次、`workflow_dispatch` 5 次、`schedule` 3 次、`push` 1 次,而且 run 30870625764 實際攔下一個 overclaim 違規(真陽性)。已改成已驗證並附 run id,並從「⚠️ 只做 syntax check」那張表**移到**「✅ 真的跑過」那張表(該檔的 ✅ 區塊標題與「證據」欄位就是為此而設;第 75 行也要求跑過即改記號、補證據);同一份檔案下方一句同樣過時的「沒第一個外部 PR 之前看不出來」也一併標記為不再成立。措辭上只寫「至今未觀察到與本地 git-bash 的差異」,不寫「行為一致」——同一 corpus 兩邊都綠是觀察,不是等價證明。
+
 ## 2026-08-03（第四批）
 
 - **content** · **行為準則的兩個中文版少了「什麼行為會觸發」那一半**。四級處置(更正 / 警告 / 暫時停權 / 永久停權)中文版只寫了**後果**,英文版則同時有 Community Impact(什麼行為構成該級)與 Consequence(後果)。對一份規範文件來說,少掉的正是讀者最需要的那半——罰則看得到,紅線看不到。兩個中文版都補齊到與英文對等:主要參考本文件已聲明改編來源的 Contributor Covenant 2.1 **官方簡中譯本**,再逐條對照英文原文校正用語(官方繁中無 2.1 譯本)。兩版各自既有的用語分工維持不變(繁中「社群 / 停權」、簡中「社区 / 封禁」),那是正確的在地化、不是漂移。
