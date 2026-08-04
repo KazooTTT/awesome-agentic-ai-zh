@@ -6,10 +6,33 @@ on:
       - '**.md'
       - 'scripts/**'
       - 'resources/**'
+      # 含自己：改動這個 gate 的 PR 應該跑它自己（push 側同）
+      - '.github/workflows/lint.yml'
+  # 也在 push 到 main 時跑。這個 repo 的小改動常常直接進 main（維護者自己推），
+  # 那條路徑以前完全不經過這個 workflow，所以 blocking gate 等於沒跑。
+  # 2026-08-03 的實例：一個 overclaim 片語在 main 上紅了約 15 小時沒人發現
+  #（47c9682 07:06 EDT 引入 → c0f2bbe 22:07 EDT 修掉），而且不是我們自己抓到的，
+  # 是靠一個外部 PR 照出來的——因為 GitHub 的 PR 檢查跑的是「合併後」的結果，不是分支本身。
+  # paths 過濾跟 pull_request 一致；link-rot / star-drift 兩個 job 本來就有
+  # `if: schedule || workflow_dispatch` 的 guard，不會被 push 觸發。
+  push:
+    branches: [main]
+    paths:
+      - '**.md'
+      - 'scripts/**'
+      - 'resources/**'
+      # 含自己，否則在 main 上改這個檔案不會觸發它所設定的 gate（docs.yml 同作法）
+      - '.github/workflows/lint.yml'
   schedule:
     # 每月 1 號 UTC 03:00 跑完整檢查（catch link rot + star drift）
     - cron: '0 3 1 * *'
   workflow_dispatch:
+
+# 這個 workflow 只讀 repo、不寫回任何東西。pull_request 事件下 GitHub 對 fork 一律
+# 發唯讀 token，但 push 事件的權限來自 repo 設定，未來被改掉就會靜默放寬，所以明寫。
+# 跟 anchor-validator / stage-template-check / freshness-2026 一致。
+permissions:
+  contents: read
 
 jobs:
   banned-words:
@@ -317,9 +340,9 @@ jobs:
   freshness-tests:
     name: Freshness gate unit tests
     runs-on: ubuntu-latest
-    # Runs on every PR that triggers this workflow (any **.md / scripts/** /
-    # resources/** change — no schedule-only guard) so the freshness-gate
-    # coverage can't silently regress the way it did in 2026-07.
+    # Runs on every PR *and* every push to main that touches **.md / scripts/** /
+    # resources/** (no schedule-only guard), so the freshness-gate coverage
+    # can't silently regress the way it did in 2026-07.
     steps:
       - uses: actions/checkout@v6
 
