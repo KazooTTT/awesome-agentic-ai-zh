@@ -17,7 +17,9 @@
 | `gh api` repo 元資料抓取 | ✅ Verified | 152 個 entry 的 stars / license / pushed 都對證過至少一次 |
 | Mermaid syntax | ✅ Verified | GitHub 上 render 看過正確（README hero） |
 | CI banned-words / overclaim grep | ✅ Verified | 用相同 grep 邏輯本地跑過，0 violations；並已在真 CI 上驗證——run 30870625764 抓到一個真實違規、修掉後 30871055350 轉綠 |
-| `.github/workflows/lint.yml` | ✅ Verified | ubuntu runner 上實跑：`pull_request` 15 次、`workflow_dispatch` 5 次、`schedule` 3 次、`push` 1 次。run 30870625764 實際攔下一個 overclaim 違規（真陽性），30871055350 / 30875518687 / 30892735021 / 30892855033 全綠。**至今未觀察到與本地 git-bash 的 grep 行為差異**（同一 corpus 兩邊都綠，該次 overclaim 兩邊都抓到）——是觀察到一致，不是已證明等價。2026-08-04 起無 paths 過濾，每個 PR 與每次 push 到 main 都會跑 |
+| `.github/workflows/lint.yml` | ✅ Verified | ubuntu runner 上實跑：`pull_request` 15 次、`workflow_dispatch` 5 次、`schedule` 3 次、`push` 2 次。run 30870625764 實際攔下一個 overclaim 違規（真陽性），30871055350 / 30875518687 / 30892735021 / 30892855033 / 30915746076 全綠。**至今未觀察到與本地 git-bash 的 grep 行為差異**（同一 corpus 兩邊都綠，該次 overclaim 兩邊都抓到）——是觀察到一致，不是已證明等價。2026-08-04 起無 paths 過濾，每個 PR 與每次 push 到 main 都會跑 |
+| `.github/workflows/anchor-validator.yml` | ✅ Verified | ubuntu runner 上實跑：`pull_request` 12 次、`schedule` 3 次、`workflow_dispatch` 1 次，全綠。2026-08-04 起移除 paths 過濾並加上 `push: [main]`，每個 PR 與每次 push 到 main 都會跑（push 側尚未累積執行紀錄） |
+| `.github/workflows/stage-template-check.yml` | ✅ Verified | ubuntu runner 上實跑：`pull_request` 7 次、`workflow_dispatch` 3 次。run 25934104948（2026-05-15、sha d278caf）失敗過一次，但那是 **false positive**——stage 07.5 是 reading-map 章、依設計就沒有 REQUIRED sections（失敗當時的 sha d278caf 上 README 已標「（reading map）」「1 週（不寫 code）」），53e723d 把 `07.5-` 加進 `SKIP_STAGES` 之後 25934453808 轉綠。**所以這個 gate 至今沒攔下過真實的 template 違規**；其餘 9 次全綠。2026-08-04 起移除 paths 過濾並補上 `push: [main]` 與每月 cron——三個 gate 裡原本只有它連 schedule 都沒有（push / schedule 側尚未累積執行紀錄） |
 
 ---
 
@@ -62,7 +64,7 @@
 
 - **Build 工具鏈成本**：pandoc + xelatex + Noto Sans CJK 一套裝下來要 1-2 GB + 1-2 小時。不在 launch-blocking 路徑上時不值得本地裝
 - **AI walkthrough 的 LangGraph / Chroma 等套件**：版本日新月異；今天測完明天可能就過期。所以選擇用「**對著官方 API 文件寫，註明可能要對現在版本調整**」的策略
-- **CI workflow**：~~在真 PR 上才會觸發；沒第一個外部 PR 之前看不出來~~——**部分已不成立**（2026-08-04）。三個 gate 都已在真實 PR 上跑過（`lint.yml` 另有 push / schedule / workflow_dispatch 實跑），且 2026-08-04 起移除 paths 過濾，**每個 PR** 都會觸發。**但 push 到 main 只有 `lint.yml` 會跑**——`anchor-validator` 與 `stage-template-check` 沒有 push trigger（至今 0 次 push run），所以直接推 main 的變更（過去 60 天 108 個裡有 94 個）仍然不經過那兩個 gate
+- **CI workflow**：~~在真 PR 上才會觸發；沒第一個外部 PR 之前看不出來~~——**已不成立**（2026-08-04）。三個 gate（`lint` / `anchor-validator` / `stage-template-check`）都已在真實 PR 上跑過，且同日移除 paths 過濾、三個都補上 `push: [main]`，所以**每個 PR 與每次直接推 main 都會觸發**——後者是 2026-06-07 → 08-04 的 109 個 commit 裡的 95 個。`lint.yml` 的 push 側已有實際執行紀錄；另外兩個的 push trigger 是當天才加的，尚未累積紀錄
 
 這份 repo 是 **「ship-able skeleton」**——所有結構都對、所有 metadata 都驗證過、所有 prose 都過 review，但**第一次實際跑 build / deploy / walkthrough 還是會發現坑**。
 
