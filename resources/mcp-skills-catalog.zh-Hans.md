@@ -2,7 +2,7 @@
 
 > [繁體中文](./mcp-skills-catalog.md) | **简体中文** | [English](./mcp-skills-catalog.en.md)
 
-> 把 Claude Code（或其他 CLI agent）接到你已经正在用的工具，不用反复切换视窗。本页是 76+ 个分类整理过的 MCP server / Claude Skill / 集成范例（含研究工作流 + multi-LLM delegation 两个专属区）。
+> 把 Claude Code（或其他 CLI agent）接到你已经正在用的工具，不用反复切换视窗。本页是 77+ 个分类整理过的 MCP server / Claude Skill / 集成范例（含研究工作流 + multi-LLM delegation 两个专属区）。
 
 ---
 
@@ -32,7 +32,7 @@
 9. [监控 / Observability](#9-监控--observability)（3）
 10. [媒体 / 串流（YouTube / Spotify）](#10-媒体--串流youtube--spotify)（3）
 11. [中文圈专属](#11-中文圈专属)（11）
-12. [其他常用（Cloudflare / Stripe…）](#12-其他常用cloudflare--stripe)（4）
+12. [其他常用（Cloudflare / Stripe…）](#12-其他常用cloudflare--stripe)（5）
 13. [研究工作流 Skills（学术 / paper / 文献）](#13-研究工作流-skills学术--paper--文献)（4）
 14. [Multi-LLM Delegation Skills](#14-multi-llm-delegation-skills)（3）
 15. [金融 / 交易 Agents](#15-金融--交易-agents)（2）
@@ -866,6 +866,24 @@
 **教什么**：一个平台（SDK + MCP server），把 agent 连到 1000+ 应用（Slack / GitHub / Gmail / Salesforce / Notion…），登录它帮你处理，不用一个服务各写一个连接器。
 **适合谁**：agent 要跨大量工具、但不想维护几十个独立 MCP server 的团队。
 **备注**：提供 MCP server + Python / TypeScript SDK；可通过 MCP 接到 Claude Code。属"工具聚合器"（跟 n8n / Zapier 自动化平台同类）。
+
+---
+
+### [morluto/jacobian](https://github.com/morluto/jacobian) ⭐⭐⭐
+
+| 栏位 | 内容 |
+|---|---|
+| Stars | ★ 14 |
+| License | MIT |
+| 推荐度 | ⭐⭐⭐ |
+
+**教什么**：用一个可直接安装的数学 MCP server，练习让 agent 调用可组合的精确计算工具；涵盖 polynomial maps、linear algebra 和 graph algorithms。
+**适合谁**：想在 MCP 工作流中加入数学计算，或需要让 agent 处理结构化数学问题的研究者与开发者。
+**备注**：Python 项目，但通过 npm 发布启动器，所以用 `npx` 起 server。同时提供 MCP server、CLI 和 Python library；可以从一个简单的本地 MCP 配置开始，再按需使用原生 Python API。
+**怎么运行**：
+```bash
+npx -y jacobian mcp
+```
 
 ---
 

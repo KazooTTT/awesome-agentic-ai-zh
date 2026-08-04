@@ -2,7 +2,7 @@
 
 > [繁體中文](./mcp-skills-catalog.md) | [简体中文](./mcp-skills-catalog.zh-Hans.md) | **English**
 
-> Connect Claude Code (or any other CLI agent) to the apps you already use, without window-hopping. This page is a curated index of 76+ MCP servers / Claude Skills / integrations grouped by use case (incl. research-workflow + multi-LLM-delegation dedicated sections).
+> Connect Claude Code (or any other CLI agent) to the apps you already use, without window-hopping. This page is a curated index of 77+ MCP servers / Claude Skills / integrations grouped by use case (incl. research-workflow + multi-LLM-delegation dedicated sections).
 
 ---
 
@@ -32,7 +32,7 @@
 9. [Monitoring / Observability](#9-monitoring--observability) (3)
 10. [Media / Streaming (YouTube / Spotify)](#10-media--streaming-youtube--spotify) (3)
 11. [Chinese-language Ecosystem](#11-chinese-language-ecosystem) (11)
-12. [Other Common (Cloudflare / Stripe…)](#12-other-common-cloudflare--stripe) (4)
+12. [Other Common (Cloudflare / Stripe…)](#12-other-common-cloudflare--stripe) (5)
 13. [Research Workflow Skills](#13-research-workflow-skills-academic--paper--lit) (4)
 14. [Multi-LLM Delegation Skills](#14-multi-llm-delegation-skills) (3)
 15. [Finance / Trading Agents](#15-finance--trading-agents) (2)
@@ -866,6 +866,24 @@
 **What it does**: a platform (SDKs + MCP servers) that connects agents to 1000+ apps (Slack / GitHub / Gmail / Salesforce / Notion…) and handles the logins for you, so you don't build a separate connector for each one.
 **Audience**: teams whose agents need broad API coverage without maintaining dozens of separate MCP servers.
 **Notes**: provides MCP servers + Python / TypeScript SDKs; connect to Claude Code via MCP. A "tool aggregator" (compare with n8n / Zapier for automation).
+
+---
+
+### [morluto/jacobian](https://github.com/morluto/jacobian) ⭐⭐⭐
+
+| Field | Value |
+|---|---|
+| Stars | ★ 14 |
+| License | MIT |
+| Rating | ⭐⭐⭐ |
+
+**What it teaches**: a directly installable math MCP server for practicing agent calls to composable, exact computations across polynomial maps, linear algebra, and graph algorithms.
+**Who it's for**: researchers and developers who want to add mathematical computation to MCP workflows or have agents work with structured mathematical problems.
+**Notes**: a Python project, but the launcher ships on npm, which is why it starts with `npx`. Provides an MCP server, CLI, and Python library. Start with a local MCP configuration and use the native Python API when needed.
+**How to run**:
+```bash
+npx -y jacobian mcp
+```
 
 ---
 
