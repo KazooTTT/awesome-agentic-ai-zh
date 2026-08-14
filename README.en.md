@@ -307,7 +307,7 @@ If this learning roadmap helps your study or work, please cite:
   author = {Chiou, Wenyu},
   year = {2026},
   url = {https://github.com/WenyuChiou/awesome-agentic-ai-zh},
-  note = {8-stage learning path from prerequisites to Agent Interfaces (Computer Use / Browser Use / Code Sandbox), with curated projects + hello-X demos. Bilingual (zh-TW / English).}
+  note = {8-stage learning path from prerequisites to Agent Interfaces (Computer Use / Browser Use / Code Sandbox), with curated projects + hello-X demos. Trilingual (zh-TW / 简中 / English).}
 }
 ```
 
