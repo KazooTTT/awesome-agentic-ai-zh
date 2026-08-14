@@ -6,7 +6,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
-## 2026-08-13(第二批)
+## 2026-08-14
 
 - **fix** · **網站上有 151 個錨點連結是死的,而 gate 一直是綠的([#93](https://github.com/WenyuChiou/awesome-agentic-ai-zh/issues/93))**。`scripts/check-anchors.py` 是照 GitHub 的 github-slugger 規則驗的——這對「在 github.com 上讀這個 repo」的人完全正確。但發布出去的 MkDocs 網站用的是 python-markdown 的預設 slugify,**它會把非 ASCII 整段丟掉**:`### Loop Engineering（迴圈工程）` 在 GitHub 上是 `#loop-engineering迴圈工程`,在網站上卻是 `#loop-engineering`。兩邊算法不同,誰都沒錯,但**沒有任何東西在檢查第二個**。
 - **fix** · **修法是一行設定,不是改 151 個連結**。`mkdocs.yml` 的 `toc` 改用 `pymdownx.slugs.slugify(case="lower")`。先量過才敢改:拿 repo 裡**每一個標題**(4344 個;`HEADER_RE` 在原始文字上會匹配到 5070 筆,其中 726 筆是 ``` 區塊裡的 `#` 註解,不是標題)逐一比對,這個 slugify 與 `check-anchors.py` 的輸出**零筆不一致**。建置時的 anchor 診斷從 **349 筆降到 0**。
