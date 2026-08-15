@@ -8,6 +8,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ## 2026-08-14(第七批)
 
+- **fix** · **zh-Hans 裡最後一個「投影片」改成「幻灯片」**。`stages/03-tool-use-and-hello-agent.zh-Hans.md` 第 67 行是整棵 zh-Hans 樹上僅剩的一個,其他 5 處早就寫「幻灯片」了——其中 `stages/01-llm-basics.zh-Hans.md` 第 152 行是**同一門李宏毅課程的同一句介紹**,只差一個 stage。同一份鏡像對同一個東西有兩種叫法,那是殘留,不是用字選擇。**沒有任何 gate 抓得到這種東西**:`check-hans-chars` 是字元級的,而投、影、片三個字在簡體裡都是合法字,所以它永遠會是綠的;要看見這個,只能靠詞彙層的規則或人眼。(下面那條講 `GUARDED_VOCAB` 的說「第 67 行原封不動」,問的是另一件事——守衛防的是把「投影片」改成「投视频」,那個保護仍然需要。)
 - **fix** · **有 5 處台灣用語躺在 zh-Hans 檔裡，而 blocking gate 是「故意」抓不到的**。`zh-hans-localize.py --check` 一直回報 clean,但 lint 裡那個 warn-only 的殘留檢查看得到。原因寫在 [`scripts/zh-hans-localize.py`](scripts/zh-hans-localize.py) 的註解裡:`影片→视频` 被整條排除,因為「影片」是「**投影片**」的子字串,而 `VOCAB` 是純 `str.replace`,一改就會把投影片變成「投视频」。**那個註解對碰撞的判斷是正確的,對解法的判斷是錯的**——排除掉整條規則,等於讓 5 處真的殘留永遠留在樹上,而且 blocking gate 還會說沒事。
 - **fix** · **修法不是排除,是加守衛**。新增 `GUARDED_VOCAB`:該改的改、投影片不動。(第一版用 negative lookbehind `(?<!投)影片`,**下面第三條會講到它不夠、已被換掉**;這裡保留當時的寫法是為了讓後面那條讀得懂。)碰撞不是假想的——`stages/03-tool-use-and-hello-agent.zh-Hans.md` 第 67 行的「投影片」離第 63 行一個真正的「影片」只有四行。實際套用結果:**5 處改成「视频」,第 67 行原封不動**。**排除是看不見的,守衛是可以測的。**
 - **test** · **而更根本的問題是:這支腳本完全沒有單元測試**。它是會**改寫 tracked 檔案**的 blocking gate,卻沒有任何測試碰過它的取代邏輯——跟 #102(判決住在沒被測到的 `main()` 裡)是同一個形狀。新增 [`scripts/test_zh_hans_localize.py`](scripts/test_zh_hans_localize.py)(12 條)並掛進 lint job,同時釘住兩半:**該詞有被在地化 + 宿主詞沒有被破壞**。跑了 6 個變異全部被抓到,其中「拿掉 lookbehind」正是由 `test_slides_are_not_corrupted` 擋下來的。
