@@ -117,8 +117,15 @@ _SLIDES_SEP = (
 
 GUARDED_VOCAB = [
     # 影片 → 视频, except inside 投影片 (projected slides), where 影片 is just a
-    # substring. The collision is real, not theoretical: stages/03 line 67 has a
-    # 投影片 four lines from a genuine 影片.
+    # substring. The collision is real, not theoretical: the zh-TW canonical
+    # stages/03-tool-use-and-hello-agent.md carries 影片優先 on line 63 and
+    # 投影片 on line 67 — four lines apart, in one section.
+    #
+    # That pair used to exist in the zh-Hans mirror too, which is what this
+    # guard was built against; the mirror has since been fully localized
+    # (影片→视频, and 投影片→幻灯片 by hand, since no rule covers the latter).
+    # The guard is still load-bearing: the canonical still has the shape, so
+    # any future port of that section reintroduces it.
     #
     # When in doubt this PROTECTS. The two errors are not symmetric: a missed
     # substitution leaves a Taiwan word visible in a rendered page, where a

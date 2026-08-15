@@ -54,8 +54,11 @@ def test_video_is_localized() -> None:
 def test_slides_are_not_corrupted() -> None:
     """THE collision. 投影片 contains 影片; a blanket replace yields 投视频.
 
-    This is not hypothetical — stages/03-tool-use-and-hello-agent.zh-Hans.md
-    has a real 投影片 two lines away from a real 影片.
+    This is not hypothetical — the zh-TW canonical
+    stages/03-tool-use-and-hello-agent.md has 影片優先 on line 63 and 投影片 on
+    line 67, four lines apart in one section. The zh-Hans mirror carried the
+    same pair until it was localized; the canonical still does, so any future
+    port of that section brings the collision straight back.
     """
     assert _localize("官方页含投影片 + YouTube 链接") == "官方页含投影片 + YouTube 链接", (
         "投影片 (slides) was corrupted — this is exactly why the rule used to be "
