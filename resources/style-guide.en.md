@@ -32,7 +32,6 @@ Every project entry uses this structure:
 | Field | Value |
 |---|---|
 | Language | Python |
-| Stars | ★ 12k+ |
 | License | MIT |
 | Recommendation | ⭐⭐⭐⭐ |
 
@@ -51,7 +50,6 @@ Every project entry uses this structure:
 ### Required fields (GitHub repo entry)
 For entries that are real GitHub repos:
 
-- `Stars` (`★ Xk+` format, no thousands separator)
 - `License` (SPDX ID or annotated exception, see 5)
 - `Recommendation` (⭐ × N, see 2)
 - `What it teaches`, `Best for`
@@ -62,9 +60,17 @@ Some entries are blogs, videos, official docs, or catalog hubs — not GitHub re
 - `Recommendation` (required)
 - `What it teaches`, `Best for` (required)
 - `Format` (required, e.g. `Article` / `Video` / `Course` / `Curated list` / `Specification`)
-- `Stars` / `License` may be omitted (no GitHub repo to attach)
 
-Example: an `Anthropic — Building Effective Agents` blog entry uses `Format = Article` + `Recommendation`, without `Stars` or `License`.
+Example: an `Anthropic — Building Effective Agents` blog entry uses `Format = Article` + `Recommendation` and needs no repository License field.
+
+### Project-wide resource-selection rule
+
+Recommendation is a required editorial judgment for every entry.
+
+- Use current official documentation, specifications, and model cards to verify facts.
+- Use well-known or widely used practical repositories to give readers a hands-on path.
+- Popularity is only a candidate-discovery signal; it never replaces checks for maintenance, license, safety, or relevance.
+- Every project entry must say what it teaches, who it is best for, and its status or limits.
 
 ### Optional fields
 - `Language` — primary programming language (Python / TypeScript / Chinese)
@@ -88,7 +94,7 @@ Example: an `Anthropic — Building Effective Agents` blog entry uses `Format = 
 | ⭐⭐ | Useful reference | Browse if interested |
 | ⭐ | Niche / advanced / for completeness | Most readers can skip |
 
-These are editorial ratings, not GitHub stars. When removing volatile popularity numbers such as `★ 140k+`, preserve the existing `⭐⭐⭐⭐⭐` rating; change the rating only when evidence about the resource’s purpose, quality, or maintenance changes.
+These are editorial ratings, not GitHub stars. Change a rating only when evidence about the resource’s purpose, quality, or maintenance changes.
 
 **Rules:**
 
@@ -252,7 +258,7 @@ Time, cost, code, expected output, and troubleshooting.
 
 </details>
 
-Every runnable folder must provide copy-ready PowerShell commands first, followed by a closed `<details>` block with the macOS/Linux alternative; it must also provide Path A and Path B scripts plus offline mock tests. Bound SDK dependencies to major versions and use a pinned cloud model ID; validate untrusted tool names and arguments before execution. Describe cloud cost as a token formula with a verification date, rather than assuming a fixed amount.
+Every runnable folder must provide copy-ready PowerShell commands first, followed by a closed `<details>` block with the macOS/Linux alternative; it must also provide Path A and Path B scripts plus offline mock tests. Bound SDK dependencies to major versions and use a pinned cloud model ID; validate untrusted tool names and arguments before execution. Describe cloud cost as a token formula with a verification date, rather than assuming a fixed amount. Give examples for different frameworks separate Python 3.11 `.venv` environments; do not combine their requirements. Tests must exercise the core behavior—an import-only check does not pass.
 
 [3-5 hands-on exercise items]
 
@@ -318,15 +324,15 @@ This rule applies to the entire learning map. The goal is for a five-year-old to
 - Preserve the resource count, order, links, and three-locale correspondence, then verify the rendered result with MkDocs.
 - Keep short tables without repeated categories in Markdown to avoid needless maintenance cost.
 
-Pages containing models, prices, context limits, licenses, or lifecycle states place a visible verification date and a machine-readable marker near those facts:
+Pages containing models, prices, context limits, licenses, or lifecycle states place the visible verification date in the most relevant closed detail and render it as small text. Keep only the invisible machine marker near the page top:
 
 ```markdown
-> Data verified: YYYY-MM-DD UTC. Prices and availability may change; check the official page before use.
+<small>Data checked: YYYY-MM-DD UTC</small>
 
 <!-- freshness: canonical=stages/0N-slug.md; verified_on=YYYY-MM-DD; scope=models,pricing,availability,deprecations; max_age_days=90 -->
 ```
 
-All three locale markers must be identical; `canonical` always points to the Traditional Chinese source page. If an official source does not publish a field, write “not published by the official source” instead of inferring it from a third-party leaderboard. Third-party benchmarks may only teach readers how to run their own evaluation.
+State only the checked scope and date; do not repeat generic permanence disclaimers. All three locale markers must be identical; `canonical` always points to the Traditional Chinese source page. If an official source does not publish a field, write “not published by the official source” instead of inferring it from a third-party leaderboard. Third-party benchmarks may only teach readers how to run their own evaluation.
 
 **Stage 0 exception**: it may omit `Curated Projects` and `Entry Conditions` because it is a prerequisite gateway. The visible path keeps the skip check, four learning goals, one integrated practice, and a short completion check. Time, environment, extra practice, terms, and learning resources stay collapsed by default.
 

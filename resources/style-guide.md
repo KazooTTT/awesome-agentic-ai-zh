@@ -32,7 +32,6 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 | 欄位 | 內容 |
 |---|---|
 | 語言 | Python |
-| Stars | ★ 12k+ |
 | License | MIT |
 | 推薦度 | ⭐⭐⭐⭐ |
 
@@ -51,7 +50,6 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 ### 必填欄位（GitHub repo entry）
 對「真實 GitHub repo」的 entry：
 
-- `Stars`（★ Xk+ 格式，無千位逗號）
 - `License`（SPDX ID 或標註例外，見 5）
 - `推薦度`（⭐ × N，見 2）
 - `教什麼`、`適合誰`
@@ -62,9 +60,17 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 - `推薦度`（必填）
 - `教什麼`、`適合誰`（必填）
 - `形式`（必填，標明是 `文章` / `影片` / `課程` / `精選清單` / `規格文件` 等）
-- `Stars` / `License` 可省略（沒有 GitHub repo 對應）
 
-範例：`Anthropic — Building Effective Agents` 部落格文章用 `形式 = 文章` + 推薦度，不需要 Stars / License。
+範例：`Anthropic — Building Effective Agents` 部落格文章用 `形式 = 文章` + 推薦度，不需要 repo 的 License 欄位。
+
+### 全站資源選擇規則
+
+推薦度是每筆 entry 必填的編輯判斷。
+
+- 用現行官方文件、規格與 model card 查證事實。
+- 用知名或廣泛使用、可實作的 repo，給讀者一條動手的路。
+- 人氣只用來找候選，不能取代維護、License、安全或相關性檢查。
+- 每個 project 都要說明它教什麼、適合誰，以及目前狀態或限制。
 
 ### 選填欄位
 - `語言` — 主要程式語言（Python / TypeScript / 中文 等）
@@ -88,7 +94,7 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 | ⭐⭐ | 有用參考 | 有興趣再看 |
 | ⭐ | 利基 / 進階 / 為了完整性 | 多數讀者可跳 |
 
-這是編輯評分，不是 GitHub stars。移除 `★ 140k+` 這類會變動的人氣數字時，必須保留原有 `⭐⭐⭐⭐⭐` 評分；只有資源用途、品質或維護狀態的查證結果改變時，才能連同理由調整評分。
+這是編輯評分，不是 GitHub stars。只有資源用途、品質或維護狀態的查證結果改變時，才能連同理由調整評分。
 
 **準則**：
 
@@ -250,7 +256,7 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 
 </details>
 
-可執行資料夾必須先提供可直接複製的 PowerShell 指令，再用預設收合的 `<details>` 提供 macOS/Linux 替代指令；同時提供 Path A 與 Path B 腳本，以及不打 API 的 offline mock tests。SDK 依賴要限制 major version，cloud model 要使用釘住的 model ID；執行前必須驗證不受信任的工具名稱與參數。Cloud 成本寫成 token 公式並標示核對日期，不要假設一個固定金額。
+可執行資料夾必須先提供可直接複製的 PowerShell 指令，再用預設收合的 `<details>` 提供 macOS/Linux 替代指令；同時提供 Path A 與 Path B 腳本，以及不打 API 的 offline mock tests。SDK 依賴要限制 major version，cloud model 要使用釘住的 model ID；執行前必須驗證不受信任的工具名稱與參數。Cloud 成本寫成 token 公式並標示核對日期，不要假設一個固定金額。不同 framework 的範例各自建立 Python 3.11 `.venv`，不要合併 requirements。測試必須走過核心行為；只驗 import 成功不算通過。
 
 [3-5 個動手練習 items]
 
@@ -316,15 +322,15 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 - 轉換後保留原有資源數量、順序、連結與三語對應，並用 MkDocs 檢查實際渲染。
 - 沒有重複分類的短表格繼續使用 Markdown，避免為了格式增加維護成本。
 
-含模型、價格、context、授權或生命週期狀態的頁面，在資料附近加入可見查核日期與機器 marker：
+含模型、價格、context、授權或生命週期狀態的頁面，把可見查核日期放進最相關的預設收合區，並用小字呈現；頁首只保留不顯示的機器 marker：
 
 ```markdown
-> 資料查核：YYYY-MM-DD UTC。價格與可用性之後可能改變，使用前請再看官方頁面。
+<small>資料查核：YYYY-MM-DD UTC</small>
 
 <!-- freshness: canonical=stages/0N-slug.md; verified_on=YYYY-MM-DD; scope=models,pricing,availability,deprecations; max_age_days=90 -->
 ```
 
-三語 marker 必須完全一致；`canonical` 一律指向繁中主頁。官方沒有公布的欄位寫「官方未公布」，不要從第三方榜單反推；第三方 benchmark 只能教讀者怎麼自己評測。
+日期只寫查核範圍與日期，不重複加入「資料不會永久正確」等通用提醒。三語 marker 必須完全一致；`canonical` 一律指向繁中主頁。官方沒有公布的欄位寫「官方未公布」，不要從第三方榜單反推；第三方 benchmark 只能教讀者怎麼自己評測。
 
 **Stage 0 例外**：可以省略 `精選 Projects`、`進入條件`，因為它是 prerequisite gateway。可見主線依序保留 skip 判斷、4 個學習目標、1 個整合練習與短版完成檢查；時間、環境、補充練習、名詞與學習資源預設收合。
 
