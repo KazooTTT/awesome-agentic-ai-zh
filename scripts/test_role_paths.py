@@ -1,4 +1,4 @@
-"""Reader, fact, resource, and mirror contracts for role-path C2a."""
+"""Reader, fact, resource, and mirror contracts for role-path migrations."""
 
 from __future__ import annotations
 
@@ -19,6 +19,11 @@ PAGES = {
         "zh-TW": ROOT / "branches/for-developer.md",
         "en": ROOT / "branches/for-developer.en.md",
         "zh-Hans": ROOT / "branches/for-developer.zh-Hans.md",
+    },
+    "teacher": {
+        "zh-TW": ROOT / "branches/for-teacher.md",
+        "en": ROOT / "branches/for-teacher.en.md",
+        "zh-Hans": ROOT / "branches/for-teacher.zh-Hans.md",
     },
 }
 
@@ -42,6 +47,16 @@ CORE_TERMS = {
         "Approval",
         "Diff／Rollback",
         "Eval／Observability",
+    ),
+    "teacher": (
+        "Learning Objective",
+        "Scaffolding",
+        "Rubric",
+        "Formative Assessment",
+        "AI Literacy",
+        "Student Data",
+        "Human Review",
+        "Academic Integrity",
     ),
 }
 
@@ -72,9 +87,27 @@ RESOURCE_PAIRS = {
         ("https://github.com/yamadashy/repomix", "⭐⭐⭐⭐⭐"),
         ("https://github.com/RooCodeInc/Roo-Code", "⭐⭐⭐"),
     ),
+    "teacher": (
+        ("https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=387", "⭐⭐⭐⭐⭐"),
+        ("https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence", "⭐⭐⭐⭐⭐"),
+        ("https://www.teachai.org/toolkit", "⭐⭐⭐⭐⭐"),
+        ("https://www.anthropic.com/news/claude-for-teachers", "⭐⭐⭐⭐"),
+        ("https://openai.com/index/chatgpt-for-teachers/", "⭐⭐⭐⭐"),
+        ("https://support.google.com/gemininotebook/answer/16337734?hl=en", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/huggingface/agents-course", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/datawhalechina/hello-agents", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/microsoft/ai-agents-for-beginners", "⭐⭐⭐⭐"),
+        ("https://github.com/anthropics/skills", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/obra/superpowers", "⭐⭐⭐⭐"),
+        ("https://github.com/f/prompts.chat", "⭐⭐⭐"),
+    ),
 }
 
-ROWGROUPS = {"researcher": (3, 4, 2, 1), "developer": (9, 2, 1)}
+ROWGROUPS = {
+    "researcher": (3, 4, 2, 1),
+    "developer": (9, 2, 1),
+    "teacher": (3, 3, 3, 3),
+}
 
 VISIBLE_STARTING_URLS = {
     "researcher": (
@@ -87,6 +120,15 @@ VISIBLE_STARTING_URLS = {
         "https://github.com/anomalyco/opencode",
         "https://github.com/cline/cline",
     ),
+    "teacher": tuple(url for url, _rating in RESOURCE_PAIRS["teacher"]),
+}
+
+VISIBLE_FIVE_STAR_COUNTS = {"researcher": 3, "developer": 3, "teacher": 10}
+
+VISIBLE_LANDMARKS = {
+    "researcher": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## ✅"),
+    "developer": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## ✅"),
+    "teacher": ("## 📌", "## 🎯", "## 🧩", "## 🛡", "## 🛠", "## 📚", "## ⭐", "## ✅"),
 }
 
 RESOURCE_STATUS = {
@@ -112,6 +154,17 @@ RESOURCE_STATUS = {
     "https://github.com/obra/superpowers": "active",
     "https://github.com/yamadashy/repomix": "active",
     "https://github.com/RooCodeInc/Roo-Code": "archived",
+    "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=387": "current",
+    "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence": "current",
+    "https://www.teachai.org/toolkit": "current",
+    "https://www.anthropic.com/news/claude-for-teachers": "limited",
+    "https://openai.com/index/chatgpt-for-teachers/": "limited",
+    "https://support.google.com/gemininotebook/answer/16337734?hl=en": "available",
+    "https://github.com/huggingface/agents-course": "active",
+    "https://github.com/datawhalechina/hello-agents": "active",
+    "https://github.com/microsoft/ai-agents-for-beginners": "active",
+    "https://github.com/anthropics/skills": "active",
+    "https://github.com/f/prompts.chat": "active",
 }
 
 STATUS_TOKENS = {
@@ -122,6 +175,8 @@ STATUS_TOKENS = {
     "archived": {"zh-TW": "已封存", "en": "archived", "zh-Hans": "已封存"},
     "commercial": {"zh-TW": "商業", "en": "Commercial", "zh-Hans": "商业"},
     "read-only": {"zh-TW": "read-only", "en": "Read-only", "zh-Hans": "read-only"},
+    "current": {"zh-TW": "現行", "en": "Current", "zh-Hans": "现行"},
+    "limited": {"zh-TW": "限區可用", "en": "Region-limited", "zh-Hans": "限区可用"},
 }
 
 RESOURCE_LICENSE_OR_SERVICE = {
@@ -147,6 +202,17 @@ RESOURCE_LICENSE_OR_SERVICE = {
     "https://github.com/obra/superpowers": "MIT",
     "https://github.com/yamadashy/repomix": "MIT",
     "https://github.com/RooCodeInc/Roo-Code": "Apache-2.0",
+    "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=387": {"zh-TW": "官方指引", "en": "official guidance", "zh-Hans": "官方指南"},
+    "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence": {"zh-TW": "官方指引", "en": "official guidance", "zh-Hans": "官方指南"},
+    "https://www.teachai.org/toolkit": {"zh-TW": "教育工具包", "en": "education toolkit", "zh-Hans": "教育工具包"},
+    "https://www.anthropic.com/news/claude-for-teachers": {"zh-TW": "雲端服務", "en": "cloud service", "zh-Hans": "云服务"},
+    "https://openai.com/index/chatgpt-for-teachers/": {"zh-TW": "雲端服務", "en": "cloud service", "zh-Hans": "云服务"},
+    "https://support.google.com/gemininotebook/answer/16337734?hl=en": {"zh-TW": "雲端服務", "en": "cloud service", "zh-Hans": "云服务"},
+    "https://github.com/huggingface/agents-course": "Apache-2.0",
+    "https://github.com/datawhalechina/hello-agents": "CC BY-NC-SA 4.0",
+    "https://github.com/microsoft/ai-agents-for-beginners": "MIT",
+    "https://github.com/anthropics/skills": {"zh-TW": "各資料夾授權", "en": "per-folder licenses", "zh-Hans": "各文件夹授权"},
+    "https://github.com/f/prompts.chat": {"zh-TW": "MIT／CC0", "en": "MIT / CC0", "zh-Hans": "MIT／CC0"},
 }
 
 RESOURCE_LIMIT_TOKENS = {
@@ -172,6 +238,17 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/obra/superpowers": {"zh-TW": "gate", "en": "gate", "zh-Hans": "gate"},
     "https://github.com/yamadashy/repomix": {"zh-TW": "secret", "en": "secrets", "zh-Hans": "secrets"},
     "https://github.com/RooCodeInc/Roo-Code": {"zh-TW": "仍在維護", "en": "default", "zh-Hans": "仍在维护"},
+    "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=387": {"zh-TW": "年齡", "en": "age", "zh-Hans": "年龄"},
+    "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence": {"zh-TW": "AI Act", "en": "AI Act", "zh-Hans": "AI Act"},
+    "https://www.teachai.org/toolkit": {"zh-TW": "校方政策", "en": "school policy", "zh-Hans": "校方政策"},
+    "https://www.anthropic.com/news/claude-for-teachers": {"zh-TW": "美國 K-12", "en": "U.S. K-12", "zh-Hans": "美国 K-12"},
+    "https://openai.com/index/chatgpt-for-teachers/": {"zh-TW": "美國 K-12", "en": "U.S. K-12", "zh-Hans": "美国 K-12"},
+    "https://support.google.com/gemininotebook/answer/16337734?hl=en": {"zh-TW": "學校政策", "en": "school policy", "zh-Hans": "学校政策"},
+    "https://github.com/huggingface/agents-course": {"zh-TW": "日常工具", "en": "daily tool for teachers", "zh-Hans": "日常工具"},
+    "https://github.com/datawhalechina/hello-agents": {"zh-TW": "非商業", "en": "noncommercial", "zh-Hans": "非商业"},
+    "https://github.com/microsoft/ai-agents-for-beginners": {"zh-TW": "版本", "en": "versions", "zh-Hans": "版本"},
+    "https://github.com/anthropics/skills": {"zh-TW": "授權", "en": "license", "zh-Hans": "授权"},
+    "https://github.com/f/prompts.chat": {"zh-TW": "品質", "en": "quality", "zh-Hans": "质量"},
 }
 
 DEVELOPER_ROW_FACTS = {
@@ -199,6 +276,12 @@ FRESHNESS = {
         "<!-- freshness: canonical=branches/for-developer.md; "
         "verified_on=2026-08-29; "
         "scope=coding-agents,tool-identity,permissions,sandboxing,project-status; "
+        "max_age_days=90 -->"
+    ),
+    "teacher": (
+        "<!-- freshness: canonical=branches/for-teacher.md; "
+        "verified_on=2026-08-29; "
+        "scope=education-guidance,student-data,assessment,tool-availability,project-status; "
         "max_age_days=90 -->"
     ),
 }
@@ -286,6 +369,68 @@ LEGACY_ANCHORS = {
             "社群备注",
         ),
     },
+    "teacher": {
+        "zh-TW": (
+            "使用情境",
+            "教師使用-ai-輔助時要注意什麼",
+            "備課與上課素材製作",
+            "教學現場與學習輔助",
+            "其他應用場景",
+            "參考文獻",
+            "精選-projects",
+            "教學流程-skills",
+            "可用的基礎元件",
+            "教學課程素材給教師備課用",
+            "prompt-素材庫",
+            "閱讀材料",
+            "可以建的流程按教學階段",
+            "3-個可直接複製的-prompt-範本",
+            "隱私--倫理重要",
+            "給教師的層級建議",
+            "也適用其他分支",
+            "社群備註",
+        ),
+        "en": (
+            "use-cases",
+            "what-teachers-should-watch-for-when-using-ai",
+            "lesson-prep-and-class-material-creation",
+            "classroom-and-learning-support",
+            "other-use-cases",
+            "references",
+            "curated-projects",
+            "teaching-workflow-skills",
+            "available-building-blocks",
+            "course-materials-for-teaching",
+            "prompt-libraries",
+            "reading-materials",
+            "workflows-you-can-build-by-teaching-stage",
+            "3-copy-ready-prompt-templates",
+            "privacy--ethics-important",
+            "tier-recommendations-for-teachers",
+            "other-branches-that-also-apply",
+            "community-note",
+        ),
+        "zh-Hans": (
+            "使用场景",
+            "教师使用-ai-辅助时要注意什么",
+            "备课与上课素材制作",
+            "教学现场与学习辅助",
+            "其他应用场景",
+            "参考文献",
+            "精选-projects",
+            "教学流程-skills",
+            "可用的基础组件",
+            "教学课程素材给教师备课用",
+            "prompt-素材库",
+            "阅读材料",
+            "可以构建的流程按教学阶段",
+            "3-个可直接复制的-prompt-模板",
+            "隐私--伦理重要",
+            "给教师的层级建议",
+            "也适用其他分支",
+            "社群备注",
+        ),
+    },
 }
 
 
@@ -322,7 +467,7 @@ def _localized_token(value: str | dict[str, str], locale: str) -> str:
 def test_visible_path_is_progressive_and_keeps_core_terms(role: str, locale: str) -> None:
     text = PAGES[role][locale].read_text(encoding="utf-8")
     visible = _without_details(text)
-    landmarks = ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## ✅")
+    landmarks = VISIBLE_LANDMARKS[role]
     positions = [visible.index(icon) for icon in landmarks]
     assert positions == sorted(positions)
     for term in CORE_TERMS[role]:
@@ -330,7 +475,7 @@ def test_visible_path_is_progressive_and_keeps_core_terms(role: str, locale: str
         assert visible.index(f"**{term}") < visible.index("## 🛠")
     for url in VISIBLE_STARTING_URLS[role]:
         assert url in visible
-    assert visible.count("⭐⭐⭐⭐⭐") == len(VISIBLE_STARTING_URLS[role])
+    assert visible.count("⭐⭐⭐⭐⭐") == VISIBLE_FIVE_STAR_COUNTS[role]
 
     openings = re.findall(r"^<details\b[^>]*>", text, flags=re.MULTILINE)
     assert len(openings) >= 5
@@ -361,6 +506,41 @@ def test_developer_copy_block_is_small_reviewable_and_human_gated(locale: str) -
     ):
         assert token.casefold() in visible.casefold()
     assert re.search(r"human|人工", visible, flags=re.IGNORECASE)
+
+
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_teacher_copy_block_uses_fictional_data_and_teacher_review(locale: str) -> None:
+    text = PAGES["teacher"][locale].read_text(encoding="utf-8")
+    visible = _without_details(text)
+    required = {
+        "zh-TW": ("虛構", "不要放學生資料", "Learning Objective", "Exit Ticket", "Human Review"),
+        "en": ("fictional", "no student data", "Learning Objective", "Exit Ticket", "Human Review"),
+        "zh-Hans": ("虚构", "不要放学生数据", "Learning Objective", "Exit Ticket", "Human Review"),
+    }[locale]
+    for token in required:
+        assert token.casefold() in visible.casefold(), (locale, token)
+    assert "teacher-ai-review-loop" in visible
+    assert "teacher-ai-classroom-use-cases" not in text
+
+
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_teacher_page_rejects_autonomous_grading_and_diagnosis_claims(locale: str) -> None:
+    text = PAGES["teacher"][locale].read_text(encoding="utf-8")
+    forbidden = (
+        "即時批改",
+        "即时批改",
+        "instant grading",
+        "推測近側發展區",
+        "推测最近发展区",
+        "infer the zone of proximal development",
+        "AI 最終評分",
+        "AI 最终评分",
+        "AI makes the final grade",
+        "AI diagnoses the student",
+        "AI 診斷學生",
+        "AI 诊断学生",
+    )
+    assert not any(token.casefold() in text.casefold() for token in forbidden)
 
 
 @pytest.mark.parametrize("role", PAGES)
@@ -437,6 +617,12 @@ def test_freshness_urls_and_legacy_landings_are_mirrored(role: str) -> None:
                 "<summary>🧪", "<summary>🧪", "<summary>🧯", "## 📚",
                 "## ✅", "<summary>⭐",
             ),
+            "teacher": (
+                "## 📌", "## 🛡", "<summary>🧪", "<summary>🧪", "<summary>🧪",
+                "## 📚", "## ⭐", "## ⭐", "## ⭐", "## ⭐", "## ⭐",
+                "## 📚", "<summary>🧪", "<summary>🧪", "## 🛡", "<summary>⏱",
+                "## ✅", "<summary>🤝",
+            ),
         }[role]
         anchor_positions = []
         for anchor, marker in zip(LEGACY_ANCHORS[role][locale], landing_markers, strict=True):
@@ -477,6 +663,28 @@ def test_current_research_name_privacy_status_and_curation_rules() -> None:
         assert "WenyuChiou/" not in text
         assert "1M context" not in text and "1M token" not in text
         assert not re.search(r"★\s*[\d,.]+[kKmM]?\+?", text)
+
+
+def test_teacher_tools_require_school_approval_and_use_current_product_names() -> None:
+    approval_labels = {
+        "zh-TW": "需由學校核准的教師雲端工具",
+        "en": "Teacher cloud tools requiring school approval",
+        "zh-Hans": "需由学校核准的教师云工具",
+    }
+    misleading_labels = {
+        "zh-TW": "學校核准工具",
+        "en": "School-approved tools",
+        "zh-Hans": "学校核准工具",
+    }
+    current_url = "https://support.google.com/gemininotebook/answer/16337734?hl=en"
+    for locale, page in PAGES["teacher"].items():
+        text = page.read_text(encoding="utf-8")
+        assert approval_labels[locale] in text
+        assert misleading_labels[locale] not in text
+        assert "Gemini Notebook" in text and "NotebookLM" in text
+        assert "Gemini Notebooks" not in text
+        assert current_url in text
+        assert "support.google.com/notebooklm/" not in text
 
 
 def test_public_access_is_not_treated_as_upload_permission() -> None:
