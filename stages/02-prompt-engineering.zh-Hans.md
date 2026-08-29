@@ -322,4 +322,4 @@ Path A 六题两轮的 API 费用为 `$0`。Path B 先设 `$0.05` 上限；如�
 - [ ] 我一次只改一件事，并留下分数。
 - [ ] 我知道资料不足或需要采取行动时，不能只靠 prompt。
 
-全部做到后，进入 [Stage 3 — Tool Use 与 Agent 入门](03-tool-use-and-hello-agent.zh-Hans.md)。
+全部做到后，进入 [Stage 3 — 工具使用与第一个 Agent Loop](03-tool-use-and-hello-agent.zh-Hans.md)。

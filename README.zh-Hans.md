@@ -129,8 +129,8 @@ cd awesome-agentic-ai-zh
 
 | Stage | 主题 | 关键内容 | 预估时程 |
 |---|---|---|---|
-| **3** ⭐ | [工具使用与第一个 Agent（Tool Use & Hello Agent）](stages/03-tool-use-and-hello-agent.zh-Hans.md) | function calling · ReAct · 6 个动手练习 | 2-3 周 |
-| **4** | [Agent 框架（Agent Frameworks）](stages/04-agent-frameworks.zh-Hans.md) | LangGraph · AutoGen · CrewAI · Smolagents | 2-3 周 |
+| **3** ⭐ | [工具使用与第一个 Agent Loop](stages/03-tool-use-and-hello-agent.zh-Hans.md) | function calling · ReAct · 6 个动手练习 | 2-3 周 |
+| **4** | [Agent 框架与 Workflow Graph](stages/04-agent-frameworks.zh-Hans.md) | LangGraph · AutoGen · CrewAI · Smolagents | 2-3 周 |
 | **5** ⭐⭐ | [Claude Code 生态系（Claude Code Ecosystem）](stages/05-claude-code-ecosystem.zh-Hans.md)（**共用 hub**、Track A 也学）| MCP · Skills · Plugins · Subagents | 3-4 周（Track B 视角）|
 | **6** | [上下文管理（Context Engineering）：RAG 与 Memory](stages/06-memory-rag.zh-Hans.md) | vector DB · long-term memory · contextual retrieval | 2 周 |
 | **7** | [多 Agent 系统与稳定运作（Multi-Agent & Production）](stages/07-multi-agent-production.zh-Hans.md) | multi-agent orchestration · eval · observability · SDK 进阶 | 2-4 周 |
@@ -176,12 +176,12 @@ cd awesome-agentic-ai-zh
 主干分 5 部分：
 
 - **Part 1（Stage 0-2）：基础与 LLM 入门** — Python / git / API、什么是 LLM、怎么设计 prompt
-- **Part 2（Stage 3-4）：构建你的 Agent** — 从 tool use 进化到 agent，学主流 framework
+- **Part 2（Stage 3-4）：构建你的 Agent** — Stage 3 写出第一个 **Agent Loop**；Stage 4 用 framework 把多步流程组成看得见的 **Workflow Graph**
 - **Part 3（Stage 5） 共用 hub** — Claude Code 生态系（MCP / Skills / Plugins / Subagents、Track A + B 都会用到）
-- **Part 4（Stage 6-7）：进阶集成** — memory / RAG / multi-agent 协作 / harness engineering
+- **Part 4（Stage 6-7）：进阶集成** — Stage 6 用 RAG / memory 深入 **Context Engineering**；Stage 7 让 loop / graph 在 production 稳定运行
 - **Part 5（Stage 8） 共用 hub** — Agent Interfaces（Computer Use / Browser Use / Code Sandbox、2024-2026 frontier、两条 track 都会用到）
 
-> 🔭 **概念分层的演进**：**prompt engineering**（Stage 2、单一 prompt 怎么写）→ **context engineering**（Stage 3 之后、怎么动态组 system prompt + memory + retrieved chunks + tool schema）→ **harness engineering**（Stage 7、agent loop / eval / observability / deploy 整套包成 production system）。2026 之后社群又往外接了 **loop**（让它自己跑完）与 **graph**（把流程摊开来看得到）两层——**完整五层与各层目的见 [Stage 7 五层工程分工](stages/07-multi-agent-production.zh-Hans.md#五层工程分工prompt--context--harness--loop--graph)**。详见 [`stages/02-prompt-engineering.zh-Hans.md`](stages/02-prompt-engineering.zh-Hans.md) 进阶：context engineering 跟 [`stages/07-multi-agent-production.zh-Hans.md`](stages/07-multi-agent-production.zh-Hans.md) 必修阅读 5+6。
+> 🔭 **学习顺序和五层堆叠回答不同问题**：学习时先在 Stage 2 写好 **Prompt**，Stage 3 写出 **Agent Loop**，Stage 4 再用 framework 组成 **Workflow Graph**；Stage 6 深入 **Context Engineering**，Stage 7 才把 harness、loop 和 graph 做到能长时间稳定运行。五层堆叠 `prompt → context → harness → loop → graph` 说的是“控制范围由小到大”，不是章节编号。完整定义见 [Stage 7 五层工程分工](stages/07-multi-agent-production.zh-Hans.md#五层工程分工prompt--context--harness--loop--graph)，Prompt 与 Context 的界线见 [Stage 2](stages/02-prompt-engineering.zh-Hans.md)。
 
 走完主干（Track B 16-22 周 / Track A 8-10 周）后，依你的身份挑一条延伸路线继续走。
 

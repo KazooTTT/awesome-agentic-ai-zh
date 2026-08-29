@@ -6,7 +6,7 @@
 
 > Skill 用途：當你卡在 tool calling（LLM 不呼叫、args 錯、ReAct loop 跑不停、schema 不知道怎麼寫），可直接輸入 `/tool-calling-tutor` 開啟；在相關情境中也可能自動載入，帶你走完 4-symptom 診斷與 5-step 修法。
 
-對應 [Stage 3 — Tool Use & Agent 入門](../../../stages/03-tool-use-and-hello-agent.md)，同時是 [Stage 5 — Claude Code Ecosystem](../../../stages/05-claude-code-ecosystem.md) 5.3 的**自帶 skill 範例**。
+對應 [Stage 3 — 工具使用與第一個 Agent Loop](../../../stages/03-tool-use-and-hello-agent.md)，同時是 [Stage 5 — Claude Code Ecosystem](../../../stages/05-claude-code-ecosystem.md) 5.3 的**自帶 skill 範例**。
 
 ## 為什麼這個 skill 存在
 

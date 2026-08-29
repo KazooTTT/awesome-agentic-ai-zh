@@ -69,7 +69,7 @@ hide:
 
     [:octicons-arrow-right-24: 进入](stages/02-prompt-engineering.zh-Hans.md)
 
--   :material-tools:{ .lg .middle } __Stage 3 — 工具调用__
+-   :material-tools:{ .lg .middle } __Stage 3 — 工具使用与第一个 Agent Loop__
 
     ---
 
@@ -77,7 +77,7 @@ hide:
 
     [:octicons-arrow-right-24: 进入](stages/03-tool-use-and-hello-agent.zh-Hans.md)
 
--   :material-view-grid:{ .lg .middle } __Stage 4 — Agent 框架__
+-   :material-view-grid:{ .lg .middle } __Stage 4 — Agent 框架与 Workflow Graph__
 
     ---
 

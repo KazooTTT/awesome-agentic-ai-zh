@@ -2,7 +2,7 @@
 
 > [繁體中文](./schema-design-cheatsheet.md) | [简体中文](./schema-design-cheatsheet.zh-Hans.md) | **English**
 
-> Companion to [Stage 3 — Tool Use & Agent Intro](../stages/03-tool-use-and-hello-agent.en.md). 5 golden rules + 5 common anti-patterns when writing tool / function schemas.
+> Companion to [Stage 3 — Tool Use & Your First Agent Loop](../stages/03-tool-use-and-hello-agent.en.md). 5 golden rules + 5 common anti-patterns when writing tool / function schemas.
 
 > Specification checked: 2026-08-27 UTC. A schema is an interface shared by the model and program; clarity reduces ambiguity but cannot replace application validation or a fixed eval.
 
@@ -159,5 +159,5 @@ This JSON shape is an application convention, not a mandatory format for every A
 - [Anthropic — Define Tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools) — official schema and description guidance
 - [Anthropic — Handle Tool Calls](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls) — Tool Result and `is_error`
 - [OpenAI — Function Calling](https://developers.openai.com/api/docs/guides/function-calling) — strict mode and function schema specification
-- [Stage 3 — Tool Use & Agent Intro](../stages/03-tool-use-and-hello-agent.en.md) — main exercises
+- [Stage 3 — Tool Use & Your First Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) — main exercises
 - [Stage 5.2 — MCP foundation](../stages/05-claude-code-ecosystem.en.md#52--mcp-model-context-protocol--foundation) — MCP servers also use tool schemas, but host, permissions, and protocol layers differ

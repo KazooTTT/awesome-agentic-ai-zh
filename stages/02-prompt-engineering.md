@@ -322,4 +322,4 @@ Path A 六題兩輪的 API 費用是 `$0`。Path B 先設 `$0.05` 上限；若�
 - [ ] 我一次只改一件事，並留下分數。
 - [ ] 我知道資料不足或需要採取行動時，不能只靠 prompt。
 
-都做到後，進入 [Stage 3 — Tool Use 與 Agent 入門](03-tool-use-and-hello-agent.md)。
+都做到後，進入 [Stage 3 — 工具使用與第一個 Agent Loop](03-tool-use-and-hello-agent.md)。

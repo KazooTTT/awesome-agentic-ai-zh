@@ -33,6 +33,10 @@ LOCALES = {
             "Stage 2 / Stage 3 2026 freshness 小修",
             "GitHub Pages,評估中",
         ),
+        "stage3_title": "Stage 3 — 工具使用與第一個 Agent Loop",
+        "stage3_topic": "工具使用與第一個 Agent Loop",
+        "stage4_title": "Stage 4 — Agent 框架與 Workflow Graph",
+        "stage4_topic": "Agent 框架與 Workflow Graph",
     },
     "en": {
         "suffix": ".en",
@@ -59,6 +63,10 @@ LOCALES = {
             "Stage 2 / Stage 3 2026 freshness",
             "GitHub Pages, under evaluation",
         ),
+        "stage3_title": "Stage 3 — Tool Use & Your First Agent Loop",
+        "stage3_topic": "Tool Use & Your First Agent Loop",
+        "stage4_title": "Stage 4 — Agent Frameworks & Workflow Graphs",
+        "stage4_topic": "Agent Frameworks & Workflow Graphs",
     },
     "zh-Hans": {
         "suffix": ".zh-Hans",
@@ -85,6 +93,10 @@ LOCALES = {
             "Stage 2 / Stage 3 2026 freshness 小修",
             "GitHub Pages,评估中",
         ),
+        "stage3_title": "Stage 3 — 工具使用与第一个 Agent Loop",
+        "stage3_topic": "工具使用与第一个 Agent Loop",
+        "stage4_title": "Stage 4 — Agent 框架与 Workflow Graph",
+        "stage4_topic": "Agent 框架与 Workflow Graph",
     },
 }
 
@@ -273,3 +285,95 @@ def test_renamed_route_headings_keep_legacy_deep_links(
     assert f'<a id="{config["legacy_stage5_anchor"]}"></a>' in stage5
     for anchor in config["legacy_roadmap_anchors"]:
         assert f'<a id="{anchor}"></a>' in roadmap
+
+
+@pytest.mark.parametrize("locale,config", LOCALES.items())
+def test_stage3_stage4_titles_match_across_reader_entry_points(
+    locale: str, config: dict[str, object]
+) -> None:
+    suffix = str(config["suffix"])
+    stage3_title = str(config["stage3_title"])
+    stage3_topic = str(config["stage3_topic"])
+    stage4_title = str(config["stage4_title"])
+    stage4_topic = str(config["stage4_topic"])
+
+    readme = read(locale_path("README", suffix))
+    index = read(locale_path("index", suffix))
+    progress = read(locale_path("PROGRESS", suffix))
+    stage2 = read(locale_path("stages/02-prompt-engineering", suffix))
+    examples_index = read(locale_path("examples/README", suffix))
+
+    assert f"[{stage3_topic}]" in readme
+    assert f"[{stage4_topic}]" in readme
+    assert f"__{stage3_title}__" in index
+    assert f"__{stage4_title}__" in index
+    assert f"**{stage3_title}**" in progress
+    assert f"**{stage4_title}**" in progress
+    assert f"[{stage3_title}]" in stage2
+    assert stage3_topic in examples_index
+    assert stage4_topic in examples_index
+
+
+@pytest.mark.parametrize("locale,config", LOCALES.items())
+def test_all_stage3_companion_pages_use_the_current_localized_title(
+    locale: str, config: dict[str, object]
+) -> None:
+    suffix = str(config["suffix"])
+    stage3_title = str(config["stage3_title"])
+    label = f"[{stage3_title}]"
+
+    examples = sorted((ROOT / "examples/stage-3").glob(f"*/README{suffix}.md"))
+    assert len(examples) == 6, (locale, examples)
+    for page in examples:
+        assert label in read(page), (locale, page)
+
+    tutor = ROOT / f"examples/stage-5/tool-calling-tutor/README{suffix}.md"
+    cheatsheet = locale_path("resources/schema-design-cheatsheet", suffix)
+    assert label in read(tutor)
+    assert read(cheatsheet).count(label) == 2
+
+
+@pytest.mark.parametrize("locale,config", LOCALES.items())
+def test_readme_explains_learning_order_separately_from_control_scope(
+    locale: str, config: dict[str, object]
+) -> None:
+    text = read(locale_path("README", str(config["suffix"])))
+    route = text[text.index("**Agent Loop**") :]
+    assert "**Workflow Graph**" in route
+    assert "**Context Engineering**" in route
+    assert "`prompt → context → harness → loop → graph`" in route
+
+
+def test_legacy_stage3_stage4_full_titles_are_absent_repo_wide() -> None:
+    stale = (
+        "Tool Use & Hello Agent",
+        "Tool Use & Agent Intro",
+        "Tool Use & Agent intro",
+        "Tool Use and Agent Basics",
+        "Tool Use & Agent 入門",
+        "Tool Use & Agent 入门",
+        "Tool Use 與 Agent 入門",
+        "Tool Use 与 Agent 入门",
+        "Stage 3 — 工具呼叫__",
+        "Stage 3 — 工具调用__",
+        "Stage 4 (Agent Frameworks)",
+        "**4** Agent 框架 |",
+    )
+    excluded = {ROOT / "CHANGELOG.md"}
+    excluded_root = ROOT / "docs/plans"
+    generated_or_private = {ROOT / ".ai", ROOT / ".git", ROOT / "_build"}
+    offenders: list[tuple[Path, str]] = []
+
+    for page in ROOT.rglob("*.md"):
+        if (
+            page in excluded
+            or excluded_root in page.parents
+            or any(root in page.parents for root in generated_or_private)
+        ):
+            continue
+        text = read(page)
+        for phrase in stale:
+            if phrase in text:
+                offenders.append((page.relative_to(ROOT), phrase))
+
+    assert not offenders, offenders

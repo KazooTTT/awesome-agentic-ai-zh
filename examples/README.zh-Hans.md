@@ -20,7 +20,7 @@ examples/
 │   │   ├── test_anthropic.py    # Anthropic 路径自我验证
 │   │   ├── README.md            # 三语走查（+.zh-Hans.md +.en.md）
 │   │   └── requirements.txt     # 有上下限的依赖版本
-├── stage-3/                     # Tool Use & Agent 入门
+├── stage-3/                     # 工具使用与第一个 Agent Loop
 │   ├── 01-function-calling/     # 练习 1：一个工具、一次调用
 │   │   ├── starter.py           # Ollama 路径
 │   │   ├── starter_anthropic.py # Anthropic 路径
@@ -251,8 +251,8 @@ r = client.messages.create(model="claude-haiku-4-5-20251001", ...)
 |---|---|---|
 | 1 LLM 基础 | 6 个 | inline 4 + folder 2（`examples/stage-1/`） |
 | 2 Prompt eng | 4 个 | inline 3 + folder 1（`examples/stage-2/`） |
-| **3 Tool use** | **6 个** | folder 6（`examples/stage-3/`） |
-| 4 Frameworks | 5 个 | 5 个双路径、离线可验证的 folder（`examples/stage-4/`；Python 3.11） |
+| **3 工具使用与第一个 Agent Loop** | **6 个** | folder 6（`examples/stage-3/`） |
+| 4 Agent 框架与 Workflow Graph | 5 个 | 5 个双路径、离线可验证的 folder（`examples/stage-4/`；Python 3.11） |
 | 5 Claude Code 生态 | 11 个 | inline 6 + folder 5（`examples/stage-5/`） |
 | 6 Memory/RAG | 5 个 | 全 folder（`examples/stage-6/`） |
 | 7 Multi-agent | 5 个 | inline 1 + folder 4（`examples/stage-7/`） |

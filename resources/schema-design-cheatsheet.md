@@ -2,7 +2,7 @@
 
 > **繁體中文** | [简体中文](./schema-design-cheatsheet.zh-Hans.md) | [English](./schema-design-cheatsheet.en.md)
 
-> [Stage 3 — Tool Use & Agent 入門](../stages/03-tool-use-and-hello-agent.md) 的補充參考。寫 tool / function schema 時的 5 條黃金規則 + 5 個 anti-pattern。
+> [Stage 3 — 工具使用與第一個 Agent Loop](../stages/03-tool-use-and-hello-agent.md) 的補充參考。寫 tool / function schema 時的 5 條黃金規則 + 5 個 anti-pattern。
 
 > 規格查核：2026-08-27 UTC。Schema 是模型和程式共同看的介面；寫清楚會減少歧義，但不能取代應用程式驗證或固定 eval。
 
@@ -159,5 +159,5 @@ Tool 失敗只回 `null` 或 `{}`，模型可能把空資料當成功。回傳�
 - [Anthropic — Define Tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools) — 官方 schema 與 description 指南
 - [Anthropic — Handle Tool Calls](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls) — Tool Result 與 `is_error`
 - [OpenAI — Function Calling](https://developers.openai.com/api/docs/guides/function-calling) — strict mode 與 function schema 規格
-- [Stage 3 — Tool Use & Agent 入門](../stages/03-tool-use-and-hello-agent.md) — 主要動手練習
+- [Stage 3 — 工具使用與第一個 Agent Loop](../stages/03-tool-use-and-hello-agent.md) — 主要動手練習
 - [Stage 5.2 — MCP 基礎](../stages/05-claude-code-ecosystem.md#52--mcpmodel-context-protocol-基礎) — MCP server 也使用 tool schema，但 host、權限與協定層不同

@@ -129,8 +129,8 @@ cd awesome-agentic-ai-zh
 
 | Stage | 主題 | 關鍵內容 | 預估時程 |
 |---|---|---|---|
-| **3** ⭐ | [工具使用與第一個 Agent（Tool Use & Hello Agent）](stages/03-tool-use-and-hello-agent.md) | function calling · ReAct · 6 個動手練習 | 2-3 週 |
-| **4** | [Agent 框架（Agent Frameworks）](stages/04-agent-frameworks.md) | LangGraph · AutoGen · CrewAI · Smolagents | 2-3 週 |
+| **3** ⭐ | [工具使用與第一個 Agent Loop](stages/03-tool-use-and-hello-agent.md) | function calling · ReAct · 6 個動手練習 | 2-3 週 |
+| **4** | [Agent 框架與 Workflow Graph](stages/04-agent-frameworks.md) | LangGraph · AutoGen · CrewAI · Smolagents | 2-3 週 |
 | **5** ⭐⭐ | [Claude Code 生態系（Claude Code Ecosystem）](stages/05-claude-code-ecosystem.md)（**共用 hub**、Track A 也學）| MCP · Skills · Plugins · Subagents | 3-4 週（Track B 視角）|
 | **6** | [上下文管理（Context Engineering）：RAG 與 Memory](stages/06-memory-rag.md) | vector DB · long-term memory · contextual retrieval | 2 週 |
 | **7** | [多 Agent 系統與穩定運作（Multi-Agent & Production）](stages/07-multi-agent-production.md) | multi-agent orchestration · eval · observability · SDK 進階 | 2-4 週 |
@@ -176,12 +176,12 @@ cd awesome-agentic-ai-zh
 主幹分 5 部分：
 
 - **Part 1（Stage 0-2）：基礎與 LLM 入門** — Python / git / API、什麼是 LLM、怎麼設計 prompt
-- **Part 2（Stage 3-4）：建構你的 Agent** — 從 tool use 進化到 agent，學主流 framework
+- **Part 2（Stage 3-4）：建構你的 Agent** — Stage 3 寫出第一個 **Agent Loop**；Stage 4 用 framework 把多步流程組成看得見的 **Workflow Graph**
 - **Part 3（Stage 5） 共用 hub** — Claude Code 生態系（MCP / Skills / Plugins / Subagents、Track A + B 都會用到）
-- **Part 4（Stage 6-7）：進階整合** — memory / RAG / multi-agent 協作 / harness engineering
+- **Part 4（Stage 6-7）：進階整合** — Stage 6 用 RAG / memory 深入 **Context Engineering**；Stage 7 讓 loop / graph 在 production 穩定運作
 - **Part 5（Stage 8） 共用 hub** — Agent Interfaces（Computer Use / Browser Use / Code Sandbox、2024-2026 frontier、Track A + B 都會用到）
 
-> 🔭 **概念分層的演進**：**prompt engineering**（Stage 2、單一 prompt 怎麼寫）→ **context engineering**（Stage 3 之後、怎麼動態組 system prompt + memory + retrieved chunks + tool schema）→ **harness engineering**（Stage 7、agent loop / eval / observability / deploy 整套包成 production system）。2026 之後社群又往外接了 **loop**（讓它自己跑完）與 **graph**（把流程攤開來看得到）兩層——**完整五層與各層目的見 [Stage 7 五層工程分工](stages/07-multi-agent-production.md#五層工程分工prompt--context--harness--loop--graph)**。詳見 [`stages/02-prompt-engineering.md#-進階context-engineering不是-prompt-engineering-了`](stages/02-prompt-engineering.md) 跟 [`stages/07-multi-agent-production.md`](stages/07-multi-agent-production.md) 必修閱讀 5+6。
+> 🔭 **學習順序和五層堆疊回答不同問題**：學習時先在 Stage 2 寫好 **Prompt**，Stage 3 寫出 **Agent Loop**，Stage 4 再用 framework 組成 **Workflow Graph**；Stage 6 深入 **Context Engineering**，Stage 7 才把 harness、loop 與 graph 做到能長時間穩定運作。五層堆疊 `prompt → context → harness → loop → graph` 說的是「控制範圍由小到大」，不是章節編號。完整定義見 [Stage 7 五層工程分工](stages/07-multi-agent-production.md#五層工程分工prompt--context--harness--loop--graph)，Prompt 與 Context 的界線見 [Stage 2](stages/02-prompt-engineering.md)。
 
 走完主幹（Track B 16-22 週 / Track A 8-10 週）後，依你的身分（研究員 / 開發者 / 老師 / 知識工作者 / 日常使用者）挑一條延伸路線繼續走。
 

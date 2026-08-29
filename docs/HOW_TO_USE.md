@@ -92,8 +92,8 @@ python test.py        # 確認跑得起來
 
 | Stage | 主動模式時間預算 | 被動模式時間預算 |
 |---|---|---|
-| Stage 3（tool use + ReAct） | 5-8 hr（每練習 1-1.5 hr） | 1-2 hr（讀過去） |
-| Stage 4（agent frameworks） | 8-12 hr（每練習 2 hr） | 2-3 hr |
+| Stage 3（Agent Loop） | 5-8 hr（每練習 1-1.5 hr） | 1-2 hr（讀過去） |
+| Stage 4（Agent Framework／Workflow Graph） | 8-12 hr（每練習 2 hr） | 2-3 hr |
 | Stage 6（RAG + memory） | 8-12 hr | 2-3 hr |
 | Stage 7（production） | 10-15 hr | 3-4 hr |
 
@@ -124,7 +124,7 @@ python test.py        # 確認跑得起來
 
 ## 進入條件：每個 Stage 開始前自我檢查
 
-不要直接從 Stage 4 開始——除非 Stage 3 的 6 個練習你**每個都用主動模式寫過 1 次**。
+不要直接從 Stage 4 開始。Stage 3 先教你 loop 怎麼轉；Stage 4 才用 framework 把多個步驟接成 workflow graph。除非 Stage 3 的 6 個練習你**每個都用主動模式寫過 1 次**。
 
 - **Stage 4** 前：必須能不查文件寫出 13 行 ReAct loop（Stage 3 練習 3）
 - **Stage 6** 前：必須能講出為什麼 schema 要寫 enum + required（Stage 3 練習 6）
