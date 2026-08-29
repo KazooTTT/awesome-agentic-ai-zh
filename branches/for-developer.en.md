@@ -153,7 +153,7 @@ Branches that overlap heavily with developers:
 - **Wire Notion / Linear / Atlassian / Postgres / Figma into your CLI** → [`resources/mcp-skills-catalog.en.md`](../resources/mcp-skills-catalog.en.md)
 - **Author your own Skill / MCP server** → [Stage 5](../stages/05-claude-code-ecosystem.en.md) + [`resources/cookbook.en.md`](../resources/cookbook.en.md)
 - **Schema design details** → [`resources/schema-design-cheatsheet.en.md`](../resources/schema-design-cheatsheet.en.md)
-- **CLI from zero** → [Track A](../tracks/cli/A1-cli-intro.en.md) (A1 → A2 → A3)
+- **CLI from zero** → [Track A](../tracks/cli/A1-cli-intro.en.md) (A1 → A2 → [Stage 5 sections 5.1–5.4](../stages/05-claude-code-ecosystem.en.md#-entry-requirements-and-reading-paths) → A3; Stage 8 is recommended but does not block the Capstone)
 
 ## Community Note
 

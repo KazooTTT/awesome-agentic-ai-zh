@@ -153,7 +153,7 @@ jobs:
 - **接 Notion / Linear / Atlassian / Postgres / Figma** 等 dev tool → [`resources/mcp-skills-catalog.zh-Hans.md`](../resources/mcp-skills-catalog.zh-Hans.md)
 - **要写自己的 Skill / MCP server** → [Stage 5](../stages/05-claude-code-ecosystem.zh-Hans.md) + [`resources/cookbook.zh-Hans.md`](../resources/cookbook.zh-Hans.md)
 - **想看 schema 设计细节** → [`resources/schema-design-cheatsheet.zh-Hans.md`](../resources/schema-design-cheatsheet.zh-Hans.md)
-- **CLI 从零开始** → [Track A](../tracks/cli/A1-cli-intro.zh-Hans.md)（A1 → A2 → A3）
+- **CLI 从零开始** → [Track A](../tracks/cli/A1-cli-intro.zh-Hans.md)（A1 → A2 → [Stage 5 的 5.1–5.4](../stages/05-claude-code-ecosystem.zh-Hans.md#-进入条件与阅读路径) → A3；Stage 8 建议完成，但不影响 Capstone）
 
 ## 社群备注
 

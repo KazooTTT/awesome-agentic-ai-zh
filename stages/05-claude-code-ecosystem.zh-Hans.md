@@ -74,7 +74,7 @@
 
 ## 🚪 进入条件与阅读路径
 
-- **Track A（CLI 用户）**：先读 5.1–5.4；掌握项目守则、Skill、MCP 和 Plugin 后即可暂停。
+- **Track A（CLI 用户）**：完成 [A2](../tracks/cli/A2-cli-workflow.zh-Hans.md) 后读 5.1–5.4，掌握项目守则、Skill、MCP 和 Plugin，再前往 [A3](../tracks/cli/A3-cli-production.zh-Hans.md)。
 - **Track B（代理开发者）**：完成 [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 和 [Stage 4](04-agent-frameworks.zh-Hans.md) 后，再读 5.5–5.8。
 
 <details markdown="1">
@@ -561,7 +561,9 @@ SDK 会执行命令并保存 session state，不能把它当普通 stateless tex
 
 </details>
 
-## ✅ 进入 Stage 6 前的自我检查
+<a id="-进入-stage-6-前的自我检查"></a>
+
+## ✅ 进入下一站前的自我检查
 
 你能否：
 
@@ -571,4 +573,4 @@ SDK 会执行命令并保存 session state，不能把它当普通 stateless tex
 - [ ] 说明 Claude Code、OpenRouter、OpenCode／Pi 与 Ollama 各是哪一类工具？
 - [ ] 判断自己的需求是“使用 CLI”还是“确实需要 Agent SDK”？
 
-如果可以，前往 [Stage 6 — Memory & RAG](06-memory-rag.zh-Hans.md)。如果还不行，回到“一张表先选对组件”，只重做你分不清的那一行。
+如果可以，按你的路线前进：**Track A** 前往 [A3 — 安全的团队流程](../tracks/cli/A3-cli-production.zh-Hans.md)；**Track B** 前往 [Stage 6 — Memory & RAG](06-memory-rag.zh-Hans.md)。如果还不行，回到“一张表先选对组件”，只重做你分不清的那一行。
