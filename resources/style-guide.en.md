@@ -153,7 +153,7 @@ Splicing an English verb or adjective into a Chinese sentence reads as untransla
 |---|---|
 | follow 條款 | 遵守條款 |
 | ready-made 教材 | 現成可改的教材 |
-| NotebookLM-like 工具 | 類 NotebookLM 的工具 / 類似 NotebookLM 的工具 |
+| Gemini Notebook-like 工具 | 類 Gemini Notebook 的工具 / 類似 Gemini Notebook 的工具 |
 | 視覺化 node-based | 視覺化節點式 |
 | Anthropic host 的 server | Anthropic 維護的 server |
 | coding 流程 | 開發流程 / 程式開發流程 |
@@ -414,6 +414,12 @@ Role-page resource tables follow the grouped `rowspan` rules above. Locales keep
 Keep the Cookbook’s purpose, chooser table, core terms, six recipe headings, outcomes, first copyable actions, required reading, curated resources, and completion check visible. Put the nine full-step, alternative-route, and troubleshooting sections in closed `<details markdown="1">` blocks; never add `open`. Define each core term in plain language and bold at its first use. Do not translate an executable command or product name into something else.
 
 The full resource table always uses six separate `<tbody>` groups, with `scope="rowgroup"` and `rowspan` on the category cells. Keep URLs, commands, dates, licenses, safety boundaries, and editorial ratings aligned across all three locales. Label a community integration as unofficial, state that it may fail, and provide an official fallback. Add a verification date to changeable facts, but never promise that they are permanently current.
+
+### Resources tool-cabinet entrance
+
+`resources/README*` first asks what the learner is stuck on, then defines Reference, Guide, Cookbook, Catalog, and Glossary in bold plain language. Keep the entrances, purposes, limits, and return-to-route links for all 11 references visible. Collapse only the reason for separate files and the maintainer rules. Do not add drifting line counts, GitHub stars, or an old product name presented as current.
+
+The complete entrance table uses five separate `<tbody>` groups with row counts `4／2／2／2／1`. Show one category cell only on the first row, using `scope="rowgroup"` and a real `rowspan`; do not fake a merge with repeated text or empty cells. Each locale links to its own mirror and keeps the same order and meaning.
 
 ### Internal links
 - Between stages: relative path `[Stage 4](04-agent-frameworks.en.md)`

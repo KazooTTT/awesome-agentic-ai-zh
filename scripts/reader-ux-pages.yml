@@ -2457,3 +2457,78 @@ pages:
           en: {term: Coding Agent, label: Coding Agent}
           zh-Hans: {term: Coding Agent, label: "Coding Agent（程序代理）"}
     resource_group_rowspans: [2, 2, 2, 2, 3, 3]
+
+  - id: resource-index
+    canonical: resources/README.md
+    mirrors:
+      en: resources/README.en.md
+      zh-Hans: resources/README.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 3454
+      en: 5148
+      zh-Hans: 3839
+    max_open_details: 0
+    required_details_count: 2
+    visible_section_order:
+      - task-router
+      - core-terms
+      - references
+      - return-route
+      - completion
+    parity:
+      ordered_external_urls: true
+      literals:
+        - "OpenRouter"
+        - "Ollama"
+        - "OpenCode"
+        - "Pi"
+        - "Gemini Notebook"
+    required_visible_sections:
+      task-router:
+        zh-TW: {heading: "🧭 你現在卡在哪裡？", anchor: -你現在卡在哪裡}
+        en: {heading: "🧭 What are you stuck on?", anchor: -what-are-you-stuck-on}
+        zh-Hans: {heading: "🧭 你现在卡在哪里？", anchor: -你现在卡在哪里}
+      core-terms:
+        zh-TW: {heading: "🧩 先分清楚五個詞", anchor: -先分清楚五個詞}
+        en: {heading: "🧩 Five words to know first", anchor: -five-words-to-know-first}
+        zh-Hans: {heading: "🧩 先分清五个词", anchor: -先分清五个词}
+      references:
+        zh-TW: {heading: "📚 全部 11 份參考資料", anchor: -全部-11-份參考資料}
+        en: {heading: "📚 All 11 references", anchor: -all-11-references}
+        zh-Hans: {heading: "📚 全部 11 份参考资料", anchor: -全部-11-份参考资料}
+      return-route:
+        zh-TW: {heading: "🔁 看完要回哪裡？", anchor: -看完要回哪裡}
+        en: {heading: "🔁 Where do you return next?", anchor: -where-do-you-return-next}
+        zh-Hans: {heading: "🔁 看完要回哪里？", anchor: -看完要回哪里}
+      completion:
+        zh-TW: {heading: "✅ 30 秒完成檢查", anchor: -30-秒完成檢查}
+        en: {heading: "✅ 30-second completion check", anchor: -30-second-completion-check}
+        zh-Hans: {heading: "✅ 30 秒完成检查", anchor: -30-秒完成检查}
+    visible_section_minimums:
+      references: {min_links: 11}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: references
+      min_definition_chars: 20
+      terms:
+        - id: reference
+          zh-TW: {term: Reference, label: "Reference（參考資料）"}
+          en: {term: Reference, label: Reference}
+          zh-Hans: {term: Reference, label: "Reference（参考资料）"}
+        - id: guide
+          zh-TW: {term: Guide, label: "Guide（指南）"}
+          en: {term: Guide, label: Guide}
+          zh-Hans: {term: Guide, label: "Guide（指南）"}
+        - id: cookbook
+          zh-TW: {term: Cookbook, label: "Cookbook（食譜）"}
+          en: {term: Cookbook, label: Cookbook}
+          zh-Hans: {term: Cookbook, label: "Cookbook（食谱）"}
+        - id: catalog
+          zh-TW: {term: Catalog, label: "Catalog（目錄）"}
+          en: {term: Catalog, label: Catalog}
+          zh-Hans: {term: Catalog, label: "Catalog（目录）"}
+        - id: glossary
+          zh-TW: {term: Glossary, label: "Glossary（詞典）"}
+          en: {term: Glossary, label: Glossary}
+          zh-Hans: {term: Glossary, label: "Glossary（词典）"}
+    resource_group_rowspans: [4, 2, 2, 2, 1]

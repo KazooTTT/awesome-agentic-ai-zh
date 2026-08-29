@@ -202,11 +202,25 @@ Developer checks keep core identity separate from multi-valued surface: Cursor, 
 remain coding-agent products even when they expose IDE, CLI, cloud, SDK, or CI surfaces; OpenRouter
 remains a router and Ollama remains a local model runtime.
 
-This C2a gate covers only researcher and developer pages enrolled in `scripts/reader-ux-pages.yml`.
-Unqualified current-name prose in `branches/for-teacher*`, `resources/cookbook*`, `RESOURCES*`, and
-`resources/README*` is recorded for the next role/site freshness layer; package and repository
-identifiers keep their published names. This scoped exception prevents the C2a changelist from
-silently claiming that every site surface was already migrated.
+This C2a gate originally covered only researcher and developer pages. Later layers enrolled the
+teacher path, Cookbook, and resource hub separately; `RESOURCES*` still belongs to a later public-
+catalog freshness layer. Package and repository identifiers keep their published names. This
+scope prevents one changelist from silently claiming that every site surface was already migrated.
+
+### Resource hub index — task-first navigation covered
+
+`resources/README*` is a router, not another long catalog. Its visible path now asks what the
+learner is stuck on, defines five resource types in bold plain language, shows all 11 maintained
+reference files, points back to Stage 0／Track A1／Stage 3, and ends with a 30-second check. The
+complete reference table stays visible because it is the page's navigation. Only the explanation
+of why the files stay separate and the maintainer rules are in two closed disclosures.
+
+`scripts/test_resource_index_content.py` locks the 11-file inventory, task-router links, five
+core labels, five accessible rowgroups (`4／2／2／2／1`), two closed disclosures, three-locale file
+coverage, and the absence of stale approximate line counts, the former seven-file claim, and the
+old NotebookLM product name. `scripts/check-reader-ux.py` enrolls this as the nineteenth page
+group, keeps all five definitions before the visible table, and ratchets each locale to its measured
+mainline plus only 50 non-whitespace characters.
 
 ### Whole-site learner-route coherence
 
