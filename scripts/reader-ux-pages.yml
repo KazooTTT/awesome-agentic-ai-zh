@@ -2120,21 +2120,33 @@ pages:
       en: branches/for-developer.en.md
       zh-Hans: branches/for-developer.zh-Hans.md
     max_visible_chars:
-      zh-TW: 3122
-      en: 4541
-      zh-Hans: 2821
+      zh-TW: 7794
+      en: 10170
+      zh-Hans: 7564
     max_open_details: 0
-    required_details_count: 5
+    required_details_count: 3
     visible_section_order:
       - purpose
       - learning-goals
       - core-terms
       - first-exercise
       - entry-points
+      - required-reading
+      - resources
       - completion
+    forbidden_terms:
+      zh-TW: [Continue 仍在積極維護, Roo Code 仍在維護, "★ 138k+", "★ 30k+"]
+      en: [Continue is actively maintained, Roo Code is maintained, "138k+ stars", "30k+ stars"]
+      zh-Hans: [Continue 仍在积极维护, Roo Code 仍在维护, "★ 138k+", "★ 30k+"]
     parity:
       ordered_external_urls: true
       resource_url_ratings: true
+      literals:
+        - "2026-08-29"
+        - "IDE／Surface"
+        - "Coding Agent／Harness"
+        - "Provider／Router"
+        - "Model／Runtime"
     required_visible_sections:
       purpose:
         zh-TW: {heading: "📌 這條路幫你做什麼", anchor: -這條路幫你做什麼}
@@ -2156,6 +2168,14 @@ pages:
         zh-TW: {heading: "📚 先選一個入口", anchor: -先選一個入口}
         en: {heading: "📚 Choose an entry point", anchor: -choose-an-entry-point}
         zh-Hans: {heading: "📚 先选一个入口", anchor: -先选一个入口}
+      required-reading:
+        zh-TW: {heading: "📖 必修閱讀", anchor: -必修閱讀}
+        en: {heading: "📖 Required reading", anchor: -required-reading}
+        zh-Hans: {heading: "📖 必读", anchor: -必读}
+      resources:
+        zh-TW: {heading: "⭐ 精選工具與專案", anchor: -精選工具與專案}
+        en: {heading: "⭐ Curated tools and projects", anchor: -curated-tools-and-projects}
+        zh-Hans: {heading: "⭐ 精选工具与项目", anchor: -精选工具与项目}
       completion:
         zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
         en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
@@ -2166,13 +2186,13 @@ pages:
       min_definition_chars: 20
       terms:
         - id: ide
-          zh-TW: {term: IDE, label: "IDE（Integrated Development Environment）"}
-          en: {term: IDE, label: "IDE (Integrated Development Environment)"}
-          zh-Hans: {term: IDE, label: "IDE（Integrated Development Environment）"}
+          zh-TW: {term: IDE／Surface, label: "IDE／Surface（整合開發環境／操作介面）"}
+          en: {term: IDE／Surface, label: "IDE／Surface (Integrated Development Environment / interface)"}
+          zh-Hans: {term: IDE／Surface, label: "IDE／Surface（集成开发环境／操作界面）"}
         - id: coding-agent
-          zh-TW: {term: Coding Agent, label: "Coding Agent（程式代理）"}
-          en: {term: Coding Agent, label: Coding Agent}
-          zh-Hans: {term: Coding Agent, label: "Coding Agent（程序代理）"}
+          zh-TW: {term: Coding Agent／Harness, label: "Coding Agent／Harness（程式代理／代理執行框架）"}
+          en: {term: Coding Agent／Harness, label: "Coding Agent／Harness"}
+          zh-Hans: {term: Coding Agent／Harness, label: "Coding Agent／Harness（程序代理／代理运行框架）"}
         - id: provider-router
           zh-TW: {term: Provider／Router, label: "Provider／Router（供應商／路由器）"}
           en: {term: Provider／Router, label: Provider／Router}
@@ -2197,7 +2217,7 @@ pages:
           zh-TW: {term: Eval／Observability, label: "Eval／Observability（評測／可觀察性）"}
           en: {term: Eval／Observability, label: Eval／Observability}
           zh-Hans: {term: Eval／Observability, label: "Eval／Observability（评测／可观测性）"}
-    resource_group_rowspans: [9, 2, 1]
+    resource_group_rowspans: [4, 6, 2, 2]
 
   - id: teacher-path
     canonical: branches/for-teacher.md
