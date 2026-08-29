@@ -431,7 +431,7 @@
         "tag": "v2.1.251",
         "published_at": "2026-08-28T18:19:32Z"
       },
-      "reference_count": 24,
+      "reference_count": 27,
       "sources": [
         "branches/for-everyday-users.en.md",
         "branches/for-everyday-users.md",
@@ -3937,7 +3937,7 @@
         "tag": "2026.8.18",
         "published_at": "2026-08-18T16:16:12Z"
       },
-      "reference_count": 18,
+      "reference_count": 21,
       "sources": [
         "RESOURCES.en.md",
         "RESOURCES.md",
