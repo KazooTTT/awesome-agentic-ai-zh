@@ -206,3 +206,23 @@ Stage 8 與 glossary 的既有深連結不用改。Stage 7 三語頁改成各自
 - 圖只表達範圍，不暗示 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
 - Graph 圖仍保留平行草稿、獨立驗證、人工核准與失敗返回，沒有把每個節點都畫成 Agent。
 - 英語圖沒有中文；簡中圖沒有肉眼可見的繁體字；繁中圖沒有簡中用語。
+
+## 2026-08-29：教師把關循環圖
+
+新增 `teacher-ai-review-loop.png`、`.en.png`、`.zh-Hans.png`，取代會把「即時批改」和學生能力推測畫成可靠功能的舊 `teacher-ai-classroom-use-cases` 三語圖。新圖只保留一條可由教師控制的五步循環：
+
+1. 教師寫清學習目標。
+2. AI 只做草稿。
+3. 教師檢查隱私、事實與偏見。
+4. 學生使用教材。
+5. 教師觀察學習情況並修改下一輪設計。
+
+用 Codex 內建 imagegen 先產生繁中母版，再以 text-localization 路徑產生英語與簡中。三張都維持 16:9、亮色白底卡片、同一組 icon、單一路徑與回到第一步的箭頭。人工逐字確認標題、五步與底部「AI 幫忙，教師決定」；不得出現產品 logo、模型名稱、成熟度 badge、分數、診斷、自動評分或自動決策。
+
+共同 prompt 約束：
+
+> Preserve the exact five-step clockwise loop, illustrations, arrows, colors,
+> spacing, proportions, and warm off-white background. Use only the supplied
+> verbatim locale text. AI drafts; the teacher checks privacy, facts, and bias;
+> the teacher observes and revises. No autonomous grading, diagnosis, learner
+> score, product logo, badge, extra caption, mixed language, or watermark.

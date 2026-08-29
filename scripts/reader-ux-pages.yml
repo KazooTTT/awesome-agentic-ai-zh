@@ -2198,3 +2198,116 @@ pages:
           en: {term: Eval／Observability, label: Eval／Observability}
           zh-Hans: {term: Eval／Observability, label: "Eval／Observability（评测／可观测性）"}
     resource_group_rowspans: [9, 2, 1]
+
+  - id: teacher-path
+    canonical: branches/for-teacher.md
+    mirrors:
+      en: branches/for-teacher.en.md
+      zh-Hans: branches/for-teacher.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 5745
+      en: 9757
+      zh-Hans: 5786
+    max_open_details: 0
+    required_details_count: 5
+    visible_section_order:
+      - purpose
+      - learning-goals
+      - core-terms
+      - safety
+      - first-exercise
+      - required-reading
+      - resources
+      - completion
+    forbidden_terms:
+      zh-TW: [即時批改, 推測近側發展區, AI 最終評分, "★ 138k+", "★ 30k+", "★ 13k+", "★ 161k+"]
+      en: [instant grading, infer the zone of proximal development, AI makes the final grade, "138k+ stars", "30k+ stars", "13k+ stars", "161k+ stars"]
+      zh-Hans: [即时批改, 推测最近发展区, AI 最终评分, "★ 138k+", "★ 30k+", "★ 13k+", "★ 161k+"]
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+      literals:
+        - "2026-08-29"
+        - "Learning Objective"
+        - "Scaffolding"
+        - "Rubric"
+        - "Formative Assessment"
+        - "AI Literacy"
+        - "Student Data"
+        - "Human Review"
+        - "Academic Integrity"
+        - "teacher-ai-review-loop"
+    required_visible_sections:
+      purpose:
+        zh-TW: {heading: "📌 這條路幫你做什麼", anchor: -這條路幫你做什麼}
+        en: {heading: "📌 What this path helps you do", anchor: -what-this-path-helps-you-do}
+        zh-Hans: {heading: "📌 这条路帮你做什么", anchor: -这条路帮你做什么}
+      learning-goals:
+        zh-TW: {heading: "🎯 學習目標", anchor: -學習目標}
+        en: {heading: "🎯 Learning goals", anchor: -learning-goals}
+        zh-Hans: {heading: "🎯 学习目标", anchor: -学习目标}
+      core-terms:
+        zh-TW: {heading: "🧩 八個核心詞", anchor: -八個核心詞}
+        en: {heading: "🧩 Eight core terms", anchor: -eight-core-terms}
+        zh-Hans: {heading: "🧩 八个核心词", anchor: -八个核心词}
+      safety:
+        zh-TW: {heading: "🛡 先守住五條安全線", anchor: -先守住五條安全線}
+        en: {heading: "🛡 Keep five safety lines first", anchor: -keep-five-safety-lines-first}
+        zh-Hans: {heading: "🛡 先守住五条安全线", anchor: -先守住五条安全线}
+      first-exercise:
+        zh-TW: {heading: "🛠 第一個練習：做一份可檢查的課堂活動草稿", anchor: -第一個練習做一份可檢查的課堂活動草稿}
+        en: {heading: "🛠 First exercise: draft a classroom activity you can check", anchor: -first-exercise-draft-a-classroom-activity-you-can-check}
+        zh-Hans: {heading: "🛠 第一个练习：做一份可检查的课堂活动草稿", anchor: -第一个练习做一份可检查的课堂活动草稿}
+      required-reading:
+        zh-TW: {heading: "📚 必修閱讀", anchor: -必修閱讀}
+        en: {heading: "📚 Required reading", anchor: -required-reading}
+        zh-Hans: {heading: "📚 必读", anchor: -必读}
+      resources:
+        zh-TW: {heading: "⭐ 精選 Projects 與學習資源", anchor: -精選-projects-與學習資源}
+        en: {heading: "⭐ Curated projects and learning resources", anchor: -curated-projects-and-learning-resources}
+        zh-Hans: {heading: "⭐ 精选 Projects 与学习资源", anchor: -精选-projects-与学习资源}
+      completion:
+        zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
+        en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
+        zh-Hans: {heading: "✅ 完成检查与下一站", anchor: -完成检查与下一站}
+    visible_section_minimums:
+      required-reading: {min_links: 3, min_ratings: 3}
+      resources: {min_links: 12, min_ratings: 12}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: first-exercise
+      min_definition_chars: 20
+      terms:
+        - id: learning-objective
+          zh-TW: {term: Learning Objective, label: "Learning Objective（學習目標）"}
+          en: {term: Learning Objective, label: Learning Objective}
+          zh-Hans: {term: Learning Objective, label: "Learning Objective（学习目标）"}
+        - id: scaffolding
+          zh-TW: {term: Scaffolding, label: "Scaffolding（鷹架）"}
+          en: {term: Scaffolding, label: Scaffolding}
+          zh-Hans: {term: Scaffolding, label: "Scaffolding（脚手架）"}
+        - id: rubric
+          zh-TW: {term: Rubric, label: "Rubric（評分規準）"}
+          en: {term: Rubric, label: Rubric}
+          zh-Hans: {term: Rubric, label: "Rubric（评分规则）"}
+        - id: formative-assessment
+          zh-TW: {term: Formative Assessment, label: "Formative Assessment（形成性評量）"}
+          en: {term: Formative Assessment, label: Formative Assessment}
+          zh-Hans: {term: Formative Assessment, label: "Formative Assessment（形成性评估）"}
+        - id: ai-literacy
+          zh-TW: {term: AI Literacy, label: "AI Literacy（AI 素養）"}
+          en: {term: AI Literacy, label: AI Literacy}
+          zh-Hans: {term: AI Literacy, label: "AI Literacy（AI 素养）"}
+        - id: student-data
+          zh-TW: {term: Student Data, label: "Student Data（學生資料）"}
+          en: {term: Student Data, label: Student Data}
+          zh-Hans: {term: Student Data, label: "Student Data（学生数据）"}
+        - id: human-review
+          zh-TW: {term: Human Review, label: "Human Review（人工審查）"}
+          en: {term: Human Review, label: Human Review}
+          zh-Hans: {term: Human Review, label: "Human Review（人工审查）"}
+        - id: academic-integrity
+          zh-TW: {term: Academic Integrity, label: "Academic Integrity（學術誠信）"}
+          en: {term: Academic Integrity, label: Academic Integrity}
+          zh-Hans: {term: Academic Integrity, label: "Academic Integrity（学术诚信）"}
+    resource_group_rowspans: [3, 3, 3, 3]
