@@ -536,4 +536,4 @@ python examples/stage-3/06-schema-design/test_anthropic.py
 - [ ] 我跑過練習 1–3，並看過至少一次成功和一次錯誤路徑。
 - [ ] 我比較模型或 schema 時使用同一組題目與明確分數。
 
-都做到後，進入 [Stage 4 — Agent 框架與 Workflow Graph](04-agent-frameworks.md)。如果還說不出完整來回，先重跑練習 1；不需要把整章重新讀一遍。
+都做到後，進入 [Stage 4 — Workflow Graph 與 Agent 框架](04-agent-frameworks.md)。如果還說不出完整來回，先重跑練習 1；不需要把整章重新讀一遍。

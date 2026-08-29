@@ -77,7 +77,7 @@ hide:
 
     [:octicons-arrow-right-24: 進入](stages/03-tool-use-and-hello-agent.md)
 
--   :material-view-grid:{ .lg .middle } __Stage 4 — Agent 框架與 Workflow Graph__
+-   :material-view-grid:{ .lg .middle } __Stage 4 — Workflow Graph 與 Agent 框架__
 
     ---
 
@@ -101,11 +101,11 @@ hide:
 
     [:octicons-arrow-right-24: 進入](stages/06-memory-rag.md)
 
--   :material-account-group:{ .lg .middle } __Stage 7 — 多 Agent__
+-   :material-account-group:{ .lg .middle } __Stage 7 — Agent Production Engineering__
 
     ---
 
-    harness、多 agent 協作、production 化。
+    把 loop、workflow graph、harness 與多 agent 協作做得穩定。
 
     [:octicons-arrow-right-24: 進入](stages/07-multi-agent-production.md)
 

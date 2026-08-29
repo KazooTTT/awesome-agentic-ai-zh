@@ -4,7 +4,7 @@
 
 # Exercise 4: CodeAct vs JSON tool (Smolagents)
 
-Pairs with [Stage 4 — Agent Frameworks & Workflow Graphs](../../../stages/04-agent-frameworks.en.md) Exercise 4.
+Pairs with [Stage 4 — Workflow Graphs & Agent Frameworks](../../../stages/04-agent-frameworks.en.md) Exercise 4.
 > 🎓 **How to use this**: `starter.py` is the **complete solution**, not a TODO skeleton. The active approach works better — `mv starter.py starter_reference.py`, read the signatures but not the bodies, write your own `starter.py` from scratch, then run `python test.py` to check it; if you are stuck for 20 minutes, go back and compare against the reference. Full methodology in [`docs/HOW_TO_USE.md`](../../../docs/HOW_TO_USE.md).
 
 > 📚 **Want the chapter-length version?** The starter in this folder is an illustrative build focused on the core pattern plus two SDK paths — it is not in-depth teaching material. Recommended for depth:

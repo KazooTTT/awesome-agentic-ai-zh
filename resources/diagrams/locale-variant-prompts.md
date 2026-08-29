@@ -62,6 +62,31 @@ Git 歷史復原。
 三語圖必須各自引用 locale 檔，並由 `scripts/test_stage075_content.py` 鎖住六張 PNG 的尺寸、
 不同 hash 與正文引用。完整文字表與重產限制在 [`concept-prompts.md`](concept-prompts.md)。
 
+## 2026-08-29：Stage 7.5 Model–Harness Fit 判斷圖
+
+新增 `model-harness-fit.png`、`.en.png`、`.zh-Hans.png`。圖先讓一個 Harness 元件跑同一組 Eval，再分成平行的 Keep／Simplify／Remove 三個結果；三者不是成熟度階梯，也不暗示所有元件最後都應移除。底部固定提醒「模型變強不等於安全邊界自動過時」與「一次只改一個元件，再測一次」。
+
+初版繁中圖雖然文字正確，但 imagegen 自行加上紅色印章、山水、竹子與雲紋，不符合技術教材 house style，也違反無 watermark 約束；最終版移除全部裝飾與印章，改用暖白底、細電路線、深藍大字與藍／橘／綠三張平行卡。英語與簡中以通過人工檢查的最終繁中版作構圖 reference，各自換入完整逐字文字表。獨立 review 發現第一張簡中圖仍殘留「保護／步驟」兩個繁體詞，因此重新產圖並逐字複查；最終簡中橘卡人工逐字確認為「保护仍然需要，但步骤可以更少」。PNG 內文目前仍由人工圖文稽核，不能把一般文字檢查誤稱為 OCR。
+
+共同 prompt 約束：
+
+> Show one Harness component, run the same Eval, then branch into three equal
+> parallel outcomes: KEEP when removing it restores a repeatable failure,
+> SIMPLIFY when the protection still matters but fewer steps are enough, and
+> REMOVE when a deletion test passes without quality loss. State that a stronger
+> model does not automatically obsolete safety boundaries and that only one
+> component changes before retesting. Warm off-white modern technical-textbook
+> style, flat vector icons, no arrow between outcomes, no maturity ladder, no
+> model/version/price/ranking/vendor fact, no logo, seal, stamp, signature, or
+> watermark, and only the supplied locale text.
+
+人工驗收逐張確認：
+
+- 三個結果都從同一個 Eval 分出去，彼此之間沒有箭頭。
+- 繁中圖沒有印章或山水裝飾；英語圖沒有中文；簡中圖沒有繁體字。
+- 圖沒有把 prompt workaround 與 permission／sandbox／log／Eval／recovery 畫成同一種可隨意刪除的東西。
+- 九張 Stage 7.5 圖維持不同 hash，三語正文各自引用 locale 檔。
+
 ## 2026-08-28：Stage 6 RAG 與 Memory 三路圖
 
 新增 `rag-memory-map.png`、`.en.png`、`.zh-Hans.png`。三張都使用 16:9 亮色白底卡片，固定畫出三條互不串線的路：文件切成 Chunk、轉成 Embedding 並寫進 Vector Database；問題取回相關片段、經 Reranking 後產生有來源的答案；重要狀態寫進 Memory，下一次再讀回來。每條箭頭只在自己的色框內由左往右，不暗示 Vector Database 會自動寫入 Memory。
@@ -183,29 +208,55 @@ Stage 8 與 glossary 的既有深連結不用改。Stage 7 三語頁改成各自
 
 本批使用 Codex 內建 imagegen 的 edit／text-localization 路徑：
 
-1. 先讀原圖，保留 16:9 與由下往上的 Prompt → Context → Harness → Loop → Graph。
+1. 先讀原圖，保留 16:9 與由下往上的 Prompt → Context → Agent Harness → Agent Loop → Workflow Graph。
 2. 左側只留一支向上箭頭，表示控制範圍變大；這不是 Stage 編號或閱讀順序。
 3. 移除所有「官方採用／非官方名稱／Industry term／Community term」badge 與底部二分圖例。
-4. Graph 列同時寫 Workflow Graph；Loop 列同時寫 Bounded Agent Loops，讓讀者找到官方文件常用的搜尋詞。
+4. 每列左邊寫「會運作的東西」，右邊寫「設計它的工程工作」：Prompt → Prompt Engineering、Context → Context Engineering、Agent Harness → Harness Engineering、Agent Loop → Loop Engineering、Workflow Graph → Graph Engineering。
 5. 以通過人工檢查的繁中版為構圖 reference，再逐字提供英語與簡中文字表；不得混合語言或繁簡字形。
 6. 用 `python scripts/check-image-locale.py` 確認所有 mirror 實際引用自己的圖。
 
 共同 prompt 約束：
 
-> Preserve the exact bottom-up Prompt → Context → Harness → Loop → Graph order,
-> icons, one upward scope arrow, 16:9 composition, and hierarchy. Use a warm
-> off-white background, soft bright pastel cards, dark navy text, high contrast,
-> and no watermark. Remove all maturity badges. Pair Graph Engineering with
-> Workflow Graph and Loop Engineering with Bounded Agent Loops. Use only the
-> supplied verbatim locale text; do not add rankings, versions, prices, dates,
-> standards claims, or new facts.
+> Preserve the exact bottom-up Prompt → Context → Agent Harness → Agent Loop →
+> Workflow Graph order, icons, one upward scope arrow, 16:9 composition, and
+> hierarchy. Each row must show the thing that runs first and the work that
+> designs it second: Prompt → Prompt Engineering, Context → Context Engineering,
+> Agent Harness → Harness Engineering, Agent Loop → Loop Engineering, and
+> Workflow Graph → Graph Engineering. Use a warm off-white background, soft
+> bright pastel cards, dark navy text, high contrast, and no watermark. Remove
+> all maturity badges. Use only the supplied verbatim locale text; do not add
+> rankings, versions, prices, dates, standards claims, or new facts.
 
 人工驗收除了看文字，也逐一確認：
 
-- 五層仍是 Prompt → Context → Harness → Loop → Graph，只有一支向上的「控制範圍變大」箭頭；沒有任何官方／非官方 badge。
+- 五層仍是 Prompt → Context → Agent Harness → Agent Loop → Workflow Graph，且每列右側都有對應的 Engineering 工作；只有一支向上的「控制範圍變大」箭頭，沒有任何官方／非官方 badge。
 - 圖只表達範圍，不暗示 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
 - Graph 圖仍保留平行草稿、獨立驗證、人工核准與失敗返回，沒有把每個節點都畫成 Agent。
 - 英語圖沒有中文；簡中圖沒有肉眼可見的繁體字；繁中圖沒有簡中用語。
+
+## 2026-08-29：Stage 7 Harness／Loop／Graph 責任邊界圖
+
+新增 `harness-loop-graph-boundary.png`、`.en.png`、`.zh-Hans.png`。這組圖不把三者畫成會互相淘汰的產品世代，而是畫成同一套 production Agent 裡會合作的三種責任：Harness 保護一次執行，Loop 決定是否再跑，Graph 安排整條路。圖中必須把一個小 Harness 放進 Loop，並讓 Graph 同時出現 branch、parallel path、checkpoint、人工核准與回圈箭頭。
+
+三語都用 Codex 內建 imagegen 獨立生成，維持 16:9、亮色暖白底、深藍大字、藍／橘／紫綠三區與同一組資訊層級。不得加入版本、價格、成熟度 badge、官方／非官方結論或供應商 logo。
+
+共同 prompt 約束：
+
+> Create a bright 16:9 beginner-friendly technical infographic with three
+> cooperating responsibility areas. Harness is a safe workspace for one run;
+> Loop repeats goal, action, observation, adjustment, and stop or human
+> escalation; Graph arranges nodes, branches, parallel paths, checkpoints,
+> human approval, and a loop-back route. Place a small Harness inside the Loop.
+> State that they work together and do not replace each other. Use only the
+> supplied verbatim locale text. No maturity ladder, chronology, product logo,
+> ranking, version, price, watermark, mixed language, or extra paragraph.
+
+人工驗收逐張確認：
+
+- 標題都明寫「一起合作／work together／一起协作，不互相淘汰」。
+- 底部結論逐語對齊「Harness 保護每次執行｜Loop 決定何時再跑｜Graph 安排整條路」。
+- Loop 裡有小 Harness；Graph 有分支、平行、checkpoint、人工核准與返回箭頭。
+- 英語圖沒有中文；簡中圖沒有繁體字；繁中圖沒有簡中用語。
 
 ## 2026-08-29：教師把關循環圖
 

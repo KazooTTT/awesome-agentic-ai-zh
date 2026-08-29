@@ -11,6 +11,8 @@ import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+DESIGN = ROOT / "stages/DESIGN.md"
+PROMPT_LOG = ROOT / "resources/diagrams/locale-variant-prompts.md"
 PAGES = {
     "zh-TW": ROOT / "stages/07.5-advanced-agentic-concepts.md",
     "en": ROOT / "stages/07.5-advanced-agentic-concepts.en.md",
@@ -20,14 +22,17 @@ DIAGRAMS = {
     "zh-TW": (
         ROOT / "resources/diagrams/concept-cluster.png",
         ROOT / "resources/diagrams/reading-decision-tree.png",
+        ROOT / "resources/diagrams/model-harness-fit.png",
     ),
     "en": (
         ROOT / "resources/diagrams/concept-cluster.en.png",
         ROOT / "resources/diagrams/reading-decision-tree.en.png",
+        ROOT / "resources/diagrams/model-harness-fit.en.png",
     ),
     "zh-Hans": (
         ROOT / "resources/diagrams/concept-cluster.zh-Hans.png",
         ROOT / "resources/diagrams/reading-decision-tree.zh-Hans.png",
+        ROOT / "resources/diagrams/model-harness-fit.zh-Hans.png",
     ),
 }
 
@@ -143,6 +148,50 @@ def test_visible_map_keeps_landmarks_core_terms_and_boundary_card(locale: str) -
     assert "## ✅" in visible
 
 
+@pytest.mark.parametrize("locale", PAGES)
+def test_model_harness_fit_is_visible_and_evidence_based(locale: str) -> None:
+    visible = _without_details(PAGES[locale].read_text(encoding="utf-8"))
+    headings = {
+        "zh-TW": "## ⚖️ Model–Harness Fit：用 Eval 決定保留、簡化或移除",
+        "en": "## ⚖️ Model–Harness Fit: Use Evals to Keep, Simplify, or Remove",
+        "zh-Hans": "## ⚖️ Model–Harness Fit：用 Eval 决定保留、简化或移除",
+    }
+    assert headings[locale] in visible
+    semantic_markers = {
+        "zh-TW": (
+            "權限、sandbox、log、Eval 與 recovery **不會自動過時**",
+            "一次只拿一個 Harness 元件做刪除測試，再跑同一組 Eval。",
+            "| **保留 Keep** | 拿掉後，同一個可重現失敗又回來 |",
+            "| **簡化 Simplify** | 保護還有用，但較少步驟也能通過同一組 Eval |",
+            "| **移除 Remove** | 刪除測試通過，品質與安全沒有退步 |",
+        ),
+        "en": (
+            "Permissions, sandboxes, logs, Evals, and recovery do **not automatically become obsolete**.",
+            "Test one Harness component at a time, then run the same Eval.",
+            "| **Keep** | Removing it brings back the same repeatable failure |",
+            "| **Simplify** | The protection still helps, but fewer steps pass the same Eval |",
+            "| **Remove** | The deletion test passes without reducing quality or safety |",
+        ),
+        "zh-Hans": (
+            "权限、sandbox、log、Eval 和 recovery **不会自动过时**",
+            "一次只拿一个 Harness 元件做删除测试，再运行同一组 Eval。",
+            "| **保留 Keep** | 拿掉后，同一个可重复的失败又回来 |",
+            "| **简化 Simplify** | 保护仍有用，但更少步骤也能通过同一组 Eval |",
+            "| **移除 Remove** | 删除测试通过，质量和安全没有退步 |",
+        ),
+    }
+    for marker in semantic_markers[locale]:
+        assert marker in visible
+
+
+def test_model_harness_fit_diagram_contract_records_parallel_results_and_hans_audit() -> None:
+    design = DESIGN.read_text(encoding="utf-8")
+    prompt_log = PROMPT_LOG.read_text(encoding="utf-8")
+    assert "三個判斷是平行結果，不是成熟度階梯" in design
+    assert "no maturity ladder" in prompt_log
+    assert "簡中橘卡人工逐字確認為「保护仍然需要，但步骤可以更少」" in prompt_log
+
+
 @pytest.mark.parametrize("page", PAGES.values())
 def test_all_nine_disclosures_are_closed_and_render_markdown(page: Path) -> None:
     text = page.read_text(encoding="utf-8")
@@ -219,7 +268,7 @@ def test_legacy_dynamic_workflow_anchor_and_heading_remain_visible(locale: str) 
     assert "### 🔀 Dynamic Workflows" in visible
 
 
-def test_six_locale_diagrams_are_distinct_full_size_pngs_and_referenced() -> None:
+def test_nine_locale_diagrams_are_distinct_full_size_pngs_and_referenced() -> None:
     hashes: set[str] = set()
     for locale, diagrams in DIAGRAMS.items():
         page_text = PAGES[locale].read_text(encoding="utf-8")
@@ -229,7 +278,7 @@ def test_six_locale_diagrams_are_distinct_full_size_pngs_and_referenced() -> Non
             assert struct.unpack(">II", data[16:24]) == (1672, 941)
             hashes.add(hashlib.sha256(data).hexdigest())
             assert f"../resources/diagrams/{diagram.name}" in page_text
-    assert len(hashes) == 6
+    assert len(hashes) == 9
 
 
 @pytest.mark.parametrize("page", PAGES.values())

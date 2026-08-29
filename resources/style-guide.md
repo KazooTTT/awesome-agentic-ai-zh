@@ -149,7 +149,7 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 |---|---|
 | follow 條款 | 遵守條款 |
 | ready-made 教材 | 現成可改的教材 |
-| NotebookLM-like 工具 | 類 NotebookLM 的工具 / 類似 NotebookLM 的工具 |
+| Gemini Notebook-like 工具 | 類 Gemini Notebook 的工具 / 類似 Gemini Notebook 的工具 |
 | 視覺化 node-based | 視覺化節點式 |
 | Anthropic host 的 server | Anthropic 維護的 server |
 | coding 流程 | 開發流程 / 程式開發流程 |
@@ -411,6 +411,18 @@ Branch 的 entry 格式可以比 stage 簡潔（不一定要完整 schema 表格
 工具的核心身分和 surface 分開寫。IDE、CLI、desktop、cloud、CI、SDK 可以同時出現，不能當成互斥分類。OpenRouter 是 Provider／Router，Ollama 是 Model／Runtime，coding agent／harness 是另一個身分軸。
 
 角色頁的分組資源表遵守上面的 `rowspan` 規則。三語須保留相同 URL 順序、狀態、授權、限制與穩定的編輯評分（⭐⭐⭐–⭐⭐⭐⭐⭐）；不寫易變的 GitHub stars。ELI5 白話仍須保留等價語意、技術名詞與安全限制。
+
+### Cookbook
+
+Cookbook 的用途、選擇表、核心詞、六份 recipe 標題、成果、第一個可複製動作、必修閱讀、精選資源與完成檢查保持可見；九個完整步驟／替代方案／排錯區塊預設收合且不加 `open`。每個核心詞第一次出現就用粗體白話定義，不能把可執行命令或產品名稱翻成另一個東西。
+
+完整資源表固定使用六個獨立 `<tbody>`，以 `scope="rowgroup"` 和 `rowspan` 合併分類欄。三語的 URL、命令、日期、授權、安全限制與編輯評分一致；社群整合明標非官方、可能失效與官方 fallback。易變事實附查核日期，但不加入「永遠最新」之類的保證。
+
+### Resources 工具櫃入口
+
+`resources/README*` 先問讀者卡在哪裡，再用粗體白話定義 Reference、Guide、Cookbook、Catalog 與 Glossary。11 份 reference 的入口、用途、限制與回主線連結保持可見；只有分檔理由與 maintainer 規則收合。不要加會漂移的行數、GitHub stars 或把舊產品名稱寫成現行名稱。
+
+完整入口表固定使用五個獨立 `<tbody>`，分類列數為 `4／2／2／2／1`。同類型只在第一列出現一次，使用 `scope="rowgroup"` 與真正 `rowspan`；不可用重複文字或空白儲存格假裝合併。三語檔名依 locale 指向自己的 mirror，順序與語意一致。
 
 ### 內部連結
 - Stage 之間：相對路徑 `[Stage 4](04-agent-frameworks.md)`
