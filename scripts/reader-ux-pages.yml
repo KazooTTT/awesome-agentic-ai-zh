@@ -830,9 +830,9 @@ pages:
       en: stages/05-claude-code-ecosystem.en.md
       zh-Hans: stages/05-claude-code-ecosystem.zh-Hans.md
     max_visible_chars:
-      zh-TW: 4930
-      en: 9201
-      zh-Hans: 4759
+      zh-TW: 5148
+      en: 9469
+      zh-Hans: 5017
     max_open_details: 0
     required_details_count: 16
     visible_section_order:
@@ -847,6 +847,7 @@ pages:
       - exercise-3
       - exercise-4
       - exercise-5
+      - system-flow
       - section-5-1
       - section-5-2
       - section-5-3
@@ -865,7 +866,7 @@ pages:
       ordered_external_urls: true
       resource_url_ratings: true
       literals:
-        - "2026-08-28"
+        - "2026-08-29"
         - "2026-07-28"
         - "Plan"
         - "general-purpose"
@@ -921,6 +922,10 @@ pages:
         zh-TW: {heading: "練習 5：用一個 Subagent 做唯讀檢查", anchor: 練習-5用一個-subagent-做唯讀檢查}
         en: {heading: "Exercise 5: Use a Subagent for a read-only check", anchor: exercise-5-use-a-subagent-for-a-read-only-check}
         zh-Hans: {heading: "练习 5：用 Subagent 做只读检查", anchor: 练习-5用-subagent-做只读检查}
+      system-flow:
+        zh-TW: {heading: "先看 5.1–5.7 怎麼接在一起", anchor: 先看-5157-怎麼接在一起}
+        en: {heading: "See how 5.1–5.7 fit together", anchor: see-how-5157-fit-together}
+        zh-Hans: {heading: "先看 5.1–5.7 怎样连在一起", anchor: 先看-5157-怎样连在一起}
       section-5-1:
         zh-TW: {heading: "5.1 — Claude Code 基礎", anchor: 51--claude-code-基礎}
         en: {heading: "5.1 — Claude Code fundamentals", anchor: 51--claude-code-fundamentals}

@@ -2,7 +2,7 @@
 
 > [繁體中文](./05-claude-code-ecosystem.md) | **简体中文** | [English](./05-claude-code-ecosystem.en.md)
 
-<!-- freshness: canonical=stages/05-claude-code-ecosystem.md; verified_on=2026-08-28; scope=claude-code,mcp,skills,plugins,subagents,workflows,agent-sdk,security; max_age_days=90 -->
+<!-- freshness: canonical=stages/05-claude-code-ecosystem.md; verified_on=2026-08-29; scope=claude-code,mcp,skills,plugins,subagents,workflows,agent-sdk,security; max_age_days=90 -->
 
 **Claude Code** 是一位会使用文件和终端的助手。本章教你如何为它设置规则、工具和安全边界，而不是让你一次装完所有东西。
 
@@ -90,7 +90,7 @@
 
 ## 📚 必修阅读
 
-先做练习，遇到术语再回来查；第一次不必读完全部文档。
+开始前只看两个入口：[Claude Code quickstart](https://code.claude.com/docs/en/quickstart) 帮你安装并打开第一个会话；[How Claude remembers your project](https://code.claude.com/docs/en/memory) 帮你编写练习 1 使用的 `CLAUDE.md`。其他文档等遇到对应术语时再查，不必一次读完。
 
 <details markdown="1">
 <summary>展开官方阅读顺序</summary>
@@ -98,7 +98,7 @@
 1. [Claude Code quickstart](https://code.claude.com/docs/en/quickstart) — 安装与第一个会话。
 2. [Extend Claude Code](https://code.claude.com/docs/en/features-overview) — 一张官方表区分 CLAUDE.md、Skill、MCP、Hook、Plugin 和 Subagent。
 3. [How Claude remembers your project](https://code.claude.com/docs/en/memory) — `CLAUDE.md`、Rules 和 auto memory 的边界。
-4. [Skills](https://code.claude.com/docs/en/slash-commands) — 旧 `.claude/commands/` 仍兼容；新教程先用 `SKILL.md`。
+4. [Skills](https://code.claude.com/docs/en/skills) — 旧 `.claude/commands/` 仍兼容；新教程先用 `SKILL.md`。
 5. [MCP specification](https://modelcontextprotocol.io/specification) — 查协议时看带日期的版本。
 6. [Hooks reference](https://code.claude.com/docs/en/hooks) — 事件、输入输出和拦截规则。
 7. [Plugins](https://code.claude.com/docs/en/plugins) — 打包与共享扩展。
@@ -292,6 +292,12 @@ Subagent 由现行 `Agent` tool 派遣。它有独立的 context 与权限设置
 
 </details>
 
+## 先看 5.1–5.7 怎样连在一起
+
+这张图整理各组件的关系，不是安装顺序。先读上面的粗体定义，再用图找 context、动作、检查、隔离与打包的边界。
+
+![Claude Code 5.1–5.7 关系图：CLAUDE.md 与 Skill 提供 context，Agent loop 通过 MCP 使用外部工具，Hook 按事件检查，Subagent 与 Worktree 分别隔离 context 和文件，Plugin 只负责打包](../resources/diagrams/claude-code-system-flow.zh-Hans.png)
+
 ## 5.1 — Claude Code 基础
 
 <a id="-claudemd-设计-prompts依-5-原则"></a>
@@ -330,7 +336,7 @@ Claude Code 可在 CLI、Desktop、VS Code 与 JetBrains 等 surface 使用。�
 - **Skill**：教代理何时、如何使用能力；它不会凭空建立外部连接。
 - **Plugin**：把 Skill、Hook、Subagent、MCP 配置等打包共享。
 
-官方 `modelcontextprotocol/servers` 是 reference implementations，不等于 production-ready server。连接第三方 server 前要检查来源、权限、数据流向和移除方式；tool result 也是不可信输入，不能直接当作高权限指令。
+官方 [`modelcontextprotocol/servers`](https://github.com/modelcontextprotocol/servers) 是 reference implementations，不等于 production-ready server。连接第三方 server 前要检查来源、权限、数据流向和移除方式；tool result 也是不可信输入，不能直接当作高权限指令。
 
 `2026-07-28` 是当前查核到的正式规范版本。它采用 stateless core、header routing、MRTR 与 extensions framework；旧功能至少有 12 个月 deprecation window。不要把 2025 的初始化流程直接粘到新 server。
 
@@ -503,10 +509,12 @@ SDK 会执行命令并保存 session state，不能把它当普通 stateless tex
 
 第一次只选一个与眼前练习相符的入口。五星是本学习地图的编辑建议，不是人气排行榜。
 
+**本章先做这个：** [`tool-calling-tutor`](../examples/stage-5/tool-calling-tutor/README.zh-Hans.md) ⭐⭐⭐⭐⭐ — 它是仓库内可直接照着做的 Skill 示例。要查看 Claude Code 本身的版本与问题，再看 [`anthropics/claude-code`](https://github.com/anthropics/claude-code) ⭐⭐⭐⭐⭐。
+
 <details markdown="1">
 <summary>展开 35 项分组资源与查核日期</summary>
 
-<small>资料查核：2026-08-28 UTC</small>
+<small>资料查核：2026-08-29 UTC</small>
 
 <table>
 <thead><tr><th scope="col">主题</th><th scope="col">资源</th><th scope="col">评分</th><th scope="col">适合谁／读什么</th></tr></thead>
