@@ -81,6 +81,13 @@ README、PROGRESS、CAPSTONE、章節頁首、章末下一站與路線圖必須�
 - `📌`、`📚`、`🛠`、`🎯`、`✅` 路標保持可見。完整資源表固定為 18 筆、五個語意群組，`rowspan` 為 `4／5／4／3／2`。同類型只顯示一次分類名稱；保留五星編輯評分，不放 GitHub stars、排行榜或會自然變舊的數量。
 - A3 的自動化預設只讀、最小權限、可留下 receipt，且必須有人檢查。不能把自動 merge、push、deploy 或未受限的 MCP 寫成初學者第一步。
 
+### Cookbook 的固定閱讀形狀
+
+- Cookbook 是從 Stage 5 連到可執行成果的實作入口，不是另一個 Stage。可見主線固定為「用途 → 六選一 → 六個核心詞 → 六份 recipe 的標題／成果／第一個動作 → 必修閱讀 → 精選 Projects 與學習資源 → 完成檢查」。
+- 六份 recipe 固定涵蓋 Skill、MCP Server、Office 文件、Gemini Notebook、Zotero 與本機 LLM＋CLI Agent。每份完整步驟、替代路徑、費用、安全細節與排錯放進預設關閉的 `<details markdown="1">`；共九個 details，不使用 `open`。
+- 必修閱讀、精選 Projects、編輯評分與成功條件保持可見。14 筆資源固定分成 `2／2／2／2／3／3` 六組，每組使用獨立 `<tbody>` 和 `<th scope="rowgroup" rowspan="N">`；不顯示 GitHub stars。
+- 易變命令、產品名稱、授權、API 行為與安全限制使用官方來源和 90 天 freshness marker。社群整合必須明標非官方、可能失效與可用的官方 fallback；三語保留相同 URL、命令、日期、評分與風險。
+
 ### 為什麼 Stage 5 特別放在「兩軌共用」
 
 Stage 5（Claude Code 生態）兩條軌都會碰到：

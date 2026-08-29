@@ -2311,3 +2311,129 @@ pages:
           en: {term: Academic Integrity, label: Academic Integrity}
           zh-Hans: {term: Academic Integrity, label: "Academic Integrity（学术诚信）"}
     resource_group_rowspans: [3, 3, 3, 3]
+
+  - id: cookbook
+    canonical: resources/cookbook.md
+    mirrors:
+      en: resources/cookbook.en.md
+      zh-Hans: resources/cookbook.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 9000
+      en: 13000
+      zh-Hans: 9000
+    max_open_details: 0
+    required_details_count: 9
+    forbidden_terms_include_code: true
+    forbidden_terms:
+      zh-TW: ["from mcp.server.mcpserver import MCPServer", "npm install -g opencode-ai", "opencode auth login", "pip install aider-chat", "aider --model ollama/", "qwen2.5:3b"]
+      en: ["from mcp.server.mcpserver import MCPServer", "npm install -g opencode-ai", "opencode auth login", "pip install aider-chat", "aider --model ollama/", "qwen2.5:3b"]
+      zh-Hans: ["from mcp.server.mcpserver import MCPServer", "npm install -g opencode-ai", "opencode auth login", "pip install aider-chat", "aider --model ollama/", "qwen2.5:3b"]
+    visible_section_order:
+      - purpose
+      - chooser
+      - core-terms
+      - recipe-1
+      - recipe-2
+      - recipe-3
+      - recipe-4
+      - recipe-5
+      - recipe-6
+      - required-reading
+      - resources
+      - completion
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+      literals:
+        - "2026-08-29"
+        - "from mcp.server import MCPServer"
+        - "Gemini Notebook"
+        - "http://localhost:23119/api/"
+        - "gemma4:e4b"
+        - "@opencode-ai/cli@beta"
+        - "opencode2"
+        - "ollama_chat/gemma4:e4b"
+        - "OpenRouter"
+        - "https://github.com/earendil-works/pi"
+    required_visible_sections:
+      purpose:
+        zh-TW: {heading: "📌 這份 Cookbook 幫你做什麼", anchor: -這份-cookbook-幫你做什麼}
+        en: {heading: "📌 What this Cookbook helps you do", anchor: -what-this-cookbook-helps-you-do}
+        zh-Hans: {heading: "📌 这份 Cookbook 帮你做什么", anchor: -这份-cookbook-帮你做什么}
+      chooser:
+        zh-TW: {heading: "🎯 先選一份 recipe", anchor: -先選一份-recipe}
+        en: {heading: "🎯 Choose one recipe first", anchor: -choose-one-recipe-first}
+        zh-Hans: {heading: "🎯 先选一份 recipe", anchor: -先选一份-recipe}
+      core-terms:
+        zh-TW: {heading: "🧩 六個核心詞", anchor: -六個核心詞}
+        en: {heading: "🧩 Six core terms", anchor: -six-core-terms}
+        zh-Hans: {heading: "🧩 六个核心词", anchor: -六个核心词}
+      recipe-1:
+        zh-TW: {heading: "1. 寫你的第一個 Skill", anchor: 1-寫你的第一個-skill}
+        en: {heading: "1. Write your first Skill", anchor: 1-write-your-first-skill}
+        zh-Hans: {heading: "1. 写你的第一个 Skill", anchor: 1-写你的第一个-skill}
+      recipe-2:
+        zh-TW: {heading: "2. 寫你的第一個 MCP server", anchor: 2-寫你的第一個-mcp-server}
+        en: {heading: "2. Write your first MCP server", anchor: 2-write-your-first-mcp-server}
+        zh-Hans: {heading: "2. 写你的第一个 MCP server", anchor: 2-写你的第一个-mcp-server}
+      recipe-3:
+        zh-TW: {heading: "3. Office Docs Workflow", anchor: 3-office-docs-workflow}
+        en: {heading: "3. Office Docs Workflow", anchor: 3-office-docs-workflow}
+        zh-Hans: {heading: "3. Office Docs Workflow", anchor: 3-office-docs-workflow}
+      recipe-4:
+        zh-TW: {heading: "4. Gemini Notebook Workflow", anchor: 4-gemini-notebook-workflow}
+        en: {heading: "4. Gemini Notebook Workflow", anchor: 4-gemini-notebook-workflow}
+        zh-Hans: {heading: "4. Gemini Notebook Workflow", anchor: 4-gemini-notebook-workflow}
+      recipe-5:
+        zh-TW: {heading: "5. Zotero Workflow", anchor: 5-zotero-workflow}
+        en: {heading: "5. Zotero Workflow", anchor: 5-zotero-workflow}
+        zh-Hans: {heading: "5. Zotero Workflow", anchor: 5-zotero-workflow}
+      recipe-6:
+        zh-TW: {heading: "6. 本機 LLM + CLI Agent 快速 walkthrough", anchor: 6-本機-llm--cli-agent-快速-walkthrough}
+        en: {heading: "6. Local LLM + CLI Agent quick walkthrough", anchor: 6-local-llm--cli-agent-quick-walkthrough}
+        zh-Hans: {heading: "6. 本地 LLM + CLI Agent 快速 walkthrough", anchor: 6-本地-llm--cli-agent-快速-walkthrough}
+      required-reading:
+        zh-TW: {heading: "📚 必修閱讀", anchor: -必修閱讀}
+        en: {heading: "📚 Required reading", anchor: -required-reading}
+        zh-Hans: {heading: "📚 必读", anchor: -必读}
+      resources:
+        zh-TW: {heading: "⭐ 精選 Projects 與學習資源", anchor: -精選-projects-與學習資源}
+        en: {heading: "⭐ Curated projects and learning resources", anchor: -curated-projects-and-learning-resources}
+        zh-Hans: {heading: "⭐ 精选 Projects 与学习资源", anchor: -精选-projects-与学习资源}
+      completion:
+        zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
+        en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
+        zh-Hans: {heading: "✅ 完成检查与下一站", anchor: -完成检查与下一站}
+    visible_section_minimums:
+      required-reading: {min_links: 8, min_ratings: 8}
+      resources: {min_links: 14, min_ratings: 14}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: recipe-1
+      min_definition_chars: 20
+      terms:
+        - id: recipe
+          zh-TW: {term: Recipe, label: "Recipe（實作配方）"}
+          en: {term: Recipe, label: Recipe}
+          zh-Hans: {term: Recipe, label: "Recipe（实践配方）"}
+        - id: skill
+          zh-TW: {term: Skill, label: "Skill（操作卡）"}
+          en: {term: Skill, label: Skill}
+          zh-Hans: {term: Skill, label: "Skill（操作卡）"}
+        - id: mcp-server
+          zh-TW: {term: MCP Server, label: "MCP Server（工具轉接站）"}
+          en: {term: MCP Server, label: MCP Server}
+          zh-Hans: {term: MCP Server, label: "MCP Server（工具转接站）"}
+        - id: community-integration
+          zh-TW: {term: Community Integration, label: "Community Integration（社群整合）"}
+          en: {term: Community Integration, label: Community Integration}
+          zh-Hans: {term: Community Integration, label: "Community Integration（社区集成）"}
+        - id: model-runtime
+          zh-TW: {term: Model Runtime, label: "Model Runtime（模型執行環境）"}
+          en: {term: Model Runtime, label: Model Runtime}
+          zh-Hans: {term: Model Runtime, label: "Model Runtime（模型运行环境）"}
+        - id: coding-agent
+          zh-TW: {term: Coding Agent, label: "Coding Agent（程式代理）"}
+          en: {term: Coding Agent, label: Coding Agent}
+          zh-Hans: {term: Coding Agent, label: "Coding Agent（程序代理）"}
+    resource_group_rowspans: [2, 2, 2, 2, 3, 3]

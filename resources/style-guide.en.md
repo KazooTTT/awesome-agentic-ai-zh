@@ -409,6 +409,12 @@ Separate core identity from surfaces. IDE, CLI, desktop, cloud, CI, and SDK may 
 
 Role-page resource tables follow the grouped `rowspan` rules above. Locales keep the same URL order, status, license, limits, and stable editorial rating (⭐⭐⭐–⭐⭐⭐⭐⭐), without volatile GitHub-star counts. ELI5 wording must preserve equivalent meaning, technical names, and safety boundaries.
 
+### Cookbook
+
+Keep the Cookbook’s purpose, chooser table, core terms, six recipe headings, outcomes, first copyable actions, required reading, curated resources, and completion check visible. Put the nine full-step, alternative-route, and troubleshooting sections in closed `<details markdown="1">` blocks; never add `open`. Define each core term in plain language and bold at its first use. Do not translate an executable command or product name into something else.
+
+The full resource table always uses six separate `<tbody>` groups, with `scope="rowgroup"` and `rowspan` on the category cells. Keep URLs, commands, dates, licenses, safety boundaries, and editorial ratings aligned across all three locales. Label a community integration as unofficial, state that it may fail, and provide an official fallback. Add a verification date to changeable facts, but never promise that they are permanently current.
+
 ### Internal links
 - Between stages: relative path `[Stage 4](04-agent-frameworks.en.md)`
 - Branch ↔ README: `[← Back to main path](../README.en.md)`
