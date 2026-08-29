@@ -2,7 +2,7 @@
 
 > [Traditional Chinese](./05-claude-code-ecosystem.md) | [Simplified Chinese](./05-claude-code-ecosystem.zh-Hans.md) | **English**
 
-<!-- freshness: canonical=stages/05-claude-code-ecosystem.md; verified_on=2026-08-28; scope=claude-code,mcp,skills,plugins,subagents,workflows,agent-sdk,security; max_age_days=90 -->
+<!-- freshness: canonical=stages/05-claude-code-ecosystem.md; verified_on=2026-08-29; scope=claude-code,mcp,skills,plugins,subagents,workflows,agent-sdk,security; max_age_days=90 -->
 
 **Claude Code** is an assistant that can use files and a terminal. This chapter shows you how to give it rules, tools, and safety boundaries—not how to install everything at once.
 
@@ -90,7 +90,7 @@ It is a toolkit that lets your Python or TypeScript program control an agent. Th
 
 ## 📚 Required reading
 
-Do the exercises first and return here when you encounter a term. You do not need to read every document on the first pass.
+Read only two starting points before you begin: [Claude Code quickstart](https://code.claude.com/docs/en/quickstart) helps you install and open a first session, while [How Claude remembers your project](https://code.claude.com/docs/en/memory) helps you write the `CLAUDE.md` used in Exercise 1. Return to the other documents only when you meet the matching term; you do not need to read everything at once.
 
 <details markdown="1">
 <summary>Expand the official reading order</summary>
@@ -98,7 +98,7 @@ Do the exercises first and return here when you encounter a term. You do not nee
 1. [Claude Code quickstart](https://code.claude.com/docs/en/quickstart) — installation and your first session.
 2. [Extend Claude Code](https://code.claude.com/docs/en/features-overview) — one official table distinguishing CLAUDE.md, Skills, MCP, Hooks, Plugins, and Subagents.
 3. [How Claude remembers your project](https://code.claude.com/docs/en/memory) — the boundaries among `CLAUDE.md`, Rules, and auto memory.
-4. [Skills](https://code.claude.com/docs/en/slash-commands) — the older `.claude/commands/` remains compatible; new instruction starts with `SKILL.md`.
+4. [Skills](https://code.claude.com/docs/en/skills) — the older `.claude/commands/` remains compatible; new instruction starts with `SKILL.md`.
 5. [MCP specification](https://modelcontextprotocol.io/specification) — check the dated revision when consulting the protocol.
 6. [Hooks reference](https://code.claude.com/docs/en/hooks) — events, input/output, and blocking rules.
 7. [Plugins](https://code.claude.com/docs/en/plugins) — packaging and sharing extensions.
@@ -292,6 +292,12 @@ A Subagent is dispatched through the current `Agent` tool. It has an independent
 
 </details>
 
+## See how 5.1–5.7 fit together
+
+This diagram organizes relationships, not an installation order. Read the bold definitions above first, then use the diagram to locate the context, action, event-check, isolation, and packaging boundaries.
+
+![Claude Code 5.1–5.7 relationship map: CLAUDE.md and Skills supply context, the Agent loop uses external tools through MCP, Hooks check matching events, Subagents and Worktrees isolate context and files respectively, and Plugins only package extensions](../resources/diagrams/claude-code-system-flow.en.png)
+
 ## 5.1 — Claude Code fundamentals
 
 <a id="51--claude-code-basics"></a>
@@ -331,7 +337,7 @@ The outcome of this section: you can describe MCP as a “shared socket” and d
 - **Skill:** teaches an agent when and how to use a capability; it does not create an external connection by itself.
 - **Plugin:** packages and shares Skills, Hooks, Subagents, MCP configuration, and more.
 
-The official `modelcontextprotocol/servers` repository contains reference implementations; it is not a guarantee that a server is production-ready. Before connecting a third-party server, inspect its source, permissions, data flow, and removal procedure. Tool results are also untrusted input and must not be treated directly as high-privilege instructions.
+The official [`modelcontextprotocol/servers`](https://github.com/modelcontextprotocol/servers) repository contains reference implementations; it is not a guarantee that a server is production-ready. Before connecting a third-party server, inspect its source, permissions, data flow, and removal procedure. Tool results are also untrusted input and must not be treated directly as high-privilege instructions.
 
 `2026-07-28` is the currently verified formal specification revision. It uses a stateless core, header routing, MRTR, and an extensions framework; older capabilities have a deprecation window of at least 12 months. Do not paste 2025 initialization flows directly into a new server.
 
@@ -507,10 +513,12 @@ The SDK can execute commands and retain session state, so it is not an ordinary 
 
 On your first pass, choose only one entry that matches the exercise at hand. Five stars are this learning map’s editorial guidance, not a popularity ranking.
 
+**Start with this chapter project:** [`tool-calling-tutor`](../examples/stage-5/tool-calling-tutor/README.en.md) ⭐⭐⭐⭐⭐ — it is a Skill example in this repository that you can follow directly. For Claude Code releases and issues, use [`anthropics/claude-code`](https://github.com/anthropics/claude-code) ⭐⭐⭐⭐⭐.
+
 <details markdown="1">
 <summary>Expand the 35 grouped resources and verification date</summary>
 
-<small>Information checked: 2026-08-28 UTC</small>
+<small>Information checked: 2026-08-29 UTC</small>
 
 <table>
 <thead>

@@ -84,12 +84,12 @@ stage04_fact_pack:
 
 stage05_fact_pack:
   canonical: 'stages/05-claude-code-ecosystem.md'
-  verified_on: '2026-08-28'
+  verified_on: '2026-08-29'
   scope: ['claude-code', 'mcp', 'skills', 'plugins', 'subagents', 'workflows', 'agent-sdk', 'security']
   official_sources:
     claude_code_overview: 'https://code.claude.com/docs/en/features-overview'
     claude_code_memory: 'https://code.claude.com/docs/en/memory'
-    claude_code_skills: 'https://code.claude.com/docs/en/slash-commands'
+    claude_code_skills: 'https://code.claude.com/docs/en/skills'
     claude_code_mcp: 'https://code.claude.com/docs/en/mcp'
     mcp_specification: 'https://modelcontextprotocol.io/specification'
     mcp_2026_07_28: 'https://blog.modelcontextprotocol.io/posts/2026-07-28/'

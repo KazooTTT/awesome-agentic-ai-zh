@@ -39,7 +39,7 @@ If you have not completed A1, go back and run “read-only inspection → view t
 <summary>Expand required reading and suggested order</summary>
 
 1. First read the official project-instructions documentation for your primary tool: Codex uses [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md), Claude Code uses [`CLAUDE.md`](https://code.claude.com/docs/en/memory), Gemini CLI uses [`GEMINI.md`](https://geminicli.com/docs/cli/gemini-md/), and OpenCode V2 uses [`AGENTS.md`](https://opencode.ai/v2/docs/instructions).
-2. Then read your tool’s Skill documentation: [Codex/ChatGPT](https://learn.chatgpt.com/docs/build-skills), [Claude Code](https://code.claude.com/docs/en/slash-commands), [Gemini CLI](https://geminicli.com/docs/cli/using-agent-skills/), and [OpenCode V2](https://opencode.ai/v2/docs/skills).
+2. Then read your tool’s Skill documentation: [Codex/ChatGPT](https://learn.chatgpt.com/docs/build-skills), [Claude Code](https://code.claude.com/docs/en/skills), [Gemini CLI](https://geminicli.com/docs/cli/using-agent-skills/), and [OpenCode V2](https://opencode.ai/v2/docs/skills).
 3. Finally, revisit [Stage 2 — Prompt Engineering](../../stages/02-prompt-engineering.en.md) and add the “task, scope, and success conditions” to your one-off prompt.
 </details>
 
@@ -179,7 +179,7 @@ The resources below are divided into five groups by purpose. Each group shows it
 </tbody>
 <tbody>
 <tr><th scope="rowgroup" rowspan="4">Official Skill docs</th><td>Codex/ChatGPT Build skills</td><td><code>SKILL.md</code> structure and loading location</td><td>Making a reusable Codex process</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/build-skills">Official docs</a></td></tr>
-<tr><td>Claude Code Skills</td><td>On-demand loading, legacy commands, and permissions</td><td>Making a Claude Code Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/slash-commands">Official docs</a></td></tr>
+<tr><td>Claude Code Skills</td><td>On-demand loading, legacy commands, and permissions</td><td>Making a Claude Code Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/skills">Official docs</a></td></tr>
 <tr><td>Gemini CLI Agent Skills</td><td>Discovery, installation consent, and activation consent</td><td>Managing Gemini CLI Skills</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://geminicli.com/docs/cli/using-agent-skills/">Official docs</a></td></tr>
 <tr><td>OpenCode V2 Agent Skills</td><td>Supported locations, frontmatter, and permission</td><td>Making an OpenCode Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/v2/docs/skills">Official docs</a></td></tr>
 </tbody>

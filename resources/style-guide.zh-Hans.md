@@ -424,6 +424,7 @@ Branch 的 entry 格式可以比 stage 简洁（不一定要完整 schema 表格
 - GitHub repo：`https://github.com/owner/repo` ✓ 不加 trailing slash
 - 文章 / 部落格：完整 URL，标题用粗体
 - 商业产品（Cursor、Make.com 等）：用官方网址，不是 affiliate
+- 正文第一次提到 repo、规范或官方工具时，就加上超链接；不要让初学者看到裸露的 `owner/repo` 后还要自己搜索。完整资源表再补状态、授权、限制与评分。
 
 ### 链接文字惯例
 - Repo entry 标题：`[owner/repo](url)` 或 `[Project Name](url)`

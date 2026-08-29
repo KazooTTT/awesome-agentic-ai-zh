@@ -3,6 +3,20 @@
 > 姊妹檔：[`concept-prompts.md`](concept-prompts.md)（Stage 7.5 兩組三語概念圖的 Image 2.0 重產規格）。
 > 這份記錄的是 **2026-08-02 那批 5 張圖 × 3 語系** 是怎麼產出來的，以及過程中踩到的坑。
 
+## 2026-08-29：Stage 5 的 5.1–5.7 關係與資料流
+
+新增 `claude-code-system-flow.png`、`.en.png`、`.zh-Hans.png`。這組圖補上原本選擇圖沒有回答的問題：各零件如何接進同一次工作。三語都固定使用同一個 16:9 亮色版面與四種線條語意：
+
+- CLAUDE.md 與 Skill 用虛線把 always-on／on-demand context 送進 Agent loop。
+- Agent loop 與 MCP 用實線交換 request／result；MCP 是外部工具與資料的連線，不是另一個 agent。
+- Hook 以獨立虛線接到 Agent loop 外框，表示符合 lifecycle event 時才執行；它不能貼在 MCP request／result 箭頭上，避免誤教成只檢查 MCP。文字只說可記錄、補充或阻擋，不暗示每種 event／handler 都會阻擋。
+- Subagent 用獨立 context 工作，只把摘要送回；Worktree 是可選的檔案樹隔離，不冒充完整 sandbox。
+- Plugin 以點線表示它能包裝 Skill、Hook、Subagent 與 MCP 設定，不放進 runtime loop。**Plugin 不連到 Worktree**；Worktree 是另外選用的檔案樹隔離方式，不是 Plugin 內容。
+
+繁中使用 Codex 內建 Image 2.0 產生母版；英文只替換文字，簡中再以英文幾何作母版，避免繁體字形殘留。2026-08-29 再用內建 Image 2.0 移除誤碰 Worktree 的橘色 Plugin 點線，其他文字與幾何不變。三張最終圖皆為 `1672×941`，無模型、版本、價格、排行、benchmark 或 stars。可見底線固定為：Worktree 只隔開檔案；安裝 MCP server 或 Plugin 前仍要查來源、權限與資料流向。
+
+人工逐張驗收標題、八個節點、request／result、summary、optional、Plugin 點線不接觸 Worktree、Hook lifecycle event 線與底部安全邊界。`scripts/test_stage05_content.py` 另鎖住三語引用、尺寸、不同 hash、圖確實位於 5.1 前的未收合區、頁面不混入其他語系版本，以及 `modelcontextprotocol/servers` 第一次正文出現就是官方超連結。
+
 ## 2026-08-28：Stage 8 介面選擇圖與四道安全檢查
 
 新增 `interface-choice-map.{png,en.png,zh-Hans.png}`，並原檔名重畫

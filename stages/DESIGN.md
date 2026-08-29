@@ -167,11 +167,11 @@ Stage 4 使用兩層 stacked PR：第一層只定稿三語教材、官方事實�
 
 Stage 4 的五個可執行資料夾必須各自建立 Python 3.11 `.venv`，不能把不同 framework 的 `requirements.txt` 合併安裝。每題的 Path A 與 Path B 測試都要實際走過核心行為；只確認 import 成功不算驗收。LangGraph 要測分支、checkpoint、`interrupt()` 與 `Command(resume=...)`；CrewAI 要測角色、handoff 與有界停止；CodeAct 只在受限 Docker executor 示範模型程式碼，Jupyter 控制埠只綁 loopback，並明說一般 bridge 仍可對外連線、不是 production sandbox；typed output 要明說格式正確不等於內容真實。
 
-Stage 5 的固定主線是「九個可見核心詞 → 依問題選最小零件 → Track A／B 閱讀路線 → 五題累加式練習 → 5.1–5.8 延伸入口」。九個核心詞是 **Claude Code**、**CLAUDE.md**、**Skill**、**MCP**、**Hook**、**Plugin／Marketplace**、**Subagent**、**Worktree** 與 **Claude Agent SDK**。5.1–5.8 heading、練習標題、成果與第一個可複製動作保持可見；時間、認證、費用、完整閱讀、語法、prompt、排錯與資源表預設收合。不得用「精簡」刪掉 MCP 的 Tools／Resources／Prompts、Skill／Subagent 差異、Hook 阻擋邊界、Worktree 檔案隔離或 Agent SDK hosting 安全。
+Stage 5 的固定主線是「九個可見核心詞 → 依問題選最小零件 → Track A／B 閱讀路線 → 五題累加式練習 → 5.1–5.8 延伸入口」。九個核心詞是 **Claude Code**、**CLAUDE.md**、**Skill**、**MCP**、**Hook**、**Plugin／Marketplace**、**Subagent**、**Worktree** 與 **Claude Agent SDK**。5.1–5.8 heading、練習標題、成果、第一個可複製動作、第一題會用到的兩份官方資料與本章推薦專案保持可見；時間、認證、費用、完整閱讀順序、語法、prompt、排錯與完整資源表預設收合。不得用「精簡」刪掉 MCP 的 Tools／Resources／Prompts、Skill／Subagent 差異、Hook 阻擋邊界、Worktree 檔案隔離或 Agent SDK hosting 安全。
 
 Stage 5 的 35 筆學習資源固定分成 `4／8／8／7／4／4` 六組，使用真正 HTML `rowspan`；三語保留相同 URL、順序與五星編輯評分，移除會變動的 GitHub stars。Claude Code、MCP、Skills、Plugins、Subagents、Dynamic workflows、Agent SDK 與 security 使用 90 天 freshness marker；查核日期只在最相關的關閉資源區以小字呈現。
 
-Stage 5 的概念圖只回答「遇到哪種問題先用哪個零件」，不把 maintainer 的任意分層畫成產品架構真理。三語圖同構、亮色、低文字密度；八張選擇卡不加 1–8 編號，避免把選擇誤讀成固定順序。Subagent、agent view、agent teams、Dynamic workflows、Worktree 與 `/batch` 的成熟度與責任邊界以官方現行文件為準。Dynamic workflows 要教成可讀、可重跑的 JavaScript 編排，不得綁成某個 Claude 型號專屬功能；現行觸發方式是明說要 use／run a workflow 或使用 `ultracode`，literal `workflow` 只可放在 v2.1.160 前的歷史說明。找不到官方正式來源的功能名稱或模型綁定不得當成一般可用功能教學。
+Stage 5 的第一張概念圖只回答「遇到哪種問題先用哪個零件」，不把 maintainer 的任意分層畫成產品架構真理。第二張關係圖固定放在 5.1 前，回答 CLAUDE.md／Skill 如何提供 context、Agent loop 如何經 MCP 交換 request／result、Hook 如何依 event 檢查、Subagent／Worktree 如何分開隔離 context 與檔案，以及 Plugin 如何只負責打包。三語圖同構、亮色、低文字密度；選擇圖不加 1–8 編號，關係圖明寫不是安裝順序。Worktree 不能畫成完整 sandbox，Plugin 不能畫成 runtime 必經步驟，**Plugin 不連到 Worktree**；Worktree 是另外選用的檔案樹隔離方式。Hook 不能畫成每次都阻擋。Subagent、agent view、agent teams、Dynamic workflows、Worktree 與 `/batch` 的成熟度與責任邊界以官方現行文件為準。Dynamic workflows 要教成可讀、可重跑的 JavaScript 編排，不得綁成某個 Claude 型號專屬功能；現行觸發方式是明說要 use／run a workflow 或使用 `ultracode`，literal `workflow` 只可放在 v2.1.160 前的歷史說明。找不到官方正式來源的功能名稱或模型綁定不得當成一般可用功能教學。Repo 或規格第一次在正文被點名時就要有官方超連結；完整資源表再補狀態、授權、限制與五星編輯評分。
 
 Stage 5 使用兩層 stacked PR：第一層定稿三語教材、官方事實包、圖、資源表與 reader-UX gate，也必須同步修正正文直接連到的 cookbook／glossary／Stage 7.5 術語矛盾，不能讓讀者點出去立刻看見舊說法；第二層才更新 `examples/stage-5/tool-calling-tutor/` 的可執行實作。兩層都保留 branch 與 upstream，未經使用者明確同意不合併、不清理。
 
@@ -208,7 +208,7 @@ Stage 7.5 只保留兩組低文字密度三語圖：四問題群組的 12 概念
 2. ## 📌 學習目標
 3. 該 stage 的可見核心詞（首次粗體、逐詞白話解釋）／最短選擇路徑
 4. ## 🚪 進入條件 + ⏱ 時間估算（預設收合；Stage 6 / 7 可省略）
-5. ## 📚 必修閱讀（清單預設收合）
+5. ## 📚 必修閱讀（第一題會用到的 1–3 筆保持可見；完整順序收合）
 6. ## 🛠 動手練習（核心練習先出現，延伸練習細節收合）
 7. ## 🎯 精選 Projects（一個推薦項目先出現，其餘分級收合）
 8. ## ✅ 進 Stage N+1 前的自我檢查
@@ -219,7 +219,7 @@ Stage 7.5 只保留兩組低文字密度三語圖：四問題群組的 12 概念
 - 不展開任何 `<details>` 時，讀者仍要看得懂「這章要學什麼、先做哪一題、成功長什麼樣」。
 - 核心路標的 icon 必須保留並保持一致：`📌` 學習目標、`📚` 必修閱讀、`🛠` 動手練習、`🎯` 精選 Projects、`✅` 自我檢查。可調整白話標題，但不能在精簡時拿掉路標。
 - 動手練習的第一個動作優先給可直接複製、貼上或執行的最小成品。不要先叫初學者抄空白模板；空白模板只適合放在讀者看過成品之後的自行改寫步驟。
-- 時間、先備工具、費用、長表格、補充原理、疑難排解與延伸清單預設收合；`<details>` 不加 `open`。
+- 折疊與否看讀者現在需不需要，不看內容叫「閱讀」或「專案」。第一題要用的 1–3 筆來源、本章推薦專案與安全警告保持可見；時間、先備工具、費用、長表格、補充原理、疑難排解與延伸清單預設收合，且 `<details>` 不加 `open`。
 - 可被其他頁面深連結的 heading 必須留在 `<details>` 外。標題後先給一句成果，再收合詳細步驟，否則瀏覽器會跳到一個仍然看不見的位置。
 - 雙路徑練習仍以 Ollama Path A 為主要可執行路徑，但不再一律展開。練習標題、成果與第一個動作保持可見；只有在 Path A 是讀者眼前唯一要做的事，而且展開後內容很短時，才可使用 `open`。長程式碼與疑難排解預設收合。Anthropic Path B 仍預設收合；外層若已是延伸練習的收合區，內層不得預設展開。
 

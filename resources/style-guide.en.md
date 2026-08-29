@@ -418,6 +418,7 @@ Role-page resource tables follow the grouped `rowspan` rules above. Locales keep
 - GitHub repo: `https://github.com/owner/repo` (no trailing slash)
 - Article / blog: full URL, bold title
 - Commercial product (Cursor, Make.com, etc.): official URL, not affiliate
+- Link the first in-prose mention of a repository, specification, or official tool. Do not make a beginner search for a bare `owner/repo`; the full resource table can add status, license, limitations, and rating.
 
 ### Link text conventions
 - Repo entry heading: `[owner/repo](url)` or `[Project Name](url)`
