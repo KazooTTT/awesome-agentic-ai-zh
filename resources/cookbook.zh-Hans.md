@@ -444,7 +444,7 @@ aider --model ollama_chat/gemma4:e4b
     <tr><td><a href="https://github.com/MuiseDestiny/zotero-gpt">zotero-gpt</a></td><td>在 Zotero 内阅读时对话</td><td>plugin 路径和外部 Agent 不同</td><td>⭐⭐⭐</td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="3">本地／CLI</th><td><a href="https://github.com/sst/opencode">OpenCode</a></td><td>连接本地或云端模型修改程序</td><td>OpenCode 2 仍是 beta</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="3">本地／CLI</th><td><a href="https://github.com/anomalyco/opencode">OpenCode</a></td><td>连接本地或云端模型修改程序</td><td>OpenCode 2 仍是 beta</td><td>⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/earendil-works/pi">Pi</a></td><td>可扩展的 coding harness／CLI</td><td>默认没有内置权限隔离</td><td>⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/Aider-AI/aider">Aider</a></td><td>以 Git 为中心结对编程</td><td>小模型的编码质量可能不足</td><td>⭐⭐⭐⭐</td></tr>
   </tbody>

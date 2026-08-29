@@ -444,7 +444,7 @@ The rating measures teaching usefulness in this project. It is not a GitHub star
     <tr><td><a href="https://github.com/MuiseDestiny/zotero-gpt">zotero-gpt</a></td><td>Chat while reading inside Zotero</td><td>A Zotero plugin follows a different path from an external Agent</td><td>⭐⭐⭐</td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="3">Local/CLI</th><td><a href="https://github.com/sst/opencode">OpenCode</a></td><td>Change programs with local or cloud models</td><td>OpenCode 2 is still in beta</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="3">Local/CLI</th><td><a href="https://github.com/anomalyco/opencode">OpenCode</a></td><td>Change programs with local or cloud models</td><td>OpenCode 2 is still in beta</td><td>⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/earendil-works/pi">Pi</a></td><td>Extensible coding harness/CLI</td><td>No built-in permission isolation by default</td><td>⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/Aider-AI/aider">Aider</a></td><td>Pair-program with a Git-centered workflow</td><td>Small local models may not code well enough</td><td>⭐⭐⭐⭐</td></tr>
   </tbody>

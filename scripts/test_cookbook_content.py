@@ -56,6 +56,7 @@ REQUIRED_LITERALS = (
     "ollama_chat/gemma4:e4b",
     "OpenRouter",
     "Pi",
+    "https://github.com/anomalyco/opencode",
 )
 FORBIDDEN_LITERALS = (
     "from mcp.server.mcpserver import MCPServer",
@@ -66,6 +67,7 @@ FORBIDDEN_LITERALS = (
     "pip install aider-chat",
     "aider --model ollama/",
     "qwen2.5:3b",
+    "https://github.com/sst/opencode",
 )
 
 
