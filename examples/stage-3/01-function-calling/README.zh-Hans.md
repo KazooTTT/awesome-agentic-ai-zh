@@ -4,7 +4,7 @@
 
 # 练习 1：一个工具、一次完整来回
 
-对应 [Stage 3 — Tool Use & Hello Agent](../../../stages/03-tool-use-and-hello-agent.zh-Hans.md) 练习 1。
+对应 [Stage 3 — 工具使用与第一个 Agent Loop](../../../stages/03-tool-use-and-hello-agent.zh-Hans.md) 练习 1。
 
 这题只做一件事：模型说“请调用 `get_weather`”，你的 Python 程序检查参数、执行工具，再把结果交回模型。跑完后，你会亲眼看到：
 

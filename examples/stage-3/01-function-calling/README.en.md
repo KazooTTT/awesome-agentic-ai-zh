@@ -4,7 +4,7 @@
 
 # Exercise 1: One Tool, One Complete Round Trip
 
-Corresponds to Exercise 1 in [Stage 3 — Tool Use & Hello Agent](../../../stages/03-tool-use-and-hello-agent.en.md).
+Corresponds to Exercise 1 in [Stage 3 — Tool Use & Your First Agent Loop](../../../stages/03-tool-use-and-hello-agent.en.md).
 
 This exercise does one thing: the model says “call `get_weather`,” your Python program validates the arguments, executes the tool, and returns the result to the model. After running it, you will see:
 

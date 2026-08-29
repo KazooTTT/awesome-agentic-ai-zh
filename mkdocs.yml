@@ -167,8 +167,8 @@ nav:
       - A2 — CLI Workflow: tracks/cli/A2-cli-workflow.md
       - A3 — CLI Production: tracks/cli/A3-cli-production.md
   - Track B — Agent:
-      - Stage 3 — Tool Use & Hello Agent: stages/03-tool-use-and-hello-agent.md
-      - Stage 4 — Agent Frameworks: stages/04-agent-frameworks.md
+      - Stage 3 — Tool Use & Your First Agent Loop: stages/03-tool-use-and-hello-agent.md
+      - Stage 4 — Agent Frameworks & Workflow Graphs: stages/04-agent-frameworks.md
       - Stage 5 — Claude Code Ecosystem: stages/05-claude-code-ecosystem.md
       - Stage 6 — Memory & RAG: stages/06-memory-rag.md
       - Stage 7 — Multi-Agent: stages/07-multi-agent-production.md

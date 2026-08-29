@@ -99,6 +99,14 @@ What learners do for Track A: follow each numbered exercise in the outline doc, 
 
 **Potential v2** (not committed): could ship `examples/track-a/` containing a sample project-instructions file, `skills/review-changes/SKILL.md`, and a sample GHA workflow yml. Low priority — current outline is self-contained.
 
+### Stage 3–4 — Agent Loop to Workflow Graph bridge covered
+
+Stage 3 is the first **Agent Loop** chapter. Its three localized titles, opening definition, and visible core terms use the exact sequence `model → tool call → execute → tool result → model`. Three required readings, all six exercise outcomes and first actions, and the complete 21-row rated resource map remain visible. Eleven closed disclosures hold setup, budget, long code, provider-specific detail, troubleshooting, and optional depth.
+
+Stage 4 keeps **Agent Frameworks** in the title and adds **Workflow Graphs**; it is not renamed to Graph Engineering. A five-row visible bridge separates Agent Loop, Agent Framework, Workflow Graph, Loop Engineering, and Graph Engineering. The contract treats a framework as a toolbox, a Workflow Graph as the node／edge／branch／state map built with those tools, and Loop／Graph Engineering as the Stage 7 production design work. It also rejects the old implication that an Agent framework requires multiple Agents. Four required-reading steps with five official links, five exercise entries, and the complete 18-row rated project map remain visible; six disclosures hold setup and secondary detail.
+
+`scripts/test_stage04_content.py` locks the three localized H1s, the exact visible loop sequence in both stages, the five-row bridge, old and new framework-heading anchors, Agent-framework boundary, required-reading URLs, 21／18 resource counts and ratings, mdBook summary labels, and the localized Stage 3／4 return labels in all 18 directly affected example READMEs. `scripts/test_agent_engineering_route.py` locks the Stage 3 → Stage 4 → Stage 7 terminology route. `scripts/check-reader-ux.py` additionally requires exactly `11／6` closed disclosures, zero default-open disclosures, the visible resource minimums, and the localized section order. This layer changes only navigation labels in those example READMEs; it does not change their executable behavior.
+
 ### Stage 5 — reader path covered; meta-example hardening pending
 
 Stage 5 (`stages/05-claude-code-ecosystem.md`) has five cumulative exercises and eight reference sections (5.1–5.8). The first reader-UX layer keeps every exercise outcome and first copyable action visible, while longer setup and troubleshooting stay closed by default.

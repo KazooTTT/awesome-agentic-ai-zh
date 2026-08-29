@@ -1,8 +1,8 @@
-# Stage 4 — Agent 框架（Agent Frameworks）
+# Stage 4 — Agent 框架與 Workflow Graph
 
 > **繁體中文** | [简体中文](./04-agent-frameworks.zh-Hans.md) | [English](./04-agent-frameworks.en.md)
 
-你在 Stage 3 已經自己寫過工具迴圈。這一關要做的事很簡單：看看哪一些重複工作可以交給現成工具箱，並學會什麼時候不要把系統變複雜。
+你在 Stage 3 已經自己寫過 **Agent Loop**。這一關要做的事很簡單：先看 **framework** 提供哪些積木，再把需要看清楚的步驟畫成 **Workflow Graph**。工具可以幫你少接幾條線，但不會替你決定哪張工作地圖才安全。
 
 <!-- freshness: canonical=stages/04-agent-frameworks.md; verified_on=2026-08-27; scope=frameworks,releases,maintenance,licenses,security; max_age_days=90 -->
 
@@ -10,7 +10,7 @@
 
 完成這一關後，你可以：
 
-- 用自己的話分清固定流程、動態決策與多角色系統。
+- 用自己的話分清 Agent Loop、Agent framework、Workflow Graph 與多角色系統。
 - 先選最簡單能完成任務的工具，不為了流行硬加角色。
 - 跑完五個練習，親手比較 LangGraph、CrewAI、Smolagents 與 Pydantic AI。
 - 說出交接、存檔與人工批准各自解決什麼問題。
@@ -18,13 +18,25 @@
 ## 🧩 先認識八個核心詞
 
 - **Framework（框架）**：一盒已經整理好的積木。它幫你接好迴圈、工具、記錄與錯誤處理；但盒子越大，藏起來的細節也越多。
-- **Workflow（工作流程）**：像照食譜做菜。程式先寫好下一步走哪裡，模型只完成其中的工作。
+- **Workflow（工作流程）／Workflow Graph（工作流程圖）**：像照食譜做菜，再把每一步和下一站畫出來。程式先寫好 node、edge 與分支，模型只完成其中需要判斷的工作。
 - **Agent（代理程式）**：像拿到目標的助手。模型可以依目前結果決定下一步，但真正的權限、驗證與停止條件仍由程式控制。
 - **Orchestration（編排）**：像交通指揮。它安排誰先做、誰後做、資料交給誰，以及失敗時怎麼回來。
 - **State（狀態）**：像工作中的筆記本。它記住目前輸入、工具結果、進度與下一步需要的資料。
 - **Checkpoint（檢查點）**：像遊戲存檔。流程中斷後，可以從已保存的位置繼續，不必全部重來。
 - **Handoff（交接）**：像把工作單交給另一位同學。新的 Agent 接手後，需要拿到足夠背景，也不能得到不需要的權限。
 - **Human-in-the-loop（HITL，人在迴圈中）**：像先舉手請老師看。程式在花錢、寄信、刪資料或發布前暫停，等人批准才繼續。
+
+## 🧭 先分清：Loop、Framework 與 Graph
+
+| 名稱 | 五歲也懂的說法 | 正確邊界與學習位置 |
+|---|---|---|
+| **Agent Loop** | 助手做一步、看結果，再決定下一步 | Stage 3 的一次執行內迴圈：model → tool call → execute → tool result → model |
+| **Agent Framework** | 一盒幫你接線的工具積木 | 提供 runner、tool、state、handoff、checkpoint 等零件；一個 Agent 也能使用 |
+| **Workflow Graph** | 把每一站和道路畫出來 | 用 node、edge、branch 與 state 表示工作順序；格子裡可以是 Agent、工具、檢查或人工批准 |
+| **Loop Engineering** | 設計它怎麼反覆做、怎麼驗、何時停 | Stage 7 才加入預算、驗證、復原與人工升級 |
+| **Graph Engineering** | 用工具箱設計整張工作地圖 | Stage 7 才把多個 loop、工具與人做成可觀測、可復原的 production 系統 |
+
+**Framework 是工具箱；Workflow Graph 是你畫出的工作地圖；Graph Engineering 是設計這張圖的工程工作。** **Multi-Agent** 可以放進圖裡，但不是每張圖都需要多個 Agent，也不是每個 node 都必須是 Agent。
 
 ## 🗺️ 先看一張選擇地圖
 
@@ -48,10 +60,7 @@
 
 ## 📚 必修閱讀
 
-先讀「怎麼選簡單形狀」，再挑一個框架 Quickstart。完整清單預設收合，避免還沒動手就撞上資源牆。
-
-<details markdown="1">
-<summary>展開四份必修閱讀與順序</summary>
+先讀「怎麼選簡單形狀」，再從第 4 步的兩個 framework Quickstart 挑一個。下面共有 4 個閱讀步驟、5 個官方連結；先照順序讀，不必一次讀完每一頁。
 
 1. [Anthropic — Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)：先分清 workflow 與 agent，也看懂為什麼要從簡單方案開始。
 2. [LangGraph — Workflows and Agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)：看固定路線與動態路線怎麼寫成圖。
@@ -60,11 +69,10 @@
 
 第三方排行榜可以提供候選名單，但不能證明版本、授權、可用性或哪個「最強」。這些事以官方文件與你自己的 eval 為準。
 
-</details>
+<a id="-什麼是-multi-agent-framework"></a>
+## 🤔 什麼是 Agent framework？
 
-## 🤔 什麼是 multi-agent framework？
-
-Multi-agent system 是「多個 Agent 分工」。Multi-agent framework 則是幫它們安排交接、共享資料、重試、存檔與人工批准的工具箱。它不是魔法，也不是每個專案的預設答案。
+Agent framework 是幫一個或多個 Agent 接好模型、工具、state、重試、存檔與人工批准的工具箱。**一個 Agent 也能使用 framework；multi-agent 只是後面的一種系統形狀，不是 framework 的定義。** Framework 不是魔法，也不是每個專案的預設答案。
 
 <a id="兩個維度先分清楚workflow-vs-agent--single-vs-multi"></a>
 ### 兩個維度先分清楚（workflow vs agent / single vs multi）
@@ -235,10 +243,7 @@ py -3.11 test.py
 
 ## 🎯 精選 Projects
 
-第一個入口選 [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐⭐：你能直接看到 state、edge、checkpoint 與中斷點。其他 17 筆依用途收合；推薦度是本章學習順序，不是人氣排行榜。
-
-<details markdown="1">
-<summary>展開 18 筆框架、harness 與基礎設施</summary>
+第一個入口先看 [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐⭐：你能直接看到 state、edge、checkpoint 與中斷點。其餘 17 筆已依用途分組放在下面；推薦度是本章學習順序，不是人氣排行榜。
 
 <small>框架資訊查核：2026-08-27 UTC</small>
 
@@ -282,11 +287,9 @@ py -3.11 test.py
   </tbody>
 </table>
 
-</details>
-
 ## ✅ 進 Stage 5 前的自我檢查
 
-- [ ] 我能分清 Workflow、Agent 與 multi-agent，不把它們當同一件事。
+- [ ] 我能分清 Agent Loop、Agent framework、Workflow Graph 與 multi-agent，不把它們當同一件事。
 - [ ] 我會先用最簡單方案，只有看到可量測證據才增加 Agent。
 - [ ] 我能說明 State、Checkpoint、Handoff 與 HITL 各自保存或控制什麼。
 - [ ] 我跑過五題的離線測試，並完成至少一條 Ollama Path A。
