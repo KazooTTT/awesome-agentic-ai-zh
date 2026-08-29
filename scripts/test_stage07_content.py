@@ -39,6 +39,8 @@ CORE_LABELS = {
         "Eval",
         "Observability",
         "Guardrail",
+        "Loop Engineering",
+        "Graph Engineering",
     ),
     "en": (
         "Multi-Agent",
@@ -48,6 +50,8 @@ CORE_LABELS = {
         "Eval",
         "Observability",
         "Guardrail",
+        "Loop Engineering",
+        "Graph Engineering",
     ),
     "zh-Hans": (
         "Multi-Agent（多 Agent）",
@@ -57,12 +61,19 @@ CORE_LABELS = {
         "Eval",
         "Observability",
         "Guardrail",
+        "Loop Engineering",
+        "Graph Engineering",
     ),
 }
 CORE_SECTION_HEADINGS = {
-    "zh-TW": ("## 🧩 七個核心詞", "## 🚪 進入條件"),
-    "en": ("## 🧩 Seven Core Terms", "## 🚪 Entry Conditions"),
-    "zh-Hans": ("## 🧩 七个核心词", "## 🚪 进入条件"),
+    "zh-TW": ("## 🧩 九個核心詞", "## 🚪 進入條件"),
+    "en": ("## 🧩 Nine Core Terms", "## 🚪 Entry Conditions"),
+    "zh-Hans": ("## 🧩 九个核心词", "## 🚪 进入条件"),
+}
+PAGE_TITLES = {
+    "zh-TW": "# Stage 7 — Loop／Graph Engineering：多 Agent 與穩定運作",
+    "en": "# Stage 7 — Loop & Graph Engineering: Multi-Agent Production",
+    "zh-Hans": "# Stage 7 — Loop／Graph Engineering：多 Agent 与稳定运行",
 }
 EXERCISE_DIRS = (
     "01-multi-agent-debate",
@@ -72,14 +83,51 @@ EXERCISE_DIRS = (
     "05-deploy",
 )
 CURRENT_FACT_URLS = {
+    "https://openai.github.io/openai-agents-python/running_agents/",
     "https://openai.github.io/openai-agents-python/multi_agent/",
-    "https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/",
+    "https://www.ibm.com/think/topics/loop-engineering",
+    "https://arxiv.org/abs/2608.21884",
+    "https://docs.langchain.com/oss/python/langgraph/workflows-agents",
+    "https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/",
+    "https://arxiv.org/abs/2608.21156",
     "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "https://github.com/open-telemetry/semantic-conventions-genai",
     "https://github.com/earendil-works/pi",
     "https://github.com/anomalyco/opencode",
     "https://github.com/stablyai/orca",
     "https://github.com/yc-software/qm",
+}
+REQUIRED_READING_URLS = (
+    "https://www.anthropic.com/engineering/building-effective-agents",
+    "https://openai.github.io/openai-agents-python/running_agents/",
+    "https://openai.github.io/openai-agents-python/multi_agent/",
+    "https://docs.langchain.com/oss/python/langgraph/workflows-agents",
+    "https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/",
+)
+FORBIDDEN_TERMINOLOGY = (
+    "Loop Engineering（本專案教學用語）",
+    "Graph Engineering（本專案教學用語）",
+    "Loop Engineering (a teaching term in this project)",
+    "Graph Engineering (a teaching term in this project)",
+    "Loop Engineering（本项目教学用语）",
+    "Graph Engineering（本项目教学用语）",
+)
+ROUTE_MARKERS = {
+    "zh-TW": (
+        "Stage 3：Agent Loop 入門",
+        "Stage 4：Workflow Graph 入門",
+        "Stage 7：Loop／Graph Engineering 加深",
+    ),
+    "en": (
+        "Stage 3: Agent Loop entry",
+        "Stage 4: Workflow Graph entry",
+        "Stage 7: Loop / Graph Engineering deepening",
+    ),
+    "zh-Hans": (
+        "Stage 3：Agent Loop 入门",
+        "Stage 4：Workflow Graph 入门",
+        "Stage 7：Loop／Graph Engineering 加深",
+    ),
 }
 RESOURCE_URL_RATINGS = (
     ("https://www.anthropic.com/engineering/building-effective-agents", "⭐⭐⭐⭐⭐"),
@@ -119,9 +167,10 @@ def _external_urls(text: str) -> list[str]:
 
 
 @pytest.mark.parametrize("locale,page", PAGES.items())
-def test_reader_path_has_seven_closed_disclosures(locale: str, page: Path) -> None:
+def test_reader_path_has_six_closed_disclosures(locale: str, page: Path) -> None:
     text = page.read_text(encoding="utf-8")
-    assert len(re.findall(r'<details markdown="1">', text)) == 7
+    assert text.startswith(PAGE_TITLES[locale])
+    assert len(re.findall(r'<details markdown="1">', text)) == 6
     assert not re.search(r"<details[^>]*\bopen\b", text)
     visible = _without_closed_details(text)
     assert "Stage 7" in visible
@@ -145,6 +194,21 @@ def test_all_core_terms_are_bold_and_defined_before_exercises(
     assert positions == sorted(positions)
 
 
+@pytest.mark.parametrize("locale,page", PAGES.items())
+def test_five_layer_map_is_scope_not_chapter_numbering(locale: str, page: Path) -> None:
+    text = page.read_text(encoding="utf-8")
+    visible = _without_closed_details(text)
+    assert all(marker in visible for marker in ROUTE_MARKERS[locale])
+    assert not any(term in text for term in FORBIDDEN_TERMINOLOGY)
+
+
+@pytest.mark.parametrize("page", PAGES.values())
+def test_required_reading_and_featured_resources_are_visible(page: Path) -> None:
+    visible = _without_closed_details(page.read_text(encoding="utf-8"))
+    assert all(url in visible for url in REQUIRED_READING_URLS)
+    assert all(url in visible and rating in visible for url, rating in RESOURCE_URL_RATINGS)
+
+
 @pytest.mark.parametrize("page", PAGES.values())
 def test_five_real_exercises_are_visible_and_no_fake_sixth_exists(page: Path) -> None:
     text = page.read_text(encoding="utf-8")
@@ -163,7 +227,7 @@ def test_three_locales_have_the_same_external_urls_and_current_fact_sources() ->
     assert url_lists["zh-TW"] == url_lists["en"] == url_lists["zh-Hans"]
     assert CURRENT_FACT_URLS <= set(url_lists["zh-TW"])
     for page in PAGES.values():
-        assert "2026-08-28 UTC" in page.read_text(encoding="utf-8")
+        assert "2026-08-29 UTC" in page.read_text(encoding="utf-8")
 
 
 @pytest.mark.parametrize("page", PAGES.values())

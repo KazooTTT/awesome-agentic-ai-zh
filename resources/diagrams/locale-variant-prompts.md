@@ -174,7 +174,7 @@ python scripts/check-image-locale.py
 `KNOWN_MISSING` 白名單裡——所以**新增一張缺變體的圖會讓 build 失敗**，不會默默累積。
 補完變體後記得把對應的 `KNOWN_MISSING` 條目一起移除。
 
-## 2026-08-28：Stage 7 亮色重繪
+## 2026-08-29：Stage 7 五層圖名詞與順序修正
 
 `agent-engineering-5layer.{png,en.png,zh-Hans.png}` 與
 `inside-a-graph.{png,en.png,zh-Hans.png}` 保留原檔名重繪，因此 README、Stage 7.5、
@@ -183,22 +183,26 @@ Stage 8 與 glossary 的既有深連結不用改。Stage 7 三語頁改成各自
 
 本批使用 Codex 內建 imagegen 的 edit／text-localization 路徑：
 
-1. 先讀原圖，鎖定 16:9、節點順序、箭頭、badge、圖例與全部事實。
-2. 只把深色霓虹改成暖白背景、亮色卡片、深藍文字與高對比線條。
-3. 以通過人工檢查的繁中亮色版為 reference，逐字提供英語與簡中文字表。
-4. 簡中五層圖副標題兩次殘留繁體 `層／牆`；最終移除副標題，不接受混合字形。
-5. 用 `python scripts/check-image-locale.py` 確認所有 mirror 實際引用自己的圖。
+1. 先讀原圖，保留 16:9 與由下往上的 Prompt → Context → Harness → Loop → Graph。
+2. 左側只留一支向上箭頭，表示控制範圍變大；這不是 Stage 編號或閱讀順序。
+3. 移除所有「官方採用／非官方名稱／Industry term／Community term」badge 與底部二分圖例。
+4. Graph 列同時寫 Workflow Graph；Loop 列同時寫 Bounded Agent Loops，讓讀者找到官方文件常用的搜尋詞。
+5. 以通過人工檢查的繁中版為構圖 reference，再逐字提供英語與簡中文字表；不得混合語言或繁簡字形。
+6. 用 `python scripts/check-image-locale.py` 確認所有 mirror 實際引用自己的圖。
 
 共同 prompt 約束：
 
-> Preserve the exact five-layer／workflow order, icons, arrows, meaning, 16:9
-> composition, and hierarchy. Use a warm off-white background, soft pastel
-> cards, dark navy text, high contrast, and no watermark. Use only the supplied
-> verbatim locale text; do not add rankings, versions, prices, or new claims.
+> Preserve the exact bottom-up Prompt → Context → Harness → Loop → Graph order,
+> icons, one upward scope arrow, 16:9 composition, and hierarchy. Use a warm
+> off-white background, soft bright pastel cards, dark navy text, high contrast,
+> and no watermark. Remove all maturity badges. Pair Graph Engineering with
+> Workflow Graph and Loop Engineering with Bounded Agent Loops. Use only the
+> supplied verbatim locale text; do not add rankings, versions, prices, dates,
+> standards claims, or new facts.
 
 人工驗收除了看文字，也逐一確認：
 
-- 五層仍是 Prompt → Context → Harness → Loop → Graph，前 3 層標示業界採用，
-  後 2 層標示社群／本專案教學用語。
+- 五層仍是 Prompt → Context → Harness → Loop → Graph，只有一支向上的「控制範圍變大」箭頭；沒有任何官方／非官方 badge。
+- 圖只表達範圍，不暗示 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
 - Graph 圖仍保留平行草稿、獨立驗證、人工核准與失敗返回，沒有把每個節點都畫成 Agent。
 - 英語圖沒有中文；簡中圖沒有肉眼可見的繁體字；繁中圖沒有簡中用語。

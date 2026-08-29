@@ -1,4 +1,4 @@
-# Stage 7 — 多 Agent 系统与稳定运行（Multi-Agent & Production）
+# Stage 7 — Loop／Graph Engineering：多 Agent 与稳定运行
 
 > [繁體中文](./07-multi-agent-production.md) | **简体中文** | [English](./07-multi-agent-production.en.md)
 
@@ -37,12 +37,12 @@
 完成本章后，你能：
 
 1. 说清楚什么时候该用单一 Agent，什么时候才需要 **Multi-Agent**。
-2. 用 **Orchestration** 安排 Agent 的顺序、分工和交接。
+2. 用 **Orchestration** 安排 Agent 的顺序、分工和交接，并分清 **Agent Loop** 与 **Workflow Graph**。
 3. 用 **Eval** 检查质量，不只靠“我看起来觉得可以”。
 4. 用 **Observability** 看见每一步、错误、延迟和 token 用量。
 5. 加上 **Guardrail**、人工批准和恢复方式，再把 Agent 交给别人使用。
 
-## 🧩 七个核心词
+## 🧩 九个核心词
 
 | 核心词 | 五岁也能懂的说法 | 正确术语 |
 |---|---|---|
@@ -53,6 +53,8 @@
 | **Eval** | 出一张小考卷，看它是不是真的会 | 用固定案例和评分规则测量行为 |
 | **Observability** | 装上透明窗，知道它做到哪里 | 用 trace、log、metrics 看见系统内部状态 |
 | **Guardrail** | 游戏场边的护栏 | 限制输入、输出、工具权限或高风险操作的规则 |
+| **Loop Engineering** | 做一步、检查，再决定要不要继续 | 设计 Agent Loop 的目标、反馈、验证、预算、状态、停止和人工升级 |
+| **Graph Engineering** | 画一张完整工作地图，每一格都有下一站 | 用 Workflow Graph 组织 node、edge、分支、并行路线、state、checkpoint 和人工批准 |
 
 **Prompt（提示）**仍然是你交给模型的指令和材料；本章不是把 Prompt 丢掉，而是替它加上能执行、检查和恢复的外围系统。
 
@@ -68,38 +70,48 @@ Docker 还不熟也可以开始；先做练习 1–4，练习 5 再补。
 
 ## 📚 必读内容
 
-先读这三份就够开始：
+先读这五份。它们会先把 Agent Loop、Workflow Graph 和多 Agent 的关系说清楚：
 
 1. [Anthropic — Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)：先用简单组合，只有需要时才增加自主性。
-2. [OpenAI Agents SDK — Multi-agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/)：比较“管理者调用其他 Agent”和 **Handoff**。
-3. [Microsoft Agent Framework — Orchestration](https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/)：看顺序、并行、交接、群聊和人工批准怎样放进 Workflow。
+2. [OpenAI Agents SDK — Running agents](https://openai.github.io/openai-agents-python/running_agents/)：看一次 Agent Loop 如何在模型、工具与 Handoff 之间反复执行，并用 `max_turns` 停下来。
+3. [OpenAI Agents SDK — Multi-agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/)：比较“管理者调用其他 Agent”和 **Handoff**。
+4. [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)：分清固定 Workflow 与会自己决定下一步的 Agent。
+5. [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/)：看 executor、edge、event 与 state 怎样组成 Workflow Graph。
 
 <details markdown="1">
-<summary>📚 展开：完整阅读顺序与用途</summary>
+<summary>📖 展开：延伸阅读与用途</summary>
 
-4. [Anthropic — Develop tests and evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)：先写可测量的成功标准，再选择评分方式。
-5. [OpenAI Agents SDK — Tracing](https://openai.github.io/openai-agents-python/tracing/)：理解 trace、span、tool、handoff 和 guardrail 事件。
-6. [OpenAI Agents SDK — Testing utilities](https://openai.github.io/openai-agents-python/testing/)：用可重复的假模型测试，不必每次花 API 费用。
-7. [OpenAI — Harness engineering](https://openai.com/index/harness-engineering/)：看环境、反馈循环和机器规则怎样帮助 Agent 稳定工作。
-8. [OpenTelemetry — GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai)：认识可移植的追踪字段；规范仍在演进，不要假设所有平台都完整支持。
+1. [Anthropic — Develop tests and evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)：先写可测量的成功标准，再选择评分方式。
+2. [OpenAI Agents SDK — Tracing](https://openai.github.io/openai-agents-python/tracing/)：理解 trace、span、tool、handoff 和 guardrail 事件。
+3. [OpenAI Agents SDK — Testing utilities](https://openai.github.io/openai-agents-python/testing/)：用可重复的假模型测试，不必每次花 API 费用。
+4. [OpenAI — Harness engineering](https://openai.com/index/harness-engineering/)：看环境、反馈循环和机器规则怎样帮助 Agent 稳定工作。
+5. [OpenTelemetry — GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai)：认识可移植的追踪字段；规范仍在演进，不要假设所有平台都完整支持。
 
 </details>
 
 ## 五层工程分工：Prompt → Context → Harness → Loop → Graph
 
-这五层不是五种产品，也不是一定要全部使用。它们只是帮你看清楚“问题出在哪一层”。
+这五层不是五种产品，也不是课程的章节顺序。它们只是把“要控制的范围”从小排到大：上面一层会用到下面的零件。
 
-| 层 | 大白话问题 | 正确名称 | 深入章节 |
-|---|---|---|---|
-| 1 | 我有没有把话说清楚？ | **Prompt Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) |
-| 2 | 我有没有把该看的资料放进来？ | **Context Engineering** | [Stage 6](06-memory-rag.zh-Hans.md) |
-| 3 | 它能不能安全地使用工具、失败后再试？ | **Harness Engineering** | 本章 |
-| 4 | 长任务能不能停下、保存、下次接着做？ | **Loop Engineering**（本项目教学用语） | [Stage 5](05-claude-code-ecosystem.zh-Hans.md) |
-| 5 | 每一步和分支能不能被看见和控制？ | **Graph Engineering**（本项目教学用语） | [Stage 4](04-agent-frameworks.zh-Hans.md) |
+| 层 | 大白话问题 | 正确名称 | 先在哪里遇见 | 在哪里加深 |
+|---|---|---|---|---|
+| 1 | 我有没有把话说清楚？ | **Prompt Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) | 每章的 Prompt 和 Eval |
+| 2 | 我有没有把该看的资料放进来？ | **Context Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) 先分清 Prompt 与 Context | [Stage 6](06-memory-rag.zh-Hans.md) 的 RAG／Memory |
+| 3 | 它能不能安全地使用工具、出错后停下？ | **Harness Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 的 runner／tool boundary | [Stage 5](05-claude-code-ecosystem.zh-Hans.md) 的实例与本章的 production checklist |
+| 4 | 它怎么“做、看结果、再做”，而且不会无限运行？ | **Loop Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 的 Agent Loop | 本章的 bounded long-running loop |
+| 5 | 每一步、分支和返回路线能不能被看见和控制？ | **Graph Engineering** | [Stage 4](04-agent-frameworks.zh-Hans.md) 的 Workflow Graph | 本章的 production orchestration |
+
+- **Stage 3：Agent Loop 入门**——先学一次执行里的“模型 → 工具 → 结果 → 下一步”。
+- **Stage 4：Workflow Graph 入门**——再用 framework 提供的零件画 node、edge、branch 和 state。
+- **Stage 7：Loop／Graph Engineering 加深**——最后加入预算、验证、checkpoint、人工批准、观测和恢复。
+
+**Agent Framework 是工具箱；Graph Engineering 是用工具箱设计整张工作地图。** 所以 Stage 4 的标题仍可叫 Agent Frameworks，但本章不能把它直接改名成 Graph Engineering。
 
 ![Agent 工程五层 Stack](../resources/diagrams/agent-engineering-5layer.zh-Hans.png)
 
-前三个名称在行业文档中常见；后两个是本项目为了好教、好记所用的分层名称。官方文档更常写 long-running agent、dynamic workflow 或 graph-based workflow。
+Prompt、Context 和 Harness 已出现在主要供应商的工程文档中。**Loop Engineering** 与 **Graph Engineering** 是 2026 年正在形成的总称，不是本项目自己发明，也还不是每一家供应商都采用的标准名称。下面的 **agent loop**、**workflow graph**、**graph-based workflow** 与 **orchestration** 则早已是实际做法。
+
+词汇来源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)、[Loop Engineering exploratory preprint](https://arxiv.org/abs/2608.21884)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。论文是新兴词汇的证据，不是要求初学者先读完的必修教材。
 
 ### 循环和图有什么差别（这两个最容易混）
 
@@ -268,8 +280,7 @@ python test.py
 
 先按用途选择一个，不要一次安装全部。评分是本项目的教学适合度，不是 GitHub stars。
 
-<details markdown="1">
-<summary>📦 展开：20 个官方／优质资源、适合用途与限制</summary>
+以下 20 笔直接放在这里，因为它们是读者选择工具时会回来看的一张路标。
 
 <table>
   <thead>
@@ -305,9 +316,7 @@ python test.py
   </tbody>
 </table>
 
-<small>数据核查：2026-08-28 UTC</small>
-
-</details>
+<small>数据核查：2026-08-29 UTC</small>
 
 ## ✅ Stage 7 之后的自我检查
 

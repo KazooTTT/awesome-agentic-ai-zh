@@ -183,9 +183,9 @@ Stage 6 的 18 筆資源固定分成 `4／5／4／3／2` 五組，每組使用�
 
 Stage 6 同樣使用兩層 stacked PR：第一層定稿三語教材、官方事實包、圖、glossary 直接矛盾、資源表與 reader-UX gate；第二層才修正五個 `examples/stage-6/` 的 chunk 邊界、collection 隔離、真正 persistent memory、雙路徑與離線測試。兩層都保留 branch 與 upstream，未經使用者明確同意不合併、不清理。
 
-Stage 7 的固定主線是「單一 Agent／Multi-Agent 決策 → 七個可見核心詞 → Prompt／Context／Harness／Loop／Graph 五層分工 → Harness 八項 production 檢查 → 工具角色辨識 → 五題可執行練習 → execution receipt 小專案 → benchmark 閱讀紀律 → 精選資源 → 自我檢查」。七個核心詞是 **Multi-Agent**、**Orchestration**、**Handoff**、**Harness**、**Eval**、**Observability** 與 **Guardrail**；先用白話和生活比喻定義，再保留正確術語。OpenRouter 是模型 API 入口，Pi／OpenCode 是 Agent runtime／coding agent，Orca／QM 是多 Agent 協作層；不得把三層寫成可互換的同類產品。
+Stage 7 的固定主線是「單一 Agent／Multi-Agent 決策 → 九個可見核心詞 → Prompt／Context／Harness／Loop／Graph 五層分工 → Harness 八項 production 檢查 → 工具角色辨識 → 五題可執行練習 → execution receipt 小專案 → benchmark 閱讀紀律 → 精選資源 → 自我檢查」。九個核心詞是 **Multi-Agent**、**Orchestration**、**Handoff**、**Harness**、**Eval**、**Observability**、**Guardrail**、**Loop Engineering** 與 **Graph Engineering**；先用白話和生活比喻定義，再保留正確術語。Agent Loop 是 Stage 3 的入門，Workflow Graph 是 Stage 4 的入門，Stage 7 才把兩者加上預算、驗證、checkpoint、人工核准、觀測與復原。五層圖表達控制範圍，不是章節編號；Agent framework 是工具箱，Graph Engineering 是設計工作。OpenRouter 是模型 API 入口，Pi／OpenCode 是 Agent runtime／coding agent，Orca／QM 是多 Agent 協作層；不得把三層寫成可互換的同類產品。
 
-Stage 7 的時間、環境、費用、安全提醒、完整閱讀、Loop／Graph 補充、回饋與復原細節、練習步驟、benchmark 連結及完整資源表預設收合。五題 heading、anchor、成果與第一個可複製測試命令保持可見；成本／延遲仍是 Harness 第八項與 SDK 練習的必要觀念，但沒有對應資料夾時不得虛構第六題。外部排行榜只能教讀法，不能凍結 SOTA 分數、模型名次或第三方「最強」結論。
+Stage 7 的時間、環境、費用、安全提醒、延伸閱讀、Loop／Graph 補充、回饋與復原細節、練習步驟及 benchmark 長清單預設收合。五份必修閱讀、20 筆精選資源表、五題 heading／anchor／成果與第一個可複製測試命令保持可見；成本／延遲仍是 Harness 第八項與 SDK 練習的必要觀念，但沒有對應資料夾時不得虛構第六題。外部排行榜只能教讀法，不能凍結 SOTA 分數、模型名次或第三方「最強」結論。
 
 Stage 7 的 20 筆資源固定分成 `4／6／5／5` 四組，每組使用獨立 `<tbody>`、`scope="rowgroup"` 與真正 HTML `rowspan`。保留五星編輯評分，移除 GitHub stars；已封存、Preview、Alpha、best-effort 或維護紀錄不足的專案必須在限制欄明寫。Stage 7 同樣拆成 content 與 example-hardening 兩層 stacked PR：第一層定稿三語教材、來源、圖、資源與 reader-UX gate；第二層才更新五個 `examples/stage-7/` 的 SDK、模型、直接執行步驟、安全邊界與離線測試。未經使用者明確同意不合併、不清理 branch。
 
@@ -208,9 +208,9 @@ Stage 7.5 只保留兩組低文字密度三語圖：四問題群組的 12 概念
 2. ## 📌 學習目標
 3. 該 stage 的可見核心詞（首次粗體、逐詞白話解釋）／最短選擇路徑
 4. ## 🚪 進入條件 + ⏱ 時間估算（預設收合；Stage 6 / 7 可省略）
-5. ## 📚 必修閱讀（第一題會用到的 1–3 筆保持可見；完整順序收合）
+5. ## 📚 必修閱讀（全部必修項目直接可見；只有延伸閱讀收合）
 6. ## 🛠 動手練習（核心練習先出現，延伸練習細節收合）
-7. ## 🎯 精選 Projects（一個推薦項目先出現，其餘分級收合）
+7. ## 🎯 精選 Projects 與學習資源（精選項目直接可見；只有完整 catalog 收合）
 8. ## ✅ 進 Stage N+1 前的自我檢查
 ```
 
@@ -219,7 +219,7 @@ Stage 7.5 只保留兩組低文字密度三語圖：四問題群組的 12 概念
 - 不展開任何 `<details>` 時，讀者仍要看得懂「這章要學什麼、先做哪一題、成功長什麼樣」。
 - 核心路標的 icon 必須保留並保持一致：`📌` 學習目標、`📚` 必修閱讀、`🛠` 動手練習、`🎯` 精選 Projects、`✅` 自我檢查。可調整白話標題，但不能在精簡時拿掉路標。
 - 動手練習的第一個動作優先給可直接複製、貼上或執行的最小成品。不要先叫初學者抄空白模板；空白模板只適合放在讀者看過成品之後的自行改寫步驟。
-- 折疊與否看讀者現在需不需要，不看內容叫「閱讀」或「專案」。第一題要用的 1–3 筆來源、本章推薦專案與安全警告保持可見；時間、先備工具、費用、長表格、補充原理、疑難排解與延伸清單預設收合，且 `<details>` 不加 `open`。
+- 折疊與否看讀者現在需不需要。所有被稱為「必修閱讀」的項目、精選 Projects、精選學習資源與安全警告保持可見；時間、先備工具、費用、完整 catalog、補充原理、疑難排解與延伸清單預設收合，且 `<details>` 不加 `open`。若一張長表本身就是本章的精選清單，它仍保持可見，不能只因為列數多就藏起來。
 - 可被其他頁面深連結的 heading 必須留在 `<details>` 外。標題後先給一句成果，再收合詳細步驟，否則瀏覽器會跳到一個仍然看不見的位置。
 - 雙路徑練習仍以 Ollama Path A 為主要可執行路徑，但不再一律展開。練習標題、成果與第一個動作保持可見；只有在 Path A 是讀者眼前唯一要做的事，而且展開後內容很短時，才可使用 `open`。長程式碼與疑難排解預設收合。Anthropic Path B 仍預設收合；外層若已是延伸練習的收合區，內層不得預設展開。
 
@@ -228,7 +228,7 @@ Stage 7.5 只保留兩組低文字密度三語圖：四問題群組的 12 概念
 - `scripts/reader-ux-pages.yml` 只登記已完成三語遷移與人工複查的頁面。未遷移頁面不會因新規則一次全部失敗。
 - `scripts/check-reader-ux.py` 使用保守的 source-level proxy：計算第一次開頁時可見 Markdown 的非空白字元。預設展開內容與可見 fenced code 會計入；HTML comment 與收合內容不計入。這是可重複的 ratchet，不宣稱等於瀏覽器 DOM 字數。
 - 每頁分別設定三語字數上限、預設展開數量、必須留在 `<details>` 外的精確 heading／anchor、核心詞契約，以及分組資源表的 `rowspan`。完成一次精簡後只能維持或收緊，不可靜默放寬。
-- 時間、先備條件、環境、費用、預算、必修閱讀、選修、補充資料、疑難排解與完整資源表不得預設展開。
+- 時間、先備條件、環境、費用、預算、選修、補充資料、疑難排解與完整 catalog 可預設收合。必修閱讀、精選 Projects 與精選學習資源直接可見。
 - Gate 只證明可量測的結構沒有倒退。第一次讀者能不能用自己的話說出下一步，仍要在人工審查確認。
 
 ### 全站白話規則（ELI5）
@@ -287,7 +287,7 @@ Stage 7.5 只保留兩組低文字密度三語圖：四問題群組的 12 概念
 - 3-5 個 link（多會讀不完、少會 under-cover）
 - 該 stage 開始前 / 中 / 後都行，但「不讀就跟不上」是判準
 - 偏好官方 doc / 經典論文，不放長部落格
-- section heading 與一句閱讀目的保持可見；連結清單預設收合，避免讀者還沒開始實作就先撞上資源牆
+- section heading、閱讀目的與全部必修連結直接可見；延伸閱讀才收合，避免把「必修」藏起來後又要求讀者記得打開
 
 ### 動手練習 Projects
 - 通常 3-5 個（Stage 1 / 3 因為要 cover 多個概念，會到 5-6 個）
@@ -298,6 +298,7 @@ Stage 7.5 只保留兩組低文字密度三語圖：四問題群組的 12 概念
 
 ### 精選 Projects
 - 跑完 動手練習 後的延伸學習
+- 精選項目與五星編輯推薦度直接可見；只有更長的完整 catalog、安裝細節與替代方案收合
 - 每個 entry 照 [style guide](../resources/style-guide.md) 1 schema
 - 事實由現行官方文件、規格或 model card 證明；動手路徑再搭配知名或廣泛使用的代表 repo。人氣只能幫忙找候選，不能取代維護、License、安全、用途與限制的查核，也不保存會變動的 GitHub stars 數字。
 - 數量：通常 7-15 個（Stage 5 例外，20 個分散在 4 個 sub-section）

@@ -157,7 +157,7 @@ Ask a model for **JSON or another fixed schema** instead of free text. It may us
 
 The repeated cycle “model → Tool Call → program execution → Tool Result → model.” Each result must match the original call ID. The Loop must stop on completion, refusal, error, maximum steps, timeout, or a cost limit; retries must not be left entirely to the model.
 
-⚠️ **This is the loop *inside a single run*** — one component of a harness. It shares a name with [Loop Engineering](#loop-engineering), Layer 4 of the five-layer ladder, which governs long-horizon execution *across* sessions. Different levels, same word. The boundary is drawn in [Stage 7](../stages/07-multi-agent-production.en.md).
+⚠️ **This is the mechanical loop that actually runs inside the runner**: the model answers, calls a tool or makes a Handoff, reads the result, then chooses the next step. [Loop Engineering](#loop-engineering) designs this loop and its surrounding rules; they are related, not mutually exclusive. See [Stage 7](../stages/07-multi-agent-production.en.md) for the full boundary.
 
 ### Self-Refine (Basic reflection / no memory)
 
@@ -444,26 +444,30 @@ Contrast:
 - **Framework** (Stage 4) defines the **API**: what the interface you call looks like
 - **Harness** (this term) defines the **runtime**: how it runs, how it recovers, how it is observed
 
-📍 Discipline-level concept (**8 core components** / prompt→context→harness five-layer engineering split / framework vs harness): [Stage 7 Harness Engineering](../stages/07-multi-agent-production.en.md)
+📍 Discipline-level concept (**8 core components** / Prompt→Context→Harness→Loop→Graph five-layer engineering split / framework vs harness): [Stage 7 Harness Engineering](../stages/07-multi-agent-production.en.md)
 📍 Reference implementation case study (reading Claude Code source): [Stage 5 5.7](../stages/05-claude-code-ecosystem.en.md)
 📍 Further: [`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python), [`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering), [`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
 
 ### Loop Engineering
 
-Layer 4 in the five-layer engineering split (see [Stage 7](../stages/07-multi-agent-production.en.md), the canonical source for the full ladder and each layer's purpose): designing and tuning an agent's iteration loop itself (goal, tools, context management, termination logic, error handling) so long-running, multi-step, cross-session execution stays reliable and on-target. Related: harness, Dynamic Workflows, ReAct.
+The engineering work of designing how an Agent starts, takes a step, checks it, decides whether to continue, stops, or asks a person. It handles goals, tools, context, verification, budgets, state, errors, and human escalation. It **can happen inside one long run or across sessions and schedules**; cross-session operation is common, not a requirement for the term.
 
-⚠️ **Do not confuse this with the [Agent Loop](#agent-loop) inside a harness**. This layer governs the long-horizon problem *across many runs*; `Agent Loop` is a harness component governing the mechanical cycle *within one run*.
+**Agent Loop** is the runner's actual “model → tool / handoff → observation → next turn”; **Loop Engineering** designs that loop and its surrounding rules. Think of a wheel versus designing the whole bicycle: related, but not identical.
+
+This name is still emerging, not invented by this project and not a standard jointly defined by every vendor. Introductory sources: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering); adoption status: [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884). See [Stage 7](../stages/07-multi-agent-production.en.md) for the full five-layer map and practice entry points.
 
 ### Graph Engineering
 
-Designing an agent's execution flow as an **explicit graph**: nodes are steps (as of 2026 a node can hold an entire agent run, not just a single function), edges are transition conditions, and nodes pass around a schema'd state that can be checkpointed and replayed. **Two things to know when you meet this term**:
+Designing an Agent's work as an **explicit Workflow Graph**: a node is a step, an edge points to the next stop, and nodes pass around schema'd state that can be checkpointed and replayed. A node can contain an Agent Loop, a tool, a fixed check, or human approval.
 
 - **The "graph" here is a control / execution graph, not the knowledge-graph retrieval of GraphRAG** — for that, see [Stage 6](../stages/06-memory-rag.en.md). The two are frequently conflated.
-- **It is a name that became popular in July 2026, not a new technique.** LangGraph has worked this way since 2023, and LangChain itself says the idea is not new; Anthropic calls the equivalent mechanism *dynamic workflows*, while Google ADK and Microsoft Agent Framework say *graph-based workflow(s)* — none of the three vendors' docs use the phrase "graph engineering".
+- **The name is new; the underlying practice is not.** A 2026-08 survey preprint presents Graph Engineering as an emerging paradigm; workflows, state machines, nodes, edges, and checkpoints are older. Mainstream SDKs still commonly say **workflow**, **graph-based workflow**, or **orchestration**.
+
+Searchable implementation names and sources: [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents), [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/), and [Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156). The preprint shows that this umbrella term is emerging; it does not make it an official standard.
 
 **Relationship to loops**: this is not either-or. **Inside a box, the agent loops; between boxes, you define the order**. A graph puts several loops into boxes, then orders those boxes. If you put everything back into one box, you are back to a plain loop. A box does not have to contain an agent either; it can be a tool, a check, or a "human approval required before continuing" gate. For the full five-layer ladder, see [Stage 7](../stages/07-multi-agent-production.en.md) (canonical).
 
-What is actually worth learning lives in [Stage 4's multi-agent patterns](../stages/04-agent-frameworks.en.md) and the runnable [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.en.md) (`StateGraph` / conditional edges / checkpointer). Related: harness, Loop Engineering, orchestration.
+Start with tools and basic graphs in [Stage 4's Agent framework / Workflow Graph](../stages/04-agent-frameworks.en.md), then go to [Stage 7](../stages/07-multi-agent-production.en.md) for budgets, verification, observability, and recovery. The runnable entry point is [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.en.md) (`StateGraph` / conditional edges / checkpointer). Related: harness, Loop Engineering, orchestration.
 
 ---
 

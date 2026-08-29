@@ -1,4 +1,4 @@
-# Stage 7 — 多 Agent 系統與穩定運作（Multi-Agent & Production）
+# Stage 7 — Loop／Graph Engineering：多 Agent 與穩定運作
 
 > **繁體中文** | [简体中文](./07-multi-agent-production.zh-Hans.md) | [English](./07-multi-agent-production.en.md)
 
@@ -37,12 +37,12 @@
 完成本章後，你能：
 
 1. 說清楚什麼時候該用單一 Agent，什麼時候才需要 **Multi-Agent**。
-2. 用 **Orchestration** 安排 Agent 的順序、分工與交接。
+2. 用 **Orchestration** 安排 Agent 的順序、分工與交接，並分清 **Agent Loop** 與 **Workflow Graph**。
 3. 用 **Eval** 檢查品質，不只靠「我看起來覺得可以」。
 4. 用 **Observability** 看見每一步、錯誤、延遲與 token 用量。
 5. 加上 **Guardrail**、人工核准與復原方式，再把 Agent 交給別人使用。
 
-## 🧩 七個核心詞
+## 🧩 九個核心詞
 
 | 核心詞 | 五歲也能懂的說法 | 正確術語 |
 |---|---|---|
@@ -53,6 +53,8 @@
 | **Eval** | 出一張小考卷，看它是不是真的會 | 用固定案例與評分規則量測行為 |
 | **Observability** | 裝上透明窗，知道它做到哪裡 | 用 trace、log、metrics 看見系統內部狀態 |
 | **Guardrail** | 遊戲場邊的護欄 | 限制輸入、輸出、工具權限或高風險操作的規則 |
+| **Loop Engineering** | 做一步、檢查，再決定要不要繼續 | 設計 Agent Loop 的目標、回饋、驗證、預算、狀態、停止與人工升級 |
+| **Graph Engineering** | 畫一張完整工作地圖，每一格都有下一站 | 用 Workflow Graph 組織 node、edge、分支、平行路線、state、checkpoint 與人工核准 |
 
 **Prompt（提示）**仍然是你交給模型的指令與材料；本章不是把 Prompt 丟掉，而是替它加上能執行、檢查和復原的外圍系統。
 
@@ -68,38 +70,48 @@ Docker 還不熟也可以開始；先做練習 1–4，練習 5 再補。
 
 ## 📚 必修閱讀
 
-先讀這三份就夠開始：
+先讀這五份。它們會先把 Agent Loop、Workflow Graph 和多 Agent 的關係說清楚：
 
 1. [Anthropic — Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)：先用簡單組合，只有需要時才增加自主性。
-2. [OpenAI Agents SDK — Multi-agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/)：比較「管理者呼叫其他 Agent」與 **Handoff**。
-3. [Microsoft Agent Framework — Orchestration](https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/)：看順序、平行、交接、群聊與人工核准怎麼放進 Workflow。
+2. [OpenAI Agents SDK — Running agents](https://openai.github.io/openai-agents-python/running_agents/)：看一次 Agent Loop 如何在模型、工具與 Handoff 之間反覆執行，並用 `max_turns` 停下來。
+3. [OpenAI Agents SDK — Multi-agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/)：比較「管理者呼叫其他 Agent」與 **Handoff**。
+4. [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)：分清固定 Workflow 與會自己決定下一步的 Agent。
+5. [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/)：看 executor、edge、event 與 state 怎麼組成 Workflow Graph。
 
 <details markdown="1">
-<summary>📚 展開：完整閱讀順序與用途</summary>
+<summary>📖 展開：延伸閱讀與用途</summary>
 
-4. [Anthropic — Develop tests and evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)：先寫可量測的成功標準，再選評分方式。
-5. [OpenAI Agents SDK — Tracing](https://openai.github.io/openai-agents-python/tracing/)：理解 trace、span、tool、handoff 與 guardrail 事件。
-6. [OpenAI Agents SDK — Testing utilities](https://openai.github.io/openai-agents-python/testing/)：用可重複的假模型測試，不必每次花 API 費用。
-7. [OpenAI — Harness engineering](https://openai.com/index/harness-engineering/)：看環境、回饋迴路與機器規則如何幫 Agent 穩定工作。
-8. [OpenTelemetry — GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai)：認識可攜的追蹤欄位；規格仍在演進，不要假設所有平台都完整支援。
+1. [Anthropic — Develop tests and evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)：先寫可量測的成功標準，再選評分方式。
+2. [OpenAI Agents SDK — Tracing](https://openai.github.io/openai-agents-python/tracing/)：理解 trace、span、tool、handoff 與 guardrail 事件。
+3. [OpenAI Agents SDK — Testing utilities](https://openai.github.io/openai-agents-python/testing/)：用可重複的假模型測試，不必每次花 API 費用。
+4. [OpenAI — Harness engineering](https://openai.com/index/harness-engineering/)：看環境、回饋迴路與機器規則如何幫 Agent 穩定工作。
+5. [OpenTelemetry — GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai)：認識可攜的追蹤欄位；規格仍在演進，不要假設所有平台都完整支援。
 
 </details>
 
 ## 五層工程分工：Prompt → Context → Harness → Loop → Graph
 
-這五層不是五種產品，也不是一定要全部使用。它們只是幫你看清楚「問題出在哪一層」。
+這五層不是五種產品，也不是課程的章節順序。它們只是把「要控制的範圍」由小排到大：上面一層會用到下面的零件。
 
-| 層 | 白話問題 | 正確名稱 | 深入章節 |
-|---|---|---|---|
-| 1 | 我有沒有把話說清楚？ | **Prompt Engineering** | [Stage 2](02-prompt-engineering.md) |
-| 2 | 我有沒有把該看的資料放進來？ | **Context Engineering** | [Stage 6](06-memory-rag.md) |
-| 3 | 它能不能安全地使用工具、失敗後再試？ | **Harness Engineering** | 本章 |
-| 4 | 長任務能不能停下、保存、下次接著做？ | **Loop Engineering**（本專案教學用語） | [Stage 5](05-claude-code-ecosystem.md) |
-| 5 | 每一步與分支能不能被看見和控制？ | **Graph Engineering**（本專案教學用語） | [Stage 4](04-agent-frameworks.md) |
+| 層 | 白話問題 | 正確名稱 | 先在哪裡遇見 | 在哪裡加深 |
+|---|---|---|---|---|
+| 1 | 我有沒有把話說清楚？ | **Prompt Engineering** | [Stage 2](02-prompt-engineering.md) | 每章的 Prompt 與 Eval |
+| 2 | 我有沒有把該看的資料放進來？ | **Context Engineering** | [Stage 2](02-prompt-engineering.md) 先分清 Prompt 與 Context | [Stage 6](06-memory-rag.md) 的 RAG／Memory |
+| 3 | 它能不能安全地用工具、出錯後停下？ | **Harness Engineering** | [Stage 3](03-tool-use-and-hello-agent.md) 的 runner／tool boundary | [Stage 5](05-claude-code-ecosystem.md) 的實例與本章的 production checklist |
+| 4 | 它怎麼「做、看結果、再做」，而且不會無限跑？ | **Loop Engineering** | [Stage 3](03-tool-use-and-hello-agent.md) 的 Agent Loop | 本章的 bounded long-running loop |
+| 5 | 每一步、分支與返回路線能不能被看見和控制？ | **Graph Engineering** | [Stage 4](04-agent-frameworks.md) 的 Workflow Graph | 本章的 production orchestration |
+
+- **Stage 3：Agent Loop 入門**——先學一次執行裡的「模型 → 工具 → 結果 → 下一步」。
+- **Stage 4：Workflow Graph 入門**——再用 framework 提供的零件畫 node、edge、branch 與 state。
+- **Stage 7：Loop／Graph Engineering 加深**——最後加入預算、驗證、checkpoint、人工核准、觀測與復原。
+
+**Agent Framework 是工具箱；Graph Engineering 是用工具箱設計整張工作地圖。** 所以 Stage 4 的標題仍可叫 Agent Frameworks，但本章不能把它直接改名成 Graph Engineering。
 
 ![Agent 工程五層 Stack](../resources/diagrams/agent-engineering-5layer.png)
 
-前三個名稱在業界文件中常見；後兩個是本專案為了好教、好記所用的分層名稱。官方文件更常寫 long-running agent、dynamic workflow 或 graph-based workflow。
+Prompt、Context 與 Harness 已出現在主要供應商的工程文件中。**Loop Engineering** 與 **Graph Engineering** 是 2026 年正在形成的總稱，不是本專案自己發明，也還不是每一家供應商都採用的標準名稱。底下的 **agent loop**、**workflow graph**、**graph-based workflow** 與 **orchestration** 則早已是實際做法。
+
+詞彙來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)、[Loop Engineering exploratory preprint](https://arxiv.org/abs/2608.21884)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。論文是新興詞彙的證據，不是要求初學者先讀完的必修教材。
 
 ### 迴圈跟圖差在哪（這兩個最容易混）
 
@@ -268,8 +280,7 @@ python test.py
 
 先按用途選一個，不要一次安裝全部。評分是本專案的教學適合度，不是 GitHub stars。
 
-<details markdown="1">
-<summary>📦 展開：20 個官方／優質資源、適合用途與限制</summary>
+以下 20 筆直接放在這裡，因為它們是讀者選工具時會回來看的路標。
 
 <table>
   <thead>
@@ -305,9 +316,7 @@ python test.py
   </tbody>
 </table>
 
-<small>資料查核：2026-08-28 UTC</small>
-
-</details>
+<small>資料查核：2026-08-29 UTC</small>
 
 ## ✅ Stage 7 之後的自我檢查
 

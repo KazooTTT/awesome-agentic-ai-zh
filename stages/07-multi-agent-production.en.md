@@ -1,4 +1,4 @@
-# Stage 7 — Multi-Agent Systems and Reliable Operation
+# Stage 7 — Loop & Graph Engineering: Multi-Agent Production
 
 > [繁體中文](./07-multi-agent-production.md) | [简体中文](./07-multi-agent-production.zh-Hans.md) | **English**
 
@@ -19,7 +19,7 @@ Remember one rule:
 | One worker can finish it in one path | Single Agent | Easiest to understand, test, and repair |
 | Many independent searches can happen at once | Parallel Agents | May reduce waiting, but uses more tokens |
 | The “worker” and “reviewer” must be separate | Multi-Agent roles | Avoids having one Agent do the work and approve itself |
-| Steps have a fixed order or approval point | Workflow／Graph | Makes order, state, and human approval visible |
+| Steps have a fixed order or approval point | Workflow / Graph | Makes order, state, and human approval visible |
 
 <details markdown="1">
 <summary>⏱ Expand: time, environment, cost, and safety notes</summary>
@@ -37,12 +37,12 @@ Remember one rule:
 After this stage, you can:
 
 1. Explain when a single Agent is enough and when **Multi-Agent** is justified.
-2. Use **Orchestration** to arrange order, roles, and handoffs.
+2. Use **Orchestration** to arrange order, roles, and handoffs, and distinguish an **Agent Loop** from a **Workflow Graph**.
 3. Use an **Eval** to check quality instead of saying, “It looks fine to me.”
 4. Use **Observability** to see steps, errors, latency, and token usage.
 5. Add a **Guardrail**, human approval, and recovery before other people use the Agent.
 
-## 🧩 Seven Core Terms
+## 🧩 Nine Core Terms
 
 | Core term | Plain-language meaning | Precise meaning |
 |---|---|---|
@@ -53,6 +53,8 @@ After this stage, you can:
 | **Eval** | A small test that checks whether it really works | Fixed cases and scoring rules used to measure behavior |
 | **Observability** | A clear window into the system | Traces, logs, and metrics that reveal internal state |
 | **Guardrail** | A rail at the edge of the playground | Rules that limit inputs, outputs, tool permissions, or risky actions |
+| **Loop Engineering** | Do one step, check it, then decide whether to continue | Design the Agent Loop's goals, feedback, verification, budget, state, stopping, and human escalation |
+| **Graph Engineering** | Draw the whole work map, with a next stop for every box | Organize nodes, edges, branches, parallel paths, state, checkpoints, and human approval with a Workflow Graph |
 
 A **Prompt** is still the instruction and material you give the model. This stage does not throw prompts away; it adds an execution, checking, and recovery system around them.
 
@@ -68,38 +70,48 @@ You can start even if Docker is new to you. Do Exercises 1–4 first and learn D
 
 ## 📚 Required Reading
 
-These three are enough to begin:
+Read these five first. They explain the relationship between Agent Loops, Workflow Graphs, and Multi-Agent systems:
 
 1. [Anthropic — Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents): start with simple compositions and add autonomy only when needed.
-2. [OpenAI Agents SDK — Multi-agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/): compare a manager that calls Agents with **Handoffs**.
-3. [Microsoft Agent Framework — Orchestration](https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/): see sequential, concurrent, handoff, group-chat, and human-approval workflows.
+2. [OpenAI Agents SDK — Running agents](https://openai.github.io/openai-agents-python/running_agents/): see an Agent Loop repeat across the model, tools, and Handoffs, and stop with `max_turns`.
+3. [OpenAI Agents SDK — Multi-agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/): compare a manager that calls Agents with **Handoffs**.
+4. [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents): distinguish fixed Workflows from Agents that choose their next step.
+5. [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/): see how executors, edges, events, and state form a Workflow Graph.
 
 <details markdown="1">
-<summary>📚 Expand: full reading order and purpose</summary>
+<summary>📖 Expand: further reading and purpose</summary>
 
-4. [Anthropic — Develop tests and evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests): define measurable success before choosing a grader.
-5. [OpenAI Agents SDK — Tracing](https://openai.github.io/openai-agents-python/tracing/): understand trace, span, tool, handoff, and guardrail events.
-6. [OpenAI Agents SDK — Testing utilities](https://openai.github.io/openai-agents-python/testing/): test with repeatable fake models instead of paying for every run.
-7. [OpenAI — Harness engineering](https://openai.com/index/harness-engineering/): see how environments, feedback loops, and mechanical rules help Agents work reliably.
-8. [OpenTelemetry — GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai): learn portable tracing fields; the conventions are evolving, so do not assume every platform supports all of them.
+1. [Anthropic — Develop tests and evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests): define measurable success before choosing a grader.
+2. [OpenAI Agents SDK — Tracing](https://openai.github.io/openai-agents-python/tracing/): understand trace, span, tool, handoff, and guardrail events.
+3. [OpenAI Agents SDK — Testing utilities](https://openai.github.io/openai-agents-python/testing/): test with repeatable fake models instead of paying for every run.
+4. [OpenAI — Harness engineering](https://openai.com/index/harness-engineering/): see how environments, feedback loops, and mechanical rules help Agents work reliably.
+5. [OpenTelemetry — GenAI semantic conventions](https://github.com/open-telemetry/semantic-conventions-genai): learn portable tracing fields; the conventions are evolving, so do not assume every platform supports all of them.
 
 </details>
 
 ## The Five-Layer Engineering Split: Prompt → Context → Harness → Loop → Graph
 
-These are not five products, and you do not have to use every layer. They help you locate the layer where a problem lives.
+These are not five products or five chapter numbers. They simply order the scope you control from small to large: each upper layer uses parts from the layers below it.
 
-| Layer | Plain-language question | Precise name | Learn more |
-|---|---|---|---|
-| 1 | Did I explain the request clearly? | **Prompt Engineering** | [Stage 2](02-prompt-engineering.en.md) |
-| 2 | Did I include the information it needs? | **Context Engineering** | [Stage 6](06-memory-rag.en.md) |
-| 3 | Can it use tools safely and recover after failure? | **Harness Engineering** | This stage |
-| 4 | Can a long task stop, save, and continue later? | **Loop Engineering** (a teaching term in this project) | [Stage 5](05-claude-code-ecosystem.en.md) |
-| 5 | Can we see and control every step and branch? | **Graph Engineering** (a teaching term in this project) | [Stage 4](04-agent-frameworks.en.md) |
+| Layer | Plain-language question | Precise name | First encountered | Deepened here |
+|---|---|---|---|---|
+| 1 | Did I explain the request clearly? | **Prompt Engineering** | [Stage 2](02-prompt-engineering.en.md) | The Prompt and Eval in every stage |
+| 2 | Did I include the information it needs? | **Context Engineering** | [Stage 2](02-prompt-engineering.en.md) to distinguish Prompt and Context | RAG / Memory in [Stage 6](06-memory-rag.en.md) |
+| 3 | Can it use tools safely and stop after failure? | **Harness Engineering** | The runner / tool boundary in [Stage 3](03-tool-use-and-hello-agent.en.md) | Examples in [Stage 5](05-claude-code-ecosystem.en.md) and this stage's production checklist |
+| 4 | How does it act, inspect results, and act again without running forever? | **Loop Engineering** | The Agent Loop in [Stage 3](03-tool-use-and-hello-agent.en.md) | This stage's bounded long-running loop |
+| 5 | Can every step, branch, and return path be seen and controlled? | **Graph Engineering** | The Workflow Graph in [Stage 4](04-agent-frameworks.en.md) | This stage's production orchestration |
+
+- **Stage 3: Agent Loop entry** — learn one execution of “model → tool → result → next step.”
+- **Stage 4: Workflow Graph entry** — use framework parts to draw nodes, edges, branches, and state.
+- **Stage 7: Loop / Graph Engineering deepening** — add budgets, verification, checkpoints, human approval, observability, and recovery.
+
+**An Agent Framework is a toolbox; Graph Engineering uses that toolbox to design the whole work map.** That is why Stage 4 can still be titled Agent Frameworks; this stage should not simply rename it Graph Engineering.
 
 ![Five-layer Agent engineering stack](../resources/diagrams/agent-engineering-5layer.en.png)
 
-The first three names are common in industry material. The last two are teaching layers used by this project. Official documentation more often says long-running agent, dynamic workflow, or graph-based workflow.
+Prompt, Context, and Harness already appear in major vendors' engineering material. **Loop Engineering** and **Graph Engineering** are umbrella terms taking shape in 2026: they were not invented by this project, and they are not yet standard names adopted by every vendor. The underlying **agent loop**, **workflow graph**, **graph-based workflow**, and **orchestration** are established practices.
+
+Term sources: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering), [Loop Engineering exploratory preprint](https://arxiv.org/abs/2608.21884), and [Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156). The papers are evidence for emerging terminology, not required reading for beginners.
 
 ### What Is the Difference Between a Loop and a Graph?
 
@@ -112,7 +124,7 @@ A **Graph** is like a restaurant line: prepare, cook, and plate, with every box 
 <summary>🧠 Expand: choosing a Loop, Graph, or Multi-Agent design</summary>
 
 - Use a Loop when there is one path that may need many retries.
-- Use a Graph／Workflow when there are branches, parallel steps, human approvals, or a need to resume in the middle.
+- Use a Graph / Workflow when there are branches, parallel steps, human approvals, or a need to resume in the middle.
 - Add Multi-Agent only when parts can truly work independently or distinct roles must check one another.
 - A Graph node can be an Agent, a tool, fixed code, or “wait for human approval.” Not every box needs an Agent.
 
@@ -130,14 +142,14 @@ These eight items are this project’s production checklist, not the world’s o
 
 | Component | Plain-language meaning | Question before release |
 |---|---|---|
-| **1. Orchestration／Run loop** | Decide what happens next | Who starts, who stops, and what if a handoff fails? |
-| **2. Tool／Permission boundary** | Give it only the keys it needs | Which tools may read, write, or delete? |
-| **3. Context／State／Checkpoint** | Save where it is now | Can it resume from the correct point? |
-| **4. Retry／Recovery／Idempotency** | Try again without charging twice | Could a retry repeat an email, payment, or database write? |
-| **5. Guardrail／Human approval** | Ask an adult before a risky action | Which actions always require approval? |
-| **6. Telemetry／Observability** | Put a clear window on the system | Can we see traces, errors, latency, and tokens? |
+| **1. Orchestration / Run loop** | Decide what happens next | Who starts, who stops, and what if a handoff fails? |
+| **2. Tool / Permission boundary** | Give it only the keys it needs | Which tools may read, write, or delete? |
+| **3. Context / State / Checkpoint** | Save where it is now | Can it resume from the correct point? |
+| **4. Retry / Recovery / Idempotency** | Try again without charging twice | Could a retry repeat an email, payment, or database write? |
+| **5. Guardrail / Human approval** | Ask an adult before a risky action | Which actions always require approval? |
+| **6. Telemetry / Observability** | Put a clear window on the system | Can we see traces, errors, latency, and tokens? |
 | **7. Eval harness** | Retake the test after every change | Are cases, scoring rules, and failure thresholds fixed? |
-| **8. Cost／Latency budget** | Decide the money and time limit first | Above budget, should it stop, downgrade, or queue? |
+| **8. Cost / Latency budget** | Decide the money and time limit first | Above budget, should it stop, downgrade, or queue? |
 
 <details markdown="1">
 <summary>🔧 Expand: feedback, recovery, and cost details</summary>
@@ -157,7 +169,7 @@ They are not five versions of the same product. Put each one at the right layer:
 
 | Name | What it is | One-line memory aid |
 |---|---|---|
-| [OpenRouter](https://openrouter.ai/docs/quickstart) | Model API gateway／router | Connects software to different models; it is not a coding Agent |
+| [OpenRouter](https://openrouter.ai/docs/quickstart) | Model API gateway / router | Connects software to different models; it is not a coding Agent |
 | [Pi](https://github.com/earendil-works/pi) | Agent toolkit and coding-agent CLI | Calls models and tools to finish a task |
 | [OpenCode](https://github.com/anomalyco/opencode) | Open-source coding Agent | Reads, edits, and tests inside a code project |
 | [Orca](https://github.com/stablyai/orca) | Multi-Agent development environment | Runs coding Agents in isolated worktrees for comparison |
@@ -268,21 +280,20 @@ Do not copy one SOTA score into the page as a permanent fact. Release decisions 
 
 Choose one by purpose; do not install everything at once. Ratings show teaching usefulness in this project, not GitHub stars.
 
-<details markdown="1">
-<summary>📦 Expand: 20 official／high-quality resources, uses, and limits</summary>
+The 20 entries below are directly visible because readers may return here as a tool-selection map.
 
 <table>
   <thead>
-    <tr><th scope="col">Category</th><th scope="col">Project／document</th><th scope="col">Teaching fit</th><th scope="col">Best for</th><th scope="col">Know this first</th></tr>
+    <tr><th scope="col">Category</th><th scope="col">Project / document</th><th scope="col">Teaching fit</th><th scope="col">Best for</th><th scope="col">Know this first</th></tr>
   </thead>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="4">Orchestration／Workflow</th><td><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic — Building Effective Agents</a></td><td>⭐⭐⭐⭐⭐</td><td>Learn simple workflows before Agents</td><td>A design guide, not a deployable framework</td></tr>
+    <tr><th scope="rowgroup" rowspan="4">Orchestration / Workflow</th><td><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic — Building Effective Agents</a></td><td>⭐⭐⭐⭐⭐</td><td>Learn simple workflows before Agents</td><td>A design guide, not a deployable framework</td></tr>
     <tr><td><a href="https://openai.github.io/openai-agents-python/multi_agent/">OpenAI Agents SDK orchestration</a></td><td>⭐⭐⭐⭐⭐</td><td>Compare manager and handoff patterns</td><td>Examples center on OpenAI Agents SDK</td></tr>
     <tr><td><a href="https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/">Microsoft Agent Framework orchestrations</a></td><td>⭐⭐⭐⭐</td><td>Sequence, concurrency, handoff, group chat, and approval</td><td>Confirm current package version and preview status</td></tr>
     <tr><td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td><td>⭐⭐⭐⭐⭐</td><td>State, checkpointing, and human-in-the-loop</td><td>More abstraction than a first Agent needs</td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="6">Eval／Observability</th><td><a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">Anthropic — Develop tests and evaluations</a></td><td>⭐⭐⭐⭐⭐</td><td>Define success criteria and graders</td><td>You must supply cases that represent real work</td></tr>
+    <tr><th scope="rowgroup" rowspan="6">Eval / Observability</th><td><a href="https://platform.claude.com/docs/en/test-and-evaluate/develop-tests">Anthropic — Develop tests and evaluations</a></td><td>⭐⭐⭐⭐⭐</td><td>Define success criteria and graders</td><td>You must supply cases that represent real work</td></tr>
     <tr><td><a href="https://github.com/promptfoo/promptfoo">promptfoo</a></td><td>⭐⭐⭐⭐⭐</td><td>Put Evals in CI</td><td>A config file cannot replace a good rubric</td></tr>
     <tr><td><a href="https://github.com/open-telemetry/semantic-conventions-genai">OpenTelemetry GenAI conventions</a></td><td>⭐⭐⭐⭐</td><td>Learn portable trace fields</td><td>The conventions evolve and support varies</td></tr>
     <tr><td><a href="https://github.com/langfuse/langfuse">Langfuse</a></td><td>⭐⭐⭐⭐⭐</td><td>Tracing, Eval, and prompt management</td><td>Self-hosting still needs operations and data governance</td></tr>
@@ -290,24 +301,22 @@ Choose one by purpose; do not install everything at once. Ratings show teaching 
     <tr><td><a href="https://github.com/comet-ml/opik">Opik</a></td><td>⭐⭐⭐⭐</td><td>Tracing and evaluation on one platform</td><td>Start with one trace before exploring every feature</td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="5">Harness／Sandbox／Deploy</th><td><a href="https://github.com/anthropics/claude-agent-sdk-python">Claude Agent SDK Python</a></td><td>⭐⭐⭐⭐⭐</td><td>Read tool loops, permissions, and subagent code</td><td>Centers on the Claude runtime</td></tr>
+    <tr><th scope="rowgroup" rowspan="5">Harness / Sandbox / Deploy</th><td><a href="https://github.com/anthropics/claude-agent-sdk-python">Claude Agent SDK Python</a></td><td>⭐⭐⭐⭐⭐</td><td>Read tool loops, permissions, and subagent code</td><td>Centers on the Claude runtime</td></tr>
     <tr><td><a href="https://github.com/deepseek-ai/deepseek-harness">DeepSeek Harness</a></td><td>⭐⭐⭐</td><td>Read a plugin-based harness architecture</td><td>Developer preview; breaking changes are possible</td></tr>
     <tr><td><a href="https://github.com/xai-org/grok-build">Grok Build</a></td><td>⭐⭐⭐</td><td>Compare coding-agent harness components</td><td>Read the README and safety boundaries before trying it</td></tr>
-    <tr><td><a href="https://github.com/NVIDIA/NemoClaw">NemoClaw</a></td><td>⭐⭐⭐</td><td>Study sandbox and enterprise deployment direction</td><td>Alpha／best-effort; not a stable dependency</td></tr>
+    <tr><td><a href="https://github.com/NVIDIA/NemoClaw">NemoClaw</a></td><td>⭐⭐⭐</td><td>Study sandbox and enterprise deployment direction</td><td>Alpha / best-effort; not a stable dependency</td></tr>
     <tr><td><a href="https://github.com/bentoml/BentoML">BentoML</a></td><td>⭐⭐⭐⭐</td><td>Package an application as a service and container</td><td>A deployment framework does not add Evals or Guardrails for you</td></tr>
   </tbody>
   <tbody>
     <tr><th scope="rowgroup" rowspan="5">Multi-Agent Cases</th><td><a href="https://github.com/crewAIInc/crewAI">crewAI</a></td><td>⭐⭐⭐⭐</td><td>Understand role-based task division</td><td>More roles do not guarantee a better answer</td></tr>
     <tr><td><a href="https://github.com/stablyai/orca">Orca</a></td><td>⭐⭐⭐⭐</td><td>Run coding Agents in isolated worktrees</td><td>A person must still review and select parallel results</td></tr>
     <tr><td><a href="https://github.com/yc-software/qm">QM</a></td><td>⭐⭐⭐⭐</td><td>Study team workspaces, permissions, and schedules</td><td>Organization-wide deployment is more complex than a personal CLI</td></tr>
-    <tr><td><a href="https://github.com/AMAP-ML/LongHorizon-Harness">LongHorizon-Harness</a></td><td>⭐⭐⭐</td><td>See Manager／Executor／Auditor roles</td><td>Very new, with limited long-term maintenance history</td></tr>
+    <tr><td><a href="https://github.com/AMAP-ML/LongHorizon-Harness">LongHorizon-Harness</a></td><td>⭐⭐⭐</td><td>See Manager / Executor / Auditor roles</td><td>Very new, with limited long-term maintenance history</td></tr>
     <tr><td><a href="https://github.com/cft0808/edict">Edict</a></td><td>⭐⭐⭐</td><td>Learn planning, review, and execution roles from a Chinese-language case</td><td>Its special role names are a case design, not an industry standard</td></tr>
   </tbody>
 </table>
 
-<small>Verified: 2026-08-28 UTC</small>
-
-</details>
+<small>Verified: 2026-08-29 UTC</small>
 
 ## ✅ Self-Check After Stage 7
 
