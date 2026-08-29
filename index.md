@@ -22,8 +22,8 @@ hide:
 
 <div class="aaz-stats" markdown>
 <div class="aaz-stat"><span class="aaz-num">8</span><span class="aaz-lbl">階段</span></div>
-<div class="aaz-stat"><span class="aaz-num">240+</span><span class="aaz-lbl">精選專案</span></div>
-<div class="aaz-stat"><span class="aaz-num">23</span><span class="aaz-lbl">動手練習</span></div>
+<div class="aaz-stat"><span class="aaz-num">精選</span><span class="aaz-lbl">專案</span></div>
+<div class="aaz-stat"><span class="aaz-num">動手</span><span class="aaz-lbl">練習</span></div>
 <div class="aaz-stat"><span class="aaz-num">3</span><span class="aaz-lbl">語言</span></div>
 </div>
 

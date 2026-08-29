@@ -2557,3 +2557,143 @@ pages:
           en: {term: Approval Gate, label: Approval Gate}
           zh-Hans: {term: Approval Gate, label: "Approval Gate（人工批准关卡）"}
     resource_group_rowspans: [4, 4, 4, 2, 1]
+
+  - id: public-resources
+    canonical: RESOURCES.md
+    mirrors:
+      en: RESOURCES.en.md
+      zh-Hans: RESOURCES.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 5389
+      en: 7352
+      zh-Hans: 5459
+    max_open_details: 0
+    required_details_count: 1
+    visible_section_order:
+      - task-choices
+      - core-terms
+      - safe-starts
+      - integrations
+      - next-stop
+    forbidden_terms:
+      zh-TW: ["81+", "76+", "150+", "240+", "官方 MCP reference servers（現有 7 個", "★ 4.2k+", "★ 4.4k+", "★ 7.3k+"]
+      en: ["81+", "76+", "150+", "240+", "7 official MCP reference servers", "★ 4.2k+", "★ 4.4k+", "★ 7.3k+"]
+      zh-Hans: ["81+", "76+", "150+", "240+", "官方 MCP reference servers（现有 7 个", "★ 4.2k+", "★ 4.4k+", "★ 7.3k+"]
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+    required_visible_sections:
+      task-choices:
+        zh-TW: {heading: "📌 先選你現在要做的事", anchor: -先選你現在要做的事}
+        en: {heading: "📌 Choose what you want to do now", anchor: -choose-what-you-want-to-do-now}
+        zh-Hans: {heading: "📌 先选你现在要做的事", anchor: -先选你现在要做的事}
+      core-terms:
+        zh-TW: {heading: "🧩 三個核心詞：MCP、Skill、Plugin", anchor: -三個核心詞mcpskillplugin}
+        en: {heading: "🧩 Three core terms: MCP, Skill, and Plugin", anchor: -three-core-terms-mcp-skill-and-plugin}
+        zh-Hans: {heading: "🧩 三个核心词：MCP、Skill、Plugin", anchor: -三个核心词mcpskillplugin}
+      safe-starts:
+        zh-TW: {heading: "📚 五個安全起點", anchor: -五個安全起點}
+        en: {heading: "📚 Five safe starting points", anchor: -five-safe-starting-points}
+        zh-Hans: {heading: "📚 五个安全起点", anchor: -五个安全起点}
+      integrations:
+        zh-TW: {heading: "🔌 常用整合分類", anchor: -常用整合分類}
+        en: {heading: "🔌 Common integration groups", anchor: -common-integration-groups}
+        zh-Hans: {heading: "🔌 常用集成分类", anchor: -常用集成分类}
+      next-stop:
+        zh-TW: {heading: "✅ 下一站", anchor: -下一站}
+        en: {heading: "✅ Next stop", anchor: -next-stop}
+        zh-Hans: {heading: "✅ 下一站", anchor: -下一站}
+    visible_section_minimums:
+      task-choices: {min_links: 5, min_ratings: 5}
+      safe-starts: {min_links: 5, min_ratings: 5}
+      integrations: {min_links: 16, min_ratings: 16}
+      next-stop: {min_links: 3}
+    resource_group_rowspans: [4, 3, 4, 4, 1]
+
+  - id: resource-index
+    canonical: resources/README.md
+    mirrors:
+      en: resources/README.en.md
+      zh-Hans: resources/README.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 3600
+      en: 5200
+      zh-Hans: 3600
+    max_open_details: 0
+    required_details_count: 2
+    visible_section_order:
+      - task-map
+      - beginner-route
+      - next-stop
+    forbidden_terms:
+      zh-TW: ["81+", "76+", "~210", "~620", "~2500 行", "30-50 分鐘", "30-45 分鐘"]
+      en: ["81+", "76+", "~210", "~620", "~2500 lines", "30-50 minutes", "30-45 minutes"]
+      zh-Hans: ["81+", "76+", "~210", "~620", "~2500 行", "30-50 分钟", "30-45 分钟"]
+    parity:
+      ordered_external_urls: true
+    required_visible_sections:
+      task-map:
+        zh-TW: {heading: "📌 我現在要做什麼", anchor: -我現在要做什麼}
+        en: {heading: "📌 What do I want to do now?", anchor: -what-do-i-want-to-do-now}
+        zh-Hans: {heading: "📌 我现在要做什么", anchor: -我现在要做什么}
+      beginner-route:
+        zh-TW: {heading: "🧭 第一次來先走這裡", anchor: -第一次來先走這裡}
+        en: {heading: "🧭 Start here on your first visit", anchor: -start-here-on-your-first-visit}
+        zh-Hans: {heading: "🧭 第一次来先走这里", anchor: -第一次来先走这里}
+      next-stop:
+        zh-TW: {heading: "✅ 下一步", anchor: -下一步}
+        en: {heading: "✅ Next step", anchor: -next-step}
+        zh-Hans: {heading: "✅ 下一步", anchor: -下一步}
+    visible_section_minimums:
+      task-map: {min_links: 7}
+      beginner-route: {min_links: 2}
+      next-stop: {min_links: 2}
+
+  - id: mcp-skills-catalog
+    canonical: resources/mcp-skills-catalog.md
+    mirrors:
+      en: resources/mcp-skills-catalog.en.md
+      zh-Hans: resources/mcp-skills-catalog.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 7600
+      en: 9800
+      zh-Hans: 7600
+    max_open_details: 0
+    required_details_count: 17
+    visible_section_order:
+      - usage
+      - core-terms
+      - safe-starts
+      - category-1
+      - category-17
+    forbidden_terms:
+      zh-TW: ["81+", "76+", "150+", "社群最熱門", "必裝", "寫 code 必裝"]
+      en: ["81+", "76+", "150+", "most popular community", "must install", "must-have"]
+      zh-Hans: ["81+", "76+", "150+", "社区最热门", "必装", "写 code 必装"]
+    parity:
+      ordered_external_urls: true
+      literals:
+        - "Developer Preview"
+    required_visible_sections:
+      usage:
+        zh-TW: {heading: "📌 怎麼使用這份目錄", anchor: -怎麼使用這份目錄}
+        en: {heading: "📌 How to use this catalog", anchor: -how-to-use-this-catalog}
+        zh-Hans: {heading: "📌 怎么使用这份目录", anchor: -怎么使用这份目录}
+      core-terms:
+        zh-TW: {heading: "🧩 先分清五個詞", anchor: -先分清五個詞}
+        en: {heading: "🧩 Five terms to separate first", anchor: -five-terms-to-separate-first}
+        zh-Hans: {heading: "🧩 先分清五个词", anchor: -先分清五个词}
+      safe-starts:
+        zh-TW: {heading: "📚 五個安全起點", anchor: -五個安全起點}
+        en: {heading: "📚 Five safe starting points", anchor: -five-safe-starting-points}
+        zh-Hans: {heading: "📚 五个安全起点", anchor: -五个安全起点}
+      category-1:
+        zh-TW: {heading: "1. 筆記 / 知識庫", anchor: 1-筆記--知識庫}
+        en: {heading: "1. Notes / Knowledge Bases", anchor: 1-notes--knowledge-bases}
+        zh-Hans: {heading: "1. 笔记 / 知识库", anchor: 1-笔记--知识库}
+      category-17:
+        zh-TW: {heading: "17. 資安 / MCP 安全治理", anchor: 17-資安--mcp-安全治理}
+        en: {heading: "17. Security / MCP Governance", anchor: 17-security--mcp-governance}
+        zh-Hans: {heading: "17. 安全 / MCP 安全治理", anchor: 17-安全--mcp-安全治理}
+    visible_section_minimums:
+      safe-starts: {min_links: 5, min_ratings: 5}

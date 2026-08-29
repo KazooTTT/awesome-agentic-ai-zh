@@ -440,6 +440,6 @@ Branch 的 entry 格式可以比 stage 簡潔（不一定要完整 schema 表格
 
 ## 修改本指南
 
-這份指南本身也歡迎 PR。修改前請先開 Issue 討論——術語決策影響 100+ 個 entry。
+這份指南本身也歡迎 PR。修改前請先開 Issue 討論——術語決策會影響三語的許多 entry。
 
 當前 maintainer：[@WenyuChiou](https://github.com/WenyuChiou)。

@@ -4,99 +4,47 @@
   <a href="./README.md">繁體中文</a> | <strong>简体中文</strong> | <a href="./README.en.md">English</a>
 </div>
 
-> 这是本 repo 的 **reference 区**：不在主路线里、需要时再查的补充材料。每份文件都有明确角色，不重复。
+> 这里是查资料和做小练习的工具柜，不是另一条必须从头读到尾的课程。
 
----
+## 📌 我现在要做什么
 
-## 7 份 reference + 各自的“什么时候看”
+| 我现在卡在哪里 | 打开哪一页 | 这页负责什么 |
+|---|---|---|
+| 第一次安装 Python、Git 或 API 工具 | [`setup-guide.zh-Hans.md`](setup-guide.zh-Hans.md) | 从零完成环境设置 |
+| 看到 LLM、RAG、Token 等词 | [`glossary.zh-Hans.md`](glossary.zh-Hans.md) | 快速查词，再回原章继续读 |
+| 不知道该选哪个 CLI Agent | [`cli-agents-guide.zh-Hans.md`](cli-agents-guide.zh-Hans.md) | 分清产品角色、权限和适用工作 |
+| 想把 Agent 接到 Notion、GitHub 或数据库 | [`mcp-skills-catalog.zh-Hans.md`](mcp-skills-catalog.zh-Hans.md) | 按任务查找 MCP / Skill / Plugin |
+| 想跟着步骤做一个小项目 | [`cookbook.zh-Hans.md`](cookbook.zh-Hans.md) | 实际运行 Skill、MCP 和文档流程 |
+| Tool schema 常选错工具或参数 | [`schema-design-cheatsheet.zh-Hans.md`](schema-design-cheatsheet.zh-Hans.md) | 用规则和反例设计 schema |
+| 想翻译、加资源或提交 PR | [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) | 检查格式、用词、来源和三语规则 |
 
-| 文件 | 角色 | 什么时候看 | 行数 |
-|---|---|---|---|
-| [`glossary.zh-Hans.md`](glossary.zh-Hans.md) | **30 秒查词典** | 看 stage 内容时遇到 LLM / RAG / token / agent / vector DB / streaming / batch API 不知道什么意思 | ~210 |
-| [`cli-agents-guide.zh-Hans.md`](cli-agents-guide.zh-Hans.md) | **CLI agent 身份与选择指南** | 第一次选 CLI agent、不确定哪个工具适合自己的工作方式 | — |
-| [`mcp-skills-catalog.zh-Hans.md`](mcp-skills-catalog.zh-Hans.md) | **81+ 个集成 catalog** | 想把 Claude Code 接 Notion / Obsidian / Excel / Postgres / Slack / 等实际工具 | ~775 |
-| [`schema-design-cheatsheet.zh-Hans.md`](schema-design-cheatsheet.zh-Hans.md) | **function schema 设计 5 规则 + 5 anti-pattern** | 写 tool schema / MCP server schema / function calling，发现 LLM 选错 tool / 传错参数 | ~159 |
-| [`cookbook.zh-Hans.md`](cookbook.zh-Hans.md) | **6 个 step-by-step recipe** | 想 30-50 分钟做出第一个 Skill / MCP server / 接 Office / 接 NotebookLM / 接 Zotero / 接本机 LLM | ~620 |
-| [`setup-guide.zh-Hans.md`](setup-guide.zh-Hans.md) | **从零开始的 setup 指南** | 完全没有 dev 背景、第一次申请 API key / 装 Python / 用 Claude Code | ~400 |
-| [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) | **送 PR 前的格式 / 用词规范** | 要对 repo 贡献、写 entry / 翻译 | ~338 |
+## 🧭 第一次来先走这里
 
-合计约 ~2500 行 reference。看起来不少，但**每份文件阅读的时机不同**——你不会一次全读，只在对应场景查 30 秒到 45 分钟。
+先选上面符合你任务的一行。如果你从零学习 Agent，就从主路线 [README](../README.zh-Hans.md) 和 [Stage 0](../stages/00-foundations.zh-Hans.md) 开始，遇到不懂的词或工具再回来查。
 
----
+<details markdown="1">
+<summary>展开：这些页面为什么分开</summary>
 
-## 怎么进来：按“我现在要做什么”分类
+- **glossary** 用来快速查词；stage 内容提供学习路线；cookbook 用来实际跑工作流。
+- **schema-design-cheatsheet** 讲 schema 规则，cookbook 2 讲怎么把 MCP server 跑起来。
+- **cli-agents-guide** 比较产品角色；catalog 按任务整理可接入的工具。
+- **Hello-Agents** 是深入的中文 Agent 教材。我们走 roadmap + curated catalog + 动手 recipe 的路线，不取代它。
 
-### 🆕 我完全没写过 code / 第一次接触 AI agent
+</details>
 
-→ [`setup-guide.zh-Hans.md`](setup-guide.zh-Hans.md)（30-45 分钟从零装好）
+<details markdown="1">
+<summary>展开：三语和新增 reference 的维护规则</summary>
 
-### 🆕 我刚开始学 AI agent
+- zh-TW 是 canonical；英语和简体中文必须保留相同事实、URL、状态和限制。
+- 新页面不能只把已有章节重写一遍；它要解决主路线不适合承担的查询或实现问题。
+- 新 reference 应服务多个 Stage 或角色路线。只补充一个章节的内容，优先放回该章。
+- 版本、价格、可用性、授权和服务状态要用官方来源核实；找不到时明确写未知，不猜答案。
+- 编辑评分可以保留；GitHub stars、固定总数和行数不能当作质量证据。
 
-不需要先读任何 reference。**直接从主路线 [README](../README.zh-Hans.md) → [Stage 0](../stages/00-foundations.zh-Hans.md) 开始**。遇到不懂的词回来查 [`glossary.zh-Hans.md`](glossary.zh-Hans.md) 就好。
+</details>
 
-### 🛠 我要选 CLI agent
+## ✅ 下一步
 
-→ [`cli-agents-guide.zh-Hans.md`](cli-agents-guide.zh-Hans.md)（CLI 比较 + 按 use case 推荐）
-
-### 🔌 我要把 Claude Code 接 X 工具（Notion / Excel / Postgres 等）
-
-→ [`mcp-skills-catalog.zh-Hans.md`](mcp-skills-catalog.zh-Hans.md)（81+ 个集成分 16 类）
-
-### 🍳 我想动手写第一个 Skill / MCP server / 接 Word 等
-
-→ [`cookbook.zh-Hans.md`](cookbook.zh-Hans.md)（6 个 step-by-step recipe）
-
-### 📐 我写 tool schema 但 LLM 不照我意思做
-
-→ [`schema-design-cheatsheet.zh-Hans.md`](schema-design-cheatsheet.zh-Hans.md)（5 规则 + 5 anti-pattern）
-
-### 📚 我看 stage 内容遇到不懂的词
-
-→ [`glossary.zh-Hans.md`](glossary.zh-Hans.md)（每个词 30-80 字解释 + 哪个 stage 讲细）
-
-### 🤝 我想送 PR / 翻译 / 加新 entry
-
-→ [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) + [`../CONTRIBUTING.zh-Hans.md`](../CONTRIBUTING.zh-Hans.md)
-
----
-
-## 重复 / 重叠？
-
-刻意避免重复。每份 reference 跟主路线 / 其他 reference 的关系：
-
-- **glossary** 是“30 秒查”，stage 内容是“3-5 分钟读”，cookbook 是“30-50 分钟做”——三层深度，不重叠。
-- **schema-design-cheatsheet** 跟 cookbook 2（写 MCP server）有交集——cheatsheet 讲“**写 schema 的规则**”，cookbook 讲“**怎么把 server 跑起来**”。看哪个取决于你卡在哪。
-- **cli-agents-guide** 是 reference table；catalog 是 plug-in tools——两个层级不同。
-- **跟 [Hello-Agents](https://github.com/datawhalechina/hello-agents) 的关系**：Hello-Agents 是中文圈最完整的 agent 教材，深度高。我们走的是“**roadmap + curated catalog + 动手 recipe**”的角度，不取代它。Stage 5.3 / cookbook 1 都明确 cross-ref Hello-Agents Extra08“如何写出好的 Skill”当深度补充。
-
----
-
-## 三语覆盖
-
-| 文件 | zh-TW（canonical） | zh-Hans | English |
-|---|---|---|---|
-| glossary | ✅ | ✅ | ✅ |
-| cli-agents-guide | ✅ | ✅ | ✅ |
-| mcp-skills-catalog | ✅ | ✅ | ✅ |
-| schema-design-cheatsheet | ✅ | ✅ | ✅ |
-| cookbook | ✅ | ✅ | ✅ |
-| setup-guide | ✅ | ✅ | ✅ |
-| style-guide | ✅ | ✅ | ✅ |
-
----
-
-## 加新 reference 文件的标准
-
-不是随便加。新文件必须：
-
-1. **不重复既有任何文件的角色**（看上面的“角色”栏）。
-2. **解决 main path 解决不了的问题**。如果 Stage X 的内容加 50 行就能 cover，就放 stage 里别开新文件。
-3. **预期会被 3 个以上 stage 或 branch cross-ref**。只服务一个 stage 的内容，放那个 stage 就好。
-
-近期考虑过但没加的：
-
-- `cost-calculator-guide.md`：cross-provider 计价。现在 [Stage 1](../stages/01-llm-basics.zh-Hans.md) 有提到，等需求明显再开。
-- `troubleshooting-guide.md`：常见错误 runbook。现有资料够应付，等社群反馈多了再开。
-- `prompt-patterns-guide.md`：CoT / few-shot 模板库。现在 [Stage 2](../stages/02-prompt-engineering.zh-Hans.md) 有基础内容，深度版等社群 PR。
-
-社群想加可以开 issue 讨论。
+- 想找外部工具：前往 [`mcp-skills-catalog.zh-Hans.md`](mcp-skills-catalog.zh-Hans.md)。
+- 想跟着步骤做：前往 [`cookbook.zh-Hans.md`](cookbook.zh-Hans.md)。
+- 想加入内容：阅读 [`style-guide.zh-Hans.md`](style-guide.zh-Hans.md) 和 [`../CONTRIBUTING.zh-Hans.md`](../CONTRIBUTING.zh-Hans.md)。

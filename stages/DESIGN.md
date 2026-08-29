@@ -353,8 +353,22 @@ entry 的「教什麼」應該是該 stage 核心問題的一個答案的具體�
 - framing 重複的 entry 要刪一個
 
 ### 廣度 vs 深度
-- 同類型工具列 2-3 個就夠（譬如 vector DB 列 Chroma + Qdrant + pgvector + Weaviate，但不需要列 5 個更小眾的）
-- 同 audience 工具列 3-5 個（譬如 coding agent 列 Cursor + Aider + Cline + Continue + Goose）
+- 同類型只收足以說清楚取捨的代表入口；數量本身不能證明完整或有用。
+- 同 audience 的項目要各自補上不同工作、限制或部署形狀；只換名字但 framing 相同的 entry 不重複收錄。
+
+---
+
+## 公共資源入口與 catalog 的固定閱讀形狀
+
+公共資源分成三層，不能把首頁、索引與完整 catalog 混成同一堵工具牆：
+
+1. `RESOURCES.md` 先讓讀者按工作選路，直接看見 **MCP**、**Skill**、**Plugin** 三個核心詞、五個安全起點與 16 筆有編輯評分的精選資源。精選表使用 `4／3／4／4／1` 五個真正合併的 rowgroup；只有挑選規則與補充治理可以收合。
+2. `resources/README.md` 直接顯示七個工作入口；維護者說明與補充導覽預設收合。
+3. `resources/mcp-skills-catalog.md` 直接顯示全部工作分類與每類安全邊界；完整 entry 放在各分類的預設關閉 `<details>`，因為讀者只在需要該工作時才展開。機器可以計數，讀者頁面不宣告會自然漂移的總數。
+
+三語必須保留相同的 entry URL、順序與 `⭐⭐－⭐⭐⭐⭐⭐` 編輯推薦度；評分不是 GitHub stars，也不是客觀排行榜。官方狀態、hosted endpoint、認證、權限與 service availability 以供應商文件為準；社群 repo 的 canonical owner、redirect、archive、license 與維護訊號由 repository-freshness workflow 掃描，再由人判斷。沒有 release 或較久未 push 只能是複查訊號，不能自動刪除仍穩定且有教學價值的工具。
+
+catalog 不使用 popularity 排名、固定 GitHub stars、固定安裝時間、會自然改變的整合數、免費額度保證、單一 last-commit 日期或永久模型分工。高影響工具先教測試資料、read-only、最小權限與人工核准；金融 entry 必須明說不是投資建議。`modelcontextprotocol/servers` 只作 reference implementation，不當成 production 推薦清單；產品顯示名稱使用 Gemini Notebook，舊的 NotebookLM 只留在 package、URL 或歷史識別說明。
 
 ---
 

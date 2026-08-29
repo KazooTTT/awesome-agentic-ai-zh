@@ -437,6 +437,6 @@ This style guide covers "how to write an entry." For **design rationale** — wh
 
 ## Modifying this guide
 
-PRs to this guide are welcome. Open an Issue first to discuss — terminology decisions affect 100+ entries.
+PRs to this guide are welcome. Open an Issue first to discuss — terminology decisions affect many entries across three locales.
 
 Current maintainer: [@WenyuChiou](https://github.com/WenyuChiou).

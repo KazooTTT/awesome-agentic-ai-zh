@@ -22,8 +22,8 @@ hide:
 
 <div class="aaz-stats" markdown>
 <div class="aaz-stat"><span class="aaz-num">8</span><span class="aaz-lbl">stages</span></div>
-<div class="aaz-stat"><span class="aaz-num">240+</span><span class="aaz-lbl">projects</span></div>
-<div class="aaz-stat"><span class="aaz-num">23</span><span class="aaz-lbl">exercises</span></div>
+<div class="aaz-stat"><span class="aaz-num">curated</span><span class="aaz-lbl">projects</span></div>
+<div class="aaz-stat"><span class="aaz-num">hands-on</span><span class="aaz-lbl">exercises</span></div>
 <div class="aaz-stat"><span class="aaz-num">3</span><span class="aaz-lbl">languages</span></div>
 </div>
 

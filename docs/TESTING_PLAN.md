@@ -227,6 +227,40 @@ identifiers keep their published names. Cookbook, glossary, README, and other si
 have separate contracts and release layers; passing the role-path gate does not claim those surfaces
 are already migrated.
 
+### Public resource entry and MCP／Skills catalog
+
+`scripts/test_public_entry_resources.py` covers `RESOURCES`, the resource index, and the MCP／Skills
+catalog in all three locales. It keeps the task choices, core definitions, safe starts, and curated
+resources visible; requires all 16 highlight links and ratings to remain outside closed disclosures,
+and verifies the accessible `4／3／4／4／1` rowgroups;
+requires current Notion, Google Workspace, GitHub, Atlassian, Linear, Slack, Canva, MCP Registry,
+reference-server, and Anthropic Skills entry points; and rejects the replaced Linear and Slack
+community defaults. A per-locale fact matrix locks Developer Preview, dedicated product servers,
+OAuth 2.0／2.1, least-privilege tokens, Streamable HTTP, read-only options, signed-in-user permissions,
+and human approval instead of checking URLs and ratings alone. The resource index mirrors canonical,
+official-source, unknown-value, rating, and next-step rules across all three locales. Gemini Notebook
+is the display name unless NotebookLM is part of an exact package, URL, or historical identifier.
+
+The catalog contract requires 17 visible category landings, 17 closed disclosures, zero default-open
+disclosures, and matching entry URL／editorial-rating order across all locales. It rejects volatile
+GitHub stars, advertised catalog totals, popularity rankings, fixed integration or context counts,
+stale last-commit claims, free-plan promises, and permanent model job assignments. Targeted semantic
+assertions keep least privilege, source-version checks, bounded delegation, financial disclaimers, and
+human review of freshness warnings in every locale. `scripts/check-catalog-counts.py` may report the
+machine count but blocks reader-facing totals and per-category count labels. Its repository-wide
+scan also rejects `NN+` and approximate project／resource／integration totals, exact use-case category
+counts, and stale Stage 7／8 route claims in current READMEs, site cards, outreach copy, and repository
+contracts. Outreach additionally rejects cached stars, stargazers, forks, clone counts, views, visitors,
+and other traffic snapshots through the same shared gate functions used by the file-level regression;
+changelog history, implementation plans, and test fixtures remain evidence rather than current advertising.
+
+Repository health is a separate fact layer. `repository-freshness.yml` performs a fork-safe changed-line
+check on PRs and a scheduled full scan of every unique GitHub repository. It records canonical owner,
+redirect, archive／disabled status, license metadata, release and push signals. Hard contradictions can
+block; missing release metadata or older activity remains a human-review warning and never deletes an
+entry automatically. The ordinary URL checker continues to cover non-GitHub documentation and hosted
+service links.
+
 ### Whole-site learner-route coherence
 
 `scripts/test_site_route_coherence.py` treats text navigation as the source of truth before diagrams
