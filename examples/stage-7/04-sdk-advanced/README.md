@@ -6,7 +6,7 @@
 
 **Streaming**讓答案分段出現；**Prompt caching**讓相同的長前綴有機會被重用。兩者解決不同問題。
 
-對應 [Stage 7 — Multi-Agent 與 Production](../../../stages/07-multi-agent-production.md) 練習 4。
+對應 [Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph](../../../stages/07-multi-agent-production.md) 練習 4。
 
 ## 🎯 學習目標
 

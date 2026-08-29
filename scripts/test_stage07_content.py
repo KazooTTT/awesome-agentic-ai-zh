@@ -71,6 +71,11 @@ CORE_SECTION_HEADINGS = {
     "zh-Hans": ("## 🧩 九个核心词", "## 🚪 进入条件"),
 }
 PAGE_TITLES = {
+    "zh-TW": "# Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph",
+    "en": "# Stage 7 — Agent Production Engineering: Harness, Loops & Graphs",
+    "zh-Hans": "# Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph",
+}
+OLD_PAGE_TITLES = {
     "zh-TW": "# Stage 7 — Loop／Graph Engineering：多 Agent 與穩定運作",
     "en": "# Stage 7 — Loop & Graph Engineering: Multi-Agent Production",
     "zh-Hans": "# Stage 7 — Loop／Graph Engineering：多 Agent 与稳定运行",
@@ -116,17 +121,17 @@ ROUTE_MARKERS = {
     "zh-TW": (
         "Stage 3：Agent Loop 入門",
         "Stage 4：Workflow Graph 入門",
-        "Stage 7：Loop／Graph Engineering 加深",
+        "Stage 7：Agent Production Engineering 整合",
     ),
     "en": (
         "Stage 3: Agent Loop entry",
         "Stage 4: Workflow Graph entry",
-        "Stage 7: Loop / Graph Engineering deepening",
+        "Stage 7: Agent Production Engineering integration",
     ),
     "zh-Hans": (
         "Stage 3：Agent Loop 入门",
         "Stage 4：Workflow Graph 入门",
-        "Stage 7：Loop／Graph Engineering 加深",
+        "Stage 7：Agent Production Engineering 整合",
     ),
 }
 RESOURCE_URL_RATINGS = (
@@ -170,6 +175,7 @@ def _external_urls(text: str) -> list[str]:
 def test_reader_path_has_six_closed_disclosures(locale: str, page: Path) -> None:
     text = page.read_text(encoding="utf-8")
     assert text.startswith(PAGE_TITLES[locale])
+    assert OLD_PAGE_TITLES[locale] not in text
     assert len(re.findall(r'<details markdown="1">', text)) == 6
     assert not re.search(r"<details[^>]*\bopen\b", text)
     visible = _without_closed_details(text)

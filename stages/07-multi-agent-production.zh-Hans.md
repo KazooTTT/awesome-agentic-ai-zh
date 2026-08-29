@@ -1,4 +1,4 @@
-# Stage 7 — Loop／Graph Engineering：多 Agent 与稳定运行
+# Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph
 
 > [繁體中文](./07-multi-agent-production.md) | **简体中文** | [English](./07-multi-agent-production.en.md)
 
@@ -103,7 +103,7 @@ Docker 还不熟也可以开始；先做练习 1–4，练习 5 再补。
 
 - **Stage 3：Agent Loop 入门**——先学一次执行里的“模型 → 工具 → 结果 → 下一步”。
 - **Stage 4：Workflow Graph 入门**——再用 framework 提供的零件画 node、edge、branch 和 state。
-- **Stage 7：Loop／Graph Engineering 加深**——最后加入预算、验证、checkpoint、人工批准、观测和恢复。
+- **Stage 7：Agent Production Engineering 整合**——最后加入预算、验证、checkpoint、人工批准、观测和恢复。
 
 **Agent Framework 是工具箱；Graph Engineering 是用工具箱设计整张工作地图。** 所以 Stage 4 的标题保留 Agent Framework，并加上 Workflow Graph；本章不能把它直接改名成 Graph Engineering。
 
