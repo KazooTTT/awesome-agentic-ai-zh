@@ -1993,3 +1993,173 @@ pages:
           heading: "回到 Track A"
           anchor: 回到-track-a
     resource_group_rowspans: [4, 5]
+
+  - id: researcher-path
+    canonical: branches/for-researcher.md
+    mirrors:
+      en: branches/for-researcher.en.md
+      zh-Hans: branches/for-researcher.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 2334
+      en: 4339
+      zh-Hans: 2069
+    max_open_details: 0
+    required_details_count: 5
+    visible_section_order:
+      - purpose
+      - learning-goals
+      - core-terms
+      - first-exercise
+      - entry-points
+      - completion
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+    required_visible_sections:
+      purpose:
+        zh-TW: {heading: "📌 這條路幫你做什麼", anchor: -這條路幫你做什麼}
+        en: {heading: "📌 What this path helps you do", anchor: -what-this-path-helps-you-do}
+        zh-Hans: {heading: "📌 这条路帮你做什么", anchor: -这条路帮你做什么}
+      learning-goals:
+        zh-TW: {heading: "🎯 學習目標", anchor: -學習目標}
+        en: {heading: "🎯 Learning goals", anchor: -learning-goals}
+        zh-Hans: {heading: "🎯 学习目标", anchor: -学习目标}
+      core-terms:
+        zh-TW: {heading: "🧩 八個核心詞", anchor: -八個核心詞}
+        en: {heading: "🧩 Eight core terms", anchor: -eight-core-terms}
+        zh-Hans: {heading: "🧩 八个核心词", anchor: -八个核心词}
+      first-exercise:
+        zh-TW: {heading: "🛠 第一個練習：核對一篇 paper 的三個答案", anchor: -第一個練習核對一篇-paper-的三個答案}
+        en: {heading: "🛠 First exercise: verify three answers about one paper", anchor: -first-exercise-verify-three-answers-about-one-paper}
+        zh-Hans: {heading: "🛠 第一个练习：核对一篇 paper 的三个答案", anchor: -第一个练习核对一篇-paper-的三个答案}
+      entry-points:
+        zh-TW: {heading: "📚 先選一個入口", anchor: -先選一個入口}
+        en: {heading: "📚 Choose an entry point", anchor: -choose-an-entry-point}
+        zh-Hans: {heading: "📚 先选一个入口", anchor: -先选一个入口}
+      completion:
+        zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
+        en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
+        zh-Hans: {heading: "✅ 完成检查与下一站", anchor: -完成检查与下一站}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: first-exercise
+      min_definition_chars: 20
+      terms:
+        - id: source
+          zh-TW: {term: Source, label: "Source（來源）"}
+          en: {term: Source, label: Source}
+          zh-Hans: {term: Source, label: "Source（来源）"}
+        - id: claim
+          zh-TW: {term: Claim, label: "Claim（主張）"}
+          en: {term: Claim, label: Claim}
+          zh-Hans: {term: Claim, label: "Claim（主张）"}
+        - id: citation
+          zh-TW: {term: Citation, label: "Citation（引用）"}
+          en: {term: Citation, label: Citation}
+          zh-Hans: {term: Citation, label: "Citation（引用）"}
+        - id: source-verification
+          zh-TW: {term: Source Verification, label: "Source Verification（來源核對）"}
+          en: {term: Source Verification, label: Source Verification}
+          zh-Hans: {term: Source Verification, label: "Source Verification（来源核对）"}
+        - id: literature-rag
+          zh-TW: {term: Literature RAG, label: "Literature RAG（文獻 RAG）"}
+          en: {term: Literature RAG, label: Literature RAG}
+          zh-Hans: {term: Literature RAG, label: "Literature RAG（文献 RAG）"}
+        - id: reproducibility
+          zh-TW: {term: Reproducibility, label: "Reproducibility（可重現性）"}
+          en: {term: Reproducibility, label: Reproducibility}
+          zh-Hans: {term: Reproducibility, label: "Reproducibility（可重复性）"}
+        - id: private-data
+          zh-TW: {term: Private Data, label: "Private Data（私人資料）"}
+          en: {term: Private Data, label: Private Data}
+          zh-Hans: {term: Private Data, label: "Private Data（私人资料）"}
+        - id: human-review
+          zh-TW: {term: Human Review, label: "Human Review（人工審查）"}
+          en: {term: Human Review, label: Human Review}
+          zh-Hans: {term: Human Review, label: "Human Review（人工审查）"}
+    resource_group_rowspans: [3, 4, 2, 1]
+
+  - id: developer-path
+    canonical: branches/for-developer.md
+    mirrors:
+      en: branches/for-developer.en.md
+      zh-Hans: branches/for-developer.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 3122
+      en: 4541
+      zh-Hans: 2821
+    max_open_details: 0
+    required_details_count: 5
+    visible_section_order:
+      - purpose
+      - learning-goals
+      - core-terms
+      - first-exercise
+      - entry-points
+      - completion
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+    required_visible_sections:
+      purpose:
+        zh-TW: {heading: "📌 這條路幫你做什麼", anchor: -這條路幫你做什麼}
+        en: {heading: "📌 What this path helps you do", anchor: -what-this-path-helps-you-do}
+        zh-Hans: {heading: "📌 这条路帮你做什么", anchor: -这条路帮你做什么}
+      learning-goals:
+        zh-TW: {heading: "🎯 學習目標", anchor: -學習目標}
+        en: {heading: "🎯 Learning goals", anchor: -learning-goals}
+        zh-Hans: {heading: "🎯 学习目标", anchor: -学习目标}
+      core-terms:
+        zh-TW: {heading: "🧩 八個核心詞", anchor: -八個核心詞}
+        en: {heading: "🧩 Eight core terms", anchor: -eight-core-terms}
+        zh-Hans: {heading: "🧩 八个核心词", anchor: -八个核心词}
+      first-exercise:
+        zh-TW: {heading: "🛠 第一個練習：完成一次可回復的小改", anchor: -第一個練習完成一次可回復的小改}
+        en: {heading: "🛠 First exercise: make one small, reversible change", anchor: -first-exercise-make-one-small-reversible-change}
+        zh-Hans: {heading: "🛠 第一个练习：完成一次可回滚的小改", anchor: -第一个练习完成一次可回滚的小改}
+      entry-points:
+        zh-TW: {heading: "📚 先選一個入口", anchor: -先選一個入口}
+        en: {heading: "📚 Choose an entry point", anchor: -choose-an-entry-point}
+        zh-Hans: {heading: "📚 先选一个入口", anchor: -先选一个入口}
+      completion:
+        zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
+        en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
+        zh-Hans: {heading: "✅ 完成检查与下一站", anchor: -完成检查与下一站}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: first-exercise
+      min_definition_chars: 20
+      terms:
+        - id: ide
+          zh-TW: {term: IDE, label: "IDE（Integrated Development Environment）"}
+          en: {term: IDE, label: "IDE (Integrated Development Environment)"}
+          zh-Hans: {term: IDE, label: "IDE（Integrated Development Environment）"}
+        - id: coding-agent
+          zh-TW: {term: Coding Agent, label: "Coding Agent（程式代理）"}
+          en: {term: Coding Agent, label: Coding Agent}
+          zh-Hans: {term: Coding Agent, label: "Coding Agent（程序代理）"}
+        - id: provider-router
+          zh-TW: {term: Provider／Router, label: "Provider／Router（供應商／路由器）"}
+          en: {term: Provider／Router, label: Provider／Router}
+          zh-Hans: {term: Provider／Router, label: "Provider／Router（供应商／路由器）"}
+        - id: model-runtime
+          zh-TW: {term: Model／Runtime, label: "Model／Runtime（模型／執行環境）"}
+          en: {term: Model／Runtime, label: Model／Runtime}
+          zh-Hans: {term: Model／Runtime, label: "Model／Runtime（模型／运行环境）"}
+        - id: sandbox
+          zh-TW: {term: Sandbox, label: "Sandbox（沙箱）"}
+          en: {term: Sandbox, label: Sandbox}
+          zh-Hans: {term: Sandbox, label: "Sandbox（沙箱）"}
+        - id: approval
+          zh-TW: {term: Approval, label: "Approval（人工批准）"}
+          en: {term: Approval, label: Approval}
+          zh-Hans: {term: Approval, label: "Approval（人工批准）"}
+        - id: diff-rollback
+          zh-TW: {term: Diff／Rollback, label: "Diff／Rollback（差異／回復）"}
+          en: {term: Diff／Rollback, label: Diff／Rollback}
+          zh-Hans: {term: Diff／Rollback, label: "Diff／Rollback（差异／回滚）"}
+        - id: eval-observability
+          zh-TW: {term: Eval／Observability, label: "Eval／Observability（評測／可觀察性）"}
+          en: {term: Eval／Observability, label: Eval／Observability}
+          zh-Hans: {term: Eval／Observability, label: "Eval／Observability（评测／可观测性）"}
+    resource_group_rowspans: [9, 2, 1]

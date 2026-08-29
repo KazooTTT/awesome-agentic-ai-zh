@@ -237,12 +237,15 @@ PR 之前请先读完本文。项目维护者也会用这份指南做 review。
 </details>
 
 ## 📚 必修阅读
-这些资料会在练习中用到；需要时再展开。
+先列出 1–3 个完成眼前练习真的会用到的来源。这些链接保持可见，不能只藏在折叠区。
+
+1. [必要链接](url) — 会在哪一步用到
+2. ...
 
 <details markdown="1">
-<summary>展开 3-5 个必读来源</summary>
+<summary>展开：完整阅读顺序与延伸来源</summary>
 
-1. [链接](url) — 描述
+1. [延伸链接](url) — 描述
 2. ...
 
 </details>
@@ -401,6 +404,16 @@ Branch 的 entry 格式可以比 stage 简洁（不一定要完整 schema 表格
 ---
 
 ## 9. 链接与引用
+
+### 角色路线页
+
+完成回溯并加入 `scripts/reader-ux-pages.yml` 的角色页，在每个语系都保留可见主线 `📌 → 🎯 → 🧩 → 🛠 → 📚 → ✅`：先说明这条路线解决什么，再列学习目标、用粗体定义核心词、给出可复制的小任务、提供入口，最后做完成检查。先用白话定义核心词，再保留准确的英文术语；不能因为简化而删除后文会用到的技术词。
+
+第一个任务必须小、可测试、可回滚。若任务会修改文件，要写清 read-only plan、人工批准、diff、test、rollback，以及 agent 不得自行 push／merge／deploy。折叠与否看“读者现在需不需要”，不看内容叫阅读或项目：开始第一题必须用到的 1–3 个来源、推荐入口与安全警告保持可见；完整阅读顺序、长资源表、替代方案、费用、进阶流程和排错才放进默认关闭的 `<details markdown="1">`。把已有深链接的空 anchor 放到语意对应的新 heading 或 summary 旁，并保留可见的回到主路线链接。
+
+工具的核心身份和 surface 分开写。IDE、CLI、desktop、cloud、CI、SDK 可以同时出现，不能当成互斥分类。OpenRouter 是 Provider／Router，Ollama 是 Model／Runtime，coding agent／harness 是另一条身份轴。
+
+角色页的分组资源表遵守上面的 `rowspan` 规则。三种语系保留相同 URL 顺序、状态、授权、限制和稳定编辑评分（⭐⭐⭐–⭐⭐⭐⭐⭐）；不写易变的 GitHub stars。ELI5 白话仍须保留等价语意、技术名称和安全边界。
 
 ### 内部链接
 - Stage 之间：相对路径 `[Stage 4](./04-agent-frameworks.zh-Hans.md)`

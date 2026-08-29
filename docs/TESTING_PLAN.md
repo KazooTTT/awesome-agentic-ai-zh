@@ -1,6 +1,6 @@
 # Testing Plan — T3+ Verification Log
 
-> Updated 2026-08-28. The opening table is the historical T3+ baseline; later
+> Updated 2026-08-29. The opening table is the historical T3+ baseline; later
 > sections record the current chapter-by-chapter modernization layers separately.
 > The old branch `t3-stage-4-6-7-unverified` was merged into `main` and deleted,
 > but a newer layer is not called shipped until its own branch reaches `main`.
@@ -152,6 +152,32 @@ provides the whole-repository mirror check. `scripts/check-reader-ux.py` locks t
 at `4,625／7,281／4,702` non-whitespace characters with only a 50-character allowance per locale,
 and requires all eight core terms before Exercise 1. The freshness gate separately enforces
 the 90-day fact pack for Computer Use, Browser Use, sandboxes, availability, benchmarks, and security.
+
+### Researcher and developer role paths — progressive entry and current identities covered
+
+The researcher path keeps eight bold evidence terms, one public-paper citation-verification task,
+three starting tools, a short completion check, and the next Stage visible. Five closed disclosures
+hold time/privacy, official reading, the 10-row project catalog, reproducible workflows, and
+troubleshooting. The developer path uses the same visible landmarks around eight coding-safety
+terms and one copyable `read-only plan → small change → diff → test → human approval → rollback`
+exercise that explicitly withholds push, merge, and deploy authority.
+
+`scripts/test_role_paths.py` compares the three locales structurally rather than by keyword count.
+It locks each resource row's identity, surface, status, license or service type, safety limitation,
+URL, and rating; researcher rowgroups (`3／4／2／1`); developer rowgroups (`9／2／1`); closed
+disclosures; freshness markers; copy-block steps; and semantic legacy-anchor landings. A mutation
+test proves that a row cannot borrow a surface or safety fact from the row above it. It also
+rejects volatile GitHub stars, maintainer self-promotion, fixed line-count safety rules, current use
+of archived `open_deep_research` or Roo Code, and the old NotebookLM name without Gemini Notebook.
+Developer checks keep core identity separate from multi-valued surface: Cursor, Cline, and Continue
+remain coding-agent products even when they expose IDE, CLI, cloud, SDK, or CI surfaces; OpenRouter
+remains a router and Ollama remains a local model runtime.
+
+This C2a gate covers only researcher and developer pages enrolled in `scripts/reader-ux-pages.yml`.
+Unqualified current-name prose in `branches/for-teacher*`, `resources/cookbook*`, `RESOURCES*`, and
+`resources/README*` is recorded for the next role/site freshness layer; package and repository
+identifiers keep their published names. This scoped exception prevents the C2a changelist from
+silently claiming that every site surface was already migrated.
 
 ### Whole-site learner-route coherence
 

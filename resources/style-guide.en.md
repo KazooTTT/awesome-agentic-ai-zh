@@ -236,12 +236,15 @@ You should have:
 </details>
 
 ## 📚 Required Reading
-You will use these sources during the exercises; expand them when needed.
+List the 1–3 sources genuinely needed for the next exercise first. Keep these links visible instead of hiding them only inside a disclosure.
+
+1. [Required link](url) — where the learner will use it
+2. ...
 
 <details markdown="1">
-<summary>Show 3-5 required sources</summary>
+<summary>Show the full reading order and further sources</summary>
 
-1. [Link](url) — description
+1. [Further link](url) — description
 2. ...
 
 </details>
@@ -395,6 +398,16 @@ Branch entries can be more concise than stage entries (full schema table optiona
 ---
 
 ## 9. Links and citations
+
+### Role-path pages
+
+A role page that has completed its retrospective and is enrolled in `scripts/reader-ux-pages.yml` keeps the visible path `📌 → 🎯 → 🧩 → 🛠 → 📚 → ✅` in every locale: explain the path, list learning goals, define bold core terms, give a copyable small task, offer entry points, and finish with a completion check. Define each term in plain language before keeping its exact technical name. Simplification must not delete a term used later.
+
+The first task must be small, testable, and reversible. When it changes files, state the read-only plan, human approval, diff, test, rollback, and the boundary that the agent must not push, merge, or deploy alone. Decide disclosure by whether the learner needs the item now, not by whether it is called reading or a project: keep the 1–3 sources, recommended entry points, and safety warnings needed for the first task visible; put the full reading order, long resource catalog, alternatives, cost, advanced workflows, and troubleshooting in closed `<details markdown="1">` blocks. Put each empty legacy anchor beside its semantic replacement heading or summary, and keep a visible link back to the main route.
+
+Separate core identity from surfaces. IDE, CLI, desktop, cloud, CI, and SDK may be multi-valued; they are not mutually exclusive categories. OpenRouter is a Provider／Router, Ollama is a Model／Runtime, and coding agent／harness is a separate identity axis.
+
+Role-page resource tables follow the grouped `rowspan` rules above. Locales keep the same URL order, status, license, limits, and stable editorial rating (⭐⭐⭐–⭐⭐⭐⭐⭐), without volatile GitHub-star counts. ELI5 wording must preserve equivalent meaning, technical names, and safety boundaries.
 
 ### Internal links
 - Between stages: relative path `[Stage 4](04-agent-frameworks.en.md)`
