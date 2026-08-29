@@ -52,7 +52,7 @@
 
 → 詳細定義請看下面各區塊。
 
-**先分清兩種順序：**課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.md) → [Stage 7 的 Loop／Graph Engineering：讓 Agent 穩定運作](../stages/07-multi-agent-production.md)。五層圖的 Prompt → Context → Harness → Loop → Graph 則是在比較「要管的範圍有多大」，**不是章節編號**。
+**先分清兩種順序：**課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 與 Graph](../stages/07-multi-agent-production.md)。五層圖的 Prompt → Context → Harness → Loop → Graph 則是在比較「要管的範圍有多大」，**不是章節編號**。
 
 ---
 
@@ -446,7 +446,7 @@ LLM 「自信地說錯」——把不存在的 API 編出來、把錯的數字�
 
 這是本路線圖替 Stage 7 使用的**上位名稱**，不是把 Harness、Loop 或 Graph 改成同一件事。Stage 4 先教 framework 這個工具箱和基本 Workflow Graph；Stage 7 再把預算、驗證、checkpoint、人工核准、觀測與復原加上去。換句話說：**Stage 4 學會把流程組起來，Stage 7 學會讓整套流程長期跑得住。**
 
-📍 完整章節：[Stage 7 — Loop／Graph Engineering：讓 Agent 穩定運作](../stages/07-multi-agent-production.md)
+📍 完整章節：[Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph](../stages/07-multi-agent-production.md)
 
 ### Harness Engineering
 

@@ -52,7 +52,7 @@ This table is the project's **enforced naming convention** — every stage uses 
 
 → For full definitions, see the sections below.
 
-**Keep two orders separate:** the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Workflow Graph / Agent Framework](../stages/04-agent-frameworks.en.md) → [Stage 7 Loop & Graph Engineering: Making Agents Reliable](../stages/07-multi-agent-production.en.md). The Prompt → Context → Harness → Loop → Graph stack compares how much of the system you control; it is **not the chapter order**.
+**Keep two orders separate:** the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Workflow Graph / Agent Framework](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering: Harness, Loops, and Graphs](../stages/07-multi-agent-production.en.md). The Prompt → Context → Harness → Loop → Graph stack compares how much of the system you control; it is **not the chapter order**.
 
 ---
 
@@ -446,7 +446,7 @@ The umbrella engineering work that turns an agent from “sometimes works” int
 
 This is the roadmap's **umbrella name** for Stage 7; it does not make Harness, Loop, and Graph the same thing. Stage 4 first teaches the framework toolbox and a basic Workflow Graph. Stage 7 then adds budgets, verification, checkpoints, human approval, observability, and recovery. In short: **Stage 4 teaches you to assemble the flow; Stage 7 teaches you to keep the whole flow dependable.**
 
-📍 Full chapter: [Stage 7 — Loop & Graph Engineering: Making Agents Reliable](../stages/07-multi-agent-production.en.md)
+📍 Full chapter: [Stage 7 — Agent Production Engineering: Harness, Loops, and Graphs](../stages/07-multi-agent-production.en.md)
 
 ### Harness Engineering
 

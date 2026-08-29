@@ -101,7 +101,7 @@ hide:
 
     [:octicons-arrow-right-24: 进入](stages/06-memory-rag.zh-Hans.md)
 
--   :material-account-group:{ .lg .middle } __Stage 7 — Loop／Graph Engineering__
+-   :material-account-group:{ .lg .middle } __Stage 7 — Agent Production Engineering__
 
     ---
 

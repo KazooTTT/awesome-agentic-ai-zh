@@ -37,9 +37,9 @@ LOCALES = {
         "stage3_topic": "工具使用與第一個 Agent Loop",
         "stage4_title": "Stage 4 — Workflow Graph 與 Agent 框架",
         "stage4_topic": "Workflow Graph 與 Agent 框架",
-        "stage7_title": "Stage 7 — Loop／Graph Engineering：讓 Agent 穩定運作",
-        "stage7_topic": "Loop／Graph Engineering：讓 Agent 穩定運作",
-        "stage7_compact": "Stage 7 — Loop／Graph Engineering",
+        "stage7_title": "Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph",
+        "stage7_topic": "Agent Production Engineering：Harness、Loop 與 Graph",
+        "stage7_compact": "Stage 7 — Agent Production Engineering",
     },
     "en": {
         "suffix": ".en",
@@ -70,9 +70,9 @@ LOCALES = {
         "stage3_topic": "Tool Use & Your First Agent Loop",
         "stage4_title": "Stage 4 — Workflow Graphs & Agent Frameworks",
         "stage4_topic": "Workflow Graphs & Agent Frameworks",
-        "stage7_title": "Stage 7 — Loop & Graph Engineering: Making Agents Reliable",
-        "stage7_topic": "Loop & Graph Engineering: Making Agents Reliable",
-        "stage7_compact": "Stage 7 — Loop & Graph Engineering",
+        "stage7_title": "Stage 7 — Agent Production Engineering: Harness, Loops, and Graphs",
+        "stage7_topic": "Agent Production Engineering: Harness, Loops, and Graphs",
+        "stage7_compact": "Stage 7 — Agent Production Engineering",
     },
     "zh-Hans": {
         "suffix": ".zh-Hans",
@@ -103,9 +103,9 @@ LOCALES = {
         "stage3_topic": "工具使用与第一个 Agent Loop",
         "stage4_title": "Stage 4 — Workflow Graph 与 Agent 框架",
         "stage4_topic": "Workflow Graph 与 Agent 框架",
-        "stage7_title": "Stage 7 — Loop／Graph Engineering：让 Agent 稳定运行",
-        "stage7_topic": "Loop／Graph Engineering：让 Agent 稳定运行",
-        "stage7_compact": "Stage 7 — Loop／Graph Engineering",
+        "stage7_title": "Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph",
+        "stage7_topic": "Agent Production Engineering：Harness、Loop 与 Graph",
+        "stage7_compact": "Stage 7 — Agent Production Engineering",
     },
 }
 

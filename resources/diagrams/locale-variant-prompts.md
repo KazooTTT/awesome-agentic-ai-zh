@@ -209,6 +209,30 @@ Stage 8 與 glossary 的既有深連結不用改。Stage 7 三語頁改成各自
 - Graph 圖仍保留平行草稿、獨立驗證、人工核准與失敗返回，沒有把每個節點都畫成 Agent。
 - 英語圖沒有中文；簡中圖沒有肉眼可見的繁體字；繁中圖沒有簡中用語。
 
+## 2026-08-29：Stage 7 Harness／Loop／Graph 責任邊界圖
+
+新增 `harness-loop-graph-boundary.png`、`.en.png`、`.zh-Hans.png`。這組圖不把三者畫成會互相淘汰的產品世代，而是畫成同一套 production Agent 裡會合作的三種責任：Harness 保護一次執行，Loop 決定是否再跑，Graph 安排整條路。圖中必須把一個小 Harness 放進 Loop，並讓 Graph 同時出現 branch、parallel path、checkpoint、人工核准與回圈箭頭。
+
+三語都用 Codex 內建 imagegen 獨立生成，維持 16:9、亮色暖白底、深藍大字、藍／橘／紫綠三區與同一組資訊層級。不得加入版本、價格、成熟度 badge、官方／非官方結論或供應商 logo。
+
+共同 prompt 約束：
+
+> Create a bright 16:9 beginner-friendly technical infographic with three
+> cooperating responsibility areas. Harness is a safe workspace for one run;
+> Loop repeats goal, action, observation, adjustment, and stop or human
+> escalation; Graph arranges nodes, branches, parallel paths, checkpoints,
+> human approval, and a loop-back route. Place a small Harness inside the Loop.
+> State that they work together and do not replace each other. Use only the
+> supplied verbatim locale text. No maturity ladder, chronology, product logo,
+> ranking, version, price, watermark, mixed language, or extra paragraph.
+
+人工驗收逐張確認：
+
+- 標題都明寫「一起合作／work together／一起协作，不互相淘汰」。
+- 底部結論逐語對齊「Harness 保護每次執行｜Loop 決定何時再跑｜Graph 安排整條路」。
+- Loop 裡有小 Harness；Graph 有分支、平行、checkpoint、人工核准與返回箭頭。
+- 英語圖沒有中文；簡中圖沒有繁體字；繁中圖沒有簡中用語。
+
 ## 2026-08-29：教師把關循環圖
 
 新增 `teacher-ai-review-loop.png`、`.en.png`、`.zh-Hans.png`，取代會把「即時批改」和學生能力推測畫成可靠功能的舊 `teacher-ai-classroom-use-cases` 三語圖。新圖只保留一條可由教師控制的五步循環：
