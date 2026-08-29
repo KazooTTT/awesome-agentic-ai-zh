@@ -14,7 +14,10 @@
 |---|---|---|
 | Prompt Engineering | Prompt 设计 | Stage 2 |
 | Context Engineering | 上下文管理 | Stage 6 |
+| Agent Production Engineering | Agent 可用化工程 | Stage 7 |
 | Harness Engineering | Agent 执行系统设计 | Stage 7 |
+| Loop Engineering | Agent 循环设计 | Stage 7 |
+| Graph Engineering | Workflow Graph 工程 | Stage 4 / 7 |
 | Tool Use | 工具使用 | Stage 3 |
 | Function Calling | 函数 / 工具调用 | Stage 3 |
 | Tool Schema | 工具纲要 / 工具说明卡 | Stage 3 |
@@ -48,6 +51,8 @@
 | Reward Hacking | 钻评分漏洞 | Stage 7 / 8 |
 
 → 详细定义请看下面各区块。
+
+**先分清两种顺序：**课程会依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.zh-Hans.md) → [Stage 4 的 Agent Framework／Workflow Graph](../stages/04-agent-frameworks.zh-Hans.md) → [Stage 7 的 Agent Production Engineering](../stages/07-multi-agent-production.zh-Hans.md)。五层图的 Prompt → Context → Harness → Loop → Graph 是在比较“要管的范围有多大”，**不是章节编号**。
 
 ---
 
@@ -435,6 +440,14 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 📍 详细：[Stage 2 结尾](../stages/02-prompt-engineering.zh-Hans.md) / [Stage 6](../stages/06-memory-rag.zh-Hans.md) / [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)
 📍 延伸：[`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering)
 
+### Agent Production Engineering
+
+把 Agent 从“偶尔做对”变成“别人可以放心使用”的整体工程。像把一台会动的玩具车，补上刹车、仪表板、道路规则和故障救援。它会一起用到 **Harness Engineering**、**Loop Engineering**、**Graph Engineering**、Eval、Observability、Guardrail、成本与恢复。
+
+这是本路线图给 Stage 7 使用的**上位名称**，不是把 Harness、Loop 或 Graph 改成同一件事。Stage 4 先教 framework 这个工具箱和基本 Workflow Graph；Stage 7 再把预算、验证、checkpoint、人工批准、观测与恢复加上去。换句话说：**Stage 4 学会把流程组起来，Stage 7 学会让整套流程长期跑得住。**
+
+📍 完整章节：[Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph](../stages/07-multi-agent-production.zh-Hans.md)
+
 ### Harness Engineering
 
 工程 **模型外面的执行与控制层**——所有不是 model weights、也不是 prompt string 本身的工程元件：agent loop / tool registry / context manager / permissions / safety layer / memory layer / eval / observability / retry / circuit breaker 等。Simon Willison 2025：**coding agent = LLM + harness**。Addy Osmani：harness = 所有不是 model 本身的代码。[OpenAI 也在 2026-02 使用了 "Harness Engineering" 这个说法](https://openai.com/index/harness-engineering)。Claude Code、Cursor、OpenCode 等 CLI agent 都是 harness。**framework 把 LLM 包成 agent，harness 把 agent 包成可上线使用的产品**。
@@ -444,7 +457,7 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 - **Framework**（Stage 4）规范 **API**：你调用的接口长什么样
 - **Harness**（本词）规范 **runtime**：怎么跑、怎么 recovery、怎么观测
 
-📍 学科级概念（**8 个核心元件** / Prompt→Context→Harness→Loop→Graph 五层工程分工 / framework vs harness）：[Stage 7 Harness Engineering](../stages/07-multi-agent-production.zh-Hans.md)
+📍 上位章节（**8 个 Harness 核心元件** / Prompt→Context→Harness→Loop→Graph 五层工程分工 / framework vs harness）：[Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.zh-Hans.md)
 📍 Reference implementation case study（读 Claude Code source）：[Stage 5 5.7](../stages/05-claude-code-ecosystem.zh-Hans.md)
 📍 延伸：[`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python)、[`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering)、[`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
 
@@ -454,16 +467,16 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 
 **Agent Loop** 是 runner 里真的执行的“model → tool／handoff → observation → next turn”；**Loop Engineering** 是设计这个循环与外围规则。像“轮子”和“设计整台脚踏车”：有关联，但不是同一件事。
 
-这是正在形成的名称，不是本项目自创，也不是所有供应商共同制定的标准。入门来源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)；采用状态可看 [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884)。完整五层与实践入口见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)。
+这个名称已经出现在产业文章和研究讨论中；它不是本项目自创，也不是所有供应商共同制定的正式标准。现有研究也没有测量整体采用率，所以这里只说“有人使用”，不说“人人都这样叫”。入门来源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)；研究用法可看 [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884)。完整五层与实践入口见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)。
 
 ### Graph Engineering（图工程）
 
 把 Agent 的工作设计成一张**显式的 Workflow Graph**：node 是一个步骤，edge 告诉它下一站，node 之间传递有 schema、可 checkpoint、可 replay 的 state。一个 node 可以放 Agent Loop、工具、固定检查或人工批准。
 
 - **这里的“图”是执行流程图（control / execution graph），不是 GraphRAG 那种知识图谱检索**——后者见 [Stage 6](../stages/06-memory-rag.zh-Hans.md)。两者常被混为一谈。
-- **名称新，底下的做法不新。** 2026-08 的 survey preprint 把 Graph Engineering 提为新兴范式；workflow、state machine、node、edge 与 checkpoint 更早就存在。主流 SDK 目前仍常写 **workflow**、**graph-based workflow** 或 **orchestration**。
+- **这个总称已经有人采用，底下的做法更早就存在。** 2026-08 的 survey preprint 使用 Graph Engineering；workflow、state machine、node、edge 与 checkpoint 则早已是常见做法。主流 SDK 目前仍常写 **workflow**、**graph-based workflow** 或 **orchestration**。
 
-可搜索的实现名称与来源：[LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)、[Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。Preprint 证明这个总称正在形成，不代表它已成为官方标准。
+可搜索的实现名称与来源：[LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)、[Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。这些来源证明名称和做法确实有人使用；不同工具仍可能使用不同叫法。
 
 **跟循环的关系**：不是二选一。**格子里面是 agent 自己绕圈，格子跟格子之间才是你安排的顺序**——所以图是把好几个循环装进格子再排顺序；全部塞回同一个格子，就退回单纯的循环了。格子里也不一定是 agent，可以是一个工具、一段检查、或“这里要人按核准才能往下”。五层阶梯的完整说明见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)（canonical）。
 

@@ -36,6 +36,9 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 - **navigation / whole-site learning route** · **README、Progress、Roadmap、Capstone 與章節出口改用同一條三語學習順序**：共用基礎固定為 `Stage 0 → 1 → 2`；Track A 固定為 `A1 → A2 → Stage 5 → A3 → Stage 8`，並清楚說明 A3 後即可開始 Capstone、Stage 8 建議完成但不擋入場；Track B 固定為 `Stage 3 → 4 → 5 → 6 → 7 → 7.5 → 8`。A2、Stage 5、A3 的上一站／下一站與先備條件同步修正，Roadmap 移除已完成的 2026-05 缺口宣稱；新增 30 條 route contract，阻擋三語再次各走不同順序。
 - **maintenance / repository freshness** · **修正全站 9 組已搬家的 GitHub repository 入口**：OpenHands、prompts.chat、flonat-research、Instructor、xberg、LobeHub、Mozilla inclusion、Graphify 與 Supabase MCP 的現行引用改用 canonical owner／repo，三語可見名稱同步更新；歷史 CHANGELOG 與規劃文件保留當時名稱。GitHub API 於 `2026-08-29T00:20:01Z` 完整重查目前 259 個 unique repo，結果為 0 個 hard error、154 個人工複查提醒；沒有 release、缺 SPDX metadata 或較久未 push 不會自動刪除仍有教學價值的穩定專案。
 
+- **content / glossary / Agent engineering** · **三語名詞表補上 `Agent Production Engineering` 上位概念，並直接分開課程順序與控制範圍順序**：讀者會先看到 Stage 3 Agent Loop → Stage 4 Agent Framework／Workflow Graph → Stage 7 Agent Production Engineering；五層 Prompt → Context → Harness → Loop → Graph 只表示要管理的範圍，不再被誤讀成章節編號。Harness、Loop、Graph 三個概念都保留獨立定義；Stage 4 仍是先學工具箱與基本圖，Stage 7 才加入預算、驗證、checkpoint、人工核准、觀測與復原。
+- **terminology / acceptance** · **Loop Engineering 與 Graph Engineering 改成「已有產業／研究用法，但不是單一跨供應商正式標準」的準確定位**：移除過度保守的「仍在形成」敘述，同時保留各 SDK 常用 workflow、graph-based workflow、orchestration 等不同名稱的事實。`test_agent_engineering_route.py` 新增三語上位詞、兩種順序與舊 Harness-only 標籤阻擋；GitHub API UTC 日期於 `2026-08-29T16:13:19Z` 確認。
+
 ## 2026-08-28
 
 - **fix / Stage 6 / links** · **三語 Chroma 入門資源與 freshness fact pack 改指現行官方 Getting Started 頁**：舊的 `/getting-started` 已回傳 404；繁中、英語、簡中與機器檢查來源同步改用 `/docs/overview/getting-started`，不改動教材內容、資源評分或閱讀順序。

@@ -14,7 +14,10 @@ This table is the project's **enforced naming convention** — every stage uses 
 |---|---|---|
 | Prompt Engineering | Prompt 設計 / Prompt 设计 | Stage 2 |
 | Context Engineering | 上下文管理 | Stage 6 |
+| Agent Production Engineering | Agent 可用化工程 | Stage 7 |
 | Harness Engineering | Agent 執行系統設計 / Agent 执行系统设计 | Stage 7 |
+| Loop Engineering | Agent 迴圈設計 / Agent 循环设计 | Stage 7 |
+| Graph Engineering | Workflow Graph 工程 | Stage 4 / 7 |
 | Tool Use | 工具使用 | Stage 3 |
 | Function Calling | 函式 / 函数 / 工具呼叫 | Stage 3 |
 | Tool Schema | 工具綱要 / 工具纲要 / 工具說明卡 | Stage 3 |
@@ -48,6 +51,8 @@ This table is the project's **enforced naming convention** — every stage uses 
 | Reward Hacking | 鑽評分漏洞 / 钻评分漏洞 | Stage 7 / 8 |
 
 → For full definitions, see the sections below.
+
+**Keep two orders separate:** the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Agent Framework / Workflow Graph](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.en.md). The Prompt → Context → Harness → Loop → Graph stack compares how much of the system you control; it is **not the chapter order**.
 
 ---
 
@@ -435,6 +440,14 @@ The discipline of engineering **what information goes into the context window on
 📍 Detail: [Stage 2 closing](../stages/02-prompt-engineering.en.md) / [Stage 6](../stages/06-memory-rag.en.md) / [Stage 7](../stages/07-multi-agent-production.en.md)
 📍 Further: [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering)
 
+### Agent Production Engineering
+
+The umbrella engineering work that turns an agent from “sometimes works” into “other people can rely on it.” Think of taking a toy car that moves and adding brakes, a dashboard, road rules, and a recovery plan. It brings together **Harness Engineering**, **Loop Engineering**, **Graph Engineering**, evals, observability, guardrails, cost, and recovery.
+
+This is the roadmap's **umbrella name** for Stage 7; it does not make Harness, Loop, and Graph the same thing. Stage 4 first teaches the framework toolbox and a basic Workflow Graph. Stage 7 then adds budgets, verification, checkpoints, human approval, observability, and recovery. In short: **Stage 4 teaches you to assemble the flow; Stage 7 teaches you to keep the whole flow dependable.**
+
+📍 Full chapter: [Stage 7 — Agent Production Engineering: Harness, Loops & Graphs](../stages/07-multi-agent-production.en.md)
+
 ### Harness Engineering
 
 The discipline of engineering the **execution and control layer around the model** — everything that is not model weights and not just the prompt string itself: agent loop / tool registry / context manager / permissions / safety layer / memory layer / eval / observability / retry / circuit breaker, etc. Simon Willison 2025: **coding agent = LLM + harness**. Addy Osmani: harness = all the code that is not the model itself. [OpenAI also used the term "Harness Engineering" in February 2026](https://openai.com/index/harness-engineering). Claude Code, Cursor, OpenCode, etc. are harnesses. **A framework wraps an LLM into an agent; a harness wraps an agent into a product that can actually go live.**
@@ -444,7 +457,7 @@ Contrast:
 - **Framework** (Stage 4) defines the **API**: what the interface you call looks like
 - **Harness** (this term) defines the **runtime**: how it runs, how it recovers, how it is observed
 
-📍 Discipline-level concept (**8 core components** / Prompt→Context→Harness→Loop→Graph five-layer engineering split / framework vs harness): [Stage 7 Harness Engineering](../stages/07-multi-agent-production.en.md)
+📍 Umbrella chapter (**8 Harness core components** / Prompt→Context→Harness→Loop→Graph five-layer engineering split / framework vs harness): [Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.en.md)
 📍 Reference implementation case study (reading Claude Code source): [Stage 5 5.7](../stages/05-claude-code-ecosystem.en.md)
 📍 Further: [`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python), [`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering), [`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
 
@@ -454,16 +467,16 @@ The engineering work of designing how an Agent starts, takes a step, checks it, 
 
 **Agent Loop** is the runner's actual “model → tool / handoff → observation → next turn”; **Loop Engineering** designs that loop and its surrounding rules. Think of a wheel versus designing the whole bicycle: related, but not identical.
 
-This name is still emerging, not invented by this project and not a standard jointly defined by every vendor. Introductory sources: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering); adoption status: [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884). See [Stage 7](../stages/07-multi-agent-production.en.md) for the full five-layer map and practice entry points.
+This name is already used in industry writing and research discussion. It was not invented by this project, and it is not a formal standard jointly defined by every vendor. Existing research has not measured overall adoption, so this glossary says the term is in use—not that everyone uses it. Introductory source: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering); research usage: [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884). See [Stage 7](../stages/07-multi-agent-production.en.md) for the full five-layer map and practice entry points.
 
 ### Graph Engineering
 
 Designing an Agent's work as an **explicit Workflow Graph**: a node is a step, an edge points to the next stop, and nodes pass around schema'd state that can be checkpointed and replayed. A node can contain an Agent Loop, a tool, a fixed check, or human approval.
 
 - **The "graph" here is a control / execution graph, not the knowledge-graph retrieval of GraphRAG** — for that, see [Stage 6](../stages/06-memory-rag.en.md). The two are frequently conflated.
-- **The name is new; the underlying practice is not.** A 2026-08 survey preprint presents Graph Engineering as an emerging paradigm; workflows, state machines, nodes, edges, and checkpoints are older. Mainstream SDKs still commonly say **workflow**, **graph-based workflow**, or **orchestration**.
+- **The umbrella term is already in use; the underlying practice is older.** A 2026-08 survey preprint uses Graph Engineering, while workflows, state machines, nodes, edges, and checkpoints have long been common practice. Mainstream SDKs still commonly say **workflow**, **graph-based workflow**, or **orchestration**.
 
-Searchable implementation names and sources: [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents), [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/), and [Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156). The preprint shows that this umbrella term is emerging; it does not make it an official standard.
+Searchable implementation names and sources: [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents), [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/), and [Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156). These sources show that the name and practice are in real use; different tools may still use different labels.
 
 **Relationship to loops**: this is not either-or. **Inside a box, the agent loops; between boxes, you define the order**. A graph puts several loops into boxes, then orders those boxes. If you put everything back into one box, you are back to a plain loop. A box does not have to contain an agent either; it can be a tool, a check, or a "human approval required before continuing" gate. For the full five-layer ladder, see [Stage 7](../stages/07-multi-agent-production.en.md) (canonical).
 
