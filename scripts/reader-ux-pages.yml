@@ -2035,17 +2035,19 @@ pages:
       en: branches/for-researcher.en.md
       zh-Hans: branches/for-researcher.zh-Hans.md
     max_visible_chars:
-      zh-TW: 2334
-      en: 4339
-      zh-Hans: 2069
+      zh-TW: 6247
+      en: 8840
+      zh-Hans: 5973
     max_open_details: 0
-    required_details_count: 5
+    required_details_count: 3
     visible_section_order:
       - purpose
       - learning-goals
       - core-terms
       - first-exercise
       - entry-points
+      - required-reading
+      - resources
       - completion
     parity:
       ordered_external_urls: true
@@ -2071,6 +2073,14 @@ pages:
         zh-TW: {heading: "📚 先選一個入口", anchor: -先選一個入口}
         en: {heading: "📚 Choose an entry point", anchor: -choose-an-entry-point}
         zh-Hans: {heading: "📚 先选一个入口", anchor: -先选一个入口}
+      required-reading:
+        zh-TW: {heading: "📖 必修閱讀", anchor: -必修閱讀}
+        en: {heading: "📖 Required reading", anchor: -required-reading}
+        zh-Hans: {heading: "📖 必读材料", anchor: -必读材料}
+      resources:
+        zh-TW: {heading: "⭐ 精選研究工具與專案", anchor: -精選研究工具與專案}
+        en: {heading: "⭐ Curated research tools and projects", anchor: -curated-research-tools-and-projects}
+        zh-Hans: {heading: "⭐ 精选研究工具与项目", anchor: -精选研究工具与项目}
       completion:
         zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
         en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
@@ -2112,7 +2122,7 @@ pages:
           zh-TW: {term: Human Review, label: "Human Review（人工審查）"}
           en: {term: Human Review, label: Human Review}
           zh-Hans: {term: Human Review, label: "Human Review（人工审查）"}
-    resource_group_rowspans: [3, 4, 2, 1]
+    resource_group_rowspans: [3, 4, 5, 2, 1]
 
   - id: developer-path
     canonical: branches/for-developer.md

@@ -107,7 +107,9 @@ Stage 5（Claude Code 生態）兩條軌都會碰到：
 
 走完 Track A 的 A3 或 Track B 的 Stage 7 後，都接到 5 條 branch（researcher / developer / teacher / knowledge-worker / everyday-users）。Branch entry 的 curation **不依軌道區分**——同一個工具不論是 Track A 用法還是 Track B 用法，都放在對應的 branch。
 
-Branch 的可見主線沿用 Stage 的漸進式揭露規則：先定位角色、說清目標與核心詞，再給一個可直接複製的最小任務、三個起點、完成條件與回到主路線的下一站。研究人員與開發者頁另外以 `scripts/test_role_paths.py` 鎖住 citation 核對、私人資料、read-only plan、diff／test／rollback、工具身分與多 surface、三語資源表及 archived 狀態；長閱讀與完整 project catalog 不得重新攤回首屏。
+Branch 的可見主線沿用 Stage 的漸進式揭露規則：先定位角色、說清目標與核心詞，再給一個可直接複製的最小任務、三個起點、必修閱讀、精選 Projects／學習資源、完成條件與回到主路線的下一站。被稱為「必修」或「精選」的內容要直接可見；setup、帳號／費用、進階流程、替代方案與排錯才預設收合。研究人員與開發者頁另外以 `scripts/test_role_paths.py` 鎖住 citation 核對、私人資料、read-only plan、diff／test／rollback、工具身分與多 surface、三語資源表及 archived 狀態。
+
+研究人員路線固定保留八個可見核心詞與「一篇 paper、三個問題、逐條回原文」的第一個練習。六份必修閱讀與 15 筆五星編輯評分資源表直接可見；資源分成 `3／4／5／2／1` 五組，使用真正 HTML `rowspan`，並由「可重現與證據」組補上文獻篩選、資料版本、實驗紀錄、可引用保存與環境重建。Gemini Notebook 名稱、隱私、citation、工具授權、封存狀態及研究服務轉型使用 90 天 freshness marker；GitHub stars 不進教材。OSF Projects 已宣布 2026-11-16 停止新建、2027-02-19 轉唯讀，因此不能再當成新研究專案的一般儲存預設；需要現行可引用保存入口時優先導向 Zenodo 或領域／機構核准 repository。
 
 ---
 

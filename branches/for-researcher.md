@@ -69,6 +69,54 @@
 
 Gemini Notebook 是 Google 在 2026-07-16 對 NotebookLM 使用的現行名稱；舊名稱只保留來幫你辨識。citation 是查證入口，不是「答案一定正確」的保證。
 
+<a id="必修閱讀"></a>
+## 📖 必修閱讀
+
+照這個順序讀。前兩份教你不要把 citation 當保證，後四份把來源、程式、資料與研究成果保存好：
+
+1. [Gemini Notebook citation 說明](https://support.google.com/gemininotebook/answer/16179559)：點 citation 回到原文，讀完整上下文。
+2. [Gemini Notebook 隱私與使用條款](https://support.google.com/gemininotebook/answer/17004255)：上傳前先知道資料會怎麼被處理。
+3. [Zotero 快速入門](https://www.zotero.org/support/quick_start_guide)：先把作者、年份、PDF 與筆記整理好。
+4. [PaperQA2 README](https://github.com/Future-House/paper-qa)：看程式化 literature RAG 怎麼把回答連回文件。
+5. [DVC 常用流程](https://dvc.org/doc/command-reference/)：用 Git 搭配資料版本與可重跑 pipeline。
+6. [Zenodo 快速入門](https://help.zenodo.org/docs/get-started/quickstart/)：把可公開的資料、程式或材料保存成可引用的版本。
+
+<a id="精選-projects"></a>
+<a id="大綱與寫作"></a>
+<a id="文獻管理整合"></a>
+## ⭐ 精選研究工具與專案
+
+<small>工具名稱、授權與 repository 狀態於 2026-08-29 UTC 依官方頁面與 GitHub API 查核。推薦度是本學習地圖的編輯評分，不是 GitHub stars 或排行榜。</small>
+
+<table>
+<thead><tr><th scope="col">分類</th><th scope="col">官方工具／專案</th><th scope="col">適合做什麼</th><th scope="col">狀態／授權</th><th scope="col">先知道的限制</th><th scope="col">推薦度</th></tr></thead>
+<tbody>
+<tr><th scope="rowgroup" rowspan="3">開始與整理</th><td><a href="https://notebooklm.google.com/">Gemini Notebook（原 NotebookLM）</a></td><td>用來源做問答並回到 citation</td><td>正式可用；雲端服務</td><td>引用仍要逐條核對；私人資料先看政策</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://www.zotero.org/">Zotero</a></td><td>管理 PDF、metadata、筆記與引用</td><td>正式可用；桌面／Web</td><td>它先解決來源管理，不會替你判斷研究品質</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/Future-House/paper-qa">Future-House/paper-qa</a></td><td>用 Python 建立 citation-grounded literature RAG</td><td>活躍；Apache-2.0</td><td>需要設定模型與文獻來源，品質仍要自己評測</td><td>⭐⭐⭐⭐⭐</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="4">探索與寫作</th><td><a href="https://github.com/assafelovic/gpt-researcher">assafelovic/gpt-researcher</a></td><td>多來源搜尋與 research brief</td><td>活躍；Apache-2.0</td><td>適合找候選來源，不是引用正確性的最後裁判</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/stanford-oval/storm">stanford-oval/storm</a></td><td>先整理多個觀點，再寫大綱與長文</td><td>可用；MIT；更新較慢</td><td>使用前先確認依賴與資料來源仍相容</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/kaixindelele/ChatPaper">kaixindelele/ChatPaper</a></td><td>中文 paper 摘要、翻譯與寫作輔助</td><td>可用；CC BY-NC-ND 4.0</td><td>repository 授權禁止商業使用與改作，不是一般開源程式授權</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/MuiseDestiny/zotero-gpt">MuiseDestiny/zotero-gpt</a></td><td>在 Zotero 閱讀時和文獻互動</td><td>可用；AGPL-3.0</td><td>外掛與模型設定要另外維護</td><td>⭐⭐⭐⭐</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="5">可重現與證據</th><td><a href="https://github.com/asreview/asreview">asreview/asreview</a></td><td>用 active learning 協助系統性回顧的文獻篩選</td><td>活躍；Apache-2.0</td><td>排序可以省時間；納入／排除理由仍需人工篩選並保存紀錄</td><td>⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/treeverse/dvc">treeverse/dvc</a></td><td>保存資料版本、模型與可重跑 pipeline</td><td>活躍；Apache-2.0</td><td>需要 Git 與資料儲存位置；資料版本不會替你證明結論正確</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/mlflow/mlflow">mlflow/mlflow</a></td><td>記錄每次 run 的參數、指標、資料與產物</td><td>活躍；Apache-2.0</td><td>有紀錄不等於實驗有效；不要把密鑰或受試者資料寫進 tracking</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://zenodo.org/">Zenodo</a></td><td>保存並發表資料、程式與研究材料，取得 DOI</td><td>正式可用；雲端服務</td><td>metadata 會公開；私人資料必須先依機構規則去識別或改用核准環境</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/jupyterhub/repo2docker">jupyterhub/repo2docker</a></td><td>從 repository 設定重建可執行的研究環境</td><td>活躍；BSD-3-Clause</td><td>container 能保存環境，仍要另外保存資料、硬體需求與外部服務</td><td>⭐⭐⭐⭐</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="2">研究自動化</th><td><a href="https://github.com/flonat/flonat-research">flonat/flonat-research</a></td><td>參考研究用 skills、agents、hooks 與 LaTeX 流程</td><td>活躍；MIT</td><td>是基礎建設範例，不是每個領域都可直接套用</td><td>⭐⭐⭐</td></tr>
+<tr><td><a href="https://github.com/SakanaAI/AI-Scientist-v2">SakanaAI/AI-Scientist-v2</a></td><td>研究端到端 multi-agent 實驗架構</td><td>研究參考；自訂 source-code license</td><td>授權要求揭露機器產生的科學稿件；作者仍要人工審查與負責</td><td>⭐⭐⭐⭐</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="1">歷史</th><td><a href="https://github.com/langchain-ai/open_deep_research">langchain-ai/open_deep_research</a></td><td>閱讀早期 deep-research agent 架構</td><td>已封存；MIT</td><td>只作歷史參考；不是新專案的現行預設</td><td>⭐⭐⭐</td></tr>
+</tbody>
+</table>
+
 ## ✅ 完成檢查與下一站
 
 - [ ] 我核對了三個答案，不只看 citation 編號。
@@ -86,50 +134,6 @@ Gemini Notebook 是 Google 在 2026-07-16 對 NotebookLM 使用的現行名稱�
 [Gemini Notebook 隱私說明](https://support.google.com/gemininotebook/answer/17004255)指出，一般內容不會直接拿來訓練基礎模型，除非使用者選擇提供 feedback；feedback 可能連同內容交由人員檢視。這不等於你的研究資料自動獲准上傳。病歷、受試者資料、未公開稿件與公司機密仍要遵守自己的治理規則。
 
 付費功能、配額與機構帳號規則會改變。開始前看官方頁面，不在教材保存容易過期的固定價格。
-
-</details>
-
-<a id="必修閱讀"></a>
-<details markdown="1">
-<summary>📖 展開：建議閱讀順序</summary>
-
-1. [Gemini Notebook citation 說明](https://support.google.com/gemininotebook/answer/16179559)：學會從回答回到原文。
-2. [Gemini Notebook 更名公告](https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/)：確認現行名稱與產品定位。
-3. [Zotero 文件](https://www.zotero.org/support/)：先把來源管理好。
-4. [PaperQA2 README](https://github.com/Future-House/paper-qa)：再看程式化 literature RAG。
-5. [AI Scientist v2 LICENSE](https://github.com/SakanaAI/AI-Scientist-v2/blob/main/LICENSE)：進階研究自動化前先讀使用邊界。
-
-</details>
-
-<a id="精選-projects"></a>
-<a id="大綱與寫作"></a>
-<a id="文獻管理整合"></a>
-<details markdown="1">
-<summary>⭐ 展開：完整研究工具與專案表</summary>
-
-<small>工具名稱、授權與 repository 狀態於 2026-08-29 UTC 依官方頁面與 GitHub API 查核。推薦度是本學習地圖的編輯評分，不是 GitHub stars 或排行榜。</small>
-
-<table>
-<thead><tr><th scope="col">分類</th><th scope="col">官方工具／專案</th><th scope="col">適合做什麼</th><th scope="col">狀態／授權</th><th scope="col">先知道的限制</th><th scope="col">推薦度</th></tr></thead>
-<tbody>
-<tr><th scope="rowgroup" rowspan="3">開始與整理</th><td><a href="https://notebooklm.google.com/">Gemini Notebook（原 NotebookLM）</a></td><td>用來源做問答並回到 citation</td><td>正式可用；雲端服務</td><td>引用仍要逐條核對；私人資料先看政策</td><td>⭐⭐⭐⭐⭐</td></tr>
-<tr><td><a href="https://www.zotero.org/">Zotero</a></td><td>管理 PDF、metadata、筆記與引用</td><td>正式可用；桌面／Web</td><td>它先解決來源管理，不會替你判斷研究品質</td><td>⭐⭐⭐⭐⭐</td></tr>
-<tr><td><a href="https://github.com/Future-House/paper-qa">Future-House/paper-qa</a></td><td>用 Python 建立 citation-grounded literature RAG</td><td>活躍；Apache-2.0</td><td>需要設定模型與文獻來源，品質仍要自己評測</td><td>⭐⭐⭐⭐⭐</td></tr>
-</tbody>
-<tbody>
-<tr><th scope="rowgroup" rowspan="4">探索與寫作</th><td><a href="https://github.com/assafelovic/gpt-researcher">assafelovic/gpt-researcher</a></td><td>多來源搜尋與 research brief</td><td>活躍；Apache-2.0</td><td>適合找候選來源，不是引用正確性的最後裁判</td><td>⭐⭐⭐⭐</td></tr>
-<tr><td><a href="https://github.com/stanford-oval/storm">stanford-oval/storm</a></td><td>先整理多個觀點，再寫大綱與長文</td><td>可用；MIT；更新較慢</td><td>使用前先確認依賴與資料來源仍相容</td><td>⭐⭐⭐⭐</td></tr>
-<tr><td><a href="https://github.com/kaixindelele/ChatPaper">kaixindelele/ChatPaper</a></td><td>中文 paper 摘要、翻譯與寫作輔助</td><td>可用；自訂條款</td><td>不是標準 SPDX 授權；商業或散布前先讀條款</td><td>⭐⭐⭐⭐⭐</td></tr>
-<tr><td><a href="https://github.com/MuiseDestiny/zotero-gpt">MuiseDestiny/zotero-gpt</a></td><td>在 Zotero 閱讀時和文獻互動</td><td>可用；AGPL-3.0</td><td>外掛與模型設定要另外維護</td><td>⭐⭐⭐⭐</td></tr>
-</tbody>
-<tbody>
-<tr><th scope="rowgroup" rowspan="2">研究自動化</th><td><a href="https://github.com/flonat/flonat-research">flonat/flonat-research</a></td><td>參考研究用 skills、agents、hooks 與 LaTeX 流程</td><td>活躍；MIT</td><td>是基礎建設範例，不是每個領域都可直接套用</td><td>⭐⭐⭐</td></tr>
-<tr><td><a href="https://github.com/SakanaAI/AI-Scientist-v2">SakanaAI/AI-Scientist-v2</a></td><td>研究端到端 multi-agent 實驗架構</td><td>研究參考；自訂 source-code license</td><td>不是作者替代品，也不是可直接投稿的保證</td><td>⭐⭐⭐⭐</td></tr>
-</tbody>
-<tbody>
-<tr><th scope="rowgroup" rowspan="1">歷史</th><td><a href="https://github.com/langchain-ai/open_deep_research">langchain-ai/open_deep_research</a></td><td>閱讀早期 deep-research agent 架構</td><td>已封存；MIT</td><td>只作歷史參考；新專案請改用仍在維護的工具</td><td>⭐⭐⭐⭐⭐</td></tr>
-</tbody>
-</table>
 
 </details>
 
