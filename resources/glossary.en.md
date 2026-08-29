@@ -52,7 +52,7 @@ This table is the project's **enforced naming convention** — every stage uses 
 
 → For full definitions, see the sections below.
 
-**Keep two orders separate:** the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Workflow Graph / Agent Framework](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering: Harness, Loops, and Graphs](../stages/07-multi-agent-production.en.md). The Prompt → Context → Harness → Loop → Graph stack compares how much of the system you control; it is **not the chapter order**.
+**Keep two orders separate:** the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Workflow Graph / Agent Framework](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering: Harness, Loops, and Graphs](../stages/07-multi-agent-production.en.md). Prompt → Context → Harness → Loop → Graph are five overlapping **control questions**. They are **not the chapter order or a sequence in which new technology replaces old technology**.
 
 ---
 
@@ -457,7 +457,7 @@ Contrast:
 - **Framework** (Stage 4) defines the **API**: what the interface you call looks like
 - **Harness** (this term) defines the **runtime**: how it runs, how it recovers, how it is observed
 
-📍 Umbrella chapter (**8 Harness core components** / Prompt→Context→Harness→Loop→Graph five-layer engineering split / framework vs harness): [Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.en.md)
+📍 Umbrella chapter (**8 Harness core components** / Prompt→Context→Harness→Loop→Graph five control questions / framework vs harness): [Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.en.md)
 📍 Reference implementation case study (reading Claude Code source): [Stage 5 5.7](../stages/05-claude-code-ecosystem.en.md)
 📍 Further: [`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python), [`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering), [`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
 
@@ -467,7 +467,7 @@ The engineering work of designing how an Agent starts, takes a step, checks it, 
 
 **Agent Loop** is the runner's actual “model → tool / handoff → observation → next turn”; **Loop Engineering** designs that loop and its surrounding rules. Think of a wheel versus designing the whole bicycle: related, but not identical.
 
-This name is already used in industry writing and research discussion. It was not invented by this project, and it is not a formal standard jointly defined by every vendor. Existing research has not measured overall adoption, so this glossary says the term is in use—not that everyone uses it. Introductory source: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering); research usage: [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884). See [Stage 7](../stages/07-multi-agent-production.en.md) for the full five-layer map and practice entry points.
+This name is already used in industry writing and research discussion. It was not invented by this project, and it is not a formal standard jointly defined by every vendor. Existing research has not measured overall adoption, so this glossary says the term is in use—not that everyone uses it. Introductory source: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering); research usage: [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884). See [Stage 7](../stages/07-multi-agent-production.en.md) for the five control questions and practice entry points.
 
 ### Graph Engineering
 
@@ -478,7 +478,7 @@ Designing an Agent's work as an **explicit Workflow Graph**: a node is a step, a
 
 Searchable implementation names and sources: [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents), [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/), and [Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156). These sources show that the name and practice are in real use; different tools may still use different labels.
 
-**Relationship to loops**: this is not either-or. **Inside a box, the agent loops; between boxes, you define the order**. A graph puts several loops into boxes, then orders those boxes. If you put everything back into one box, you are back to a plain loop. A box does not have to contain an agent either; it can be a tool, a check, or a "human approval required before continuing" gate. For the full five-layer ladder, see [Stage 7](../stages/07-multi-agent-production.en.md) (canonical).
+**Relationship to loops**: this is not either-or. **Inside a box, the agent loops; between boxes, you define the order**. A graph puts several loops into boxes, then orders those boxes. If you put everything back into one box, you are back to a plain loop. A box does not have to contain an agent either; it can be a tool, a check, or a "human approval required before continuing" gate. For the full five-control-question explanation, see [Stage 7](../stages/07-multi-agent-production.en.md) (canonical).
 
 Start with tools and basic graphs in [Stage 4's Workflow Graph / Agent framework](../stages/04-agent-frameworks.en.md), then go to [Stage 7](../stages/07-multi-agent-production.en.md) for budgets, verification, observability, and recovery. The runnable entry point is [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.en.md) (`StateGraph` / conditional edges / checkpointer). Related: harness, Loop Engineering, orchestration.
 

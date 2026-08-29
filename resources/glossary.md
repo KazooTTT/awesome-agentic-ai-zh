@@ -52,7 +52,7 @@
 
 → 詳細定義請看下面各區塊。
 
-**先分清兩種順序：**課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 與 Graph](../stages/07-multi-agent-production.md)。五層圖的 Prompt → Context → Harness → Loop → Graph 則是在比較「要管的範圍有多大」，**不是章節編號**。
+**先分清兩種順序：**課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 與 Graph](../stages/07-multi-agent-production.md)。Prompt → Context → Harness → Loop → Graph 是五個互相重疊的**控制問題**，**不是章節編號，也不是新技術淘汰舊技術的順序**。
 
 ---
 
@@ -457,7 +457,7 @@ LLM 「自信地說錯」——把不存在的 API 編出來、把錯的數字�
 - **Framework**（Stage 4）規範 **API**：你呼叫的介面長什麼樣
 - **Harness**（本詞）規範 **runtime**：怎麼跑、怎麼 recovery、怎麼觀測
 
-📍 **上位章節**（**8 個 Harness 核心元件** / Prompt→Context→Harness→Loop→Graph 五層工程分工 / framework vs harness）：[Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程設計--本-stage-核心概念)
+📍 **上位章節**（**8 個 Harness 核心元件** / Prompt→Context→Harness→Loop→Graph 五個控制問題 / framework vs harness）：[Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程設計--本-stage-核心概念)
 📍 **Reference implementation case study**（讀 Claude Code source）：[Stage 5 5.7](../stages/05-claude-code-ecosystem.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看)
 📍 延伸：[`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python)、[`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering)、[`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
 
@@ -467,7 +467,7 @@ LLM 「自信地說錯」——把不存在的 API 編出來、把錯的數字�
 
 **Agent Loop** 是 runner 裡真的執行的「model → tool／handoff → observation → next turn」；**Loop Engineering** 是設計這個迴圈與外圍規則。像「輪子」和「設計整台腳踏車」：有關係，但不是同一件事。
 
-這個名稱已出現在產業文章與研究討論中；它不是本專案自創，也不是所有供應商共同制定的正式標準。現有研究也沒有量測整體採用率，所以這裡只說「有人使用」，不說「人人都這樣叫」。入門來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)；研究用法可看 [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884)。完整五層與實作入口見 [Stage 7](../stages/07-multi-agent-production.md)。
+這個名稱已出現在產業文章與研究討論中；它不是本專案自創，也不是所有供應商共同制定的正式標準。現有研究也沒有量測整體採用率，所以這裡只說「有人使用」，不說「人人都這樣叫」。入門來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)；研究用法可看 [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884)。五個控制問題與實作入口見 [Stage 7](../stages/07-multi-agent-production.md)。
 
 ### Graph Engineering（圖工程）
 
@@ -478,7 +478,7 @@ LLM 「自信地說錯」——把不存在的 API 編出來、把錯的數字�
 
 可搜尋的實作名稱與來源：[LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)、[Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。這些來源證明名稱和做法確實有人使用；不同工具仍可能使用不同叫法。
 
-**跟迴圈的關係**：不是二選一。**格子裡面是 agent 自己繞圈，格子跟格子之間才是你安排的順序**——所以圖是把好幾個迴圈裝進格子再排順序；全部塞回同一個格子，就退回單純的迴圈了。格子裡也不一定是 agent，可以是一個工具、一段檢查、或「這裡要人按核准才能往下」。五層階梯的完整說明見 [Stage 7](../stages/07-multi-agent-production.md)（canonical）。
+**跟迴圈的關係**：不是二選一。**格子裡面是 agent 自己繞圈，格子跟格子之間才是你安排的順序**——所以圖是把好幾個迴圈裝進格子再排順序；全部塞回同一個格子，就退回單純的迴圈了。格子裡也不一定是 agent，可以是一個工具、一段檢查、或「這裡要人按核准才能往下」。五個控制問題的完整說明見 [Stage 7](../stages/07-multi-agent-production.md)（canonical）。
 
 先在 [Stage 4 的 Workflow Graph／Agent framework](../stages/04-agent-frameworks.md) 學工具和基本圖，再到 [Stage 7](../stages/07-multi-agent-production.md) 加上預算、驗證、觀測與復原。可直接跑的入口是 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.md)（`StateGraph` / conditional edge / checkpointer）。相關：harness、Loop Engineering、orchestration。
 

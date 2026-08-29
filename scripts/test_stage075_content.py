@@ -83,7 +83,7 @@ LEGACY_ANCHORS = {
 }
 FRESHNESS = (
     "<!-- freshness: canonical=stages/07.5-advanced-agentic-concepts.md; "
-    "verified_on=2026-08-28; "
+    "verified_on=2026-08-29; "
     "scope=agent-patterns,harnesses,evals,dynamic-workflows,framework-status,research; "
     "max_age_days=90 -->"
 )
@@ -159,22 +159,25 @@ def test_model_harness_fit_is_visible_and_evidence_based(locale: str) -> None:
     assert headings[locale] in visible
     semantic_markers = {
         "zh-TW": (
-            "權限、sandbox、log、Eval 與 recovery **不會自動過時**",
-            "一次只拿一個 Harness 元件做刪除測試，再跑同一組 Eval。",
+            "權限、sandbox、log、Eval、人工核准與 recovery 代表長期責任",
+            "**不會因模型升級就自動消失**",
+            "一次只拿一個 Harness 元件做刪除測試，再跑同一組品質與安全 Eval。",
             "| **保留 Keep** | 拿掉後，同一個可重現失敗又回來 |",
             "| **簡化 Simplify** | 保護還有用，但較少步驟也能通過同一組 Eval |",
             "| **移除 Remove** | 刪除測試通過，品質與安全沒有退步 |",
         ),
         "en": (
-            "Permissions, sandboxes, logs, Evals, and recovery do **not automatically become obsolete**.",
-            "Test one Harness component at a time, then run the same Eval.",
+            "Permissions, sandboxes, logs, Evals, human approvals, and recovery represent lasting responsibilities",
+            "do **not disappear automatically after a model upgrade**",
+            "Test one Harness component at a time, then run the same quality and safety Evals.",
             "| **Keep** | Removing it brings back the same repeatable failure |",
             "| **Simplify** | The protection still helps, but fewer steps pass the same Eval |",
             "| **Remove** | The deletion test passes without reducing quality or safety |",
         ),
         "zh-Hans": (
-            "权限、sandbox、log、Eval 和 recovery **不会自动过时**",
-            "一次只拿一个 Harness 元件做删除测试，再运行同一组 Eval。",
+            "权限、sandbox、log、Eval、人工批准和 recovery 代表长期责任",
+            "**不会因为模型升级就自动消失**",
+            "一次只拿一个 Harness 元件做删除测试，再运行同一组质量和安全 Eval。",
             "| **保留 Keep** | 拿掉后，同一个可重复的失败又回来 |",
             "| **简化 Simplify** | 保护仍有用，但更少步骤也能通过同一组 Eval |",
             "| **移除 Remove** | 删除测试通过，质量和安全没有退步 |",

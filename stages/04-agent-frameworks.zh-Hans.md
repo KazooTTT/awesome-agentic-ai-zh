@@ -35,9 +35,9 @@
 | **Workflow Graph** | 把每一站和道路画出来 | 用 node、edge、branch 与 state 表示工作顺序；格子里可以是 Agent、工具、检查或人工批准 |
 | **Agent Framework** | 一盒帮你接线的工具积木 | 提供 runner、tool、state、handoff、checkpoint 等零件；一个 Agent 也能使用 |
 | **Loop Engineering** | 设计它怎么反复做、怎么验证、何时停 | Stage 7 才加入预算、验证、恢复与人工升级 |
-| **Graph Engineering** | 用工具箱设计整张工作地图 | Stage 7 才把多个 loop、工具与人做成可观测、可恢复的 production 系统 |
+| **Production orchestration（上线编排）** | 把整张工作地图做成真的能安全运行 | Stage 7 才为多个 loop、工具和人工批准加上观测、恢复与停止规则；新兴文章也可能称为 Graph Engineering |
 
-**Framework 是工具箱；Workflow Graph 是你画出的工作地图；Graph Engineering 是设计这张图的工程工作。** **Multi-Agent** 可以放进图里，但不是每张图都需要多个 Agent，也不是每个 node 都必须是 Agent。
+**Framework 是工具箱；Workflow Graph 是你画出的工作地图；Production orchestration 是让地图能安全运行的工程工作。** **Graph Engineering** 是新兴但还未统一的称呼，不是 Framework 的另一个名字。**Multi-Agent** 可以放进图里，但不是每张图都需要多个 Agent，也不是每个 node 都必须是 Agent。
 
 ## 🗺️ 先看一张选择地图
 
