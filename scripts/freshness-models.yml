@@ -229,6 +229,28 @@ cookbook_fact_pack:
     notebooklm_skill: 'https://github.com/PleasePrompto/notebooklm-skill'
     zotero_skills: 'https://github.com/WenyuChiou/zotero-skills'
 
+courses_fact_pack:
+  canonical: 'resources/courses.md'
+  verified_on: '2026-08-29'
+  scope: ['course-availability', 'cost', 'certificate', 'assessment', 'repository-status']
+  official_sources:
+    hugging_face_agents: 'https://huggingface.co/learn/agents-course'
+    microsoft_agents_for_beginners: 'https://github.com/microsoft/ai-agents-for-beginners'
+    deeplearning_ai_agentic_ai: 'https://www.deeplearning.ai/courses/agentic-ai/'
+    wandb_agents: 'https://wandb.ai/site/courses/agents/'
+    claude_academy: 'https://academy.claude.com/'
+    claude_academy_faq: 'https://academy.claude.com/help/faq'
+    langchain_academy: 'https://academy.langchain.com/courses/intro-to-langgraph'
+    kaggle_agents: 'https://www.kaggle.com/learn-guide/5-day-agents'
+    ibm_certificate: 'https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai'
+    vanderbilt_specialization: 'https://www.coursera.org/specializations/ai-agents'
+    nvidia_zh_learning_path: 'https://www.nvidia.cn/training/certification/generative-ai-llm-learning-path/'
+    alibaba_clouder: 'https://edu.aliyun.com/certification/cldm02'
+    project_status: 'scripts/repository-freshness-snapshot.json'
+  community_sources:
+    datawhale_hello_agents: 'https://github.com/datawhalechina/hello-agents'
+    datawhale_agentic_ai: 'https://github.com/datawhalechina/agentic-ai'
+
 verified_pages:
   - canonical: 'stages/01-llm-basics.md'
     required_scopes: ['models', 'pricing', 'availability', 'deprecations']
@@ -259,6 +281,9 @@ verified_pages:
     max_age_days: 90
   - canonical: 'resources/cookbook.md'
     required_scopes: ['skills', 'mcp', 'documents', 'gemini-notebook', 'zotero', 'local-runtime', 'cli-tools']
+    max_age_days: 90
+  - canonical: 'resources/courses.md'
+    required_scopes: ['course-availability', 'cost', 'certificate', 'assessment', 'repository-status']
     max_age_days: 90
 
 current_frontier_models:
@@ -472,6 +497,26 @@ stale_patterns:
     include_files: ['resources/cookbook.md']
     qualifier_terms: []
     note: 'Cookbook commands must stay on MCP v2, OpenCode 2, and the current Aider Ollama path'
+
+  - pattern: 'anthropic\.skilljar\.com'
+    include_files: ['resources/courses.md']
+    qualifier_terms: []
+    note: 'The current general learner entrance is Claude Academy, not the legacy Skilljar URL'
+
+  - pattern: 'coursera\.org/specializations/agentic-ai-engineering|e\.huawei\.com/cn/talent/cert/'
+    include_files: ['resources/courses.md']
+    qualifier_terms: ['historical', 'history', 'removed', '舊', '旧', '歷史', '历史', '移除']
+    note: 'Do not restore the former Edureka or unverified Huawei rows as current curated course entries'
+
+  - pattern: '(?:\$25[–-]30|¥3500)'
+    include_files: ['resources/courses.md']
+    qualifier_terms: ['historical', 'history', 'former', '舊', '旧', '歷史', '历史', '曾經', '曾经']
+    note: 'Course prices vary by account, region, and schedule; do not freeze the old snapshots'
+
+  - pattern: 'W(?:eights\s*&\s*Biases|&B).{0,180}(?:free completion certificate|免費完成證書|免费完成证书)'
+    include_files: ['resources/courses.md']
+    qualifier_terms: ['not', 'unclear', 'does not clearly', '未明示', '沒有清楚', '没有清楚', '不要假定']
+    note: 'The public W&B course page does not currently state a completion-certificate rule'
 
   - pattern: 'local API (?:is|是) read-only|local API 唯讀|local API 只读'
     include_files: ['resources/cookbook.md']

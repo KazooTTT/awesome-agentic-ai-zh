@@ -274,9 +274,26 @@ of why the files stay separate and the maintainer rules are in two closed disclo
 `scripts/test_resource_index_content.py` locks the 11-file inventory, task-router links, five
 core labels, five accessible rowgroups (`4／2／2／2／1`), two closed disclosures, three-locale file
 coverage, and the absence of stale approximate line counts, the former seven-file claim, and the
-old NotebookLM product name. `scripts/check-reader-ux.py` enrolls this as the nineteenth page
-group, keeps all five definitions before the visible table, and ratchets each locale to its measured
+old NotebookLM product name. `scripts/check-reader-ux.py` enrolls this page group, keeps all five
+definitions before the visible table, and ratchets each locale to its measured
 mainline plus only 50 non-whitespace characters.
+
+### Course map — learn first, certificate second
+
+`resources/courses*` keeps five bold credential terms, a task-first chooser, 12 rated courses, a
+copyable five-line work-evidence card, and visible return links to Stages 3／4／7. The two disclosures
+hold only certificate caveats and maintainer rules. The main table uses four accessible rowgroups
+(`3／5／2／2`); each course row has one primary URL, while the Datawhale companion stays outside the
+table so category and rating semantics remain unambiguous.
+
+`scripts/test_courses_content.py` locks the 12 URL／rating pairs, full 22-link order, exact freshness
+marker, closed disclosure count, portfolio card, locale-correct stage links, and current facts such
+as the Hugging Face 80% Unit 1 threshold, Microsoft／Datawhale no-certificate status, DeepLearning.AI
+Pro boundary, W&B's unstated public certificate rule, Claude quiz badge, and Alibaba identity
+condition. It rejects the former tier labels, Skilljar entrance, Edureka／Huawei rows, frozen prices,
+volatile stars, empty-quote artifacts, and generic verification-date filler. The freshness config
+separately enrolls course availability, cost, certificate, assessment, and repository status on a
+90-day review cycle.
 
 ### Whole-site learner-route coherence
 

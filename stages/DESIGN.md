@@ -248,6 +248,14 @@ Stage 7.5 保留三組低文字密度三語圖：四問題群組的 12 概念卡
 
 完整表固定使用 `4／2／2／2／1` 五個 `<tbody>`，以真正的 `scope="rowgroup"` 與 `rowspan` 合併同類型欄位。三語檔名、順序、用途與限制一致。不要放容易漂移的行數、GitHub stars 或舊產品名稱；新 reference 必須有獨立工作、被至少三個 stage／track／branch 使用，否則留在原章節。
 
+### 課程地圖固定結構
+
+`resources/courses*` 先幫讀者選一門課，不做證書排行榜。可見順序固定為「五個證書／課程核心詞 → 按需求選一條 → 12 筆精選課程與學習路線 → 可直接複製的五行作品證據卡 → Stage 3／4／7 返回路線」。證書限制與清單維護方法可以收合；精選課程、編輯評分與作品卡保持可見。
+
+12 筆主資源依 `3／5／2／2` 分成免費打底、建構與上線、較長系列課、中文供應商路線。每組使用獨立 `<tbody>`、`scope="rowgroup"` 與真正 `rowspan`；一列只放一個主課程 URL，中文伴讀等補充入口放在表格外。星等只表示教學價值、實作完整度、更新狀態與可轉移性，不表示證書排名，也不保存 GitHub stars。
+
+**Certificate of Completion**、**Skill Badge**、**Professional Certificate** 與 **Certification Exam** 必須分開定義。沒有官方證書條件就寫未明示，不自行補成「免費證書」；費用、cohort、證書、評量與 repository status 使用三語一致的 90 天 freshness marker。官方頁證明課程與證書事實，canonical repo 證明開源教材狀態，第三方文章只能當線索。
+
 ### 全站白話規則（ELI5）
 
 這是整份學習地圖的共同 gate，不是 Stage 0 的特殊語氣。目標是讓五歲小孩也能跟得上「現在要做什麼」，但不把技術內容寫錯或寫成幼稚口吻。
