@@ -69,9 +69,14 @@ RESOURCE_PAIRS = {
         ("https://github.com/stanford-oval/storm", "⭐⭐⭐⭐"),
         ("https://github.com/kaixindelele/ChatPaper", "⭐⭐⭐⭐⭐"),
         ("https://github.com/MuiseDestiny/zotero-gpt", "⭐⭐⭐⭐"),
+        ("https://github.com/asreview/asreview", "⭐⭐⭐⭐"),
+        ("https://github.com/treeverse/dvc", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/mlflow/mlflow", "⭐⭐⭐⭐⭐"),
+        ("https://zenodo.org/", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/jupyterhub/repo2docker", "⭐⭐⭐⭐"),
         ("https://github.com/flonat/flonat-research", "⭐⭐⭐"),
         ("https://github.com/SakanaAI/AI-Scientist-v2", "⭐⭐⭐⭐"),
-        ("https://github.com/langchain-ai/open_deep_research", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/langchain-ai/open_deep_research", "⭐⭐⭐"),
     ),
     "developer": (
         ("https://code.claude.com/docs/en/overview", "⭐⭐⭐⭐⭐"),
@@ -106,16 +111,14 @@ RESOURCE_PAIRS = {
 }
 
 ROWGROUPS = {
-    "researcher": (3, 4, 2, 1),
+    "researcher": (3, 4, 5, 2, 1),
     "developer": (4, 6, 2, 2),
     "teacher": (3, 3, 3, 3),
 }
 
 VISIBLE_STARTING_URLS = {
     "researcher": (
-        "https://notebooklm.google.com/",
-        "https://www.zotero.org/",
-        "https://github.com/Future-House/paper-qa",
+        *(url for url, _rating in RESOURCE_PAIRS["researcher"]),
     ),
     "developer": (
         *(url for url, _rating in RESOURCE_PAIRS["developer"]),
@@ -123,9 +126,18 @@ VISIBLE_STARTING_URLS = {
     "teacher": tuple(url for url, _rating in RESOURCE_PAIRS["teacher"]),
 }
 
-VISIBLE_FIVE_STAR_COUNTS = {"researcher": 3, "developer": 8, "teacher": 10}
+VISIBLE_FIVE_STAR_COUNTS = {"researcher": 10, "developer": 8, "teacher": 10}
 
-DETAIL_COUNTS = {"researcher": 5, "developer": 3, "teacher": 5}
+DETAIL_COUNTS = {"researcher": 3, "developer": 3, "teacher": 5}
+
+RESEARCHER_REQUIRED_READING_URLS = (
+    "https://support.google.com/gemininotebook/answer/16179559",
+    "https://support.google.com/gemininotebook/answer/17004255",
+    "https://www.zotero.org/support/quick_start_guide",
+    "https://github.com/Future-House/paper-qa",
+    "https://dvc.org/doc/command-reference/",
+    "https://help.zenodo.org/docs/get-started/quickstart/",
+)
 
 DEVELOPER_REQUIRED_READING_URLS = (
     "https://code.claude.com/docs/en/permissions",
@@ -182,7 +194,7 @@ PI_NO_BUILT_IN_SANDBOX = {
 }
 
 VISIBLE_LANDMARKS = {
-    "researcher": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## ✅"),
+    "researcher": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
     "developer": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
     "teacher": ("## 📌", "## 🎯", "## 🧩", "## 🛡", "## 🛠", "## 📚", "## ⭐", "## ✅"),
 }
@@ -195,6 +207,11 @@ RESOURCE_STATUS = {
     "https://github.com/stanford-oval/storm": "usable",
     "https://github.com/kaixindelele/ChatPaper": "usable",
     "https://github.com/MuiseDestiny/zotero-gpt": "usable",
+    "https://github.com/asreview/asreview": "active",
+    "https://github.com/treeverse/dvc": "active",
+    "https://github.com/mlflow/mlflow": "active",
+    "https://zenodo.org/": "available",
+    "https://github.com/jupyterhub/repo2docker": "active",
     "https://github.com/flonat/flonat-research": "active",
     "https://github.com/SakanaAI/AI-Scientist-v2": "research",
     "https://github.com/langchain-ai/open_deep_research": "archived",
@@ -243,8 +260,13 @@ RESOURCE_LICENSE_OR_SERVICE = {
     "https://github.com/Future-House/paper-qa": "Apache-2.0",
     "https://github.com/assafelovic/gpt-researcher": "Apache-2.0",
     "https://github.com/stanford-oval/storm": "MIT",
-    "https://github.com/kaixindelele/ChatPaper": {"zh-TW": "自訂條款", "en": "custom terms", "zh-Hans": "自定义条款"},
+    "https://github.com/kaixindelele/ChatPaper": "CC BY-NC-ND 4.0",
     "https://github.com/MuiseDestiny/zotero-gpt": "AGPL-3.0",
+    "https://github.com/asreview/asreview": "Apache-2.0",
+    "https://github.com/treeverse/dvc": "Apache-2.0",
+    "https://github.com/mlflow/mlflow": "Apache-2.0",
+    "https://zenodo.org/": {"zh-TW": "雲端服務", "en": "cloud service", "zh-Hans": "云服务"},
+    "https://github.com/jupyterhub/repo2docker": "BSD-3-Clause",
     "https://github.com/flonat/flonat-research": "MIT",
     "https://github.com/SakanaAI/AI-Scientist-v2": "source-code license",
     "https://github.com/langchain-ai/open_deep_research": "MIT",
@@ -285,11 +307,16 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/Future-House/paper-qa": {"zh-TW": "評測", "en": "evaluate", "zh-Hans": "评测"},
     "https://github.com/assafelovic/gpt-researcher": {"zh-TW": "引用", "en": "citation", "zh-Hans": "引用"},
     "https://github.com/stanford-oval/storm": {"zh-TW": "依賴", "en": "dependencies", "zh-Hans": "依赖"},
-    "https://github.com/kaixindelele/ChatPaper": {"zh-TW": "SPDX", "en": "SPDX", "zh-Hans": "SPDX"},
+    "https://github.com/kaixindelele/ChatPaper": {"zh-TW": "商業", "en": "commercial", "zh-Hans": "商业"},
     "https://github.com/MuiseDestiny/zotero-gpt": {"zh-TW": "模型", "en": "model", "zh-Hans": "模型"},
+    "https://github.com/asreview/asreview": {"zh-TW": "人工篩選", "en": "human screening", "zh-Hans": "人工筛选"},
+    "https://github.com/treeverse/dvc": {"zh-TW": "資料版本", "en": "data versions", "zh-Hans": "数据版本"},
+    "https://github.com/mlflow/mlflow": {"zh-TW": "run", "en": "runs", "zh-Hans": "run"},
+    "https://zenodo.org/": {"zh-TW": "私人資料", "en": "private data", "zh-Hans": "私人资料"},
+    "https://github.com/jupyterhub/repo2docker": {"zh-TW": "container", "en": "container", "zh-Hans": "container"},
     "https://github.com/flonat/flonat-research": {"zh-TW": "領域", "en": "field", "zh-Hans": "领域"},
     "https://github.com/SakanaAI/AI-Scientist-v2": {"zh-TW": "作者", "en": "authors", "zh-Hans": "作者"},
-    "https://github.com/langchain-ai/open_deep_research": {"zh-TW": "仍在維護", "en": "default", "zh-Hans": "仍在维护"},
+    "https://github.com/langchain-ai/open_deep_research": {"zh-TW": "現行預設", "en": "current default", "zh-Hans": "现行默认"},
     "https://code.claude.com/docs/en/overview": {"zh-TW": "permission", "en": "permission", "zh-Hans": "permission"},
     "https://github.com/openai/codex": {"zh-TW": "approval", "en": "approval", "zh-Hans": "approval"},
     "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent": {"zh-TW": "人工", "en": "human", "zh-Hans": "人工"},
@@ -560,6 +587,18 @@ def test_research_copy_block_teaches_source_verification(locale: str) -> None:
 
 
 @pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_research_required_reading_and_complete_resource_table_are_visible(locale: str) -> None:
+    text = PAGES["researcher"][locale].read_text(encoding="utf-8")
+    visible = _without_details(text)
+    for url in RESEARCHER_REQUIRED_READING_URLS:
+        assert url in visible
+    for url, _rating in RESOURCE_PAIRS["researcher"]:
+        assert url in visible
+    assert "open_deep_research" in visible
+    assert re.search(r"open_deep_research.{0,300}(archived|封存|历史|歷史)", visible, re.DOTALL | re.IGNORECASE)
+
+
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
 def test_developer_copy_block_is_small_reviewable_and_human_gated(locale: str) -> None:
     visible = _without_details(PAGES["developer"][locale].read_text(encoding="utf-8"))
     start, end = DEVELOPER_EXERCISE_BOUNDS[locale]
@@ -685,8 +724,8 @@ def test_freshness_urls_and_legacy_landings_are_mirrored(role: str) -> None:
         assert text.count(FRESHNESS[role]) == 1
         landing_markers = {
             "researcher": (
-                "## 📌", "<summary>⭐", "<summary>🧪", "## 🛠", "<summary>⭐",
-                "<summary>⭐", "<summary>🧪", "<summary>🧪", "<summary>📖",
+                "## 📌", "## ⭐", "<summary>🧪", "## 🛠", "## ⭐",
+                "## ⭐", "<summary>🧪", "<summary>🧪", "## 📖",
                 "<summary>🧪", "## 📚",
             ),
             "developer": (
