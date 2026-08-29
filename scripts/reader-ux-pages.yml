@@ -958,9 +958,9 @@ pages:
         en: {heading: "🎯 Curated projects and learning resources", anchor: -curated-projects-and-learning-resources}
         zh-Hans: {heading: "🎯 精选项目与学习资源", anchor: -精选项目与学习资源}
       completion:
-        zh-TW: {heading: "✅ 進入 Stage 6 前的自我檢查", anchor: -進入-stage-6-前的自我檢查}
-        en: {heading: "✅ Self-check before Stage 6", anchor: -self-check-before-stage-6}
-        zh-Hans: {heading: "✅ 进入 Stage 6 前的自我检查", anchor: -进入-stage-6-前的自我检查}
+        zh-TW: {heading: "✅ 進入下一站前的自我檢查", anchor: -進入下一站前的自我檢查}
+        en: {heading: "✅ Self-check before your next stop", anchor: -self-check-before-your-next-stop}
+        zh-Hans: {heading: "✅ 进入下一站前的自我检查", anchor: -进入下一站前的自我检查}
     core_terms:
       section_id: core-terms
       first_exercise_section_id: exercise-1
@@ -1663,7 +1663,7 @@ pages:
       zh-Hans: tracks/cli/A2-cli-workflow.zh-Hans.md
     max_visible_chars:
       zh-TW: 2699
-      en: 4872
+      en: 4938
       zh-Hans: 2682
     max_open_details: 0
     visible_section_order: [core-terms, learning-goals, required-reading, hands-on, projects, completion]
@@ -1760,14 +1760,14 @@ pages:
           anchor: 动手练习-cli-8做一张-portable-prompt-对照卡
       completion:
         zh-TW:
-          heading: "✅ 進 A3 前的自我檢查"
-          anchor: -進-a3-前的自我檢查
+          heading: "✅ 進 Stage 5 前的自我檢查"
+          anchor: -進-stage-5-前的自我檢查
         en:
-          heading: "✅ Self-check before A3"
-          anchor: -self-check-before-a3
+          heading: "✅ Self-check before Stage 5"
+          anchor: -self-check-before-stage-5
         zh-Hans:
-          heading: "✅ 进入 A3 前的自我检查"
-          anchor: -进入-a3-前的自我检查
+          heading: "✅ 进入 Stage 5 前的自我检查"
+          anchor: -进入-stage-5-前的自我检查
     core_terms:
       section_id: core-terms
       first_exercise_section_id: cli-5

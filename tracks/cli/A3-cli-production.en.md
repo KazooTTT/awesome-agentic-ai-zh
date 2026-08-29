@@ -2,7 +2,7 @@
 
 > [繁體中文](./A3-cli-production.md) | [简体中文](./A3-cli-production.zh-Hans.md) | **English**
 
-> [← A2 — Make the CLI agent follow the same method every time](A2-cli-workflow.en.md) · **Track A: CLI Power User** Stop 3 (final)
+> [← Stage 5 — Track A core](../../stages/05-claude-code-ecosystem.en.md#-entry-requirements-and-reading-paths) · **Track A: CLI Power User** Stop 3 (final core stop)
 
 This stop has one goal: **have a CLI agent perform a read-only check on a test PR. It may give feedback, but it must not merge, deploy, or obtain extra permissions by itself.**
 
@@ -37,7 +37,7 @@ The three terms appear together but are not the same thing: MCP connects tools, 
 <summary>Expand for time, prerequisites, environment, and cost</summary>
 
 - **Time**: finish the four smallest outcomes first. You can usually split them into several short practices; do not connect many services at once just to save time.
-- **Prerequisites**: complete [A1](A1-cli-intro.en.md) and [A2](A2-cli-workflow.en.md), and be able to recognize the basic screens for `git status`, PRs, and GitHub Actions.
+- **Prerequisites**: complete [A1](A1-cli-intro.en.md), [A2](A2-cli-workflow.en.md), and the [Stage 5 Track A core, sections 5.1–5.4](../../stages/05-claude-code-ecosystem.en.md#-entry-requirements-and-reading-paths), and be able to recognize the basic screens for `git status`, PRs, and GitHub Actions.
 - **Environment**: a demo repo with no real secrets; use a GitHub-hosted Linux runner for the first round because a sandbox is easier to apply there.
 - **Cost**: GitHub Actions, a CLI subscription, and model APIs may be billed separately. Check your own plan before running; do not treat someone else’s prices as yours.
 
@@ -257,4 +257,4 @@ The directory only helps you “find candidates”; it does not guarantee a cand
 - [ ] I can point to the result and usage for one run; unavailable data was not guessed.
 - [ ] A teammate can run the Skill in a clean demo repo, and `git status` shows no unexpected changes afterward.
 
-Once all five are true, Track A is complete. Then choose by purpose: return to [Stage 3](../../stages/03-tool-use-and-hello-agent.en.md) to build an application; go to [Stage 7](../../stages/07-multi-agent-production.en.md) to study production systems; or read [Stage 7.5](../../stages/07.5-advanced-agentic-concepts.en.md) to understand agent concepts more deeply.
+Once all five are true, the Track A core is complete. The recommended next stop is [Stage 8 — Agent Interfaces](../../stages/08-agent-interfaces.en.md), where you set safe boundaries for browsers, computers, and sandboxes. Stage 8 does not block Track A Capstone entry. If you want to build your own agent, return to [Stage 3](../../stages/03-tool-use-and-hello-agent.en.md).

@@ -153,6 +153,15 @@ at `4,625／7,281／4,702` non-whitespace characters with only a 50-character al
 and requires all eight core terms before Exercise 1. The freshness gate separately enforces
 the 90-day fact pack for Computer Use, Browser Use, sandboxes, availability, benchmarks, and security.
 
+### Whole-site learner-route coherence
+
+`scripts/test_site_route_coherence.py` treats text navigation as the source of truth before diagrams
+are redrawn. It locks Track A to `A1 → A2 → Stage 5 → A3 → Stage 8`, requires A2 to hand off to
+Stage 5, requires Stage 5 to split Track A toward A3 and Track B toward Stage 6, and requires A3 to
+list the Track A core of Stage 5 as a prerequisite. It also keeps Stage 8 recommended for Track A
+without making it a Capstone entry requirement, and rejects completed or stale ROADMAP gap claims
+in any locale.
+
 ## v2 path (deferred)
 
 Per `docs/HOW_TO_USE.md` "給維護者：v2 path":

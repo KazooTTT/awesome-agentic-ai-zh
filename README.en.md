@@ -117,11 +117,13 @@ The two tracks are **not mutually exclusive** — most people start with A to ge
 |---|---|---|---|
 | **A1** | [CLI Agent Intro & Selection](tracks/cli/A1-cli-intro.en.md) | CLI agent selection · install · first run | 1 wk |
 | **A2** | [CLI Workflow Patterns](tracks/cli/A2-cli-workflow.en.md) | Project instructions · Skill · task decomposition | 1-2 wks |
-| **A3** | [Integration & Production](tracks/cli/A3-cli-production.en.md) | MCP-into-CLI · CI automation · cost / observability | 1-2 wks |
 | **+5** | [Stage 5 — Claude Code Ecosystem](stages/05-claude-code-ecosystem.en.md) (**Shared Hub**) | MCP · Skills · Plugins · Subagents; Track A reads 5.1-5.4 (5.5-5.7 optional) | 1-2 wks (Track A view) |
+| **A3** | [Integration & Production](tracks/cli/A3-cli-production.en.md) | MCP-into-CLI · CI automation · cost / observability | 1-2 wks |
 | **+8** | [Stage 8 — Agent Interfaces](stages/08-agent-interfaces.en.md) (**Shared Hub**) | Computer Use · Browser Use · Code Sandbox; Track A reads Track A usage | 1-2 wks (Track A view) |
 
 > **Track A total time**: includes Stages 0-2 (shared foundations) + A1-A3 + **Stage 5 + Stage 8 (two shared hubs) ≈ 8-10 weeks**. Core reference: [`resources/cli-agents-guide.en.md`](resources/cli-agents-guide.en.md).
+>
+> **Capstone gate:** You can start the Track A Capstone after A3. Stage 8 is the recommended next stop, but it does not block Capstone entry.
 
 ### Track B — Agent Builder (build agents from scratch)
 

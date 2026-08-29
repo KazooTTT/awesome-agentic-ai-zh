@@ -2,7 +2,7 @@
 
 > [繁體中文](./A2-cli-workflow.md) | **简体中文** | [English](./A2-cli-workflow.en.md)
 
-> [← A1 — 安全完成第一个 CLI 任务](A1-cli-intro.zh-Hans.md) · **Track A: CLI Power User** 第 2 站 · [下一站：A3](A3-cli-production.zh-Hans.md)
+> [← A1 — 安全完成第一个 CLI 任务](A1-cli-intro.zh-Hans.md) · **Track A: CLI Power User** 第 2 站 · [下一站：Stage 5 的 Track A 核心](../../stages/05-claude-code-ecosystem.zh-Hans.md#-进入条件与阅读路径)
 
 这一站只解决一个问题：**怎么让 CLI agent 下次进入同一个 repo 时，还记得同一套做事方法？**
 
@@ -200,14 +200,16 @@ Claude Code 的 `.claude/commands/<name>.md` 目前仍能建立同名 `/name`，
 </table>
 </details>
 
-## ✅ 进入 A3 前的自我检查
+<a id="-进入-a3-前的自我检查"></a>
+
+## ✅ 进入 Stage 5 前的自我检查
 
 - [ ] 我能用自己的话分清项目规则、Skill、单次 prompt。
 - [ ] 我的项目规则卡有用途、禁止事项、验证指令、交付格式，而且 agent 能读到。
 - [ ] 我的 review Skill 只读取变更，测试后 `git status --short` 没有多出非预期修改。
 - [ ] 我知道“共用核心”不等于“所有 CLI 的文件名和权限都一样”。
 
-四项都做到，就进入 [A3 — 把 CLI agent 接进安全的 production 流程](A3-cli-production.zh-Hans.md)。如果还没做到，先回 demo repo 重跑 CLI-5 或 CLI-6，不必先读完所有补充资料。
+四项都做到，就进入 [Stage 5 的 Track A 核心](../../stages/05-claude-code-ecosystem.zh-Hans.md#-进入条件与阅读路径)，先读 5.1–5.4，再前往 A3。如果还没做到，先回 demo repo 重跑 CLI-5 或 CLI-6，不必先读完所有补充资料。
 
 <details markdown="1">
 <summary>展开常见问题和修正方式</summary>

@@ -8,6 +8,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ## 2026-08-29
 
+- **navigation / whole-site learning route** · **README、Progress、Roadmap、Capstone 與章節出口改用同一條三語學習順序**：共用基礎固定為 `Stage 0 → 1 → 2`；Track A 固定為 `A1 → A2 → Stage 5 → A3 → Stage 8`，並清楚說明 A3 後即可開始 Capstone、Stage 8 建議完成但不擋入場；Track B 固定為 `Stage 3 → 4 → 5 → 6 → 7 → 7.5 → 8`。A2、Stage 5、A3 的上一站／下一站與先備條件同步修正，Roadmap 移除已完成的 2026-05 缺口宣稱；新增 30 條 route contract，阻擋三語再次各走不同順序。
 - **maintenance / repository freshness** · **修正全站 9 組已搬家的 GitHub repository 入口**：OpenHands、prompts.chat、flonat-research、Instructor、xberg、LobeHub、Mozilla inclusion、Graphify 與 Supabase MCP 的現行引用改用 canonical owner／repo，三語可見名稱同步更新；歷史 CHANGELOG 與規劃文件保留當時名稱。GitHub API 於 `2026-08-29T00:20:01Z` 完整重查目前 259 個 unique repo，結果為 0 個 hard error、154 個人工複查提醒；沒有 release、缺 SPDX metadata 或較久未 push 不會自動刪除仍有教學價值的穩定專案。
 
 ## 2026-08-28

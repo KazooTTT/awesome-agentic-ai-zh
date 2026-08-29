@@ -74,7 +74,7 @@ It is a toolkit that lets your Python or TypeScript program control an agent. Th
 
 ## 🚪 Entry requirements and reading paths
 
-- **Track A (CLI user):** Read 5.1–5.4 first. You can stop after learning the project rulebook, Skills, MCP, and Plugins.
+- **Track A (CLI user):** After [A2](../tracks/cli/A2-cli-workflow.en.md), read 5.1–5.4 to learn project instructions, Skills, MCP, and Plugins, then continue to [A3](../tracks/cli/A3-cli-production.en.md).
 - **Track B (agent developer):** Complete [Stage 3](03-tool-use-and-hello-agent.en.md) and [Stage 4](04-agent-frameworks.en.md), then read 5.5–5.8.
 
 <details markdown="1">
@@ -567,7 +567,9 @@ On your first pass, choose only one entry that matches the exercise at hand. Fiv
 
 </details>
 
-## ✅ Self-check before Stage 6
+<a id="-self-check-before-stage-6"></a>
+
+## ✅ Self-check before your next stop
 
 Can you:
 
@@ -577,4 +579,4 @@ Can you:
 - [ ] Identify the categories of Claude Code, OpenRouter, OpenCode/Pi, and Ollama?
 - [ ] Decide whether your need is “use the CLI” or “actually need the Agent SDK”?
 
-If yes, continue to [Stage 6 — Memory & RAG](06-memory-rag.en.md). If not, return to “Choose the right component with one table” and redo only the row you cannot distinguish.
+If yes, follow your route: **Track A** continues to [A3 — Safe team workflows](../tracks/cli/A3-cli-production.en.md); **Track B** continues to [Stage 6 — Memory & RAG](06-memory-rag.en.md). If not, return to “Choose the right component with one table” and redo only the row you cannot distinguish.

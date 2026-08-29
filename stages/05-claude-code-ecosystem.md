@@ -74,7 +74,7 @@
 
 ## 🚪 進入條件與閱讀路線
 
-- **Track A（CLI 使用者）**：先讀 5.1–5.4，學會專案守則、Skill、MCP 和 Plugin 就可以停。
+- **Track A（CLI 使用者）**：完成 [A2](../tracks/cli/A2-cli-workflow.md) 後讀 5.1–5.4，學會專案守則、Skill、MCP 和 Plugin，再前往 [A3](../tracks/cli/A3-cli-production.md)。
 - **Track B（Agent 開發者）**：完成 [Stage 3](03-tool-use-and-hello-agent.md) 與 [Stage 4](04-agent-frameworks.md) 後，再讀 5.5–5.8。
 
 <details markdown="1">
@@ -563,7 +563,9 @@ SDK 會執行命令並保存 session state，不能把它當成普通 stateless 
 
 </details>
 
-## ✅ 進入 Stage 6 前的自我檢查
+<a id="-進入-stage-6-前的自我檢查"></a>
+
+## ✅ 進入下一站前的自我檢查
 
 你能不能：
 
@@ -573,4 +575,4 @@ SDK 會執行命令並保存 session state，不能把它當成普通 stateless 
 - [ ] 說出 Claude Code、OpenRouter、OpenCode／Pi 和 Ollama 各是哪一類東西？
 - [ ] 判斷自己的需求是「使用 CLI」還是「真的需要 Agent SDK」？
 
-如果可以，前往 [Stage 6 — Memory & RAG](06-memory-rag.md)。如果還不行，回到「一張表先選對零件」，只重做你分不清的那一列。
+如果可以，依你的路線前進：**Track A** 前往 [A3 — 安全的團隊流程](../tracks/cli/A3-cli-production.md)；**Track B** 前往 [Stage 6 — Memory & RAG](06-memory-rag.md)。如果還不行，回到「一張表先選對零件」，只重做你分不清的那一列。

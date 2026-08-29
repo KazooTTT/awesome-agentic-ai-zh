@@ -6,6 +6,17 @@
 
 ---
 
+## 全站唯一學習順序
+
+- 共用基礎：`Stage 0 → Stage 1 → Stage 2`。
+- Track A 建議順序：`A1 → A2 → Stage 5（只讀 Track A 核心 5.1–5.4）→ A3 → Stage 8`。
+- Track B：`Stage 3 → Stage 4 → Stage 5 → Stage 6 → Stage 7 → Stage 7.5 → Stage 8`。
+- Track A 做完 A3 就能開始 Capstone；Stage 8 建議完成，但不擋入場。
+
+README、PROGRESS、CAPSTONE、章節頁首、章末下一站與路線圖必須使用同一順序。先改可存取的文字與測試，再重畫圖片；圖片不能成為唯一導航。
+
+---
+
 ## Track A 跟 Track B 的 2-track 結構
 
 從 Phase 7 開始 catalog 拆成兩條軌道。原本的線性 Stage 結構**還在**（現為 Stage 1-8，後來補了 Stage 7.5 進階概念 reading-map 跟 Stage 8 Agent Interfaces），但定位變成「**Track B — Agent Builder**」（從零打造 agent 的路線）。新增的 `tracks/cli/A1-A3` 是「**Track A — CLI Power User**」（用現成 CLI agent 把工作做完的路線）。

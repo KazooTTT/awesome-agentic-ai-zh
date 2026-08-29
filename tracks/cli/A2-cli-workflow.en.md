@@ -2,7 +2,7 @@
 
 > [繁體中文](./A2-cli-workflow.md) | [简体中文](./A2-cli-workflow.zh-Hans.md) | **English**
 
-> [← A1 — Safely complete your first CLI task](A1-cli-intro.en.md) · **Track A: CLI Power User** Stop 2 · [Next: A3](A3-cli-production.en.md)
+> [← A1 — Safely complete your first CLI task](A1-cli-intro.en.md) · **Track A: CLI Power User** Stop 2 · [Next: Stage 5 Track A core](../../stages/05-claude-code-ecosystem.en.md#-entry-requirements-and-reading-paths)
 
 This stop answers one question: **How do you make a CLI agent remember the same way of working when it enters the same repo next time?**
 
@@ -200,14 +200,16 @@ The resources below are divided into five groups by purpose. Each group shows it
 </table>
 </details>
 
-## ✅ Self-check before A3
+<a id="-self-check-before-a3"></a>
+
+## ✅ Self-check before Stage 5
 
 - [ ] I can distinguish project instructions, Skill, and one-off prompt in my own words.
 - [ ] My project-rules card states the purpose, forbidden actions, verification command, and delivery format, and the agent can read it.
 - [ ] My review Skill reads changes only; after testing, `git status --short` shows no unexpected modifications.
 - [ ] I know that a “shared core” does not mean every CLI has the same filenames and permissions.
 
-Once all four are done, move on to [A3 — Connect a CLI agent to a safe production workflow](A3-cli-production.en.md). If not, return to the demo repo and repeat CLI-5 or CLI-6; you do not need to read every supplement first.
+Once all four are done, go to the [Stage 5 Track A core](../../stages/05-claude-code-ecosystem.en.md#-entry-requirements-and-reading-paths), read 5.1–5.4, then continue to A3. If not, return to the demo repo and repeat CLI-5 or CLI-6; you do not need to read every supplement first.
 
 <details markdown="1">
 <summary>Expand common questions and fixes</summary>

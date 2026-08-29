@@ -35,7 +35,7 @@
 - [ ] **A2 — CLI Workflow Patterns** · [`tracks/cli/A2-cli-workflow.zh-Hans.md`](tracks/cli/A2-cli-workflow.zh-Hans.md)
 - [ ] **Stage 5 — Claude Code 生态(两轨共用)** · [`stages/05-claude-code-ecosystem.zh-Hans.md`](stages/05-claude-code-ecosystem.zh-Hans.md)
 - [ ] **A3 — Integration & Production** · [`tracks/cli/A3-cli-production.zh-Hans.md`](tracks/cli/A3-cli-production.zh-Hans.md)
-- [ ] **Stage 8 — Agent 操作界面(两轨共用)** · [`stages/08-agent-interfaces.zh-Hans.md`](stages/08-agent-interfaces.zh-Hans.md)
+- [ ] **Stage 8 — Agent 操作界面（建议；不影响 Track A Capstone 入场）** · [`stages/08-agent-interfaces.zh-Hans.md`](stages/08-agent-interfaces.zh-Hans.md)
 
 ---
 
@@ -78,7 +78,7 @@
 
 不想自己排？照这个走，大约能在最少绕路下到“能动手做事”：
 
-`Stage 0 → Stage 1 → Stage 2 →` 选轨道 `→`（Track A: `A1 → A2 → Stage 5 → A3`;Track B: `Stage 3 → Stage 4 → Stage 5 → Stage 6`）`→` 你的 branch `→`（进阶，Track B 适用：`Stage 7 → 7.5 → 8`;Track A 的 Stage 8 已在上方主线）`→` 你那轨的 **Capstone**（见 [`CAPSTONE.zh-Hans.md`](CAPSTONE.zh-Hans.md)）
+`Stage 0 → Stage 1 → Stage 2 →` 选轨道 `→`（Track A：`A1 → A2 → Stage 5 → A3 → Stage 8`；Track B：`Stage 3 → Stage 4 → Stage 5 → Stage 6 → Stage 7 → 7.5 → 8`）`→` 你的 branch `→` 你那轨的 **Capstone**（见 [`CAPSTONE.zh-Hans.md`](CAPSTONE.zh-Hans.md)）。Track A 做完 A3 就能开始 Capstone；Stage 8 建议完成，但不影响入场。
 
 ---
 
