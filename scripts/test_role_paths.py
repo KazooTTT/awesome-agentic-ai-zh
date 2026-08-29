@@ -25,6 +25,11 @@ PAGES = {
         "en": ROOT / "branches/for-teacher.en.md",
         "zh-Hans": ROOT / "branches/for-teacher.zh-Hans.md",
     },
+    "knowledge-worker": {
+        "zh-TW": ROOT / "branches/for-knowledge-worker.md",
+        "en": ROOT / "branches/for-knowledge-worker.en.md",
+        "zh-Hans": ROOT / "branches/for-knowledge-worker.zh-Hans.md",
+    },
 }
 
 CORE_TERMS = {
@@ -57,6 +62,17 @@ CORE_TERMS = {
         "Student Data",
         "Human Review",
         "Academic Integrity",
+    ),
+    "knowledge-worker": (
+        "Source",
+        "Action Item",
+        "Knowledge Base",
+        "Private Data",
+        "Human Review",
+        "App／Connector",
+        "MCP Server",
+        "Workflow Automation",
+        "Approval Gate",
     ),
 }
 
@@ -108,12 +124,30 @@ RESOURCE_PAIRS = {
         ("https://github.com/obra/superpowers", "⭐⭐⭐⭐"),
         ("https://github.com/f/prompts.chat", "⭐⭐⭐"),
     ),
+    "knowledge-worker": (
+        ("https://help.openai.com/en/articles/11487775-connectors-in", "⭐⭐⭐⭐⭐"),
+        ("https://support.claude.com/en/articles/14328846-browse-skills-connectors-and-plugins-in-one-directory", "⭐⭐⭐⭐⭐"),
+        ("https://support.google.com/gemini/answer/14959807?co=GENIE.Platform%3DDesktop&hl=en", "⭐⭐⭐⭐⭐"),
+        ("https://support.microsoft.com/en-us/microsoft-365-copilot/understand-copilot-connectors", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/n8n-io/n8n", "⭐⭐⭐⭐⭐"),
+        ("https://academy.make.com/courses/FoundationC01?pc=workflow", "⭐⭐⭐⭐"),
+        ("https://learn.microsoft.com/en-us/training/powerplatform/power-automate", "⭐⭐⭐⭐"),
+        ("https://help.zapier.com/hc/en-us/articles/22234847450893-Zap-workflows-quick-start-guide", "⭐⭐⭐⭐"),
+        ("https://github.com/langflow-ai/langflow", "⭐⭐⭐⭐"),
+        ("https://github.com/langgenius/dify", "⭐⭐⭐⭐"),
+        ("https://github.com/khoj-ai/khoj", "⭐⭐⭐⭐"),
+        ("https://github.com/lobehub/lobehub", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/Mintplex-Labs/anything-llm", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/obra/superpowers", "⭐⭐⭐⭐"),
+        ("https://modelcontextprotocol.io/registry/about", "⭐⭐⭐⭐"),
+    ),
 }
 
 ROWGROUPS = {
     "researcher": (3, 4, 5, 2, 1),
     "developer": (4, 6, 2, 2),
     "teacher": (3, 3, 3, 3),
+    "knowledge-worker": (4, 4, 2, 3, 2),
 }
 
 VISIBLE_STARTING_URLS = {
@@ -124,11 +158,12 @@ VISIBLE_STARTING_URLS = {
         *(url for url, _rating in RESOURCE_PAIRS["developer"]),
     ),
     "teacher": tuple(url for url, _rating in RESOURCE_PAIRS["teacher"]),
+    "knowledge-worker": tuple(url for url, _rating in RESOURCE_PAIRS["knowledge-worker"]),
 }
 
-VISIBLE_FIVE_STAR_COUNTS = {"researcher": 10, "developer": 8, "teacher": 10}
+VISIBLE_FIVE_STAR_COUNTS = {"researcher": 10, "developer": 8, "teacher": 10, "knowledge-worker": 7}
 
-DETAIL_COUNTS = {"researcher": 3, "developer": 3, "teacher": 5}
+DETAIL_COUNTS = {"researcher": 3, "developer": 3, "teacher": 5, "knowledge-worker": 3}
 
 RESEARCHER_REQUIRED_READING_URLS = (
     "https://support.google.com/gemininotebook/answer/16179559",
@@ -146,6 +181,15 @@ DEVELOPER_REQUIRED_READING_URLS = (
     "https://github.com/earendil-works/pi#permissions--containerization",
     "https://openrouter.ai/docs/guides/routing/provider-selection",
     "https://docs.ollama.com/",
+)
+
+KNOWLEDGE_WORKER_REQUIRED_READING_URLS = (
+    "https://help.openai.com/en/articles/11487775-connectors-in",
+    "https://support.claude.com/en/articles/14328846-browse-skills-connectors-and-plugins-in-one-directory",
+    "https://support.google.com/gemini/answer/14959807?co=GENIE.Platform%3DDesktop&hl=en",
+    "https://support.microsoft.com/en-us/microsoft-365-copilot/understand-copilot-connectors",
+    "https://modelcontextprotocol.io/registry/about",
+    "https://help.zapier.com/hc/en-us/articles/22234847450893-Zap-workflows-quick-start-guide",
 )
 
 DEVELOPER_EXERCISE_SAFETY = {
@@ -197,6 +241,7 @@ VISIBLE_LANDMARKS = {
     "researcher": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
     "developer": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
     "teacher": ("## 📌", "## 🎯", "## 🧩", "## 🛡", "## 🛠", "## 📚", "## ⭐", "## ✅"),
+    "knowledge-worker": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
 }
 
 RESOURCE_STATUS = {
@@ -240,6 +285,20 @@ RESOURCE_STATUS = {
     "https://github.com/microsoft/ai-agents-for-beginners": "active",
     "https://github.com/anthropics/skills": "active",
     "https://github.com/f/prompts.chat": "active",
+    "https://help.openai.com/en/articles/11487775-connectors-in": "commercial",
+    "https://support.claude.com/en/articles/14328846-browse-skills-connectors-and-plugins-in-one-directory": "commercial",
+    "https://support.google.com/gemini/answer/14959807?co=GENIE.Platform%3DDesktop&hl=en": "commercial",
+    "https://support.microsoft.com/en-us/microsoft-365-copilot/understand-copilot-connectors": "commercial",
+    "https://github.com/n8n-io/n8n": "active",
+    "https://academy.make.com/courses/FoundationC01?pc=workflow": "commercial",
+    "https://learn.microsoft.com/en-us/training/powerplatform/power-automate": "commercial",
+    "https://help.zapier.com/hc/en-us/articles/22234847450893-Zap-workflows-quick-start-guide": "commercial",
+    "https://github.com/langflow-ai/langflow": "active",
+    "https://github.com/langgenius/dify": "active",
+    "https://github.com/khoj-ai/khoj": "active",
+    "https://github.com/lobehub/lobehub": "active",
+    "https://github.com/Mintplex-Labs/anything-llm": "active",
+    "https://modelcontextprotocol.io/registry/about": "preview",
 }
 
 STATUS_TOKENS = {
@@ -252,6 +311,7 @@ STATUS_TOKENS = {
     "read-only": {"zh-TW": "read-only", "en": "Read-only", "zh-Hans": "read-only"},
     "current": {"zh-TW": "現行", "en": "Current", "zh-Hans": "现行"},
     "limited": {"zh-TW": "限區可用", "en": "Region-limited", "zh-Hans": "限区可用"},
+    "preview": {"zh-TW": "Preview", "en": "Preview", "zh-Hans": "Preview"},
 }
 
 RESOURCE_LICENSE_OR_SERVICE = {
@@ -299,6 +359,20 @@ RESOURCE_LICENSE_OR_SERVICE = {
     "https://github.com/microsoft/ai-agents-for-beginners": "MIT",
     "https://github.com/anthropics/skills": {"zh-TW": "各資料夾授權", "en": "per-folder licenses", "zh-Hans": "各文件夹授权"},
     "https://github.com/f/prompts.chat": {"zh-TW": "MIT／CC0", "en": "MIT / CC0", "zh-Hans": "MIT／CC0"},
+    "https://help.openai.com/en/articles/11487775-connectors-in": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://support.claude.com/en/articles/14328846-browse-skills-connectors-and-plugins-in-one-directory": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://support.google.com/gemini/answer/14959807?co=GENIE.Platform%3DDesktop&hl=en": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://support.microsoft.com/en-us/microsoft-365-copilot/understand-copilot-connectors": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://github.com/n8n-io/n8n": "Sustainable Use License",
+    "https://academy.make.com/courses/FoundationC01?pc=workflow": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://learn.microsoft.com/en-us/training/powerplatform/power-automate": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://help.zapier.com/hc/en-us/articles/22234847450893-Zap-workflows-quick-start-guide": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://github.com/langflow-ai/langflow": "MIT",
+    "https://github.com/langgenius/dify": {"zh-TW": "修改版 Apache-2.0", "en": "modified Apache-2.0", "zh-Hans": "修改版 Apache-2.0"},
+    "https://github.com/khoj-ai/khoj": "AGPL-3.0",
+    "https://github.com/lobehub/lobehub": "LobeHub Community License",
+    "https://github.com/Mintplex-Labs/anything-llm": "MIT",
+    "https://modelcontextprotocol.io/registry/about": {"zh-TW": "官方 metadata 服務", "en": "official metadata service", "zh-Hans": "官方 metadata 服务"},
 }
 
 RESOURCE_LIMIT_TOKENS = {
@@ -342,6 +416,20 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/microsoft/ai-agents-for-beginners": {"zh-TW": "版本", "en": "versions", "zh-Hans": "版本"},
     "https://github.com/anthropics/skills": {"zh-TW": "授權", "en": "license", "zh-Hans": "授权"},
     "https://github.com/f/prompts.chat": {"zh-TW": "品質", "en": "quality", "zh-Hans": "质量"},
+    "https://help.openai.com/en/articles/11487775-connectors-in": {"zh-TW": "人工確認", "en": "human confirmation", "zh-Hans": "人工确认"},
+    "https://support.claude.com/en/articles/14328846-browse-skills-connectors-and-plugins-in-one-directory": {"zh-TW": "管理員", "en": "administrator", "zh-Hans": "管理员"},
+    "https://support.google.com/gemini/answer/14959807?co=GENIE.Platform%3DDesktop&hl=en": {"zh-TW": "來源", "en": "sources", "zh-Hans": "来源"},
+    "https://support.microsoft.com/en-us/microsoft-365-copilot/understand-copilot-connectors": {"zh-TW": "權限", "en": "permissions", "zh-Hans": "权限"},
+    "https://github.com/n8n-io/n8n": {"zh-TW": "自架安全", "en": "self-hosting security", "zh-Hans": "自架安全"},
+    "https://academy.make.com/courses/FoundationC01?pc=workflow": {"zh-TW": "費用", "en": "cost", "zh-Hans": "费用"},
+    "https://learn.microsoft.com/en-us/training/powerplatform/power-automate": {"zh-TW": "管理員", "en": "administrator", "zh-Hans": "管理员"},
+    "https://help.zapier.com/hc/en-us/articles/22234847450893-Zap-workflows-quick-start-guide": {"zh-TW": "無限迴圈", "en": "infinite loop", "zh-Hans": "无限循环"},
+    "https://github.com/langflow-ai/langflow": {"zh-TW": "production 安全", "en": "production security", "zh-Hans": "production 安全"},
+    "https://github.com/langgenius/dify": {"zh-TW": "多租戶", "en": "multi-tenant", "zh-Hans": "多租户"},
+    "https://github.com/khoj-ai/khoj": {"zh-TW": "資料設定", "en": "data configuration", "zh-Hans": "数据设置"},
+    "https://github.com/lobehub/lobehub": {"zh-TW": "衍生作品", "en": "derivative work", "zh-Hans": "衍生作品"},
+    "https://github.com/Mintplex-Labs/anything-llm": {"zh-TW": "模型供應商", "en": "model provider", "zh-Hans": "模型供应商"},
+    "https://modelcontextprotocol.io/registry/about": {"zh-TW": "不是安全審查", "en": "not a security review", "zh-Hans": "不是安全审查"},
 }
 
 DEVELOPER_ROW_FACTS = {
@@ -377,6 +465,12 @@ FRESHNESS = {
         "<!-- freshness: canonical=branches/for-teacher.md; "
         "verified_on=2026-08-29; "
         "scope=education-guidance,student-data,assessment,tool-availability,project-status; "
+        "max_age_days=90 -->"
+    ),
+    "knowledge-worker": (
+        "<!-- freshness: canonical=branches/for-knowledge-worker.md; "
+        "verified_on=2026-08-29; "
+        "scope=apps,connectors,mcp,workflow-automation,permissions,project-status; "
         "max_age_days=90 -->"
     ),
 }
@@ -526,6 +620,41 @@ LEGACY_ANCHORS = {
             "社群备注",
         ),
     },
+    "knowledge-worker": {
+        "zh-TW": (
+            "使用情境辦公場景--ai-怎麼幫",
+            "精選-projects",
+            "工作流工具",
+            "知識工作者-skills",
+            "知識管理--個人-ai",
+            "對知識工作者有用的-mcp-server",
+            "可以建的流程按使用頻率",
+            "層級建議",
+            "閱讀",
+        ),
+        "en": (
+            "use-cases-office-scenarios--how-ai-helps",
+            "curated-projects",
+            "workflow-tools",
+            "knowledge-worker-skills",
+            "knowledge-management--personal-ai",
+            "mcp-servers-useful-for-knowledge-workers",
+            "workflows-you-can-build-by-frequency",
+            "tier-recommendations",
+            "reading",
+        ),
+        "zh-Hans": (
+            "使用场景办公场景--ai-怎么帮",
+            "精选-projects",
+            "工作流工具",
+            "知识工作者-skills",
+            "知识管理--个人-ai",
+            "对知识工作者有用的-mcp-server",
+            "可以建的流程按使用频率",
+            "层级建议",
+            "阅读",
+        ),
+    },
 }
 
 
@@ -659,6 +788,85 @@ def test_teacher_page_rejects_autonomous_grading_and_diagnosis_claims(locale: st
     assert not any(token.casefold() in text.casefold() for token in forbidden)
 
 
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_knowledge_worker_first_exercise_is_copyable_grounded_and_human_gated(locale: str) -> None:
+    visible = _without_details(PAGES["knowledge-worker"][locale].read_text(encoding="utf-8"))
+    exercise = visible[visible.index("## 🛠"):visible.index("## 📚")]
+    for token in (
+        "fictional",
+        "Decision",
+        "Action Item",
+        "Owner",
+        "Due date",
+        "Source sentence",
+        "Needs confirmation",
+        "Private Data",
+        "Human Review",
+    ):
+        assert token.casefold() in exercise.casefold(), (locale, token)
+    grounded_rules = {
+        "zh-TW": ("不要補猜沒有寫出的名字或日期", "填「未知」", "Needs confirmation 填「是」"),
+        "en": ("do not invent names or dates", "write “unknown”", "mark Needs confirmation “yes”"),
+        "zh-Hans": ("不要补猜没有写出的名字或日期", "填“未知”", "Needs confirmation 填“是”"),
+    }[locale]
+    for rule in grounded_rules:
+        assert rule.casefold() in exercise.casefold(), (locale, rule)
+    assert re.search(r"do not (send|post|write)|不要.{0,10}(寄出|發送|发送|寫回|写回)", exercise, re.IGNORECASE)
+
+
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_knowledge_worker_distinguishes_apps_mcp_and_automation(locale: str) -> None:
+    text = PAGES["knowledge-worker"][locale].read_text(encoding="utf-8")
+    visible = _without_details(text)
+    for url in KNOWLEDGE_WORKER_REQUIRED_READING_URLS:
+        assert url in visible
+    for term in ("App／Connector", "MCP Server", "Workflow Automation", "Approval Gate"):
+        assert f"**{term}" in visible
+    assert re.search(r"App.{0,220}MCP Server.{0,220}Workflow Automation", visible, re.DOTALL | re.IGNORECASE)
+    assert re.search(r"connector.{0,120}(app|renam)|連接器.{0,120}(App|改稱)|连接器.{0,120}(App|改称)", visible, re.DOTALL | re.IGNORECASE)
+    non_interchangeable = {
+        "zh-TW": "名稱不能互換",
+        "en": "names are not interchangeable",
+        "zh-Hans": "名称不能互换",
+    }[locale]
+    assert non_interchangeable.casefold() in visible.casefold(), (locale, non_interchangeable)
+    assert "https://modelcontextprotocol.io/registry/about" in visible
+
+
+def test_knowledge_worker_page_drops_stale_counts_unsafe_defaults_and_archived_flowise() -> None:
+    forbidden = (
+        "81+",
+        "36k+",
+        "81k+",
+        "147k+",
+        "64k+",
+        "on-device by default",
+        "預設 on-device",
+        "默认 on-device",
+        "NotebookLM 的私有 self-hosted 替代方案",
+        "A self-hosted alternative to NotebookLM",
+        "Claude Desktop + Gmail MCP",
+        "https://github.com/FlowiseAI/Flowise",
+        "https://github.com/punkpeye/awesome-mcp-servers",
+        "https://github.com/wong2/awesome-mcp-servers",
+        "30-45",
+        "30–45",
+        "Half a day",
+        "1 week of setup",
+        "Several weeks",
+        "半天裝好",
+        "1 週 setup",
+        "數週",
+        "半天装好",
+        "1 周 setup",
+        "数周",
+    )
+    for page in PAGES["knowledge-worker"].values():
+        text = page.read_text(encoding="utf-8")
+        assert not any(token.casefold() in text.casefold() for token in forbidden)
+        assert not re.search(r"★\s*[\d,.]+[kKmM]?\+?", text)
+
+
 @pytest.mark.parametrize("role", PAGES)
 def test_resource_tables_have_structured_trilingual_parity(role: str) -> None:
     expected_pairs = RESOURCE_PAIRS[role]
@@ -738,6 +946,16 @@ def test_freshness_urls_and_legacy_landings_are_mirrored(role: str) -> None:
                 "## 📚", "## ⭐", "## ⭐", "## ⭐", "## ⭐", "## ⭐",
                 "## 📚", "<summary>🧪", "<summary>🧪", "## 🛡", "<summary>⏱",
                 "## ✅", "<summary>🤝",
+            ),
+            "knowledge-worker": (
+                "## 📌", "## ⭐", "<strong>工作流", "<strong>知識工作者",
+                "<strong>知識管理", "<strong>MCP", "<summary>🧪", "## 📚", "## 📖",
+            ) if locale == "zh-TW" else (
+                "## 📌", "## ⭐", "<strong>Workflow", "<strong>Knowledge-worker",
+                "<strong>Knowledge", "<strong>MCP", "<summary>🧪", "## 📚", "## 📖",
+            ) if locale == "en" else (
+                "## 📌", "## ⭐", "<strong>工作流", "<strong>知识工作者",
+                "<strong>知识管理", "<strong>MCP", "<summary>🧪", "## 📚", "## 📖",
             ),
         }[role]
         anchor_positions = []
