@@ -44,6 +44,8 @@ def _config(
     parity_resource_ratings: bool = False,
     core_terms: bool = False,
     section_order: str = "",
+    visible_min_links: int = 0,
+    visible_min_ratings: int = 0,
 ) -> str:
     group_line = f"    resource_group_rowspans: [{groups}]\n" if groups else ""
     details_line = f"    required_details_count: {details}\n" if details is not None else ""
@@ -71,6 +73,18 @@ def _config(
     order_line = (
         f"    visible_section_order: [{section_order}]\n" if section_order else ""
     )
+    visible_minimum_lines = ""
+    if visible_min_links or visible_min_ratings:
+        minimum_values = ""
+        if visible_min_links:
+            minimum_values += f"        min_links: {visible_min_links}\n"
+        if visible_min_ratings:
+            minimum_values += f"        min_ratings: {visible_min_ratings}\n"
+        visible_minimum_lines = (
+            "    visible_section_minimums:\n"
+            "      start:\n"
+            f"{minimum_values}"
+        )
     if core_terms:
         core_sections = """\
       core-terms:
@@ -114,7 +128,7 @@ pages:
       en: {limit}
       zh-Hans: {limit}
     max_open_details: {opens}
-{details_line}{forbidden_lines}{include_code_line}{parity_lines}{order_line}    required_visible_sections:
+{details_line}{forbidden_lines}{include_code_line}{parity_lines}{order_line}{visible_minimum_lines}    required_visible_sections:
       start:
         zh-TW: {{heading: {heading}, anchor: {anchor}}}
         en: {{heading: {heading}, anchor: {anchor}}}
@@ -500,6 +514,246 @@ def test_required_visible_section_order_is_blocking() -> None:
         ),
     )
     assert rc == 1 and "required visible sections are out of order" in out, out
+
+
+def test_visible_section_minimums_ignore_links_hidden_in_details() -> None:
+    body = (
+        '<details markdown="1">\n<summary>More sources</summary>\n'
+        '[Hidden project](https://example.com) ⭐⭐⭐⭐⭐\n</details>\n'
+    )
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_accept_visible_link_and_rating() -> None:
+    body = (
+        '[Starter project](https://example.com) ⭐⭐⭐⭐⭐\n\n'
+        '<details markdown="1">\n<summary>More sources</summary>\nHidden\n</details>\n'
+    )
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 0, out
+
+
+def test_visible_section_minimums_accept_code_style_link_label() -> None:
+    body = "[`starter-project`](https://example.com) ⭐⭐⭐⭐⭐\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 0, out
+
+
+def test_visible_section_minimums_accept_visible_html_link_and_rating() -> None:
+    body = '<table><tr><td><a href="https://example.com">Starter</a></td><td>⭐⭐⭐⭐⭐</td></tr></table>\n'
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 0, out
+
+
+def test_visible_section_minimums_do_not_count_images_as_links() -> None:
+    body = "![Project map ⭐⭐⭐⭐⭐](project-map.png)\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_fenced_code() -> None:
+    body = (
+        "```markdown\n"
+        "[Fake project](https://example.com) ⭐⭐⭐⭐⭐\n"
+        '<a href="https://example.com/html">Fake HTML project</a>\n'
+        "```\n"
+    )
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_indented_code() -> None:
+    body = "    [Fake project](https://example.com) ⭐⭐⭐⭐⭐\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_inline_code() -> None:
+    body = "`[Fake project](https://example.com) ⭐⭐⭐⭐⭐`\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_raw_html_code() -> None:
+    body = '<code><a href="https://example.com">Fake project</a> ⭐⭐⭐⭐⭐</code>\n'
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_html_attributes() -> None:
+    body = '<img alt="[Fake project](map.png) ⭐⭐⭐⭐⭐" src="map.png">\n'
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_hidden_html_entry() -> None:
+    body = '<span hidden><a href="https://example.com">Fake</a> ⭐⭐⭐⭐⭐</span>\n'
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_keep_nested_hidden_stack_balanced() -> None:
+    body = (
+        '<span hidden><span>x</span><a href="https://example.com">Fake</a> '
+        "⭐⭐⭐⭐⭐</span>\n"
+    )
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_hidden_void_does_not_hide_following_entry() -> None:
+    body = '<input hidden><a href="https://example.com">Real</a> ⭐⭐⭐⭐⭐\n'
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 0, out
+
+
+def test_visible_section_minimums_ignore_fragment_only_link() -> None:
+    body = "[Jump to setup](#setup) ⭐⭐⭐⭐⭐\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_escaped_link_syntax() -> None:
+    body = r"\[Fake project](https://example.com)" + " ⭐⭐⭐⭐⭐\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_rating_in_link_destination() -> None:
+    body = "[Starter project](https://example.com/⭐⭐⭐⭐⭐)\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 rating(s)" in out, out
+    assert "visible section 'start' has 0 link(s)" not in out, out
+
+
+def test_visible_section_minimums_accept_reference_link() -> None:
+    body = (
+        "[Starter project][project] ⭐⭐⭐⭐⭐\n\n"
+        "## Later section\n\n"
+        "[project]: https://example.com\n"
+    )
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 0, out
+
+
+def test_visible_section_minimums_ignore_reference_definition_in_pre() -> None:
+    body = (
+        "[Starter project][project] ⭐⭐⭐⭐⭐\n\n"
+        "## Later section\n\n"
+        "<pre>\n[project]: https://example.com\n</pre>\n"
+    )
+    rc, out = _run(body, config=_config(limit=2000, visible_min_links=1))
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+
+
+def test_visible_section_minimums_ignore_reference_definition_in_hidden_html() -> None:
+    body = (
+        "[Starter project][project] ⭐⭐⭐⭐⭐\n\n"
+        "## Later section\n\n"
+        '<div hidden>\n[project]: https://example.com\n</div>\n'
+    )
+    rc, out = _run(body, config=_config(limit=2000, visible_min_links=1))
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+
+
+def test_visible_section_minimums_accept_autolink() -> None:
+    body = "<https://example.com> ⭐⭐⭐⭐⭐\n"
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 0, out
+
+
+def test_visible_section_minimums_avoid_existing_wrapper_id_collision() -> None:
+    body = (
+        "No resource here.\n\n"
+        "## Later section\n\n"
+        '<div id="reader-ux-visible-section">'
+        '<a href="https://example.com">Fake</a> ⭐⭐⭐⭐⭐</div>\n'
+    )
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
+
+
+def test_visible_section_minimums_avoid_entity_encoded_wrapper_id_collision() -> None:
+    body = (
+        "No resource here.\n\n"
+        "## Later section\n\n"
+        '<div id="reader-ux-visible&#45;section">'
+        '<a href="https://example.com">Fake</a> ⭐⭐⭐⭐⭐</div>\n'
+    )
+    rc, out = _run(
+        body,
+        config=_config(limit=2000, visible_min_links=1, visible_min_ratings=1),
+    )
+    assert rc == 1 and "visible section 'start' has 0 link(s)" in out, out
+    assert "visible section 'start' has 0 rating(s)" in out, out
 
 
 def test_missing_mirror_fails() -> None:

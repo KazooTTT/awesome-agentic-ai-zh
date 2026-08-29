@@ -18,13 +18,20 @@ import importlib.util
 import re
 import sys
 from dataclasses import dataclass
+from html import unescape
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
 try:
+    import markdown
     import yaml
-except ImportError:
-    print("❌ PyYAML required. Install: pip install pyyaml", file=sys.stderr)
+except ImportError as exc:
+    print(
+        "❌ Reader UX dependencies missing. Install: "
+        "pip install --require-hashes -r scripts/requirements-reader-ux.txt",
+        file=sys.stderr,
+    )
     raise SystemExit(2)
 
 
@@ -68,6 +75,12 @@ class PageMetrics:
 
 EXTERNAL_URL_RE = re.compile(r"https://[^\s<>)\"']+")
 RATING_RE = re.compile(r"(?<!⭐)(⭐{1,5})(?!⭐)")
+RAW_HTML_TAG_RE = re.compile(r'''<(?:"[^"]*"|'[^']*'|[^'">])*>''')
+ATTRIBUTE_MARKDOWN_LINK_RE = re.compile(r"!?\[([^]]+)]\([^)]+\)")
+HTML_ID_RE = re.compile(
+    r"\bid\s*=\s*(?:\"([^\"]+)\"|'([^']+)'|([^\s>]+))",
+    re.IGNORECASE,
+)
 
 
 def _plain(text: str) -> str:
@@ -244,6 +257,148 @@ def _next_section_start(text: str, after: int, max_level: int) -> int:
                     return cursor
         cursor = line_end
     return len(text)
+
+
+def _visible_section_source(
+    visible_source: str, heading: str
+) -> tuple[str, int, int] | None:
+    """Return one heading section and its offsets in visible Markdown."""
+    span = _visible_heading_span(visible_source, heading)
+    if span is None:
+        return None
+    _, heading_end, level = span
+    section_end = _next_section_start(visible_source, heading_end, level)
+    return visible_source[heading_end:section_end], heading_end, section_end
+
+
+class _VisibleEntryHTMLParser(HTMLParser):
+    """Count rendered text links and visible ratings, excluding code and images."""
+
+    _SUPPRESSED_TAGS = {"pre", "code", "script", "style", "template"}
+    _VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
+    def __init__(self, target_id: str) -> None:
+        super().__init__(convert_charrefs=True)
+        self._target_id = target_id
+        self._target_depth = 0
+        self.link_count = 0
+        self.visible_text: list[str] = []
+        self._element_stack: list[tuple[str, bool]] = []
+        self._suppressed_depth = 0
+        self._anchor_stack: list[dict[str, bool]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        tag = tag.casefold()
+        attributes = {name.casefold(): value or "" for name, value in attrs}
+        if not self._target_depth:
+            if tag == "div" and attributes.get("id") == self._target_id:
+                self._target_depth = 1
+            return
+        compact_style = re.sub(r"\s+", "", attributes.get("style", "")).casefold()
+        hidden = (
+            "hidden" in attributes
+            or attributes.get("aria-hidden", "").casefold() == "true"
+            or "display:none" in compact_style
+            or "visibility:hidden" in compact_style
+        )
+        if tag == "a":
+            href = attributes.get("href", "").strip()
+            usable_href = bool(href) and not href.startswith("#") and not re.match(
+                r"(?i)^(?:javascript|data):", href
+            )
+            self._anchor_stack.append(
+                {
+                    "eligible": not self._suppressed_depth and not hidden and usable_href,
+                    "has_content": False,
+                }
+            )
+
+        if tag not in self._VOID_TAGS:
+            suppresses = tag in self._SUPPRESSED_TAGS or hidden
+            self._element_stack.append((tag, suppresses))
+            self._target_depth += 1
+            if suppresses:
+                self._suppressed_depth += 1
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self.handle_starttag(tag, attrs)
+        self.handle_endtag(tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.casefold()
+        if not self._target_depth:
+            return
+        if self._target_depth == 1 and tag == "div":
+            self._target_depth = 0
+            return
+        if tag == "a" and self._anchor_stack:
+            anchor = self._anchor_stack.pop()
+            if anchor["eligible"] and anchor["has_content"]:
+                self.link_count += 1
+        if tag not in self._VOID_TAGS and self._element_stack:
+            _, suppresses = self._element_stack.pop()
+            if suppresses:
+                self._suppressed_depth -= 1
+            self._target_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if not self._target_depth:
+            return
+        if self._suppressed_depth:
+            # A code-styled Markdown link label is visible and clickable, but
+            # its stars remain code rather than an editorial rating. Raw links
+            # nested inside an outer <code> are ineligible from the start.
+            if (
+                self._anchor_stack
+                and self._suppressed_depth == 1
+                and self._element_stack
+                and self._element_stack[-1][0] == "code"
+                and data.strip()
+            ):
+                self._anchor_stack[-1]["has_content"] = True
+            return
+        self.visible_text.append(data)
+        if self._anchor_stack and data.strip():
+            self._anchor_stack[-1]["has_content"] = True
+
+
+def _rendered_entry_metrics(
+    visible_page: str, section_start: int, section_end: int
+) -> tuple[int, int]:
+    """Return links and ratings that a Markdown reader can actually see."""
+    existing_ids = {
+        unescape(next(value for value in match.groups() if value is not None))
+        for match in HTML_ID_RE.finditer(visible_page)
+    }
+    target_base = "reader-ux-visible-section"
+    target_id = target_base
+    suffix = 1
+    while target_id in existing_ids:
+        target_id = f"{target_base}-{suffix}"
+        suffix += 1
+    text = (
+        visible_page[:section_start]
+        + f'\n<div id="{target_id}" markdown="1">\n'
+        + visible_page[section_start:section_end]
+        + "\n</div>\n"
+        + visible_page[section_end:]
+    )
+    # Python-Markdown expands link-looking text inside some raw HTML attribute
+    # values before the HTML parser sees it. Neutralize only attribute payloads
+    # so alt/title text cannot manufacture anchors or ratings; real <a href>
+    # markup and reader-visible Markdown remain intact.
+    text = RAW_HTML_TAG_RE.sub(
+        lambda match: RATING_RE.sub(
+            "",
+            ATTRIBUTE_MARKDOWN_LINK_RE.sub(r"\1", match.group(0)),
+        ),
+        text,
+    )
+    rendered = markdown.markdown(text, extensions=["extra"])
+    parser = _VisibleEntryHTMLParser(target_id)
+    parser.feed(rendered)
+    parser.close()
+    return parser.link_count, len(RATING_RE.findall("".join(parser.visible_text)))
 
 
 def _without_link_destinations(text: str) -> str:
@@ -621,6 +776,34 @@ def _load_config(path: Path) -> dict[str, Any]:
                     f"{sorted(unknown_sections)}"
                 )
 
+        visible_minimums = page.get("visible_section_minimums")
+        if visible_minimums is not None:
+            if not isinstance(visible_minimums, dict) or not visible_minimums:
+                raise ValueError(
+                    f"{page_id}.visible_section_minimums must be a non-empty mapping"
+                )
+            for section_id, minimums in visible_minimums.items():
+                if section_id not in sections:
+                    raise ValueError(
+                        f"{page_id}.visible_section_minimums names unknown section "
+                        f"{section_id!r}"
+                    )
+                if (
+                    not isinstance(minimums, dict)
+                    or not minimums
+                    or set(minimums) - {"min_links", "min_ratings"}
+                ):
+                    raise ValueError(
+                        f"{page_id}.visible_section_minimums.{section_id} needs only "
+                        "min_links and/or min_ratings"
+                    )
+                for key, value in minimums.items():
+                    if not isinstance(value, int) or isinstance(value, bool) or value <= 0:
+                        raise ValueError(
+                            f"{page_id}.visible_section_minimums.{section_id}.{key} "
+                            "must be a positive integer"
+                        )
+
         core_terms = page.get("core_terms")
         if core_terms is not None:
             if not isinstance(core_terms, dict) or set(core_terms) != {
@@ -816,6 +999,30 @@ def check(config_path: Path) -> list[str]:
                     failures.append(
                         f"{label}: required visible sections are out of order; "
                         f"expected {' -> '.join(visible_order)}"
+                    )
+
+            for section_id, minimums in (
+                page.get("visible_section_minimums") or {}
+            ).items():
+                heading = _plain(sections[section_id][locale]["heading"])
+                section = _visible_section_source(metrics.visible_source, heading)
+                if section is None:
+                    continue
+                _, section_start, section_end = section
+                link_count, rating_count = _rendered_entry_metrics(
+                    metrics.visible_source, section_start, section_end
+                )
+                min_links = minimums.get("min_links", 0)
+                min_ratings = minimums.get("min_ratings", 0)
+                if link_count < min_links:
+                    failures.append(
+                        f"{label}: visible section {section_id!r} has {link_count} "
+                        f"link(s); expected at least {min_links}"
+                    )
+                if rating_count < min_ratings:
+                    failures.append(
+                        f"{label}: visible section {section_id!r} has {rating_count} "
+                        f"rating(s); expected at least {min_ratings}"
                     )
 
             core_terms = page.get("core_terms")

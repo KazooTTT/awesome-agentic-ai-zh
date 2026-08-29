@@ -5,6 +5,23 @@
 > The old branch `t3-stage-4-6-7-unverified` was merged into `main` and deleted,
 > but a newer layer is not called shipped until its own branch reaches `main`.
 
+## Visible required-reading and resource contract
+
+Important reading, featured projects, and learning resources are part of the learner's path, so a
+closed `<details>` block cannot be their only landing place. A page may configure
+`visible_section_minimums` in `scripts/reader-ux-pages.yml` with `min_links` and `min_ratings` for
+any required visible section. The checker renders the visible Markdown, then counts real text links
+and visible rating text. It accepts inline, reference-style, autolink, and HTML `<a href>` entries,
+but ignores closed disclosures, code examples, image-only links, image alt text, link destinations,
+fragment-only navigation, hidden HTML, and attributes that only look like entries. Long setup notes, alternatives, and
+troubleshooting may remain collapsed.
+
+The gate is optional until a chapter's content layer names the exact visible section and expected
+minimums. This tooling layer adds the reusable contract without silently changing existing pages;
+the following small stacked PRs activate it for Stage 1–2, Track A1–A3, and Stage 3–4.
+Install its pinned local dependencies with
+`pip install --require-hashes -r scripts/requirements-reader-ux.txt`.
+
 ## Historical T3+ baseline (on `main`)
 
 | Batch | What | How verified | Bugs fixed |

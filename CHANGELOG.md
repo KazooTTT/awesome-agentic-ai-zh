@@ -8,6 +8,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ## 2026-08-29
 
+- **tooling / reader UX** · **新增可重用的「重要資源必須直接看得到」阻擋規則**：章節可對必修閱讀、精選 Projects 與學習資源所在的可見區段設定最少連結與最少星等；檢查器把完整可見頁面渲染後只審計指定區段，辨識 inline、reference、autolink 與 HTML `<a href>`，但不讓收合內容、程式碼、圖片、alt、link destination、頁內跳轉、隱藏 HTML 或 attribute 裡的假字串湊數。Python-Markdown 3.10.3 與 PyYAML 以 hash 固定，70 條 reader-UX regression 全數通過；本層只建立通用 gate，不暗中改動既有章節，後續小型 stacked PR 才逐章啟用。未經使用者明確同意不合併或清理 branch／worktree。
 - **content / visuals / Stage 5** · **在 5.1 前加入三語同構的亮色關係圖，讓讀者先看懂 5.1–5.7 如何接在一起**：CLAUDE.md／Skill 提供 context，Agent loop 經 MCP 交換 request／result，Hook 只在符合 lifecycle event 時檢查，Subagent 與 Worktree 分別隔離 context 與檔案，Plugin 只負責包裝擴充。人工複查發現初版橘色 Plugin 點線誤碰 Worktree，已用 Codex 內建 Image 2.0 重畫三語版本，並把「Plugin 不連到 Worktree」寫入生成紀錄、DESIGN、測試計畫與 regression。第一題會用到的兩份官方資料、本章推薦的 `tool-calling-tutor` 與 `anthropics/claude-code` 保持可見；完整閱讀與 35 筆分組資源仍預設收合，正文第一次提到 `modelcontextprotocol/servers` 就連到官方 repo。
 - **freshness / acceptance** · **Stage 5 於 GitHub API UTC 日期 `2026-08-29` 重新核對 Anthropic 與 MCP 官方來源**：Stage 5 與 Track A2 三語 Skills 入口一併改用現行 `/docs/en/skills`，Plugin／Subagent／Worktree 的責任邊界與 MCP reference implementations 定位同步確認；repository snapshot 也同步新出現的 `anthropics/claude-code` 與 `modelcontextprotocol/servers` 引用數。三張 `1672×941` 圖鎖定語系、位置、不同 hash 與包裝／隔離邊界；reader-UX、strict anchors、mirror、locale、Hans、image、freshness、535 項 scripts regression、docs tree 與三語 MkDocs build 全數通過。本層疊在 #170 上供使用者逐步檢查，未經明確同意不合併或清理任何 branch／worktree。
 
