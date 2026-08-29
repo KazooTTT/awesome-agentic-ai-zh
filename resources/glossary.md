@@ -157,7 +157,7 @@ LLM 一次能「看」多少 token。**2026 frontier**：Claude Sonnet 5 / Opus 
 
 「模型 → Tool Call → 程式執行 → Tool Result → 模型」這個重複循環。每個結果要對回原 call ID。Loop 必須在完成、拒答、錯誤、最大步數、timeout 或費用上限時停止；不能把 retry 全交給模型。
 
-⚠️ **這是「一次執行裡面」的迴圈**，是 harness 的一個零件，跟五層階梯第 4 層的 [Loop Engineering（迴圈工程）](#loop-engineering迴圈工程)（管的是跨 session 的長時間執行）同名但不同層次。兩者的分界見 [Stage 7](../stages/07-multi-agent-production.md)。
+⚠️ **這是 runner 裡面真的會跑的機械迴圈**：模型回答、呼叫工具或 Handoff、讀回結果，再決定下一步。[Loop Engineering（迴圈工程）](#loop-engineering迴圈工程)則是設計這個迴圈和外圍規則的工程工作；兩者不是互斥的東西。完整分界見 [Stage 7](../stages/07-multi-agent-production.md)。
 
 ### Self-Refine（基本版反思 / 無記憶）
 
@@ -444,26 +444,30 @@ LLM 「自信地說錯」——把不存在的 API 編出來、把錯的數字�
 - **Framework**（Stage 4）規範 **API**：你呼叫的介面長什麼樣
 - **Harness**（本詞）規範 **runtime**：怎麼跑、怎麼 recovery、怎麼觀測
 
-📍 **學科級概念**（**8 個核心元件** / prompt→context→harness 五層工程分工 / framework vs harness）：[Stage 7 Harness Engineering](../stages/07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程設計--本-stage-核心概念)
+📍 **學科級概念**（**8 個核心元件** / Prompt→Context→Harness→Loop→Graph 五層工程分工 / framework vs harness）：[Stage 7 Harness Engineering](../stages/07-multi-agent-production.md#-harness-engineering--production-agent-runtime-的工程設計--本-stage-核心概念)
 📍 **Reference implementation case study**（讀 Claude Code source）：[Stage 5 5.7](../stages/05-claude-code-ecosystem.md#57--claude-code-source-解剖reference-harness-implementation-track-b-必看)
 📍 延伸：[`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python)、[`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering)、[`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
 
 ### Loop Engineering（迴圈工程）
 
-五層工程分工的第 4 層（完整階梯與各層目的見 [Stage 7](../stages/07-multi-agent-production.md)，那裡是 canonical）：設計 / 調校 agent 的「迭代迴圈」本身——目標、工具、context 管理、終止條件、錯誤處理，讓長時間（數百步、跨 session）運行仍可靠、可控、不跑偏。相關：harness、Dynamic Workflows、ReAct。
+設計 Agent「怎麼開始、怎麼做一步、怎麼檢查、何時再做、何時停止或找人」的工程工作。它會一起處理目標、工具、context、驗證、預算、state、錯誤與人工升級。**可以在一次長 run 裡，也可以跨 session／排程**；跨 session 是常見案例，不是這個詞的門檻。
 
-⚠️ **不要跟 harness 裡那個 [Agent Loop](#agent-loop) 搞混**。這一層管的是**跨越好幾次執行**的長時間問題；`Agent Loop` 是 harness 的一個零件，管的是**一次執行裡面**的機械迴圈。
+**Agent Loop** 是 runner 裡真的執行的「model → tool／handoff → observation → next turn」；**Loop Engineering** 是設計這個迴圈與外圍規則。像「輪子」和「設計整台腳踏車」：有關係，但不是同一件事。
+
+這是正在形成的名稱，不是本專案自創，也不是所有供應商共同制定的標準。入門來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)；採用狀態可看 [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884)。完整五層與實作入口見 [Stage 7](../stages/07-multi-agent-production.md)。
 
 ### Graph Engineering（圖工程）
 
-把 agent 的執行流程設計成**顯式的圖**：node = 一個步驟（2026 起一個 node 裡可以塞一整個 agent run，不再只是一個 function），edge = 轉移條件，node 之間傳遞一個有 schema、可 checkpoint、可 replay 的 state。**讀到這個詞要知道兩件事**：
+把 Agent 的工作設計成一張**顯式的 Workflow Graph**：node 是一個步驟，edge 告訴它下一站，node 之間傳遞有 schema、可 checkpoint、可 replay 的 state。一個 node 可以放 Agent Loop、工具、固定檢查或人工核准。
 
 - **這裡的「圖」是執行流程圖（control / execution graph），不是 GraphRAG 那種知識圖譜檢索**——後者見 [Stage 6](../stages/06-memory-rag.md)。兩者常被混為一談。
-- **這是 2026-07 才流行的新名字，不是新技術**。LangGraph 從 2023 就是這樣運作，LangChain 官方也直言這不是新想法；Anthropic 稱同類機制為 *dynamic workflows*、Google ADK 與 Microsoft Agent Framework 用 *graph-based workflow(s)*，三家官方文件都沒有採用「graph engineering」這個說法。
+- **名稱新，底下的做法不新。** 2026-08 的 survey preprint 把 Graph Engineering 提為新興典範；workflow、state machine、node、edge 與 checkpoint 更早就存在。主流 SDK 目前仍常寫 **workflow**、**graph-based workflow** 或 **orchestration**。
+
+可搜尋的實作名稱與來源：[LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)、[Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。Preprint 證明這個總稱正在形成，不代表它已成為官方標準。
 
 **跟迴圈的關係**：不是二選一。**格子裡面是 agent 自己繞圈，格子跟格子之間才是你安排的順序**——所以圖是把好幾個迴圈裝進格子再排順序；全部塞回同一個格子，就退回單純的迴圈了。格子裡也不一定是 agent，可以是一個工具、一段檢查、或「這裡要人按核准才能往下」。五層階梯的完整說明見 [Stage 7](../stages/07-multi-agent-production.md)（canonical）。
 
-真正要學的東西在 [Stage 4 的 multi-agent pattern](../stages/04-agent-frameworks.md) 跟可以直接跑的 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.md)（`StateGraph` / conditional edge / checkpointer）。相關：harness、Loop Engineering、orchestration。
+先在 [Stage 4 的 Agent framework／Workflow Graph](../stages/04-agent-frameworks.md) 學工具和基本圖，再到 [Stage 7](../stages/07-multi-agent-production.md) 加上預算、驗證、觀測與復原。可直接跑的入口是 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.md)（`StateGraph` / conditional edge / checkpointer）。相關：harness、Loop Engineering、orchestration。
 
 ---
 

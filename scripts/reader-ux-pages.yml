@@ -1150,11 +1150,11 @@ pages:
       en: stages/07-multi-agent-production.en.md
       zh-Hans: stages/07-multi-agent-production.zh-Hans.md
     max_visible_chars:
-      zh-TW: 5770
-      en: 9925
-      zh-Hans: 5863
+      zh-TW: 10918
+      en: 16573
+      zh-Hans: 11058
     max_open_details: 0
-    required_details_count: 7
+    required_details_count: 6
     visible_section_order:
       - learning-goals
       - core-terms
@@ -1175,14 +1175,14 @@ pages:
       - projects
       - completion
     forbidden_terms:
-      zh-TW: ["2026-05", "★", '""', "“”", LangServe, "qwen2.5:3b", benchmarkingagents.com, rapidclaw.dev]
-      en: ["2026-05", "★", '""', "“”", LangServe, "qwen2.5:3b", benchmarkingagents.com, rapidclaw.dev]
-      zh-Hans: ["2026-05", "★", '""', "“”", LangServe, "qwen2.5:3b", benchmarkingagents.com, rapidclaw.dev]
+      zh-TW: ["2026-05", "★", '""', "“”", LangServe, "qwen2.5:3b", benchmarkingagents.com, rapidclaw.dev, "本專案教學用語"]
+      en: ["2026-05", "★", '""', "“”", LangServe, "qwen2.5:3b", benchmarkingagents.com, rapidclaw.dev, "a teaching term in this project"]
+      zh-Hans: ["2026-05", "★", '""', "“”", LangServe, "qwen2.5:3b", benchmarkingagents.com, rapidclaw.dev, "本项目教学用语"]
     parity:
       ordered_external_urls: true
       resource_url_ratings: true
       literals:
-        - "2026-08-28"
+        - "2026-08-29"
         - "OpenRouter"
         - "Pi"
         - "OpenCode"
@@ -1197,9 +1197,9 @@ pages:
         en: {heading: "📌 Learning Goals", anchor: -learning-goals}
         zh-Hans: {heading: "📌 学习目标", anchor: -学习目标}
       core-terms:
-        zh-TW: {heading: "🧩 七個核心詞", anchor: -七個核心詞}
-        en: {heading: "🧩 Seven Core Terms", anchor: -seven-core-terms}
-        zh-Hans: {heading: "🧩 七个核心词", anchor: -七个核心词}
+        zh-TW: {heading: "🧩 九個核心詞", anchor: -九個核心詞}
+        en: {heading: "🧩 Nine Core Terms", anchor: -nine-core-terms}
+        zh-Hans: {heading: "🧩 九个核心词", anchor: -九个核心词}
       entry-conditions:
         zh-TW: {heading: "🚪 進入條件", anchor: -進入條件}
         en: {heading: "🚪 Entry Conditions", anchor: -entry-conditions}
@@ -1264,6 +1264,9 @@ pages:
         zh-TW: {heading: "✅ Stage 7 之後的自我檢查", anchor: -stage-7-之後的自我檢查}
         en: {heading: "✅ Self-Check After Stage 7", anchor: -self-check-after-stage-7}
         zh-Hans: {heading: "✅ Stage 7 之后的自我检查", anchor: -stage-7-之后的自我检查}
+    visible_section_minimums:
+      required-reading: {min_links: 5}
+      projects: {min_links: 20, min_ratings: 20}
     core_terms:
       section_id: core-terms
       first_exercise_section_id: exercise-1
@@ -1297,6 +1300,14 @@ pages:
           zh-TW: {term: Guardrail, label: Guardrail}
           en: {term: Guardrail, label: Guardrail}
           zh-Hans: {term: Guardrail, label: Guardrail}
+        - id: loop-engineering
+          zh-TW: {term: Loop Engineering, label: Loop Engineering}
+          en: {term: Loop Engineering, label: Loop Engineering}
+          zh-Hans: {term: Loop Engineering, label: Loop Engineering}
+        - id: graph-engineering
+          zh-TW: {term: Graph Engineering, label: Graph Engineering}
+          en: {term: Graph Engineering, label: Graph Engineering}
+          zh-Hans: {term: Graph Engineering, label: Graph Engineering}
     resource_group_rowspans: [4, 6, 5, 5]
 
   - id: stage-07.5
