@@ -64,7 +64,7 @@ python scripts/test_reader_ux.py
 python scripts/check-reader-ux.py
 ```
 
-依賴：`pip install pyyaml`
+依賴：`pip install --require-hashes -r scripts/requirements-reader-ux.txt`
 
 完成一章的三語內容與人工複查後，才把它加入設定檔。若要調高既有上限或刪除可見 heading，先解釋讀者體驗為什麼沒有倒退；不可只為了讓 gate 變綠而放寬。
 
