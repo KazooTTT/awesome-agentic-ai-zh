@@ -322,4 +322,4 @@ We also do not teach OpenRouter, OpenCode, or Pi here yet. They involve model ro
 - [ ] I change one thing at a time and keep the score.
 - [ ] I know that a prompt alone is not enough when data is missing or action is needed.
 
-When all are true, continue to [Stage 3 — Tool Use and Agent Basics](03-tool-use-and-hello-agent.en.md).
+When all are true, continue to [Stage 3 — Tool Use & Your First Agent Loop](03-tool-use-and-hello-agent.en.md).

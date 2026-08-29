@@ -105,7 +105,7 @@ Proposing [WenyuChiou/awesome-agentic-ai-zh](https://github.com/WenyuChiou/aweso
 
 Why it fits:
 - Trilingual (zh-TW canonical · zh-Hans · en — all three hand-maintained, not MT), which fills a gap for non-English learners.
-- Stage 4 (Agent Frameworks) walks new developers through LangChain / LangGraph / AutoGen / CrewAI / Smolagents with prerequisites, time estimates, and hands-on exercises.
+- Stage 4 (Agent Frameworks & Workflow Graphs) walks new developers through LangChain / LangGraph / AutoGen / CrewAI / Smolagents with prerequisites, time estimates, and hands-on exercises.
 - The §11 catalog has 7 Chinese-ecosystem entries including `chatchat-space/Langchain-Chatchat` and the LangChain Chinese Getting Started Guide already in your list.
 
 Stats (refresh on send-day): ★1.9k, MIT licensed, rendered docs at https://wenyuchiou.github.io/awesome-agentic-ai-zh/. CI runs banned-word, link-rot, and anchor-integrity lints on every PR.

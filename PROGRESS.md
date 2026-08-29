@@ -43,8 +43,8 @@
 
 > 你想「**自己 build** agent / 框架 / 多 agent 系統」。
 
-- [ ] **Stage 3 — 工具使用與第一個 Agent** ⭐ · [`stages/03-tool-use-and-hello-agent.md`](stages/03-tool-use-and-hello-agent.md)
-- [ ] **Stage 4 — Agent 框架** · [`stages/04-agent-frameworks.md`](stages/04-agent-frameworks.md)
+- [ ] **Stage 3 — 工具使用與第一個 Agent Loop** ⭐ · [`stages/03-tool-use-and-hello-agent.md`](stages/03-tool-use-and-hello-agent.md)
+- [ ] **Stage 4 — Agent 框架與 Workflow Graph** · [`stages/04-agent-frameworks.md`](stages/04-agent-frameworks.md)
 - [ ] **Stage 5 — Claude Code 生態** ⭐⭐(兩軌共用)· [`stages/05-claude-code-ecosystem.md`](stages/05-claude-code-ecosystem.md)
 - [ ] **Stage 6 — 上下文管理:RAG 與 Memory** · [`stages/06-memory-rag.md`](stages/06-memory-rag.md)
 - [ ] **Stage 7 — Multi-Agent · 進階應用** · [`stages/07-multi-agent-production.md`](stages/07-multi-agent-production.md)

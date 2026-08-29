@@ -43,8 +43,8 @@ This is a checklist **for your own use**. You do not need to submit it, open a P
 
 > You want to **build** agents, frameworks, or multi-agent systems yourself.
 
-- [ ] **Stage 3 — Tool Use and Your First Agent** ⭐ · [`stages/03-tool-use-and-hello-agent.en.md`](stages/03-tool-use-and-hello-agent.en.md)
-- [ ] **Stage 4 — Agent Frameworks** · [`stages/04-agent-frameworks.en.md`](stages/04-agent-frameworks.en.md)
+- [ ] **Stage 3 — Tool Use & Your First Agent Loop** ⭐ · [`stages/03-tool-use-and-hello-agent.en.md`](stages/03-tool-use-and-hello-agent.en.md)
+- [ ] **Stage 4 — Agent Frameworks & Workflow Graphs** · [`stages/04-agent-frameworks.en.md`](stages/04-agent-frameworks.en.md)
 - [ ] **Stage 5 — Claude Code Ecosystem** ⭐⭐(shared by both tracks)· [`stages/05-claude-code-ecosystem.en.md`](stages/05-claude-code-ecosystem.en.md)
 - [ ] **Stage 6 — Context Management: RAG and Memory** · [`stages/06-memory-rag.en.md`](stages/06-memory-rag.en.md)
 - [ ] **Stage 7 — Multi-Agent · Advanced Applications** · [`stages/07-multi-agent-production.en.md`](stages/07-multi-agent-production.en.md)

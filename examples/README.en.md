@@ -20,7 +20,7 @@ examples/
 │   │   ├── test_anthropic.py    # Anthropic-path self-check
 │   │   ├── README.md            # Three-language walkthrough (+.zh-Hans.md +.en.md)
 │   │   └── requirements.txt     # Bounded dependency versions
-├── stage-3/                     # Tool Use & Agent intro
+├── stage-3/                     # Tool Use & Your First Agent Loop
 │   ├── 01-function-calling/     # Exercise 1: one tool, one call
 │   │   ├── starter.py           # Ollama path
 │   │   ├── starter_anthropic.py # Anthropic path
@@ -251,8 +251,8 @@ Main differences: the message-creation method name, the response shape (`choices
 |---|---|---|
 | 1 LLM basics | 6 | inline 4 + folder 2 (`examples/stage-1/`) |
 | 2 Prompt engineering | 4 | inline 3 + folder 1 (`examples/stage-2/`) |
-| **3 Tool use** | **6** | folder 6 (`examples/stage-3/`) |
-| 4 Frameworks | 5 | five dual-path, offline-verifiable folders (`examples/stage-4/`; Python 3.11) |
+| **3 Tool Use & Your First Agent Loop** | **6** | folder 6 (`examples/stage-3/`) |
+| 4 Agent Frameworks & Workflow Graphs | 5 | five dual-path, offline-verifiable folders (`examples/stage-4/`; Python 3.11) |
 | 5 Claude Code ecosystem | 11 | inline 6 + folder 5 (`examples/stage-5/`) |
 | 6 Memory/RAG | 5 | all folder (`examples/stage-6/`) |
 | 7 Multi-agent | 5 | inline 1 + folder 4 (`examples/stage-7/`) |

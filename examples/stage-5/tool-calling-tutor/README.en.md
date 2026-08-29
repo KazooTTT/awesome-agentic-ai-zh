@@ -6,7 +6,7 @@
 
 > What this skill does: when you're stuck on tool calling (LLM won't call, args wrong, ReAct loop runs forever, or the schema is unclear), open it directly with `/tool-calling-tutor`. It may also load automatically in a relevant context and guide you through a four-symptom diagnostic and five-step fix.
 
-Pairs with [Stage 3 — Tool Use & Agent Intro](../../../stages/03-tool-use-and-hello-agent.en.md). Also serves as the **bundled skill example** for [Stage 5 — Claude Code Ecosystem](../../../stages/05-claude-code-ecosystem.en.md) 5.3.
+Pairs with [Stage 3 — Tool Use & Your First Agent Loop](../../../stages/03-tool-use-and-hello-agent.en.md). Also serves as the **bundled skill example** for [Stage 5 — Claude Code Ecosystem](../../../stages/05-claude-code-ecosystem.en.md) 5.3.
 
 ## Why this skill exists
 

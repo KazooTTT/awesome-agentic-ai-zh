@@ -53,7 +53,7 @@ Proposing addition of [WenyuChiou/awesome-agentic-ai-zh](https://github.com/Weny
 
 **Why this is a good fit**:
 - Trilingual (zh-TW canonical · zh-Hans · en — all three fully maintained, not MT) — fills a gap for non-English learners
-- **Stage 4 (Agent Frameworks)** walks new developers through **LangChain / LangGraph / AutoGen / CrewAI / Smolagents** with prerequisites, time estimates, and hands-on exercises
+- **Stage 4 (Agent Frameworks & Workflow Graphs)** walks new developers through **LangChain / LangGraph / AutoGen / CrewAI / Smolagents** with prerequisites, time estimates, and hands-on exercises
 - §11 of the catalog has 7 Chinese-ecosystem entries including `chatchat-space/Langchain-Chatchat` (★37k) and the LangChain Chinese Getting Started Guide that's already in your list
 - Stage 5 covers the Claude Code / MCP / Skills layer; Stage 8 covers Agent Interfaces (Computer Use / Browser / Sandbox). Together with the catalog this is the complement-to-LangChain-docs that doesn't currently exist in zh
 
