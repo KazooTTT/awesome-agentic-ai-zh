@@ -72,6 +72,8 @@ Shipped in commits [`d598e37`](https://github.com/WenyuChiou/awesome-agentic-ai-
 
 5. ~~**Trilingual mirror of 🎓 callout incomplete**~~ — **RESOLVED 2026-08-02**. The 🎓 callout and the 📚 deeper-material block are now in the `.en.md` + `.zh-Hans.md` mirrors of **21 of the 22** exercise READMEs (202 blockquote lines). The 22nd, `examples/stage-1/04-cross-provider`, is **not a callout gap** — it is the only example folder with **no mirror files at all**, so it needs a full trilingual translation first, not a callout port. A blocking CI gate (`scripts/check-mirror-parity.py`) now stops this class of gap reappearing.
 
+   The softer `scripts/check-mirror-sync.py` reminder also treats `/` and `\` as the same repository path. `scripts/test_mirror_sync.py` feeds it both POSIX and Windows path spellings, so a synchronized trio cannot be reported as missing only because the contributor ran the gate on Windows. The Mirror Sync workflow watches both the detector and its regression file, then runs the dependency-free test before detecting a PR gap.
+
 6. ~~**Pilot exercise drift**~~ — **RESOLVED 2026-08-02**. `examples/stage-3/03-react-from-scratch/README.en.md` + `.zh-Hans.md` were missing the entire free local Path A (Ollama) and ran the Ollama script under the Anthropic heading; both now match the dual-path canonical.
 
 ## 🔵 Stage 5 + Track A — current coverage
