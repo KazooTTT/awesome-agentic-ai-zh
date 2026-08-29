@@ -6,7 +6,7 @@
 
 你会做出三个角色：PRO 说“赞成”、CON 说“反对”，Judge 看完两边再选一边。
 
-对应 [Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph](../../../stages/07-multi-agent-production.zh-Hans.md) 练习 1。
+对应 [Stage 7 — Loop／Graph Engineering：让 Agent 稳定运行](../../../stages/07-multi-agent-production.zh-Hans.md) 练习 1。
 
 ## 🎯 学习目标
 

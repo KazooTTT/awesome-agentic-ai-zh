@@ -1,8 +1,8 @@
-# Stage 4 — Agent Frameworks & Workflow Graphs
+# Stage 4 — Workflow Graphs & Agent Frameworks
 
 > [Traditional Chinese](./04-agent-frameworks.md) | [Simplified Chinese](./04-agent-frameworks.zh-Hans.md) | **English**
 
-In Stage 3, you wrote an **Agent Loop** yourself. This stage has a simple purpose: first see which building blocks a **framework** provides, then draw the steps you need to control as a **Workflow Graph**. Tools can help you connect fewer wires, but they will not decide which work map is safe for you.
+In Stage 3, you wrote an **Agent Loop** yourself. This stage first turns multi-step work into a **Workflow Graph**, then chooses a **Framework** to help connect it. Understand the work map first, then choose the toolbox, so you do not make things complicated just because a framework is popular.
 
 <!-- freshness: canonical=stages/04-agent-frameworks.md; verified_on=2026-08-27; scope=frameworks,releases,maintenance,licenses,security; max_age_days=90 -->
 
@@ -10,15 +10,15 @@ In Stage 3, you wrote an **Agent Loop** yourself. This stage has a simple purpos
 
 After this stage, you can:
 
-- Explain the difference between an Agent Loop, an Agent framework, a Workflow Graph, and a multi-role system in your own words.
+- Explain the difference between an Agent Loop, a Workflow Graph, an Agent framework, and a multi-role system in your own words.
 - Choose the simplest tool that can finish the task instead of adding roles just because they are fashionable.
 - Complete five exercises and compare LangGraph, CrewAI, Smolagents, and Pydantic AI hands-on.
 - Explain which problems passing work onward, saving progress, and human approval each solve.
 
 ## 🧩 Eight Core Terms First
 
-- **Framework**: A box of ready-organized building blocks. It connects loops, tools, records, and error handling for you; the larger the box, the more details it can hide.
 - **Workflow / Workflow Graph**: Like following a recipe, then drawing every step and next stop. The program writes the nodes, edges, and branches first; the model only completes work that needs judgment inside the route.
+- **Framework**: A box of ready-organized building blocks. It connects loops, tools, records, and error handling for you; the larger the box, the more details it can hide.
 - **Agent**: Like an assistant given a goal. The model can decide its next step from the current result, but the program still controls real permissions, validation, and stop conditions.
 - **Orchestration**: Like a traffic controller. It decides who works first and next, who receives the data, and how to recover from a failure.
 - **State**: Like a notebook used while working. It remembers the current input, tool results, progress, and the data needed for the next step.
@@ -26,13 +26,14 @@ After this stage, you can:
 - **Handoff**: Like passing an assignment sheet to another classmate. The next Agent needs enough context to take over, but must not receive permissions it does not need.
 - **Human-in-the-loop (HITL)**: Like raising your hand for the teacher to check first. The program pauses before spending money, sending email, deleting data, or publishing, and continues only after a person approves.
 
-## 🧭 First Separate Loop, Framework, and Graph
+<a id="-first-separate-loop-framework-and-graph"></a>
+## 🧭 First Separate Loop, Graph, and Framework
 
 | Name | Five-year-old-friendly version | Correct boundary and where to learn it |
 |---|---|---|
 | **Agent Loop** | The assistant does one step, checks the result, then chooses the next step | The within-one-run loop from Stage 3: model → tool call → execute → tool result → model |
-| **Agent Framework** | A toolbox that helps connect the wires | Provides runner, tool, state, handoff, checkpoint, and related parts; one Agent can use it too |
 | **Workflow Graph** | Draw every station and road | Represents work order with node, edge, branch, and state; each box can be an Agent, tool, check, or human approval |
+| **Agent Framework** | A toolbox that helps connect the wires | Provides runner, tool, state, handoff, checkpoint, and related parts; one Agent can use it too |
 | **Loop Engineering** | Design how it repeats, validates, and stops | Stage 7 adds budgets, verification, recovery, and human escalation |
 | **Graph Engineering** | Use the toolbox to design the whole work map | Stage 7 turns multiple loops, tools, and humans into an observable, recoverable production system |
 

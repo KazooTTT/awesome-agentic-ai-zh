@@ -4,7 +4,7 @@
 
 # 練習 5：型別安全 agent（Pydantic AI structured output）
 
-對應 [Stage 4 — Agent 框架與 Workflow Graph](../../../stages/04-agent-frameworks.md) 練習 5。
+對應 [Stage 4 — Workflow Graph 與 Agent 框架](../../../stages/04-agent-frameworks.md) 練習 5。
 > 🎓 **學習模式**：這份 `starter.py` 是**完整解答**、不是 TODO skeleton。建議用**主動模式**——`mv starter.py starter_reference.py`、看 signature 不看 body、自己重寫一份 `starter.py`、跑 `python test.py` 驗證；卡 20 分鐘再回去對照 reference。完整方法論看 [`docs/HOW_TO_USE.md`](../../../docs/HOW_TO_USE.md)。
 
 > 📚 **想要 chapter-length 深入版？** 本 folder 的 starter 是 illustrative 版、聚焦核心 pattern + 兩條 SDK path，不是進階深度教材。深度教材推薦：

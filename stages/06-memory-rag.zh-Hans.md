@@ -398,4 +398,4 @@ Chunk 太大时，一张卡会混进太多主题；太小时，答案需要的�
 - [ ] 我能用一小组问题比较修改前后，而不是只看一次漂亮回答。
 - [ ] Memory 只保存必要且获准的数据，用户能查看、修改与删除。
 
-都能做到后，前往 [Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph](07-multi-agent-production.zh-Hans.md)。
+都能做到后，前往 [Stage 7 — Loop／Graph Engineering：让 Agent 稳定运行](07-multi-agent-production.zh-Hans.md)。

@@ -130,10 +130,10 @@ The two tracks are **not mutually exclusive** — most people start with A to ge
 | Stage | Topic | Key Content | Time |
 |---|---|---|---|
 | **3** ⭐ | [Tool Use & Your First Agent Loop](stages/03-tool-use-and-hello-agent.en.md) | function calling · ReAct · 6 hands-on exercises | 2-3 wks |
-| **4** | [Agent Frameworks & Workflow Graphs](stages/04-agent-frameworks.en.md) | LangGraph · AutoGen · CrewAI · Smolagents | 2-3 wks |
+| **4** | [Workflow Graphs & Agent Frameworks](stages/04-agent-frameworks.en.md) | LangGraph · AutoGen · CrewAI · Smolagents | 2-3 wks |
 | **5** ⭐⭐ | [Claude Code Ecosystem](stages/05-claude-code-ecosystem.en.md) (**Shared Hub**, Track A also studies) | MCP · Skills · Plugins · Subagents | 3-4 wks (Track B view) |
 | **6** | [Context Engineering: RAG and Memory](stages/06-memory-rag.en.md) | vector DB · long-term memory · contextual retrieval | 2 wks |
-| **7** | [Agent Production Engineering: Harness, Loops & Graphs](stages/07-multi-agent-production.en.md) | multi-agent orchestration · eval · observability · advanced SDK | 2-4 wks |
+| **7** | [Loop & Graph Engineering: Making Agents Reliable](stages/07-multi-agent-production.en.md) | multi-agent orchestration · eval · observability · advanced SDK | 2-4 wks |
 | **7.5** | [Advanced Agentic Workflow Concepts](stages/07.5-advanced-agentic-concepts.en.md) (reading map) | work boundary · PAR loop · agent-as-judge · 12 advanced concepts + reading list | 1 wk (no code) |
 | **8** ⭐⭐ | [Agent Interfaces](stages/08-agent-interfaces.en.md) (**Shared Hub**, Track A also studies) | Computer Use · Browser Use · Code Sandbox; 2024-2026 frontier | 2-3 wks (Track B view) |
 
@@ -176,12 +176,12 @@ If anything's missing, do Stage 0; if not, **start at Stage 1**.
 The main path has 5 parts:
 
 - **Part 1 (Stages 0-2): Foundations & LLM Basics** — Python / git / API, what's an LLM, prompt design
-- **Part 2 (Stages 3-4): Build Your Agent** — Stage 3 builds your first **Agent Loop**; Stage 4 uses a framework to turn multiple steps into a visible **Workflow Graph**
+- **Part 2 (Stages 3-4): Build Your Agent** — Stage 3 builds your first **Agent Loop**; Stage 4 first explains the **Workflow Graph**, then uses a framework to build it
 - **Part 3 (Stage 5) Shared Hub** — Claude Code Ecosystem (MCP / Skills / Plugins / Subagents; used by both Track A + B)
 - **Part 4 (Stages 6-7): Advanced Integration** — Stage 6 deepens **Context Engineering** with RAG / memory; Stage 7 makes loops / graphs reliable in production
 - **Part 5 (Stage 8) Shared Hub** — Agent Interfaces (Computer Use / Browser Use / Code Sandbox, 2024-2026 frontier; used by both tracks)
 
-> 🔭 **The learning order and the five-layer stack answer different questions**: first write a good **Prompt** in Stage 2, build an **Agent Loop** in Stage 3, then use a framework to make a **Workflow Graph** in Stage 4. Stage 5 shows how MCP, Skills, Plugins, and Subagents connect tools and rules; Stage 6 deepens **Context Engineering**; Stage 7 makes the harness, loop, and graph reliable over long runs. The five-layer stack `prompt → context → harness → loop → graph` describes a growing control scope, not chapter numbers. See the [Stage 7 five-layer engineering split](stages/07-multi-agent-production.en.md#the-five-layer-engineering-split-prompt--context--harness--loop--graph) and the [Stage 2 Prompt/Context boundary](stages/02-prompt-engineering.en.md).
+> 🔭 **The learning order and the five-layer stack answer different questions**: first write a good **Prompt** in Stage 2, build an **Agent Loop** in Stage 3, then understand the **Workflow Graph** in Stage 4 and use a framework to build it. Stage 5 shows how MCP, Skills, Plugins, and Subagents connect tools and rules; Stage 6 deepens **Context Engineering**; Stage 7 makes the harness, loop, and graph reliable over long runs. The five-layer stack `prompt → context → harness → loop → graph` describes a growing control scope, not chapter numbers. See the [Stage 7 five-layer engineering split](stages/07-multi-agent-production.en.md#the-five-layer-engineering-split-prompt--context--harness--loop--graph) and the [Stage 2 Prompt/Context boundary](stages/02-prompt-engineering.en.md).
 
 After the main path (16-22 weeks for Track B, 8-10 weeks for Track A), pick a branch.
 

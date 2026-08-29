@@ -1,8 +1,8 @@
-# Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph
+# Stage 7 — Loop／Graph Engineering：让 Agent 稳定运行
 
 > [繁體中文](./07-multi-agent-production.md) | **简体中文** | [English](./07-multi-agent-production.en.md)
 
-这一关要做的事很简单：让 Agent 不只“偶尔成功”，而是能被看见、被检查，出错时也能安全停下来。
+这一关要做的是 **Agent Production Engineering（Agent 上线工程）**：把 Agent 的循环和工作地图做稳。它不只要“偶尔成功”，还要能被看见、被检查，出错时也能安全停下来。
 
 ## 🎯 这一关在做什么（先定位）
 
@@ -93,23 +93,23 @@ Docker 还不熟也可以开始；先做练习 1–4，练习 5 再补。
 
 这五层不是五种产品，也不是课程的章节顺序。它们只是把“要控制的范围”从小排到大：上面一层会用到下面的零件。
 
-| 层 | 大白话问题 | 正确名称 | 先在哪里遇见 | 在哪里加深 |
-|---|---|---|---|---|
-| 1 | 我有没有把话说清楚？ | **Prompt Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) | 每章的 Prompt 和 Eval |
-| 2 | 我有没有把该看的资料放进来？ | **Context Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) 先分清 Prompt 与 Context | [Stage 6](06-memory-rag.zh-Hans.md) 的 RAG／Memory |
-| 3 | 它能不能安全地使用工具、出错后停下？ | **Harness Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 的 runner／tool boundary | [Stage 5](05-claude-code-ecosystem.zh-Hans.md) 的实例与本章的 production checklist |
-| 4 | 它怎么“做、看结果、再做”，而且不会无限运行？ | **Loop Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 的 Agent Loop | 本章的 bounded long-running loop |
-| 5 | 每一步、分支和返回路线能不能被看见和控制？ | **Graph Engineering** | [Stage 4](04-agent-frameworks.zh-Hans.md) 的 Workflow Graph | 本章的 production orchestration |
+| 层 | 大白话问题 | 会运行的东西 | 设计它的工作 | 先在哪里遇见 | 在哪里做稳 |
+|---|---|---|---|---|---|
+| 1 | 我有没有把话说清楚？ | **Prompt** | **Prompt Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) | 每章的 Prompt 和 Eval |
+| 2 | 我有没有把该看的资料放进来？ | **Context** | **Context Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) 先分清 Prompt 与 Context | [Stage 6](06-memory-rag.zh-Hans.md) 的 RAG／Memory |
+| 3 | 它能不能安全地使用工具、出错后停下？ | **Agent Harness** | **Harness Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 的 runner／tool boundary | [Stage 5](05-claude-code-ecosystem.zh-Hans.md) 的实例与本章的 production checklist |
+| 4 | 它怎么“做、看结果、再做”，而且不会无限运行？ | **Agent Loop** | **Loop Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) | 本章的 bounded long-running loop |
+| 5 | 每一步、分支和返回路线能不能被看见和控制？ | **Workflow Graph** | **Graph Engineering** | [Stage 4](04-agent-frameworks.zh-Hans.md) | 本章的 production orchestration |
 
 - **Stage 3：Agent Loop 入门**——先学一次执行里的“模型 → 工具 → 结果 → 下一步”。
 - **Stage 4：Workflow Graph 入门**——再用 framework 提供的零件画 node、edge、branch 和 state。
-- **Stage 7：Agent Production Engineering 整合**——最后加入预算、验证、checkpoint、人工批准、观测和恢复。
+- **Stage 7：Loop／Graph Engineering 整合**——最后加入预算、验证、checkpoint、人工批准、观测和恢复。
 
-**Agent Framework 是工具箱；Graph Engineering 是用工具箱设计整张工作地图。** 所以 Stage 4 的标题保留 Agent Framework，并加上 Workflow Graph；本章不能把它直接改名成 Graph Engineering。
+Stage 4 先教 **Workflow Graph**；Stage 7 才把它做成完整的 **Graph Engineering**。Agent Framework 是可以拿来实现这张图的工具箱，不是 Graph Engineering 的另一个名字。
 
 ![Agent 工程五层 Stack](../resources/diagrams/agent-engineering-5layer.zh-Hans.png)
 
-Prompt、Context 和 Harness 已出现在主要供应商的工程文档中。**Loop Engineering** 与 **Graph Engineering** 是 2026 年正在形成的总称，不是本项目自己发明，也还不是每一家供应商都采用的标准名称。下面的 **agent loop**、**workflow graph**、**graph-based workflow** 与 **orchestration** 则早已是实际做法。
+Prompt、Context 和 Harness 已出现在主要供应商的工程文档中。**Loop Engineering** 与 **Graph Engineering** 已经在产业和研究中使用，不是本项目自己发明；但它们还不是每一家供应商都采用的同一套标准名称。不同文档也会写 **agent loop**、**workflow graph**、**graph-based workflow** 或 **orchestration**。
 
 词汇来源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)、[Loop Engineering exploratory preprint](https://arxiv.org/abs/2608.21884)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。论文是新兴词汇的证据，不是要求初学者先读完的必修教材。
 

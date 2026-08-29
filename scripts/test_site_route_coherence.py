@@ -35,11 +35,11 @@ LOCALES = {
         ),
         "stage3_title": "Stage 3 — 工具使用與第一個 Agent Loop",
         "stage3_topic": "工具使用與第一個 Agent Loop",
-        "stage4_title": "Stage 4 — Agent 框架與 Workflow Graph",
-        "stage4_topic": "Agent 框架與 Workflow Graph",
-        "stage7_title": "Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph",
-        "stage7_topic": "Agent Production Engineering：Harness、Loop 與 Graph",
-        "stage7_compact": "Stage 7 — Agent Production Engineering",
+        "stage4_title": "Stage 4 — Workflow Graph 與 Agent 框架",
+        "stage4_topic": "Workflow Graph 與 Agent 框架",
+        "stage7_title": "Stage 7 — Loop／Graph Engineering：讓 Agent 穩定運作",
+        "stage7_topic": "Loop／Graph Engineering：讓 Agent 穩定運作",
+        "stage7_compact": "Stage 7 — Loop／Graph Engineering",
     },
     "en": {
         "suffix": ".en",
@@ -68,11 +68,11 @@ LOCALES = {
         ),
         "stage3_title": "Stage 3 — Tool Use & Your First Agent Loop",
         "stage3_topic": "Tool Use & Your First Agent Loop",
-        "stage4_title": "Stage 4 — Agent Frameworks & Workflow Graphs",
-        "stage4_topic": "Agent Frameworks & Workflow Graphs",
-        "stage7_title": "Stage 7 — Agent Production Engineering: Harness, Loops & Graphs",
-        "stage7_topic": "Agent Production Engineering: Harness, Loops & Graphs",
-        "stage7_compact": "Stage 7 — Agent Production Engineering",
+        "stage4_title": "Stage 4 — Workflow Graphs & Agent Frameworks",
+        "stage4_topic": "Workflow Graphs & Agent Frameworks",
+        "stage7_title": "Stage 7 — Loop & Graph Engineering: Making Agents Reliable",
+        "stage7_topic": "Loop & Graph Engineering: Making Agents Reliable",
+        "stage7_compact": "Stage 7 — Loop & Graph Engineering",
     },
     "zh-Hans": {
         "suffix": ".zh-Hans",
@@ -101,11 +101,11 @@ LOCALES = {
         ),
         "stage3_title": "Stage 3 — 工具使用与第一个 Agent Loop",
         "stage3_topic": "工具使用与第一个 Agent Loop",
-        "stage4_title": "Stage 4 — Agent 框架与 Workflow Graph",
-        "stage4_topic": "Agent 框架与 Workflow Graph",
-        "stage7_title": "Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph",
-        "stage7_topic": "Agent Production Engineering：Harness、Loop 与 Graph",
-        "stage7_compact": "Stage 7 — Agent Production Engineering",
+        "stage4_title": "Stage 4 — Workflow Graph 与 Agent 框架",
+        "stage4_topic": "Workflow Graph 与 Agent 框架",
+        "stage7_title": "Stage 7 — Loop／Graph Engineering：让 Agent 稳定运行",
+        "stage7_topic": "Loop／Graph Engineering：让 Agent 稳定运行",
+        "stage7_compact": "Stage 7 — Loop／Graph Engineering",
     },
 }
 
@@ -356,12 +356,14 @@ def test_stage7_umbrella_title_matches_all_direct_reader_routes(
     index = read(locale_path("index", suffix))
     progress = read(locale_path("PROGRESS", suffix))
     stage6 = read(locale_path("stages/06-memory-rag", suffix))
+    examples_index = read(locale_path("examples/README", suffix))
 
     assert stage7.startswith(f"# {stage7_title}\n")
     assert f"[{stage7_topic}]" in readme
     assert f"__{stage7_compact}__" in index
     assert f"**{stage7_title}**" in progress
     assert f"[{stage7_title}]" in stage6
+    assert stage7_compact.removeprefix("Stage 7 — ") in examples_index
 
     examples = sorted((ROOT / "examples/stage-7").glob(f"*/README{suffix}.md"))
     assert len(examples) == 5, (locale, examples)
@@ -375,6 +377,22 @@ def test_stage7_umbrella_title_matches_all_direct_reader_routes(
         assert f"[{stage7_title}](stages/07-multi-agent-production.md)" in (
             ROOT / "scripts/build-mdbook.sh"
         ).read_text(encoding="utf-8")
+
+
+def test_secondary_stage4_route_surfaces_put_the_graph_before_the_framework() -> None:
+    expected_en = "Stage 4 (Workflow Graphs & Agent Frameworks)"
+    for path in (
+        ROOT / ".github/outreach/_send-day-packages.md",
+        ROOT / ".github/outreach/langchain-ai.md",
+    ):
+        assert expected_en in read(path), path
+
+    assert "Stage 4（Workflow Graph／Agent Framework）" in read(
+        ROOT / "docs/HOW_TO_USE.md"
+    )
+    assert "Stage 4 — Workflow Graphs & Agent Frameworks" in read(
+        ROOT / ".github/ISSUE_TEMPLATE/project-suggestion.md"
+    )
 
 
 @pytest.mark.parametrize("locale,config", LOCALES.items())

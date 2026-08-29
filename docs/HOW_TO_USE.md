@@ -93,7 +93,7 @@ python test.py        # 確認跑得起來
 | Stage | 主動模式時間預算 | 被動模式時間預算 |
 |---|---|---|
 | Stage 3（Agent Loop） | 5-8 hr（每練習 1-1.5 hr） | 1-2 hr（讀過去） |
-| Stage 4（Agent Framework／Workflow Graph） | 8-12 hr（每練習 2 hr） | 2-3 hr |
+| Stage 4（Workflow Graph／Agent Framework） | 8-12 hr（每練習 2 hr） | 2-3 hr |
 | Stage 6（RAG + memory） | 8-12 hr | 2-3 hr |
 | Stage 7（production） | 10-15 hr | 3-4 hr |
 

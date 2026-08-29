@@ -1,8 +1,8 @@
-# Stage 7 — Agent Production Engineering: Harness, Loops & Graphs
+# Stage 7 — Loop & Graph Engineering: Making Agents Reliable
 
 > [繁體中文](./07-multi-agent-production.md) | [简体中文](./07-multi-agent-production.zh-Hans.md) | **English**
 
-This stage has one simple job: make an Agent do more than succeed once. You should be able to see and check its work, and it should stop safely when something goes wrong.
+This stage is **Agent Production Engineering**: make the Agent's loops and work maps reliable. It should do more than “succeed once”: you should be able to see and check its work, and it should stop safely when something goes wrong.
 
 ## 🎯 What This Stage Does (Start Here)
 
@@ -93,23 +93,23 @@ Read these five first. They explain the relationship between Agent Loops, Workfl
 
 These are not five products or five chapter numbers. They simply order the scope you control from small to large: each upper layer uses parts from the layers below it.
 
-| Layer | Plain-language question | Precise name | First encountered | Deepened here |
-|---|---|---|---|---|
-| 1 | Did I explain the request clearly? | **Prompt Engineering** | [Stage 2](02-prompt-engineering.en.md) | The Prompt and Eval in every stage |
-| 2 | Did I include the information it needs? | **Context Engineering** | [Stage 2](02-prompt-engineering.en.md) to distinguish Prompt and Context | RAG / Memory in [Stage 6](06-memory-rag.en.md) |
-| 3 | Can it use tools safely and stop after failure? | **Harness Engineering** | The runner / tool boundary in [Stage 3](03-tool-use-and-hello-agent.en.md) | Examples in [Stage 5](05-claude-code-ecosystem.en.md) and this stage's production checklist |
-| 4 | How does it act, inspect results, and act again without running forever? | **Loop Engineering** | The Agent Loop in [Stage 3](03-tool-use-and-hello-agent.en.md) | This stage's bounded long-running loop |
-| 5 | Can every step, branch, and return path be seen and controlled? | **Graph Engineering** | The Workflow Graph in [Stage 4](04-agent-frameworks.en.md) | This stage's production orchestration |
+| Layer | Plain-language question | What runs | Work that designs it | First encountered | Deepened here |
+|---|---|---|---|---|---|
+| 1 | Did I explain the request clearly? | **Prompt** | **Prompt Engineering** | [Stage 2](02-prompt-engineering.en.md) | The Prompt and Eval in every stage |
+| 2 | Did I include the information it needs? | **Context** | **Context Engineering** | [Stage 2](02-prompt-engineering.en.md) to distinguish Prompt and Context | RAG / Memory in [Stage 6](06-memory-rag.en.md) |
+| 3 | Can it use tools safely and stop after failure? | **Agent Harness** | **Harness Engineering** | The runner / tool boundary in [Stage 3](03-tool-use-and-hello-agent.en.md) | Examples in [Stage 5](05-claude-code-ecosystem.en.md) and this stage's production checklist |
+| 4 | How does it act, inspect results, and act again without running forever? | **Agent Loop** | **Loop Engineering** | The Agent Loop in [Stage 3](03-tool-use-and-hello-agent.en.md) | This stage's bounded long-running loop |
+| 5 | Can every step, branch, and return path be seen and controlled? | **Workflow Graph** | **Graph Engineering** | The Workflow Graph in [Stage 4](04-agent-frameworks.en.md) | This stage's production orchestration |
 
 - **Stage 3: Agent Loop entry** — learn one execution of “model → tool → result → next step.”
 - **Stage 4: Workflow Graph entry** — use framework parts to draw nodes, edges, branches, and state.
-- **Stage 7: Agent Production Engineering integration** — add budgets, verification, checkpoints, human approval, observability, and recovery.
+- **Stage 7: Loop & Graph Engineering integration** — add budgets, verification, checkpoints, human approval, observability, and recovery.
 
-**An Agent Framework is a toolbox; Graph Engineering uses that toolbox to design the whole work map.** That is why the Stage 4 title keeps Agent Frameworks and adds Workflow Graphs; this stage should not simply rename it Graph Engineering.
+Stage 4 teaches the **Workflow Graph** first; Stage 7 turns it into full **Graph Engineering**. An Agent Framework is a toolbox that can implement the graph; it is not another name for Graph Engineering.
 
 ![Five-layer Agent engineering stack](../resources/diagrams/agent-engineering-5layer.en.png)
 
-Prompt, Context, and Harness already appear in major vendors' engineering material. **Loop Engineering** and **Graph Engineering** are umbrella terms taking shape in 2026: they were not invented by this project, and they are not yet standard names adopted by every vendor. The underlying **agent loop**, **workflow graph**, **graph-based workflow**, and **orchestration** are established practices.
+Prompt, Context, and Harness already appear in major vendors' engineering material. **Loop Engineering** and **Graph Engineering** are used in industry and research; this project did not invent them. They are not, however, one standard set of names adopted by every vendor. Other documentation may say **agent loop**, **workflow graph**, **graph-based workflow**, or **orchestration**.
 
 Term sources: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering), [Loop Engineering exploratory preprint](https://arxiv.org/abs/2608.21884), and [Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156). The papers are evidence for emerging terminology, not required reading for beginners.
 

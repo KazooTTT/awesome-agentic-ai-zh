@@ -71,9 +71,9 @@ CORE_SECTION_HEADINGS = {
     "zh-Hans": ("## 🧩 九个核心词", "## 🚪 进入条件"),
 }
 PAGE_TITLES = {
-    "zh-TW": "# Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph",
-    "en": "# Stage 7 — Agent Production Engineering: Harness, Loops & Graphs",
-    "zh-Hans": "# Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph",
+    "zh-TW": "# Stage 7 — Loop／Graph Engineering：讓 Agent 穩定運作",
+    "en": "# Stage 7 — Loop & Graph Engineering: Making Agents Reliable",
+    "zh-Hans": "# Stage 7 — Loop／Graph Engineering：让 Agent 稳定运行",
 }
 OLD_PAGE_TITLES = {
     "zh-TW": "# Stage 7 — Loop／Graph Engineering：多 Agent 與穩定運作",
@@ -121,17 +121,17 @@ ROUTE_MARKERS = {
     "zh-TW": (
         "Stage 3：Agent Loop 入門",
         "Stage 4：Workflow Graph 入門",
-        "Stage 7：Agent Production Engineering 整合",
+        "Stage 7：Loop／Graph Engineering 整合",
     ),
     "en": (
         "Stage 3: Agent Loop entry",
         "Stage 4: Workflow Graph entry",
-        "Stage 7: Agent Production Engineering integration",
+        "Stage 7: Loop & Graph Engineering integration",
     ),
     "zh-Hans": (
         "Stage 3：Agent Loop 入门",
         "Stage 4：Workflow Graph 入门",
-        "Stage 7：Agent Production Engineering 整合",
+        "Stage 7：Loop／Graph Engineering 整合",
     ),
 }
 RESOURCE_URL_RATINGS = (

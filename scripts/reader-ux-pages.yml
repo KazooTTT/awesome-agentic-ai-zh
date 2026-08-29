@@ -623,14 +623,14 @@ pages:
           anchor: -先认识八个核心词
       loop-framework-graph:
         zh-TW:
-          heading: "🧭 先分清：Loop、Framework 與 Graph"
-          anchor: -先分清loopframework-與-graph
+          heading: "🧭 先分清：Loop、Graph 與 Framework"
+          anchor: -先分清loopgraph-與-framework
         en:
-          heading: "🧭 First Separate Loop, Framework, and Graph"
-          anchor: -first-separate-loop-framework-and-graph
+          heading: "🧭 First Separate Loop, Graph, and Framework"
+          anchor: -first-separate-loop-graph-and-framework
         zh-Hans:
-          heading: "🧭 先分清：Loop、Framework 与 Graph"
-          anchor: -先分清loopframework-与-graph
+          heading: "🧭 先分清：Loop、Graph 与 Framework"
+          anchor: -先分清loopgraph-与-framework
       choice-map:
         zh-TW:
           heading: "🗺️ 先看一張選擇地圖"
@@ -809,14 +809,14 @@ pages:
       first_exercise_section_id: exercise-1
       min_definition_chars: 20
       terms:
-        - id: framework
-          zh-TW: {term: Framework, label: "Framework（框架）"}
-          en: {term: Framework, label: Framework}
-          zh-Hans: {term: Framework, label: "Framework（框架）"}
         - id: workflow
           zh-TW: {term: Workflow, label: "Workflow（工作流程）／Workflow Graph（工作流程圖）"}
           en: {term: Workflow, label: "Workflow / Workflow Graph"}
           zh-Hans: {term: Workflow, label: "Workflow（工作流程）／Workflow Graph（工作流程图）"}
+        - id: framework
+          zh-TW: {term: Framework, label: "Framework（框架）"}
+          en: {term: Framework, label: Framework}
+          zh-Hans: {term: Framework, label: "Framework（框架）"}
         - id: agent
           zh-TW: {term: Agent, label: "Agent（代理程式）"}
           en: {term: Agent, label: Agent}
@@ -1169,9 +1169,9 @@ pages:
       en: stages/07-multi-agent-production.en.md
       zh-Hans: stages/07-multi-agent-production.zh-Hans.md
     max_visible_chars:
-      zh-TW: 10918
-      en: 16573
-      zh-Hans: 11058
+      zh-TW: 11030
+      en: 16696
+      zh-Hans: 11171
     max_open_details: 0
     required_details_count: 6
     visible_section_order:

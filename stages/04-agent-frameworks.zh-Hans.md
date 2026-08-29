@@ -1,8 +1,8 @@
-# Stage 4 — Agent 框架与 Workflow Graph
+# Stage 4 — Workflow Graph 与 Agent 框架
 
 > [繁体中文](./04-agent-frameworks.md) | **简体中文** | [English](./04-agent-frameworks.en.md)
 
-你在 Stage 3 已经自己写过 **Agent Loop**。这一关要做的事很简单：先看 **framework** 提供哪些积木，再把需要看清楚的步骤画成 **Workflow Graph**。工具可以帮你少接几条线，但不会替你决定哪张工作地图才安全。
+你在 Stage 3 已经自己写过 **Agent Loop**。这一关先把多步工作画成 **Workflow Graph**，再选 **Framework（框架）** 来帮你接线。先看懂工作地图，再选工具箱，才不会因为某个框架很流行就硬把事情变复杂。
 
 <!-- freshness: canonical=stages/04-agent-frameworks.md; verified_on=2026-08-27; scope=frameworks,releases,maintenance,licenses,security; max_age_days=90 -->
 
@@ -10,15 +10,15 @@
 
 完成这一关后，你可以：
 
-- 用自己的话分清 Agent Loop、Agent framework、Workflow Graph 与多角色系统。
+- 用自己的话分清 Agent Loop、Workflow Graph、Agent framework 与多角色系统。
 - 先选最简单能完成任务的工具，不为了流行硬加角色。
 - 跑完五个练习，亲手比较 LangGraph、CrewAI、Smolagents 与 Pydantic AI。
 - 说出交接、存档与人工批准各自解决什么问题。
 
 ## 🧩 先认识八个核心词
 
-- **Framework（框架）**：一盒已经整理好的积木。它帮你接好循环、工具、记录与错误处理；但盒子越大，藏起来的细节也越多。
 - **Workflow（工作流程）／Workflow Graph（工作流程图）**：像照食谱做菜，再把每一步和下一站画出来。程序先写好 node、edge 与分支，模型只完成其中需要判断的工作。
+- **Framework（框架）**：一盒已经整理好的积木。它帮你接好循环、工具、记录与错误处理；但盒子越大，藏起来的细节也越多。
 - **Agent（智能体）**：像拿到目标的助手。模型可以根据当前结果决定下一步，但真正的权限、验证与停止条件仍由程序控制。
 - **Orchestration（编排）**：像交通指挥。它安排谁先做、谁后做、数据交给谁，以及失败时怎么回来。
 - **State（状态）**：像工作中的笔记本。它记住当前输入、工具结果、进度与下一步需要的数据。
@@ -26,13 +26,14 @@
 - **Handoff（交接）**：像把工作单交给另一位同学。新的 Agent 接手后，需要拿到足够背景，也不能得到不需要的权限。
 - **Human-in-the-loop（HITL，人在循环中）**：像先举手请老师看。程序在花钱、寄信、删除数据或发布前暂停，等人批准才继续。
 
-## 🧭 先分清：Loop、Framework 与 Graph
+<a id="-先分清loopframework-与-graph"></a>
+## 🧭 先分清：Loop、Graph 与 Framework
 
 | 名称 | 五岁也懂的说法 | 正确边界与学习位置 |
 |---|---|---|
 | **Agent Loop** | 助手做一步、看结果，再决定下一步 | Stage 3 的一次执行内循环：model → tool call → execute → tool result → model |
-| **Agent Framework** | 一盒帮你接线的工具积木 | 提供 runner、tool、state、handoff、checkpoint 等零件；一个 Agent 也能使用 |
 | **Workflow Graph** | 把每一站和道路画出来 | 用 node、edge、branch 与 state 表示工作顺序；格子里可以是 Agent、工具、检查或人工批准 |
+| **Agent Framework** | 一盒帮你接线的工具积木 | 提供 runner、tool、state、handoff、checkpoint 等零件；一个 Agent 也能使用 |
 | **Loop Engineering** | 设计它怎么反复做、怎么验证、何时停 | Stage 7 才加入预算、验证、恢复与人工升级 |
 | **Graph Engineering** | 用工具箱设计整张工作地图 | Stage 7 才把多个 loop、工具与人做成可观测、可恢复的 production 系统 |
 

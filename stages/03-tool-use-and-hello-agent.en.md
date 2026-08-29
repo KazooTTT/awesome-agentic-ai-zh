@@ -536,4 +536,4 @@ Complete one five-star route first: official docs → Exercises 1–3 → one fr
 - [ ] I ran Exercises 1–3 and saw at least one successful and one error path.
 - [ ] When comparing models or schemas, I used the same test set and explicit scores.
 
-Once these are done, enter [Stage 4 — Agent Frameworks & Workflow Graphs](04-agent-frameworks.en.md). If you still cannot explain the full round trip, rerun Exercise 1; you do not need to reread the whole chapter.
+Once these are done, enter [Stage 4 — Workflow Graphs & Agent Frameworks](04-agent-frameworks.en.md). If you still cannot explain the full round trip, rerun Exercise 1; you do not need to reread the whole chapter.

@@ -77,7 +77,7 @@ hide:
 
     [:octicons-arrow-right-24: Open](stages/03-tool-use-and-hello-agent.en.md)
 
--   :material-view-grid:{ .lg .middle } __Stage 4 — Agent Frameworks & Workflow Graphs__
+-   :material-view-grid:{ .lg .middle } __Stage 4 — Workflow Graphs & Agent Frameworks__
 
     ---
 
@@ -101,11 +101,11 @@ hide:
 
     [:octicons-arrow-right-24: Open](stages/06-memory-rag.en.md)
 
--   :material-account-group:{ .lg .middle } __Stage 7 — Agent Production Engineering__
+-   :material-account-group:{ .lg .middle } __Stage 7 — Loop & Graph Engineering__
 
     ---
 
-    Harness, multi-agent collaboration, production.
+    Make loops, workflow graphs, harnesses, and multi-agent work reliable.
 
     [:octicons-arrow-right-24: Open](stages/07-multi-agent-production.en.md)
 

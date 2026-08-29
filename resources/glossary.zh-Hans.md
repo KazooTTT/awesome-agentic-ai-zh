@@ -52,7 +52,7 @@
 
 → 详细定义请看下面各区块。
 
-**先分清两种顺序：**课程会依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.zh-Hans.md) → [Stage 4 的 Agent Framework／Workflow Graph](../stages/04-agent-frameworks.zh-Hans.md) → [Stage 7 的 Agent Production Engineering](../stages/07-multi-agent-production.zh-Hans.md)。五层图的 Prompt → Context → Harness → Loop → Graph 是在比较“要管的范围有多大”，**不是章节编号**。
+**先分清两种顺序：**课程会依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.zh-Hans.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.zh-Hans.md) → [Stage 7 的 Loop／Graph Engineering：让 Agent 稳定运行](../stages/07-multi-agent-production.zh-Hans.md)。五层图的 Prompt → Context → Harness → Loop → Graph 是在比较“要管的范围有多大”，**不是章节编号**。
 
 ---
 
@@ -446,7 +446,7 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 
 这是本路线图给 Stage 7 使用的**上位名称**，不是把 Harness、Loop 或 Graph 改成同一件事。Stage 4 先教 framework 这个工具箱和基本 Workflow Graph；Stage 7 再把预算、验证、checkpoint、人工批准、观测与恢复加上去。换句话说：**Stage 4 学会把流程组起来，Stage 7 学会让整套流程长期跑得住。**
 
-📍 完整章节：[Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph](../stages/07-multi-agent-production.zh-Hans.md)
+📍 完整章节：[Stage 7 — Loop／Graph Engineering：让 Agent 稳定运行](../stages/07-multi-agent-production.zh-Hans.md)
 
 ### Harness Engineering
 
@@ -480,7 +480,7 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 
 **跟循环的关系**：不是二选一。**格子里面是 agent 自己绕圈，格子跟格子之间才是你安排的顺序**——所以图是把好几个循环装进格子再排顺序；全部塞回同一个格子，就退回单纯的循环了。格子里也不一定是 agent，可以是一个工具、一段检查、或“这里要人按核准才能往下”。五层阶梯的完整说明见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)（canonical）。
 
-先在 [Stage 4 的 Agent framework／Workflow Graph](../stages/04-agent-frameworks.zh-Hans.md) 学工具和基本图，再到 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md) 加上预算、验证、观测与恢复。可直接运行的入口是 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.zh-Hans.md)（`StateGraph` / conditional edge / checkpointer）。相关：harness、Loop Engineering、orchestration。
+先在 [Stage 4 的 Workflow Graph／Agent framework](../stages/04-agent-frameworks.zh-Hans.md) 学工具和基本图，再到 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md) 加上预算、验证、观测与恢复。可直接运行的入口是 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.zh-Hans.md)（`StateGraph` / conditional edge / checkpointer）。相关：harness、Loop Engineering、orchestration。
 
 ---
 

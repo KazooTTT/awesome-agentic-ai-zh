@@ -6,7 +6,7 @@
 
 You will wrap one model call in two HTTP endpoints: `/health` says the service process is alive, while `/chat` accepts a question and returns an answer.
 
-Pairs with Exercise 5 in [Stage 7 — Agent Production Engineering: Harness, Loops & Graphs](../../../stages/07-multi-agent-production.en.md).
+Pairs with Exercise 5 in [Stage 7 — Loop & Graph Engineering: Making Agents Reliable](../../../stages/07-multi-agent-production.en.md).
 
 ## 🎯 Learning goals
 
