@@ -159,7 +159,7 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/MuiseDestiny/zotero-gpt": {"zh-TW": "模型", "en": "model", "zh-Hans": "模型"},
     "https://github.com/flonat/flonat-research": {"zh-TW": "領域", "en": "field", "zh-Hans": "领域"},
     "https://github.com/SakanaAI/AI-Scientist-v2": {"zh-TW": "作者", "en": "authors", "zh-Hans": "作者"},
-    "https://github.com/langchain-ai/open_deep_research": {"zh-TW": "首選", "en": "default", "zh-Hans": "首选"},
+    "https://github.com/langchain-ai/open_deep_research": {"zh-TW": "仍在維護", "en": "default", "zh-Hans": "仍在维护"},
     "https://code.claude.com/docs/en/overview": {"zh-TW": "permission", "en": "permission", "zh-Hans": "permission"},
     "https://github.com/anomalyco/opencode": {"zh-TW": "AGENTS.md", "en": "AGENTS.md", "zh-Hans": "AGENTS.md"},
     "https://github.com/earendil-works/pi": {"zh-TW": "sandbox", "en": "sandbox", "zh-Hans": "sandbox"},
@@ -171,7 +171,7 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/OpenHands/OpenHands": {"zh-TW": "人工", "en": "human", "zh-Hans": "人工"},
     "https://github.com/obra/superpowers": {"zh-TW": "gate", "en": "gate", "zh-Hans": "gate"},
     "https://github.com/yamadashy/repomix": {"zh-TW": "secret", "en": "secrets", "zh-Hans": "secrets"},
-    "https://github.com/RooCodeInc/Roo-Code": {"zh-TW": "首選", "en": "default", "zh-Hans": "首选"},
+    "https://github.com/RooCodeInc/Roo-Code": {"zh-TW": "仍在維護", "en": "default", "zh-Hans": "仍在维护"},
 }
 
 DEVELOPER_ROW_FACTS = {
@@ -543,6 +543,8 @@ def test_role_pages_drop_known_stale_or_unsafe_claims(page: Path) -> None:
         "< 50 LOC",
         "read:user",
         "classic PAT",
+        "首選",
+        "首选",
         '""',
         "“”",
     )

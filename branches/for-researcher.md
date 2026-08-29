@@ -127,7 +127,7 @@ Gemini Notebook 是 Google 在 2026-07-16 對 NotebookLM 使用的現行名稱�
 <tr><td><a href="https://github.com/SakanaAI/AI-Scientist-v2">SakanaAI/AI-Scientist-v2</a></td><td>研究端到端 multi-agent 實驗架構</td><td>研究參考；自訂 source-code license</td><td>不是作者替代品，也不是可直接投稿的保證</td><td>⭐⭐⭐⭐</td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="1">歷史</th><td><a href="https://github.com/langchain-ai/open_deep_research">langchain-ai/open_deep_research</a></td><td>閱讀早期 deep-research agent 架構</td><td>已封存；MIT</td><td>只作歷史參考，不當新專案的現行首選</td><td>⭐⭐⭐⭐⭐</td></tr>
+<tr><th scope="rowgroup" rowspan="1">歷史</th><td><a href="https://github.com/langchain-ai/open_deep_research">langchain-ai/open_deep_research</a></td><td>閱讀早期 deep-research agent 架構</td><td>已封存；MIT</td><td>只作歷史參考；新專案請改用仍在維護的工具</td><td>⭐⭐⭐⭐⭐</td></tr>
 </tbody>
 </table>
 

@@ -146,7 +146,7 @@ git diff -- README.md
 <tr><td><a href="https://github.com/yamadashy/repomix">yamadashy/repomix</a></td><td>repo context packer</td><td>CLI／MCP</td><td>整理一次性的 codebase context 給 reviewer 或 agent</td><td>活躍；MIT；輸出前仍要排除 secrets 與不必要檔案</td><td>⭐⭐⭐⭐⭐</td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="1">歷史</th><td><a href="https://github.com/RooCodeInc/Roo-Code">Roo Code</a></td><td>歷史 coding agent</td><td>VS Code extension</td><td>閱讀多 mode agent 的設計歷史</td><td>已封存；Apache-2.0；不當新專案現行首選</td><td>⭐⭐⭐</td></tr>
+<tr><th scope="rowgroup" rowspan="1">歷史</th><td><a href="https://github.com/RooCodeInc/Roo-Code">Roo Code</a></td><td>歷史 coding agent</td><td>VS Code extension</td><td>閱讀多 mode agent 的設計歷史</td><td>已封存；Apache-2.0；新專案請改用仍在維護的工具</td><td>⭐⭐⭐</td></tr>
 </tbody>
 </table>
 
