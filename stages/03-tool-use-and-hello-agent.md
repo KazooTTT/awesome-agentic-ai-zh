@@ -1,8 +1,8 @@
-# Stage 3 — 工具使用與第一個 Agent（Tool Use & Hello Agent）⭐
+# Stage 3 — 工具使用與第一個 Agent Loop ⭐
 
 🌐 [English](03-tool-use-and-hello-agent.en.md) | [简体中文](03-tool-use-and-hello-agent.zh-Hans.md) | **繁體中文**
 
-這一關要做一件事：讓模型填一張「工具工作單」，再由你的程式檢查、執行並把結果送回去。
+這一關要做一件事：讓模型填一張「工具工作單」，再由你的程式檢查、執行並把結果送回去。這個來回就是你的第一個 **Agent Loop**。
 
 <!-- freshness: canonical=stages/03-tool-use-and-hello-agent.md; verified_on=2026-08-27; scope=models,pricing,tool-apis,security; max_age_days=90 -->
 
@@ -44,7 +44,7 @@ Tool Result 是程式做完事後交回的資料，並用 call ID 對回原請�
 
 ### **Agent Loop（Agent 執行迴圈）**
 
-程式重複「問模型 → 執行工具 → 回傳結果」，直到得到答案或碰到上限。像照食譜一步一步做，完成就停。本章的 working definition 是 `模型 + 工具 + 有界迴圈`；這是學習用定義，不是所有 Agent 的唯一學術定義。
+程式重複「問模型 → 執行工具 → 回傳結果」，直到得到答案或碰到上限。像照食譜一步一步做，完成就停。完整來回是 `model → tool call → execute → tool result → model`。本章的 working definition 是 `模型 + 工具 + 有界迴圈`；這是學習用定義，不是所有 Agent 的唯一學術定義。
 
 ### **ReAct（Reasoning + Acting）**
 
@@ -74,14 +74,14 @@ ReAct 會交替決定下一步、採取 action、查看 observation，再繼續�
 
 ## 📚 必修閱讀
 
-<details markdown="1">
-<summary>展開三篇必讀、閱讀順序與本章設定</summary>
-
 依序讀：
 
 1. [Ollama Tool Calling](https://docs.ollama.com/capabilities/tool-calling) ⭐⭐⭐⭐⭐ — 先看 single tool 與 multi-turn loop。
 2. [Anthropic — How Tool Use Works](https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works) ⭐⭐⭐⭐⭐ — 看清楚模型、應用程式和 tool result 各自負責什麼。
 3. [ReAct paper](https://arxiv.org/abs/2210.03629) ⭐⭐⭐⭐ — 先讀 abstract；知道 Reasoning + Acting 的來源，不必一次讀完公式。
+
+<details markdown="1">
+<summary>展開先備知識、環境、時間與預算</summary>
 
 **先備知識**：能執行 Python、看懂 list／dict／function，並完成 [Stage 02](02-prompt-engineering.md)。
 
@@ -479,9 +479,6 @@ python examples/stage-3/06-schema-design/test_anthropic.py
 
 先完成一條五星路線：官方文件 → 練習 1–3 → 一個從零實作。完整表是工具箱，不是 21 筆待辦清單。
 
-<details markdown="1">
-<summary>展開 21 筆官方文件、課程、repo 與 Structured Output 工具</summary>
-
 <small>資源查核：2026-08-27 UTC</small>
 
 > 推薦度是本 Stage 的學習優先順序，不是人氣排名：`⭐⭐⭐⭐⭐`＝跳過會卡住本章路線；`⭐⭐⭐⭐`＝建議優先；`⭐⭐⭐`＝有需要再看；`⭐⭐`＝歷史或少數情境。
@@ -531,8 +528,6 @@ python examples/stage-3/06-schema-design/test_anthropic.py
   </tbody>
 </table>
 
-</details>
-
 ## ✅ 進 Stage 4 前的自我檢查
 
 - [ ] 我能用自己的話說出 schema → call → execute → result → answer。
@@ -541,4 +536,4 @@ python examples/stage-3/06-schema-design/test_anthropic.py
 - [ ] 我跑過練習 1–3，並看過至少一次成功和一次錯誤路徑。
 - [ ] 我比較模型或 schema 時使用同一組題目與明確分數。
 
-都做到後，進入 [Stage 4 — Agent Frameworks](04-agent-frameworks.md)。如果還說不出完整來回，先重跑練習 1；不需要把整章重新讀一遍。
+都做到後，進入 [Stage 4 — Agent 框架與 Workflow Graph](04-agent-frameworks.md)。如果還說不出完整來回，先重跑練習 1；不需要把整章重新讀一遍。

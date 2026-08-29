@@ -105,7 +105,7 @@ These are not five products or five chapter numbers. They simply order the scope
 - **Stage 4: Workflow Graph entry** — use framework parts to draw nodes, edges, branches, and state.
 - **Stage 7: Loop / Graph Engineering deepening** — add budgets, verification, checkpoints, human approval, observability, and recovery.
 
-**An Agent Framework is a toolbox; Graph Engineering uses that toolbox to design the whole work map.** That is why Stage 4 can still be titled Agent Frameworks; this stage should not simply rename it Graph Engineering.
+**An Agent Framework is a toolbox; Graph Engineering uses that toolbox to design the whole work map.** That is why the Stage 4 title keeps Agent Frameworks and adds Workflow Graphs; this stage should not simply rename it Graph Engineering.
 
 ![Five-layer Agent engineering stack](../resources/diagrams/agent-engineering-5layer.en.png)
 

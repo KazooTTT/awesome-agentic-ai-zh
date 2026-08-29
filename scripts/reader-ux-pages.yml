@@ -299,10 +299,11 @@ pages:
       en: stages/03-tool-use-and-hello-agent.en.md
       zh-Hans: stages/03-tool-use-and-hello-agent.zh-Hans.md
     max_visible_chars:
-      zh-TW: 4365
-      en: 8140
-      zh-Hans: 4431
+      zh-TW: 8942
+      en: 13722
+      zh-Hans: 9023
     max_open_details: 0
+    required_details_count: 11
     visible_section_order:
       - learning-goals
       - entry-conditions
@@ -507,6 +508,9 @@ pages:
         zh-Hans:
           heading: "✅ 进 Stage 4 前的自我检查"
           anchor: -进-stage-4-前的自我检查
+    visible_section_minimums:
+      required-reading: {min_links: 3}
+      projects: {min_links: 21, min_ratings: 21}
     core_terms:
       section_id: core-terms
       first_exercise_section_id: exercise-1
@@ -552,13 +556,15 @@ pages:
       en: stages/04-agent-frameworks.en.md
       zh-Hans: stages/04-agent-frameworks.zh-Hans.md
     max_visible_chars:
-      zh-TW: 5280
-      en: 10240
-      zh-Hans: 5294
+      zh-TW: 10495
+      en: 17141
+      zh-Hans: 10513
     max_open_details: 0
+    required_details_count: 6
     visible_section_order:
       - learning-goals
       - core-terms
+      - loop-framework-graph
       - choice-map
       - entry-conditions
       - required-reading
@@ -615,6 +621,16 @@ pages:
         zh-Hans:
           heading: "🧩 先认识八个核心词"
           anchor: -先认识八个核心词
+      loop-framework-graph:
+        zh-TW:
+          heading: "🧭 先分清：Loop、Framework 與 Graph"
+          anchor: -先分清loopframework-與-graph
+        en:
+          heading: "🧭 First Separate Loop, Framework, and Graph"
+          anchor: -first-separate-loop-framework-and-graph
+        zh-Hans:
+          heading: "🧭 先分清：Loop、Framework 与 Graph"
+          anchor: -先分清loopframework-与-graph
       choice-map:
         zh-TW:
           heading: "🗺️ 先看一張選擇地圖"
@@ -647,14 +663,14 @@ pages:
           anchor: -必修阅读
       framework-definition:
         zh-TW:
-          heading: "🤔 什麼是 multi-agent framework？"
-          anchor: -什麼是-multi-agent-framework
+          heading: "🤔 什麼是 Agent framework？"
+          anchor: -什麼是-agent-framework
         en:
-          heading: "🤔 What Is a Multi-Agent Framework?"
-          anchor: -what-is-a-multi-agent-framework
+          heading: "🤔 What Is an Agent Framework?"
+          anchor: -what-is-an-agent-framework
         zh-Hans:
-          heading: "🤔 什么是 multi-agent framework？"
-          anchor: -什么是-multi-agent-framework
+          heading: "🤔 什么是 Agent framework？"
+          anchor: -什么是-agent-framework
       two-dimensions:
         zh-TW:
           heading: "兩個維度先分清楚（workflow vs agent / single vs multi）"
@@ -673,7 +689,7 @@ pages:
           heading: "When Do You Really Need Multi-Agent? (Don't Force It)"
           anchor: when-do-you-really-need-multi-agent-dont-force-it
         zh-Hans:
-          heading: "什么时候真的需要 multi-agent（不要硬上）"
+          heading: "什么时候真的需要 Multi-Agent（不要硬上）"
           anchor: 什么时候真的需要-multi-agent不要硬上
       patterns:
         zh-TW:
@@ -785,6 +801,9 @@ pages:
         zh-Hans:
           heading: "✅ 进 Stage 5 前的自我检查"
           anchor: -进-stage-5-前的自我检查
+    visible_section_minimums:
+      required-reading: {min_links: 5}
+      projects: {min_links: 18, min_ratings: 18}
     core_terms:
       section_id: core-terms
       first_exercise_section_id: exercise-1
@@ -795,9 +814,9 @@ pages:
           en: {term: Framework, label: Framework}
           zh-Hans: {term: Framework, label: "Framework（框架）"}
         - id: workflow
-          zh-TW: {term: Workflow, label: "Workflow（工作流程）"}
-          en: {term: Workflow, label: Workflow}
-          zh-Hans: {term: Workflow, label: "Workflow（工作流程）"}
+          zh-TW: {term: Workflow, label: "Workflow（工作流程）／Workflow Graph（工作流程圖）"}
+          en: {term: Workflow, label: "Workflow / Workflow Graph"}
+          zh-Hans: {term: Workflow, label: "Workflow（工作流程）／Workflow Graph（工作流程图）"}
         - id: agent
           zh-TW: {term: Agent, label: "Agent（代理程式）"}
           en: {term: Agent, label: Agent}

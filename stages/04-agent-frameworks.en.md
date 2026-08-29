@@ -1,8 +1,8 @@
-# Stage 4 — Agent Frameworks
+# Stage 4 — Agent Frameworks & Workflow Graphs
 
 > [Traditional Chinese](./04-agent-frameworks.md) | [Simplified Chinese](./04-agent-frameworks.zh-Hans.md) | **English**
 
-In Stage 3, you wrote a tool loop yourself. This stage has a simple purpose: see which repeated tasks can be handed to an existing toolkit, and learn when *not* to make the system more complex.
+In Stage 3, you wrote an **Agent Loop** yourself. This stage has a simple purpose: first see which building blocks a **framework** provides, then draw the steps you need to control as a **Workflow Graph**. Tools can help you connect fewer wires, but they will not decide which work map is safe for you.
 
 <!-- freshness: canonical=stages/04-agent-frameworks.md; verified_on=2026-08-27; scope=frameworks,releases,maintenance,licenses,security; max_age_days=90 -->
 
@@ -10,7 +10,7 @@ In Stage 3, you wrote a tool loop yourself. This stage has a simple purpose: see
 
 After this stage, you can:
 
-- Explain the difference between a fixed route, dynamic decision-making, and a multi-role system in your own words.
+- Explain the difference between an Agent Loop, an Agent framework, a Workflow Graph, and a multi-role system in your own words.
 - Choose the simplest tool that can finish the task instead of adding roles just because they are fashionable.
 - Complete five exercises and compare LangGraph, CrewAI, Smolagents, and Pydantic AI hands-on.
 - Explain which problems passing work onward, saving progress, and human approval each solve.
@@ -18,13 +18,25 @@ After this stage, you can:
 ## 🧩 Eight Core Terms First
 
 - **Framework**: A box of ready-organized building blocks. It connects loops, tools, records, and error handling for you; the larger the box, the more details it can hide.
-- **Workflow**: Like following a recipe. The program has already written the route to the next step, and the model only completes work within that route.
+- **Workflow / Workflow Graph**: Like following a recipe, then drawing every step and next stop. The program writes the nodes, edges, and branches first; the model only completes work that needs judgment inside the route.
 - **Agent**: Like an assistant given a goal. The model can decide its next step from the current result, but the program still controls real permissions, validation, and stop conditions.
 - **Orchestration**: Like a traffic controller. It decides who works first and next, who receives the data, and how to recover from a failure.
 - **State**: Like a notebook used while working. It remembers the current input, tool results, progress, and the data needed for the next step.
 - **Checkpoint**: Like a game save. After the process is interrupted, it can continue from the saved point instead of starting everything again.
 - **Handoff**: Like passing an assignment sheet to another classmate. The next Agent needs enough context to take over, but must not receive permissions it does not need.
 - **Human-in-the-loop (HITL)**: Like raising your hand for the teacher to check first. The program pauses before spending money, sending email, deleting data, or publishing, and continues only after a person approves.
+
+## 🧭 First Separate Loop, Framework, and Graph
+
+| Name | Five-year-old-friendly version | Correct boundary and where to learn it |
+|---|---|---|
+| **Agent Loop** | The assistant does one step, checks the result, then chooses the next step | The within-one-run loop from Stage 3: model → tool call → execute → tool result → model |
+| **Agent Framework** | A toolbox that helps connect the wires | Provides runner, tool, state, handoff, checkpoint, and related parts; one Agent can use it too |
+| **Workflow Graph** | Draw every station and road | Represents work order with node, edge, branch, and state; each box can be an Agent, tool, check, or human approval |
+| **Loop Engineering** | Design how it repeats, validates, and stops | Stage 7 adds budgets, verification, recovery, and human escalation |
+| **Graph Engineering** | Use the toolbox to design the whole work map | Stage 7 turns multiple loops, tools, and humans into an observable, recoverable production system |
+
+**A framework is the toolbox; a Workflow Graph is the work map you draw; Graph Engineering is the design work for that map.** **Multi-Agent** systems can go into a graph, but not every graph needs multiple Agents, and not every node has to be an Agent.
 
 ## 🗺️ Start with This Choice Map
 
@@ -48,10 +60,7 @@ Complete Stage 3's six exercises first, and be able to explain `schema → call 
 
 ## 📚 Required Reading
 
-Read how to choose a simple shape first, then choose one framework Quickstart. The full list is collapsed by default so you do not hit a wall of resources before trying anything.
-
-<details markdown="1">
-<summary>Expand the four readings in order</summary>
+Read how to choose a simple shape first, then pick one of the two framework Quickstarts in Step 4. The five official links below form four reading steps; follow the order without trying to finish every page at once.
 
 1. [Anthropic — Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents): first distinguish a workflow from an agent, and understand why you should start with the simplest approach.
 2. [LangGraph — Workflows and Agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents): see how fixed and dynamic routes become graphs.
@@ -60,11 +69,10 @@ Read how to choose a simple shape first, then choose one framework Quickstart. T
 
 Third-party rankings can offer a candidate list, but they cannot prove a version, license, availability, or which option is “best.” Use official documentation and your own evals for those questions.
 
-</details>
+<a id="-what-is-a-multi-agent-framework"></a>
+## 🤔 What Is an Agent Framework?
 
-## 🤔 What Is a Multi-Agent Framework?
-
-A multi-agent system means “multiple Agents divide the work.” A multi-agent framework is a toolkit for arranging their handoffs, shared data, retries, saved state, and human approvals. It is not magic, and it is not the default answer for every project.
+An Agent framework is a toolbox for connecting models, tools, state, retries, saved progress, and human approvals for one or more Agents. **One Agent can use a framework too; multi-agent is only one later system shape, not the framework definition.** A framework is not magic, and it is not the default answer for every project.
 
 <a id="two-dimensions-to-clarify-first-workflow-vs-agent--single-vs-multi"></a>
 ### Two Dimensions to Clarify First (workflow vs agent / single vs multi)
@@ -235,10 +243,7 @@ Success criterion: you can restart the program and continue from a checkpoint; w
 
 ## 🎯 Curated Projects
 
-Choose [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐⭐ as your first entry point: it lets you directly see state, edges, checkpoints, and interruption points. The other 17 entries are collapsed by purpose; the ratings indicate this chapter's learning order, not a popularity ranking.
-
-<details markdown="1">
-<summary>Expand 18 frameworks, harnesses, and infrastructure tools</summary>
+Start with [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐⭐: it lets you directly see state, edges, checkpoints, and interruption points. The other 17 entries are grouped by purpose below; the ratings indicate this chapter's learning order, not a popularity ranking.
 
 <small>Framework information checked: 2026-08-27 UTC</small>
 
@@ -282,11 +287,9 @@ Choose [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐⭐ as
   </tbody>
 </table>
 
-</details>
-
 ## ✅ Self-Check Before Stage 5
 
-- [ ] I can distinguish a Workflow, an Agent, and a multi-agent system instead of treating them as the same thing.
+- [ ] I can distinguish an Agent Loop, an Agent framework, a Workflow Graph, and a multi-agent system instead of treating them as the same thing.
 - [ ] I start with the simplest approach and add Agents only when I see measurable evidence.
 - [ ] I can explain what State, Checkpoint, Handoff, and HITL each save or control.
 - [ ] I have run the offline tests for all five exercises and completed at least one Ollama Path A.

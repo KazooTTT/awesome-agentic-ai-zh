@@ -105,7 +105,7 @@ Docker 還不熟也可以開始；先做練習 1–4，練習 5 再補。
 - **Stage 4：Workflow Graph 入門**——再用 framework 提供的零件畫 node、edge、branch 與 state。
 - **Stage 7：Loop／Graph Engineering 加深**——最後加入預算、驗證、checkpoint、人工核准、觀測與復原。
 
-**Agent Framework 是工具箱；Graph Engineering 是用工具箱設計整張工作地圖。** 所以 Stage 4 的標題仍可叫 Agent Frameworks，但本章不能把它直接改名成 Graph Engineering。
+**Agent Framework 是工具箱；Graph Engineering 是用工具箱設計整張工作地圖。** 所以 Stage 4 的標題保留 Agent Framework，並加上 Workflow Graph；本章不能把它直接改名成 Graph Engineering。
 
 ![Agent 工程五層 Stack](../resources/diagrams/agent-engineering-5layer.png)
 
