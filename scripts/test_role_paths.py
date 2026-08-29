@@ -39,8 +39,8 @@ CORE_TERMS = {
         "Human Review",
     ),
     "developer": (
-        "IDE",
-        "Coding Agent",
+        "IDE／Surface",
+        "Coding Agent／Harness",
         "Provider／Router",
         "Model／Runtime",
         "Sandbox",
@@ -75,16 +75,18 @@ RESOURCE_PAIRS = {
     ),
     "developer": (
         ("https://code.claude.com/docs/en/overview", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/openai/codex", "⭐⭐⭐⭐⭐"),
+        ("https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent", "⭐⭐⭐⭐⭐"),
+        ("https://cursor.com/docs", "⭐⭐⭐⭐⭐"),
         ("https://github.com/anomalyco/opencode", "⭐⭐⭐⭐⭐"),
         ("https://github.com/earendil-works/pi", "⭐⭐⭐⭐"),
         ("https://github.com/Aider-AI/aider", "⭐⭐⭐⭐⭐"),
         ("https://github.com/aaif-goose/goose", "⭐⭐⭐⭐"),
-        ("https://cursor.com/docs", "⭐⭐⭐⭐⭐"),
         ("https://github.com/cline/cline", "⭐⭐⭐⭐⭐"),
-        ("https://github.com/continuedev/continue", "⭐⭐⭐⭐"),
         ("https://github.com/OpenHands/OpenHands", "⭐⭐⭐⭐"),
         ("https://github.com/obra/superpowers", "⭐⭐⭐⭐"),
         ("https://github.com/yamadashy/repomix", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/continuedev/continue", "⭐⭐⭐⭐"),
         ("https://github.com/RooCodeInc/Roo-Code", "⭐⭐⭐"),
     ),
     "teacher": (
@@ -105,7 +107,7 @@ RESOURCE_PAIRS = {
 
 ROWGROUPS = {
     "researcher": (3, 4, 2, 1),
-    "developer": (9, 2, 1),
+    "developer": (4, 6, 2, 2),
     "teacher": (3, 3, 3, 3),
 }
 
@@ -116,18 +118,72 @@ VISIBLE_STARTING_URLS = {
         "https://github.com/Future-House/paper-qa",
     ),
     "developer": (
-        "https://code.claude.com/docs/en/overview",
-        "https://github.com/anomalyco/opencode",
-        "https://github.com/cline/cline",
+        *(url for url, _rating in RESOURCE_PAIRS["developer"]),
     ),
     "teacher": tuple(url for url, _rating in RESOURCE_PAIRS["teacher"]),
 }
 
-VISIBLE_FIVE_STAR_COUNTS = {"researcher": 3, "developer": 3, "teacher": 10}
+VISIBLE_FIVE_STAR_COUNTS = {"researcher": 3, "developer": 8, "teacher": 10}
+
+DETAIL_COUNTS = {"researcher": 5, "developer": 3, "teacher": 5}
+
+DEVELOPER_REQUIRED_READING_URLS = (
+    "https://code.claude.com/docs/en/permissions",
+    "https://learn.chatgpt.com/docs/agent-approvals-security",
+    "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent",
+    "https://github.com/earendil-works/pi#permissions--containerization",
+    "https://openrouter.ai/docs/guides/routing/provider-selection",
+    "https://docs.ollama.com/",
+)
+
+DEVELOPER_EXERCISE_SAFETY = {
+    "zh-TW": (
+        "在我明確人工批准前，不要寫檔。",
+        "不要 push、merge 或 deploy。",
+        "不要用會清掉整個工作區的指令。",
+    ),
+    "en": (
+        "Before my explicit human Approval, do not write files.",
+        "Do not push, merge, or deploy.",
+        "never clear the whole worktree.",
+    ),
+    "zh-Hans": (
+        "在我明确人工 Approval 前不要写文件。",
+        "不要 push、merge 或 deploy。",
+        "不要清空整个工作区。",
+    ),
+}
+
+DEVELOPER_EXERCISE_BOUNDS = {
+    "zh-TW": ("## 🛠 第一個練習", "## 📚 先選一個入口"),
+    "en": ("## 🛠 First exercise", "## 📚 Choose an entry point"),
+    "zh-Hans": ("## 🛠 第一个练习", "## 📚 先选一个入口"),
+}
+
+DEVELOPER_NON_SYNONYM_TEXT = {
+    "zh-TW": (
+        "不代表它只能在 IDE 裡工作",
+        "兩者常放在同一產品裡，但不是同一個意思",
+    ),
+    "en": (
+        "does not mean it only works in an IDE",
+        "They may be in one product but are not the same thing",
+    ),
+    "zh-Hans": (
+        "不代表它只能在 IDE 中工作",
+        "两者常在同一产品中，但含义不同",
+    ),
+}
+
+PI_NO_BUILT_IN_SANDBOX = {
+    "zh-TW": "沒有內建 sandbox，要自行隔離",
+    "en": "no built-in Sandbox, so isolate it yourself",
+    "zh-Hans": "没有内置 sandbox，需自行隔离",
+}
 
 VISIBLE_LANDMARKS = {
     "researcher": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## ✅"),
-    "developer": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## ✅"),
+    "developer": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
     "teacher": ("## 📌", "## 🎯", "## 🧩", "## 🛡", "## 🛠", "## 📚", "## ⭐", "## ✅"),
 }
 
@@ -143,6 +199,8 @@ RESOURCE_STATUS = {
     "https://github.com/SakanaAI/AI-Scientist-v2": "research",
     "https://github.com/langchain-ai/open_deep_research": "archived",
     "https://code.claude.com/docs/en/overview": "commercial",
+    "https://github.com/openai/codex": "active",
+    "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent": "commercial",
     "https://github.com/anomalyco/opencode": "active",
     "https://github.com/earendil-works/pi": "active",
     "https://github.com/Aider-AI/aider": "active",
@@ -191,6 +249,12 @@ RESOURCE_LICENSE_OR_SERVICE = {
     "https://github.com/SakanaAI/AI-Scientist-v2": "source-code license",
     "https://github.com/langchain-ai/open_deep_research": "MIT",
     "https://code.claude.com/docs/en/overview": {"zh-TW": "商業", "en": "Commercial", "zh-Hans": "商业"},
+    "https://github.com/openai/codex": {
+        "zh-TW": "repo 程式碼為 Apache-2.0，app／cloud 依服務條款",
+        "en": "repository code is Apache-2.0, while app/cloud follow their service terms",
+        "zh-Hans": "repo 代码为 Apache-2.0，app／cloud 依服务条款",
+    },
+    "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent": {"zh-TW": "商業", "en": "Commercial", "zh-Hans": "商业"},
     "https://github.com/anomalyco/opencode": "MIT",
     "https://github.com/earendil-works/pi": "MIT",
     "https://github.com/Aider-AI/aider": "Apache-2.0",
@@ -227,6 +291,8 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/SakanaAI/AI-Scientist-v2": {"zh-TW": "作者", "en": "authors", "zh-Hans": "作者"},
     "https://github.com/langchain-ai/open_deep_research": {"zh-TW": "仍在維護", "en": "default", "zh-Hans": "仍在维护"},
     "https://code.claude.com/docs/en/overview": {"zh-TW": "permission", "en": "permission", "zh-Hans": "permission"},
+    "https://github.com/openai/codex": {"zh-TW": "approval", "en": "approval", "zh-Hans": "approval"},
+    "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent": {"zh-TW": "人工", "en": "human", "zh-Hans": "人工"},
     "https://github.com/anomalyco/opencode": {"zh-TW": "AGENTS.md", "en": "AGENTS.md", "zh-Hans": "AGENTS.md"},
     "https://github.com/earendil-works/pi": {"zh-TW": "sandbox", "en": "sandbox", "zh-Hans": "sandbox"},
     "https://github.com/Aider-AI/aider": {"zh-TW": "hook", "en": "hooks", "zh-Hans": "hook"},
@@ -237,7 +303,7 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/OpenHands/OpenHands": {"zh-TW": "人工", "en": "human", "zh-Hans": "人工"},
     "https://github.com/obra/superpowers": {"zh-TW": "gate", "en": "gate", "zh-Hans": "gate"},
     "https://github.com/yamadashy/repomix": {"zh-TW": "secret", "en": "secrets", "zh-Hans": "secrets"},
-    "https://github.com/RooCodeInc/Roo-Code": {"zh-TW": "仍在維護", "en": "default", "zh-Hans": "仍在维护"},
+    "https://github.com/RooCodeInc/Roo-Code": {"zh-TW": "仍在維護", "en": "maintained", "zh-Hans": "仍在维护"},
     "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=387": {"zh-TW": "年齡", "en": "age", "zh-Hans": "年龄"},
     "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence": {"zh-TW": "AI Act", "en": "AI Act", "zh-Hans": "AI Act"},
     "https://www.teachai.org/toolkit": {"zh-TW": "校方政策", "en": "school policy", "zh-Hans": "校方政策"},
@@ -253,11 +319,13 @@ RESOURCE_LIMIT_TOKENS = {
 
 DEVELOPER_ROW_FACTS = {
     "https://code.claude.com/docs/en/overview": (("coding agent",), ("CLI", "IDE", "desktop", "cloud")),
+    "https://github.com/openai/codex": (("coding agent",), ("app", "CLI", "IDE", "cloud")),
+    "https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent": (("coding agent", "code assistant"), ("GitHub", "IDE", "CLI", "app")),
+    "https://cursor.com/docs": (("coding agent", "AI editor"), ("IDE", "CLI", "cloud", "SDK")),
     "https://github.com/anomalyco/opencode": (("coding agent", "harness"), ("terminal", "desktop")),
     "https://github.com/earendil-works/pi": (("coding agent", "harness"), ("terminal", "SDK", "RPC")),
     "https://github.com/Aider-AI/aider": (("coding agent", "pair programmer"), ("CLI",)),
     "https://github.com/aaif-goose/goose": (("coding", "general agent"), ("CLI", "desktop", "API")),
-    "https://cursor.com/docs": (("coding agent", "AI editor"), ("IDE", "CLI", "cloud", "SDK")),
     "https://github.com/cline/cline": (("coding agent",), ("IDE", "CLI", "SDK")),
     "https://github.com/continuedev/continue": (("coding agent",), ("CLI", "VS Code", "JetBrains")),
     "https://github.com/OpenHands/OpenHands": (("software-development agent platform",), ("web", "CLI", "SDK", "cloud")),
@@ -478,7 +546,7 @@ def test_visible_path_is_progressive_and_keeps_core_terms(role: str, locale: str
     assert visible.count("⭐⭐⭐⭐⭐") == VISIBLE_FIVE_STAR_COUNTS[role]
 
     openings = re.findall(r"^<details\b[^>]*>", text, flags=re.MULTILINE)
-    assert len(openings) >= 5
+    assert len(openings) == DETAIL_COUNTS[role]
     assert openings == ['<details markdown="1">'] * len(openings)
 
 
@@ -494,6 +562,8 @@ def test_research_copy_block_teaches_source_verification(locale: str) -> None:
 @pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
 def test_developer_copy_block_is_small_reviewable_and_human_gated(locale: str) -> None:
     visible = _without_details(PAGES["developer"][locale].read_text(encoding="utf-8"))
+    start, end = DEVELOPER_EXERCISE_BOUNDS[locale]
+    exercise = visible[visible.index(start):visible.index(end)]
     for token in (
         "read-only plan",
         "README.md",
@@ -504,8 +574,15 @@ def test_developer_copy_block_is_small_reviewable_and_human_gated(locale: str) -
         "merge",
         "deploy",
     ):
-        assert token.casefold() in visible.casefold()
-    assert re.search(r"human|人工", visible, flags=re.IGNORECASE)
+        assert token.casefold() in exercise.casefold()
+    assert re.search(r"human|人工", exercise, flags=re.IGNORECASE)
+    for sentence in DEVELOPER_EXERCISE_SAFETY[locale]:
+        assert sentence.casefold() in exercise.casefold(), (locale, sentence)
+    for sentence in DEVELOPER_NON_SYNONYM_TEXT[locale]:
+        assert sentence.casefold() in visible.casefold(), (locale, sentence)
+    assert PI_NO_BUILT_IN_SANDBOX[locale].casefold() in visible.casefold()
+    for url in DEVELOPER_REQUIRED_READING_URLS:
+        assert url in visible
 
 
 @pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
@@ -613,9 +690,9 @@ def test_freshness_urls_and_legacy_landings_are_mirrored(role: str) -> None:
                 "<summary>🧪", "## 📚",
             ),
             "developer": (
-                "## 📌", "<summary>⭐", "## 🧩", "## 🛠", "## 📚",
+                "## 📌", "## ⭐", "## 🧩", "## 🛠", "## 📚",
                 "<summary>🧪", "<summary>🧪", "<summary>🧯", "## 📚",
-                "## ✅", "<summary>⭐",
+                "## ✅", "## ⭐",
             ),
             "teacher": (
                 "## 📌", "## 🛡", "<summary>🧪", "<summary>🧪", "<summary>🧪",
@@ -716,9 +793,13 @@ def test_developer_identity_and_surface_are_separate_axes() -> None:
         text = page.read_text(encoding="utf-8")
         assert "OpenRouter" in text and "Ollama" in text
         assert re.search(r"OpenRouter.{0,250}(Router|router)", text, re.DOTALL)
-        assert re.search(r"Ollama.{0,250}(runtime|執行環境|运行环境)", text, re.DOTALL)
+        assert re.search(
+            r"Ollama.{0,250}(runtime|執行環境|运行环境)",
+            text,
+            re.DOTALL | re.IGNORECASE,
+        )
         assert "核心身分" in text or "Core identity" in text or "核心身份" in text
-        assert "surface" in text
+        assert "surface" in text.casefold()
         for url, surfaces in (
             ("https://cursor.com/docs", ("IDE", "CLI", "cloud", "SDK")),
             ("https://github.com/cline/cline", ("IDE", "CLI", "SDK")),
