@@ -6,7 +6,7 @@
 
 You will make three roles: PRO argues yes, CON argues no, and a Judge reads both sides before choosing one.
 
-Pairs with Exercise 1 in [Stage 7 — Multi-Agent & Production](../../../stages/07-multi-agent-production.en.md).
+Pairs with Exercise 1 in [Stage 7 — Agent Production Engineering: Harness, Loops & Graphs](../../../stages/07-multi-agent-production.en.md).
 
 ## 🎯 Learning goals
 

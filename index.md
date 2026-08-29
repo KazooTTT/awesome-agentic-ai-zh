@@ -101,7 +101,7 @@ hide:
 
     [:octicons-arrow-right-24: 進入](stages/06-memory-rag.md)
 
--   :material-account-group:{ .lg .middle } __Stage 7 — 多 Agent__
+-   :material-account-group:{ .lg .middle } __Stage 7 — Agent Production Engineering__
 
     ---
 

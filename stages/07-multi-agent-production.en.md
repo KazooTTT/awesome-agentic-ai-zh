@@ -1,4 +1,4 @@
-# Stage 7 — Loop & Graph Engineering: Multi-Agent Production
+# Stage 7 — Agent Production Engineering: Harness, Loops & Graphs
 
 > [繁體中文](./07-multi-agent-production.md) | [简体中文](./07-multi-agent-production.zh-Hans.md) | **English**
 
@@ -103,7 +103,7 @@ These are not five products or five chapter numbers. They simply order the scope
 
 - **Stage 3: Agent Loop entry** — learn one execution of “model → tool → result → next step.”
 - **Stage 4: Workflow Graph entry** — use framework parts to draw nodes, edges, branches, and state.
-- **Stage 7: Loop / Graph Engineering deepening** — add budgets, verification, checkpoints, human approval, observability, and recovery.
+- **Stage 7: Agent Production Engineering integration** — add budgets, verification, checkpoints, human approval, observability, and recovery.
 
 **An Agent Framework is a toolbox; Graph Engineering uses that toolbox to design the whole work map.** That is why the Stage 4 title keeps Agent Frameworks and adds Workflow Graphs; this stage should not simply rename it Graph Engineering.
 

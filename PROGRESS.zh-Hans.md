@@ -47,7 +47,7 @@
 - [ ] **Stage 4 — Agent 框架与 Workflow Graph** · [`stages/04-agent-frameworks.zh-Hans.md`](stages/04-agent-frameworks.zh-Hans.md)
 - [ ] **Stage 5 — Claude Code 生态** ⭐⭐(两轨共用)· [`stages/05-claude-code-ecosystem.zh-Hans.md`](stages/05-claude-code-ecosystem.zh-Hans.md)
 - [ ] **Stage 6 — 上下文管理：RAG 与 Memory** · [`stages/06-memory-rag.zh-Hans.md`](stages/06-memory-rag.zh-Hans.md)
-- [ ] **Stage 7 — Multi-Agent · 进阶应用** · [`stages/07-multi-agent-production.zh-Hans.md`](stages/07-multi-agent-production.zh-Hans.md)
+- [ ] **Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph** · [`stages/07-multi-agent-production.zh-Hans.md`](stages/07-multi-agent-production.zh-Hans.md)
 - [ ] **Stage 7.5 — 进阶 Agentic 概念** · [`stages/07.5-advanced-agentic-concepts.zh-Hans.md`](stages/07.5-advanced-agentic-concepts.zh-Hans.md)
 - [ ] **Stage 8 — Agent 操作界面(两轨共用)** · [`stages/08-agent-interfaces.zh-Hans.md`](stages/08-agent-interfaces.zh-Hans.md)
 

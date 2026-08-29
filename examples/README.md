@@ -255,7 +255,7 @@ r = client.messages.create(model="claude-haiku-4-5-20251001", ...)
 | 4 Agent 框架與 Workflow Graph | 5 個 | 5 個雙路徑、離線可驗證的 folder（`examples/stage-4/`；Python 3.11） |
 | 5 Claude Code 生態 | 11 個 | inline 6 + folder 5（`examples/stage-5/`） |
 | 6 Memory/RAG | 5 個 | 全 folder（`examples/stage-6/`） |
-| 7 Multi-agent | 5 個 | inline 1 + folder 4（`examples/stage-7/`） |
+| 7 Agent Production Engineering | 5 個 | inline 1 + folder 4（`examples/stage-7/`） |
 | Track A1-A3 | 12 個 | 12 個 inline 練習；沒有獨立的 `examples/track-a/` 資料夾 |
 
 > Stage 4 的五個 folder 使用不同 framework。請在**每個 folder 各建一個 Python 3.11 `.venv`**，不要合併五份 `requirements.txt`。

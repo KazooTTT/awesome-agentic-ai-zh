@@ -37,6 +37,9 @@ LOCALES = {
         "stage3_topic": "工具使用與第一個 Agent Loop",
         "stage4_title": "Stage 4 — Agent 框架與 Workflow Graph",
         "stage4_topic": "Agent 框架與 Workflow Graph",
+        "stage7_title": "Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph",
+        "stage7_topic": "Agent Production Engineering：Harness、Loop 與 Graph",
+        "stage7_compact": "Stage 7 — Agent Production Engineering",
     },
     "en": {
         "suffix": ".en",
@@ -67,6 +70,9 @@ LOCALES = {
         "stage3_topic": "Tool Use & Your First Agent Loop",
         "stage4_title": "Stage 4 — Agent Frameworks & Workflow Graphs",
         "stage4_topic": "Agent Frameworks & Workflow Graphs",
+        "stage7_title": "Stage 7 — Agent Production Engineering: Harness, Loops & Graphs",
+        "stage7_topic": "Agent Production Engineering: Harness, Loops & Graphs",
+        "stage7_compact": "Stage 7 — Agent Production Engineering",
     },
     "zh-Hans": {
         "suffix": ".zh-Hans",
@@ -97,6 +103,9 @@ LOCALES = {
         "stage3_topic": "工具使用与第一个 Agent Loop",
         "stage4_title": "Stage 4 — Agent 框架与 Workflow Graph",
         "stage4_topic": "Agent 框架与 Workflow Graph",
+        "stage7_title": "Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph",
+        "stage7_topic": "Agent Production Engineering：Harness、Loop 与 Graph",
+        "stage7_compact": "Stage 7 — Agent Production Engineering",
     },
 }
 
@@ -334,17 +343,57 @@ def test_all_stage3_companion_pages_use_the_current_localized_title(
 
 
 @pytest.mark.parametrize("locale,config", LOCALES.items())
+def test_stage7_umbrella_title_matches_all_direct_reader_routes(
+    locale: str, config: dict[str, object]
+) -> None:
+    suffix = str(config["suffix"])
+    stage7_title = str(config["stage7_title"])
+    stage7_topic = str(config["stage7_topic"])
+    stage7_compact = str(config["stage7_compact"])
+
+    stage7 = read(locale_path("stages/07-multi-agent-production", suffix))
+    readme = read(locale_path("README", suffix))
+    index = read(locale_path("index", suffix))
+    progress = read(locale_path("PROGRESS", suffix))
+    stage6 = read(locale_path("stages/06-memory-rag", suffix))
+
+    assert stage7.startswith(f"# {stage7_title}\n")
+    assert f"[{stage7_topic}]" in readme
+    assert f"__{stage7_compact}__" in index
+    assert f"**{stage7_title}**" in progress
+    assert f"[{stage7_title}]" in stage6
+
+    examples = sorted((ROOT / "examples/stage-7").glob(f"*/README{suffix}.md"))
+    assert len(examples) == 5, (locale, examples)
+    for page in examples:
+        assert f"[{stage7_title}]" in read(page), (locale, page)
+
+    if locale == "zh-TW":
+        assert f"- {stage7_title}: stages/07-multi-agent-production.md" in (
+            ROOT / "mkdocs.yml"
+        ).read_text(encoding="utf-8")
+        assert f"[{stage7_title}](stages/07-multi-agent-production.md)" in (
+            ROOT / "scripts/build-mdbook.sh"
+        ).read_text(encoding="utf-8")
+
+
+@pytest.mark.parametrize("locale,config", LOCALES.items())
 def test_readme_explains_learning_order_separately_from_control_scope(
     locale: str, config: dict[str, object]
 ) -> None:
     text = read(locale_path("README", str(config["suffix"])))
-    route = text[text.index("**Agent Loop**") :]
+    route = next(line for line in text.splitlines() if line.startswith("> 🔭"))
+    stages = tuple(f"Stage {number}" for number in range(2, 8))
+    positions = [route.index(stage) for stage in stages]
+
+    assert positions == sorted(positions)
+    assert "**Agent Loop**" in route
     assert "**Workflow Graph**" in route
     assert "**Context Engineering**" in route
     assert "`prompt → context → harness → loop → graph`" in route
 
 
-def test_legacy_stage3_stage4_full_titles_are_absent_repo_wide() -> None:
+def test_legacy_stage_titles_are_absent_repo_wide() -> None:
     stale = (
         "Tool Use & Hello Agent",
         "Tool Use & Agent Intro",
@@ -358,6 +407,15 @@ def test_legacy_stage3_stage4_full_titles_are_absent_repo_wide() -> None:
         "Stage 3 — 工具调用__",
         "Stage 4 (Agent Frameworks)",
         "**4** Agent 框架 |",
+        "Stage 7 — Loop／Graph Engineering：多 Agent 與穩定運作",
+        "Stage 7 — Loop & Graph Engineering: Multi-Agent Production",
+        "Stage 7 — Loop／Graph Engineering：多 Agent 与稳定运行",
+        "Stage 7 — Multi-Agent · 進階應用",
+        "Stage 7 — Multi-Agent · Advanced Applications",
+        "Stage 7 — Multi-Agent · 进阶应用",
+        "Stage 7 — Multi-Agent 與 Production",
+        "Stage 7 — Multi-Agent & Production",
+        "Stage 7 — Multi-Agent 与 Production",
     )
     excluded = {ROOT / "CHANGELOG.md"}
     excluded_root = ROOT / "docs/plans"

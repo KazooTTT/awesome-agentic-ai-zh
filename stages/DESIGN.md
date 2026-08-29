@@ -141,7 +141,7 @@ stage 的價值 = 讀者學完後**能回答這個問題**。
 | **4** Agent 框架與 Workflow Graph | 「怎麼選 framework，把多個步驟接成看得見的 graph？」 | LangGraph / AutoGen / CrewAI / Smolagents 對比 |
 | **5** ⭐⭐ Claude Code 生態 | 「Claude Code 生態系怎麼吃？」 | MCP / Skills / Plugins / Marketplace 4 個 sub-stage |
 | **6** Memory · RAG | 「怎麼讓 agent 記得事情？怎麼讓它能查自家文件？」 | embedding / vector DB / RAG / contextual retrieval |
-| **7** 進階 Multi-Agent | 「multi-agent 跟 production 怎麼一起？」 | orchestration / eval / observability / SDK 進階 |
+| **7** Agent Production Engineering | 「multi-agent、harness、loop、graph 跟 production 怎麼一起？」 | orchestration / eval / observability / SDK 進階 |
 | **7.5** 進階概念地圖 | 「multi-agent 之後還有哪些進階 pattern 要認得？」 | 12 個進階概念 + reading path（不寫 code）|
 | **8** ⭐⭐ Agent 操作介面 | 「agent 怎麼操作 API 以外的真實環境（螢幕 / 瀏覽器 / sandbox）？」 | Computer Use / Browser Use / Code Sandbox |
 
@@ -159,9 +159,9 @@ Stage 3 的章名與固定主線都把 **Agent Loop** 當成入口：「八個�
 
 Stage 3 的六題也各有一個 `examples/stage-3/NN-*` 可執行資料夾。每題同時提供 Ollama Path A、Anthropic Path B，以及兩個不連網的 mock tests。模型產生的工具名稱、JSON 與欄位一律視為不可信輸入：程式先做 allowlist 與參數驗證，再執行工具；錯誤要帶回原本的 call ID，Anthropic client tool 使用 `is_error: true`。多輪迴圈必須有最大步數，並把正常完成、token 截斷、拒絕／其他停止原因分開。README 以 PowerShell 為第一條可複製路徑，再收合 macOS／Linux 指令；SDK 使用已查核的 major 範圍、雲端模型使用固定 ID，費用寫公式與查核日，不用沒有 token 假設的固定小數，也不用單次結果宣稱某模型一定更快或更穩。
 
-Stage 4 的章名固定保留 **Agent Framework**，並補上 **Workflow Graph**；它不是直接改名為 Graph Engineering。固定主線是「八個可見核心詞 → Agent Loop／Agent Framework／Workflow Graph／Loop Engineering／Graph Engineering 五項橋接 → workflow／agent × single／multi 選擇圖 → 先用最簡單能完成任務的形狀 → 五種協作 pattern → 依需求選工具 → 五題練習」。八個主核心詞是 **Framework**、**Workflow／Workflow Graph**、**Agent**、**Orchestration**、**State**、**Checkpoint**、**Handoff** 與 **Human-in-the-loop（HITL）**；Supervisor、Worker、CodeAct 與 Type-safe 也必須在第一次可見使用時粗體解釋，不能為了縮短頁面刪掉。橋接表必須說清楚：Agent Loop 是 Stage 3 的執行迴圈，framework 是工具箱，Workflow Graph 是 node／edge／branch／state 組成的工作地圖，Loop／Graph Engineering 是 Stage 7 加入預算、驗證、復原、觀測與人工核准後的設計工作。Multi-Agent 是可選的系統形狀，不是 framework 的定義，也不是每張 graph 的必要條件。三語亮色圖只整理正文已先定義的關係，不放版本、價格、stars 或沒有通則的數字。
+Stage 4 的章名固定保留 **Agent Framework**，並補上 **Workflow Graph**；它不是直接改名為 Graph Engineering。固定主線是「八個可見核心詞 → Agent Loop／Agent Framework／Workflow Graph／Loop Engineering／Graph Engineering 五項橋接 → workflow／agent × single／multi 選擇圖 → 先用最簡單能完成任務的形狀 → 五種協作 pattern → 依需求選工具 → 五題練習」。八個主核心詞是 **Framework**、**Workflow／Workflow Graph**、**Agent**、**Orchestration**、**State**、**Checkpoint**、**Handoff** 與 **Human-in-the-loop（HITL）**；Supervisor、Worker、CodeAct 與 Type-safe 也必須在第一次可見使用時粗體解釋，不能為了縮短頁面刪掉。橋接表必須說清楚：Agent Loop 是 Stage 3 的執行迴圈，framework 是工具箱，Workflow Graph 是 node／edge／branch／state 組成的工作地圖，Loop／Graph Engineering 是 Stage 7 的 **Agent Production Engineering** 加入預算、驗證、復原、觀測與人工核准後的設計工作。Multi-Agent 是可選的系統形狀，不是 framework 的定義，也不是每張 graph 的必要條件。三語亮色圖只整理正文已先定義的關係，不放版本、價格、stars 或沒有通則的數字。
 
-章節學習順序與五層工程堆疊必須分開說。章節依「先做出來，再看見結構，最後做穩」排列：Stage 2 Prompt → Stage 3 Agent Loop → Stage 4 Agent Framework／Workflow Graph → Stage 6 Context 深化 → Stage 7 Harness／Loop／Graph Engineering。五層的 `prompt → context → harness → loop → graph` 則表示控制範圍由小到大，不是章節順序。README、首頁 index、PROGRESS、MkDocs／mdBook 導覽、Stage 2 出口、範例返回連結與補充資源若直接寫出完整章名，必須使用同一組三語標題；檔名與既有 anchor 不因章名修正而更動。
+章節學習順序與五層工程堆疊必須分開說。章節依「先做出來，再看見結構，最後做穩」排列：Stage 2 Prompt → Stage 3 Agent Loop → Stage 4 Agent Framework／Workflow Graph → Stage 5 MCP／Skills／Plugins／Subagents 工具與規則 → Stage 6 Context 深化 → Stage 7 Agent Production Engineering 整合 Harness／Loop／Graph。五層的 `prompt → context → harness → loop → graph` 則表示控制範圍由小到大，不是章節順序。Stage 7 的三語完整章名固定為 `Agent Production Engineering：Harness、Loop 與 Graph`／`Agent Production Engineering: Harness, Loops & Graphs`／`Agent Production Engineering：Harness、Loop 与 Graph`；README、首頁 index、PROGRESS、MkDocs／mdBook 導覽、Stage 6 出口、範例返回連結與補充資源若直接寫出完整章名，必須使用這組標題。檔名與既有 anchor 不因章名修正而更動。
 
 Stage 4 的 4 個必修閱讀步驟（共 5 個官方連結）與 18 筆五星編輯評分資源表保持可見；時間、環境、研究證據、進階 tool patterns、五題完整步驟與疑難排解預設收合。`📌`、`🚪`、`📚`、`🛠`、`🎯`、`✅`，簡短進入條件、五題 heading／anchor、每題成果、第一個可複製 PowerShell 動作與預算提醒保持可見。資源表固定為五組 `4／6／4／3／1`，使用真正 HTML `rowspan`，保留編輯推薦星級、移除會變動的 GitHub stars；Preview、維護、凍結／歷史與遷移狀態依官方來源明寫。OpenAI Swarm 只作教育參考，不能再有 production 評分；框架版本、維護、授權與安全資訊使用 90 天 freshness marker。
 
