@@ -180,19 +180,31 @@ at `4,625／7,281／4,702` non-whitespace characters with only a 50-character al
 and requires all eight core terms before Exercise 1. The freshness gate separately enforces
 the 90-day fact pack for Computer Use, Browser Use, sandboxes, availability, benchmarks, and security.
 
-### Researcher and developer role paths — progressive entry and current identities covered
+### Role paths — progressive entry, current identities, and safe first tasks
 
-The researcher path keeps eight bold evidence terms, one public-paper citation-verification task,
-three starting tools, a short completion check, and the next Stage visible. Five closed disclosures
-hold time/privacy, official reading, the 10-row project catalog, reproducible workflows, and
-troubleshooting. The developer path uses the same visible landmarks around eight coding-safety
-terms and one copyable `read-only plan → small change → diff → test → human approval → rollback`
-exercise that explicitly withholds push, merge, and deploy authority.
+All five enrolled role paths keep the next safe action visible before optional detail. The researcher
+path starts with eight evidence terms and a public-paper citation check. The developer path starts
+with eight coding-safety terms and a copyable
+`read-only plan → small change → diff → test → human approval → rollback` exercise that explicitly
+withholds push, merge, and deploy authority. The teacher path starts with eight teaching terms, five
+safety lines, and a fictional lesson-review task. The knowledge-worker path starts with nine terms
+and a fictional meeting-to-action table. The everyday-user path starts with nine terms and a
+fictional draft that separates copied facts from details that still need confirmation.
 
-`scripts/test_role_paths.py` compares the three locales structurally rather than by keyword count.
+The current structural contract is:
+
+| Path | Core terms | Closed disclosures | Rated resources | Accessible rowgroups |
+|---|---:|---:|---:|---|
+| Researcher | 8 | 3 | 15 | `3／4／5／2／1` |
+| Developer | 8 | 3 | 14 | `4／6／2／2` |
+| Teacher | 8 | 5 | 12 | `3／3／3／3` |
+| Knowledge worker | 9 | 3 | 15 | `4／4／2／3／2` |
+| Everyday user | 9 | 3 | 15 | `4／4／4／2／1` |
+
+`scripts/test_role_paths.py` compares the five role paths and three locales structurally rather than by keyword count.
 It locks each resource row's identity, surface, status, license or service type, safety limitation,
-URL, and rating; researcher rowgroups (`3／4／2／1`); developer rowgroups (`9／2／1`); closed
-disclosures; freshness markers; copy-block steps; and semantic legacy-anchor landings. A mutation
+URL, and rating; the five rowgroup shapes and disclosure counts in the table above; freshness
+markers; copy-block steps; and semantic legacy-anchor landings. A mutation
 test proves that a row cannot borrow a surface or safety fact from the row above it. It also
 rejects volatile GitHub stars, maintainer self-promotion, fixed line-count safety rules, current use
 of archived `open_deep_research` or Roo Code, and the old NotebookLM name without Gemini Notebook.
@@ -200,11 +212,20 @@ Developer checks keep core identity separate from multi-valued surface: Cursor, 
 remain coding-agent products even when they expose IDE, CLI, cloud, SDK, or CI surfaces; OpenRouter
 remains a router and Ollama remains a local model runtime.
 
-This C2a gate covers only researcher and developer pages enrolled in `scripts/reader-ux-pages.yml`.
-Unqualified current-name prose in `branches/for-teacher*`, `resources/cookbook*`, `RESOURCES*`, and
-`resources/README*` is recorded for the next role/site freshness layer; package and repository
-identifiers keep their published names. This scoped exception prevents the C2a changelist from
-silently claiming that every site surface was already migrated.
+The everyday-user contract removes the old Tier upgrade ladder and locks four job-based doors:
+Chat surface, App／Connector, CLI Agent, and Local LLM／Runtime. It requires nine bold terms before
+a fictional copyable exercise, six visible official readings, three closed disclosures, and a
+15-row rated resource table with `4／4／4／2／1` accessible rowgroups. It rejects volatile stars and
+setup times, unsupported product rankings, stale prompt links, high-risk medical／legal／financial
+starter workflows, and blanket local-privacy claims. Ollama cloud models and LM Studio cloud
+features must remain distinct from local execution; write actions and CLI mutations keep an
+Approval Gate and human confirmation.
+
+This gate covers the researcher, developer, teacher, knowledge-worker, and everyday-user pages
+enrolled in `scripts/reader-ux-pages.yml`, across all three locales. Package and repository
+identifiers keep their published names. Cookbook, glossary, README, and other site-wide surfaces
+have separate contracts and release layers; passing the role-path gate does not claim those surfaces
+are already migrated.
 
 ### Whole-site learner-route coherence
 
