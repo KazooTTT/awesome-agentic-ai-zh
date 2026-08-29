@@ -62,6 +62,31 @@ Git 歷史復原。
 三語圖必須各自引用 locale 檔，並由 `scripts/test_stage075_content.py` 鎖住六張 PNG 的尺寸、
 不同 hash 與正文引用。完整文字表與重產限制在 [`concept-prompts.md`](concept-prompts.md)。
 
+## 2026-08-29：Stage 7.5 Model–Harness Fit 判斷圖
+
+新增 `model-harness-fit.png`、`.en.png`、`.zh-Hans.png`。圖先讓一個 Harness 元件跑同一組 Eval，再分成平行的 Keep／Simplify／Remove 三個結果；三者不是成熟度階梯，也不暗示所有元件最後都應移除。底部固定提醒「模型變強不等於安全邊界自動過時」與「一次只改一個元件，再測一次」。
+
+初版繁中圖雖然文字正確，但 imagegen 自行加上紅色印章、山水、竹子與雲紋，不符合技術教材 house style，也違反無 watermark 約束；最終版移除全部裝飾與印章，改用暖白底、細電路線、深藍大字與藍／橘／綠三張平行卡。英語與簡中以通過人工檢查的最終繁中版作構圖 reference，各自換入完整逐字文字表。獨立 review 發現第一張簡中圖仍殘留「保護／步驟」兩個繁體詞，因此重新產圖並逐字複查；最終簡中橘卡人工逐字確認為「保护仍然需要，但步骤可以更少」。PNG 內文目前仍由人工圖文稽核，不能把一般文字檢查誤稱為 OCR。
+
+共同 prompt 約束：
+
+> Show one Harness component, run the same Eval, then branch into three equal
+> parallel outcomes: KEEP when removing it restores a repeatable failure,
+> SIMPLIFY when the protection still matters but fewer steps are enough, and
+> REMOVE when a deletion test passes without quality loss. State that a stronger
+> model does not automatically obsolete safety boundaries and that only one
+> component changes before retesting. Warm off-white modern technical-textbook
+> style, flat vector icons, no arrow between outcomes, no maturity ladder, no
+> model/version/price/ranking/vendor fact, no logo, seal, stamp, signature, or
+> watermark, and only the supplied locale text.
+
+人工驗收逐張確認：
+
+- 三個結果都從同一個 Eval 分出去，彼此之間沒有箭頭。
+- 繁中圖沒有印章或山水裝飾；英語圖沒有中文；簡中圖沒有繁體字。
+- 圖沒有把 prompt workaround 與 permission／sandbox／log／Eval／recovery 畫成同一種可隨意刪除的東西。
+- 九張 Stage 7.5 圖維持不同 hash，三語正文各自引用 locale 檔。
+
 ## 2026-08-28：Stage 6 RAG 與 Memory 三路圖
 
 新增 `rag-memory-map.png`、`.en.png`、`.zh-Hans.png`。三張都使用 16:9 亮色白底卡片，固定畫出三條互不串線的路：文件切成 Chunk、轉成 Embedding 並寫進 Vector Database；問題取回相關片段、經 Reranking 後產生有來源的答案；重要狀態寫進 Memory，下一次再讀回來。每條箭頭只在自己的色框內由左往右，不暗示 Vector Database 會自動寫入 Memory。

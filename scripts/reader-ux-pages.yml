@@ -1350,9 +1350,9 @@ pages:
       en: stages/07.5-advanced-agentic-concepts.en.md
       zh-Hans: stages/07.5-advanced-agentic-concepts.zh-Hans.md
     max_visible_chars:
-      zh-TW: 4824
-      en: 7768
-      zh-Hans: 4850
+      zh-TW: 5247
+      en: 8507
+      zh-Hans: 5285
     max_open_details: 0
     required_details_count: 9
     visible_section_order:
@@ -1362,6 +1362,7 @@ pages:
       - problem-map
       - boundary-card
       - topics
+      - model-harness-fit
       - resources
       - completion
     forbidden_terms:
@@ -1406,6 +1407,10 @@ pages:
         zh-TW: {heading: "🔬 遇到需要時才展開的專題", anchor: -遇到需要時才展開的專題}
         en: {heading: "🔬 Topics to open when needed", anchor: -topics-to-open-when-needed}
         zh-Hans: {heading: "🔬 遇到需要时才展开的专题", anchor: -遇到需要时才展开的专题}
+      model-harness-fit:
+        zh-TW: {heading: "⚖️ Model–Harness Fit：用 Eval 決定保留、簡化或移除", anchor: -modelharness-fit用-eval-決定保留簡化或移除}
+        en: {heading: "⚖️ Model–Harness Fit: Use Evals to Keep, Simplify, or Remove", anchor: -modelharness-fit-use-evals-to-keep-simplify-or-remove}
+        zh-Hans: {heading: "⚖️ Model–Harness Fit：用 Eval 决定保留、简化或移除", anchor: -modelharness-fit用-eval-决定保留简化或移除}
       resources:
         zh-TW: {heading: "🎯 精選閱讀：先挑一條", anchor: -精選閱讀先挑一條}
         en: {heading: "🎯 Curated reading: choose one path", anchor: -curated-reading-choose-one-path}
