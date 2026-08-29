@@ -107,6 +107,8 @@ Stage 5（Claude Code 生態）兩條軌都會碰到：
 
 走完 Track A 的 A3 或 Track B 的 Stage 7 後，都接到 5 條 branch（researcher / developer / teacher / knowledge-worker / everyday-users）。Branch entry 的 curation **不依軌道區分**——同一個工具不論是 Track A 用法還是 Track B 用法，都放在對應的 branch。
 
+Branch 的可見主線沿用 Stage 的漸進式揭露規則：先定位角色、說清目標與核心詞，再給一個可直接複製的最小任務、三個起點、完成條件與回到主路線的下一站。研究人員與開發者頁另外以 `scripts/test_role_paths.py` 鎖住 citation 核對、私人資料、read-only plan、diff／test／rollback、工具身分與多 surface、三語資源表及 archived 狀態；長閱讀與完整 project catalog 不得重新攤回首屏。
+
 ---
 
 ## 為什麼是 8 個 stage（不是 5 個或 10 個）

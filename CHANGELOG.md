@@ -8,6 +8,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ## 2026-08-29
 
+- **content / researcher + developer paths** · **研究人員與開發者三語入口改成先做一個可核對、可回復的小任務**：兩頁先用八個粗體核心詞說清 citation／來源核對與 coding agent／Router／runtime／sandbox，再保留可直接複製的第一題、三個五星起點、完成檢查與下一站；時間、隱私、必讀順序、完整 22 筆專案表、進階流程與排錯放入 5 個預設關閉選單。開發者路線同步限定 Stage 5 核心 5.1–5.4，並用「操作介面（surface）」避免把 OpenCode、Pi、OpenRouter、Ollama 混成同一類。未展開主線實測為 `2,284／4,289／2,019`（研究）與 `3,072／4,491／2,771`（開發）個非空白字元；舊深連結、真正合併的 rowgroup 與逐列評分保留。Gemini Notebook 更名／citation／隱私、Claude Code permissions／sandbox、OpenCode V2、Pi、OpenRouter 與授權狀態於 2026-08-29 依官方來源重查；GitHub API 於 `2026-08-29T01:23:31Z` 完整覆蓋 259 個 repo，0 error、153 個人工複查提醒。
 - **navigation / whole-site learning route** · **README、Progress、Roadmap、Capstone 與章節出口改用同一條三語學習順序**：共用基礎固定為 `Stage 0 → 1 → 2`；Track A 固定為 `A1 → A2 → Stage 5 → A3 → Stage 8`，並清楚說明 A3 後即可開始 Capstone、Stage 8 建議完成但不擋入場；Track B 固定為 `Stage 3 → 4 → 5 → 6 → 7 → 7.5 → 8`。A2、Stage 5、A3 的上一站／下一站與先備條件同步修正，Roadmap 移除已完成的 2026-05 缺口宣稱；新增 30 條 route contract，阻擋三語再次各走不同順序。
 - **maintenance / repository freshness** · **修正全站 9 組已搬家的 GitHub repository 入口**：OpenHands、prompts.chat、flonat-research、Instructor、xberg、LobeHub、Mozilla inclusion、Graphify 與 Supabase MCP 的現行引用改用 canonical owner／repo，三語可見名稱同步更新；歷史 CHANGELOG 與規劃文件保留當時名稱。GitHub API 於 `2026-08-29T00:20:01Z` 完整重查目前 259 個 unique repo，結果為 0 個 hard error、154 個人工複查提醒；沒有 release、缺 SPDX metadata 或較久未 push 不會自動刪除仍有教學價值的穩定專案。
 

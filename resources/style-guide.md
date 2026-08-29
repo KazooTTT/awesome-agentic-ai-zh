@@ -234,12 +234,15 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 </details>
 
 ## 📚 必修閱讀
-這些資料會在練習中用到；需要時再展開。
+先列出 1–3 個完成眼前練習真的會用到的來源。這些連結保持可見，不能只藏在收合區。
+
+1. [必要連結](url) — 會在哪一步用到
+2. ...
 
 <details markdown="1">
-<summary>展開 3-5 個必讀來源</summary>
+<summary>展開：完整閱讀順序與延伸來源</summary>
 
-1. [連結](url) — 描述
+1. [延伸連結](url) — 描述
 2. ...
 
 </details>
@@ -398,6 +401,16 @@ Branch 的 entry 格式可以比 stage 簡潔（不一定要完整 schema 表格
 ---
 
 ## 9. 連結與引用
+
+### 角色路線頁
+
+完成回溯並加入 `scripts/reader-ux-pages.yml` 的角色頁，三語都保留可見主線 `📌 → 🎯 → 🧩 → 🛠 → 📚 → ✅`：先說這條路解決什麼，再列學習目標、粗體核心詞、可直接複製的小任務、入口與完成檢查。先用白話定義核心詞，再保留正確英文術語；不能因為簡化而刪除後文會用到的技術詞。
+
+第一個任務必須小、可測、可回復。若任務會改檔案，要明寫 read-only plan、人工批准、diff、test、rollback，以及 agent 不得自行 push／merge／deploy。收合與否看「讀者現在需不需要」，不看內容叫閱讀或專案：第一題會用到的 1–3 個來源、推薦入口與安全警告保持可見；完整閱讀順序、長資源表、替代方案、費用、進階流程與排錯才放進預設關閉的 `<details markdown="1">`。既有深連結的空 anchor 放在語意相符的新 heading 或 summary 旁，並保留可見的回主路線連結。
+
+工具的核心身分和 surface 分開寫。IDE、CLI、desktop、cloud、CI、SDK 可以同時出現，不能當成互斥分類。OpenRouter 是 Provider／Router，Ollama 是 Model／Runtime，coding agent／harness 是另一個身分軸。
+
+角色頁的分組資源表遵守上面的 `rowspan` 規則。三語須保留相同 URL 順序、狀態、授權、限制與穩定的編輯評分（⭐⭐⭐–⭐⭐⭐⭐⭐）；不寫易變的 GitHub stars。ELI5 白話仍須保留等價語意、技術名詞與安全限制。
 
 ### 內部連結
 - Stage 之間：相對路徑 `[Stage 4](04-agent-frameworks.md)`

@@ -176,6 +176,37 @@ stage08_fact_pack:
     ninth_circuit_opinion: 'https://cdn.ca9.uscourts.gov/datastore/opinions/2026/08/04/26-1444.pdf'
     district_court_order: 'https://cases.justia.com/federal/district-courts/california/candce/3%3A2025cv09514/459191/81/0.pdf'
 
+researcher_path_fact_pack:
+  canonical: 'branches/for-researcher.md'
+  verified_on: '2026-08-29'
+  scope: ['research-tools', 'citations', 'privacy', 'reproducibility', 'project-status']
+  official_sources:
+    gemini_notebook_rename: 'https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/'
+    gemini_notebook_citations: 'https://support.google.com/gemininotebook/answer/16179559'
+    gemini_notebook_privacy: 'https://support.google.com/gemininotebook/answer/17004255'
+    zotero: 'https://www.zotero.org/'
+    paperqa2: 'https://github.com/Future-House/paper-qa'
+    ai_scientist_v2_license: 'https://github.com/SakanaAI/AI-Scientist-v2/blob/main/LICENSE'
+    project_status: 'scripts/repository-freshness-snapshot.json'
+
+developer_path_fact_pack:
+  canonical: 'branches/for-developer.md'
+  verified_on: '2026-08-29'
+  scope: ['coding-agents', 'tool-identity', 'permissions', 'sandboxing', 'project-status']
+  official_sources:
+    claude_code_overview: 'https://code.claude.com/docs/en/overview'
+    claude_code_permissions: 'https://code.claude.com/docs/en/permissions'
+    claude_code_sandboxing: 'https://code.claude.com/docs/en/sandboxing'
+    aider_git: 'https://aider.chat/docs/git.html'
+    opencode: 'https://opencode.ai/v2/docs'
+    pi: 'https://pi.dev/docs/latest'
+    cursor: 'https://cursor.com/docs'
+    cline: 'https://github.com/cline/cline'
+    continue: 'https://github.com/continuedev/continue'
+    openrouter: 'https://openrouter.ai/docs/guides/routing/provider-selection'
+    ollama: 'https://docs.ollama.com/'
+    project_status: 'scripts/repository-freshness-snapshot.json'
+
 verified_pages:
   - canonical: 'stages/01-llm-basics.md'
     required_scopes: ['models', 'pricing', 'availability', 'deprecations']
@@ -197,6 +228,12 @@ verified_pages:
     max_age_days: 90
   - canonical: 'stages/08-agent-interfaces.md'
     required_scopes: ['computer-use', 'browser-use', 'sandboxes', 'availability', 'benchmarks', 'security']
+    max_age_days: 90
+  - canonical: 'branches/for-researcher.md'
+    required_scopes: ['research-tools', 'citations', 'privacy', 'reproducibility', 'project-status']
+    max_age_days: 90
+  - canonical: 'branches/for-developer.md'
+    required_scopes: ['coding-agents', 'tool-identity', 'permissions', 'sandboxing', 'project-status']
     max_age_days: 90
 
 current_frontier_models:
@@ -394,6 +431,47 @@ stale_patterns:
     include_files: ['stages/08-agent-interfaces.md', 'resources/glossary.md']
     qualifier_terms: ['Beta', 'before v1.0', 'v1.0 前', '可能改變', '可能变化']
     note: 'Cloudflare Sandbox SDK is Beta and its APIs may change before v1.0'
+
+  # Researcher/developer role-path facts and product identities. Mirror locales
+  # inherit each canonical include path through check-2026-freshness.py. This C2a
+  # gate intentionally covers only the role pages enrolled in
+  # scripts/reader-ux-pages.yml. Current-name prose in branches/for-teacher*,
+  # resources/cookbook*, RESOURCES*, and resources/README* remains explicit C2b
+  # follow-up scope. Package and repository identifiers keep their published names.
+  - pattern: 'NotebookLM'
+    include_files: ['branches/for-researcher.md']
+    qualifier_terms: ['Gemini Notebook', 'former', 'formerly', 'old name', '原', '舊名', '旧名', '前身']
+    note: 'On enrolled C2a role pages, NotebookLM needs the current Gemini Notebook name; other prose surfaces are tracked for C2b, while package and repository identifiers remain unchanged'
+
+  - pattern: 'open_deep_research'
+    include_files: ['branches/for-researcher.md']
+    qualifier_terms: ['archived', 'historical', 'history', '封存', '歷史', '历史', '归档']
+    note: 'langchain-ai/open_deep_research is archived and must stay in the historical group'
+
+  - pattern: 'WenyuChiou/'
+    include_files: ['branches/for-researcher.md']
+    qualifier_terms: []
+    note: 'Branch curation follows the repository zero-self-reference rule'
+
+  - pattern: 'Roo Code'
+    include_files: ['branches/for-developer.md']
+    qualifier_terms: ['archived', 'historical', 'history', '封存', '歷史', '历史', '归档']
+    note: 'Roo Code is archived and may only be presented as design history'
+
+  - pattern: 'continuedev/continue.{0,180}(?:active|actively maintained|活躍|活跃|積極維護|积极维护)'
+    include_files: ['branches/for-developer.md']
+    qualifier_terms: ['not', 'no longer', '不再', '停止']
+    note: 'The Continue repository declares itself read-only and no longer actively maintained; 2.0.0 is its final release'
+
+  - pattern: 'OpenRouter.{0,100}(?:model|coding agent|模型|程式代理|程序代理)|Ollama.{0,100}(?:coding agent|程式代理|程序代理)'
+    include_files: ['branches/for-developer.md']
+    qualifier_terms: ['not', '不是', '不等於', '不等于']
+    note: 'OpenRouter is an API router and Ollama is a local model runtime; neither is a coding agent'
+
+  - pattern: '★\s*\d|<\s*50\s*LOC'
+    include_files: ['branches/for-researcher.md', 'branches/for-developer.md']
+    qualifier_terms: []
+    note: 'Role paths keep editorial ratings but reject volatile GitHub stars and fixed line-count safety claims'
 
   # Stage 06 fact and project status checks. Mirror locales inherit the
   # canonical include path through check-2026-freshness.py.
