@@ -30,6 +30,11 @@ PAGES = {
         "en": ROOT / "branches/for-knowledge-worker.en.md",
         "zh-Hans": ROOT / "branches/for-knowledge-worker.zh-Hans.md",
     },
+    "everyday-user": {
+        "zh-TW": ROOT / "branches/for-everyday-users.md",
+        "en": ROOT / "branches/for-everyday-users.en.md",
+        "zh-Hans": ROOT / "branches/for-everyday-users.zh-Hans.md",
+    },
 }
 
 CORE_TERMS = {
@@ -72,6 +77,17 @@ CORE_TERMS = {
         "App／Connector",
         "MCP Server",
         "Workflow Automation",
+        "Approval Gate",
+    ),
+    "everyday-user": (
+        "Prompt",
+        "Source",
+        "Private Data",
+        "Hallucination",
+        "Human Review",
+        "App／Connector",
+        "CLI Agent",
+        "Local LLM／Runtime",
         "Approval Gate",
     ),
 }
@@ -141,6 +157,23 @@ RESOURCE_PAIRS = {
         ("https://github.com/obra/superpowers", "⭐⭐⭐⭐"),
         ("https://modelcontextprotocol.io/registry/about", "⭐⭐⭐⭐"),
     ),
+    "everyday-user": (
+        ("https://claude.ai", "⭐⭐⭐⭐⭐"),
+        ("https://chatgpt.com", "⭐⭐⭐⭐⭐"),
+        ("https://gemini.google.com", "⭐⭐⭐⭐"),
+        ("https://perplexity.ai", "⭐⭐⭐⭐"),
+        ("https://help.openai.com/en/articles/10032626-how-do-i-prompt-chatgpt-effectively", "⭐⭐⭐⭐⭐"),
+        ("https://support.claude.com/en/articles/8114491-get-started-with-claude", "⭐⭐⭐⭐⭐"),
+        ("https://help.openai.com/en/articles/11487775-connectors-in", "⭐⭐⭐⭐⭐"),
+        ("https://support.google.com/gemini/answer/13594961?hl=en", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/anthropics/claude-code", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/openai/codex", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/anomalyco/opencode", "⭐⭐⭐⭐⭐"),
+        ("https://github.com/google-gemini/gemini-cli", "⭐⭐⭐⭐"),
+        ("https://github.com/ollama/ollama", "⭐⭐⭐⭐⭐"),
+        ("https://lmstudio.ai/", "⭐⭐⭐⭐"),
+        ("https://github.com/f/prompts.chat", "⭐⭐⭐⭐"),
+    ),
 }
 
 ROWGROUPS = {
@@ -148,6 +181,7 @@ ROWGROUPS = {
     "developer": (4, 6, 2, 2),
     "teacher": (3, 3, 3, 3),
     "knowledge-worker": (4, 4, 2, 3, 2),
+    "everyday-user": (4, 4, 4, 2, 1),
 }
 
 VISIBLE_STARTING_URLS = {
@@ -159,11 +193,24 @@ VISIBLE_STARTING_URLS = {
     ),
     "teacher": tuple(url for url, _rating in RESOURCE_PAIRS["teacher"]),
     "knowledge-worker": tuple(url for url, _rating in RESOURCE_PAIRS["knowledge-worker"]),
+    "everyday-user": tuple(url for url, _rating in RESOURCE_PAIRS["everyday-user"]),
 }
 
-VISIBLE_FIVE_STAR_COUNTS = {"researcher": 10, "developer": 8, "teacher": 10, "knowledge-worker": 7}
+VISIBLE_FIVE_STAR_COUNTS = {
+    "researcher": 10,
+    "developer": 8,
+    "teacher": 10,
+    "knowledge-worker": 7,
+    "everyday-user": 10,
+}
 
-DETAIL_COUNTS = {"researcher": 3, "developer": 3, "teacher": 5, "knowledge-worker": 3}
+DETAIL_COUNTS = {
+    "researcher": 3,
+    "developer": 3,
+    "teacher": 5,
+    "knowledge-worker": 3,
+    "everyday-user": 3,
+}
 
 RESEARCHER_REQUIRED_READING_URLS = (
     "https://support.google.com/gemininotebook/answer/16179559",
@@ -190,6 +237,15 @@ KNOWLEDGE_WORKER_REQUIRED_READING_URLS = (
     "https://support.microsoft.com/en-us/microsoft-365-copilot/understand-copilot-connectors",
     "https://modelcontextprotocol.io/registry/about",
     "https://help.zapier.com/hc/en-us/articles/22234847450893-Zap-workflows-quick-start-guide",
+)
+
+EVERYDAY_USER_REQUIRED_READING_URLS = (
+    "https://help.openai.com/en/articles/10032626-how-do-i-prompt-chatgpt-effectively",
+    "https://support.claude.com/en/articles/8114491-get-started-with-claude",
+    "https://help.openai.com/en/articles/11487775-connectors-in",
+    "https://support.claude.com/en/articles/11725091-when-to-use-desktop-and-web-connectors",
+    "https://support.google.com/gemini/answer/13594961?hl=en",
+    "https://docs.ollama.com/faq",
 )
 
 DEVELOPER_EXERCISE_SAFETY = {
@@ -242,6 +298,7 @@ VISIBLE_LANDMARKS = {
     "developer": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
     "teacher": ("## 📌", "## 🎯", "## 🧩", "## 🛡", "## 🛠", "## 📚", "## ⭐", "## ✅"),
     "knowledge-worker": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 📚", "## 📖", "## ⭐", "## ✅"),
+    "everyday-user": ("## 📌", "## 🎯", "## 🧩", "## 🛠", "## 🚪", "## 📖", "## ⭐", "## ✅"),
 }
 
 RESOURCE_STATUS = {
@@ -299,6 +356,17 @@ RESOURCE_STATUS = {
     "https://github.com/lobehub/lobehub": "active",
     "https://github.com/Mintplex-Labs/anything-llm": "active",
     "https://modelcontextprotocol.io/registry/about": "preview",
+    "https://claude.ai": "available",
+    "https://chatgpt.com": "available",
+    "https://gemini.google.com": "available",
+    "https://perplexity.ai": "available",
+    "https://help.openai.com/en/articles/10032626-how-do-i-prompt-chatgpt-effectively": "current",
+    "https://support.claude.com/en/articles/8114491-get-started-with-claude": "current",
+    "https://support.google.com/gemini/answer/13594961?hl=en": "current",
+    "https://github.com/anthropics/claude-code": "active",
+    "https://github.com/google-gemini/gemini-cli": "active",
+    "https://github.com/ollama/ollama": "active",
+    "https://lmstudio.ai/": "commercial",
 }
 
 STATUS_TOKENS = {
@@ -373,6 +441,17 @@ RESOURCE_LICENSE_OR_SERVICE = {
     "https://github.com/lobehub/lobehub": "LobeHub Community License",
     "https://github.com/Mintplex-Labs/anything-llm": "MIT",
     "https://modelcontextprotocol.io/registry/about": {"zh-TW": "官方 metadata 服務", "en": "official metadata service", "zh-Hans": "官方 metadata 服务"},
+    "https://claude.ai": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://chatgpt.com": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://gemini.google.com": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://perplexity.ai": {"zh-TW": "商業雲端服務", "en": "commercial cloud service", "zh-Hans": "商业云服务"},
+    "https://help.openai.com/en/articles/10032626-how-do-i-prompt-chatgpt-effectively": {"zh-TW": "官方指引", "en": "official guidance", "zh-Hans": "官方指南"},
+    "https://support.claude.com/en/articles/8114491-get-started-with-claude": {"zh-TW": "官方指引", "en": "official guidance", "zh-Hans": "官方指南"},
+    "https://support.google.com/gemini/answer/13594961?hl=en": {"zh-TW": "官方隱私指引", "en": "official privacy guidance", "zh-Hans": "官方隐私指南"},
+    "https://github.com/anthropics/claude-code": {"zh-TW": "商業服務；repo 未標示標準開源授權", "en": "commercial service; repository has no standard open-source license", "zh-Hans": "商业服务；repo 未标示标准开源许可证"},
+    "https://github.com/google-gemini/gemini-cli": "Apache-2.0",
+    "https://github.com/ollama/ollama": "MIT",
+    "https://lmstudio.ai/": {"zh-TW": "商業桌面應用程式", "en": "commercial desktop application", "zh-Hans": "商业桌面应用程序"},
 }
 
 RESOURCE_LIMIT_TOKENS = {
@@ -430,6 +509,17 @@ RESOURCE_LIMIT_TOKENS = {
     "https://github.com/lobehub/lobehub": {"zh-TW": "衍生作品", "en": "derivative work", "zh-Hans": "衍生作品"},
     "https://github.com/Mintplex-Labs/anything-llm": {"zh-TW": "模型供應商", "en": "model provider", "zh-Hans": "模型供应商"},
     "https://modelcontextprotocol.io/registry/about": {"zh-TW": "不是安全審查", "en": "not a security review", "zh-Hans": "不是安全审查"},
+    "https://claude.ai": {"zh-TW": "方案與地區", "en": "plan and region", "zh-Hans": "方案与地区"},
+    "https://chatgpt.com": {"zh-TW": "仍會出錯", "en": "can still be wrong", "zh-Hans": "仍会出错"},
+    "https://gemini.google.com": {"zh-TW": "人工審查", "en": "human review", "zh-Hans": "人工审查"},
+    "https://perplexity.ai": {"zh-TW": "逐一打開來源", "en": "open each source", "zh-Hans": "逐一打开来源"},
+    "https://help.openai.com/en/articles/10032626-how-do-i-prompt-chatgpt-effectively": {"zh-TW": "仍要查證", "en": "still verify", "zh-Hans": "仍要查证"},
+    "https://support.claude.com/en/articles/8114491-get-started-with-claude": {"zh-TW": "使用限制", "en": "usage limits", "zh-Hans": "使用限制"},
+    "https://support.google.com/gemini/answer/13594961?hl=en": {"zh-TW": "機密資料", "en": "confidential data", "zh-Hans": "机密数据"},
+    "https://github.com/anthropics/claude-code": {"zh-TW": "permission", "en": "permissions", "zh-Hans": "permission"},
+    "https://github.com/google-gemini/gemini-cli": {"zh-TW": "sandbox", "en": "sandbox", "zh-Hans": "sandbox"},
+    "https://github.com/ollama/ollama": {"zh-TW": "cloud model", "en": "cloud models", "zh-Hans": "cloud model"},
+    "https://lmstudio.ai/": {"zh-TW": "雲端功能", "en": "cloud features", "zh-Hans": "云功能"},
 }
 
 DEVELOPER_ROW_FACTS = {
@@ -471,6 +561,12 @@ FRESHNESS = {
         "<!-- freshness: canonical=branches/for-knowledge-worker.md; "
         "verified_on=2026-08-29; "
         "scope=apps,connectors,mcp,workflow-automation,permissions,project-status; "
+        "max_age_days=90 -->"
+    ),
+    "everyday-user": (
+        "<!-- freshness: canonical=branches/for-everyday-users.md; "
+        "verified_on=2026-08-29; "
+        "scope=chat-apps,connectors,cli-agents,local-runtimes,privacy,project-status; "
         "max_age_days=90 -->"
     ),
 }
@@ -653,6 +749,38 @@ LEGACY_ANCHORS = {
             "可以建的流程按使用频率",
             "层级建议",
             "阅读",
+        ),
+    },
+    "everyday-user": {
+        "zh-TW": (
+            "使用情境生活場景--ai-怎麼幫",
+            "起步你應該從哪一層進來",
+            "-精選-projects",
+            "tier-2--cli-agent願意學命令列的進階使用者",
+            "必修閱讀",
+            "可以建的流程按使用頻率",
+            "給日常使用者的層級建議",
+            "社群備註",
+        ),
+        "en": (
+            "use-cases-life-scenarios--how-ai-helps",
+            "where-to-start-4-tiers-by-how-hands-on-are-you",
+            "-curated-projects",
+            "tier-2--cli-agents-advanced-users-willing-to-learn-the-command-line",
+            "required-reading",
+            "workflows-you-can-build-by-frequency",
+            "tier-recommendations-for-everyday-users",
+            "community-notes",
+        ),
+        "zh-Hans": (
+            "使用场景生活场景--ai-怎么帮",
+            "起步你应该从哪一层进入",
+            "-精选-projects",
+            "tier-2--cli-agent愿意学命令行的进阶用户",
+            "必修阅读",
+            "可以建的流程按使用频率",
+            "给日常用户的层级建议",
+            "社群备注",
         ),
     },
 }
@@ -867,6 +995,85 @@ def test_knowledge_worker_page_drops_stale_counts_unsafe_defaults_and_archived_f
         assert not re.search(r"★\s*[\d,.]+[kKmM]?\+?", text)
 
 
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_everyday_user_first_exercise_is_copyable_grounded_and_does_not_act(locale: str) -> None:
+    visible = _without_details(PAGES["everyday-user"][locale].read_text(encoding="utf-8"))
+    exercise = visible[visible.index("## 🛠"):visible.index("## 🚪")]
+    localized = {
+        "zh-TW": ("虛構", "只能使用來源訊息裡的事實", "不要猜", "不要替我傳送"),
+        "en": ("fictional", "Use only facts in the source message", "Do not guess", "Do not send"),
+        "zh-Hans": ("虚构", "只能使用来源消息里的事实", "不要猜", "不要替我发送"),
+    }[locale]
+    for token in (*localized, "Draft", "Facts copied", "Needs confirmation"):
+        assert token.casefold() in exercise.casefold(), (locale, token)
+    assert "9 月 12 日" in exercise or "September 12" in exercise or "9 月 12 日" in exercise
+
+
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_everyday_user_uses_four_job_based_doors_not_an_upgrade_ladder(locale: str) -> None:
+    text = PAGES["everyday-user"][locale].read_text(encoding="utf-8")
+    visible = _without_details(text)
+    for term in ("Chat surface", "App／Connector", "CLI Agent", "Local LLM／Runtime"):
+        assert term in visible
+    not_levels = {
+        "zh-TW": "這四扇門不是等級",
+        "en": "These four doors are not levels",
+        "zh-Hans": "这四扇门不是等级",
+    }[locale]
+    assert not_levels in visible
+    assert "Tier 0" not in visible and "Tier 1" not in visible
+    assert "Tier 2" not in visible and "Tier 3" not in visible
+    for url in EVERYDAY_USER_REQUIRED_READING_URLS:
+        assert url in visible
+
+
+@pytest.mark.parametrize("locale", ("zh-TW", "en", "zh-Hans"))
+def test_everyday_user_teaches_permission_and_local_cloud_boundaries(locale: str) -> None:
+    text = PAGES["everyday-user"][locale].read_text(encoding="utf-8")
+    required = {
+        "zh-TW": ("方案、地區、workspace", "寫入動作", "人工確認", "cloud model", "local-only", "雲端功能"),
+        "en": ("plan, region, and workspace", "write action", "human confirmation", "cloud models", "local-only", "cloud features"),
+        "zh-Hans": ("方案、地区、workspace", "写入动作", "人工确认", "cloud model", "local-only", "云功能"),
+    }[locale]
+    for token in required:
+        assert token.casefold() in text.casefold(), (locale, token)
+    assert re.search(r"Ollama.{0,700}cloud", text, re.DOTALL | re.IGNORECASE)
+    assert re.search(r"LM Studio.{0,500}(cloud|雲端|云)", text, re.DOTALL | re.IGNORECASE)
+
+
+def test_everyday_user_drops_stale_rankings_counts_times_and_high_risk_starters() -> None:
+    forbidden = (
+        "runoob.com",
+        "platform.openai.com/docs/guides/prompt-engineering",
+        "docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+        "81+",
+        "90%",
+        "30 分鐘",
+        "30 minutes",
+        "半小時",
+        "half an hour",
+        "1-2 days",
+        "1–2 days",
+        "1-2 天",
+        "1–2 天",
+        "最容易上手",
+        "easiest CLI",
+        "最大生態",
+        "largest ecosystem",
+        "每個答案都附引用",
+        "every answer includes citations",
+        "較收斂、不太瞎掰",
+        "less prone to hallucination",
+        "本地醫療 / 法律 / 財務",
+        "local medical / legal / financial",
+        "本地医疗 / 法律 / 财务",
+    )
+    for page in PAGES["everyday-user"].values():
+        text = page.read_text(encoding="utf-8")
+        assert not any(token.casefold() in text.casefold() for token in forbidden)
+        assert not re.search(r"★\s*[\d,.]+[kKmM]?\+?", text)
+
+
 @pytest.mark.parametrize("role", PAGES)
 def test_resource_tables_have_structured_trilingual_parity(role: str) -> None:
     expected_pairs = RESOURCE_PAIRS[role]
@@ -956,6 +1163,10 @@ def test_freshness_urls_and_legacy_landings_are_mirrored(role: str) -> None:
             ) if locale == "en" else (
                 "## 📌", "## ⭐", "<strong>工作流", "<strong>知识工作者",
                 "<strong>知识管理", "<strong>MCP", "<summary>🧪", "## 📚", "## 📖",
+            ),
+            "everyday-user": (
+                "## 📌", "## 🚪", "## ⭐", "<strong>CLI Agent",
+                "## 📖", "<summary>🧰", "## 🚪", "## ✅",
             ),
         }[role]
         anchor_positions = []

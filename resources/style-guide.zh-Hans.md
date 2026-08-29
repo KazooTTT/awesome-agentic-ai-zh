@@ -443,6 +443,6 @@ Branch 的 entry 格式可以比 stage 简洁（不一定要完整 schema 表格
 
 ## 修改本指南
 
-这份指南本身也欢迎 PR。修改前请先开 Issue 讨论——术语决策影响 100+ 个 entry。
+这份指南本身也欢迎 PR。修改前请先开 Issue 讨论——术语决策会影响三语中的许多 entry。
 
 当前 maintainer：[@WenyuChiou](https://github.com/WenyuChiou)。

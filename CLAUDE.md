@@ -4,7 +4,7 @@
 
 ## 📍 Repo positioning — read before adding anything
 
-**This repo's role**: **learning roadmap + 240+ curated resources + simple illustrative cases.**
+**This repo's role**: **learning roadmap + curated resources + simple illustrative cases.**
 
 **Benchmark for "what we are NOT"**: [`datawhalechina/hello-agents`](https://github.com/datawhalechina/hello-agents) is the canonical chapter-length zh-TW depth tutorial (16 production capabilities, chapter format). **We don't compete with it; we route to it.**
 

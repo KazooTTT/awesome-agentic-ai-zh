@@ -31,7 +31,7 @@ and I'd like this sub to poke holes in the sequencing.
 - 2 tracks: "use existing CLI agents" vs "build your own".
 - 5 audience branches (researcher / dev / teacher / knowledge worker /
   everyday user).
-- 240+ curated projects (star / audience / what it teaches / how to run)
+- Curated projects (star / audience / what it teaches / how to run)
   + small runnable exercises (1–5 per stage). MIT.
 
 Trilingual (the project is Chinese-origin but the English edition is

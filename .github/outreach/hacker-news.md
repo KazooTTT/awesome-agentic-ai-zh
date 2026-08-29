@@ -15,7 +15,7 @@ top comments ("why another list" / "is the English LLM-translated").
 ## Title (pick one — no emoji, no hype, ≤ 80 chars)
 
 1. `Show HN: A trilingual, staged roadmap from LLM basics to multi-agent systems`
-2. `Show HN: Agentic-AI learning roadmap – 8 stages, 240+ curated projects`
+2. `Show HN: Agentic-AI learning roadmap – 8 stages, curated projects`
 3. `Show HN: An opinionated path to learn agentic AI (not an awesome-list dump)`
 
 Recommended: **#1** (says what it is + the trilingual angle, no adjectives).
@@ -41,8 +41,8 @@ checks localization + anchor integrity). Rendered site (trilingual,
 mkdocs): https://wenyuchiou.github.io/awesome-agentic-ai-zh/
 Repo: https://github.com/WenyuChiou/awesome-agentic-ai-zh
 
-It's MIT, ~240 curated projects each with star/audience/"what it
-teaches/how to run", and small runnable exercises (1–5 per stage). Honest limitation:
+It's MIT, with curated projects that explain audience, what each project
+teaches, and how to run it, plus small runnable exercises (1–5 per stage). Honest limitation:
 it's opinionated (Claude-ecosystem-heavy in the later stages — MCP /
 Skills / SDK), and the deep exercises point out to first-party cookbooks
 rather than re-teaching them. Feedback on the sequencing + what's
@@ -54,7 +54,7 @@ missing is what I'm after.
 ```
 Author here. Two things I expect to come up:
 
-1. "Why not just a list?" — the curation IS in there (240+ entries with
+1. "Why not just a list?" — the curation IS in there (entries with
    the usual metadata), but the value I was missing was ORDER + exit
    criteria, so the spine is the stage sequence, not the list.
 

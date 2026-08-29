@@ -22,8 +22,8 @@ hide:
 
 <div class="aaz-stats" markdown>
 <div class="aaz-stat"><span class="aaz-num">8</span><span class="aaz-lbl">阶段</span></div>
-<div class="aaz-stat"><span class="aaz-num">240+</span><span class="aaz-lbl">精选项目</span></div>
-<div class="aaz-stat"><span class="aaz-num">23</span><span class="aaz-lbl">动手练习</span></div>
+<div class="aaz-stat"><span class="aaz-num">精选</span><span class="aaz-lbl">项目</span></div>
+<div class="aaz-stat"><span class="aaz-num">动手</span><span class="aaz-lbl">练习</span></div>
 <div class="aaz-stat"><span class="aaz-num">3</span><span class="aaz-lbl">语言</span></div>
 </div>
 
