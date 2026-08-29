@@ -2341,3 +2341,111 @@ pages:
           en: {term: Academic Integrity, label: Academic Integrity}
           zh-Hans: {term: Academic Integrity, label: "Academic Integrity（学术诚信）"}
     resource_group_rowspans: [3, 3, 3, 3]
+
+  - id: knowledge-worker-path
+    canonical: branches/for-knowledge-worker.md
+    mirrors:
+      en: branches/for-knowledge-worker.en.md
+      zh-Hans: branches/for-knowledge-worker.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 7366
+      en: 10081
+      zh-Hans: 7071
+    max_open_details: 0
+    required_details_count: 3
+    visible_section_order:
+      - purpose
+      - learning-goals
+      - core-terms
+      - first-exercise
+      - entry-points
+      - required-reading
+      - resources
+      - completion
+    forbidden_terms:
+      zh-TW: ["81+", "36k+", "81k+", "147k+", "64k+", 預設 on-device, "Claude Desktop + Gmail MCP", "30-45 分鐘", 半天裝好, "1 週 setup", 數週]
+      en: ["81+", "36k+", "81k+", "147k+", "64k+", on-device by default, "Claude Desktop + Gmail MCP", "30-45 minutes", Half a day, "1 week of setup", Several weeks]
+      zh-Hans: ["81+", "36k+", "81k+", "147k+", "64k+", 默认 on-device, "Claude Desktop + Gmail MCP", "30-45 分钟", 半天装好, "1 周 setup", 数周]
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+      literals:
+        - "2026-08-29"
+    required_visible_sections:
+      purpose:
+        zh-TW: {heading: "📌 這條路幫你做什麼", anchor: -這條路幫你做什麼}
+        en: {heading: "📌 What this path helps you do", anchor: -what-this-path-helps-you-do}
+        zh-Hans: {heading: "📌 这条路帮你做什么", anchor: -这条路帮你做什么}
+      learning-goals:
+        zh-TW: {heading: "🎯 學習目標", anchor: -學習目標}
+        en: {heading: "🎯 Learning goals", anchor: -learning-goals}
+        zh-Hans: {heading: "🎯 学习目标", anchor: -学习目标}
+      core-terms:
+        zh-TW: {heading: "🧩 九個核心詞", anchor: -九個核心詞}
+        en: {heading: "🧩 Nine core terms", anchor: -nine-core-terms}
+        zh-Hans: {heading: "🧩 九个核心词", anchor: -九个核心词}
+      first-exercise:
+        zh-TW: {heading: "🛠 第一個練習：把會議紀錄變成可核對的行動表", anchor: -第一個練習把會議紀錄變成可核對的行動表}
+        en: {heading: "🛠 First exercise: turn meeting notes into a checkable action table", anchor: -first-exercise-turn-meeting-notes-into-a-checkable-action-table}
+        zh-Hans: {heading: "🛠 第一个练习：把会议记录变成可核对的行动表", anchor: -第一个练习把会议记录变成可核对的行动表}
+      entry-points:
+        zh-TW: {heading: "📚 先選一個入口", anchor: -先選一個入口}
+        en: {heading: "📚 Choose an entry point", anchor: -choose-an-entry-point}
+        zh-Hans: {heading: "📚 先选一个入口", anchor: -先选一个入口}
+      required-reading:
+        zh-TW: {heading: "📖 必修閱讀", anchor: -必修閱讀}
+        en: {heading: "📖 Required reading", anchor: -required-reading}
+        zh-Hans: {heading: "📖 必读", anchor: -必读}
+      resources:
+        zh-TW: {heading: "⭐ 精選工具、專案與官方入口", anchor: -精選工具專案與官方入口}
+        en: {heading: "⭐ Curated tools, projects, and official entry points", anchor: -curated-tools-projects-and-official-entry-points}
+        zh-Hans: {heading: "⭐ 精选工具、项目与官方入口", anchor: -精选工具项目与官方入口}
+      completion:
+        zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
+        en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
+        zh-Hans: {heading: "✅ 完成检查与下一站", anchor: -完成检查与下一站}
+    visible_section_minimums:
+      required-reading: {min_links: 6}
+      resources: {min_links: 15, min_ratings: 15}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: first-exercise
+      min_definition_chars: 20
+      terms:
+        - id: source
+          zh-TW: {term: Source, label: "Source（來源）"}
+          en: {term: Source, label: Source}
+          zh-Hans: {term: Source, label: "Source（来源）"}
+        - id: action-item
+          zh-TW: {term: Action Item, label: "Action Item（行動項目）"}
+          en: {term: Action Item, label: Action Item}
+          zh-Hans: {term: Action Item, label: "Action Item（行动项目）"}
+        - id: knowledge-base
+          zh-TW: {term: Knowledge Base, label: "Knowledge Base（知識庫）"}
+          en: {term: Knowledge Base, label: Knowledge Base}
+          zh-Hans: {term: Knowledge Base, label: "Knowledge Base（知识库）"}
+        - id: private-data
+          zh-TW: {term: Private Data, label: "Private Data（私人資料）"}
+          en: {term: Private Data, label: Private Data}
+          zh-Hans: {term: Private Data, label: "Private Data（私人数据）"}
+        - id: human-review
+          zh-TW: {term: Human Review, label: "Human Review（人工審查）"}
+          en: {term: Human Review, label: Human Review}
+          zh-Hans: {term: Human Review, label: "Human Review（人工审查）"}
+        - id: app-connector
+          zh-TW: {term: App／Connector, label: "App／Connector（服務內連接器）"}
+          en: {term: App／Connector, label: App／Connector}
+          zh-Hans: {term: App／Connector, label: "App／Connector（服务内连接器）"}
+        - id: mcp-server
+          zh-TW: {term: MCP Server, label: "MCP Server（MCP 伺服器）"}
+          en: {term: MCP Server, label: MCP Server}
+          zh-Hans: {term: MCP Server, label: "MCP Server（MCP 服务器）"}
+        - id: workflow-automation
+          zh-TW: {term: Workflow Automation, label: "Workflow Automation（工作流自動化）"}
+          en: {term: Workflow Automation, label: Workflow Automation}
+          zh-Hans: {term: Workflow Automation, label: "Workflow Automation（工作流自动化）"}
+        - id: approval-gate
+          zh-TW: {term: Approval Gate, label: "Approval Gate（人工核准關卡）"}
+          en: {term: Approval Gate, label: Approval Gate}
+          zh-Hans: {term: Approval Gate, label: "Approval Gate（人工核准关卡）"}
+    resource_group_rowspans: [4, 4, 2, 3, 2]
