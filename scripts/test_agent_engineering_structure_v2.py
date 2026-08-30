@@ -130,9 +130,12 @@ def test_diagram_regeneration_contract_keeps_responsibilities_overlapping() -> N
     prompt = DIAGRAM_PROMPT.read_text(encoding="utf-8")
     for marker in (
         "Prompt 與 Context 都進入 Harness",
-        "Loop 明寫 `act → inspect evidence → continue / stop / ask`",
+        "上半部只畫一次 Agent run",
+        "Loop Engineering 另外明寫 `Goal → Action → Observation → Adjustment`",
+        "不得和 Harness 內的一次 Agent Loop 混成同一尺度",
         "Workflow Graph／Production Orchestration",
-        "不是產品世代或章節順序",
+        "圖上以「不是五層」直接阻止嚴格層級誤讀",
+        "Harness 包住 Agent Loop",
         "不得畫成 Harness 被 Loop 淘汰",
     ):
         assert marker in prompt

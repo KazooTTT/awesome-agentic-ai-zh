@@ -201,27 +201,30 @@ python scripts/check-image-locale.py
 
 ## 2026-08-29：Stage 7 控制問題圖
 
-`agent-engineering-control-questions.{svg,en.svg,zh-Hans.svg}` 取代原本的垂直五層圖。
-這組圖是文字原生 SVG，不使用 imagegen；原因是本圖需要精確術語、可存取的 `title`／`desc`
-與可由 regression 直接讀取的文字。
+`agent-engineering-control-questions.{png,en.png,zh-Hans.png}` 取代原本的垂直五層圖。
+三張皆以 Image 2.0 產生，固定為和主頁 README 圖相同的 `1672×941` 橫式比例；繁中先定稿，
+英語與簡中再以同一母版做文字在地化。視覺基準是主頁 `banner`／`learning-map`：奶油白背景、
+深藍字、亮色語意線、圓角卡、簡單線條 icon、充足留白與單一閱讀方向。
 
 共同語意契約：
 
 1. Prompt 與 Context 都進入 Harness，但不是完整 Agent runtime。
-2. Harness 內含 model call、tools、permissions、sandbox、state、errors、logs 與 results。
-3. Loop 明寫 `act → inspect evidence → continue / stop / ask`，並放在 Harness 內表示責任重疊。
-4. Workflow Graph／Production Orchestration 連接 Harness run、evidence check、返回路線、human approval 與完成狀態。
-5. 圖上必須明寫「不是產品世代或章節順序」；不得畫成 Harness 被 Loop 淘汰。
-6. 三語使用相同 1600×900 `viewBox`、形狀、箭頭與配色，並各自引用 locale 檔。
+2. 上半部只畫一次 Agent run：Harness 內含 model call、tools、state／logs／results、下一步決定與 Agent Loop。
+3. 下半部才畫整個長任務：Workflow Graph／Production Orchestration 連接 Goal、Harness run、evidence check、返回路線、human approval 與完成狀態。
+4. Loop Engineering 另外明寫 `Goal → Action → Observation → Adjustment`、預算與停止條件；不得和 Harness 內的一次 Agent Loop 混成同一尺度。
+5. 圖上以「不是五層」直接阻止嚴格層級誤讀；Harness 包住 Agent Loop，上下兩個尺度分開；不得畫成 Harness 被 Loop 淘汰，也不是章節順序。
+6. 三語使用相同尺寸、形狀、箭頭、icon、配色與間距，並各自引用 locale 檔。
+7. 箭頭只能走卡片間或專用返回通道；不能穿過文字、icon 或另一個框，arrowhead 也不能壓到無關元素。
 
 人工驗收除了看文字，也逐一確認：
 
-- Prompt 與 Context 都指向 Harness；Harness 內同時畫出 model、tools、permissions、sandbox、state、errors、logs、results 與 Loop。
-- 圖明寫責任重疊，不暗示產品世代或 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
+- Prompt 與 Context 都指向 Harness；Harness 內同時畫出 model、tools、state、logs、results、下一步與 Agent Loop。
+- 圖用 Harness 包住 Agent Loop 與上下兩個尺度呈現責任重疊；底部「不是五層」不暗示產品世代或 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
 - 下方 Workflow Graph 保留 Harness run、evidence check、人工核准、完成與失敗返回，沒有把每個節點都畫成 Agent。
+- 所有卡片依同一格線對齊；icon 完整留在自己的圓框內；兩條返回箭頭都有獨立留白通道，沒有壓字、穿框或互相交叉。
 - 英語圖沒有中文；簡中圖沒有肉眼可見的繁體字；繁中圖沒有簡中用語。
 
-原 `harness-loop-graph-boundary.{png,en.png,zh-Hans.png}` 因把 Harness 縮成「一次執行」且和新圖重複而退役；控制問題 SVG 已吸收正確的責任重疊與返回路線，不再讓讀者同一章看兩張近似圖。
+原 `harness-loop-graph-boundary.{png,en.png,zh-Hans.png}` 因把 Harness 縮成「一次執行」且和新圖重複而退役；控制問題 PNG 已吸收正確的責任重疊、內外兩種 loop 與返回路線，不再讓讀者同一章看兩張近似圖。
 
 ## 2026-08-29：教師把關循環圖
 

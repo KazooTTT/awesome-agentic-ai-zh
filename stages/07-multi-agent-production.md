@@ -92,14 +92,14 @@ Docker 還不熟也可以開始；先做練習 1–4，練習 5 再補。
 <a id="五層工程分工prompt--context--harness--loop--graph"></a>
 ## 五個控制問題：Prompt → Context → Harness → Loop → Graph
 
-這是五個**檢查問題**，不是五代產品、嚴格的軟體層，也不是課程章節順序。它們的責任會重疊：Harness 常會包含 Agent Loop；Workflow Graph 也可以把 Harness、固定程式、Loop 與人工核准接在一起。
+這是五個**檢查問題**，不是五層產品。Agent Loop 管一次 Harness run；Loop Engineering 管長任務的觀察、調整與停止；Graph 排整條路。它們合作，彼此不取代。
 
 | 控制面 | 白話問題 | 會跑的東西 | 設計它的工作 | 先在哪裡遇見 | 在哪裡做穩 |
 |---|---|---|---|---|---|
 | 1 | 我有沒有把話說清楚？ | **Prompt** | **Prompt Engineering** | [Stage 2](02-prompt-engineering.md) | 每章的 Prompt 與 Eval |
 | 2 | 我有沒有把該看的資料放進來？ | **Context** | **Context Engineering** | [Stage 2](02-prompt-engineering.md) 先分清 Prompt 與 Context | [Stage 6](06-memory-rag.md) 的 RAG／Memory |
 | 3 | 它能不能安全地用工具、出錯後停下？ | **Agent Harness** | **Harness Engineering** | [Stage 3](03-tool-use-and-hello-agent.md) 的 runner／tool boundary | [Stage 5](05-claude-code-ecosystem.md) 的實例與本章的 production checklist |
-| 4 | 它怎麼「做、看結果、再做」，而且不會無限跑？ | **Agent Loop** | **Loop Engineering** | [Stage 3](03-tool-use-and-hello-agent.md) | 本章的 bounded long-running loop |
+| 4 | 它怎麼「做、看、再做」，又不會無限跑？ | **Agent Loop**；外層可重跑 Harness | **Loop Engineering**：長任務的目標、證據、調整與停止 | [Stage 3](03-tool-use-and-hello-agent.md) | 本章的長任務 loop |
 | 5 | 每一步、分支與返回路線能不能被看見和控制？ | **Workflow Graph** | **Production orchestration**；新興文章也會寫 Graph Engineering | [Stage 4](04-agent-frameworks.md) | 本章的 production orchestration |
 
 - **Stage 3：Agent Loop 入門**——先學一次執行裡的「模型 → 工具 → 結果 → 下一步」。
@@ -108,7 +108,7 @@ Docker 還不熟也可以開始；先做練習 1–4，練習 5 再補。
 
 Stage 4 先教 **Workflow Graph** 和實作它的 **Agent Framework**；Stage 7 再把同一張圖做成可觀測、可復原的 production orchestration。Framework 是工具箱，不是工作地圖，也不是上線編排本身。
 
-![Agent 工程的五個控制問題：Prompt 與 Context 進入 Harness，Loop 依證據決定是否再做，Workflow Graph 安排完整路線](../resources/diagrams/agent-engineering-control-questions.svg)
+![一次 Agent run 與整個長任務：Harness 內含 Agent Loop；Workflow Graph 排整條路，Loop Engineering 依證據調整](../resources/diagrams/agent-engineering-control-questions.png)
 
 **Loop Engineering** 是 IBM 明確標為 emerging practice 的新興稱呼。**Graph Engineering** 更鬆散；主要框架的正式文件多半仍寫 **workflow**、**graph-based execution** 或 **orchestration**。本章保留這兩個詞，讓你看得懂外面的討論，但以實際責任為準，不把它們說成全業界共同標準。
 
