@@ -2831,6 +2831,104 @@ pages:
           zh-Hans: {term: Glossary, label: "Glossary（词典）"}
     resource_group_rowspans: [4, 2, 2, 2, 1]
 
+  - id: glossary
+    canonical: resources/glossary.md
+    mirrors:
+      en: resources/glossary.en.md
+      zh-Hans: resources/glossary.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 12860
+      en: 21347
+      zh-Hans: 13154
+    max_open_details: 0
+    required_details_count: 2
+    visible_section_order:
+      - quick-map
+      - identities
+      - topics
+      - missing-term
+    parity:
+      ordered_external_urls: true
+      literals:
+        - "2026-08-30"
+        - "OpenRouter"
+        - "Ollama"
+        - "OpenCode"
+        - "Pi"
+        - "Workflow Graph"
+    required_visible_sections:
+      quick-map:
+        zh-TW: {heading: "⚡ 先從 12 個詞開始", anchor: -先從-12-個詞開始}
+        en: {heading: "⚡ Start with these 12 terms", anchor: -start-with-these-12-terms}
+        zh-Hans: {heading: "⚡ 先从 12 个词开始", anchor: -先从-12-个词开始}
+      identities:
+        zh-TW: {heading: "🧭 先分清五種工具身分", anchor: -先分清五種工具身分}
+        en: {heading: "🧭 Separate five tool identities first", anchor: -separate-five-tool-identities-first}
+        zh-Hans: {heading: "🧭 先分清五种工具身份", anchor: -先分清五种工具身份}
+      topics:
+        zh-TW: {heading: "📚 依主題查詞", anchor: -依主題查詞}
+        en: {heading: "📚 Look up terms by topic", anchor: -look-up-terms-by-topic}
+        zh-Hans: {heading: "📚 按主题查词", anchor: -按主题查词}
+      missing-term:
+        zh-TW: {heading: "找不到的詞？", anchor: 找不到的詞}
+        en: {heading: "Cannot find a term?", anchor: cannot-find-a-term}
+        zh-Hans: {heading: "找不到的词？", anchor: 找不到的词}
+    visible_section_minimums:
+      identities: {min_links: 6}
+    core_terms:
+      section_id: quick-map
+      first_exercise_section_id: identities
+      min_definition_chars: 18
+      terms:
+        - id: prompt
+          zh-TW: {term: Prompt, label: "Prompt（提示詞）"}
+          en: {term: Prompt, label: Prompt}
+          zh-Hans: {term: Prompt, label: "Prompt（提示词）"}
+        - id: token
+          zh-TW: {term: Token, label: Token}
+          en: {term: Token, label: Token}
+          zh-Hans: {term: Token, label: Token}
+        - id: context-window
+          zh-TW: {term: Context Window, label: "Context Window（上下文視窗）"}
+          en: {term: Context Window, label: Context Window}
+          zh-Hans: {term: Context Window, label: "Context Window（上下文视窗）"}
+        - id: agent
+          zh-TW: {term: Agent, label: Agent}
+          en: {term: Agent, label: Agent}
+          zh-Hans: {term: Agent, label: Agent}
+        - id: tool-use
+          zh-TW: {term: Tool Use, label: "Tool Use（工具使用）"}
+          en: {term: Tool Use, label: Tool Use}
+          zh-Hans: {term: Tool Use, label: "Tool Use（工具使用）"}
+        - id: agent-loop
+          zh-TW: {term: Agent Loop, label: Agent Loop}
+          en: {term: Agent Loop, label: Agent Loop}
+          zh-Hans: {term: Agent Loop, label: Agent Loop}
+        - id: rag
+          zh-TW: {term: RAG, label: RAG}
+          en: {term: RAG, label: RAG}
+          zh-Hans: {term: RAG, label: RAG}
+        - id: memory
+          zh-TW: {term: Memory, label: "Memory（記憶）"}
+          en: {term: Memory, label: Memory}
+          zh-Hans: {term: Memory, label: "Memory（记忆）"}
+        - id: mcp
+          zh-TW: {term: MCP, label: MCP}
+          en: {term: MCP, label: MCP}
+          zh-Hans: {term: MCP, label: MCP}
+        - id: eval
+          zh-TW: {term: Eval, label: "Eval（評估）"}
+          en: {term: Eval, label: Eval}
+          zh-Hans: {term: Eval, label: "Eval（评估）"}
+        - id: agent-harness
+          zh-TW: {term: Agent Harness, label: "Agent Harness（執行工作台）"}
+          en: {term: Agent Harness, label: Agent Harness}
+          zh-Hans: {term: Agent Harness, label: "Agent Harness（执行工作台）"}
+        - id: workflow-graph
+          zh-TW: {term: Workflow Graph, label: "Workflow Graph（工作流程圖）"}
+          en: {term: Workflow Graph, label: Workflow Graph}
+          zh-Hans: {term: Workflow Graph, label: "Workflow Graph（工作流程图）"}
+
   - id: courses
     canonical: resources/courses.md
     mirrors:

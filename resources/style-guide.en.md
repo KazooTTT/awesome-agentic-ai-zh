@@ -308,10 +308,11 @@ This rule applies to the entire learning map. The goal is for a five-year-old to
 
 - Define core terms in plain text first, then use a diagram to organize their relationships. A diagram must not be the reader's first encounter with a term.
 - Use the main README as the default visual baseline: cream-white background, navy primary text, a few bright semantic colors, rounded cards, simple line icons, generous whitespace, and one primary reading direction. Each diagram answers one core question; split dense material instead of shrinking the text.
-- Keep the same layout, order, numbers, and limits in all three locales. Provide a correctly localized image and alt text for each page.
+- Produce new or redrawn concept diagrams as Image 2.0 PNGs, not temporary SVG stand-ins. Apply this ratchet when a legacy chapter is redrawn instead of forcing a one-shot migration of every old image.
+- Keep the same canvas ratio, layout, shared grid, order, numbers, and limits in all three locales. Provide a correctly localized image and alt text for each page. Card positions, margins, padding, and same-level heights stay aligned.
 - Exact numbers inside a diagram need the same official evidence as prose. When no fixed rule exists, write “multiple” or “varies by model” instead of inventing a neat range.
 - Route arrows only through whitespace. They must not cross text, icons, or other cards; arrowheads, icons, labels, and borders must not overlap. Cards on the same level share a grid, equal height, and consistent padding.
-- Inspect every image at original size for text, locale characters, arrow direction, and contrast; then run the image-locale gate and all three MkDocs builds.
+- Inspect every image at original size for safe margins, text, locale characters, arrow direction, shared-grid alignment, and contrast. Any overlap among text, icons, arrows, or borders fails review. Then run the image-locale gate and all three MkDocs builds.
 
 ### Reader UX ratchet
 
@@ -422,6 +423,12 @@ The full resource table always uses six separate `<tbody>` groups, with `scope="
 `resources/README*` first asks what the learner is stuck on, then defines Reference, Guide, Cookbook, Catalog, and Glossary in bold plain language. Keep the entrances, purposes, limits, and return-to-route links for all 11 references visible. Collapse only the reason for separate files and the maintainer rules. Do not add drifting line counts, GitHub stars, or an old product name presented as current.
 
 The complete entrance table uses five separate `<tbody>` groups with row counts `4／2／2／2／1`. Show one category cell only on the first row, using `scope="rowgroup"` and a real `rowspan`; do not fake a merge with repeated text or empty cells. Each locale links to its own mirror and keeps the same order and meaning.
+
+### Glossary lookup entrance
+
+Keep the quick map, tool-identity table, every term heading, and a one-sentence plain-language definition visible. Do not hide the shortest answer inside `<details>`. Only the complete maintainer classification table and source／verification notes are closed by default. Follow the site-wide rule by bolding a core term at first visible use while preserving its exact technical name.
+
+The identity table must distinguish Provider API, Router, Model Runtime, Coding Agent／Agent Harness, and Agent Framework. Do not copy volatile model, price, context, or fixed token-conversion snapshots into the glossary; link to a freshness-gated chapter or official documentation instead.
 
 ### Internal links
 - Between stages: relative path `[Stage 4](04-agent-frameworks.en.md)`

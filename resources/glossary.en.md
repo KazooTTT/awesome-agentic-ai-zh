@@ -2,531 +2,453 @@
 
 > [繁體中文](./glossary.md) | [简体中文](./glossary.zh-Hans.md) | **English**
 
-> The roadmap leans heavily on terms like LLM, RAG, MCP, agent. Look up unfamiliar ones here in 30 seconds, then go back to reading the stage.
->
-> Each entry gives **the smallest usable definition** (30-80 words + which stage covers it in depth) — not Wikipedia.
+When an unfamiliar term appears, you do not need to stop reading the whole chapter. Find one plain-language explanation here, then return to the Stage you were working on.
 
-## 🌐 Unified terminology table (English ↔ Chinese, consistent across stages)
+## ⚡ Start with these 12 terms
 
-This table is the project's **enforced naming convention** — every stage uses the same Chinese readability label for each English term. If you see drift inside a stage, please file an issue.
+- [**Prompt**](#prompt) — the complete task package you give a model, including the job, data, examples, and limits.
+- [**Token**](#token) — a small unit a model uses to split input; usage limits and billing often count it.
+- [**Context Window**](#context-window) — the information space a model can consider together in one call.
+- [**Agent**](#agent) — a system that chooses actions within limits, checks results, and decides what to do next.
+- [**Tool Use**](#tool-use--function-calling) — the model requests a tool, but the program checks and executes it.
+- [**Agent Loop**](#agent-loop) — the running cycle of deciding, acting, and observing until completion or a stop condition.
+- [**RAG**](#rag-retrieval-augmented-generation) — retrieve evidence first, then give that evidence to the model for an answer.
+- [**Memory**](#memory--two-orthogonal-classification-axes) — save information that will matter later, then read it back when needed.
+- [**MCP**](#mcp-model-context-protocol) — an open protocol for connecting AI applications to tools and data in a shared way.
+- [**Eval**](#eval) — fixed cases and success rules that show whether a change really improved the system.
+- [**Agent Harness**](#agent-harness) — the system around a model that manages tools, permissions, state, records, and stopping.
+- [**Workflow Graph**](#workflow-graph) — nodes and edges that make steps, branches, and shared state explicit.
 
-| English term | Chinese readability label | Primary stage |
-|---|---|---|
-| Prompt Engineering | Prompt 設計 / Prompt 设计 | Stage 2 |
-| Context Engineering | 上下文管理 | Stage 6 |
-| Agent Production Engineering | Agent 可用化工程 | Stage 7 |
-| Harness Engineering | Agent 執行系統設計 / Agent 执行系统设计 | Stage 7 |
-| Loop Engineering | Agent 迴圈設計 / Agent 循环设计 | Stage 7 |
-| Graph Engineering | Workflow Graph 工程 | Stage 4 / 7 |
-| Tool Use | 工具使用 | Stage 3 |
-| Function Calling | 函式 / 函数 / 工具呼叫 | Stage 3 |
-| Tool Schema | 工具綱要 / 工具纲要 / 工具說明卡 | Stage 3 |
-| Tool Call | 工具請求 / 工具请求 | Stage 3 |
-| Tool Result | 工具結果 / 工具结果 | Stage 3 |
-| Structured Output | 結構化輸出 / 结构化输出 | Stage 3 |
-| Agent Loop | Agent 執行迴圈 / Agent 执行循环 | Stage 3 |
-| Framework | 框架 | Stage 4 |
-| Orchestration | 協調與編排 / 协调与编排 | Stage 4 / 7 |
-| Handoff | 任務交接 / 任务交接 | Stage 7 |
-| Supervisor / Worker | 協調者 / 執行者 (协调者 / 执行者) | Stage 7 |
-| Runtime | 執行層 / 执行层 | Stage 7 |
-| Scaffolding | 支撐架構 / 支撑架构 | Stage 7 |
-| Observability | 觀測與紀錄 / 观测与记录 | Stage 7 |
-| Telemetry | 運行紀錄 / 运行记录 | Stage 7 |
-| Eval | 效果評估 / 效果评估 | Stage 7 |
-| Evaluation Harness | 評估框架 / 评估框架 | Stage 7 |
-| Production | 可穩定使用 / 上線化 (可稳定使用 / 上线化) | Stage 7 |
-| Production-grade | 可長期穩定使用的 / 可长期稳定使用的 | Stage 7 |
-| Deployment | 部署 | Stage 7 |
-| Cost Tracking | 成本追蹤 / 成本追踪 | Stage 7 |
-| Latency | 延遲 / 等待時間 (延迟 / 等待时间) | Stage 7 |
-| Vector DB | 向量資料庫 / 向量数据库 | Stage 6 |
-| Retrieval | 檢索 / 检索 | Stage 6 |
-| Reranking | 重排序 | Stage 6 |
-| Long Context | 長上下文 / 长上下文 | Stage 6 |
-| Fine-tuning | 模型微調 / 模型微调 | Stage 6 |
-| Agent Interfaces | Agent 操作介面 / Agent 操作界面 | Stage 8 |
-| Code Sandbox | 隔離程式執行環境 / 隔离程序执行环境 | Stage 8 |
-| Cold Start | 啟動延遲 / 启动延迟 | Stage 8 |
-| Reward Hacking | 鑽評分漏洞 / 钻评分漏洞 | Stage 7 / 8 |
+## 🧭 Separate five tool identities first
 
-→ For full definitions, see the sections below.
+One screen may contain a model, a Router, and an Agent at the same time. Ask what job each product performs before comparing their names.
 
-**Keep two orders separate:** the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Workflow Graph / Agent Framework](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering: Harness, Loops, and Graphs](../stages/07-multi-agent-production.en.md). Prompt → Context → Harness → Loop → Graph are five overlapping **control questions**. They are **not the chapter order or a sequence in which new technology replaces old technology**.
+<table>
+<thead>
+<tr><th>Identity</th><th>Plain-language job</th><th>Example and boundary</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Model Provider / API</strong></td><td>The model company's service entrance.</td><td><a href="https://platform.claude.com/docs/en/api/overview">Anthropic API</a>; it returns model output but is not an Agent that edits files.</td></tr>
+<tr><td><strong>LLM Router</strong></td><td>One entrance that forwards requests to models or providers.</td><td><a href="https://openrouter.ai/docs/faq">OpenRouter</a>; it is neither a model nor a coding agent.</td></tr>
+<tr><td><strong>Model Runtime</strong></td><td>Loads and runs a model locally or as a service.</td><td><a href="https://docs.ollama.com/api/introduction">Ollama</a>; it exposes a model API but does not edit a project by itself.</td></tr>
+<tr><td><strong>Coding Agent / Harness</strong></td><td>Reads files, edits files, runs commands, and reports results.</td><td><a href="https://opencode.ai/docs">OpenCode</a> and <a href="https://github.com/earendil-works/pi">Pi</a>; the model inside can be changed.</td></tr>
+<tr><td><strong>Agent Framework</strong></td><td>Helps developers combine Agents, tools, state, and workflows.</td><td><a href="https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/">Microsoft Agent Framework</a>; it is a toolkit, not a model.</td></tr>
+</tbody>
+</table>
 
----
+<details markdown="1">
+<summary>Maintainers: fixed project terminology (37 terms)</summary>
+
+This table keeps names consistent across Stages. General readers do not need to memorize it first.
+
+<table>
+<thead>
+<tr><th>Group</th><th>English term</th><th>Project meaning</th><th>Main Stage</th></tr>
+</thead>
+<tbody>
+<tr><th scope="rowgroup" rowspan="2">Input and information</th><td>Prompt Engineering</td><td>Prompt design</td><td>Stage 2</td></tr>
+<tr><td>Context Engineering</td><td>Context management</td><td>Stage 6 / 7</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="17">Agent execution</th><td>Agent Production Engineering</td><td>Making Agents dependable</td><td>Stage 7</td></tr>
+<tr><td>Harness Engineering</td><td>Agent execution-system design</td><td>Stage 7</td></tr>
+<tr><td>Loop Engineering</td><td>Agent loop design</td><td>Stage 7</td></tr>
+<tr><td>Graph Engineering</td><td>Workflow Graph engineering</td><td>Stage 4 / 7</td></tr>
+<tr><td>Tool Use</td><td>Using tools</td><td>Stage 3</td></tr>
+<tr><td>Function Calling</td><td>Function / tool calling</td><td>Stage 3</td></tr>
+<tr><td>Tool Schema</td><td>Tool description card</td><td>Stage 3</td></tr>
+<tr><td>Tool Call</td><td>Tool request</td><td>Stage 3</td></tr>
+<tr><td>Tool Result</td><td>Tool result</td><td>Stage 3</td></tr>
+<tr><td>Structured Output</td><td>Machine-readable output</td><td>Stage 3</td></tr>
+<tr><td>Agent Loop</td><td>Agent execution loop</td><td>Stage 3</td></tr>
+<tr><td>Framework</td><td>Toolkit</td><td>Stage 4</td></tr>
+<tr><td>Orchestration</td><td>Coordination and scheduling</td><td>Stage 4 / 7</td></tr>
+<tr><td>Handoff</td><td>Task handoff</td><td>Stage 7</td></tr>
+<tr><td>Supervisor / Worker</td><td>Coordinator / executor</td><td>Stage 7</td></tr>
+<tr><td>Runtime</td><td>Execution layer</td><td>Stage 7</td></tr>
+<tr><td>Scaffolding</td><td>Supporting structure</td><td>Stage 7</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="9">Quality and production</th><td>Observability</td><td>Inspectable operation records</td><td>Stage 7</td></tr>
+<tr><td>Telemetry</td><td>Runtime records</td><td>Stage 7</td></tr>
+<tr><td>Eval</td><td>Outcome evaluation</td><td>Stage 7</td></tr>
+<tr><td>Evaluation Harness</td><td>Evaluation system</td><td>Stage 7</td></tr>
+<tr><td>Production</td><td>Dependable use / going live</td><td>Stage 7</td></tr>
+<tr><td>Production-grade</td><td>Dependable over time</td><td>Stage 7</td></tr>
+<tr><td>Deployment</td><td>Deployment</td><td>Stage 7</td></tr>
+<tr><td>Cost Tracking</td><td>Cost tracking</td><td>Stage 7</td></tr>
+<tr><td>Latency</td><td>Waiting time</td><td>Stage 7</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="5">Retrieval and models</th><td>Vector DB</td><td>Vector database</td><td>Stage 6</td></tr>
+<tr><td>Retrieval</td><td>Retrieval</td><td>Stage 6</td></tr>
+<tr><td>Reranking</td><td>Reordering candidates</td><td>Stage 6</td></tr>
+<tr><td>Long Context</td><td>Long context</td><td>Stage 6</td></tr>
+<tr><td>Fine-tuning</td><td>Adjusting model weights</td><td>Stage 6</td></tr>
+</tbody>
+<tbody>
+<tr><th scope="rowgroup" rowspan="4">Interfaces</th><td>Agent Interfaces</td><td>Ways an Agent acts</td><td>Stage 8</td></tr>
+<tr><td>Code Sandbox</td><td>Isolated code environment</td><td>Stage 8</td></tr>
+<tr><td>Cold Start</td><td>Startup delay</td><td>Stage 8</td></tr>
+<tr><td>Reward Hacking</td><td>Gaming the score</td><td>Stage 7 / 8</td></tr>
+</tbody>
+</table>
+
+</details>
+
+## 📚 Look up terms by topic
+
+The sections below are not a new reading order. Jump directly to the term you just encountered.
 
 ## 1. Basic concepts
 
 ### LLM (Large Language Model)
 
-GPT, Claude, Gemini — models that predict the next token from their input. Different models may accept text, images, or audio, and may produce different media. A model does not execute your client tool itself; networks, files, tools, and cross-session memory must be connected by an external system.
+An **LLM** is a model that generates content from input and learned patterns. It can request a tool, but an outside program is what actually reads a file, uses the network, or sends a message.
 
-📍 Detail: [Stage 1](../stages/01-llm-basics.en.md)
+📍 Details: [Stage 1](../stages/01-llm-basics.en.md)
 
 ### Model Provider / Provider API
 
-**The direct door to a model company.** Examples include Anthropic API, OpenAI API, and Gemini API. You choose a model and send a prompt; the provider returns the result and charges you. It provides a model service, but it is not a CLI agent that reads and writes files on your computer.
+A **Model Provider / Provider API** is the service entrance to a model company. Your program sends messages, the provider returns results and bills according to its plan; it is not a coding agent.
 
 ### LLM Router / API Router
 
-**One entry point that forwards requests to multiple models or backends.** [OpenRouter](https://openrouter.ai/docs/faq) is an example: through one API and billing entry point, you can choose different models and, depending on your settings, use provider routing or fallback. A Router is not a model, and it is not a coding agent such as OpenCode or Pi.
+An **LLM Router / API Router** works like a switchboard: one API can forward requests to different models or backends. It chooses a route; it does not become the model or the Agent.
 
-📍 Five identities compared: [Track A A1](../tracks/cli/A1-cli-intro.en.md)
+### Model Runtime
+
+A **Model Runtime** loads a model and exposes an inference API. Ollama, llama.cpp, and [MLX LM](https://github.com/ml-explore/mlx-lm) fit this identity; a separate Agent or application is still needed to read files or run commands. MLX itself is an array framework; MLX LM is the package meant here for running LLMs with MLX.
 
 ### Token
 
-LLMs see **tokens** (sub-word units), not characters. Roughly 1 English word ≈ 1.3 tokens, 1 Chinese character ≈ 1.5–2 tokens. LLM pricing and context windows are measured in tokens. "1M-token context" ≈ 750k English words.
+A **Token** is a small unit used when a model splits text or other input. Tokenizers differ, so there is no universal characters-per-token formula; use the counter for the model you selected.
 
-📍 Detail: [Stage 1](../stages/01-llm-basics.en.md)
+📍 Details: [Stage 1](../stages/01-llm-basics.en.md)
 
 ### Context Window
 
-The maximum tokens an LLM can "see" in one call. **2026 frontier**: Claude Sonnet 5 / Opus 5 1M, GPT-5.6 1.05M, Gemini 3.5 Flash 1M (Pro series up to 2M), xAI Grok 4.5 500K, Mistral Medium 3.5 256k. **Bigger isn't always better** — beyond a length the LLM gets "Lost in the Middle".
+A **Context Window** is the token space a model can consider in one call. A larger space does not make every part equally important; include what the task needs, then check [Stage 1](../stages/01-llm-basics.en.md) for current official limits.
 
 ### Prompt
 
-The complete task package you give an LLM. It is not always one question; it can include instructions, input data, background, examples, and output limits, and these may be split across multiple messages. **Prompt engineering** is designing and testing this task package so results better meet success criteria. `system`, `developer`, and `user` are API message roles, not three fixed sections of a prompt and not synonyms for instruction.
+A **Prompt** is the complete task package sent to a model, not only one question. It may include instructions, input data, background, examples, success criteria, and an output format; **Prompt Engineering** designs and tests that package with Evals.
 
-📍 Detail: [Stage 2](../stages/02-prompt-engineering.en.md)
+📍 Details: [Stage 2](../stages/02-prompt-engineering.en.md)
 
 ### Zero-shot / One-shot / Few-shot
 
-Put "a few worked examples" in the prompt for the LLM to copy — the only difference between the three terms is **how many examples you give**:
+These names only count how many demonstrations appear in the Prompt:
 
-- **Zero-shot** (0 examples): just ask, no examples at all.
-- **One-shot** (1 example): give **1** input → output example first, then ask.
-- **Few-shot** (a small number): give a small number of input → output examples first. There is no universal fixed count; it can show the format and boundary cases, but whether it helps must be checked with a fixed eval.
+- **Zero-shot**: give no demonstration; state the task directly.
+- **One-shot**: give one example input and answer first.
+- **Few-shot**: give a small set of examples to show format or boundaries.
+
+More examples are not automatically better. Compare them with the same Eval.
 
 ### Chain-of-Thought (CoT)
 
-Early prompting techniques asked the LLM to write intermediate reasoning before the answer. Two common research forms are:
+**Chain-of-Thought (CoT)** is a prompting research method in which a model goes through intermediate reasoning before answering. Early work includes [Few-shot CoT](https://arxiv.org/abs/2201.11903) and [Zero-shot CoT](https://arxiv.org/abs/2205.11916). In practice, ask for short, verifiable reasons and evidence rather than a model's private reasoning transcript.
 
-- **Few-shot CoT** (original paper, [Wei et al. 2022](https://arxiv.org/abs/2201.11903)): put a few examples with reasoning steps into the prompt, and the LLM imitates the reasoning
-- **Zero-shot CoT** ([Kojima et al. 2022](https://arxiv.org/abs/2205.11916)): add "Let's think step by step" at the end of the prompt.
-
-Do not treat outputting a full chain of thought as a general requirement now. Reasoning models usually reason internally. When you need to check the result, ask for **a short, verifiable reason after the final answer**. Which wording works better must be compared with the same eval.
-
----
-
-## 2. Agents / Tool Use
+## 2. Agent / tool use
 
 ### Agent
 
-A system centered on a model that can **read state → choose an action → execute → observe results** in a **bounded loop**, until it completes, fails, or reaches a limit. This roadmap teaches the beginner version with three parts:
-
-- **LLM** (reasoning / planning / deciding)
-- **Actions** (ways to do things — not limited to function calls. This can include writing and running code (CodeAct), operating a browser (computer use), retrieving from a KB (RAG retrieval), calling an MCP server, or pure planning / task decomposition)
-- **Loop** (an execution loop with a maximum step count, timeout, cost, and stopping condition)
-
-This is the roadmap’s **working definition**, not the only academic definition. **ReAct is one agent pattern, not the definition of an agent**; CodeAct, computer-use, and planning agents may use different actions and loops.
-
-📍 Detail: [Stage 3](../stages/03-tool-use-and-hello-agent.en.md)
+An **Agent** is a system that reads state, chooses an action within limits, executes it, and observes the result. It needs at least a model, available actions, and stop conditions; connecting an LLM alone does not finish a job automatically.
 
 ### Tool Use / Function Calling
 
-When a model needs data or an action, it returns a structured request with a tool name, call ID, and arguments. For a client tool, **the model only makes the request**; your program validates the arguments, executes the function, and sends the corresponding result back to the model.
+**Tool Use / Function Calling** lets a model produce a structured tool request. The model only says what it wants to call; your program must still validate the tool name, arguments, and permissions before execution.
 
-**Tool Use** is the broader capability; **Function Calling** is a common structured calling mechanism. Providers use different schemas and message formats:
-
-- **Anthropic "Tool Use"**: uses `input_schema` (JSON Schema directly)
-- **OpenAI / Ollama "Function Calling"**: wraps it in an outer `{"type": "function", "function": {...}}`
-- A cross-provider SDK must handle Tool Call, Tool Result, error flags, and stop reasons separately
-
-📍 Detail: [Stage 3](../stages/03-tool-use-and-hello-agent.en.md)
-📍 How to write good schemas: [Function Schema Design cheatsheet](schema-design-cheatsheet.en.md)
+📍 Details: [Stage 3](../stages/03-tool-use-and-hello-agent.en.md)
 
 ### Tool Schema
 
-A tool’s information card: its name, purpose, input fields, types, and constraints. A schema can constrain the shape of a request, but it cannot replace permission, value-range, or business-rule validation. Strict-mode support differs by provider.
+A **Tool Schema** is a tool description card with its name, purpose, input fields, types, and required values. A schema constrains format, but it cannot prove that model-supplied content is safe or true.
 
 ### Tool Call
 
-The work order filled out by the model from the Tool Schema, usually containing a tool name, call ID, and arguments. It is only a **request**, not proof that the function ran. The program should check the allowlist before parsing and validating arguments.
+A **Tool Call** contains the tool name and arguments requested by a model. Treat it as untrusted input: validate it before executing, rejecting, or asking a person for approval.
 
 ### Tool Result
 
-Data returned after the program executes a tool, matched to the correct Tool Call by call ID. Success and errors must be explicit; external tool results may contain errors, malicious content, or prompt injection and must be treated as untrusted data.
+A **Tool Result** is what the program returns to the model after running a tool. Success, failure, and the original call ID must line up so the model knows what happened.
 
 ### ReAct (Reasoning + Acting)
 
-A pattern alternating **Reasoning → Action → Observation**. This roadmap requires only observable Tool Calls, Tool Results, stop reasons, and short verifiable summaries; it does not require exposing private Chain-of-Thought. The loop must have step, time, and cost limits.
-
-📍 Detail: [Stage 3](../stages/03-tool-use-and-hello-agent.en.md)
+**ReAct** alternates observable Actions and Observations so a model can choose the next step from new evidence. It comes from the [ReAct paper](https://arxiv.org/abs/2210.03629); implementations still need step limits, tool permissions, and stop conditions.
 
 ### Structured Output
 
-Ask a model for **JSON or another fixed schema** instead of free text. It may use a schema like Function Calling, but the purpose differs: Structured Output asks for fixed-shape data; Function Calling asks the application to take an action. Provider support varies, and a valid schema does not guarantee correct content; the program must handle refusal, truncation, parsing, and semantic errors.
+**Structured Output** requires output to follow a JSON Schema or type. It makes parsing dependable, but valid structure does not make the contents true; values, sources, and business rules still need checks.
 
 ### Agent Loop
 
-The repeated cycle “model → Tool Call → program execution → Tool Result → model.” Each result must match the original call ID. The Loop must stop on completion, refusal, error, maximum steps, timeout, or a cost limit; retries must not be left entirely to the model.
+An **Agent Loop** is the cycle that actually runs: the model chooses an action, the program executes it, the model reads the result, and then chooses again. It must stop on completion, error, timeout, budget limits, or maximum steps.
 
-⚠️ **This is the mechanical loop that actually runs inside the runner**: the model answers, calls a tool or makes a Handoff, reads the result, then chooses the next step. [Loop Engineering](#loop-engineering) designs this loop and its surrounding rules; they are related, not mutually exclusive. See [Stage 7](../stages/07-multi-agent-production.en.md) for the full boundary.
+### Workflow Graph
 
-### Self-Refine (Basic reflection / no memory)
+A **Workflow Graph** uses nodes, edges, branches, and state to make a route explicit. A node may contain an Agent Loop, ordinary code, a tool, or human approval; not every Agent needs this shape.
 
-The model evaluates the previous round’s output and changes the next round’s behavior — an “Actor answers → Critic finds issues → Actor reads feedback and answers again” single-session loop. **It does not necessarily need a persistent memory layer**; it is a sibling pattern to ReAct, not a synonym for Tool Use.
+📍 Details: [Stage 4](../stages/04-agent-frameworks.en.md)
 
-Representative paper: [Self-Refine (Madaan 2023)](https://arxiv.org/abs/2303.17651). **For the full Reflexion version** (with episodic memory), see 3 Memory / Retrieval / RAG.
+### Self-Refine (basic reflection / no memory)
 
-📍 Detail + routing: [Stage 3 Reflection](../stages/03-tool-use-and-hello-agent.en.md#-reflection-reflexion--self-refine--concept--routing)
+**Self-Refine** asks a model to produce an answer, use feedback, and revise one or more times. The original method is in the [Self-Refine paper](https://arxiv.org/abs/2303.17651); without an outside check and stop rule, repeated rewriting can remain wrong.
 
----
+## 3. Memory / retrieval / RAG
 
-## 3. Memory / Retrieval / RAG
+### Memory — two orthogonal classification axes
 
-### Memory — Two Orthogonal Axes
-
-"Memory" often gets lumped together, but there are actually **2 orthogonal classification axes**:
-
-- **Time axis**: short-term (current conversation) vs long-term (persistent across sessions)
-- **Content axis** (CoALA framework): **Working** (scratch space) / **Episodic** (past experiences) / **Semantic** (factual knowledge) / **Procedural** (how to do things)
-
-→ The two axes do not conflict: long-term memory can contain episodic memory (what the user said last time), semantic memory (small stable facts), and procedural memory (tool sequences that worked before). Large external corpora usually belong in a RAG knowledge base, not all in agent memory.
-
-📍 Detail: [Stage 6 What is Memory + How to Design It](../stages/06-memory-rag.en.md#-what-is-memory--how-to-design-it) + [Stage 6 CoALA Framework](../stages/06-memory-rag.en.md#advanced-coala-framework--a-4-layer-taxonomy-for-agent-memory)
+**Memory** saves information in a storage layer for later use. It can be grouped by duration as short-term or long-term, and separately by content as episodic, semantic, or procedural; these are two different axes.
 
 ### RAG (Retrieval-Augmented Generation)
 
-Two-stage architectural pattern:
+**RAG** means retrieving evidence before asking a model to answer from it. The original method appears in the [RAG paper](https://arxiv.org/abs/2005.11401). It does not guarantee correctness; data quality, retrieval, citations, and answer faithfulness still need tests.
 
-1. **Ingest** (one-time / periodic): document → chunk → embed → store in a vector store (build a retrievable KB)
-2. **Query** (every user question): embed the question → semantic search (or hybrid + BM25) → top-K chunks → put them into the prompt → LLM answers
+📍 Details: [Stage 6](../stages/06-memory-rag.en.md)
 
-**Solves the problem that the LLM does not know your private / changing / stale data**. Retrieval can use dense vectors, keywords, SQL, web search, or combinations. Whether to add hybrid search, BM25, or a reranker must be evaluated on your data and success criteria.
+### Reflexion (full reflection / episodic memory)
 
-📍 Detail: [Stage 6](../stages/06-memory-rag.en.md)
-📍 Paper: [Lewis et al. 2020](https://arxiv.org/abs/2005.11401)
-
-### Reflexion (Full reflection / with episodic memory)
-
-Unlike Self-Refine (2 Agents), the Reflexion paper accumulates lessons across trials with episodic memory — after each trial, the agent **writes a reflection summary into memory**, then retrieves it into the prompt at the start of the next trial. Process-persistent storage is needed only when lessons must survive program restarts; persistence is not always intrinsic.
-
-It is placed in 3 instead of 2 because it demonstrates an episodic-memory pattern across trials; whether storage must persist depends on the lifecycle you need.
-
-Representative paper: [Reflexion (Shinn 2023)](https://arxiv.org/abs/2303.11366).
-
-📍 Detail: [Stage 6 Advanced: Full Reflexion with Persistent Memory](../stages/06-memory-rag.en.md#-advanced-full-reflexion-with-persistent-memory--track-b-elective)
+**Reflexion** stores earlier attempts, feedback, and reflections as episodic memory for later attempts. It adds memory across attempts to the basic Self-Refine idea; see the [Reflexion paper](https://arxiv.org/abs/2303.11366).
 
 ### Embedding
 
-Turn text / images into N-dimensional **vectors** so that things with similar meanings are close together. **Dense embeddings** use continuous vectors for semantics; **sparse representations** keep fewer nonzero token weights and excel at lexical matching (BM25, SPLADE, etc.). They can be combined, but evaluate the choice on your query set.
-
-📍 Detail: [Stage 6](../stages/06-memory-rag.en.md)
+An **Embedding** turns text, images, or other data into vectors so a system can compare similarity. Dense and sparse representations capture different signals; evaluate them on your own queries instead of choosing by vector size alone.
 
 ### Vector DB
 
-The storage layer for storing and querying embeddings. Vector-store and vector-database capabilities differ across indexing, metadata, filtering, persistence, backup, and operations; ANN is only one common query method. Examples: Pinecone / Chroma / Qdrant / Weaviate / pgvector.
-
-📍 Detail: [Stage 6](../stages/06-memory-rag.en.md)
+A **Vector DB** stores vectors, metadata, and indexes and retrieves nearby items. It is one retrieval layer, not the whole RAG pipeline; chunking, querying, Reranking, and answering are separate steps.
 
 ### Semantic Search
 
-Use embeddings to compare "meaning similarity" rather than "exact string match". "How do I charge an EV" can retrieve "electric car battery tutorial". Keyword search may miss paraphrases, but it is complementary and strong for exact terms and identifiers.
+**Semantic Search** finds content by similar meaning rather than only identical words. It helps with paraphrases, while names, IDs, and exact strings often still need keyword search.
 
 ### Chunking
 
-Splitting long documents into embedding-friendly small pieces (typically 200–1000 tokens). **Chunk strategy directly affects RAG quality** — too small loses context, too long blurs relevance. Common: fixed-size, by paragraph, by structure (heading-based).
+**Chunking** divides a long document into smaller retrievable pieces. Test the split against document structure and real questions; no fixed size works for every dataset.
 
 ### Hybrid Search
 
-Run semantic search and keyword search together, merge and rerank. Usually beats either alone. Production-grade RAG default.
+**Hybrid Search** combines semantic-vector and keyword signals before merging results. It often balances similar meaning with exact-name matches.
 
 ### Reranking
 
-After first-pass retrieval pulls top-50, use a more expensive but more accurate model (cross-encoder) to rerank to top-5 for the LLM. Cohere Rerank, bge-reranker, etc.
+**Reranking** uses another model or rule to inspect initial candidates and move the most relevant ones upward. It may improve quality, but it also adds latency and cost.
 
 ### Contextual Retrieval
 
-Anthropic 2024 method — embed each chunk together with a summary of the document it came from, so "this chunk taken alone makes no sense" doesn't break retrieval.
-
-📍 Detail: [Stage 6](../stages/06-memory-rag.en.md)
+**Contextual Retrieval** adds a short piece of document context to each chunk before indexing it. Anthropic's [method description](https://www.anthropic.com/engineering/contextual-retrieval) evaluates contextual embeddings together with contextual BM25; measure the effect on your own data.
 
 ### Fine-tuning
 
-Re-train the model on your own data, baking knowledge or behavior into the weights (unlike RAG — RAG injects data into the context at inference time and never changes the weights). Good for making the model reliably learn a **format / style / domain vocabulary**; **not** for stuffing in "the latest facts" (that is RAG's job — facts fine-tuned in go stale and are hard to update). In most agent scenarios, **try prompt + RAG first**, and only consider fine-tuning if that genuinely is not enough.
-
-📍 Detail: [Stage 6](../stages/06-memory-rag.en.md)
-
----
+**Fine-tuning** changes model weights with training data and can teach repeated behavior or formats. It is not a good place to store facts that change every day; those usually belong in RAG or tools.
 
 ## 4. Multi-Agent
 
 ### Multi-Agent
 
-Multiple agents collaborating on one task. Common patterns:
-
-- **Supervisor + Worker**: one agent plans/dispatches, others execute.
-- **Swarm**: peer agents, no fixed supervisor.
-- **Debate**: agents argue different positions, then form consensus.
-
-📍 Detail: [Stage 7](../stages/07-multi-agent-production.en.md)
+**Multi-Agent** means two or more Agents divide or hand off work. Use it when roles, tools, permissions, or context truly need separation; adding more Agents does not automatically improve an answer.
 
 ### Handoff
 
-One agent transfers a task to another. Adds "how to pass context" and "who handles failure" beyond a plain function call.
+A **Handoff** moves a task and the required context from one Agent to another. A good handoff states the goal, completed work, evidence, remaining work, and stopping conditions.
 
 ### A2A (Agent-to-Agent) Protocol
 
-An agent ↔ agent communication protocol started by Google and now governed by the Linux Foundation. Sibling to MCP, but for agent-to-agent rather than agent-to-tool. Reached **v1.0** in 2026 (150+ organizations, plus identity verification so one agent can confirm another really is who it claims to be).
+**A2A** is an open protocol that helps independent, potentially opaque Agents discover capabilities, exchange messages, and manage collaborative tasks. It handles Agent-to-Agent interoperability; use the [official latest specification](https://a2a-protocol.org/latest/specification/) instead of freezing a version number in a tutorial.
 
----
-
-## 5. Claude Code Ecosystem
+## 5. Claude Code ecosystem
 
 ### MCP (Model Context Protocol)
 
-Anthropic's open protocol, introduced in 2024, that lets any LLM host (Claude Code, Cursor, your own agent) connect to external tool servers through one interface; donated to the Linux Foundation's Agentic AI Foundation in 2025-12. Think "**USB for LLMs**".
+**MCP** is an open protocol that connects AI applications to external data and capabilities. A Server may expose **Prompts**, **Resources**, and **Tools**, while the Host / Client decides presentation, consent, and transport. Use the [current specification](https://modelcontextprotocol.io/specification) for fields, transports, and security rules.
 
-**Technically it standardizes 3 primitives**:
-
-- **Tools**: functions an LLM can call (read DB / search web / send email…)
-- **Resources**: data an LLM can read (file contents, API responses, DB rows…)
-- **Prompts**: reusable prompt templates (triggered inside the host with `/`)
-
-**Architecture**: server / client pattern — the tool server runs locally or remotely, and the LLM host connects as the client. The server exposes those primitives over one of two transports: **stdio** (local subprocess) or **Streamable HTTP** (remote); the older HTTP+SSE transport was deprecated in the 2025-03-26 spec revision.
-
-📍 Detail: [Stage 5.2](../stages/05-claude-code-ecosystem.en.md#52--mcp-model-context-protocol--foundation)
+📍 Details: [Stage 5.2](../stages/05-claude-code-ecosystem.en.md#52--mcp-model-context-protocol--foundation)
 
 ### Project Instructions
 
-Shared rules that a CLI agent reads whenever it enters a project, like rules posted on a workshop wall. Put the project purpose, forbidden actions, verification commands, and delivery format here. Tools use different filenames and loading order, such as `AGENTS.md` for Codex/OpenCode V2, `CLAUDE.md` for Claude Code, and `GEMINI.md` for Gemini CLI.
+**Project Instructions** are shared rules a tool reads for a project, such as purpose, prohibited actions, verification commands, and delivery format. File names and loading order vary by tool, so one configuration is not automatically portable to every CLI.
 
-📍 Getting started: [Track A A2](../tracks/cli/A2-cli-workflow.en.md)
+📍 Start: [Track A A2](../tracks/cli/A2-cli-workflow.en.md)
 
 ### Skills / SKILL.md
 
-Reusable "instruction cards" taken out when needed. A Skill is usually a folder containing `SKILL.md`, with optional references, scripts, or other files. Codex, Claude Code, Gemini CLI, and OpenCode V2 all have Skill mechanisms, but their search paths, frontmatter, loading methods, and permissions differ.
-
-`description` should clearly say when to use the Skill and what it can do, so the agent can select the right one. A third-party Skill may run programs or call external tools; read its content and permissions before installing it, and do not treat a Skill as a security boundary.
-
-📍 Getting started: [Track A A2](../tracks/cli/A2-cli-workflow.en.md); Claude Code deep dive: [Stage 5.3](../stages/05-claude-code-ecosystem.en.md#53--skills-claude-codes-behavior-layer--the-most-critical-layer-of-the-claude-code-ecosystem)
+A **Skill** is an operation card loaded when needed. Under the [Agent Skills specification](https://agentskills.io/specification), a Skill is at least a directory with `SKILL.md` and may also contain scripts, references, and assets; inspect third-party Skills and permissions before installing them.
 
 ### One-off Prompt
 
-A one-time instruction for the task in front of you, like a note needed only today. It contains this task’s scope, inputs, forbidden actions, and success conditions; move project rules used every time to project instructions, and repeated workflows to a Skill.
-
-📍 Practice: [Track A A2 CLI-8](../tracks/cli/A2-cli-workflow.en.md#cli-8)
+A **One-off Prompt** is an instruction used only for the current task. Put rules that apply every time in Project Instructions, and turn a repeated workflow into a Skill.
 
 ### Plugin / Marketplace
 
-Package multiple Skills + slash commands + hooks + MCP configs into one shippable unit. A **Marketplace** is a catalog of plugins; users `claude plugin install` to grab community-built ones.
-
-📍 Detail: [Stage 5.4](../stages/05-claude-code-ecosystem.en.md#54--plugins--marketplaces)
+A **Plugin** packages components such as Skills, commands, hooks, or MCP configuration for distribution; a **Marketplace** is a catalog for finding and installing those packages. This is a product feature, not a universal component every Agent needs.
 
 ### Slash Command
 
-Commands inside Claude Code that start with `/`, such as `/help`, `/compact`, and `/plan`. Older projects may keep a custom prompt in `.claude/commands/<name>.md`; that is a compatibility path. For a new reusable workflow, use `.claude/skills/<name>/SKILL.md`.
+A **Slash Command** begins with `/` and is supplied by an application. It may open a feature, setting, or reusable workflow; names and behavior come from the tool's current documentation.
 
 ### CLAUDE.md
 
-A markdown file at project root that Claude Code reads on every launch. Project-level rules / conventions / context (language, code style, files to avoid, etc.).
+**CLAUDE.md** is one project-instruction file Claude Code can read to learn how a project works. It is context for the model to follow, not an enforcement boundary that can block unsafe operations by itself.
 
 ### Hooks
 
-Scripts that run before or after specific Claude Code events. **The official system supports 7 event types**:
-
-| Hook | Trigger time | Typical use |
-|---|---|---|
-| `PreToolUse` | **Before** a tool call | Block dangerous operations (`rm -rf`, destructive ops), rewrite parameters |
-| `PostToolUse` | **After** a tool call | Logging, auto-format files that were just written |
-| `UserPromptSubmit` | When the user submits a message | Add context (git status / current time) |
-| `Notification` | When Claude Code emits a notification | Desktop toast / Slack ping |
-| `Stop` | When the session ends | Auto-commit / cleanup |
-| `PreCompact` | Before auto-compact | Promote important decisions into memory |
-| `PostCompact` | After compact | Check what context got compressed |
-
-Configuration: add a `"hooks"` block in `.claude/settings.json` and point it at your script path.
+**Hooks** run a fixed check or action when a selected event occurs. They work well for linting, logging, notifications, or blocking high-risk actions; events and configuration evolve, so use the [Claude Code Hooks reference](https://code.claude.com/docs/en/hooks) instead of memorizing a count.
 
 ### Deep Agent
 
-An agent design that comes "fully equipped" — beyond just calling tools, it has built-in planning (a todo list), long-term memory (a filesystem), division of labor via subagents, and loadable skills. Contrast: a plain agent is just an LLM plus a few tools. Reference implementation: LangChain's [deepagents](https://github.com/langchain-ai/deepagents).
-
----
+**Deep Agent** is not one formal cross-vendor standard. LangChain's [deepagents](https://github.com/langchain-ai/deepagents) uses the label for an agent harness with planning, files, subagents, and context management; check which definition an author means.
 
 ### Subagent
 
-A spawned agent from the main Claude Code session, with its own context window, dedicated to a specific task. E.g. "spin up a code-reviewer subagent for this diff."
+A **Subagent** is an isolated worker that receives delegated work from a main Agent and usually has its own context. Current Claude Code configuration, inheritance, and permission boundaries are in the [official documentation](https://code.claude.com/docs/en/sub-agents); a Subagent still needs a clear task and verification.
 
-How to set up: put frontmatter + system prompt + tool whitelist in `.claude/agents/<name>.md`. The main session invokes it with the **Agent tool** (automatic parallel / sequential). **Compared with framework-based multi-agent**: a subagent does not require LangGraph / CrewAI or similar frameworks; markdown is enough, but it is tied to the Claude Code runtime. Full guide: [Stage 5.5](../stages/05-claude-code-ecosystem.en.md#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature); **15 copy-paste dispatch recipes** → [`subagent-cookbook.en.md`](./subagent-cookbook.en.md).
+📍 Learn: [Stage 5.5](../stages/05-claude-code-ecosystem.en.md#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature) · [copyable recipes](./subagent-cookbook.en.md) · [advanced composition](./subagent-advanced.en.md)
 
----
-
-## 6. Production / Eval / Cost
+## 6. Production / eval / cost
 
 ### CI (Continuous Integration)
 
-A checkpoint that automatically runs fixed work when a push or PR appears. CI can run tests, lint, or a read-only agent review, but its tokens, secrets, repo permissions, and triggers must be limited separately. A successful CI run does not mean auto-merge is safe or human review can be skipped.
+**CI** automatically runs fixed checks on a push or PR, such as tests, lint, and security scans. A green CI result only says the configured checks passed; it does not replace review or authorize deployment.
 
-📍 Practice: [Track A A3 CLI-10](../tracks/cli/A3-cli-production.en.md#cli-10)
+### Eval
 
-### Eval (Evaluation)
+An **Eval** compares a Prompt, model, or Agent with fixed inputs, success criteria, and records. Start with a small representative set and rerun the same cases before and after a change to compare quality, cost, and latency.
 
-Use a fixed test case set to check a prompt or agent. The smallest eval is like a small answer card: the same questions, clear success conditions, and a rerun after every change. As it grows, it can also record accuracy, latency, and cost. Common tools include promptfoo, LangSmith, and Langfuse evals.
-
-📍 Getting started: [Stage 2](../stages/02-prompt-engineering.en.md); full eval harness: [Stage 7](../stages/07-multi-agent-production.en.md)
+📍 Start: [Stage 2](../stages/02-prompt-engineering.en.md); Agent systems: [Stage 7](../stages/07-multi-agent-production.en.md)
 
 ### Observability
 
-Keep the agent’s steps, model, tools, usage, time, and result, like a receipt plus a dashcam recording. When a bug appears, you can find the failed step; mark unavailable fields as “unconfirmed” instead of guessing. Common tools include Langfuse, Phoenix, and Helicone.
-
-📍 Getting started: [Track A A3 CLI-11](../tracks/cli/A3-cli-production.en.md#cli-11); deep dive: [Stage 7](../stages/07-multi-agent-production.en.md)
+**Observability** leaves inspectable records of Agent steps, tools, state, timing, usage, and results. It works like a flight recorder; redact secrets, private data, and unnecessary Prompt content.
 
 ### Prompt Caching
 
-LLM caches the prefix of a prompt; on repeat, only the new suffix is billed at full price (Anthropic 90% off cached, OpenAI 50% off). Long-context repeated queries save a lot.
+**Prompt Caching** reuses a previously cached, byte-identical Prompt prefix to reduce repeated processing; similar but different content is a cache miss. Minimum length, retention, and price vary by provider, so check the [current caching documentation](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) and record actual usage.
 
 ### Streaming
 
-LLM returns tokens as they're generated (one at a time) instead of waiting for the full response. Better UX (looks like typing); technically uses SSE or chunked transfer. **Default for production interactive apps**. Trade-offs: client must handle partial responses; ReAct tool-call parsing waits for stream end.
+**Streaming** sends small pieces as the model produces them instead of waiting for a complete answer. The interface reacts sooner, but the client must handle partial content, cancellation, errors, and incomplete tool calls.
 
 ### Batch API
 
-Bundle a large number of LLM requests for delayed (≤24h) processing. **Typically 50% off (Anthropic, OpenAI)**. Good for non-interactive: batch summarization, batch classification, eval suites, ETL pipelines. **Don't use for interactive chat** — latency unacceptable.
+A **Batch API** groups requests that do not need an immediate response. It suits offline classification, summaries, or Evals; completion time, limits, and discounts come from the provider's current documentation.
 
 ### Token Cost / Inference Cost
 
-Per LLM call: input tokens × input price + output tokens × output price. Costs of an agent's ReAct loop add up fast — a single grep over a large codebase can run 100k tokens.
+**Token Cost / Inference Cost** is the price of model inference. The smallest formula is input usage times input price plus output usage times output price; an Agent also adds every loop turn, tool service, and compute cost.
 
 ### Guardrails
 
-Rule layer that prevents the LLM from doing bad things — block prompt injection, PII leakage, harmful output, etc. NeMo Guardrails, Guardrails AI, etc.
+**Guardrails** are rules that constrain inputs, outputs, and actions, such as schema validation, allowlists, permissions, and human approval. They reduce risk but do not replace least privilege, isolation, and testing.
 
 ### Prompt Injection
 
-Hiding malicious instructions inside content the LLM will read (web pages, documents, tool results) so it ignores its real task and does what the attacker wants. Root cause: the LLM can't tell "instructions" apart from "instructions smuggled inside data". Defenses: least privilege, isolating untrusted content, human review of high-risk actions. Related: lethal trifecta, Guardrails.
+**Prompt Injection** hides malicious instructions in a page, document, or tool result to steer an Agent away from its task. Treat external content as untrusted data and use least privilege plus human review for high-risk actions.
 
 ### Lethal Trifecta
 
-Simon Willison's framing: an agent becomes exploitable when it has all three of (1) access to private data, (2) exposure to untrusted content, (3) the ability to communicate externally — at which point prompt injection can make it steal and exfiltrate data. The defense is to break at least one leg (commonly: cut external comms, or isolate untrusted input).
+The **Lethal Trifecta** describes an Agent that can read private data, encounter untrusted content, and communicate outward at the same time; Prompt Injection may then exfiltrate data. [Simon Willison](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) framed the concept. Break at least one dangerous path.
 
----
-
-## 7. Buzzwords / Loose Terms
+## 7. Terms / buzzwords
 
 ### CLI Agent
 
-An agent / harness that runs in a terminal and, within the scope you allow, reads files, edits files, and runs commands (Claude Code, Codex, OpenCode, Pi, Aider, Gemini CLI, etc.). **It is the workbench, not the LLM inside it.** The same CLI may be tied to one model ecosystem or let you switch providers.
-
-📍 Detail: [Track A A1](../tracks/cli/A1-cli-intro.en.md), [`resources/cli-agents-guide.en.md`](cli-agents-guide.en.md)
+A **CLI Agent** is an Agent / Harness that reads files, edits files, and runs commands from a terminal. Claude Code, Codex, OpenCode, Pi, Aider, and Gemini CLI fit this identity; the workbench is not the LLM inside it.
 
 ### BYO API Key (Bring Your Own)
 
-Tools that let you provide your own provider API key instead of using only the tool’s built-in subscription sign-in. Aider, OpenCode, goose, and Pi can connect to one or more providers; Claude Code and Codex also have subscription or API authentication paths listed in their official docs. Supported methods change, so read the tool’s official authentication docs before use.
+**BYO API Key** means a tool lets you supply your own model-provider key. This can make provider switching easier, but billing, permissions, storage, and revocation remain your responsibility.
 
 ### Local LLM / On-Device
 
-Models running on your own machine. Ollama, llama.cpp, MLX, and LocalAI are **local runtimes**: they run the model and are not coding agents. Data stays off the cloud for this workflow only when the model, tools, and data paths all remain local and no cloud service is called; test capability and speed with your own task and hardware.
-
-📍 Detail: [Stage 1](../stages/01-llm-basics.en.md)
+**Local LLM / On-Device** means the model runs on your device or self-managed machine. The full workflow stays local only when its model, tools, data, and records do not call a cloud service elsewhere.
 
 ### Quantization
 
-Compress model weights from fp16 down to int8 / int4 to save memory and increase speed at small accuracy cost. Local LLM users see this constantly (Q4_K_M, Q8_0, etc.).
+**Quantization** represents model weights at lower precision and often reduces memory and compute needs. Changes in speed, size, and quality depend on the model, format, and hardware, so measure them.
 
 ### Hallucination
 
-The LLM "confidently asserts something false" — invents APIs, fabricates numbers and presents them as fact. Every production agent needs defenses (RAG / structured output / eval / guardrails).
+A **Hallucination** is content that sounds plausible but lacks reliable support. Citations, RAG, tools, and Structured Output can help, but important facts still need sources or Evals.
 
 ### Frontier Model
 
-The current top tier (**2026-07**: Claude **Opus 5** (2026-07-24, `claude-opus-5`, 1M, $5/$25 — the default starting point the official docs recommend), OpenAI **GPT-5.6** (Sol / Terra / Luna — three tiers, 1.05M context, available in ChatGPT, Codex, and the API); **2026-06 (late)**: Claude Sonnet 5 (best speed-intelligence balance, close to Opus-class but cheaper), Google Gemini 3.5 Flash, xAI Grok 4.5 (500K context), Mistral Medium 3.5; **2026-06 (early)**: Claude Fable 5 (Mythos-class, above Opus) shipped, was suspended 2026-06-12 by a US export-control directive, but **the controls were lifted 2026-06-30 and [Fable 5 was redeployed globally 2026-07-01](https://www.anthropic.com/news/redeploying-fable-5)** (Mythos 5 restored only for approved US orgs); **2026-05**: GPT-5.5, Claude Opus 4.8 (the Opus-class flagship at the time; superseded by Opus 5 in 2026-07 but still available), Gemini 3.1 Pro, DeepSeek-V4-Pro, etc.). Use frontier for hard reasoning; use cheap small models for simple classification / translation to save cost.
+A **Frontier Model** is a model near the capability frontier at a particular time, not a permanent roster. Model names, prices, Context, and availability change quickly; use the [official-source table in Stage 1](../stages/01-llm-basics.en.md) for current facts.
 
 ### Context Engineering
 
-The discipline of engineering **what information goes into the context window on each LLM call** — dynamically assembling RAG retrieval results, memory, tool definitions, and conversation history into the context the model can see. Karpathy 2025: the delicate art of putting **just the right information for the next step** into the window. The key question is *what goes in the window*, not "how many calls are involved." **The next layer above prompt engineering** — prompt engineering shapes **strings**; context engineering shapes **information**.
-
-📍 Detail: [Stage 2 closing](../stages/02-prompt-engineering.en.md) / [Stage 6](../stages/06-memory-rag.en.md) / [Stage 7](../stages/07-multi-agent-production.en.md)
-📍 Further: [`Meirtz/Awesome-Context-Engineering`](https://github.com/Meirtz/Awesome-Context-Engineering)
+**Context Engineering** decides what information enters each model call, in what order, and when it should be removed or compressed. It works with Prompt Engineering rather than replacing it; see [Anthropic's practical guide](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents).
 
 ### Agent Production Engineering
 
-The umbrella engineering work that turns an agent from “sometimes works” into “other people can rely on it.” Think of taking a toy car that moves and adding brakes, a dashboard, road rules, and a recovery plan. It brings together **Harness Engineering**, **Loop Engineering**, **Graph Engineering**, evals, observability, guardrails, cost, and recovery.
+**Agent Production Engineering** is this roadmap's umbrella name for making an Agent dependable, safe, and observable over time. It brings Harnesses, Loops, Workflow Graphs, Evals, Guardrails, cost, recovery, and human approval into one chapter.
 
-This is the roadmap's **umbrella name** for Stage 7; it does not make Harness, Loop, and Graph the same thing. Stage 4 first teaches the framework toolbox and a basic Workflow Graph. Stage 7 then adds budgets, verification, checkpoints, human approval, observability, and recovery. In short: **Stage 4 teaches you to assemble the flow; Stage 7 teaches you to keep the whole flow dependable.**
+The learning order is [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Workflow Graph / Agent Framework](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.en.md). Prompt, Context, Harness, Loop, and Graph are five overlapping control questions, not five product generations that replace one another.
 
-📍 Full chapter: [Stage 7 — Agent Production Engineering: Harness, Loops, and Graphs](../stages/07-multi-agent-production.en.md)
+📍 Full chapter: [Stage 7](../stages/07-multi-agent-production.en.md)
+
+### Agent Harness
+
+An **Agent Harness** is the execution system around a model. It connects tools and context and manages permissions, state, records, errors, and stop rules; the same Harness may contain an Agent Loop or sit inside a Workflow Graph node.
 
 ### Harness Engineering
 
-The discipline of engineering the **execution and control layer around the model** — everything that is not model weights and not just the prompt string itself: agent loop / tool registry / context manager / permissions / safety layer / memory layer / eval / observability / retry / circuit breaker, etc. Simon Willison 2025: **coding agent = LLM + harness**. Addy Osmani: harness = all the code that is not the model itself. [OpenAI also used the term "Harness Engineering" in February 2026](https://openai.com/index/harness-engineering). Claude Code, Cursor, OpenCode, etc. are harnesses. **A framework wraps an LLM into an agent; a harness wraps an agent into a product that can actually go live.**
-
-Contrast:
-
-- **Framework** (Stage 4) defines the **API**: what the interface you call looks like
-- **Harness** (this term) defines the **runtime**: how it runs, how it recovers, how it is observed
-
-📍 Umbrella chapter (**8 Harness core components** / Prompt→Context→Harness→Loop→Graph five control questions / framework vs harness): [Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.en.md)
-📍 Reference implementation case study (reading Claude Code source): [Stage 5 5.7](../stages/05-claude-code-ecosystem.en.md)
-📍 Further: [`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python), [`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering), [`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
+**Harness Engineering** designs and improves an Agent Harness. OpenAI's [case study](https://openai.com/index/harness-engineering/) emphasizes environments, knowledge, tests, and feedback loops; Harness Engineering is not merely a wrapper around one framework and is not replaced by Loop Engineering.
 
 ### Loop Engineering
 
-The engineering work of designing how an Agent starts, takes a step, checks it, decides whether to continue, stops, or asks a person. It handles goals, tools, context, verification, budgets, state, errors, and human escalation. It **can happen inside one long run or across sessions and schedules**; cross-session operation is common, not a requirement for the term.
+**Loop Engineering** designs how an Agent starts, acts repeatedly, checks work, saves progress, stops, or escalates to a person. IBM describes it as an emerging practice around goals, actions, observations, and adjustments; see the [current explanation](https://www.ibm.com/think/topics/loop-engineering).
 
-**Agent Loop** is the runner's actual “model → tool / handoff → observation → next turn”; **Loop Engineering** designs that loop and its surrounding rules. Think of a wheel versus designing the whole bicycle: related, but not identical.
-
-This name is already used in industry writing and research discussion. It was not invented by this project, and it is not a formal standard jointly defined by every vendor. Existing research has not measured overall adoption, so this glossary says the term is in use—not that everyone uses it. Introductory source: [IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering); research usage: [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884). See [Stage 7](../stages/07-multi-agent-production.en.md) for the five control questions and practice entry points.
+An **Agent Loop** is the cycle that runs. **Loop Engineering** is the work of designing that cycle and its surrounding rules. It can use Harnesses, Hooks, Skills, Subagents, and Workflow Graphs instead of replacing them.
 
 ### Graph Engineering
 
-Designing an Agent's work as an **explicit Workflow Graph**: a node is a step, an edge points to the next stop, and nodes pass around schema'd state that can be checkpointed and replayed. A node can contain an Agent Loop, a tool, a fixed check, or human approval.
+**Graph Engineering** is an emerging label some authors use for Workflow Graph design, not a cross-vendor standard. The stable learning objects are nodes, edges, branches, state, and checkpoints; see the current [survey preprint](https://arxiv.org/abs/2608.21156) for one research use of the label.
 
-- **The "graph" here is a control / execution graph, not the knowledge-graph retrieval of GraphRAG** — for that, see [Stage 6](../stages/06-memory-rag.en.md). The two are frequently conflated.
-- **The umbrella term is already in use; the underlying practice is older.** A 2026-08 survey preprint uses Graph Engineering, while workflows, state machines, nodes, edges, and checkpoints have long been common practice. Mainstream SDKs still commonly say **workflow**, **graph-based workflow**, or **orchestration**.
-
-Searchable implementation names and sources: [LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents), [Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/), and [Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156). These sources show that the name and practice are in real use; different tools may still use different labels.
-
-**Relationship to loops**: this is not either-or. **Inside a box, the agent loops; between boxes, you define the order**. A graph puts several loops into boxes, then orders those boxes. If you put everything back into one box, you are back to a plain loop. A box does not have to contain an agent either; it can be a tool, a check, or a "human approval required before continuing" gate. For the full five-control-question explanation, see [Stage 7](../stages/07-multi-agent-production.en.md) (canonical).
-
-Start with tools and basic graphs in [Stage 4's Workflow Graph / Agent framework](../stages/04-agent-frameworks.en.md), then go to [Stage 7](../stages/07-multi-agent-production.en.md) for budgets, verification, observability, and recovery. The runnable entry point is [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.en.md) (`StateGraph` / conditional edges / checkpointer). Related: harness, Loop Engineering, orchestration.
-
----
+Here, graph means an execution flow rather than the GraphRAG knowledge graph in Stage 6. Learn a basic Workflow Graph in [Stage 4](../stages/04-agent-frameworks.en.md), then add production boundaries in [Stage 7](../stages/07-multi-agent-production.en.md).
 
 ## 8. Agent Interfaces
 
-### Computer Use (screen-level agent)
+### Computer Use
 
-A model reads screenshots and proposes mouse or keyboard actions; **a harness checks policy before an executor performs them**. Use this large door only when work crosses desktop apps and no smaller formal API or typed tool can do the job. Read any OSWorld 2.0 score together with its 108 long-horizon workflows, scoring rule, step budget, and harness—not as a permanent model ranking.
+**Computer Use** lets a model read a screen and propose mouse or keyboard actions. A Harness checks rules before an executor acts; prefer a smaller, verifiable API or typed tool when one can do the job.
 
-📍 Complete loop, current tools, and benchmark reading: [Stage 8 Computer Use](../stages/08-agent-interfaces.en.md#-computer-use--the-screen-level-agent)
+### Browser Use
 
-### Browser Use (web-level agent)
+**Browser Use** lets an Agent read data, find elements, fill forms, or move between pages. It may use the DOM, Accessibility Tree, and screenshots; [browser-use](https://github.com/browser-use/browser-use) is one open-source implementation.
 
-An agent reads data, finds elements, fills forms, or changes tabs inside webpages. It can combine the **DOM, Accessibility Tree, and screenshot / pixel fallback**; Browser Use is not only CSS selectors. A representative open-source entry is [browser-use](https://github.com/browser-use/browser-use). Gemini in Chrome remains a gradual rollout, so access differs by account.
+### Sandbox
 
-📍 Complete signal comparison and current frameworks: [Stage 8 Browser Use](../stages/08-agent-interfaces.en.md#-browser-use--the-web-level-agent)
+A **Sandbox** limits what running code can see and do. Its real boundary depends on file, network, process, secret, CPU / memory, and lifecycle controls; using a container alone does not prove safety.
 
-### Sandbox (code execution isolation)
-
-Runs agent-written code in a separate workspace that sees only the files, network, and tools the task needs. A sandbox reduces the chance that mistakes reach the host, secrets, or outside systems, but filesystem, network, secret, lifecycle, and log policy still matter. E2B, Cloudflare, Modal, and Vercel have different boundaries; OpenAI Agents SDK Sandbox Agents remain Beta.
-
-📍 Full nine-row terminology glossary and provider choice: [Stage 8 Code Sandbox](../stages/08-agent-interfaces.en.md#-code-execution-sandbox--the-isolated-environment-with-mini-glossary)
+To compare Search / Fetch, Browser Use, Computer Use, and Sandboxes, return to [Stage 8](../stages/08-agent-interfaces.en.md).
 
 ### microVM (micro Virtual Machine)
 
-A smaller kind of VM that still has its own kernel. It is often lighter than a full VM, but startup time, compatibility, and isolation strength depend on the implementation and measurement. Not every agent sandbox uses a microVM. Example: [Firecracker](#firecracker).
-
-📍 Full comparison: [Stage 8 terminology glossary](../stages/08-agent-interfaces.en.md#-mini-glossary-of-isolation-technologies)
+A **microVM** is a streamlined execution environment that still uses a virtual-machine isolation boundary. It is often used for untrusted code, but security still depends on images, networking, permissions, and host configuration.
 
 ### Firecracker
 
-AWS's open-source microVM technology, written in Rust. It provides a low-level way to create lightweight VMs; a complete sandbox must still add network, file, secret, lifecycle, and audit policy.
-
-📍 [Stage 8 terminology glossary](../stages/08-agent-interfaces.en.md#-mini-glossary-of-isolation-technologies)
+**Firecracker** is an open-source Virtual Machine Monitor that creates microVMs with KVM. It supplies isolation technology but does not automatically manage image updates, network policy, or tenant safety; see the [official repository](https://github.com/firecracker-microvm/firecracker).
 
 ### gVisor
 
-Google's open-source userspace application kernel. It handles system calls between a program and the host kernel, adding an isolation layer. It takes a different approach from a microVM, so compatibility and performance must be tested for the workload.
+**gVisor** places a userspace application kernel between an application and the host kernel, reducing direct exposure to host system calls. It is not a full virtual machine; use the [official documentation](https://gvisor.dev/docs/) for compatibility and performance tradeoffs.
 
-📍 [Stage 8 terminology glossary](../stages/08-agent-interfaces.en.md#-mini-glossary-of-isolation-technologies)
+## Cannot find a term?
 
----
+- Return to the Stage you were reading; an important term should also have a plain-language definition at first use.
+- See [Stage 5.2 on MCP](../stages/05-claude-code-ecosystem.en.md#52--mcp-model-context-protocol--foundation), [Stage 5.3 on Skills](../stages/05-claude-code-ecosystem.en.md#53--skills-claude-codes-behavior-layer--the-most-critical-layer-of-the-claude-code-ecosystem), or [Stage 7 production boundaries](../stages/07-multi-agent-production.en.md).
+- If it is still missing, open an issue and include where the term appeared and which sentence was unclear.
 
-## Term not here?
+<details markdown="1">
+<summary>Sources and verification</summary>
 
-- Read the actual stage content: [Stage 5.2 MCP](../stages/05-claude-code-ecosystem.en.md#52--mcp-model-context-protocol--foundation) / [5.3 Skills](../stages/05-claude-code-ecosystem.en.md#53--skills-claude-codes-behavior-layer--the-most-critical-layer-of-the-claude-code-ecosystem) / [5.4 Plugins](../stages/05-claude-code-ecosystem.en.md#54--plugins--marketplaces)
-- Required reading lists in [Stage 1](../stages/01-llm-basics.en.md) / [Stage 6](../stages/06-memory-rag.en.md) / [Stage 7](../stages/07-multi-agent-production.en.md) / [Stage 8](../stages/08-agent-interfaces.en.md)
-- Want plainer language? [baihuaai.com (白话AI)](https://baihuaai.com) is a free, ad-free Simplified-Chinese beginner glossary that explains AI terms in everyday words with real-world analogies (has a term index + a zero-basics zone).
-- Missing? Open an issue or PR a new entry.
+Changeable product and protocol statements above use official documentation; research terms link to original papers. Current model, price, and Context tables live in Stage 1 instead of being copied here.
+
+<small>Official links and product identities checked: 2026-08-30 UTC.</small>
+
+<!-- freshness: canonical=resources/glossary.md; verified_on=2026-08-30; scope=protocols,product-identities,terminology,official-links; max_age_days=90 -->
+
+</details>
