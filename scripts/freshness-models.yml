@@ -130,7 +130,7 @@ stage06_fact_pack:
 
 stage075_fact_pack:
   canonical: 'stages/07.5-advanced-agentic-concepts.md'
-  verified_on: '2026-08-28'
+  verified_on: '2026-08-29'
   scope: ['agent-patterns', 'harnesses', 'evals', 'dynamic-workflows', 'framework-status', 'research']
   official_sources:
     anthropic_agent_patterns: 'https://www.anthropic.com/engineering/building-effective-agents'

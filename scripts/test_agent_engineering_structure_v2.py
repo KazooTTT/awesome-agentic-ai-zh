@@ -20,9 +20,9 @@ LOCALES = {
         "umbrella": "**Agent Production Engineering（Agent 上線工程）**",
         "structure_header": "會跑的東西",
         "work_header": "設計它的工作",
-        "stage4_bridge": "Stage 4 先教 **Workflow Graph**；Stage 7 才把它做成完整的 **Graph Engineering**",
+        "stage4_bridge": "Stage 4 先教 **Workflow Graph** 和實作它的 **Agent Framework**；Stage 7 再把同一張圖做成可觀測、可復原的 production orchestration",
         "readme_route": "Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來",
-        "term_status": "已經在產業與研究中使用",
+        "term_status": "**Loop Engineering** 是 IBM 明確標為 emerging practice 的新興稱呼",
     },
     "en": {
         "stage4": ROOT / "stages/04-agent-frameworks.en.md",
@@ -33,9 +33,9 @@ LOCALES = {
         "umbrella": "**Agent Production Engineering**",
         "structure_header": "What runs",
         "work_header": "Work that designs it",
-        "stage4_bridge": "Stage 4 teaches the **Workflow Graph** first; Stage 7 turns it into full **Graph Engineering**",
+        "stage4_bridge": "Stage 4 introduces the **Workflow Graph** and the **Agent Frameworks** that can implement it. Stage 7 makes that same map observable and recoverable as production orchestration",
         "readme_route": "Stage 4 first explains the **Workflow Graph**, then uses a framework to build it",
-        "term_status": "are used in industry and research",
+        "term_status": "IBM explicitly describes **Loop Engineering** as an emerging practice",
     },
     "zh-Hans": {
         "stage4": ROOT / "stages/04-agent-frameworks.zh-Hans.md",
@@ -46,20 +46,11 @@ LOCALES = {
         "umbrella": "**Agent Production Engineering（Agent 上线工程）**",
         "structure_header": "会运行的东西",
         "work_header": "设计它的工作",
-        "stage4_bridge": "Stage 4 先教 **Workflow Graph**；Stage 7 才把它做成完整的 **Graph Engineering**",
+        "stage4_bridge": "Stage 4 先教 **Workflow Graph** 和实现它的 **Agent Framework**；Stage 7 再把同一张图做成可观测、可恢复的 production orchestration",
         "readme_route": "Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出来",
-        "term_status": "已经在产业和研究中使用",
+        "term_status": "**Loop Engineering** 是 IBM 明确标为 emerging practice 的新兴称呼",
     },
 }
-
-PAIRS = (
-    ("Prompt", "Prompt Engineering"),
-    ("Context", "Context Engineering"),
-    ("Agent Harness", "Harness Engineering"),
-    ("Agent Loop", "Loop Engineering"),
-    ("Workflow Graph", "Graph Engineering"),
-)
-
 
 def without_closed_details(text: str) -> str:
     return re.sub(
@@ -85,7 +76,7 @@ def test_chapter_titles_put_the_concept_before_the_tool_and_production_details(
 
 
 @pytest.mark.parametrize("locale,config", LOCALES.items())
-def test_five_layers_separate_the_running_structure_from_engineering_work(
+def test_five_control_questions_separate_the_running_structure_from_engineering_work(
     locale: str, config: dict[str, object]
 ) -> None:
     stage7 = without_closed_details(
@@ -101,12 +92,17 @@ def test_five_layers_separate_the_running_structure_from_engineering_work(
     )
     assert lines[header_index].count("|") == 7
     assert lines[header_index + 1].count("|") == 7
-    for structure, engineering in PAIRS:
-        row = re.search(
+    for structure, engineering in (
+        ("Prompt", "Prompt Engineering"),
+        ("Context", "Context Engineering"),
+        ("Agent Harness", "Harness Engineering"),
+        ("Agent Loop", "Loop Engineering"),
+        ("Workflow Graph", "Production orchestration"),
+    ):
+        assert re.search(
             rf"\|[^\n]*\*\*{re.escape(structure)}\*\*[^\n]*\*\*{re.escape(engineering)}\*\*[^\n]*\|",
             stage7,
-        )
-        assert row, (locale, structure, engineering)
+        ), (locale, structure, engineering)
     assert str(config["stage4_bridge"]) in stage7
 
 
@@ -130,12 +126,16 @@ def test_readme_names_the_graph_before_the_framework_toolbox(
     assert str(config["readme_route"]) in readme, locale
 
 
-def test_diagram_regeneration_contract_keeps_structure_and_engineering_paired() -> None:
+def test_diagram_regeneration_contract_keeps_responsibilities_overlapping() -> None:
     prompt = DIAGRAM_PROMPT.read_text(encoding="utf-8")
-    normalized_prompt = " ".join(prompt.split())
-    for structure, engineering in PAIRS:
-        assert f"{structure} → {engineering}" in prompt
-    assert "thing that runs first" in normalized_prompt
-    assert "work that" in normalized_prompt
-    assert "designs it second" in normalized_prompt
-    assert "Prompt → Context → Harness → Loop → Graph" not in prompt
+    for marker in (
+        "Prompt 與 Context 都進入 Harness",
+        "上半部只畫一次 Agent run",
+        "Loop Engineering 另外明寫 `Goal → Action → Observation → Adjustment`",
+        "不得和 Harness 內的一次 Agent Loop 混成同一尺度",
+        "Workflow Graph／Production Orchestration",
+        "圖上以「不是五層」直接阻止嚴格層級誤讀",
+        "Harness 包住 Agent Loop",
+        "不得畫成 Harness 被 Loop 淘汰",
+    ):
+        assert marker in prompt

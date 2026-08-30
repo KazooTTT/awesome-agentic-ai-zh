@@ -18,19 +18,33 @@ PAGES = {
 }
 DIAGRAMS = {
     "zh-TW": (
-        ROOT / "resources/diagrams/agent-engineering-5layer.png",
-        ROOT / "resources/diagrams/harness-loop-graph-boundary.png",
+        ROOT / "resources/diagrams/agent-engineering-control-questions.png",
         ROOT / "resources/diagrams/inside-a-graph.png",
     ),
     "en": (
-        ROOT / "resources/diagrams/agent-engineering-5layer.en.png",
-        ROOT / "resources/diagrams/harness-loop-graph-boundary.en.png",
+        ROOT / "resources/diagrams/agent-engineering-control-questions.en.png",
         ROOT / "resources/diagrams/inside-a-graph.en.png",
     ),
     "zh-Hans": (
-        ROOT / "resources/diagrams/agent-engineering-5layer.zh-Hans.png",
-        ROOT / "resources/diagrams/harness-loop-graph-boundary.zh-Hans.png",
+        ROOT / "resources/diagrams/agent-engineering-control-questions.zh-Hans.png",
         ROOT / "resources/diagrams/inside-a-graph.zh-Hans.png",
+    ),
+}
+CONTROL_DIAGRAM_ALT_MARKERS = {
+    "zh-TW": (
+        "Harness 內含 Agent Loop",
+        "Workflow Graph 排整條路",
+        "Loop Engineering 依證據調整",
+    ),
+    "en": (
+        "Harness contains the Agent Loop",
+        "Workflow Graph arranges the route",
+        "Loop Engineering adjusts from evidence",
+    ),
+    "zh-Hans": (
+        "Harness 内含 Agent Loop",
+        "Workflow Graph 排整条路线",
+        "Loop Engineering 根据证据调整",
     ),
 }
 CORE_LABELS = {
@@ -94,10 +108,10 @@ CURRENT_FACT_URLS = {
     "https://openai.github.io/openai-agents-python/running_agents/",
     "https://openai.github.io/openai-agents-python/multi_agent/",
     "https://www.ibm.com/think/topics/loop-engineering",
-    "https://arxiv.org/abs/2608.21884",
+    "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
     "https://docs.langchain.com/oss/python/langgraph/workflows-agents",
     "https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/",
-    "https://arxiv.org/abs/2608.21156",
+    "https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/builder-and-execution",
     "https://openai.com/index/harness-engineering/",
     "https://www.anthropic.com/engineering/managed-agents",
     "https://www.anthropic.com/engineering/harness-design-long-running-apps",
@@ -207,11 +221,24 @@ def test_all_core_terms_are_bold_and_defined_before_exercises(
 
 
 @pytest.mark.parametrize("locale,page", PAGES.items())
-def test_five_layer_map_is_scope_not_chapter_numbering(locale: str, page: Path) -> None:
+def test_control_questions_are_not_product_generations_or_chapter_numbering(
+    locale: str, page: Path
+) -> None:
     text = page.read_text(encoding="utf-8")
     visible = _without_closed_details(text)
     assert all(marker in visible for marker in ROUTE_MARKERS[locale])
     assert not any(term in text for term in FORBIDDEN_TERMINOLOGY)
+    assert not re.search(
+        r"^## (?:五層工程分工|五层工程分工|The Five-Layer Engineering Split)",
+        text,
+        flags=re.MULTILINE,
+    )
+    old_backpack_phrases = (
+        "一次出門用的安全書包",
+        "一次出门用的安全书包",
+        "A safe backpack for one trip",
+    )
+    assert not any(phrase in text for phrase in old_backpack_phrases)
 
 
 BOUNDARY_HEADINGS = {
@@ -219,19 +246,19 @@ BOUNDARY_HEADINGS = {
         "## 🧭 Harness、Loop、Graph 各自管什麼？",
         "## 🏗 Harness Engineering",
         "## 🔁 Loop Engineering",
-        "## 🗺 Graph Engineering",
+        "## 🗺 Workflow Graph／Production Orchestration",
     ),
     "en": (
         "## 🧭 What Does Harness, Loop, and Graph Each Control?",
         "## 🏗 Harness Engineering",
         "## 🔁 Loop Engineering",
-        "## 🗺 Graph Engineering",
+        "## 🗺 Workflow Graph / Production Orchestration",
     ),
     "zh-Hans": (
         "## 🧭 Harness、Loop、Graph 各自管什么？",
         "## 🏗 Harness Engineering",
         "## 🔁 Loop Engineering",
-        "## 🗺 Graph Engineering",
+        "## 🗺 Workflow Graph／Production Orchestration",
     ),
 }
 
@@ -330,18 +357,27 @@ def test_static_leaderboard_and_stale_project_claims_are_absent(page: Path) -> N
     )
 
 
-def test_locale_diagrams_are_distinct_large_pngs_and_referenced() -> None:
+def test_locale_diagrams_are_distinct_large_assets_and_referenced() -> None:
     hashes: set[str] = set()
     for locale, diagrams in DIAGRAMS.items():
         page_text = PAGES[locale].read_text(encoding="utf-8")
+        assert all(marker in page_text for marker in CONTROL_DIAGRAM_ALT_MARKERS[locale])
         for diagram in diagrams:
             data = diagram.read_bytes()
+            assert diagram.suffix == ".png"
             assert data.startswith(b"\x89PNG\r\n\x1a\n")
             width, height = struct.unpack(">II", data[16:24])
             assert width >= 1600 and height >= 900
+            if diagram.name.startswith("agent-engineering-control-questions"):
+                assert (width, height) == (1672, 941)
             hashes.add(hashlib.sha256(data).hexdigest())
             assert f"../resources/diagrams/{diagram.name}" in page_text
-    assert len(hashes) == 9
+    assert len(hashes) == 6
+
+
+def test_control_questions_use_png_only() -> None:
+    diagram_dir = ROOT / "resources/diagrams"
+    assert not list(diagram_dir.glob("agent-engineering-control-questions*.svg"))
 
 
 def test_english_page_has_no_untranslated_cjk() -> None:

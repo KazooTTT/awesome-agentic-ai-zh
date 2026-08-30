@@ -199,64 +199,32 @@ python scripts/check-image-locale.py
 `KNOWN_MISSING` 白名單裡——所以**新增一張缺變體的圖會讓 build 失敗**，不會默默累積。
 補完變體後記得把對應的 `KNOWN_MISSING` 條目一起移除。
 
-## 2026-08-29：Stage 7 五層圖名詞與順序修正
+## 2026-08-29：Stage 7 控制問題圖
 
-`agent-engineering-5layer.{png,en.png,zh-Hans.png}` 與
-`inside-a-graph.{png,en.png,zh-Hans.png}` 保留原檔名重繪，因此 README、Stage 7.5、
-Stage 8 與 glossary 的既有深連結不用改。Stage 7 三語頁改成各自引用對應 locale 檔，
-不再讓英語／簡中讀者看到繁中圖。
+`agent-engineering-control-questions.{png,en.png,zh-Hans.png}` 取代原本的垂直五層圖。
+三張皆以 Image 2.0 產生，固定為和主頁 README 圖相同的 `1672×941` 橫式比例；繁中先定稿，
+英語與簡中再以同一母版做文字在地化。視覺基準是主頁 `banner`／`learning-map`：奶油白背景、
+深藍字、亮色語意線、圓角卡、簡單線條 icon、充足留白與單一閱讀方向。
 
-本批使用 Codex 內建 imagegen 的 edit／text-localization 路徑：
+共同語意契約：
 
-1. 先讀原圖，保留 16:9 與由下往上的 Prompt → Context → Agent Harness → Agent Loop → Workflow Graph。
-2. 左側只留一支向上箭頭，表示控制範圍變大；這不是 Stage 編號或閱讀順序。
-3. 移除所有「官方採用／非官方名稱／Industry term／Community term」badge 與底部二分圖例。
-4. 每列左邊寫「會運作的東西」，右邊寫「設計它的工程工作」：Prompt → Prompt Engineering、Context → Context Engineering、Agent Harness → Harness Engineering、Agent Loop → Loop Engineering、Workflow Graph → Graph Engineering。
-5. 以通過人工檢查的繁中版為構圖 reference，再逐字提供英語與簡中文字表；不得混合語言或繁簡字形。
-6. 用 `python scripts/check-image-locale.py` 確認所有 mirror 實際引用自己的圖。
-
-共同 prompt 約束：
-
-> Preserve the exact bottom-up Prompt → Context → Agent Harness → Agent Loop →
-> Workflow Graph order, icons, one upward scope arrow, 16:9 composition, and
-> hierarchy. Each row must show the thing that runs first and the work that
-> designs it second: Prompt → Prompt Engineering, Context → Context Engineering,
-> Agent Harness → Harness Engineering, Agent Loop → Loop Engineering, and
-> Workflow Graph → Graph Engineering. Use a warm off-white background, soft
-> bright pastel cards, dark navy text, high contrast, and no watermark. Remove
-> all maturity badges. Use only the supplied verbatim locale text; do not add
-> rankings, versions, prices, dates, standards claims, or new facts.
+1. Prompt 與 Context 都進入 Harness，但不是完整 Agent runtime。
+2. 上半部只畫一次 Agent run：Harness 內含 model call、tools、state／logs／results、下一步決定與 Agent Loop。
+3. 下半部才畫整個長任務：Workflow Graph／Production Orchestration 連接 Goal、Harness run、evidence check、返回路線、human approval 與完成狀態。
+4. Loop Engineering 另外明寫 `Goal → Action → Observation → Adjustment`、預算與停止條件；不得和 Harness 內的一次 Agent Loop 混成同一尺度。
+5. 圖上以「不是五層」直接阻止嚴格層級誤讀；Harness 包住 Agent Loop，上下兩個尺度分開；不得畫成 Harness 被 Loop 淘汰，也不是章節順序。
+6. 三語使用相同尺寸、形狀、箭頭、icon、配色與間距，並各自引用 locale 檔。
+7. 箭頭只能走卡片間或專用返回通道；不能穿過文字、icon 或另一個框，arrowhead 也不能壓到無關元素。
 
 人工驗收除了看文字，也逐一確認：
 
-- 五層仍是 Prompt → Context → Agent Harness → Agent Loop → Workflow Graph，且每列右側都有對應的 Engineering 工作；只有一支向上的「控制範圍變大」箭頭，沒有任何官方／非官方 badge。
-- 圖只表達範圍，不暗示 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
-- Graph 圖仍保留平行草稿、獨立驗證、人工核准與失敗返回，沒有把每個節點都畫成 Agent。
+- Prompt 與 Context 都指向 Harness；Harness 內同時畫出 model、tools、state、logs、results、下一步與 Agent Loop。
+- 圖用 Harness 包住 Agent Loop 與上下兩個尺度呈現責任重疊；底部「不是五層」不暗示產品世代或 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
+- 下方 Workflow Graph 保留 Harness run、evidence check、人工核准、完成與失敗返回，沒有把每個節點都畫成 Agent。
+- 所有卡片依同一格線對齊；icon 完整留在自己的圓框內；兩條返回箭頭都有獨立留白通道，沒有壓字、穿框或互相交叉。
 - 英語圖沒有中文；簡中圖沒有肉眼可見的繁體字；繁中圖沒有簡中用語。
 
-## 2026-08-29：Stage 7 Harness／Loop／Graph 責任邊界圖
-
-新增 `harness-loop-graph-boundary.png`、`.en.png`、`.zh-Hans.png`。這組圖不把三者畫成會互相淘汰的產品世代，而是畫成同一套 production Agent 裡會合作的三種責任：Harness 保護一次執行，Loop 決定是否再跑，Graph 安排整條路。圖中必須把一個小 Harness 放進 Loop，並讓 Graph 同時出現 branch、parallel path、checkpoint、人工核准與回圈箭頭。
-
-三語都用 Codex 內建 imagegen 獨立生成，維持 16:9、亮色暖白底、深藍大字、藍／橘／紫綠三區與同一組資訊層級。不得加入版本、價格、成熟度 badge、官方／非官方結論或供應商 logo。
-
-共同 prompt 約束：
-
-> Create a bright 16:9 beginner-friendly technical infographic with three
-> cooperating responsibility areas. Harness is a safe workspace for one run;
-> Loop repeats goal, action, observation, adjustment, and stop or human
-> escalation; Graph arranges nodes, branches, parallel paths, checkpoints,
-> human approval, and a loop-back route. Place a small Harness inside the Loop.
-> State that they work together and do not replace each other. Use only the
-> supplied verbatim locale text. No maturity ladder, chronology, product logo,
-> ranking, version, price, watermark, mixed language, or extra paragraph.
-
-人工驗收逐張確認：
-
-- 標題都明寫「一起合作／work together／一起协作，不互相淘汰」。
-- 底部結論逐語對齊「Harness 保護每次執行｜Loop 決定何時再跑｜Graph 安排整條路」。
-- Loop 裡有小 Harness；Graph 有分支、平行、checkpoint、人工核准與返回箭頭。
-- 英語圖沒有中文；簡中圖沒有繁體字；繁中圖沒有簡中用語。
+原 `harness-loop-graph-boundary.{png,en.png,zh-Hans.png}` 因把 Harness 縮成「一次執行」且和新圖重複而退役；控制問題 PNG 已吸收正確的責任重疊、內外兩種 loop 與返回路線，不再讓讀者同一章看兩張近似圖。
 
 ## 2026-08-29：教師把關循環圖
 

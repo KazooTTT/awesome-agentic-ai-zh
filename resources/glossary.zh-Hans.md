@@ -52,7 +52,7 @@
 
 → 详细定义请看下面各区块。
 
-**先分清两种顺序：**课程会依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.zh-Hans.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.zh-Hans.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 与 Graph](../stages/07-multi-agent-production.zh-Hans.md)。五层图的 Prompt → Context → Harness → Loop → Graph 是在比较“要管的范围有多大”，**不是章节编号**。
+**先分清两种顺序：**课程会依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.zh-Hans.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.zh-Hans.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 与 Graph](../stages/07-multi-agent-production.zh-Hans.md)。Prompt → Context → Harness → Loop → Graph 是五个互相重叠的**控制问题**，**不是章节编号，也不是新技术淘汰旧技术的顺序**。
 
 ---
 
@@ -457,7 +457,7 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 - **Framework**（Stage 4）规范 **API**：你调用的接口长什么样
 - **Harness**（本词）规范 **runtime**：怎么跑、怎么 recovery、怎么观测
 
-📍 上位章节（**8 个 Harness 核心元件** / Prompt→Context→Harness→Loop→Graph 五层工程分工 / framework vs harness）：[Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.zh-Hans.md)
+📍 上位章节（**8 个 Harness 核心元件** / Prompt→Context→Harness→Loop→Graph 五个控制问题 / framework vs harness）：[Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.zh-Hans.md)
 📍 Reference implementation case study（读 Claude Code source）：[Stage 5 5.7](../stages/05-claude-code-ecosystem.zh-Hans.md)
 📍 延伸：[`anthropics/claude-agent-sdk-python`](https://github.com/anthropics/claude-agent-sdk-python)、[`ai-boost/awesome-harness-engineering`](https://github.com/ai-boost/awesome-harness-engineering)、[`ZhangHanDong/harness-engineering-from-cc-to-ai-coding`](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding)
 
@@ -467,7 +467,7 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 
 **Agent Loop** 是 runner 里真的执行的“model → tool／handoff → observation → next turn”；**Loop Engineering** 是设计这个循环与外围规则。像“轮子”和“设计整台脚踏车”：有关联，但不是同一件事。
 
-这个名称已经出现在产业文章和研究讨论中；它不是本项目自创，也不是所有供应商共同制定的正式标准。现有研究也没有测量整体采用率，所以这里只说“有人使用”，不说“人人都这样叫”。入门来源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)；研究用法可看 [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884)。完整五层与实践入口见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)。
+这个名称已经出现在产业文章和研究讨论中；它不是本项目自创，也不是所有供应商共同制定的正式标准。现有研究也没有测量整体采用率，所以这里只说“有人使用”，不说“人人都这样叫”。入门来源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)；研究用法可看 [2026-08 exploratory preprint](https://arxiv.org/abs/2608.21884)。五个控制问题与实践入口见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)。
 
 ### Graph Engineering（图工程）
 
@@ -478,7 +478,7 @@ LLM “自信地说错”——把不存在的 API 编出来、把错的数字�
 
 可搜索的实现名称与来源：[LangGraph — Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents)、[Microsoft Agent Framework — Workflow concepts](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。这些来源证明名称和做法确实有人使用；不同工具仍可能使用不同叫法。
 
-**跟循环的关系**：不是二选一。**格子里面是 agent 自己绕圈，格子跟格子之间才是你安排的顺序**——所以图是把好几个循环装进格子再排顺序；全部塞回同一个格子，就退回单纯的循环了。格子里也不一定是 agent，可以是一个工具、一段检查、或“这里要人按核准才能往下”。五层阶梯的完整说明见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)（canonical）。
+**跟循环的关系**：不是二选一。**格子里面是 agent 自己绕圈，格子跟格子之间才是你安排的顺序**——所以图是把好几个循环装进格子再排顺序；全部塞回同一个格子，就退回单纯的循环了。格子里也不一定是 agent，可以是一个工具、一段检查、或“这里要人按核准才能往下”。五个控制问题的完整说明见 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md)（canonical）。
 
 先在 [Stage 4 的 Workflow Graph／Agent framework](../stages/04-agent-frameworks.zh-Hans.md) 学工具和基本图，再到 [Stage 7](../stages/07-multi-agent-production.zh-Hans.md) 加上预算、验证、观测与恢复。可直接运行的入口是 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.zh-Hans.md)（`StateGraph` / conditional edge / checkpointer）。相关：harness、Loop Engineering、orchestration。
 

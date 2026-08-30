@@ -181,7 +181,7 @@ cd awesome-agentic-ai-zh
 - **Part 4（Stage 6-7）：進階整合** — Stage 6 用 RAG / memory 深入 **Context Engineering**；Stage 7 讓 loop / graph 在 production 穩定運作
 - **Part 5（Stage 8） 共用 hub** — Agent Interfaces（Computer Use / Browser Use / Code Sandbox、2024-2026 frontier、Track A + B 都會用到）
 
-> 🔭 **學習順序和五層堆疊回答不同問題**：學習時先在 Stage 2 寫好 **Prompt**，Stage 3 寫出 **Agent Loop**，Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來；Stage 5 學會用 MCP、Skills、Plugins 與 Subagents 接上工具和規則，Stage 6 再深入 **Context Engineering**，Stage 7 最後把 harness、loop 與 graph 做到能長時間穩定運作。五層堆疊 `prompt → context → harness → loop → graph` 說的是「控制範圍由小到大」，不是章節編號。完整定義見 [Stage 7 五層工程分工](stages/07-multi-agent-production.md#五層工程分工prompt--context--harness--loop--graph)，Prompt 與 Context 的界線見 [Stage 2](stages/02-prompt-engineering.md)。
+> 🔭 **學習順序和五個控制問題回答不同事情**：學習時先在 Stage 2 寫好 **Prompt**，Stage 3 寫出 **Agent Loop**，Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來；Stage 5 學會用 MCP、Skills、Plugins 與 Subagents 接上工具和規則，Stage 6 再深入 **Context Engineering**，Stage 7 最後把 Harness、Loop 與 Graph 做到能長時間穩定運作。`prompt → context → harness → loop → graph` 是五個檢查問題，不是嚴格軟體層或章節編號；Harness 可以包含 Loop，Graph 也可以連接 Harness、固定程式與人工核准。完整定義見 [Stage 7 五個控制問題](stages/07-multi-agent-production.md#五個控制問題prompt--context--harness--loop--graph)，Prompt 與 Context 的界線見 [Stage 2](stages/02-prompt-engineering.md)。
 
 走完主幹（Track B 16-22 週 / Track A 8-10 週）後，依你的身分（研究員 / 開發者 / 老師 / 知識工作者 / 日常使用者）挑一條延伸路線繼續走。
 

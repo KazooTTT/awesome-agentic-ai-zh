@@ -2,7 +2,7 @@
 
 > **繁體中文** | [简体中文](./07-multi-agent-production.zh-Hans.md) | [English](./07-multi-agent-production.en.md)
 
-這一關要做的是 **Agent Production Engineering（Agent 上線工程）**：先替一次執行蓋好安全工作間，再設計反覆檢查的 Loop，最後把多條路線排成 Graph。它不只要「偶爾成功」，還要能被看見、被檢查，出錯時也能安全停下來。
+這一關要做的是 **Agent Production Engineering（Agent 上線工程）**：替 Agent 蓋好能安全工作的 **Harness**，設計會依證據繼續或停止的 Loop，再用 Workflow Graph 排好完整路線。它不只要「偶爾成功」，還要能被看見、被檢查，出錯時也能安全停下來。
 
 ## 🎯 這一關在做什麼（先定位）
 
@@ -49,7 +49,7 @@
 | **Multi-Agent（多 Agent）** | 好幾個小幫手一起做事 | 多個 Agent 以明確角色共同完成任務 |
 | **Orchestration** | 像指揮家，決定誰先做、誰後做 | 編排執行順序、資料流、角色與停止條件 |
 | **Handoff** | 把接力棒交給下一個人 | 一個 Agent 把任務控制權與必要 context 交給另一個 Agent |
-| **Harness** | 一次執行的安全工作間 | 呼叫模型、路由工具，並管理權限、sandbox、狀態、錯誤與紀錄的執行系統 |
+| **Harness** | Agent 做事時的安全工作間 | 呼叫模型、路由工具，並管理權限、sandbox、狀態、錯誤與紀錄的執行系統；裡面通常也會跑 Agent Loop |
 | **Eval** | 出一張小考卷，看它是不是真的會 | 用固定案例與評分規則量測行為 |
 | **Observability** | 裝上透明窗，知道它做到哪裡 | 用 trace、log、metrics 看見系統內部狀態 |
 | **Guardrail** | 遊戲場邊的護欄 | 限制輸入、輸出、工具權限或高風險操作的規則 |
@@ -89,29 +89,30 @@ Docker 還不熟也可以開始；先做練習 1–4，練習 5 再補。
 
 </details>
 
-## 五層工程分工：Prompt → Context → Harness → Loop → Graph
+<a id="五層工程分工prompt--context--harness--loop--graph"></a>
+## 五個控制問題：Prompt → Context → Harness → Loop → Graph
 
-這五層不是五種產品，也不是課程的章節順序。它們只是把「要控制的範圍」由小排到大：上面一層會用到下面的零件。
+這是五個**檢查問題**，不是五層產品。Agent Loop 管一次 Harness run；Loop Engineering 管長任務的觀察、調整與停止；Graph 排整條路。它們合作，彼此不取代。
 
-| 層 | 白話問題 | 會跑的東西 | 設計它的工作 | 先在哪裡遇見 | 在哪裡做穩 |
+| 控制面 | 白話問題 | 會跑的東西 | 設計它的工作 | 先在哪裡遇見 | 在哪裡做穩 |
 |---|---|---|---|---|---|
 | 1 | 我有沒有把話說清楚？ | **Prompt** | **Prompt Engineering** | [Stage 2](02-prompt-engineering.md) | 每章的 Prompt 與 Eval |
 | 2 | 我有沒有把該看的資料放進來？ | **Context** | **Context Engineering** | [Stage 2](02-prompt-engineering.md) 先分清 Prompt 與 Context | [Stage 6](06-memory-rag.md) 的 RAG／Memory |
 | 3 | 它能不能安全地用工具、出錯後停下？ | **Agent Harness** | **Harness Engineering** | [Stage 3](03-tool-use-and-hello-agent.md) 的 runner／tool boundary | [Stage 5](05-claude-code-ecosystem.md) 的實例與本章的 production checklist |
-| 4 | 它怎麼「做、看結果、再做」，而且不會無限跑？ | **Agent Loop** | **Loop Engineering** | [Stage 3](03-tool-use-and-hello-agent.md) | 本章的 bounded long-running loop |
-| 5 | 每一步、分支與返回路線能不能被看見和控制？ | **Workflow Graph** | **Graph Engineering** | [Stage 4](04-agent-frameworks.md) | 本章的 production orchestration |
+| 4 | 它怎麼「做、看、再做」，又不會無限跑？ | **Agent Loop**；外層可重跑 Harness | **Loop Engineering**：長任務的目標、證據、調整與停止 | [Stage 3](03-tool-use-and-hello-agent.md) | 本章的長任務 loop |
+| 5 | 每一步、分支與返回路線能不能被看見和控制？ | **Workflow Graph** | **Production orchestration**；新興文章也會寫 Graph Engineering | [Stage 4](04-agent-frameworks.md) | 本章的 production orchestration |
 
 - **Stage 3：Agent Loop 入門**——先學一次執行裡的「模型 → 工具 → 結果 → 下一步」。
 - **Stage 4：Workflow Graph 入門**——再用 framework 提供的零件畫 node、edge、branch 與 state。
 - **Stage 7：Agent Production Engineering 整合**——把 Harness、Loop 與 Graph 接起來，再加入預算、驗證、checkpoint、人工核准、觀測與復原。
 
-Stage 4 先教 **Workflow Graph**；Stage 7 才把它做成完整的 **Graph Engineering**。Agent Framework 是可以拿來實作這張圖的工具箱，不是 Graph Engineering 的另一個名字。
+Stage 4 先教 **Workflow Graph** 和實作它的 **Agent Framework**；Stage 7 再把同一張圖做成可觀測、可復原的 production orchestration。Framework 是工具箱，不是工作地圖，也不是上線編排本身。
 
-![Agent 工程五層 Stack](../resources/diagrams/agent-engineering-5layer.png)
+![一次 Agent run 與整個長任務：Harness 內含 Agent Loop；Workflow Graph 排整條路，Loop Engineering 依證據調整](../resources/diagrams/agent-engineering-control-questions.png)
 
-Prompt、Context 與 Harness 已出現在主要供應商的工程文件中。**Loop Engineering** 與 **Graph Engineering** 已經在產業與研究中使用，不是本專案自己發明；但它們還不是每一家供應商都採用的同一套標準名稱。不同文件也會寫 **agent loop**、**workflow graph**、**graph-based workflow** 或 **orchestration**。
+**Loop Engineering** 是 IBM 明確標為 emerging practice 的新興稱呼。**Graph Engineering** 更鬆散；主要框架的正式文件多半仍寫 **workflow**、**graph-based execution** 或 **orchestration**。本章保留這兩個詞，讓你看得懂外面的討論，但以實際責任為準，不把它們說成全業界共同標準。
 
-詞彙來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)、[Loop Engineering exploratory preprint](https://arxiv.org/abs/2608.21884)、[Graph Engineering survey preprint](https://arxiv.org/abs/2608.21156)。論文是新興詞彙的證據，不是要求初學者先讀完的必修教材。
+定義來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)、[Anthropic — Agent harness 定義](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)、[Microsoft Agent Framework — graph-based workflows](https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/builder-and-execution)。
 
 ## 🧭 Harness、Loop、Graph 各自管什麼？
 
@@ -119,17 +120,15 @@ Prompt、Context 與 Harness 已出現在主要供應商的工程文件中。**L
 
 | 責任 | 五歲也能懂的說法 | 實際管理 | 最常見的誤會 |
 |---|---|---|---|
-| **Harness** | 一次出門用的安全書包 | 模型呼叫、工具路由、權限、sandbox、錯誤、狀態與 log | 有 Loop 之後就不需要 Harness |
-| **Loop** | 做一次、看結果，再決定要不要做下一次 | 目標、觸發、驗證、記憶、預算、停止與人工升級 | 只是 `for`／`while`，或是新版 Harness |
+| **Harness** | AI 做事的安全工作台 | 處理輸入、呼叫模型、路由工具、回傳結果，並管理權限、sandbox、狀態、錯誤與 log | 只是一層工具包，或有 Loop 後就不再需要 |
+| **Loop** | 做一步、看證據，再決定繼續、停止或問人 | 目標、動作、觀察、調整、預算、停止與人工升級 | 只是 `for`／`while`，或是新版 Harness |
 | **Graph** | 把所有站、岔路和回程畫成地圖 | node、edge、分支、平行、checkpoint 與人工核准 | 每個 node 都一定是一個 Agent |
 
-![Harness、Loop 與 Graph 的責任邊界](../resources/diagrams/harness-loop-graph-boundary.png)
-
-實作時邊界會重疊。例如 Anthropic 把 harness 描述成「呼叫 Claude 並路由工具的 loop」。本章不是要抓誰用錯字，而是用三個問題幫你除錯：**這一次怎麼安全執行？為什麼要再跑一次？整條路線怎麼走？**
+實作時邊界一定會重疊。Anthropic 把 harness 描述成「呼叫 Claude 並路由工具的 loop」；OpenAI Agents SDK 也由 Runner 執行 agent loop。本章不是要抓誰用錯字，而是用三個問題幫你除錯：**系統靠什麼安全執行？它為什麼再跑一輪？整條路線怎麼走？**
 
 ## 🏗 Harness Engineering — production agent runtime 的工程設計 ⭐ 本 stage 核心概念
 
-**Harness Engineering**就是設計模型外面的執行系統。模型負責想；Harness 負責它能用哪些工具、資料放在哪裡、如何執行限制、失敗怎麼辦，以及我們怎麼知道它做了什麼。Loop 定義「何時應該停」；Harness 要把這條規則真的執行出來。來源：[OpenAI — Harness engineering](https://openai.com/index/harness-engineering/)、[Anthropic — Managed agents](https://www.anthropic.com/engineering/managed-agents)。
+**Harness Engineering**就是設計讓模型能成為 Agent 的執行系統。模型負責產生決策；Harness 處理輸入、工具、狀態、權限、錯誤與結果，也常直接執行 agent loop。外層排程可以再呼叫 Harness 很多次，因此 Harness 不只等於「一次短 run」。來源：[OpenAI — Harness engineering](https://openai.com/index/harness-engineering/)、[Anthropic — Agent harness 定義](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)、[Anthropic — Managed agents](https://www.anthropic.com/engineering/managed-agents)。
 
 ### Harness 的 8 個核心元件
 
@@ -170,14 +169,17 @@ Prompt、Context 與 Harness 已出現在主要供應商的工程文件中。**L
 
 IBM 用 `Goal → Action → Observation → Adjustment` 說明 Loop Engineering。重點不是讓 Agent 永遠自己跑，而是每一輪都能回答：**目標還成立嗎？證據夠了嗎？要繼續、停止，還是交給人？**
 
-因此，Loop Engineering **不會淘汰 Harness**。Loop 需要 Harness 安全地執行每一輪；Harness 則需要 Loop 的目標與停止規則，才不會只是會一直呼叫工具的外殼。來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)、[Anthropic — Managed Agents](https://www.anthropic.com/engineering/managed-agents)。
+因此，Loop Engineering **不是 Harness 的下一代產品，也不會自動淘汰 Harness**。在 Anthropic 的用語裡，Harness 本身就包含呼叫模型與路由工具的 loop；IBM 的 Loop Engineering 則把目標、檢查、工具、hooks、context、subagent 與持久狀態放進更大的反覆工作設計。不同文件切邊界的方法不同，所以請記責任，不要硬背一張唯一的層級圖。來源：[IBM — Loop Engineering](https://www.ibm.com/think/topics/loop-engineering)、[Anthropic — Managed Agents](https://www.anthropic.com/engineering/managed-agents)。
 
 模型變強時，某個補丁可能可以刪掉。例如 Anthropic 在較新模型上移除了先前 harness 使用的 context reset。但這只表示**一個 workaround 經同一組 Eval 證明不再需要**，不表示權限、安全、log、eval 或 recovery 自動過時。來源：[Anthropic — Harness design for long-running applications](https://www.anthropic.com/engineering/harness-design-long-running-apps)。如何逐項保留、簡化或移除，放在 [Stage 7.5 的 Model–Harness Fit](07.5-advanced-agentic-concepts.md)。
 
-## 🗺 Graph Engineering — 把步驟、Loop 與核准排成完整路線
+<a id="-graph-engineering--把步驟loop-與核准排成完整路線"></a>
+## 🗺 Workflow Graph／Production Orchestration — 把步驟、Loop 與核准排成完整路線
 
 **Loop（迴圈）**像洗盤子：洗、檢查，不乾淨就再洗一次。<br>
 **Graph（圖）**像餐廳出菜：切菜、煮、擺盤，每一格和先後順序都畫出來。
+
+外面的文章有時把這份工程工作稱為 **Graph Engineering**。這是新興稱呼；真正需要學會的是 node、edge、branch、cycle、state、checkpoint 與 human approval，不是先背一個尚未統一的標籤。
 
 > **格子裡可以有 Loop；格子之間由 Graph 安排順序。**
 

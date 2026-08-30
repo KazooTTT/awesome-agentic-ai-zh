@@ -35,9 +35,9 @@ After this stage, you can:
 | **Workflow Graph** | Draw every station and road | Represents work order with node, edge, branch, and state; each box can be an Agent, tool, check, or human approval |
 | **Agent Framework** | A toolbox that helps connect the wires | Provides runner, tool, state, handoff, checkpoint, and related parts; one Agent can use it too |
 | **Loop Engineering** | Design how it repeats, validates, and stops | Stage 7 adds budgets, verification, recovery, and human escalation |
-| **Graph Engineering** | Use the toolbox to design the whole work map | Stage 7 turns multiple loops, tools, and humans into an observable, recoverable production system |
+| **Production orchestration** | Make the whole work map run safely in real use | Stage 7 adds observation, recovery, and stop rules around multiple loops, tools, and human approvals; emerging writing may also call this Graph Engineering |
 
-**A framework is the toolbox; a Workflow Graph is the work map you draw; Graph Engineering is the design work for that map.** **Multi-Agent** systems can go into a graph, but not every graph needs multiple Agents, and not every node has to be an Agent.
+**A framework is the toolbox; a Workflow Graph is the work map you draw; production orchestration is the engineering work that makes the map run safely.** **Graph Engineering** is an emerging, non-standard label, not another name for a framework. **Multi-Agent** systems can go into a graph, but not every graph needs multiple Agents, and not every node has to be an Agent.
 
 ## 🗺️ Start with This Choice Map
 
