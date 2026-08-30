@@ -20,6 +20,8 @@ on:
       - 'examples/**.md'
       - 'README.md'
       - 'CONTRIBUTING.md'
+      - 'scripts/check-mirror-sync.py'
+      - 'scripts/test_mirror_sync.py'
 
 jobs:
   mirror-check:
@@ -37,6 +39,9 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.11'
+
+      - name: Run mirror sync regression tests
+        run: python scripts/test_mirror_sync.py
 
       - name: Detect mirror sync gap
         id: detect
