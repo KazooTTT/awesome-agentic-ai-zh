@@ -2,7 +2,7 @@
 
 > [繁體中文](./06-memory-rag.md) | [简体中文](./06-memory-rag.zh-Hans.md) | **English**
 
-<!-- freshness: canonical=stages/06-memory-rag.md; verified_on=2026-08-28; scope=rag,retrieval,embeddings,vector-stores,memory,evaluation,project-status; max_age_days=90 -->
+<!-- freshness: canonical=stages/06-memory-rag.md; verified_on=2026-08-30; scope=rag,retrieval,embeddings,vector-stores,memory,evaluation,project-status; max_age_days=90 -->
 
 Models do not know everything. **RAG** is like asking a model to consult a book before it answers; **Memory** is like giving it a notebook for things it will need next time. This stage distinguishes the two, then helps you build both step by step.
 
@@ -74,15 +74,10 @@ No option is always best. Evaluate with your own data, questions, and success cr
 
 First see how the parts of RAG fit together, then start the first exercise.
 
-<details markdown="1">
-<summary>Reading order and official entry points</summary>
-
-1. [LangChain Retrieval](https://docs.langchain.com/oss/python/langchain/retrieval) — See how loaders, splitters, embeddings, vector stores, and retrievers work together.
+1. [LangChain Retrieval](https://docs.langchain.com/oss/python/deepagents/retrieval) — See how loaders, splitters, embeddings, vector stores, and retrievers work together.
 2. [LlamaIndex concepts](https://developers.llamaindex.ai/python/framework/getting_started/concepts/) — Understand indexing and querying through a document-oriented approach.
 3. [Chroma getting started](https://docs.trychroma.com/docs/overview/getting-started) — See the minimal way to use a local vector database.
 4. [LangGraph Agentic RAG](https://docs.langchain.com/oss/python/langgraph/agentic-rag) — After basic RAG, see how an agent decides whether to retrieve data.
-
-</details>
 
 <a id="-hands-on-exercises-illustrative-basics"></a>
 ## 🛠 Hands-on exercises
@@ -165,6 +160,10 @@ Choose three to five small documents you are authorized to use. Have the assista
 
 RAG has two paths: one prepares the data first, and the other finds data when a question arrives.
 
+![RAG prepares data first; when a question arrives, it retrieves candidates, organizes evidence, and answers with citations](../resources/diagrams/rag-pipeline-overview.en.png)
+
+Start with **2-step RAG**: every question retrieves first and then answers, so the flow is easiest to test. **Agentic RAG** lets the model decide whether to retrieve, rewrite the question, or search again. **Hybrid RAG** mixes fixed steps with agent decisions. It is not the same as **Hybrid Search**, which only combines semantic, keyword, or other candidates inside the retrieval step.
+
 | Stage | What it does | A simple analogy |
 |---|---|---|
 | Load | Read content from PDFs, web pages, or databases | Move books onto the table |
@@ -212,7 +211,7 @@ Build a baseline first, then add only one component at a time. Otherwise, even i
 
 **BM25** is good at finding exact or near-exact words; vector search is good at finding sentences with similar meaning. **Hybrid Search** combines candidates from both; **Reranking** then examines each question-candidate pairing and moves more useful pieces to the top.
 
-Start with [Qdrant hybrid queries](https://qdrant.tech/documentation/concepts/hybrid-queries/), [Weaviate hybrid search](https://docs.weaviate.io/weaviate/search/hybrid), or PostgreSQL full-text search + [pgvector](https://github.com/pgvector/pgvector). Measure quality and latency with your own query set.
+Start with [Qdrant hybrid queries](https://qdrant.tech/documentation/search/hybrid-queries/), [Weaviate hybrid search](https://docs.weaviate.io/weaviate/concepts/search/hybrid-search), or PostgreSQL full-text search + [pgvector](https://github.com/pgvector/pgvector). Measure quality and latency with your own query set.
 
 <a id="query-transformations--hyde--multi-query--rag-fusion"></a>
 ### Query Transformations — HyDE, Multi-Query, and RAG Fusion
@@ -356,10 +355,7 @@ Build a small set of human-checked questions, answers, and sources. Record resul
 
 Start with **LlamaIndex or LangChain + Chroma** to understand the minimal pipeline; prefer pgvector when you already use PostgreSQL. Do not install the whole table at once.
 
-<details markdown="1">
-<summary>18 checked entry points, editorial ratings, and limitations</summary>
-
-<small>Fact check: 2026-08-28 UTC</small>
+<small>Fact check: 2026-08-30 UTC</small>
 
 <table>
   <thead>
@@ -395,7 +391,6 @@ Start with **LlamaIndex or LangChain + Chroma** to understand the minimal pipeli
   </tbody>
 </table>
 
-</details>
 
 <a id="-self-check-before-entering-stage-7"></a>
 ## ✅ Self-check before Stage 7

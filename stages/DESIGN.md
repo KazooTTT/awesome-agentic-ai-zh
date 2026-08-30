@@ -188,7 +188,7 @@ Stage 5 使用兩層 stacked PR：第一層定稿三語教材、官方事實包�
 
 Stage 6 的固定主線是「七個可見核心詞 → RAG／Memory 選擇 → 五題累加式練習 → 一個同時檢索與記憶的小專案 → 精選資源 → Stage 7 檢查」。七個核心詞是 **Retrieval**、**RAG**、**Embedding**、**Vector Store／Vector Database**、**Chunk**、**Reranking** 與 **Memory**；BM25、Hybrid Search、GraphRAG、Contextual Retrieval、HyDE、Multi-Query、RAG Fusion、Self-RAG、CRAG、Adaptive RAG、RAPTOR、DSPy、episodic／semantic／procedural memory、CoALA、Generative Agents 與 Reflexion 仍要保留白話定義，但放在有明確 summary 的關閉區，不能在第一遍淹沒練習。
 
-Stage 6 的亮色三語圖固定畫成三條同構路徑：文件進入知識庫的 ingest path、問題取回證據再回答的 query path，以及重要狀態的 Memory write／read loop。圖片只整理正文已定義的關係，不把 vendor benchmark、固定 chunk size、top-k、成本倍數或模型排名畫成通則。五題 heading、anchor、成果、第一個可複製 PowerShell 動作與資料／預算提醒保持可見；時間、環境、完整閱讀、進階 RAG、Memory taxonomy、Chunking、Reflection、評測與完整資源表預設收合。
+Stage 6 的可見亮色三語圖固定畫成三條同構路徑：文件進入知識庫的 ingest path、問題取回證據再回答的 query path，以及重要狀態的 Memory write／read loop。關閉的「RAG 基礎流水線」另放一張詳細三語圖，分成 index lane 與 query lane；Contextualization、query rewrite、fusion、reranking 必須標為可選，retrieve 連線只能落到候選檢索，不能跳到答案。圖與正文都要說清 vector database 不是唯一 retriever，並區分 Hybrid RAG（流程形狀）與 Hybrid Search（候選融合）。圖片只整理正文已定義的關係，不把 vendor benchmark、固定 chunk size、top-k、成本倍數或模型排名畫成通則。五題 heading、anchor、成果、第一個可複製 PowerShell 動作、資料／預算提醒、必修閱讀與五星學習資源表保持可見；時間、環境、進階 RAG、Memory taxonomy、Chunking、Reflection 與評測細節預設收合。
 
 Stage 6 的 18 筆資源固定分成 `4／5／4／3／2` 五組，每組使用獨立 `<tbody>` 與真正 HTML `rowspan`。保留五星編輯評分，移除 GitHub stars 數字；官方文件、paper 與 canonical repo 負責證明事實，知名或活躍專案只負責提供動手入口。GraphRAG 維護狀態、Ragas canonical owner、Letta 現行開發入口、Zep Community Edition 歷史狀態，以及 RAG／retrieval／embedding／vector store／memory／evaluation／project status 使用 90 天 freshness marker。
 

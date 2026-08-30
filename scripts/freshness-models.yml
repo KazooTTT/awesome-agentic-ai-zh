@@ -107,10 +107,10 @@ stage05_fact_pack:
 
 stage06_fact_pack:
   canonical: 'stages/06-memory-rag.md'
-  verified_on: '2026-08-28'
+  verified_on: '2026-08-30'
   scope: ['rag', 'retrieval', 'embeddings', 'vector-stores', 'memory', 'evaluation', 'project-status']
   official_sources:
-    langchain_retrieval: 'https://docs.langchain.com/oss/python/langchain/retrieval'
+    langchain_retrieval: 'https://docs.langchain.com/oss/python/deepagents/retrieval'
     langgraph_agentic_rag: 'https://docs.langchain.com/oss/python/langgraph/agentic-rag'
     llamaindex_concepts: 'https://developers.llamaindex.ai/python/framework/getting_started/concepts/'
     anthropic_contextual_retrieval: 'https://www.anthropic.com/engineering/contextual-retrieval'
@@ -124,8 +124,12 @@ stage06_fact_pack:
     graphiti: 'https://github.com/getzep/graphiti'
     chroma: 'https://docs.trychroma.com/docs/overview/getting-started'
     qdrant: 'https://qdrant.tech/documentation/'
+    qdrant_hybrid_queries: 'https://qdrant.tech/documentation/search/hybrid-queries/'
     pgvector: 'https://github.com/pgvector/pgvector'
     weaviate: 'https://docs.weaviate.io/weaviate'
+    weaviate_hybrid_search: 'https://docs.weaviate.io/weaviate/concepts/search/hybrid-search'
+    openai_retrieval: 'https://developers.openai.com/api/docs/guides/retrieval'
+    ragas_metrics: 'https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/'
     lancedb: 'https://lancedb.github.io/lancedb/'
 
 stage075_fact_pack:

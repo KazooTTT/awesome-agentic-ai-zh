@@ -1034,11 +1034,11 @@ pages:
       en: stages/06-memory-rag.en.md
       zh-Hans: stages/06-memory-rag.zh-Hans.md
     max_visible_chars:
-      zh-TW: 3340
-      en: 6417
-      zh-Hans: 3390
+      zh-TW: 7532
+      en: 11596
+      zh-Hans: 7580
     max_open_details: 0
-    required_details_count: 7
+    required_details_count: 5
     visible_section_order:
       - learning-goals
       - core-terms
@@ -1062,7 +1062,7 @@ pages:
       ordered_external_urls: true
       resource_url_ratings: true
       literals:
-        - "2026-08-28"
+        - "2026-08-30"
         - "5.7%"
         - "1.9%"
         - "top-20"
@@ -1128,6 +1128,9 @@ pages:
         zh-TW: {heading: "✅ 進入 Stage 7 前的自我檢查", anchor: -進入-stage-7-前的自我檢查}
         en: {heading: "✅ Self-check before Stage 7", anchor: -self-check-before-stage-7}
         zh-Hans: {heading: "✅ 进入 Stage 7 前的自我检查", anchor: -进入-stage-7-前的自我检查}
+    visible_section_minimums:
+      required-reading: {min_links: 4}
+      projects: {min_links: 18, min_ratings: 18}
     core_terms:
       section_id: core-terms
       first_exercise_section_id: exercise-1

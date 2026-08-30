@@ -3659,8 +3659,9 @@
         "tag": "v3.1.2",
         "published_at": "2026-08-21T15:24:30Z"
       },
-      "reference_count": 3,
+      "reference_count": 4,
       "sources": [
+        "docs/plans/2026-08-28-stage06-rag-pipeline-refresh.md",
         "stages/06-memory-rag.en.md",
         "stages/06-memory-rag.md",
         "stages/06-memory-rag.zh-Hans.md"
@@ -6029,8 +6030,9 @@
         "tag": "v0.4.3",
         "published_at": "2026-01-13T17:47:29Z"
       },
-      "reference_count": 6,
+      "reference_count": 7,
       "sources": [
+        "docs/plans/2026-08-28-stage06-rag-pipeline-refresh.md",
         "stages/06-memory-rag.en.md",
         "stages/06-memory-rag.md",
         "stages/06-memory-rag.zh-Hans.md"

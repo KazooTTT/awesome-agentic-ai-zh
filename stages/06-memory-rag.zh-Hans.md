@@ -2,7 +2,7 @@
 
 > [繁體中文](./06-memory-rag.md) | **简体中文** | [English](./06-memory-rag.en.md)
 
-<!-- freshness: canonical=stages/06-memory-rag.md; verified_on=2026-08-28; scope=rag,retrieval,embeddings,vector-stores,memory,evaluation,project-status; max_age_days=90 -->
+<!-- freshness: canonical=stages/06-memory-rag.md; verified_on=2026-08-30; scope=rag,retrieval,embeddings,vector-stores,memory,evaluation,project-status; max_age_days=90 -->
 
 模型不是什么都知道。**RAG** 像叫它先翻书再回答；**Memory** 像给它一本笔记本，记住下次还会用到的事。这一关会把两者分清楚，再带你一步一步做出来。
 
@@ -73,15 +73,10 @@
 
 先看“RAG 的零件怎么接起来”，再开始第一个练习。
 
-<details markdown="1">
-<summary>阅读顺序与官方入口</summary>
-
-1. [LangChain Retrieval](https://docs.langchain.com/oss/python/langchain/retrieval) — 看 loader、splitter、embedding、vector store 与 retriever 怎么合作。
+1. [LangChain Retrieval](https://docs.langchain.com/oss/python/deepagents/retrieval) — 看 loader、splitter、embedding、vector store 与 retriever 怎么合作。
 2. [LlamaIndex concepts](https://developers.llamaindex.ai/python/framework/getting_started/concepts/) — 用文件导向的方式理解 indexing 与 querying。
 3. [Chroma getting started](https://docs.trychroma.com/docs/overview/getting-started) — 看本地 vector database 的最小使用方式。
 4. [LangGraph Agentic RAG](https://docs.langchain.com/oss/python/langgraph/agentic-rag) — 完成基础 RAG 后，再看 agent 如何决定要不要查数据。
-
-</details>
 
 <a id="-动手练习基础示例性练习"></a>
 ## 🛠 动手练习
@@ -164,6 +159,10 @@ python starter_anthropic.py
 
 RAG 有两条路：一条先整理数据，一条在问题来时找数据。
 
+![RAG 先整理数据；问题来时再取回候选、整理证据并附来源回答](../resources/diagrams/rag-pipeline-overview.zh-Hans.png)
+
+先从 **2-step RAG** 开始：每个问题都先检索，再回答，流程最容易测试。**Agentic RAG** 让模型决定要不要找数据、是否改写问题或再找一次；**Hybrid RAG** 混合固定步骤与 agent 决策。它和 **Hybrid Search** 不同：Hybrid Search 只是在 retrieval 这一步合并语义与关键词等候选。
+
 | 阶段 | 做什么 | 小孩版比喻 |
 |---|---|---|
 | Load | 读入 PDF、网页或数据库内容 | 把书搬到桌上 |
@@ -209,7 +208,7 @@ RAG 有两条路：一条先整理数据，一条在问题来时找数据。
 
 **BM25** 擅长找完全相同或接近的字；vector search 擅长找意思相近的句子。**Hybrid Search** 把两种候选合在一起；**Reranking** 再看问题与候选片段的配对，把更有用的排前面。
 
-可从 [Qdrant hybrid queries](https://qdrant.tech/documentation/concepts/hybrid-queries/)、[Weaviate hybrid search](https://docs.weaviate.io/weaviate/search/hybrid) 或 PostgreSQL full-text search + [pgvector](https://github.com/pgvector/pgvector) 开始。效果与延迟必须用自己的查询集测量。
+可从 [Qdrant hybrid queries](https://qdrant.tech/documentation/search/hybrid-queries/)、[Weaviate hybrid search](https://docs.weaviate.io/weaviate/concepts/search/hybrid-search) 或 PostgreSQL full-text search + [pgvector](https://github.com/pgvector/pgvector) 开始。效果与延迟必须用自己的查询集测量。
 
 <a id="query-transformations--hyde--multi-query--rag-fusion"></a>
 ### Query Transformations — HyDE、Multi-Query、RAG Fusion
@@ -349,10 +348,7 @@ Chunk 太大时，一张卡会混进太多主题；太小时，答案需要的�
 
 先从 **LlamaIndex 或 LangChain + Chroma** 理解最小流水线；已有 PostgreSQL 才优先看 pgvector。不要一次安装整张表。
 
-<details markdown="1">
-<summary>18 个已查核入口、编辑评分与限制</summary>
-
-<small>数据查核：2026-08-28 UTC</small>
+<small>数据查核：2026-08-30 UTC</small>
 
 <table>
   <thead>
@@ -388,7 +384,6 @@ Chunk 太大时，一张卡会混进太多主题；太小时，答案需要的�
   </tbody>
 </table>
 
-</details>
 
 ## ✅ 进入 Stage 7 前的自我检查
 

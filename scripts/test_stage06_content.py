@@ -270,8 +270,22 @@ def test_visible_beginner_path_is_ordered_and_complete(locale: str) -> None:
 def test_closed_disclosures_render_their_markdown(locale: str) -> None:
     text = PAGES[locale].read_text(encoding="utf-8")
     openings = re.findall(r"^<details\b[^>]*>", text, flags=re.MULTILINE)
-    assert len(openings) == 7
-    assert openings == ['<details markdown="1">'] * 7
+    assert len(openings) == 5
+    assert openings == ['<details markdown="1">'] * 5
+
+
+@pytest.mark.parametrize("locale", PAGES)
+def test_required_reading_and_rated_resources_stay_visible(locale: str) -> None:
+    visible = _without_details(PAGES[locale].read_text(encoding="utf-8"))
+    for url in (
+        "https://docs.langchain.com/oss/python/deepagents/retrieval",
+        "https://developers.llamaindex.ai/python/framework/getting_started/concepts/",
+        "https://docs.trychroma.com/docs/overview/getting-started",
+        "https://docs.langchain.com/oss/python/langgraph/agentic-rag",
+    ):
+        assert url in visible
+    assert visible.count("<tr>") >= 19
+    assert visible.count("⭐") >= 18
 
 
 @pytest.mark.parametrize("locale", PAGES)
@@ -311,7 +325,7 @@ def test_three_locales_share_current_fact_urls_and_date() -> None:
     for page in PAGES.values():
         text = page.read_text(encoding="utf-8")
         assert required <= set(re.findall(r"https://[^)\s<>]+", text))
-        assert "2026-08-28" in text
+        assert "2026-08-30" in text
 
 
 def test_locale_diagrams_are_distinct_full_size_pngs_and_referenced() -> None:

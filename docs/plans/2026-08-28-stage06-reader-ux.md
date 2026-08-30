@@ -68,23 +68,22 @@
 4. 一張亮色三語概念圖：文件進入知識庫的 ingest path、問題進來的 query path，以及 Memory 的 write／read 回路。
 5. 一張短版選擇表：long context、RAG、Memory、fine-tuning 各自解決什麼，不宣稱固定成本或絕對優劣。
 6. `🚪` 初學路線與進階路線；時間、環境、費用放在關閉區。
-7. `📚` 必修閱讀標題與一句閱讀目的；完整連結及閱讀順序預設收合。
+7. `📚` 必修閱讀標題、四個連結與閱讀順序直接可見。
 8. `🛠` 五個練習的標題、既有 anchor、一句成果與可直接複製的最短命令保持可見：Embedding → Vector DB → Chunking → 完整 RAG → Memory 基本讀寫。真正跨次持久化由 06B 修好範例後才可宣稱。
 9. 一個推薦小專案：讓助理讀自己的小文件集，回答時附來源，再記住一項使用者偏好。
-10. `🎯` 每類一個推薦入口；完整 18 筆資源表預設收合。
+10. `🎯` 完整 18 筆五星資源表直接可見，分類欄用真正 `rowspan` 合併。
 11. `✅` 短版自我檢查與 Stage 07 入口。
 
 ## 預設收合內容
 
 - 時間、先備知識、環境、費用、API key 與資料隱私提醒。
-- 完整必修閱讀與順序。
 - 基礎 RAG 的完整 ingest／query pipeline 說明。
 - GraphRAG、Contextual Retrieval、Hybrid Search、BM25、Reranking、HyDE、Multi-Query、RAG Fusion、Self-RAG、CRAG、Adaptive RAG、RAPTOR、DSPy。
 - working／long-term／episodic／semantic／procedural memory、CoALA、Generative Agents、Reflexion。
 - chunking 深入比較、RAG／Memory eval、研究 survey 與安全風險。
-- 完整資源表、替代方案、排錯與其餘專案靈感。
+- 替代方案、排錯與其餘專案靈感。
 
-所有 `<details markdown="1">` 預設關閉，不使用 `open`；展開後的 heading、粗體、連結與 code fence 必須由 MkDocs 正常渲染，不能顯示原始 Markdown。重要 heading、anchor、核心定義、練習成果與第一步不得藏入 `<details>`。
+所有 `<details markdown="1">` 預設關閉，不使用 `open`；展開後的 heading、粗體、連結與 code fence 必須由 MkDocs 正常渲染，不能顯示原始 Markdown。重要 heading、anchor、核心定義、練習成果、第一步、必修閱讀與五星資源不得藏入 `<details>`。
 
 ## 代表專案選擇規則
 

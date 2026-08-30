@@ -95,6 +95,12 @@ Git 歷史復原。
 
 這組圖固定放在 Stage 6 七個可見核心詞之後。圖的目的不是取代定義，而是讓初學者一眼分清：RAG 是先找外部證據再回答，Memory 是把重要狀態留給下一次使用。
 
+## 2026-08-30：Stage 6 RAG 詳細流水線重畫
+
+重畫 `rag-pipeline-overview.png`、`.en.png`、`.zh-Hans.png`，並放回預設關閉的「RAG 基礎流水線」。舊圖只有兩排方塊與直線箭頭，且沒有正文引用；新圖沿用 `rag-memory-map` 的亮色白底卡片 house style，明確分成「先整理資料」與「問題來了」兩條 lane。Contextualization、query rewrite、fusion 與 reranking 都以虛線和「可選」標籤呈現；候選來源並列 semantic、BM25、SQL／Web，不暗示 vector database 是唯一 retriever。
+
+繁中第一版的 `retrieve` 箭頭錯落在最終答案，視覺檢查後改為從可搜尋資料庫落到「多路找候選」。英語與簡中沿用修正版幾何；簡中初稿 footer 的「記錄」另修成「记录」。三語均不放固定 chunk size、top-k、價格、模型、排名、benchmark、日期或 GitHub stars。
+
 ## 2026-08-27：Stage 3 Tool Use 六步圖
 
 新增 `tool-use-loop.png`、`.en.png`、`.zh-Hans.png`。三張都使用 16:9 亮色白底卡片，固定呈現 `模型 → Tool Call → 程式驗證 → 工具執行 → Tool Result → 模型答案`，並用盾牌框住程式驗證與工具執行。底部只保留三個安全提示：allowlist、敏感動作先問人、設定最大輪數。
@@ -180,9 +186,9 @@ Git 歷史復原。
 
 ## 已退役的舊圖
 
-2026-08-30 全站引用掃描確認下列舊圖已沒有任何頁面使用，因此直接移除，不再重畫：
+2026-08-30 全站引用掃描確認下列舊圖已沒有任何頁面使用，因此移除；
+`rag-pipeline-overview` 的舊平面箭頭版則由已通過人工檢查的 Image 2.0 三語版本取代並重新上線：
 
-- `rag-pipeline-overview` 三語圖：由 Stage 6 的 `rag-memory-map` 三語圖取代。
 - `chunking-strategies` 三語圖：內容已放入 Stage 6 漸進式文字教學，不再保留素面流程框。
 - `reflexion-persistent-memory-loop` 三語圖：內容已整合進 Stage 6 的 RAG／Memory 路線。
 - `multi-agent-debate-flow` 三語圖：沒有頁面使用，且深色霓虹風不符合目前主頁式視覺規範。
