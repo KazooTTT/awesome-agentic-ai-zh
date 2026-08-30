@@ -309,10 +309,11 @@ PR 之前请先读完本文。项目维护者也会用这份指南做 review。
 
 - 先在正文用白话定义核心词，再用图整理它们的关系；不要让图片成为读者第一次遇到术语的地方。
 - 默认参考主页 README：奶油白底、深蓝主字、少量亮色、圆角卡片、简单线条 icon、充足留白和一个主要阅读方向。每张图只回答一个核心问题；信息太多时拆成两张，不缩小文字硬塞。
-- 三语图保持相同构图、顺序、数字和限制，并分别提供正确语言的图片与 alt text。
+- 新画或重画的概念图用 Image 2.0 生成 PNG，不用临时 SVG 代替；旧图轮到该章重画时再套用，不一次迁移所有历史图片。
+- 三语图保持相同画布比例、构图、共同网格、顺序、数字和限制，并分别提供正确语言的图片与 alt text。卡片位置、外边距、内边距和同层高度应一致。
 - 图里的精确数字也要有官方依据。没有固定规则时，写“多个”“依模型而异”等诚实文字，不要为了好看造出范围。
 - 箭头只走留白通道，不穿过文字、icon 或其他卡片；arrowhead、icon、标签和框线不得互相重叠。同层卡片使用共同网格、等高和一致内边距。
-- 逐张以原始尺寸检查文字、简繁字形、箭头和对比；最后运行 image-locale gate 和三语 MkDocs build。
+- 逐张以原始尺寸检查安全边距、文字、简繁字形、箭头、共同网格和对比；任何文字、icon、箭头或边框重叠都视为失败。最后运行 image-locale gate 和三语 MkDocs build。
 
 ### Reader UX ratchet
 
@@ -428,6 +429,12 @@ Cookbook 的用途、选择表、核心词、六份 recipe 标题、成果、第
 `resources/README*` 先问读者卡在哪里，再用粗体和白话定义 Reference、Guide、Cookbook、Catalog 与 Glossary。11 份 reference 的入口、用途、限制与回到主路线的链接保持可见；只折叠分文件的理由与 maintainer 规则。不要添加会变化的行数、GitHub stars，也不要把旧产品名称写成当前名称。
 
 完整入口表固定使用五个独立 `<tbody>`，分类行数为 `4／2／2／2／1`。同类型只在第一行出现一次，使用 `scope="rowgroup"` 与真正的 `rowspan`；不能用重复文字或空白单元格假装合并。每种语言都链接自己的 mirror，并保持相同顺序与语意。
+
+### Glossary 查词入口
+
+Glossary 的快速地图、工具身份表、每个词的 heading 和一句白话定义保持可见；不能把最短答案藏进 `<details>`。只有 maintainer 完整分类表、来源与核查说明默认收合。核心词第一次出现在可见文字时继续用**粗体**标出，并保留准确的技术名称。
+
+工具身份表必须分清 Provider API、Router、Model Runtime、Coding Agent／Agent Harness 与 Agent Framework。不要把容易变化的型号、价格、context 或固定 token 换算复制进 Glossary；改为链接有 freshness gate 的章节或官方文档。
 
 ### 内部链接
 - Stage 之间：相对路径 `[Stage 4](./04-agent-frameworks.zh-Hans.md)`

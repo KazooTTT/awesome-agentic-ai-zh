@@ -6,6 +6,12 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-08-30
+
+- **content / glossary / reader UX** · **三語 Glossary 改成「先分清工具身分，再依主題查詞」的可見查字入口**：保留原有 68 個名詞與 `Subagent` 深連結，補上 Model Runtime、Workflow Graph、Agent Harness，共 71 個可搜尋 heading；12 個先學詞、Provider API／Router／Model Runtime／Coding Agent 或 Harness／Agent Framework 五種身分，以及每個詞的一句白話定義都直接展開。只有 37 筆 maintainer 分類表與來源說明放進兩個預設關閉選單；完整表依 `2／17／9／5／4` 使用真正合併的 rowgroup。Prompt、Zero／One／Few-Shot、Chain-of-Thought、Token、Context、Agent Loop、RAG、Memory、MCP、Eval、Harness、Loop 與 Graph 等必要概念全部保留，沒有用縮短頁面當理由刪詞。
+- **freshness / terminology / product identity** · **Glossary 不再保存容易變舊的模型名單、價格、context、固定 token 換算、A2A 組織數或 Claude Hook 事件數**：OpenRouter 明列為 Router、Ollama 為 Model Runtime、OpenCode／Pi 為 Coding Agent／Harness，Agent Framework 另列；MLX 本身是 array framework，真正用來執行 LLM 的套件寫成 MLX LM；Prompt Caching 也明寫 byte-identical prefix 才會命中。Loop Engineering 不取代 Harness，Workflow Graph 與 Graph Engineering 也不混成同一個正式標準。三語使用同一組第一方來源與安靜的 `2026-08-30` freshness marker，易變事實改連回 Stage 1 或官方文件。GitHub 全量掃描另把 Pi 的 redirect 改回 canonical `earendil-works/pi`；`2026-08-30T01:59:28Z` 快照覆蓋 260 個 repo、0 hard error、150 個人工提醒。reader-UX、strict anchors、三語 URL／日期、Hans、image-locale、mirror 與 freshness regression 同步加入。
+- **design / visuals / acceptance** · **把主頁 README 的舒服圖面正式設為全站新圖 ratchet**：新畫或重畫的概念圖使用 Image 2.0 PNG，三語共用畫布比例、格線、卡片位置、間距與語意；箭頭只能走留白，文字、icon、箭頭、arrowhead、標籤與框線不得重疊。DESIGN 與三語 style guide 同步要求原尺寸檢查安全邊界與對齊；舊圖只在輪到該章時重畫，不用一次覆蓋造成無法回溯。本層維持 stacked draft PR，未經使用者明確同意不合併或清理活動 branch／worktree。
+
 ## 2026-08-29
 
 - **content / courses / reader UX** · **三語課程頁從「只列會發證書的 tier 排名」改成先學會、再決定是否拿證書的任務地圖**：Course、Certificate of Completion、Skill Badge、Professional Certificate、Certification Exam 五個核心詞先用白話分開；12 條現行課程與學習路線依 `3／5／2／2` 四個真正合併的 rowgroup 保持可見，逐列保留五星編輯推薦度。讀者可直接按需求選一條，複製五行作品證據卡，再回 Stage 3／4／7；只有證書限制與維護方法放進兩個預設關閉選單。移除 tier、舊 Skilljar、Edureka、無法由公開官方頁確認的 Huawei 路線、固定價格、GitHub stars 與「中文課基本都付費」等過時概括，新增 Microsoft、Datawhale、Claude Academy、LangChain Academy、Google × Kaggle 與阿里雲現行入口；Hugging Face、DeepLearning.AI、W&B、IBM、Vanderbilt、NVIDIA 的證書／費用／評量邊界重新查核。README、DESIGN、測試計畫、reader-UX 與 90 天 freshness fact pack 同步；全量 GitHub API snapshot 於 `2026-08-29T23:38:47Z` 重建，覆蓋 259 個 repo、0 hard error、151 個人工提醒。本層維持 stacked draft PR，未經使用者明確同意不合併、不清理 branch／worktree。

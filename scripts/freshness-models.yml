@@ -251,6 +251,31 @@ courses_fact_pack:
     datawhale_hello_agents: 'https://github.com/datawhalechina/hello-agents'
     datawhale_agentic_ai: 'https://github.com/datawhalechina/agentic-ai'
 
+glossary_fact_pack:
+  canonical: 'resources/glossary.md'
+  verified_on: '2026-08-30'
+  scope: ['protocols', 'product-identities', 'terminology', 'official-links']
+  official_sources:
+    provider_api: 'https://platform.claude.com/docs/en/api/overview'
+    openrouter_faq: 'https://openrouter.ai/docs/faq'
+    openrouter_routing: 'https://openrouter.ai/docs/guides/routing/provider-selection'
+    ollama_api: 'https://docs.ollama.com/api/introduction'
+    mlx_lm: 'https://github.com/ml-explore/mlx-lm'
+    opencode: 'https://opencode.ai/docs'
+    pi: 'https://github.com/earendil-works/pi'
+    microsoft_workflows: 'https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/'
+    mcp_specification: 'https://modelcontextprotocol.io/specification'
+    a2a_specification: 'https://a2a-protocol.org/latest/specification/'
+    agent_skills_specification: 'https://agentskills.io/specification'
+    claude_code_overview: 'https://code.claude.com/docs/en/features-overview'
+    claude_code_subagents: 'https://code.claude.com/docs/en/sub-agents'
+    claude_code_hooks: 'https://code.claude.com/docs/en/hooks'
+    claude_prompt_caching: 'https://platform.claude.com/docs/en/build-with-claude/prompt-caching'
+    deepagents: 'https://github.com/langchain-ai/deepagents'
+    openai_harness_engineering: 'https://openai.com/index/harness-engineering/'
+    ibm_loop_engineering: 'https://www.ibm.com/think/topics/loop-engineering'
+    anthropic_context_engineering: 'https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents'
+
 verified_pages:
   - canonical: 'stages/01-llm-basics.md'
     required_scopes: ['models', 'pricing', 'availability', 'deprecations']
@@ -284,6 +309,9 @@ verified_pages:
     max_age_days: 90
   - canonical: 'resources/courses.md'
     required_scopes: ['course-availability', 'cost', 'certificate', 'assessment', 'repository-status']
+    max_age_days: 90
+  - canonical: 'resources/glossary.md'
+    required_scopes: ['protocols', 'product-identities', 'terminology', 'official-links']
     max_age_days: 90
 
 current_frontier_models:
@@ -335,6 +363,34 @@ current_frontier_models:
 # scanned — a qualifier written as "baseline" in zh-TW/en often becomes "基线" in
 # the zh-Hans mirror, and the gate must recognize all three (2026-07 gap).
 stale_patterns:
+  # Glossary definitions must stay stable. Model rosters, prices, context sizes,
+  # protocol version counts, and product event counts belong in their canonical
+  # current-fact pages rather than in a long-lived definition.
+  - pattern: '(?:1\.5-2 token|1\.3 token|75 萬中文字|75 万中文字|750,000 Chinese)'
+    include_files: ['resources/glossary.md']
+    qualifier_terms: []
+    note: 'Token-to-character and token-to-word conversion varies by model, tokenizer, and text'
+
+  - pattern: '(?:GPT-5\.6|Claude Opus 5|Gemini 3\.5|DeepSeek-V4|Fable 5)'
+    include_files: ['resources/glossary.md']
+    qualifier_terms: []
+    note: 'The glossary routes current model, price, context, and availability facts to Stage 01'
+
+  - pattern: 'A2A.{0,220}(?:v1\.0|150\+)|(?:v1\.0|150\+).{0,220}A2A'
+    include_files: ['resources/glossary.md']
+    qualifier_terms: []
+    note: 'Do not freeze an unsupported A2A version or adoption count in the glossary'
+
+  - pattern: 'Hooks?.{0,180}(?:7 種事件|7 种事件|seven event types)'
+    include_files: ['resources/glossary.md']
+    qualifier_terms: []
+    note: 'Claude Code hook events change; link the current reference instead of freezing a count'
+
+  - pattern: 'Context Engineering.{0,220}(?:Prompt engineering 的下一層|Prompt engineering 的下一层|next layer after prompt engineering)'
+    include_files: ['resources/glossary.md']
+    qualifier_terms: []
+    note: 'Prompt and Context Engineering are overlapping responsibilities, not replacement generations'
+
   # Stage 01 completed its 2026-08-27 refresh. These patterns are deliberately
   # scoped to its three mirrors so later stages can migrate in their own PRs.
   - pattern: 'Gemini 3\.5 (Flash|Pro)'

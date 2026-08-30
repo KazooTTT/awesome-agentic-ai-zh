@@ -297,6 +297,21 @@ volatile stars, empty-quote artifacts, and generic verification-date filler. The
 separately enrolls course availability, cost, certificate, assessment, and repository status on a
 90-day review cycle.
 
+### Glossary — visible definitions and stable facts
+
+`scripts/test_glossary_content.py` keeps all 71 term headings and their shortest definitions visible,
+including the legacy Subagent deep-link target. It locks a 12-term quick map, the five-way distinction
+among Provider API／Router／Model Runtime／Coding Agent or Harness／Agent Framework, exactly two closed
+maintainer disclosures, and the accessible terminology rowgroups `2／17／9／5／4`. The three locales
+must use the same external URLs and freshness marker.
+
+The glossary rejects fixed token conversions, frozen frontier-model rosters, stale A2A organization
+counts, a fixed Claude Hook event count, and a replacement ladder that says Context Engineering
+supersedes Prompt Engineering. Volatile prices, model context, availability, and protocol status route
+to a freshness-gated chapter or first-party source instead of being copied into a timeless definition.
+`scripts/check-reader-ux.py`, strict anchors, mirror checks, locale-link checks, and the freshness gate
+run beside the dedicated content test.
+
 ### Whole-site learner-route coherence
 
 `scripts/test_site_route_coherence.py` treats text navigation as the source of truth before diagrams

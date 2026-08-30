@@ -437,20 +437,16 @@ def test_current_interface_sandbox_license_and_benchmark_facts(locale: str) -> N
 
 
 @pytest.mark.parametrize("locale", GLOSSARIES)
-def test_glossary_matches_current_stage08_concepts_without_frozen_rankings(locale: str) -> None:
+def test_glossary_keeps_stable_stage08_concepts_without_volatile_snapshots(locale: str) -> None:
     text = GLOSSARIES[locale].read_text(encoding="utf-8")
     section = text.split("## 8. Agent Interfaces", 1)[1].split("\n---", 1)[0]
     for literal in (
-        "108",
-        "long-horizon",
-        "harness",
+        "Harness",
         "executor",
         "Accessibility Tree",
-        "gradual rollout",
-        "Sandbox Agents",
-        "Beta",
-        "Firecracker",
-        "gVisor",
+        "Browser Use",
+        "Sandbox",
+        "secret",
     ):
         assert literal in section
 
@@ -473,21 +469,19 @@ def test_glossary_matches_current_stage08_concepts_without_frozen_rankings(local
         "內建支援這些 provider",
         "内建支持这些 provider",
         "natively supports these",
+        "Sandbox Agents",
+        "Beta",
+        "108",
     )
     assert not any(term in section for term in forbidden)
 
 
-def test_glossary_is_trilingually_deep_linked_to_the_terminology_table() -> None:
-    fragments = {
-        "zh-TW": "#-隔離技術術語小辭典",
-        "en": "#-mini-glossary-of-isolation-technologies",
-        "zh-Hans": "#-隔离技术术语小词典",
-    }
+def test_glossary_routes_each_locale_back_to_stage08() -> None:
     for locale, glossary in GLOSSARIES.items():
         text = glossary.read_text(encoding="utf-8")
         section = text.split("## 8. Agent Interfaces", 1)[1].split("\n---", 1)[0]
-        target = f"../stages/{PAGES[locale].name}{fragments[locale]}"
-        assert section.count(target) == 3
+        target = f"../stages/{PAGES[locale].name}"
+        assert section.count(target) == 1
 
 
 @pytest.mark.parametrize("locale", PAGES)
