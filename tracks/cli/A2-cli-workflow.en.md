@@ -35,18 +35,13 @@ If you have not completed A1, go back and run “read-only inspection → view t
 
 ## 📚 Required Reading
 
-<details markdown="1">
-<summary>Expand required reading and suggested order</summary>
-
-1. First read the official project-instructions documentation for your primary tool: Codex uses [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md), Claude Code uses [`CLAUDE.md`](https://code.claude.com/docs/en/memory), Gemini CLI uses [`GEMINI.md`](https://geminicli.com/docs/cli/gemini-md/), and OpenCode V2 uses [`AGENTS.md`](https://opencode.ai/v2/docs/instructions).
-2. Then read your tool’s Skill documentation: [Codex/ChatGPT](https://learn.chatgpt.com/docs/build-skills), [Claude Code](https://code.claude.com/docs/en/skills), [Gemini CLI](https://geminicli.com/docs/cli/using-agent-skills/), and [OpenCode V2](https://opencode.ai/v2/docs/skills).
+1. First read the official project-instructions documentation for your primary tool: Codex uses [`AGENTS.md`](https://learn.chatgpt.com/docs/agent-configuration/agents-md), Claude Code uses [`CLAUDE.md`](https://code.claude.com/docs/en/memory), Gemini CLI uses [`GEMINI.md`](https://geminicli.com/docs/cli/gemini-md/), and OpenCode uses [`AGENTS.md`](https://opencode.ai/docs/rules).
+2. Then read your tool’s Skill documentation: [Codex/ChatGPT](https://learn.chatgpt.com/docs/build-skills), [Claude Code](https://code.claude.com/docs/en/skills), [Gemini CLI](https://geminicli.com/docs/cli/using-agent-skills/), and [OpenCode](https://opencode.ai/docs/skills/).
 3. Finally, revisit [Stage 2 — Prompt Engineering](../../stages/02-prompt-engineering.en.md) and add the “task, scope, and success conditions” to your one-off prompt.
-</details>
-
 <details markdown="1">
 <summary>Expand the project-instructions and Skill locations for four CLIs</summary>
 
-Official information checked on: **2026-08-27 UTC**.
+Official information checked on: **2026-08-30 UTC**.
 
 <table>
 <thead>
@@ -56,7 +51,7 @@ Official information checked on: **2026-08-27 UTC**.
 <tr><th scope="row">Codex</th><td><code>AGENTS.md</code></td><td><code>.agents/skills/&lt;name&gt;/SKILL.md</code></td><td>Rules are layered by directory; the closer rule loads later</td></tr>
 <tr><th scope="row">Claude Code</th><td><code>CLAUDE.md</code></td><td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td><td>Old <code>.claude/commands/</code> remains compatible, but new workflows should prefer Skills</td></tr>
 <tr><th scope="row">Gemini CLI</th><td><code>GEMINI.md</code></td><td><code>.agents/skills/&lt;name&gt;/SKILL.md</code> or <code>.gemini/skills/…</code></td><td>Skill activation asks for consent; do not put secrets in a Skill</td></tr>
-<tr><th scope="row">OpenCode V2</th><td><code>AGENTS.md</code></td><td><code>.agents/skills/&lt;name&gt;/SKILL.md</code> or <code>.opencode/skills/…</code></td><td>V2 does not use the old-document <code>CLAUDE.md</code> fallback</td></tr>
+<tr><th scope="row">OpenCode</th><td><code>AGENTS.md</code> has priority; without it, use <code>CLAUDE.md</code></td><td><code>.opencode/skills/…</code>, <code>.agents/skills/…</code>, or <code>.claude/skills/…</code></td><td>Check rules, skills, and permission settings first</td></tr>
 </tbody>
 </table>
 
@@ -162,9 +157,6 @@ The complete subagent, agent team, background-work, and review processes are in 
 
 ## 🎯 Curated Projects
 
-<details markdown="1">
-<summary>Expand the complete learning resource table (16 entries)</summary>
-
 The resources below are divided into five groups by purpose. Each group shows its category only once so repeated text does not stretch the table.
 
 <table>
@@ -175,13 +167,13 @@ The resources below are divided into five groups by purpose. Each group shows it
 <tr><th scope="rowgroup" rowspan="4">Official project instructions</th><td>Codex <code>AGENTS.md</code></td><td>Layered loading and precedence</td><td>Writing repo rules for Codex</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">Official docs</a></td></tr>
 <tr><td>Claude Code <code>CLAUDE.md</code></td><td>When to put something in rules and when to move it to a Skill</td><td>Writing persistent rules for Claude Code</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/memory">Official docs</a></td></tr>
 <tr><td>Gemini CLI <code>GEMINI.md</code></td><td>Directory scope and loading method</td><td>Adding project context for Gemini CLI</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://geminicli.com/docs/cli/gemini-md/">Official docs</a></td></tr>
-<tr><td>OpenCode V2 <code>AGENTS.md</code></td><td>V2 merging and nested discovery</td><td>Writing rules for OpenCode V2</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/v2/docs/instructions">Official docs</a></td></tr>
+<tr><td>OpenCode <code>AGENTS.md</code></td><td>Rules loading, merging, and fallback</td><td>Writing rules for OpenCode</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/docs/rules">Official docs</a></td></tr>
 </tbody>
 <tbody>
 <tr><th scope="rowgroup" rowspan="4">Official Skill docs</th><td>Codex/ChatGPT Build skills</td><td><code>SKILL.md</code> structure and loading location</td><td>Making a reusable Codex process</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/build-skills">Official docs</a></td></tr>
 <tr><td>Claude Code Skills</td><td>On-demand loading, legacy commands, and permissions</td><td>Making a Claude Code Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/skills">Official docs</a></td></tr>
 <tr><td>Gemini CLI Agent Skills</td><td>Discovery, installation consent, and activation consent</td><td>Managing Gemini CLI Skills</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://geminicli.com/docs/cli/using-agent-skills/">Official docs</a></td></tr>
-<tr><td>OpenCode V2 Agent Skills</td><td>Supported locations, frontmatter, and permission</td><td>Making an OpenCode Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/v2/docs/skills">Official docs</a></td></tr>
+<tr><td>OpenCode Agent Skills</td><td>Supported locations, frontmatter, and permission</td><td>Making an OpenCode Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/docs/skills/">Official docs</a></td></tr>
 </tbody>
 <tbody>
 <tr><th scope="rowgroup" rowspan="4">Standards and readable examples</th><td>Agent Skills specification</td><td>Minimum requirements for a shared format</td><td>Making the core content easier to carry across tools</td><td>⭐⭐⭐⭐</td><td><a href="https://agentskills.io/specification">Standard</a></td></tr>
@@ -198,8 +190,6 @@ The resources below are divided into five groups by purpose. Each group shows it
 <tr><td><code>langchain-ai/openwiki</code></td><td>Creating a continuously updated repo wiki</td><td>When a large repo needs on-demand document lookup</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/langchain-ai/openwiki">GitHub repo</a></td></tr>
 </tbody>
 </table>
-</details>
-
 <a id="-self-check-before-a3"></a>
 
 ## ✅ Self-check before Stage 5

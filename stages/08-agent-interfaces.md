@@ -25,23 +25,23 @@
 
 ## 📚 必修閱讀
 
-先讀下面的八個詞與選擇表。要串 API 或研究 benchmark 時，再展開完整閱讀順序。
+先看四個官方入口，再讀下面的八個詞與選擇表。第一次只要知道每個入口負責什麼，不必一次讀完。
 
 <details markdown="1">
-<summary>時間、環境與完整閱讀順序</summary>
+<summary>時間與環境</summary>
 
 建議先用 45–90 分鐘完成可見主線與練習 1。要實作 executor 或 sandbox，再多留半天。
-
-閱讀順序：
-
-1. [Anthropic Computer Use tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool)：看懂「模型提出動作，應用程式執行」。
-2. [Anthropic Browser Use tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool)：看網頁元素與像素回退怎麼合作。
-3. [OpenAI Computer Use guide](https://developers.openai.com/api/docs/guides/tools-computer-use)：看 GA tool 與安全邊界。
-4. [OpenAI Agents SDK Sandbox guide](https://openai.github.io/openai-agents-python/sandbox/guide/)：只在要做可變工作區時讀；Sandbox Agents 仍是 Beta。
 
 環境：練習 1 只需要一個隔離的瀏覽器 profile。練習 2 只需要 Python 3.10+，不連網、不需要 API key。
 
 </details>
+
+閱讀順序：
+
+1. [**Anthropic Computer Use tool**](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool)：看懂「模型提出動作，應用程式執行」。
+2. [**Anthropic Browser Use tool**](https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool)：看網頁元素與像素回退怎麼合作。
+3. [OpenAI Computer Use guide](https://developers.openai.com/api/docs/guides/tools-computer-use)：看 GA tool 與安全邊界。
+4. [**OpenAI Agents SDK Sandbox guide**](https://openai.github.io/openai-agents-python/sandbox/guide/)：只在要做可變工作區時讀；Sandbox Agents 仍是 Beta。
 
 ## 🔑 八個核心詞
 
@@ -345,8 +345,7 @@ Amazon 案件也不能簡化成「某 browser 被全面禁止存取 Amazon」。
 <a id="-常用工具推薦按用途分類"></a>
 <a id="-精選-projects範本--sdk--工具-collection"></a>
 
-<details markdown="1">
-<summary>21 筆完整資源表（依用途合併分類）</summary>
+## 📚 21 筆完整學習資源與限制
 
 <small>資料查核：2026-08-28 UTC。星號是本專案的教學推薦度，不是 GitHub stars。</small>
 
@@ -388,8 +387,6 @@ Amazon 案件也不能簡化成「某 browser 被全面禁止存取 Amazon」。
 </table>
 
 OmniParser 的 weights 要逐版本讀：<code>icon_detect_v3</code> 採 MIT 授權的 YOLOv9 實作；較早的 Ultralytics detectors 保留 AGPL；caption models 採 MIT。它們都不是 repository CC-BY-4.0 授權的同義詞。
-
-</details>
 
 <a id="-下一個-frontier--voice-agents--vla-機器人"></a>
 <a id="voice-agents語音介面"></a>

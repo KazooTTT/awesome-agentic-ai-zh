@@ -27,23 +27,23 @@ If you followed the main path, you can first revisit the [previous stage: Stage 
 
 ## 📚 Required reading
 
-Read the eight terms and the choice table first. Open the full reading order only when you want to connect an API or study benchmarks.
+Look at the four official entry points, then read the eight terms and the choice table. For your first pass, only learn what each entry point is for.
 
 <details markdown="1">
-<summary>Time, environment, and full reading order</summary>
+<summary>Time and environment</summary>
 
 Allow 45–90 minutes for the visible path and Exercise 1. Set aside another half day if you will build an executor or sandbox.
-
-Reading order:
-
-1. [Anthropic Computer Use tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool): learn that the model proposes actions and the application executes them.
-2. [Anthropic Browser Use tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool): see how page elements and pixel fallback work together.
-3. [OpenAI Computer Use guide](https://developers.openai.com/api/docs/guides/tools-computer-use): study the GA tool and its safety boundary.
-4. [OpenAI Agents SDK Sandbox guide](https://openai.github.io/openai-agents-python/sandbox/guide/): read this only for mutable workspaces; Sandbox Agents are still Beta.
 
 Environment: Exercise 1 needs only an isolated browser profile. Exercise 2 needs Python 3.10+, makes no network request, and needs no API key.
 
 </details>
+
+Reading order:
+
+1. [**Anthropic Computer Use tool**](https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool): learn that the model proposes actions and the application executes them.
+2. [**Anthropic Browser Use tool**](https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool): see how page elements and pixel fallback work together.
+3. [OpenAI Computer Use guide](https://developers.openai.com/api/docs/guides/tools-computer-use): study the GA tool and its safety boundary.
+4. [**OpenAI Agents SDK Sandbox guide**](https://openai.github.io/openai-agents-python/sandbox/guide/): read this only for mutable workspaces; Sandbox Agents are still Beta.
 
 ## 🔑 Eight core terms
 
@@ -347,8 +347,7 @@ Choose only one to start:
 <a id="-recommended-tools-by-use-case"></a>
 <a id="-featured-projects-templates--sdks--tool-collections"></a>
 
-<details markdown="1">
-<summary>Full table of 21 resources, grouped by purpose</summary>
+## 📚 21 complete learning resources and limits
 
 <small>Checked 2026-08-28 UTC. Stars are this project's teaching ratings, not GitHub stars.</small>
 
@@ -390,8 +389,6 @@ Choose only one to start:
 </table>
 
 Read OmniParser weights by version: <code>icon_detect_v3</code> uses the MIT-licensed YOLOv9 implementation; earlier Ultralytics detectors retain AGPL; caption models use MIT. None of these is synonymous with the repository's CC-BY-4.0 license.
-
-</details>
 
 <a id="-the-next-frontier--voice-agents--vla-robots"></a>
 <a id="voice-agents"></a>
