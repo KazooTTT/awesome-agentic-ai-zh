@@ -307,8 +307,10 @@ This rule applies to the entire learning map. The goal is for a five-year-old to
 ### Concept-diagram writing
 
 - Define core terms in plain text first, then use a diagram to organize their relationships. A diagram must not be the reader's first encounter with a term.
+- Use the main README as the default visual baseline: cream-white background, navy primary text, a few bright semantic colors, rounded cards, simple line icons, generous whitespace, and one primary reading direction. Each diagram answers one core question; split dense material instead of shrinking the text.
 - Keep the same layout, order, numbers, and limits in all three locales. Provide a correctly localized image and alt text for each page.
 - Exact numbers inside a diagram need the same official evidence as prose. When no fixed rule exists, write “multiple” or “varies by model” instead of inventing a neat range.
+- Route arrows only through whitespace. They must not cross text, icons, or other cards; arrowheads, icons, labels, and borders must not overlap. Cards on the same level share a grid, equal height, and consistent padding.
 - Inspect every image at original size for text, locale characters, arrow direction, and contrast; then run the image-locale gate and all three MkDocs builds.
 
 ### Reader UX ratchet

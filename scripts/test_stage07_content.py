@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import re
 import struct
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pytest
@@ -19,39 +18,33 @@ PAGES = {
 }
 DIAGRAMS = {
     "zh-TW": (
-        ROOT / "resources/diagrams/agent-engineering-control-questions.svg",
+        ROOT / "resources/diagrams/agent-engineering-control-questions.png",
         ROOT / "resources/diagrams/inside-a-graph.png",
     ),
     "en": (
-        ROOT / "resources/diagrams/agent-engineering-control-questions.en.svg",
+        ROOT / "resources/diagrams/agent-engineering-control-questions.en.png",
         ROOT / "resources/diagrams/inside-a-graph.en.png",
     ),
     "zh-Hans": (
-        ROOT / "resources/diagrams/agent-engineering-control-questions.zh-Hans.svg",
+        ROOT / "resources/diagrams/agent-engineering-control-questions.zh-Hans.png",
         ROOT / "resources/diagrams/inside-a-graph.zh-Hans.png",
     ),
 }
-SVG_MARKERS = {
+CONTROL_DIAGRAM_ALT_MARKERS = {
     "zh-TW": (
-        "Agent 工程的五個控制問題",
-        "Harness：讓 Agent 能安全做事的工作台",
-        "Loop：做 → 看證據 → 繼續／停止／問人",
-        "Workflow Graph／Production Orchestration：安排整條路",
-        "人工核准",
+        "Harness 內含 Agent Loop",
+        "Workflow Graph 排整條路",
+        "Loop Engineering 依證據調整",
     ),
     "en": (
-        "Five control questions in Agent engineering",
-        "Harness: the Agent's safe workbench",
-        "Loop: act → inspect evidence → continue / stop / ask",
-        "Workflow Graph / Production Orchestration: arrange the whole route",
-        "Human approval",
+        "Harness contains the Agent Loop",
+        "Workflow Graph arranges the route",
+        "Loop Engineering adjusts from evidence",
     ),
     "zh-Hans": (
-        "Agent 工程的五个控制问题",
-        "Harness：让 Agent 安全做事的工作台",
-        "Loop：做 → 看证据 → 继续／停止／问人",
-        "Workflow Graph／Production Orchestration：安排整条路线",
-        "人工批准",
+        "Harness 内含 Agent Loop",
+        "Workflow Graph 排整条路线",
+        "Loop Engineering 根据证据调整",
     ),
 }
 CORE_LABELS = {
@@ -368,34 +361,23 @@ def test_locale_diagrams_are_distinct_large_assets_and_referenced() -> None:
     hashes: set[str] = set()
     for locale, diagrams in DIAGRAMS.items():
         page_text = PAGES[locale].read_text(encoding="utf-8")
+        assert all(marker in page_text for marker in CONTROL_DIAGRAM_ALT_MARKERS[locale])
         for diagram in diagrams:
             data = diagram.read_bytes()
-            if diagram.suffix == ".png":
-                assert data.startswith(b"\x89PNG\r\n\x1a\n")
-                width, height = struct.unpack(">II", data[16:24])
-                assert width >= 1600 and height >= 900
-            else:
-                svg = data.decode("utf-8")
-                root = ET.fromstring(data)
-                namespace = "{http://www.w3.org/2000/svg}"
-                assert root.tag == f"{namespace}svg"
-                assert 'viewBox="0 0 1600 900"' in svg
-                assert root.attrib["role"] == "img"
-                title = root.find(f"{namespace}title")
-                desc = root.find(f"{namespace}desc")
-                assert title is not None and title.text
-                assert desc is not None and desc.text
-                assert root.attrib["aria-labelledby"] == "title desc"
-                for marker in SVG_MARKERS[locale]:
-                    assert marker in svg
-                if locale == "en":
-                    assert re.search(r"[\u3400-\u9fff]", svg) is None
-                if locale == "zh-Hans":
-                    for traditional in ("與", "讓", "證據", "繼續", "核准", "執行一輪", "風險"):
-                        assert traditional not in svg
+            assert diagram.suffix == ".png"
+            assert data.startswith(b"\x89PNG\r\n\x1a\n")
+            width, height = struct.unpack(">II", data[16:24])
+            assert width >= 1600 and height >= 900
+            if diagram.name.startswith("agent-engineering-control-questions"):
+                assert (width, height) == (1672, 941)
             hashes.add(hashlib.sha256(data).hexdigest())
             assert f"../resources/diagrams/{diagram.name}" in page_text
     assert len(hashes) == 6
+
+
+def test_control_questions_use_png_only() -> None:
+    diagram_dir = ROOT / "resources/diagrams"
+    assert not list(diagram_dir.glob("agent-engineering-control-questions*.svg"))
 
 
 def test_english_page_has_no_untranslated_cjk() -> None:

@@ -92,14 +92,14 @@ Read these five first. They explain the relationship between Agent Loops, Workfl
 <a id="the-five-layer-engineering-split-prompt--context--harness--loop--graph"></a>
 ## Five Control Questions: Prompt → Context → Harness → Loop → Graph
 
-These are five **check questions**, not five product generations, strict software layers, or chapter numbers. Their responsibilities overlap: a Harness often contains an Agent Loop, while a Workflow Graph may connect Harnesses, deterministic code, Loops, and human approvals.
+These are five **check questions**, not five product layers. The Agent Loop manages one Harness run; Loop Engineering manages how a long task observes, adjusts, and stops; the Graph arranges its route. They work together; none replaces another.
 
 | Control surface | Plain-language question | What runs | Work that designs it | First encountered | Deepened here |
 |---|---|---|---|---|---|
 | 1 | Did I explain the request clearly? | **Prompt** | **Prompt Engineering** | [Stage 2](02-prompt-engineering.en.md) | The Prompt and Eval in every stage |
 | 2 | Did I include the information it needs? | **Context** | **Context Engineering** | [Stage 2](02-prompt-engineering.en.md) to distinguish Prompt and Context | RAG / Memory in [Stage 6](06-memory-rag.en.md) |
 | 3 | Can it use tools safely and stop after failure? | **Agent Harness** | **Harness Engineering** | The runner / tool boundary in [Stage 3](03-tool-use-and-hello-agent.en.md) | Examples in [Stage 5](05-claude-code-ecosystem.en.md) and this stage's production checklist |
-| 4 | How does it act, inspect results, and act again without running forever? | **Agent Loop** | **Loop Engineering** | The Agent Loop in [Stage 3](03-tool-use-and-hello-agent.en.md) | This stage's bounded long-running loop |
+| 4 | How does it act, inspect, and act again without running forever? | **Agent Loop**; an outer loop may rerun the Harness | **Loop Engineering**: goals, evidence, adjustment, and stopping for long work | [Stage 3](03-tool-use-and-hello-agent.en.md) | This stage's long-task loop |
 | 5 | Can every step, branch, and return path be seen and controlled? | **Workflow Graph** | **Production orchestration**; emerging writing may also say Graph Engineering | The Workflow Graph in [Stage 4](04-agent-frameworks.en.md) | This stage's production orchestration |
 
 - **Stage 3: Agent Loop entry** — learn one execution of “model → tool → result → next step.”
@@ -108,7 +108,7 @@ These are five **check questions**, not five product generations, strict softwar
 
 Stage 4 introduces the **Workflow Graph** and the **Agent Frameworks** that can implement it. Stage 7 makes that same map observable and recoverable as production orchestration. A framework is the toolbox, not the work map or the production discipline itself.
 
-![Five Agent-engineering control questions: Prompt and Context enter the Harness, the Loop uses evidence to decide whether to repeat, and the Workflow Graph arranges the complete route](../resources/diagrams/agent-engineering-control-questions.en.svg)
+![One Agent run and the whole long-running task: Harness contains the Agent Loop; Workflow Graph arranges the route, while Loop Engineering adjusts from evidence](../resources/diagrams/agent-engineering-control-questions.en.png)
 
 IBM explicitly describes **Loop Engineering** as an emerging practice. **Graph Engineering** is looser still; major framework documentation usually says **workflow**, **graph-based execution**, or **orchestration**. This stage keeps both labels so you can understand outside discussions, but teaches the actual responsibilities instead of presenting them as one industry-wide standard.
 

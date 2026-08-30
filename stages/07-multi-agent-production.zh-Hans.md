@@ -92,14 +92,14 @@ Docker 还不熟也可以开始；先做练习 1–4，练习 5 再补。
 <a id="五层工程分工prompt--context--harness--loop--graph"></a>
 ## 五个控制问题：Prompt → Context → Harness → Loop → Graph
 
-这是五个**检查问题**，不是五代产品、严格的软件层，也不是课程章节顺序。它们的责任会重叠：Harness 常会包含 Agent Loop；Workflow Graph 也可以把 Harness、固定程序、Loop 和人工批准接在一起。
+这是五个**检查问题**，不是五层产品。Agent Loop 管一次 Harness run；Loop Engineering 管长任务的观察、调整与停止；Graph 排整条路线。它们协作，彼此不取代。
 
 | 控制面 | 大白话问题 | 会运行的东西 | 设计它的工作 | 先在哪里遇见 | 在哪里做稳 |
 |---|---|---|---|---|---|
 | 1 | 我有没有把话说清楚？ | **Prompt** | **Prompt Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) | 每章的 Prompt 和 Eval |
 | 2 | 我有没有把该看的资料放进来？ | **Context** | **Context Engineering** | [Stage 2](02-prompt-engineering.zh-Hans.md) 先分清 Prompt 与 Context | [Stage 6](06-memory-rag.zh-Hans.md) 的 RAG／Memory |
 | 3 | 它能不能安全地使用工具、出错后停下？ | **Agent Harness** | **Harness Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) 的 runner／tool boundary | [Stage 5](05-claude-code-ecosystem.zh-Hans.md) 的实例与本章的 production checklist |
-| 4 | 它怎么“做、看结果、再做”，而且不会无限运行？ | **Agent Loop** | **Loop Engineering** | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) | 本章的 bounded long-running loop |
+| 4 | 它怎么“做、看、再做”，又不会无限运行？ | **Agent Loop**；外层可重跑 Harness | **Loop Engineering**：长任务的目标、证据、调整与停止 | [Stage 3](03-tool-use-and-hello-agent.zh-Hans.md) | 本章的长任务 loop |
 | 5 | 每一步、分支和返回路线能不能被看见和控制？ | **Workflow Graph** | **Production orchestration**；新兴文章也会写 Graph Engineering | [Stage 4](04-agent-frameworks.zh-Hans.md) | 本章的 production orchestration |
 
 - **Stage 3：Agent Loop 入门**——先学一次执行里的“模型 → 工具 → 结果 → 下一步”。
@@ -108,7 +108,7 @@ Docker 还不熟也可以开始；先做练习 1–4，练习 5 再补。
 
 Stage 4 先教 **Workflow Graph** 和实现它的 **Agent Framework**；Stage 7 再把同一张图做成可观测、可恢复的 production orchestration。Framework 是工具箱，不是工作地图，也不是上线编排本身。
 
-![Agent 工程的五个控制问题：Prompt 和 Context 进入 Harness，Loop 根据证据决定是否再做，Workflow Graph 安排完整路线](../resources/diagrams/agent-engineering-control-questions.zh-Hans.svg)
+![一次 Agent run 和整个长任务：Harness 内含 Agent Loop；Workflow Graph 排整条路线，Loop Engineering 根据证据调整](../resources/diagrams/agent-engineering-control-questions.zh-Hans.png)
 
 **Loop Engineering** 是 IBM 明确标为 emerging practice 的新兴称呼。**Graph Engineering** 更松散；主要框架的正式文档多半仍写 **workflow**、**graph-based execution** 或 **orchestration**。本章保留这两个词，让你看得懂外面的讨论，但以实际责任为准，不把它们说成全行业共同标准。
 
