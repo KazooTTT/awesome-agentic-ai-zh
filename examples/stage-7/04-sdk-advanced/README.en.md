@@ -6,7 +6,7 @@
 
 **Streaming** displays an answer in pieces. **Prompt caching** may reuse a shared long prefix. They solve different problems.
 
-Pairs with Exercise 4 in [Stage 7 — Agent Production Engineering: Harness, Loops & Graphs](../../../stages/07-multi-agent-production.en.md).
+Pairs with Exercise 4 in [Stage 7 — Agent Production Engineering: Harness, Loops, and Graphs](../../../stages/07-multi-agent-production.en.md).
 
 ## 🎯 Learning goals
 

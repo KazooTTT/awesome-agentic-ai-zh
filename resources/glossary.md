@@ -52,7 +52,7 @@
 
 → 詳細定義請看下面各區塊。
 
-**先分清兩種順序：**課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Agent Framework／Workflow Graph](../stages/04-agent-frameworks.md) → [Stage 7 的 Agent Production Engineering](../stages/07-multi-agent-production.md)。五層圖的 Prompt → Context → Harness → Loop → Graph 則是在比較「要管的範圍有多大」，**不是章節編號**。
+**先分清兩種順序：**課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 與 Graph](../stages/07-multi-agent-production.md)。五層圖的 Prompt → Context → Harness → Loop → Graph 則是在比較「要管的範圍有多大」，**不是章節編號**。
 
 ---
 
@@ -480,7 +480,7 @@ LLM 「自信地說錯」——把不存在的 API 編出來、把錯的數字�
 
 **跟迴圈的關係**：不是二選一。**格子裡面是 agent 自己繞圈，格子跟格子之間才是你安排的順序**——所以圖是把好幾個迴圈裝進格子再排順序；全部塞回同一個格子，就退回單純的迴圈了。格子裡也不一定是 agent，可以是一個工具、一段檢查、或「這裡要人按核准才能往下」。五層階梯的完整說明見 [Stage 7](../stages/07-multi-agent-production.md)（canonical）。
 
-先在 [Stage 4 的 Agent framework／Workflow Graph](../stages/04-agent-frameworks.md) 學工具和基本圖，再到 [Stage 7](../stages/07-multi-agent-production.md) 加上預算、驗證、觀測與復原。可直接跑的入口是 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.md)（`StateGraph` / conditional edge / checkpointer）。相關：harness、Loop Engineering、orchestration。
+先在 [Stage 4 的 Workflow Graph／Agent framework](../stages/04-agent-frameworks.md) 學工具和基本圖，再到 [Stage 7](../stages/07-multi-agent-production.md) 加上預算、驗證、觀測與復原。可直接跑的入口是 [`examples/stage-4/03-graph-workflow/`](../examples/stage-4/03-graph-workflow/README.md)（`StateGraph` / conditional edge / checkpointer）。相關：harness、Loop Engineering、orchestration。
 
 ---
 

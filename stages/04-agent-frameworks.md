@@ -1,8 +1,8 @@
-# Stage 4 — Agent 框架與 Workflow Graph
+# Stage 4 — Workflow Graph 與 Agent 框架
 
 > **繁體中文** | [简体中文](./04-agent-frameworks.zh-Hans.md) | [English](./04-agent-frameworks.en.md)
 
-你在 Stage 3 已經自己寫過 **Agent Loop**。這一關要做的事很簡單：先看 **framework** 提供哪些積木，再把需要看清楚的步驟畫成 **Workflow Graph**。工具可以幫你少接幾條線，但不會替你決定哪張工作地圖才安全。
+你在 Stage 3 已經自己寫過 **Agent Loop**。這一關先把多步工作畫成 **Workflow Graph**，再選 **Framework（框架）** 來幫你接線。先看懂工作地圖，再選工具箱，才不會因為某個框架很流行就硬把事情變複雜。
 
 <!-- freshness: canonical=stages/04-agent-frameworks.md; verified_on=2026-08-27; scope=frameworks,releases,maintenance,licenses,security; max_age_days=90 -->
 
@@ -10,15 +10,15 @@
 
 完成這一關後，你可以：
 
-- 用自己的話分清 Agent Loop、Agent framework、Workflow Graph 與多角色系統。
+- 用自己的話分清 Agent Loop、Workflow Graph、Agent framework 與多角色系統。
 - 先選最簡單能完成任務的工具，不為了流行硬加角色。
 - 跑完五個練習，親手比較 LangGraph、CrewAI、Smolagents 與 Pydantic AI。
 - 說出交接、存檔與人工批准各自解決什麼問題。
 
 ## 🧩 先認識八個核心詞
 
-- **Framework（框架）**：一盒已經整理好的積木。它幫你接好迴圈、工具、記錄與錯誤處理；但盒子越大，藏起來的細節也越多。
 - **Workflow（工作流程）／Workflow Graph（工作流程圖）**：像照食譜做菜，再把每一步和下一站畫出來。程式先寫好 node、edge 與分支，模型只完成其中需要判斷的工作。
+- **Framework（框架）**：一盒已經整理好的積木。它幫你接好迴圈、工具、記錄與錯誤處理；但盒子越大，藏起來的細節也越多。
 - **Agent（代理程式）**：像拿到目標的助手。模型可以依目前結果決定下一步，但真正的權限、驗證與停止條件仍由程式控制。
 - **Orchestration（編排）**：像交通指揮。它安排誰先做、誰後做、資料交給誰，以及失敗時怎麼回來。
 - **State（狀態）**：像工作中的筆記本。它記住目前輸入、工具結果、進度與下一步需要的資料。
@@ -26,13 +26,14 @@
 - **Handoff（交接）**：像把工作單交給另一位同學。新的 Agent 接手後，需要拿到足夠背景，也不能得到不需要的權限。
 - **Human-in-the-loop（HITL，人在迴圈中）**：像先舉手請老師看。程式在花錢、寄信、刪資料或發布前暫停，等人批准才繼續。
 
-## 🧭 先分清：Loop、Framework 與 Graph
+<a id="-先分清loopframework-與-graph"></a>
+## 🧭 先分清：Loop、Graph 與 Framework
 
 | 名稱 | 五歲也懂的說法 | 正確邊界與學習位置 |
 |---|---|---|
 | **Agent Loop** | 助手做一步、看結果，再決定下一步 | Stage 3 的一次執行內迴圈：model → tool call → execute → tool result → model |
-| **Agent Framework** | 一盒幫你接線的工具積木 | 提供 runner、tool、state、handoff、checkpoint 等零件；一個 Agent 也能使用 |
 | **Workflow Graph** | 把每一站和道路畫出來 | 用 node、edge、branch 與 state 表示工作順序；格子裡可以是 Agent、工具、檢查或人工批准 |
+| **Agent Framework** | 一盒幫你接線的工具積木 | 提供 runner、tool、state、handoff、checkpoint 等零件；一個 Agent 也能使用 |
 | **Loop Engineering** | 設計它怎麼反覆做、怎麼驗、何時停 | Stage 7 才加入預算、驗證、復原與人工升級 |
 | **Graph Engineering** | 用工具箱設計整張工作地圖 | Stage 7 才把多個 loop、工具與人做成可觀測、可復原的 production 系統 |
 

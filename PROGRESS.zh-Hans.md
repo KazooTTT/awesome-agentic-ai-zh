@@ -44,7 +44,7 @@
 > 你想“**自己 build** agent / 框架 / 多 agent 系统”。
 
 - [ ] **Stage 3 — 工具使用与第一个 Agent Loop** ⭐ · [`stages/03-tool-use-and-hello-agent.zh-Hans.md`](stages/03-tool-use-and-hello-agent.zh-Hans.md)
-- [ ] **Stage 4 — Agent 框架与 Workflow Graph** · [`stages/04-agent-frameworks.zh-Hans.md`](stages/04-agent-frameworks.zh-Hans.md)
+- [ ] **Stage 4 — Workflow Graph 与 Agent 框架** · [`stages/04-agent-frameworks.zh-Hans.md`](stages/04-agent-frameworks.zh-Hans.md)
 - [ ] **Stage 5 — Claude Code 生态** ⭐⭐(两轨共用)· [`stages/05-claude-code-ecosystem.zh-Hans.md`](stages/05-claude-code-ecosystem.zh-Hans.md)
 - [ ] **Stage 6 — 上下文管理：RAG 与 Memory** · [`stages/06-memory-rag.zh-Hans.md`](stages/06-memory-rag.zh-Hans.md)
 - [ ] **Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph** · [`stages/07-multi-agent-production.zh-Hans.md`](stages/07-multi-agent-production.zh-Hans.md)

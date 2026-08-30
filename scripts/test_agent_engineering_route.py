@@ -30,7 +30,7 @@ GLOSSARIES = {
 GLOSSARY_MARKERS = {
     "zh-TW": (
         "### Agent Production Engineering",
-        "課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Agent Framework／Workflow Graph](../stages/04-agent-frameworks.md) → [Stage 7 的 Agent Production Engineering](../stages/07-multi-agent-production.md)",
+        "課程會依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 與 Graph](../stages/07-multi-agent-production.md)",
         "五層圖的 Prompt → Context → Harness → Loop → Graph 則是在比較「要管的範圍有多大」，**不是章節編號**",
         "可以在一次長 run 裡，也可以跨 session／排程",
         "這個名稱已出現在產業文章與研究討論中",
@@ -40,7 +40,7 @@ GLOSSARY_MARKERS = {
     ),
     "en": (
         "### Agent Production Engineering",
-        "the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Agent Framework / Workflow Graph](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering](../stages/07-multi-agent-production.en.md)",
+        "the course teaches [Stage 3 Agent Loop](../stages/03-tool-use-and-hello-agent.en.md) → [Stage 4 Workflow Graph / Agent Framework](../stages/04-agent-frameworks.en.md) → [Stage 7 Agent Production Engineering: Harness, Loops, and Graphs](../stages/07-multi-agent-production.en.md)",
         "The Prompt → Context → Harness → Loop → Graph stack compares how much of the system you control; it is **not the chapter order**",
         "can happen inside one long run or across sessions and schedules",
         "This name is already used in industry writing and research discussion",
@@ -50,7 +50,7 @@ GLOSSARY_MARKERS = {
     ),
     "zh-Hans": (
         "### Agent Production Engineering",
-        "课程会依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.zh-Hans.md) → [Stage 4 的 Agent Framework／Workflow Graph](../stages/04-agent-frameworks.zh-Hans.md) → [Stage 7 的 Agent Production Engineering](../stages/07-multi-agent-production.zh-Hans.md)",
+        "课程会依序教 [Stage 3 的 Agent Loop](../stages/03-tool-use-and-hello-agent.zh-Hans.md) → [Stage 4 的 Workflow Graph／Agent Framework](../stages/04-agent-frameworks.zh-Hans.md) → [Stage 7 的 Agent Production Engineering：Harness、Loop 与 Graph](../stages/07-multi-agent-production.zh-Hans.md)",
         "五层图的 Prompt → Context → Harness → Loop → Graph 是在比较“要管的范围有多大”，**不是章节编号**",
         "可以在一次长 run 里，也可以跨 session／调度",
         "这个名称已经出现在产业文章和研究讨论中",

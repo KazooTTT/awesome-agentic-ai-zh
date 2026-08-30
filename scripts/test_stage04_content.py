@@ -25,9 +25,9 @@ STAGE3_TITLES = {
     "zh-Hans": "# Stage 3 — 工具使用与第一个 Agent Loop ⭐",
 }
 STAGE4_TITLES = {
-    "zh-TW": "# Stage 4 — Agent 框架與 Workflow Graph",
-    "en": "# Stage 4 — Agent Frameworks & Workflow Graphs",
-    "zh-Hans": "# Stage 4 — Agent 框架与 Workflow Graph",
+    "zh-TW": "# Stage 4 — Workflow Graph 與 Agent 框架",
+    "en": "# Stage 4 — Workflow Graphs & Agent Frameworks",
+    "zh-Hans": "# Stage 4 — Workflow Graph 与 Agent 框架",
 }
 STAGE4_LEGACY_FRAMEWORK_ANCHORS = {
     "zh-TW": '-什麼是-multi-agent-framework',
@@ -56,15 +56,15 @@ BRIDGE_LABELS = (
 EXAMPLE_LINK_LABELS = {
     "zh-TW": (
         "Stage 3 — 工具使用與第一個 Agent Loop",
-        "Stage 4 — Agent 框架與 Workflow Graph",
+        "Stage 4 — Workflow Graph 與 Agent 框架",
     ),
     "en": (
         "Stage 3 — Tool Use & Your First Agent Loop",
-        "Stage 4 — Agent Frameworks & Workflow Graphs",
+        "Stage 4 — Workflow Graphs & Agent Frameworks",
     ),
     "zh-Hans": (
         "Stage 3 — 工具使用与第一个 Agent Loop",
-        "Stage 4 — Agent 框架与 Workflow Graph",
+        "Stage 4 — Workflow Graph 与 Agent 框架",
     ),
 }
 
@@ -156,7 +156,7 @@ def test_direct_example_return_labels_match_localized_stage_titles(
 def test_mdbook_summary_generator_uses_current_canonical_titles() -> None:
     script = (ROOT / "scripts/build-mdbook.sh").read_text(encoding="utf-8")
     assert "[Stage 3 — 工具使用與第一個 Agent Loop](stages/03-tool-use-and-hello-agent.md)" in script
-    assert "[Stage 4 — Agent 框架與 Workflow Graph](stages/04-agent-frameworks.md)" in script
+    assert "[Stage 4 — Workflow Graph 與 Agent 框架](stages/04-agent-frameworks.md)" in script
     assert "Stage 3 — Tool Use & Hello Agent" not in script
     assert "[Stage 4 — Agent 框架](stages/04-agent-frameworks.md)" not in script
 

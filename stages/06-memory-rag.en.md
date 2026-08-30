@@ -406,4 +406,4 @@ Start with **LlamaIndex or LangChain + Chroma** to understand the minimal pipeli
 - [ ] I can compare before and after with a small question set instead of one impressive answer.
 - [ ] Memory stores only necessary, approved data, and users can view, edit, and delete it.
 
-Once you can do all of this, go to [Stage 7 — Agent Production Engineering: Harness, Loops & Graphs](07-multi-agent-production.en.md).
+Once you can do all of this, go to [Stage 7 — Agent Production Engineering: Harness, Loops, and Graphs](07-multi-agent-production.en.md).

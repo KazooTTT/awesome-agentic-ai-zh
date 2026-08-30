@@ -207,6 +207,28 @@ developer_path_fact_pack:
     ollama: 'https://docs.ollama.com/'
     project_status: 'scripts/repository-freshness-snapshot.json'
 
+cookbook_fact_pack:
+  canonical: 'resources/cookbook.md'
+  verified_on: '2026-08-29'
+  scope: ['skills', 'mcp', 'documents', 'gemini-notebook', 'zotero', 'local-runtime', 'cli-tools']
+  official_sources:
+    claude_code_skills: 'https://code.claude.com/docs/en/slash-commands'
+    claude_code_mcp: 'https://code.claude.com/docs/en/mcp'
+    mcp_python_v2: 'https://github.com/modelcontextprotocol/python-sdk/blob/main/docs/whats-new.md'
+    anthropic_skills: 'https://github.com/anthropics/skills'
+    gemini_notebook_rename: 'https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/'
+    zotero_local_api: 'https://www.zotero.org/support/dev/web_api/v3/local_api'
+    opencode_v2: 'https://opencode.ai/v2/docs'
+    opencode_local_models: 'https://opencode.ai/v2/docs/models'
+    aider_ollama: 'https://aider.chat/docs/llms/ollama.html'
+    ollama_gemma4: 'https://ollama.com/library/gemma4'
+    openrouter: 'https://openrouter.ai/docs/quickstart'
+    pi: 'https://github.com/earendil-works/pi'
+  community_sources:
+    notebooklm_py: 'https://github.com/teng-lin/notebooklm-py'
+    notebooklm_skill: 'https://github.com/PleasePrompto/notebooklm-skill'
+    zotero_skills: 'https://github.com/WenyuChiou/zotero-skills'
+
 verified_pages:
   - canonical: 'stages/01-llm-basics.md'
     required_scopes: ['models', 'pricing', 'availability', 'deprecations']
@@ -234,6 +256,9 @@ verified_pages:
     max_age_days: 90
   - canonical: 'branches/for-developer.md'
     required_scopes: ['coding-agents', 'tool-identity', 'permissions', 'sandboxing', 'project-status']
+    max_age_days: 90
+  - canonical: 'resources/cookbook.md'
+    required_scopes: ['skills', 'mcp', 'documents', 'gemini-notebook', 'zotero', 'local-runtime', 'cli-tools']
     max_age_days: 90
 
 current_frontier_models:
@@ -432,16 +457,31 @@ stale_patterns:
     qualifier_terms: ['Beta', 'before v1.0', 'v1.0 前', '可能改變', '可能变化']
     note: 'Cloudflare Sandbox SDK is Beta and its APIs may change before v1.0'
 
-  # Researcher/developer role-path facts and product identities. Mirror locales
+  # Researcher/developer/Cookbook facts and product identities. Mirror locales
   # inherit each canonical include path through check-2026-freshness.py. This C2a
   # gate intentionally covers only the role pages enrolled in
   # scripts/reader-ux-pages.yml. Current-name prose in branches/for-teacher*,
   # resources/cookbook*, RESOURCES*, and resources/README* remains explicit C2b
   # follow-up scope. Package and repository identifiers keep their published names.
   - pattern: 'NotebookLM'
-    include_files: ['branches/for-researcher.md']
+    include_files: ['branches/for-researcher.md', 'resources/cookbook.md']
     qualifier_terms: ['Gemini Notebook', 'former', 'formerly', 'old name', '原', '舊名', '旧名', '前身']
     note: 'On enrolled C2a role pages, NotebookLM needs the current Gemini Notebook name; other prose surfaces are tracked for C2b, while package and repository identifiers remain unchanged'
+
+  - pattern: 'from mcp\.server\.mcpserver import MCPServer|npm install -g opencode-ai|opencode auth login|pip install aider-chat|aider --model ollama/'
+    include_files: ['resources/cookbook.md']
+    qualifier_terms: []
+    note: 'Cookbook commands must stay on MCP v2, OpenCode 2, and the current Aider Ollama path'
+
+  - pattern: 'local API (?:is|是) read-only|local API 唯讀|local API 只读'
+    include_files: ['resources/cookbook.md']
+    qualifier_terms: []
+    note: 'Zotero 10+ Local API supports authorized write requests and is not read-only'
+
+  - pattern: 'qwen2\.5:3b'
+    include_files: ['resources/cookbook.md']
+    qualifier_terms: []
+    note: 'The Cookbook local quickstart follows the currently verified Gemma 4 edge tags'
 
   - pattern: 'open_deep_research'
     include_files: ['branches/for-researcher.md']

@@ -252,7 +252,7 @@ r = client.messages.create(model="claude-haiku-4-5-20251001", ...)
 | 1 LLM 基础 | 6 个 | inline 4 + folder 2（`examples/stage-1/`） |
 | 2 Prompt eng | 4 个 | inline 3 + folder 1（`examples/stage-2/`） |
 | **3 工具使用与第一个 Agent Loop** | **6 个** | folder 6（`examples/stage-3/`） |
-| 4 Agent 框架与 Workflow Graph | 5 个 | 5 个双路径、离线可验证的 folder（`examples/stage-4/`；Python 3.11） |
+| 4 Workflow Graph 与 Agent 框架 | 5 个 | 5 个双路径、离线可验证的 folder（`examples/stage-4/`；Python 3.11） |
 | 5 Claude Code 生态 | 11 个 | inline 6 + folder 5（`examples/stage-5/`） |
 | 6 Memory/RAG | 5 个 | 全 folder（`examples/stage-6/`） |
 | 7 Agent Production Engineering | 5 个 | inline 1 + folder 4（`examples/stage-7/`） |

@@ -6,7 +6,7 @@
 
 **Observability** is like adding an instrument panel to an agent: when it becomes slow, fails, or uses too many tokens, you can find the responsible step.
 
-Pairs with Exercise 3 in [Stage 7 — Agent Production Engineering: Harness, Loops & Graphs](../../../stages/07-multi-agent-production.en.md).
+Pairs with Exercise 3 in [Stage 7 — Agent Production Engineering: Harness, Loops, and Graphs](../../../stages/07-multi-agent-production.en.md).
 
 ## 🎯 Learning goals
 

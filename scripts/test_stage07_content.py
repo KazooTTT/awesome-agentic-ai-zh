@@ -19,14 +19,17 @@ PAGES = {
 DIAGRAMS = {
     "zh-TW": (
         ROOT / "resources/diagrams/agent-engineering-5layer.png",
+        ROOT / "resources/diagrams/harness-loop-graph-boundary.png",
         ROOT / "resources/diagrams/inside-a-graph.png",
     ),
     "en": (
         ROOT / "resources/diagrams/agent-engineering-5layer.en.png",
+        ROOT / "resources/diagrams/harness-loop-graph-boundary.en.png",
         ROOT / "resources/diagrams/inside-a-graph.en.png",
     ),
     "zh-Hans": (
         ROOT / "resources/diagrams/agent-engineering-5layer.zh-Hans.png",
+        ROOT / "resources/diagrams/harness-loop-graph-boundary.zh-Hans.png",
         ROOT / "resources/diagrams/inside-a-graph.zh-Hans.png",
     ),
 }
@@ -72,7 +75,7 @@ CORE_SECTION_HEADINGS = {
 }
 PAGE_TITLES = {
     "zh-TW": "# Stage 7 — Agent Production Engineering：Harness、Loop 與 Graph",
-    "en": "# Stage 7 — Agent Production Engineering: Harness, Loops & Graphs",
+    "en": "# Stage 7 — Agent Production Engineering: Harness, Loops, and Graphs",
     "zh-Hans": "# Stage 7 — Agent Production Engineering：Harness、Loop 与 Graph",
 }
 OLD_PAGE_TITLES = {
@@ -95,6 +98,9 @@ CURRENT_FACT_URLS = {
     "https://docs.langchain.com/oss/python/langgraph/workflows-agents",
     "https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/",
     "https://arxiv.org/abs/2608.21156",
+    "https://openai.com/index/harness-engineering/",
+    "https://www.anthropic.com/engineering/managed-agents",
+    "https://www.anthropic.com/engineering/harness-design-long-running-apps",
     "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
     "https://github.com/open-telemetry/semantic-conventions-genai",
     "https://github.com/earendil-works/pi",
@@ -208,6 +214,45 @@ def test_five_layer_map_is_scope_not_chapter_numbering(locale: str, page: Path) 
     assert not any(term in text for term in FORBIDDEN_TERMINOLOGY)
 
 
+BOUNDARY_HEADINGS = {
+    "zh-TW": (
+        "## 🧭 Harness、Loop、Graph 各自管什麼？",
+        "## 🏗 Harness Engineering",
+        "## 🔁 Loop Engineering",
+        "## 🗺 Graph Engineering",
+    ),
+    "en": (
+        "## 🧭 What Does Harness, Loop, and Graph Each Control?",
+        "## 🏗 Harness Engineering",
+        "## 🔁 Loop Engineering",
+        "## 🗺 Graph Engineering",
+    ),
+    "zh-Hans": (
+        "## 🧭 Harness、Loop、Graph 各自管什么？",
+        "## 🏗 Harness Engineering",
+        "## 🔁 Loop Engineering",
+        "## 🗺 Graph Engineering",
+    ),
+}
+
+
+@pytest.mark.parametrize("locale,page", PAGES.items())
+def test_harness_loop_graph_boundaries_are_visible_and_ordered(
+    locale: str, page: Path
+) -> None:
+    visible = _without_closed_details(page.read_text(encoding="utf-8"))
+    positions = [visible.index(heading) for heading in BOUNDARY_HEADINGS[locale]]
+    assert positions == sorted(positions)
+    loop_names = {
+        "zh-TW": ("程式迴圈", "Agent Loop", "Loop Engineering"),
+        "en": ("Program loop", "Agent Loop", "Loop Engineering"),
+        "zh-Hans": ("程序循环", "Agent Loop", "Loop Engineering"),
+    }
+    assert all(name in visible for name in loop_names[locale])
+    assert "IBM" in visible
+    assert "Anthropic" in visible
+
+
 @pytest.mark.parametrize("page", PAGES.values())
 def test_required_reading_and_featured_resources_are_visible(page: Path) -> None:
     visible = _without_closed_details(page.read_text(encoding="utf-8"))
@@ -296,7 +341,7 @@ def test_locale_diagrams_are_distinct_large_pngs_and_referenced() -> None:
             assert width >= 1600 and height >= 900
             hashes.add(hashlib.sha256(data).hexdigest())
             assert f"../resources/diagrams/{diagram.name}" in page_text
-    assert len(hashes) == 6
+    assert len(hashes) == 9
 
 
 def test_english_page_has_no_untranslated_cjk() -> None:

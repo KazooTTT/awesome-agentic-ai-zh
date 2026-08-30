@@ -623,14 +623,14 @@ pages:
           anchor: -先认识八个核心词
       loop-framework-graph:
         zh-TW:
-          heading: "🧭 先分清：Loop、Framework 與 Graph"
-          anchor: -先分清loopframework-與-graph
+          heading: "🧭 先分清：Loop、Graph 與 Framework"
+          anchor: -先分清loopgraph-與-framework
         en:
-          heading: "🧭 First Separate Loop, Framework, and Graph"
-          anchor: -first-separate-loop-framework-and-graph
+          heading: "🧭 First Separate Loop, Graph, and Framework"
+          anchor: -first-separate-loop-graph-and-framework
         zh-Hans:
-          heading: "🧭 先分清：Loop、Framework 与 Graph"
-          anchor: -先分清loopframework-与-graph
+          heading: "🧭 先分清：Loop、Graph 与 Framework"
+          anchor: -先分清loopgraph-与-framework
       choice-map:
         zh-TW:
           heading: "🗺️ 先看一張選擇地圖"
@@ -809,14 +809,14 @@ pages:
       first_exercise_section_id: exercise-1
       min_definition_chars: 20
       terms:
-        - id: framework
-          zh-TW: {term: Framework, label: "Framework（框架）"}
-          en: {term: Framework, label: Framework}
-          zh-Hans: {term: Framework, label: "Framework（框架）"}
         - id: workflow
           zh-TW: {term: Workflow, label: "Workflow（工作流程）／Workflow Graph（工作流程圖）"}
           en: {term: Workflow, label: "Workflow / Workflow Graph"}
           zh-Hans: {term: Workflow, label: "Workflow（工作流程）／Workflow Graph（工作流程图）"}
+        - id: framework
+          zh-TW: {term: Framework, label: "Framework（框架）"}
+          en: {term: Framework, label: Framework}
+          zh-Hans: {term: Framework, label: "Framework（框架）"}
         - id: agent
           zh-TW: {term: Agent, label: "Agent（代理程式）"}
           en: {term: Agent, label: Agent}
@@ -1169,9 +1169,9 @@ pages:
       en: stages/07-multi-agent-production.en.md
       zh-Hans: stages/07-multi-agent-production.zh-Hans.md
     max_visible_chars:
-      zh-TW: 10918
-      en: 16573
-      zh-Hans: 11058
+      zh-TW: 12800
+      en: 19722
+      zh-Hans: 12948
     max_open_details: 0
     required_details_count: 6
     visible_section_order:
@@ -1180,8 +1180,11 @@ pages:
       - entry-conditions
       - required-reading
       - five-layers
+      - harness-loop-graph-boundary
       - harness
       - harness-components
+      - loop-engineering
+      - graph-engineering
       - tool-roles
       - hands-on
       - exercise-1
@@ -1231,6 +1234,10 @@ pages:
         zh-TW: {heading: "五層工程分工：Prompt → Context → Harness → Loop → Graph", anchor: 五層工程分工prompt--context--harness--loop--graph}
         en: {heading: "The Five-Layer Engineering Split: Prompt → Context → Harness → Loop → Graph", anchor: the-five-layer-engineering-split-prompt--context--harness--loop--graph}
         zh-Hans: {heading: "五层工程分工：Prompt → Context → Harness → Loop → Graph", anchor: 五层工程分工prompt--context--harness--loop--graph}
+      harness-loop-graph-boundary:
+        zh-TW: {heading: "🧭 Harness、Loop、Graph 各自管什麼？", anchor: -harnessloopgraph-各自管什麼}
+        en: {heading: "🧭 What Does Harness, Loop, and Graph Each Control?", anchor: -what-does-harness-loop-and-graph-each-control}
+        zh-Hans: {heading: "🧭 Harness、Loop、Graph 各自管什么？", anchor: -harnessloopgraph-各自管什么}
       harness:
         zh-TW: {heading: "🏗 Harness Engineering — production agent runtime 的工程設計 ⭐ 本 stage 核心概念", anchor: -harness-engineering--production-agent-runtime-的工程設計--本-stage-核心概念}
         en: {heading: "🏗 Harness Engineering — Production Agent Runtime Design ⭐ Core Concept of This Stage", anchor: -harness-engineering--production-agent-runtime-design--core-concept-of-this-stage}
@@ -1239,6 +1246,14 @@ pages:
         zh-TW: {heading: "Harness 的 8 個核心元件", anchor: harness-的-8-個核心元件}
         en: {heading: "The 8 Core Components of a Harness", anchor: the-8-core-components-of-a-harness}
         zh-Hans: {heading: "Harness 的 8 个核心元件", anchor: harness-的-8-个核心元件}
+      loop-engineering:
+        zh-TW: {heading: "🔁 Loop Engineering — 讓 Agent 做、看、改，而且知道何時停", anchor: -loop-engineering--讓-agent-做看改而且知道何時停}
+        en: {heading: "🔁 Loop Engineering — Let the Agent Act, Observe, Adjust, and Know When to Stop", anchor: -loop-engineering--let-the-agent-act-observe-adjust-and-know-when-to-stop}
+        zh-Hans: {heading: "🔁 Loop Engineering — 让 Agent 做、看、改，而且知道何时停", anchor: -loop-engineering--让-agent-做看改而且知道何时停}
+      graph-engineering:
+        zh-TW: {heading: "🗺 Graph Engineering — 把步驟、Loop 與核准排成完整路線", anchor: -graph-engineering--把步驟loop-與核准排成完整路線}
+        en: {heading: "🗺 Graph Engineering — Arrange Steps, Loops, and Approvals into a Complete Route", anchor: -graph-engineering--arrange-steps-loops-and-approvals-into-a-complete-route}
+        zh-Hans: {heading: "🗺 Graph Engineering — 把步骤、Loop 与批准排成完整路线", anchor: -graph-engineering--把步骤loop-与批准排成完整路线}
       tool-roles:
         zh-TW: {heading: "🧭 OpenRouter、Pi、OpenCode、Orca、QM 到底差在哪？", anchor: -openrouterpiopencodeorcaqm-到底差在哪}
         en: {heading: "🧭 What Is the Difference Between OpenRouter, Pi, OpenCode, Orca, and QM?", anchor: -what-is-the-difference-between-openrouter-pi-opencode-orca-and-qm}
@@ -1335,9 +1350,9 @@ pages:
       en: stages/07.5-advanced-agentic-concepts.en.md
       zh-Hans: stages/07.5-advanced-agentic-concepts.zh-Hans.md
     max_visible_chars:
-      zh-TW: 4824
-      en: 7768
-      zh-Hans: 4850
+      zh-TW: 5247
+      en: 8507
+      zh-Hans: 5285
     max_open_details: 0
     required_details_count: 9
     visible_section_order:
@@ -1347,6 +1362,7 @@ pages:
       - problem-map
       - boundary-card
       - topics
+      - model-harness-fit
       - resources
       - completion
     forbidden_terms:
@@ -1391,6 +1407,10 @@ pages:
         zh-TW: {heading: "🔬 遇到需要時才展開的專題", anchor: -遇到需要時才展開的專題}
         en: {heading: "🔬 Topics to open when needed", anchor: -topics-to-open-when-needed}
         zh-Hans: {heading: "🔬 遇到需要时才展开的专题", anchor: -遇到需要时才展开的专题}
+      model-harness-fit:
+        zh-TW: {heading: "⚖️ Model–Harness Fit：用 Eval 決定保留、簡化或移除", anchor: -modelharness-fit用-eval-決定保留簡化或移除}
+        en: {heading: "⚖️ Model–Harness Fit: Use Evals to Keep, Simplify, or Remove", anchor: -modelharness-fit-use-evals-to-keep-simplify-or-remove}
+        zh-Hans: {heading: "⚖️ Model–Harness Fit：用 Eval 决定保留、简化或移除", anchor: -modelharness-fit用-eval-决定保留简化或移除}
       resources:
         zh-TW: {heading: "🎯 精選閱讀：先挑一條", anchor: -精選閱讀先挑一條}
         en: {heading: "🎯 Curated reading: choose one path", anchor: -curated-reading-choose-one-path}
@@ -2342,6 +2362,132 @@ pages:
           zh-Hans: {term: Academic Integrity, label: "Academic Integrity（学术诚信）"}
     resource_group_rowspans: [3, 3, 3, 3]
 
+  - id: cookbook
+    canonical: resources/cookbook.md
+    mirrors:
+      en: resources/cookbook.en.md
+      zh-Hans: resources/cookbook.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 9000
+      en: 13000
+      zh-Hans: 9000
+    max_open_details: 0
+    required_details_count: 9
+    forbidden_terms_include_code: true
+    forbidden_terms:
+      zh-TW: ["from mcp.server.mcpserver import MCPServer", "npm install -g opencode-ai", "opencode auth login", "pip install aider-chat", "aider --model ollama/", "qwen2.5:3b"]
+      en: ["from mcp.server.mcpserver import MCPServer", "npm install -g opencode-ai", "opencode auth login", "pip install aider-chat", "aider --model ollama/", "qwen2.5:3b"]
+      zh-Hans: ["from mcp.server.mcpserver import MCPServer", "npm install -g opencode-ai", "opencode auth login", "pip install aider-chat", "aider --model ollama/", "qwen2.5:3b"]
+    visible_section_order:
+      - purpose
+      - chooser
+      - core-terms
+      - recipe-1
+      - recipe-2
+      - recipe-3
+      - recipe-4
+      - recipe-5
+      - recipe-6
+      - required-reading
+      - resources
+      - completion
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+      literals:
+        - "2026-08-29"
+        - "from mcp.server import MCPServer"
+        - "Gemini Notebook"
+        - "http://localhost:23119/api/"
+        - "gemma4:e4b"
+        - "@opencode-ai/cli@beta"
+        - "opencode2"
+        - "ollama_chat/gemma4:e4b"
+        - "OpenRouter"
+        - "https://github.com/earendil-works/pi"
+    required_visible_sections:
+      purpose:
+        zh-TW: {heading: "📌 這份 Cookbook 幫你做什麼", anchor: -這份-cookbook-幫你做什麼}
+        en: {heading: "📌 What this Cookbook helps you do", anchor: -what-this-cookbook-helps-you-do}
+        zh-Hans: {heading: "📌 这份 Cookbook 帮你做什么", anchor: -这份-cookbook-帮你做什么}
+      chooser:
+        zh-TW: {heading: "🎯 先選一份 recipe", anchor: -先選一份-recipe}
+        en: {heading: "🎯 Choose one recipe first", anchor: -choose-one-recipe-first}
+        zh-Hans: {heading: "🎯 先选一份 recipe", anchor: -先选一份-recipe}
+      core-terms:
+        zh-TW: {heading: "🧩 六個核心詞", anchor: -六個核心詞}
+        en: {heading: "🧩 Six core terms", anchor: -six-core-terms}
+        zh-Hans: {heading: "🧩 六个核心词", anchor: -六个核心词}
+      recipe-1:
+        zh-TW: {heading: "1. 寫你的第一個 Skill", anchor: 1-寫你的第一個-skill}
+        en: {heading: "1. Write your first Skill", anchor: 1-write-your-first-skill}
+        zh-Hans: {heading: "1. 写你的第一个 Skill", anchor: 1-写你的第一个-skill}
+      recipe-2:
+        zh-TW: {heading: "2. 寫你的第一個 MCP server", anchor: 2-寫你的第一個-mcp-server}
+        en: {heading: "2. Write your first MCP server", anchor: 2-write-your-first-mcp-server}
+        zh-Hans: {heading: "2. 写你的第一个 MCP server", anchor: 2-写你的第一个-mcp-server}
+      recipe-3:
+        zh-TW: {heading: "3. Office Docs Workflow", anchor: 3-office-docs-workflow}
+        en: {heading: "3. Office Docs Workflow", anchor: 3-office-docs-workflow}
+        zh-Hans: {heading: "3. Office Docs Workflow", anchor: 3-office-docs-workflow}
+      recipe-4:
+        zh-TW: {heading: "4. Gemini Notebook Workflow", anchor: 4-gemini-notebook-workflow}
+        en: {heading: "4. Gemini Notebook Workflow", anchor: 4-gemini-notebook-workflow}
+        zh-Hans: {heading: "4. Gemini Notebook Workflow", anchor: 4-gemini-notebook-workflow}
+      recipe-5:
+        zh-TW: {heading: "5. Zotero Workflow", anchor: 5-zotero-workflow}
+        en: {heading: "5. Zotero Workflow", anchor: 5-zotero-workflow}
+        zh-Hans: {heading: "5. Zotero Workflow", anchor: 5-zotero-workflow}
+      recipe-6:
+        zh-TW: {heading: "6. 本機 LLM + CLI Agent 快速 walkthrough", anchor: 6-本機-llm--cli-agent-快速-walkthrough}
+        en: {heading: "6. Local LLM + CLI Agent quick walkthrough", anchor: 6-local-llm--cli-agent-quick-walkthrough}
+        zh-Hans: {heading: "6. 本地 LLM + CLI Agent 快速 walkthrough", anchor: 6-本地-llm--cli-agent-快速-walkthrough}
+      required-reading:
+        zh-TW: {heading: "📚 必修閱讀", anchor: -必修閱讀}
+        en: {heading: "📚 Required reading", anchor: -required-reading}
+        zh-Hans: {heading: "📚 必读", anchor: -必读}
+      resources:
+        zh-TW: {heading: "⭐ 精選 Projects 與學習資源", anchor: -精選-projects-與學習資源}
+        en: {heading: "⭐ Curated projects and learning resources", anchor: -curated-projects-and-learning-resources}
+        zh-Hans: {heading: "⭐ 精选 Projects 与学习资源", anchor: -精选-projects-与学习资源}
+      completion:
+        zh-TW: {heading: "✅ 完成檢查與下一站", anchor: -完成檢查與下一站}
+        en: {heading: "✅ Completion check and next stop", anchor: -completion-check-and-next-stop}
+        zh-Hans: {heading: "✅ 完成检查与下一站", anchor: -完成检查与下一站}
+    visible_section_minimums:
+      required-reading: {min_links: 8, min_ratings: 8}
+      resources: {min_links: 14, min_ratings: 14}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: recipe-1
+      min_definition_chars: 20
+      terms:
+        - id: recipe
+          zh-TW: {term: Recipe, label: "Recipe（實作配方）"}
+          en: {term: Recipe, label: Recipe}
+          zh-Hans: {term: Recipe, label: "Recipe（实践配方）"}
+        - id: skill
+          zh-TW: {term: Skill, label: "Skill（操作卡）"}
+          en: {term: Skill, label: Skill}
+          zh-Hans: {term: Skill, label: "Skill（操作卡）"}
+        - id: mcp-server
+          zh-TW: {term: MCP Server, label: "MCP Server（工具轉接站）"}
+          en: {term: MCP Server, label: MCP Server}
+          zh-Hans: {term: MCP Server, label: "MCP Server（工具转接站）"}
+        - id: community-integration
+          zh-TW: {term: Community Integration, label: "Community Integration（社群整合）"}
+          en: {term: Community Integration, label: Community Integration}
+          zh-Hans: {term: Community Integration, label: "Community Integration（社区集成）"}
+        - id: model-runtime
+          zh-TW: {term: Model Runtime, label: "Model Runtime（模型執行環境）"}
+          en: {term: Model Runtime, label: Model Runtime}
+          zh-Hans: {term: Model Runtime, label: "Model Runtime（模型运行环境）"}
+        - id: coding-agent
+          zh-TW: {term: Coding Agent, label: "Coding Agent（程式代理）"}
+          en: {term: Coding Agent, label: Coding Agent}
+          zh-Hans: {term: Coding Agent, label: "Coding Agent（程序代理）"}
+    resource_group_rowspans: [2, 2, 2, 2, 3, 3]
+
   - id: knowledge-worker-path
     canonical: branches/for-knowledge-worker.md
     mirrors:
@@ -2616,39 +2762,74 @@ pages:
       en: resources/README.en.md
       zh-Hans: resources/README.zh-Hans.md
     max_visible_chars:
-      zh-TW: 3600
-      en: 5200
-      zh-Hans: 3600
+      zh-TW: 3454
+      en: 5148
+      zh-Hans: 3839
     max_open_details: 0
     required_details_count: 2
     visible_section_order:
-      - task-map
-      - beginner-route
-      - next-stop
-    forbidden_terms:
-      zh-TW: ["81+", "76+", "~210", "~620", "~2500 行", "30-50 分鐘", "30-45 分鐘"]
-      en: ["81+", "76+", "~210", "~620", "~2500 lines", "30-50 minutes", "30-45 minutes"]
-      zh-Hans: ["81+", "76+", "~210", "~620", "~2500 行", "30-50 分钟", "30-45 分钟"]
+      - task-router
+      - core-terms
+      - references
+      - return-route
+      - completion
     parity:
       ordered_external_urls: true
+      literals:
+        - "OpenRouter"
+        - "Ollama"
+        - "OpenCode"
+        - "Pi"
+        - "Gemini Notebook"
     required_visible_sections:
-      task-map:
-        zh-TW: {heading: "📌 我現在要做什麼", anchor: -我現在要做什麼}
-        en: {heading: "📌 What do I want to do now?", anchor: -what-do-i-want-to-do-now}
-        zh-Hans: {heading: "📌 我现在要做什么", anchor: -我现在要做什么}
-      beginner-route:
-        zh-TW: {heading: "🧭 第一次來先走這裡", anchor: -第一次來先走這裡}
-        en: {heading: "🧭 Start here on your first visit", anchor: -start-here-on-your-first-visit}
-        zh-Hans: {heading: "🧭 第一次来先走这里", anchor: -第一次来先走这里}
-      next-stop:
-        zh-TW: {heading: "✅ 下一步", anchor: -下一步}
-        en: {heading: "✅ Next step", anchor: -next-step}
-        zh-Hans: {heading: "✅ 下一步", anchor: -下一步}
+      task-router:
+        zh-TW: {heading: "🧭 你現在卡在哪裡？", anchor: -你現在卡在哪裡}
+        en: {heading: "🧭 What are you stuck on?", anchor: -what-are-you-stuck-on}
+        zh-Hans: {heading: "🧭 你现在卡在哪里？", anchor: -你现在卡在哪里}
+      core-terms:
+        zh-TW: {heading: "🧩 先分清楚五個詞", anchor: -先分清楚五個詞}
+        en: {heading: "🧩 Five words to know first", anchor: -five-words-to-know-first}
+        zh-Hans: {heading: "🧩 先分清五个词", anchor: -先分清五个词}
+      references:
+        zh-TW: {heading: "📚 全部 11 份參考資料", anchor: -全部-11-份參考資料}
+        en: {heading: "📚 All 11 references", anchor: -all-11-references}
+        zh-Hans: {heading: "📚 全部 11 份参考资料", anchor: -全部-11-份参考资料}
+      return-route:
+        zh-TW: {heading: "🔁 看完要回哪裡？", anchor: -看完要回哪裡}
+        en: {heading: "🔁 Where do you return next?", anchor: -where-do-you-return-next}
+        zh-Hans: {heading: "🔁 看完要回哪里？", anchor: -看完要回哪里}
+      completion:
+        zh-TW: {heading: "✅ 30 秒完成檢查", anchor: -30-秒完成檢查}
+        en: {heading: "✅ 30-second completion check", anchor: -30-second-completion-check}
+        zh-Hans: {heading: "✅ 30 秒完成检查", anchor: -30-秒完成检查}
     visible_section_minimums:
-      task-map: {min_links: 7}
-      beginner-route: {min_links: 2}
-      next-stop: {min_links: 2}
-
+      references: {min_links: 11}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: references
+      min_definition_chars: 20
+      terms:
+        - id: reference
+          zh-TW: {term: Reference, label: "Reference（參考資料）"}
+          en: {term: Reference, label: Reference}
+          zh-Hans: {term: Reference, label: "Reference（参考资料）"}
+        - id: guide
+          zh-TW: {term: Guide, label: "Guide（指南）"}
+          en: {term: Guide, label: Guide}
+          zh-Hans: {term: Guide, label: "Guide（指南）"}
+        - id: cookbook
+          zh-TW: {term: Cookbook, label: "Cookbook（食譜）"}
+          en: {term: Cookbook, label: Cookbook}
+          zh-Hans: {term: Cookbook, label: "Cookbook（食谱）"}
+        - id: catalog
+          zh-TW: {term: Catalog, label: "Catalog（目錄）"}
+          en: {term: Catalog, label: Catalog}
+          zh-Hans: {term: Catalog, label: "Catalog（目录）"}
+        - id: glossary
+          zh-TW: {term: Glossary, label: "Glossary（詞典）"}
+          en: {term: Glossary, label: Glossary}
+          zh-Hans: {term: Glossary, label: "Glossary（词典）"}
+    resource_group_rowspans: [4, 2, 2, 2, 1]
   - id: mcp-skills-catalog
     canonical: resources/mcp-skills-catalog.md
     mirrors:

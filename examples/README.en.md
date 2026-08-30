@@ -252,7 +252,7 @@ Main differences: the message-creation method name, the response shape (`choices
 | 1 LLM basics | 6 | inline 4 + folder 2 (`examples/stage-1/`) |
 | 2 Prompt engineering | 4 | inline 3 + folder 1 (`examples/stage-2/`) |
 | **3 Tool Use & Your First Agent Loop** | **6** | folder 6 (`examples/stage-3/`) |
-| 4 Agent Frameworks & Workflow Graphs | 5 | five dual-path, offline-verifiable folders (`examples/stage-4/`; Python 3.11) |
+| 4 Workflow Graphs & Agent Frameworks | 5 | five dual-path, offline-verifiable folders (`examples/stage-4/`; Python 3.11) |
 | 5 Claude Code ecosystem | 11 | inline 6 + folder 5 (`examples/stage-5/`) |
 | 6 Memory/RAG | 5 | all folder (`examples/stage-6/`) |
 | 7 Agent Production Engineering | 5 | inline 1 + folder 4 (`examples/stage-7/`) |
