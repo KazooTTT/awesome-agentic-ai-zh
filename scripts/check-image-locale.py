@@ -24,7 +24,7 @@ Two distinct findings, deliberately kept apart:
              instead of quietly joining the pile.
 
 Usage:
-    python scripts/check-image-locale.py           # exit 1 on fixable mismatch
+    python scripts/check-image-locale.py           # exit 1 on mismatch or orphan
     python scripts/check-image-locale.py --strict  # also fail on known gaps
     python scripts/check-image-locale.py --list    # print the current inventory
 """
@@ -39,6 +39,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from md_fences import strip_code_blocks  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+DIAGRAM_DIR = REPO_ROOT / "resources" / "diagrams"
 
 # ![alt](path) — relative paths only; skip external URLs and data: URIs.
 IMAGE_RE = re.compile(r"!\[[^\]]*\]\((?!https?:|data:)([^)\s]+)\)")
@@ -89,6 +90,33 @@ def scan(page: Path):
                 yield i, asset
 
 
+def unreferenced_diagrams() -> list[str]:
+    """Return diagram assets that no Markdown page embeds.
+
+    Superseded generated images are easy to leave behind because the locale
+    gate historically looked only from page -> asset. Scan every Markdown page
+    in the repository so the reverse asset -> page direction is also enforced.
+    """
+    referenced: set[Path] = set()
+    for name in sorted(glob.glob("**/*.md", recursive=True, root_dir=REPO_ROOT)):
+        rel = Path(name)
+        if any(part in SKIP_DIR_PARTS for part in rel.parts):  # abs-parts-ok: glob(root_dir=REPO_ROOT) yields relative names
+            continue
+        page = REPO_ROOT / rel
+        for _, asset in scan(page):
+            referenced.add((page.parent / asset).resolve())
+
+    if not DIAGRAM_DIR.exists():
+        return []
+    return [
+        path.relative_to(REPO_ROOT).as_posix()
+        for path in sorted(DIAGRAM_DIR.rglob("*"))
+        if path.is_file()
+        and path.suffix.lower() in IMAGE_EXTS
+        and path.resolve() not in referenced
+    ]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--strict", action="store_true",
@@ -126,12 +154,15 @@ def main() -> int:
             else:
                 fixable.append((rel_page, lineno, asset, want + "  [asset must be created]"))
 
+    orphans = unreferenced_diagrams()
+
     if args.list:
         print(f"{checked} image reference(s) on locale-suffixed pages")
         print(f"  correct: {checked - len(fixable) - len(gaps) - len(dead)}")
         print(f"  fixable mismatches: {len(fixable)}")
         print(f"  documented gaps: {len(gaps)}")
         print(f"  dead references: {len(dead)}")
+        print(f"  unreferenced diagrams: {len(orphans)}")
         for rel, ln, a, w in gaps:
             print(f"    gap  {rel}:{ln}  {a}  (wants {Path(w).name})")
         return 0
@@ -141,6 +172,8 @@ def main() -> int:
     for rel, lineno, asset, want in fixable:
         print(f"❌ {rel}:{lineno}: embeds {asset}")
         print(f"     this is a {locale_of(rel)} page — it should use {want}")
+    for asset in orphans:
+        print(f"❌ unreferenced diagram: {asset}")
 
     print(f"\nchecked {checked} image reference(s) on locale-suffixed pages")
     if gaps:
@@ -148,13 +181,16 @@ def main() -> int:
         for rel, lineno, asset, want in gaps:
             print(f"  ⚠️  {rel}:{lineno} needs {Path(want).name}")
 
-    if dead or fixable:
-        print(f"\nFound {len(dead) + len(fixable)} image-locale problem(s).")
+    if dead or fixable or orphans:
+        print(
+            f"\nFound {len(dead) + len(fixable)} image-locale problem(s) "
+            f"and {len(orphans)} unreferenced diagram(s)."
+        )
         return 1
     if args.strict and gaps:
         print(f"\n--strict: {len(gaps)} known gap(s) still unresolved.")
         return 1
-    print("\n✓ Every mirror page embeds its own locale's image, or a documented gap.")
+    print("\n✓ Image locales match, and every diagram is embedded by a page.")
     return 0
 
 
