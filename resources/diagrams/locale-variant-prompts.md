@@ -178,16 +178,17 @@ Git 歷史復原。
 還引入新缺陷（標籤壓框、文字被形狀邊緣裁切）。
 **指定重新生成、並附完整規格，比叫它「只修這兩點」可靠。**
 
-## 已知未竟事項
+## 已退役的舊圖
 
-`rag-pipeline-overview` 與 `chunking-strategies` 這兩組（共 6 張）**視覺等級不如 teacher 兩組**——
-是乾淨、文字正確、三語一致的淺色卡片流程圖，但沒有線條 icon、配色也弱。
-四次嘗試都在「有 house style 但有瑕疵」與「乾淨但退回素面」之間擺盪。
+2026-08-30 全站引用掃描確認下列舊圖已沒有任何頁面使用，因此直接移除，不再重畫：
 
-要再挑戰的話，建議：
-- 以 `teacher-ai-use-cases-overview.png` 為唯一視覺樣板，把它的構圖元素逐項拆解寫進 brief
-- 或改用 `--model` 指定不同模型重試
-- 原始 `.jpg`（2026-05 版）仍在 git 歷史中，必要時可還原
+- `rag-pipeline-overview` 三語圖：由 Stage 6 的 `rag-memory-map` 三語圖取代。
+- `chunking-strategies` 三語圖：內容已放入 Stage 6 漸進式文字教學，不再保留素面流程框。
+- `reflexion-persistent-memory-loop` 三語圖：內容已整合進 Stage 6 的 RAG／Memory 路線。
+- `multi-agent-debate-flow` 三語圖：沒有頁面使用，且深色霓虹風不符合目前主頁式視覺規範。
+- `branch-tier-progression.png`：角色入口不是必走的升級階梯，表格比箭頭圖更不容易誤導。
+
+這些圖仍可從 Git 歷史取回。`check-image-locale.py` 現在也會阻擋新的未引用圖檔，避免新版上線後又把舊版留在 repository。
 
 ## 重產時的檢查
 

@@ -167,6 +167,23 @@ def test_repo_currently_has_no_fixable_mismatch():
     assert r.returncode == 0, f"fixable image-locale mismatch present:\n{r.stdout}"
 
 
+def test_unreferenced_diagram_is_an_error():
+    rc, out = _run(
+        {"page.md": "No image here.\n"},
+        assets=["resources/diagrams/old.png"],
+    )
+    assert rc == 1, out
+    assert "unreferenced diagram: resources/diagrams/old.png" in out
+
+
+def test_referenced_diagram_is_clean():
+    rc, out = _run(
+        {"page.md": "![clear alt](resources/diagrams/current.png)\n"},
+        assets=["resources/diagrams/current.png"],
+    )
+    assert rc == 0, out
+
+
 def _run_all():
     fns = [v for k, v in sorted(globals().items())
            if k.startswith("test_") and callable(v)]
