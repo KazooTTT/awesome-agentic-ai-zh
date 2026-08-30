@@ -2830,6 +2830,84 @@ pages:
           en: {term: Glossary, label: Glossary}
           zh-Hans: {term: Glossary, label: "Glossary（词典）"}
     resource_group_rowspans: [4, 2, 2, 2, 1]
+
+  - id: courses
+    canonical: resources/courses.md
+    mirrors:
+      en: resources/courses.en.md
+      zh-Hans: resources/courses.zh-Hans.md
+    max_visible_chars:
+      zh-TW: 5740
+      en: 9296
+      zh-Hans: 5898
+    max_open_details: 0
+    required_details_count: 2
+    visible_section_order:
+      - core-terms
+      - chooser
+      - courses
+      - portfolio
+    forbidden_terms:
+      zh-TW: [tier-1, tier-2, anthropic.skilljar.com, HCIA-AI, Edureka, "17 門自學課", "5 條學習軌", "$25–30", "¥3500", "目前基本都要付費", "查核日期只代表"]
+      en: [tier-1, tier-2, anthropic.skilljar.com, HCIA-AI, Edureka, "17 self-paced courses", "5 learning tracks", "$25–30", "¥3500", "currently basically all paid", "verification date means only"]
+      zh-Hans: [tier-1, tier-2, anthropic.skilljar.com, HCIA-AI, Edureka, "17 门自学课", "5 条学习轨", "$25–30", "¥3500", "目前基本都要付费", "查核日期只代表"]
+    parity:
+      ordered_external_urls: true
+      resource_url_ratings: true
+      literals:
+        - "2026-08-29"
+        - "80%"
+        - "Microsoft Agent Framework"
+        - "Datawhale"
+        - "Eval"
+    required_visible_sections:
+      core-terms:
+        zh-TW: {heading: "🧩 先分清五個容易混在一起的詞", anchor: -先分清五個容易混在一起的詞}
+        en: {heading: "🧩 First, separate five terms that are easy to mix up", anchor: -first-separate-five-terms-that-are-easy-to-mix-up}
+        zh-Hans: {heading: "🧩 先分清五个容易混在一起的词", anchor: -先分清五个容易混在一起的词}
+      chooser:
+        zh-TW: {heading: "⚡ 先選一條，不要全部一起讀", anchor: -先選一條不要全部一起讀}
+        en: {heading: "⚡ Pick one path first—do not read everything at once", anchor: -pick-one-path-firstdo-not-read-everything-at-once}
+        zh-Hans: {heading: "⚡ 先选一条，不要全部一起读", anchor: -先选一条不要全部一起读}
+      courses:
+        zh-TW: {heading: "🎯 精選課程與學習路線", anchor: -精選課程與學習路線}
+        en: {heading: "🎯 Selected courses and learning paths", anchor: -selected-courses-and-learning-paths}
+        zh-Hans: {heading: "🎯 精选课程与学习路线", anchor: -精选课程与学习路线}
+      portfolio:
+        zh-TW: {heading: "🧪 每讀一門課，都留下同一份作品證據", anchor: -每讀一門課都留下同一份作品證據}
+        en: {heading: "🧪 Leave the same piece of work evidence after every course", anchor: -leave-the-same-piece-of-work-evidence-after-every-course}
+        zh-Hans: {heading: "🧪 每学完一门课，都留下同一份作品证据", anchor: -每学完一门课都留下同一份作品证据}
+    visible_section_minimums:
+      chooser: {min_links: 9}
+      courses: {min_links: 13, min_ratings: 12}
+      portfolio: {min_links: 3}
+    core_terms:
+      section_id: core-terms
+      first_exercise_section_id: portfolio
+      min_definition_chars: 20
+      terms:
+        - id: course
+          zh-TW: {term: Course, label: "Course（課程）"}
+          en: {term: Course, label: Course}
+          zh-Hans: {term: Course, label: "Course（课程）"}
+        - id: completion-certificate
+          zh-TW: {term: Certificate of Completion, label: "Certificate of Completion（完成證書）"}
+          en: {term: Certificate of Completion, label: Certificate of Completion}
+          zh-Hans: {term: Certificate of Completion, label: "Certificate of Completion（完成证书）"}
+        - id: skill-badge
+          zh-TW: {term: Skill Badge, label: "Skill Badge（技能徽章）"}
+          en: {term: Skill Badge, label: Skill Badge}
+          zh-Hans: {term: Skill Badge, label: "Skill Badge（技能徽章）"}
+        - id: professional-certificate
+          zh-TW: {term: Professional Certificate, label: "Professional Certificate（專業課程證書）"}
+          en: {term: Professional Certificate, label: Professional Certificate}
+          zh-Hans: {term: Professional Certificate, label: "Professional Certificate（专业课程证书）"}
+        - id: certification-exam
+          zh-TW: {term: Certification Exam, label: "Certification Exam（認證考試）"}
+          en: {term: Certification Exam, label: Certification Exam}
+          zh-Hans: {term: Certification Exam, label: "Certification Exam（认证考试）"}
+    resource_group_rowspans: [3, 5, 2, 2]
+
   - id: mcp-skills-catalog
     canonical: resources/mcp-skills-catalog.md
     mirrors:

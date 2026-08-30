@@ -219,7 +219,7 @@ python scripts/check-image-locale.py
 人工驗收除了看文字，也逐一確認：
 
 - Prompt 與 Context 都指向 Harness；Harness 內同時畫出 model、tools、state、logs、results、下一步與 Agent Loop。
-- 圖用 Harness 包住 Agent Loop 與上下兩個尺度呈現責任重疊；底部「不是五層」不暗示產品世代或 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
+- 圖用 Harness 包住 Agent Loop 與上下兩個尺度呈現責任重疊；標題「不是五層」不暗示產品世代或 Stage 2→6→7→5→4 的閱讀順序；正文另外提供 Stage 3、4、7 的入門／加深路線。
 - 下方 Workflow Graph 保留 Harness run、evidence check、人工核准、完成與失敗返回，沒有把每個節點都畫成 Agent。
 - 所有卡片依同一格線對齊；icon 完整留在自己的圓框內；兩條返回箭頭都有獨立留白通道，沒有壓字、穿框或互相交叉。
 - 英語圖沒有中文；簡中圖沒有肉眼可見的繁體字；繁中圖沒有簡中用語。

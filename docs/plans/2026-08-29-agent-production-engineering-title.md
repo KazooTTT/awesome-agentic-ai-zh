@@ -23,7 +23,7 @@
 - Harness 畫成處理模型、工具、state、log、結果與下一步決定的工作台；權限、sandbox、錯誤與其他 production 細節留在緊接的正文檢查表，避免圖過密。
 - Agent Loop 畫在 Harness 內，表示一次 run 的模型／工具／證據迴圈；Loop Engineering 另放在整個長任務尺度，表示 Goal／Action／Observation／Adjustment、預算與停止條件。兩者不能混成同一個框。
 - Workflow Graph 畫成連接 Harness run、驗證、返回路線、人工核准與完成狀態的 production route。
-- 圖以 Harness 包住 Agent Loop 與上下兩個尺度呈現責任重疊；底部明寫「不是五層」，不暗示五代產品或章節順序。
+- 圖以 Harness 包住 Agent Loop 與上下兩個尺度呈現責任重疊；標題明寫「不是五層」，不暗示五代產品或章節順序。
 - 使用 Image 2.0 產生三語 PNG，尺寸與主頁 README 圖同為 `1672×941`。繁中先定稿，英語與簡中以同一母版在地化；逐張以原尺寸人工核對字詞、箭頭、icon、格線與留白。
 
 ## 修改邊界
